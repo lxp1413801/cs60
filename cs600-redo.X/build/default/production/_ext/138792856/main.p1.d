@@ -1,0 +1,35 @@
+ build/default/production/_ext/138792856/main.d  \
+ build/default/production/_ext/138792856/main.p1:  \
+ F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../app/main.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/i2c.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../configs/configs.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/lcd.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/../configs/configs.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/key.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../soc/ticker.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/ad421.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/ex_eeprom.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/iic_gpio.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../soc/soc.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/driver.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/ex_pwr.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/uart.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../soc/rtc.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/includes.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../depend/crc16.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../api/data.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/ads1115.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../soc/bootloader.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/in_adc.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../app/app.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../api/key_menu.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../app/event.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../api/ui.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/m_flash.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../soc/clock.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../soc/int.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../depend/depend.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../driver/m_gpio.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../depend/m_string.h  \
+F:/2017/cs60/cs60/cs600-redo.X/src/app/../includes/../api/api.h 

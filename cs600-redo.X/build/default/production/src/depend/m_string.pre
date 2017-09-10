@@ -1,0 +1,246 @@
+
+# 1 "src/depend/m_string.c"
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 38
+typedef signed long int int32_t;
+
+# 45
+typedef unsigned char uint8_t;
+
+# 51
+typedef unsigned int uint16_t;
+
+# 67
+typedef unsigned long int uint32_t;
+
+# 75
+typedef signed char int_least8_t;
+
+# 82
+typedef signed int int_least16_t;
+
+# 104
+typedef signed long int int_least32_t;
+
+# 111
+typedef unsigned char uint_least8_t;
+
+# 117
+typedef unsigned int uint_least16_t;
+
+# 136
+typedef unsigned long int uint_least32_t;
+
+# 145
+typedef signed char int_fast8_t;
+
+# 152
+typedef signed int int_fast16_t;
+
+# 174
+typedef signed long int int_fast32_t;
+
+# 181
+typedef unsigned char uint_fast8_t;
+
+# 187
+typedef unsigned int uint_fast16_t;
+
+# 206
+typedef unsigned long int uint_fast32_t;
+
+# 212
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 7 "src/depend/m_string.h"
+extern const uint8_t HexTable[];
+extern void m_mem_set(uint8_t* buf,uint8_t x,uint8_t len);
+extern void m_mem_cpy(uint8_t* d,uint8_t* s);
+extern void m_mem_cpy_len(uint8_t* d,uint8_t* s,uint16_t len);
+extern uint16_t m_str_match(uint8_t* b,uint8_t* c);
+extern int32_t m_math_pow(int32_t x,uint8_t y);
+extern uint16_t m_str_cmp(uint8_t* d,uint8_t* s);
+extern uint16_t m_str_cmp_len(uint8_t* d,uint8_t* s,uint8_t len);
+extern uint16_t HEX8(uint8_t* hex,uint8_t x);
+extern uint16_t m_str_b2h(uint8_t* h,uint8_t* b,uint16_t len);
+extern uint16_t m_str_h2b(uint8_t* b,uint8_t* h,uint16_t len);
+
+
+extern void m_int_2_str(uint8_t* buf,int32_t x,uint8_t len);
+extern uint8_t m_str_head_hide(uint8_t* str,uint8_t loc);
+
+extern const uint8_t Bcd2HexTable[];
+
+# 29
+extern uint32_t swap_uint32(uint32_t x);
+extern uint16_t swap_uint16(uint16_t x);
+
+
+
+extern void int32_array_shift_right(int32_t *p32,uint16_t eoc);
+
+void m_int8_2_hex(uint8_t* str,uint8_t b);
+
+extern void m_int16_2_str_4(uint8_t* buf,int16_t x);
+
+# 3 "src/depend/m_string.c"
+const uint8_t HexTable[]="0123456789abcdef";
+
+# 32
+void m_mem_set(uint8_t* buf,uint8_t x,uint8_t len)
+{
+while(len--)
+{
+*buf++=x;
+}
+}
+
+
+void m_mem_cpy_len(uint8_t* d,uint8_t* s,uint16_t len)
+{
+
+while(len)
+{
+*d++=*s++;
+len--;
+}
+}
+
+# 116
+int32_t m_math_pow(int32_t x,uint8_t y)
+{
+int32_t ret=1;
+if(y==0)return 1;
+while(y--)
+{
+ret*=x;
+}
+return ret;
+}
+
+void m_int_2_str(uint8_t* buf,int32_t x,uint8_t len)
+{
+int32_t t;
+if(!len)return;
+
+t=m_math_pow(10,len);
+if(x>=t-1)x=t-1;
+while(len--)
+{
+t=x%10;
+*buf--=HexTable[t];
+x/=10;
+}
+}
+
+
+uint8_t m_str_head_hide(uint8_t* str,uint8_t loc)
+{
+uint8_t ret=0;
+while(loc--)
+{
+if(*str=='0')
+{
+*str++=' ';
+ret++;
+}
+else
+{
+break;
+}
+}
+return ret;
+}
+
+uint16_t HEX8(uint8_t* hex,uint8_t x)
+{
+*hex++=HexTable[(x&0xf0)>>4];
+*hex++=HexTable[(x&0x0f)];
+hex='\0';
+return 3;
+}
+
+
+uint16_t m_str_b2h(uint8_t* h,uint8_t* b,uint16_t len)
+{
+uint16_t i=0;
+uint8_t t8;
+for(i=0;i<len;i++)
+{
+t8=*b++;
+*h++=HexTable[(t8&0xf0)>>4];
+*h++=HexTable[(t8&0x0f)];
+}
+return (len<<1);
+}
+
+# 191
+uint16_t m_str_h2b(uint8_t* b,uint8_t* h,uint16_t len)
+{
+uint16_t i=len;
+uint8_t bb,s;
+while(i>=2)
+{
+bb=0;
+s=*h++;
+do{ if(s>='0' && s <='9')bb|=(s-'0'); else if(s>='A' && s<='F')bb|=(s-'A'+0x0a); else if(s>='a' && s<='f')bb|=(s-'a'+0x0a); else bb|=0; }while(0);;
+bb<<=4;
+s=*h++;
+do{ if(s>='0' && s <='9')bb|=(s-'0'); else if(s>='A' && s<='F')bb|=(s-'A'+0x0a); else if(s>='a' && s<='f')bb|=(s-'a'+0x0a); else bb|=0; }while(0);;
+*b++=bb;
+i-=2;
+}
+return (len>>1);
+}
+
+# 242
+void m_int8_2_hex(uint8_t* str,uint8_t b)
+{
+uint8_t t8;
+t8=b;
+t8>>=4;
+t8 &= 0x0f;
+str[0]=HexTable[t8];
+
+t8=b;
+
+t8 &= 0x0f;
+str[1]=HexTable[t8];
+
+
+
+}
+
+void m_int16_2_str_4(uint8_t* buf,int16_t x)
+{
+if(x>9999)x=9999;
+buf[3]=HexTable[x%10];
+x/=10;
+buf[2]=HexTable[x%10];
+x/=10;
+buf[1]=HexTable[x%10];
+x/=10;
+buf[0]=HexTable[x%10];
+}
+

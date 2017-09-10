@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=F:/2017/cs66/cs600-redo.X/src/api/ui.c F:/2017/cs66/cs600-redo.X/src/api/data.c F:/2017/cs66/cs600-redo.X/src/app/event.c F:/2017/cs66/cs600-redo.X/src/app/main.c F:/2017/cs66/cs600-redo.X/src/depend/m_string.c F:/2017/cs66/cs600-redo.X/src/driver/ad421.c F:/2017/cs66/cs600-redo.X/src/driver/ads1115.c F:/2017/cs66/cs600-redo.X/src/driver/ex_eeprom.c F:/2017/cs66/cs600-redo.X/src/driver/ex_pwr.c F:/2017/cs66/cs600-redo.X/src/driver/i2c.c F:/2017/cs66/cs600-redo.X/src/driver/iic_gpio.c F:/2017/cs66/cs600-redo.X/src/driver/in_adc.c F:/2017/cs66/cs600-redo.X/src/driver/key.c F:/2017/cs66/cs600-redo.X/src/driver/lcd.c F:/2017/cs66/cs600-redo.X/src/driver/m_flash.c F:/2017/cs66/cs600-redo.X/src/driver/m_gpio.c F:/2017/cs66/cs600-redo.X/src/driver/uart.c F:/2017/cs66/cs600-redo.X/src/soc/clock.c F:/2017/cs66/cs600-redo.X/src/soc/int.c F:/2017/cs66/cs600-redo.X/src/soc/rtc.c F:/2017/cs66/cs600-redo.X/src/soc/soc.c F:/2017/cs66/cs600-redo.X/src/soc/ticker.c F:/2017/cs66/cs600-redo.X/src/depend/crc16.c F:/2017/cs66/cs600-redo.X/src/api/key_menu.c
+SOURCEFILES_QUOTED_IF_SPACED=F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c F:/2017/cs60/cs60/cs600-redo.X/src/depend/crc16.c F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ad421.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/iic_gpio.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/in_adc.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/uart.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1135332820/ui.p1 ${OBJECTDIR}/_ext/1135332820/data.p1 ${OBJECTDIR}/_ext/1135332813/event.p1 ${OBJECTDIR}/_ext/1135332813/main.p1 ${OBJECTDIR}/_ext/243453210/m_string.p1 ${OBJECTDIR}/_ext/255266518/ad421.p1 ${OBJECTDIR}/_ext/255266518/ads1115.p1 ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1 ${OBJECTDIR}/_ext/255266518/ex_pwr.p1 ${OBJECTDIR}/_ext/255266518/i2c.p1 ${OBJECTDIR}/_ext/255266518/iic_gpio.p1 ${OBJECTDIR}/_ext/255266518/in_adc.p1 ${OBJECTDIR}/_ext/255266518/key.p1 ${OBJECTDIR}/_ext/255266518/lcd.p1 ${OBJECTDIR}/_ext/255266518/m_flash.p1 ${OBJECTDIR}/_ext/255266518/m_gpio.p1 ${OBJECTDIR}/_ext/255266518/uart.p1 ${OBJECTDIR}/_ext/1135315559/clock.p1 ${OBJECTDIR}/_ext/1135315559/int.p1 ${OBJECTDIR}/_ext/1135315559/rtc.p1 ${OBJECTDIR}/_ext/1135315559/soc.p1 ${OBJECTDIR}/_ext/1135315559/ticker.p1 ${OBJECTDIR}/_ext/243453210/crc16.p1 ${OBJECTDIR}/_ext/1135332820/key_menu.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1135332820/ui.p1.d ${OBJECTDIR}/_ext/1135332820/data.p1.d ${OBJECTDIR}/_ext/1135332813/event.p1.d ${OBJECTDIR}/_ext/1135332813/main.p1.d ${OBJECTDIR}/_ext/243453210/m_string.p1.d ${OBJECTDIR}/_ext/255266518/ad421.p1.d ${OBJECTDIR}/_ext/255266518/ads1115.p1.d ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1.d ${OBJECTDIR}/_ext/255266518/ex_pwr.p1.d ${OBJECTDIR}/_ext/255266518/i2c.p1.d ${OBJECTDIR}/_ext/255266518/iic_gpio.p1.d ${OBJECTDIR}/_ext/255266518/in_adc.p1.d ${OBJECTDIR}/_ext/255266518/key.p1.d ${OBJECTDIR}/_ext/255266518/lcd.p1.d ${OBJECTDIR}/_ext/255266518/m_flash.p1.d ${OBJECTDIR}/_ext/255266518/m_gpio.p1.d ${OBJECTDIR}/_ext/255266518/uart.p1.d ${OBJECTDIR}/_ext/1135315559/clock.p1.d ${OBJECTDIR}/_ext/1135315559/int.p1.d ${OBJECTDIR}/_ext/1135315559/rtc.p1.d ${OBJECTDIR}/_ext/1135315559/soc.p1.d ${OBJECTDIR}/_ext/1135315559/ticker.p1.d ${OBJECTDIR}/_ext/243453210/crc16.p1.d ${OBJECTDIR}/_ext/1135332820/key_menu.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/138792849/data.p1 ${OBJECTDIR}/_ext/138792849/key_menu.p1 ${OBJECTDIR}/_ext/138792849/ui.p1 ${OBJECTDIR}/_ext/138792856/event.p1 ${OBJECTDIR}/_ext/138792856/main.p1 ${OBJECTDIR}/_ext/1199703659/crc16.p1 ${OBJECTDIR}/_ext/1199703659/m_string.p1 ${OBJECTDIR}/_ext/1187890351/ad421.p1 ${OBJECTDIR}/_ext/1187890351/ads1115.p1 ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1 ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1 ${OBJECTDIR}/_ext/1187890351/i2c.p1 ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1 ${OBJECTDIR}/_ext/1187890351/in_adc.p1 ${OBJECTDIR}/_ext/1187890351/key.p1 ${OBJECTDIR}/_ext/1187890351/lcd.p1 ${OBJECTDIR}/_ext/1187890351/m_flash.p1 ${OBJECTDIR}/_ext/1187890351/m_gpio.p1 ${OBJECTDIR}/_ext/1187890351/uart.p1 ${OBJECTDIR}/_ext/138810110/clock.p1 ${OBJECTDIR}/_ext/138810110/int.p1 ${OBJECTDIR}/_ext/138810110/rtc.p1 ${OBJECTDIR}/_ext/138810110/soc.p1 ${OBJECTDIR}/_ext/138810110/ticker.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/138792849/data.p1.d ${OBJECTDIR}/_ext/138792849/key_menu.p1.d ${OBJECTDIR}/_ext/138792849/ui.p1.d ${OBJECTDIR}/_ext/138792856/event.p1.d ${OBJECTDIR}/_ext/138792856/main.p1.d ${OBJECTDIR}/_ext/1199703659/crc16.p1.d ${OBJECTDIR}/_ext/1199703659/m_string.p1.d ${OBJECTDIR}/_ext/1187890351/ad421.p1.d ${OBJECTDIR}/_ext/1187890351/ads1115.p1.d ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1.d ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1.d ${OBJECTDIR}/_ext/1187890351/i2c.p1.d ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1.d ${OBJECTDIR}/_ext/1187890351/in_adc.p1.d ${OBJECTDIR}/_ext/1187890351/key.p1.d ${OBJECTDIR}/_ext/1187890351/lcd.p1.d ${OBJECTDIR}/_ext/1187890351/m_flash.p1.d ${OBJECTDIR}/_ext/1187890351/m_gpio.p1.d ${OBJECTDIR}/_ext/1187890351/uart.p1.d ${OBJECTDIR}/_ext/138810110/clock.p1.d ${OBJECTDIR}/_ext/138810110/int.p1.d ${OBJECTDIR}/_ext/138810110/rtc.p1.d ${OBJECTDIR}/_ext/138810110/soc.p1.d ${OBJECTDIR}/_ext/138810110/ticker.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1135332820/ui.p1 ${OBJECTDIR}/_ext/1135332820/data.p1 ${OBJECTDIR}/_ext/1135332813/event.p1 ${OBJECTDIR}/_ext/1135332813/main.p1 ${OBJECTDIR}/_ext/243453210/m_string.p1 ${OBJECTDIR}/_ext/255266518/ad421.p1 ${OBJECTDIR}/_ext/255266518/ads1115.p1 ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1 ${OBJECTDIR}/_ext/255266518/ex_pwr.p1 ${OBJECTDIR}/_ext/255266518/i2c.p1 ${OBJECTDIR}/_ext/255266518/iic_gpio.p1 ${OBJECTDIR}/_ext/255266518/in_adc.p1 ${OBJECTDIR}/_ext/255266518/key.p1 ${OBJECTDIR}/_ext/255266518/lcd.p1 ${OBJECTDIR}/_ext/255266518/m_flash.p1 ${OBJECTDIR}/_ext/255266518/m_gpio.p1 ${OBJECTDIR}/_ext/255266518/uart.p1 ${OBJECTDIR}/_ext/1135315559/clock.p1 ${OBJECTDIR}/_ext/1135315559/int.p1 ${OBJECTDIR}/_ext/1135315559/rtc.p1 ${OBJECTDIR}/_ext/1135315559/soc.p1 ${OBJECTDIR}/_ext/1135315559/ticker.p1 ${OBJECTDIR}/_ext/243453210/crc16.p1 ${OBJECTDIR}/_ext/1135332820/key_menu.p1
+OBJECTFILES=${OBJECTDIR}/_ext/138792849/data.p1 ${OBJECTDIR}/_ext/138792849/key_menu.p1 ${OBJECTDIR}/_ext/138792849/ui.p1 ${OBJECTDIR}/_ext/138792856/event.p1 ${OBJECTDIR}/_ext/138792856/main.p1 ${OBJECTDIR}/_ext/1199703659/crc16.p1 ${OBJECTDIR}/_ext/1199703659/m_string.p1 ${OBJECTDIR}/_ext/1187890351/ad421.p1 ${OBJECTDIR}/_ext/1187890351/ads1115.p1 ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1 ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1 ${OBJECTDIR}/_ext/1187890351/i2c.p1 ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1 ${OBJECTDIR}/_ext/1187890351/in_adc.p1 ${OBJECTDIR}/_ext/1187890351/key.p1 ${OBJECTDIR}/_ext/1187890351/lcd.p1 ${OBJECTDIR}/_ext/1187890351/m_flash.p1 ${OBJECTDIR}/_ext/1187890351/m_gpio.p1 ${OBJECTDIR}/_ext/1187890351/uart.p1 ${OBJECTDIR}/_ext/138810110/clock.p1 ${OBJECTDIR}/_ext/138810110/int.p1 ${OBJECTDIR}/_ext/138810110/rtc.p1 ${OBJECTDIR}/_ext/138810110/soc.p1 ${OBJECTDIR}/_ext/138810110/ticker.p1
 
 # Source Files
-SOURCEFILES=F:/2017/cs66/cs600-redo.X/src/api/ui.c F:/2017/cs66/cs600-redo.X/src/api/data.c F:/2017/cs66/cs600-redo.X/src/app/event.c F:/2017/cs66/cs600-redo.X/src/app/main.c F:/2017/cs66/cs600-redo.X/src/depend/m_string.c F:/2017/cs66/cs600-redo.X/src/driver/ad421.c F:/2017/cs66/cs600-redo.X/src/driver/ads1115.c F:/2017/cs66/cs600-redo.X/src/driver/ex_eeprom.c F:/2017/cs66/cs600-redo.X/src/driver/ex_pwr.c F:/2017/cs66/cs600-redo.X/src/driver/i2c.c F:/2017/cs66/cs600-redo.X/src/driver/iic_gpio.c F:/2017/cs66/cs600-redo.X/src/driver/in_adc.c F:/2017/cs66/cs600-redo.X/src/driver/key.c F:/2017/cs66/cs600-redo.X/src/driver/lcd.c F:/2017/cs66/cs600-redo.X/src/driver/m_flash.c F:/2017/cs66/cs600-redo.X/src/driver/m_gpio.c F:/2017/cs66/cs600-redo.X/src/driver/uart.c F:/2017/cs66/cs600-redo.X/src/soc/clock.c F:/2017/cs66/cs600-redo.X/src/soc/int.c F:/2017/cs66/cs600-redo.X/src/soc/rtc.c F:/2017/cs66/cs600-redo.X/src/soc/soc.c F:/2017/cs66/cs600-redo.X/src/soc/ticker.c F:/2017/cs66/cs600-redo.X/src/depend/crc16.c F:/2017/cs66/cs600-redo.X/src/api/key_menu.c
+SOURCEFILES=F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c F:/2017/cs60/cs60/cs600-redo.X/src/depend/crc16.c F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ad421.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/iic_gpio.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/in_adc.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c F:/2017/cs60/cs60/cs600-redo.X/src/driver/uart.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c
 
 
 CFLAGS=
@@ -93,390 +93,390 @@ MP_PROCESSOR_OPTION=18F86J93
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1135332820/ui.p1: F:/2017/cs66/cs600-redo.X/src/api/ui.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332820" 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/ui.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/ui.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332820/ui.p1  F:/2017/cs66/cs600-redo.X/src/api/ui.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332820/ui.d ${OBJECTDIR}/_ext/1135332820/ui.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332820/ui.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792849/data.p1: F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792849" 
+	@${RM} ${OBJECTDIR}/_ext/138792849/data.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792849/data.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792849/data.p1  F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792849/data.d ${OBJECTDIR}/_ext/138792849/data.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792849/data.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332820/data.p1: F:/2017/cs66/cs600-redo.X/src/api/data.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332820" 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/data.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/data.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332820/data.p1  F:/2017/cs66/cs600-redo.X/src/api/data.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332820/data.d ${OBJECTDIR}/_ext/1135332820/data.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332820/data.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792849/key_menu.p1: F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792849" 
+	@${RM} ${OBJECTDIR}/_ext/138792849/key_menu.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792849/key_menu.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792849/key_menu.p1  F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792849/key_menu.d ${OBJECTDIR}/_ext/138792849/key_menu.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792849/key_menu.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332813/event.p1: F:/2017/cs66/cs600-redo.X/src/app/event.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332813" 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/event.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/event.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332813/event.p1  F:/2017/cs66/cs600-redo.X/src/app/event.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332813/event.d ${OBJECTDIR}/_ext/1135332813/event.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332813/event.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792849/ui.p1: F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792849" 
+	@${RM} ${OBJECTDIR}/_ext/138792849/ui.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792849/ui.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792849/ui.p1  F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792849/ui.d ${OBJECTDIR}/_ext/138792849/ui.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792849/ui.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332813/main.p1: F:/2017/cs66/cs600-redo.X/src/app/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332813" 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/main.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/main.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332813/main.p1  F:/2017/cs66/cs600-redo.X/src/app/main.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332813/main.d ${OBJECTDIR}/_ext/1135332813/main.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332813/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792856/event.p1: F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792856" 
+	@${RM} ${OBJECTDIR}/_ext/138792856/event.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792856/event.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792856/event.p1  F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792856/event.d ${OBJECTDIR}/_ext/138792856/event.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792856/event.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/243453210/m_string.p1: F:/2017/cs66/cs600-redo.X/src/depend/m_string.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/243453210" 
-	@${RM} ${OBJECTDIR}/_ext/243453210/m_string.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/243453210/m_string.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/243453210/m_string.p1  F:/2017/cs66/cs600-redo.X/src/depend/m_string.c 
-	@-${MV} ${OBJECTDIR}/_ext/243453210/m_string.d ${OBJECTDIR}/_ext/243453210/m_string.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/243453210/m_string.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792856/main.p1: F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792856" 
+	@${RM} ${OBJECTDIR}/_ext/138792856/main.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792856/main.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792856/main.p1  F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792856/main.d ${OBJECTDIR}/_ext/138792856/main.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792856/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ad421.p1: F:/2017/cs66/cs600-redo.X/src/driver/ad421.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ad421.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ad421.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ad421.p1  F:/2017/cs66/cs600-redo.X/src/driver/ad421.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ad421.d ${OBJECTDIR}/_ext/255266518/ad421.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ad421.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1199703659/crc16.p1: F:/2017/cs60/cs60/cs600-redo.X/src/depend/crc16.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1199703659" 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/crc16.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/crc16.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1199703659/crc16.p1  F:/2017/cs60/cs60/cs600-redo.X/src/depend/crc16.c 
+	@-${MV} ${OBJECTDIR}/_ext/1199703659/crc16.d ${OBJECTDIR}/_ext/1199703659/crc16.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1199703659/crc16.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ads1115.p1: F:/2017/cs66/cs600-redo.X/src/driver/ads1115.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ads1115.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ads1115.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ads1115.p1  F:/2017/cs66/cs600-redo.X/src/driver/ads1115.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ads1115.d ${OBJECTDIR}/_ext/255266518/ads1115.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ads1115.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1199703659/m_string.p1: F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1199703659" 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/m_string.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/m_string.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1199703659/m_string.p1  F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c 
+	@-${MV} ${OBJECTDIR}/_ext/1199703659/m_string.d ${OBJECTDIR}/_ext/1199703659/m_string.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1199703659/m_string.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ex_eeprom.p1: F:/2017/cs66/cs600-redo.X/src/driver/ex_eeprom.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ex_eeprom.p1  F:/2017/cs66/cs600-redo.X/src/driver/ex_eeprom.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ex_eeprom.d ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ad421.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ad421.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ad421.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ad421.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ad421.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ad421.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ad421.d ${OBJECTDIR}/_ext/1187890351/ad421.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ad421.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ex_pwr.p1: F:/2017/cs66/cs600-redo.X/src/driver/ex_pwr.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_pwr.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_pwr.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ex_pwr.p1  F:/2017/cs66/cs600-redo.X/src/driver/ex_pwr.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ex_pwr.d ${OBJECTDIR}/_ext/255266518/ex_pwr.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ex_pwr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ads1115.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ads1115.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ads1115.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ads1115.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ads1115.d ${OBJECTDIR}/_ext/1187890351/ads1115.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ads1115.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/i2c.p1: F:/2017/cs66/cs600-redo.X/src/driver/i2c.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/i2c.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/i2c.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/i2c.p1  F:/2017/cs66/cs600-redo.X/src/driver/i2c.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/i2c.d ${OBJECTDIR}/_ext/255266518/i2c.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/i2c.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.d ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/iic_gpio.p1: F:/2017/cs66/cs600-redo.X/src/driver/iic_gpio.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/iic_gpio.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/iic_gpio.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/iic_gpio.p1  F:/2017/cs66/cs600-redo.X/src/driver/iic_gpio.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/iic_gpio.d ${OBJECTDIR}/_ext/255266518/iic_gpio.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/iic_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ex_pwr.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ex_pwr.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ex_pwr.d ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/in_adc.p1: F:/2017/cs66/cs600-redo.X/src/driver/in_adc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/in_adc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/in_adc.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/in_adc.p1  F:/2017/cs66/cs600-redo.X/src/driver/in_adc.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/in_adc.d ${OBJECTDIR}/_ext/255266518/in_adc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/in_adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/i2c.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/i2c.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/i2c.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/i2c.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/i2c.d ${OBJECTDIR}/_ext/1187890351/i2c.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/i2c.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/key.p1: F:/2017/cs66/cs600-redo.X/src/driver/key.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/key.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/key.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/key.p1  F:/2017/cs66/cs600-redo.X/src/driver/key.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/key.d ${OBJECTDIR}/_ext/255266518/key.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/key.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/iic_gpio.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/iic_gpio.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/iic_gpio.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/iic_gpio.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/iic_gpio.d ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/lcd.p1: F:/2017/cs66/cs600-redo.X/src/driver/lcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/lcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/lcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/lcd.p1  F:/2017/cs66/cs600-redo.X/src/driver/lcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/lcd.d ${OBJECTDIR}/_ext/255266518/lcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/lcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/in_adc.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/in_adc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/in_adc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/in_adc.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/in_adc.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/in_adc.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/in_adc.d ${OBJECTDIR}/_ext/1187890351/in_adc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/in_adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/m_flash.p1: F:/2017/cs66/cs600-redo.X/src/driver/m_flash.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_flash.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_flash.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/m_flash.p1  F:/2017/cs66/cs600-redo.X/src/driver/m_flash.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/m_flash.d ${OBJECTDIR}/_ext/255266518/m_flash.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/m_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/key.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/key.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/key.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/key.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/key.d ${OBJECTDIR}/_ext/1187890351/key.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/key.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/m_gpio.p1: F:/2017/cs66/cs600-redo.X/src/driver/m_gpio.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_gpio.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_gpio.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/m_gpio.p1  F:/2017/cs66/cs600-redo.X/src/driver/m_gpio.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/m_gpio.d ${OBJECTDIR}/_ext/255266518/m_gpio.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/m_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/lcd.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/lcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/lcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/lcd.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/lcd.d ${OBJECTDIR}/_ext/1187890351/lcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/lcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/uart.p1: F:/2017/cs66/cs600-redo.X/src/driver/uart.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/uart.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/uart.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/uart.p1  F:/2017/cs66/cs600-redo.X/src/driver/uart.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/uart.d ${OBJECTDIR}/_ext/255266518/uart.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/m_flash.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_flash.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_flash.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/m_flash.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/m_flash.d ${OBJECTDIR}/_ext/1187890351/m_flash.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/m_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/clock.p1: F:/2017/cs66/cs600-redo.X/src/soc/clock.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/clock.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/clock.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/clock.p1  F:/2017/cs66/cs600-redo.X/src/soc/clock.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/clock.d ${OBJECTDIR}/_ext/1135315559/clock.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/m_gpio.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_gpio.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_gpio.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/m_gpio.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/m_gpio.d ${OBJECTDIR}/_ext/1187890351/m_gpio.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/m_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/int.p1: F:/2017/cs66/cs600-redo.X/src/soc/int.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/int.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/int.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/int.p1  F:/2017/cs66/cs600-redo.X/src/soc/int.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/int.d ${OBJECTDIR}/_ext/1135315559/int.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/int.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/uart.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/uart.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/uart.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/uart.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/uart.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/uart.d ${OBJECTDIR}/_ext/1187890351/uart.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/rtc.p1: F:/2017/cs66/cs600-redo.X/src/soc/rtc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/rtc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/rtc.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/rtc.p1  F:/2017/cs66/cs600-redo.X/src/soc/rtc.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/rtc.d ${OBJECTDIR}/_ext/1135315559/rtc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/rtc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/clock.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/clock.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/clock.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/clock.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/clock.d ${OBJECTDIR}/_ext/138810110/clock.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/soc.p1: F:/2017/cs66/cs600-redo.X/src/soc/soc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/soc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/soc.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/soc.p1  F:/2017/cs66/cs600-redo.X/src/soc/soc.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/soc.d ${OBJECTDIR}/_ext/1135315559/soc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/soc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/int.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/int.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/int.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/int.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/int.d ${OBJECTDIR}/_ext/138810110/int.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/int.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/ticker.p1: F:/2017/cs66/cs600-redo.X/src/soc/ticker.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/ticker.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/ticker.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/ticker.p1  F:/2017/cs66/cs600-redo.X/src/soc/ticker.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/ticker.d ${OBJECTDIR}/_ext/1135315559/ticker.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/ticker.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/rtc.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/rtc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/rtc.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/rtc.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/rtc.d ${OBJECTDIR}/_ext/138810110/rtc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/rtc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/243453210/crc16.p1: F:/2017/cs66/cs600-redo.X/src/depend/crc16.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/243453210" 
-	@${RM} ${OBJECTDIR}/_ext/243453210/crc16.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/243453210/crc16.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/243453210/crc16.p1  F:/2017/cs66/cs600-redo.X/src/depend/crc16.c 
-	@-${MV} ${OBJECTDIR}/_ext/243453210/crc16.d ${OBJECTDIR}/_ext/243453210/crc16.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/243453210/crc16.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/soc.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/soc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/soc.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/soc.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/soc.d ${OBJECTDIR}/_ext/138810110/soc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/soc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332820/key_menu.p1: F:/2017/cs66/cs600-redo.X/src/api/key_menu.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332820" 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/key_menu.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/key_menu.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332820/key_menu.p1  F:/2017/cs66/cs600-redo.X/src/api/key_menu.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332820/key_menu.d ${OBJECTDIR}/_ext/1135332820/key_menu.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332820/key_menu.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/ticker.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/ticker.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/ticker.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1 --debugger=pickit3  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/ticker.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/ticker.d ${OBJECTDIR}/_ext/138810110/ticker.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/ticker.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
-${OBJECTDIR}/_ext/1135332820/ui.p1: F:/2017/cs66/cs600-redo.X/src/api/ui.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332820" 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/ui.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/ui.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332820/ui.p1  F:/2017/cs66/cs600-redo.X/src/api/ui.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332820/ui.d ${OBJECTDIR}/_ext/1135332820/ui.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332820/ui.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792849/data.p1: F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792849" 
+	@${RM} ${OBJECTDIR}/_ext/138792849/data.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792849/data.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792849/data.p1  F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792849/data.d ${OBJECTDIR}/_ext/138792849/data.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792849/data.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332820/data.p1: F:/2017/cs66/cs600-redo.X/src/api/data.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332820" 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/data.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/data.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332820/data.p1  F:/2017/cs66/cs600-redo.X/src/api/data.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332820/data.d ${OBJECTDIR}/_ext/1135332820/data.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332820/data.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792849/key_menu.p1: F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792849" 
+	@${RM} ${OBJECTDIR}/_ext/138792849/key_menu.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792849/key_menu.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792849/key_menu.p1  F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792849/key_menu.d ${OBJECTDIR}/_ext/138792849/key_menu.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792849/key_menu.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332813/event.p1: F:/2017/cs66/cs600-redo.X/src/app/event.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332813" 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/event.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/event.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332813/event.p1  F:/2017/cs66/cs600-redo.X/src/app/event.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332813/event.d ${OBJECTDIR}/_ext/1135332813/event.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332813/event.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792849/ui.p1: F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792849" 
+	@${RM} ${OBJECTDIR}/_ext/138792849/ui.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792849/ui.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792849/ui.p1  F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792849/ui.d ${OBJECTDIR}/_ext/138792849/ui.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792849/ui.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332813/main.p1: F:/2017/cs66/cs600-redo.X/src/app/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332813" 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/main.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332813/main.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332813/main.p1  F:/2017/cs66/cs600-redo.X/src/app/main.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332813/main.d ${OBJECTDIR}/_ext/1135332813/main.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332813/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792856/event.p1: F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792856" 
+	@${RM} ${OBJECTDIR}/_ext/138792856/event.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792856/event.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792856/event.p1  F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792856/event.d ${OBJECTDIR}/_ext/138792856/event.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792856/event.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/243453210/m_string.p1: F:/2017/cs66/cs600-redo.X/src/depend/m_string.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/243453210" 
-	@${RM} ${OBJECTDIR}/_ext/243453210/m_string.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/243453210/m_string.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/243453210/m_string.p1  F:/2017/cs66/cs600-redo.X/src/depend/m_string.c 
-	@-${MV} ${OBJECTDIR}/_ext/243453210/m_string.d ${OBJECTDIR}/_ext/243453210/m_string.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/243453210/m_string.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138792856/main.p1: F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138792856" 
+	@${RM} ${OBJECTDIR}/_ext/138792856/main.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138792856/main.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138792856/main.p1  F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c 
+	@-${MV} ${OBJECTDIR}/_ext/138792856/main.d ${OBJECTDIR}/_ext/138792856/main.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138792856/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ad421.p1: F:/2017/cs66/cs600-redo.X/src/driver/ad421.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ad421.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ad421.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ad421.p1  F:/2017/cs66/cs600-redo.X/src/driver/ad421.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ad421.d ${OBJECTDIR}/_ext/255266518/ad421.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ad421.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1199703659/crc16.p1: F:/2017/cs60/cs60/cs600-redo.X/src/depend/crc16.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1199703659" 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/crc16.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/crc16.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1199703659/crc16.p1  F:/2017/cs60/cs60/cs600-redo.X/src/depend/crc16.c 
+	@-${MV} ${OBJECTDIR}/_ext/1199703659/crc16.d ${OBJECTDIR}/_ext/1199703659/crc16.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1199703659/crc16.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ads1115.p1: F:/2017/cs66/cs600-redo.X/src/driver/ads1115.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ads1115.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ads1115.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ads1115.p1  F:/2017/cs66/cs600-redo.X/src/driver/ads1115.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ads1115.d ${OBJECTDIR}/_ext/255266518/ads1115.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ads1115.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1199703659/m_string.p1: F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1199703659" 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/m_string.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1199703659/m_string.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1199703659/m_string.p1  F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c 
+	@-${MV} ${OBJECTDIR}/_ext/1199703659/m_string.d ${OBJECTDIR}/_ext/1199703659/m_string.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1199703659/m_string.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ex_eeprom.p1: F:/2017/cs66/cs600-redo.X/src/driver/ex_eeprom.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ex_eeprom.p1  F:/2017/cs66/cs600-redo.X/src/driver/ex_eeprom.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ex_eeprom.d ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ex_eeprom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ad421.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ad421.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ad421.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ad421.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ad421.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ad421.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ad421.d ${OBJECTDIR}/_ext/1187890351/ad421.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ad421.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/ex_pwr.p1: F:/2017/cs66/cs600-redo.X/src/driver/ex_pwr.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_pwr.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/ex_pwr.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/ex_pwr.p1  F:/2017/cs66/cs600-redo.X/src/driver/ex_pwr.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/ex_pwr.d ${OBJECTDIR}/_ext/255266518/ex_pwr.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/ex_pwr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ads1115.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ads1115.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ads1115.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ads1115.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ads1115.d ${OBJECTDIR}/_ext/1187890351/ads1115.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ads1115.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/i2c.p1: F:/2017/cs66/cs600-redo.X/src/driver/i2c.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/i2c.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/i2c.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/i2c.p1  F:/2017/cs66/cs600-redo.X/src/driver/i2c.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/i2c.d ${OBJECTDIR}/_ext/255266518/i2c.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/i2c.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.d ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ex_eeprom.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/iic_gpio.p1: F:/2017/cs66/cs600-redo.X/src/driver/iic_gpio.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/iic_gpio.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/iic_gpio.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/iic_gpio.p1  F:/2017/cs66/cs600-redo.X/src/driver/iic_gpio.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/iic_gpio.d ${OBJECTDIR}/_ext/255266518/iic_gpio.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/iic_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/ex_pwr.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/ex_pwr.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/ex_pwr.d ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/ex_pwr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/in_adc.p1: F:/2017/cs66/cs600-redo.X/src/driver/in_adc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/in_adc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/in_adc.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/in_adc.p1  F:/2017/cs66/cs600-redo.X/src/driver/in_adc.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/in_adc.d ${OBJECTDIR}/_ext/255266518/in_adc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/in_adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/i2c.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/i2c.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/i2c.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/i2c.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/i2c.d ${OBJECTDIR}/_ext/1187890351/i2c.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/i2c.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/key.p1: F:/2017/cs66/cs600-redo.X/src/driver/key.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/key.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/key.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/key.p1  F:/2017/cs66/cs600-redo.X/src/driver/key.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/key.d ${OBJECTDIR}/_ext/255266518/key.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/key.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/iic_gpio.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/iic_gpio.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/iic_gpio.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/iic_gpio.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/iic_gpio.d ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/iic_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/lcd.p1: F:/2017/cs66/cs600-redo.X/src/driver/lcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/lcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/lcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/lcd.p1  F:/2017/cs66/cs600-redo.X/src/driver/lcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/lcd.d ${OBJECTDIR}/_ext/255266518/lcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/lcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/in_adc.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/in_adc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/in_adc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/in_adc.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/in_adc.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/in_adc.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/in_adc.d ${OBJECTDIR}/_ext/1187890351/in_adc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/in_adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/m_flash.p1: F:/2017/cs66/cs600-redo.X/src/driver/m_flash.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_flash.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_flash.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/m_flash.p1  F:/2017/cs66/cs600-redo.X/src/driver/m_flash.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/m_flash.d ${OBJECTDIR}/_ext/255266518/m_flash.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/m_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/key.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/key.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/key.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/key.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/key.d ${OBJECTDIR}/_ext/1187890351/key.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/key.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/m_gpio.p1: F:/2017/cs66/cs600-redo.X/src/driver/m_gpio.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_gpio.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/m_gpio.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/m_gpio.p1  F:/2017/cs66/cs600-redo.X/src/driver/m_gpio.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/m_gpio.d ${OBJECTDIR}/_ext/255266518/m_gpio.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/m_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/lcd.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/lcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/lcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/lcd.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/lcd.d ${OBJECTDIR}/_ext/1187890351/lcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/lcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/255266518/uart.p1: F:/2017/cs66/cs600-redo.X/src/driver/uart.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/255266518" 
-	@${RM} ${OBJECTDIR}/_ext/255266518/uart.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/255266518/uart.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/255266518/uart.p1  F:/2017/cs66/cs600-redo.X/src/driver/uart.c 
-	@-${MV} ${OBJECTDIR}/_ext/255266518/uart.d ${OBJECTDIR}/_ext/255266518/uart.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/255266518/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/m_flash.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_flash.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_flash.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/m_flash.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/m_flash.d ${OBJECTDIR}/_ext/1187890351/m_flash.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/m_flash.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/clock.p1: F:/2017/cs66/cs600-redo.X/src/soc/clock.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/clock.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/clock.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/clock.p1  F:/2017/cs66/cs600-redo.X/src/soc/clock.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/clock.d ${OBJECTDIR}/_ext/1135315559/clock.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/m_gpio.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_gpio.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/m_gpio.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/m_gpio.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/m_gpio.d ${OBJECTDIR}/_ext/1187890351/m_gpio.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/m_gpio.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/int.p1: F:/2017/cs66/cs600-redo.X/src/soc/int.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/int.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/int.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/int.p1  F:/2017/cs66/cs600-redo.X/src/soc/int.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/int.d ${OBJECTDIR}/_ext/1135315559/int.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/int.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1187890351/uart.p1: F:/2017/cs60/cs60/cs600-redo.X/src/driver/uart.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1187890351" 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/uart.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1187890351/uart.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1187890351/uart.p1  F:/2017/cs60/cs60/cs600-redo.X/src/driver/uart.c 
+	@-${MV} ${OBJECTDIR}/_ext/1187890351/uart.d ${OBJECTDIR}/_ext/1187890351/uart.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1187890351/uart.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/rtc.p1: F:/2017/cs66/cs600-redo.X/src/soc/rtc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/rtc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/rtc.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/rtc.p1  F:/2017/cs66/cs600-redo.X/src/soc/rtc.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/rtc.d ${OBJECTDIR}/_ext/1135315559/rtc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/rtc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/clock.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/clock.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/clock.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/clock.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/clock.d ${OBJECTDIR}/_ext/138810110/clock.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/soc.p1: F:/2017/cs66/cs600-redo.X/src/soc/soc.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/soc.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/soc.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/soc.p1  F:/2017/cs66/cs600-redo.X/src/soc/soc.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/soc.d ${OBJECTDIR}/_ext/1135315559/soc.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/soc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/int.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/int.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/int.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/int.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/int.d ${OBJECTDIR}/_ext/138810110/int.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/int.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135315559/ticker.p1: F:/2017/cs66/cs600-redo.X/src/soc/ticker.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135315559" 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/ticker.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135315559/ticker.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135315559/ticker.p1  F:/2017/cs66/cs600-redo.X/src/soc/ticker.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135315559/ticker.d ${OBJECTDIR}/_ext/1135315559/ticker.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135315559/ticker.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/rtc.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/rtc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/rtc.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/rtc.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/rtc.d ${OBJECTDIR}/_ext/138810110/rtc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/rtc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/243453210/crc16.p1: F:/2017/cs66/cs600-redo.X/src/depend/crc16.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/243453210" 
-	@${RM} ${OBJECTDIR}/_ext/243453210/crc16.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/243453210/crc16.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/243453210/crc16.p1  F:/2017/cs66/cs600-redo.X/src/depend/crc16.c 
-	@-${MV} ${OBJECTDIR}/_ext/243453210/crc16.d ${OBJECTDIR}/_ext/243453210/crc16.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/243453210/crc16.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/soc.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/soc.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/soc.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/soc.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/soc.d ${OBJECTDIR}/_ext/138810110/soc.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/soc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/1135332820/key_menu.p1: F:/2017/cs66/cs600-redo.X/src/api/key_menu.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/1135332820" 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/key_menu.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/1135332820/key_menu.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/1135332820/key_menu.p1  F:/2017/cs66/cs600-redo.X/src/api/key_menu.c 
-	@-${MV} ${OBJECTDIR}/_ext/1135332820/key_menu.d ${OBJECTDIR}/_ext/1135332820/key_menu.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/1135332820/key_menu.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/138810110/ticker.p1: F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/138810110" 
+	@${RM} ${OBJECTDIR}/_ext/138810110/ticker.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/138810110/ticker.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  --double=32 --float=32 --emi=wordwrite --opt=+asm,+asmfile,-speed,+space,-debug,-local --addrqual=ignore --mode=free -P -N255 --warn=-3 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --fill=0xaa --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,-plib $(COMPARISON_BUILD)  --output=-mcof,+elf:multilocs --stack=compiled:160:auto:auto "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"    -o${OBJECTDIR}/_ext/138810110/ticker.p1  F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c 
+	@-${MV} ${OBJECTDIR}/_ext/138810110/ticker.d ${OBJECTDIR}/_ext/138810110/ticker.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/138810110/ticker.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

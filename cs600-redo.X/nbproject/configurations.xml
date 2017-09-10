@@ -6,42 +6,42 @@
     <logicalFolder name="SourceFiles" displayName="源文件" projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <logicalFolder name="api" displayName="api" projectFiles="true">
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/api/ui.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/api/data.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/api/key_menu.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c</itemPath>
         </logicalFolder>
         <logicalFolder name="app" displayName="app" projectFiles="true">
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/app/event.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/app/main.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c</itemPath>
         </logicalFolder>
         <logicalFolder name="configs" displayName="configs" projectFiles="true">
         </logicalFolder>
         <logicalFolder name="depend" displayName="depend" projectFiles="true">
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/depend/m_string.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/depend/crc16.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/depend/crc16.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c</itemPath>
         </logicalFolder>
         <logicalFolder name="driver" displayName="driver" projectFiles="true">
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/ad421.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/ads1115.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/ex_eeprom.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/ex_pwr.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/i2c.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/iic_gpio.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/in_adc.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/key.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/lcd.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/m_flash.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/m_gpio.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/driver/uart.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/ad421.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/iic_gpio.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/in_adc.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/driver/uart.c</itemPath>
         </logicalFolder>
         <logicalFolder name="includes" displayName="includes" projectFiles="true">
         </logicalFolder>
         <logicalFolder name="soc" displayName="soc" projectFiles="true">
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/soc/clock.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/soc/int.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/soc/rtc.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/soc/soc.c</itemPath>
-          <itemPath>F:/2017/cs66/cs600-redo.X/src/soc/ticker.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c</itemPath>
+          <itemPath>F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -53,6 +53,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>F:\2017\cs66\cs600-redo.X</Elem>
+    <Elem>F:\2017\cs60\cs60\cs600-redo.X\src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

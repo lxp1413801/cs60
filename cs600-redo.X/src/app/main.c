@@ -25,13 +25,7 @@ int main(void)
     lcd_disp_level(60);
     
     peripheral_power_enable();
-    __nop();
-   // peripheral_power_disable();
-    __nop();
-   // peripheral_power_enable();
-    __nop();
-    //sensor_power_enable();
-    __nop();
+
     __nop();    
     while(1){
         if(glbEvent & flg_EVENT_RTC){
@@ -44,6 +38,8 @@ int main(void)
 			glbEvent &= ~flg_EVENT_TICKER;
 			__nop();
         }
-		key_polling();
+		keyValue=key_polling();
+        if(keyValue!=KEY_VALUE_NONE)key_process();
+        
     }
 }

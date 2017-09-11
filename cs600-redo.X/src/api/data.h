@@ -45,7 +45,7 @@ extern "C"{
 		
 		int32_t		h;		//高
 		uint32_t	d;		//直径
-		int32_t		zero;	//零点
+		int32_t		baseZero;	//基础零位
 		//
 		st_warnDef	diffPressureWarnSet[4];			//差压报警设置
 		st_warnDef	pressureWarnSet;				//压力报警设置
@@ -67,6 +67,34 @@ extern "C"{
 	#define SYSTEM_DATA_ADDR	0xf400
 	extern uint8_t data_sys_init(void); 
     extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+	
+	//定义修正表格式
+	//这段算法好像很恶心
+	#define CALIB_P_POINT_NUM 6
+	typedef struct{
+		int32_t	pValue;
+		int16_t	pAdcValue;
+		int16_t tAdcValue;		
+	}st_prCalibPointDef,prCalibPoint_t;
+	
+	typedef struct{
+		uint8_t pCount;	//有效点个数
+		uint8_t reverse0[3];
+		st_prCalibPointDef prCalibPoint[CALIB_P_POINT_NUM];
+		uint8_t reverse1[2];
+		uint16_t crc;
+	}st_prCalibRowDef,prCalibRow_t;
+	
+	typedef struct{
+		uint8_t rowCount;	//有效的行数,组数,
+		uint8_t reverse0[3];
+		st_prCalibRowDef prCalibRow[3];
+		uint8_t reverse1[2];
+		uint16_t crc;		
+	}st_prCalibTabDef,prCalibTab_t;	
+	//fk 
+	extern void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+
 #ifdef __cplusplus
 }
 #endif

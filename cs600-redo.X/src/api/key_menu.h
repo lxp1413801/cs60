@@ -25,6 +25,7 @@ extern "C"{
 	#define PSW_SET_EX_DIFF_PRESSURE_ILOOP_OUT	139
 	//高度条满刻度对应的值95%还是100%
 	#define PSW_SET_FULL_LEVEL_BAR				188
+	#define PSW_SET_PRESSURE_DISP_TYPE			18
 	
 	//==============================================================
 	//定义菜单,主界面
@@ -36,7 +37,8 @@ extern "C"{
 	//设置密度	psd=36
 	#define MENU_SET_DENSITY					0x20
 	//设置尺寸 psd=66
-	#define MENU_SET_POSE						0x30
+	#define MENU_SET_SIZE						0x30
+	#define MENU_SET_POSE						MENU_SET_SIZE
 	#define MENU_SET_L							0x31
 	#define MENU_SET_D							0x32
 	//设置基础零位	psd=56	
@@ -58,7 +60,15 @@ extern "C"{
 	//高度条满刻度对应的值95%还是100%,psd=188	
 	#define MENU_SET_FULL_LEVEL_BAR				0xc0
 	//显示方式,显示即时值还是平均值
-	#define MENU_PRESSURE_DISP_TYPE				0xf0
+	#define MENU_SET_PRESSURE_DISP_TYPE				0xf0
+	
+	//variable
+	volatile extern uint8_t menu;
+	volatile extern uint8_t keyValue;
+	volatile extern uint16_t passWord;
+	volatile extern uint8_t adjLocation;
+	//function
+	extern void key_process(void);
 	
 #ifdef __cplusplus
 }

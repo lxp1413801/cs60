@@ -9,6 +9,8 @@ extern "C"{
 	//#define TICKER_FREQUENCY_Hz
 	//oscFreq/6/
 	#define PR2_VALUE	(OSC_FREQ/4/16/16/TICKER_FREQUENCY_Hz)
+	
+	extern volatile uint16_t	userTicker_ms;
 	extern void sys_ticker_init(void);
 	extern void sys_ticker_start(void);
 	extern void sys_ticker_stop(void);

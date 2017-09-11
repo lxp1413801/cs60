@@ -6073,6 +6073,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.h: 29: void osc_setup(void);
 [; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
 [; ;clock.h: 32: extern void delay_us(uint16_t dly);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
 "9 src/driver/in_adc.c
 [v _in_adc_init `(v ~T0 @X0 1 ef ]
 "10

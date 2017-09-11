@@ -8201,8 +8201,10 @@ void osc_setup(void);
 void osc_set_power(em_oscMode oscMode);
 
 extern void delay_us(uint16_t dly);
+extern void delay_ms(uint16_t dly);
 
-# 12 "src/soc/ticker.h"
+# 13 "src/soc/ticker.h"
+extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);

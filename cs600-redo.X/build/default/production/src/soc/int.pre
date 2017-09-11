@@ -8211,7 +8211,8 @@ extern void rtc_stop(void);
 
 extern void rtc_alrm_irq_hook(void);
 
-# 12 "src/soc/ticker.h"
+# 13 "src/soc/ticker.h"
+extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);

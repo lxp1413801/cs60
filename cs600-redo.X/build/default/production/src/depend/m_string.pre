@@ -145,7 +145,16 @@ len--;
 }
 }
 
-# 116
+void m_mem_cpy(uint8_t* d,uint8_t* s)
+{
+while(*s!='\0')
+{
+*d++=*s++;
+}
+*d='\0';
+}
+
+# 117
 int32_t m_math_pow(int32_t x,uint8_t y)
 {
 int32_t ret=1;
@@ -213,7 +222,7 @@ t8=*b++;
 return (len<<1);
 }
 
-# 191
+# 192
 uint16_t m_str_h2b(uint8_t* b,uint8_t* h,uint16_t len)
 {
 uint16_t i=len;
@@ -232,7 +241,7 @@ i-=2;
 return (len>>1);
 }
 
-# 242
+# 243
 void m_int8_2_hex(uint8_t* str,uint8_t b)
 {
 uint8_t t8;

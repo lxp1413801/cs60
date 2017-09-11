@@ -4,7 +4,7 @@
 #define fi_twinkle() (RTCCFGbits.HALFSEC)
 //uint8_t tmpBuffer[16];
 extern st_RtcDef glRtc;
-uint8_t adjLocation=0;
+
 
 void __x_arrange_str(uint8_t *str,uint8_t len)
 {
@@ -195,5 +195,23 @@ void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
 	if(!fi_twinkle())buf[4+loc]=' ';
 	lcd_show_string(buf); 
 	lcd_disp_refresh();
+}
+
+void ui_disp_menu_psw_adj(void)
+{
+	ui_disp_adj_xfixed_pt((uint8_t*)" psd",passWord,adjLocation);
+}
+
+void ui_disp_menu(void)
+{
+	switch(menu){
+		case MENU_HOME_00:
+		case MENU_HOME_01:
+		case MENU_HOME_02:
+			break;
+		case MENU_PASSWORD:ui_disp_menu_psw_adj();break;
+		default:break;
+
+	}	
 }
 //file end

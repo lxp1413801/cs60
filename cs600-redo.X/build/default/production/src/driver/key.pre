@@ -8177,13 +8177,37 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 50 "src/driver/key.h"
-extern uint8_t keyValue;
-extern void key_polling(void);
+# 51 "src/driver/key.h"
+extern uint8_t key_polling(void);
 
-# 10 "src/driver/key.c"
-uint8_t keyValue=(0x0);
-void key_polling(void)
+# 10 "src/driver/../soc/clock.h"
+typedef enum __OSC_MODE
+{
+
+OSC_PMODE_SLEEP = 0,
+
+OSC_PMODE_PRI_RUN,
+OSC_PMODE_SEC_RUN,
+OSC_PMODE_RC_RUN,
+
+
+
+OSC_PMODE_PRI_IDLE,
+OSC_PMODE_SEC_IDLE,
+OSC_PMODE_RC_IDLE,
+
+
+OSC_PMODE_MAX
+}em_oscMode;
+
+void osc_setup(void);
+void osc_set_power(em_oscMode oscMode);
+
+extern void delay_us(uint16_t dly);
+extern void delay_ms(uint16_t dly);
+
+# 8 "src/driver/key.c"
+uint8_t key_polling(void)
 {
 uint8_t ktemp=(0x0);
 uint8_t t8=0xff;
@@ -8191,7 +8215,7 @@ uint8_t t8=0xff;
 do{TRISB |= ((1<<1) | (1<<2) | (1<<3) );}while(0);;
 t8=(PORTB & ((1<<1) | (1<<2) | (1<<3) ));
 if((t8 & ((1<<1) | (1<<2) | (1<<3) )) !=((1<<1) | (1<<2) | (1<<3) )){
-__nop();;
+delay_ms(10);
 t8=(PORTB & ((1<<1) | (1<<2) | (1<<3) ));
 if(!( t8 & (1<<3))){
 ktemp |= (0x01<<0x0);
@@ -8203,5 +8227,6 @@ if(!( t8 & (1<<1))){
 ktemp |= (0x01<<0x02);
 }
 }
-keyValue= ktemp;
+
+return ktemp;
 }

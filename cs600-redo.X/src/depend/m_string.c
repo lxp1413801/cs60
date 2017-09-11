@@ -47,7 +47,7 @@ void m_mem_cpy_len(uint8_t* d,uint8_t* s,uint16_t len)
 		len--;
 	}
 }
-/*
+
 void m_mem_cpy(uint8_t* d,uint8_t* s)
 {
 	while(*s!='\0')
@@ -56,6 +56,7 @@ void m_mem_cpy(uint8_t* d,uint8_t* s)
 	}
 	*d='\0';
 }
+/*
 uint16_t m_str_cmp(uint8_t* d,uint8_t* s)
 {
 	uint16_t ret=1;

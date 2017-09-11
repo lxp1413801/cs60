@@ -6065,12 +6065,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.h: 29: void osc_setup(void);
 [; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
 [; ;clock.h: 32: extern void delay_us(uint16_t dly);
-[; ;ticker.h: 12: extern void sys_ticker_init(void);
-[; ;ticker.h: 13: extern void sys_ticker_start(void);
-[; ;ticker.h: 14: extern void sys_ticker_stop(void);
-[; ;ticker.h: 15: extern volatile uint32_t glTicker;
-[; ;ticker.h: 16: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 18: void ticker_dly(uint16_t ms);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
+[; ;ticker.h: 13: extern volatile uint16_t userTicker_ms;
+[; ;ticker.h: 14: extern void sys_ticker_init(void);
+[; ;ticker.h: 15: extern void sys_ticker_start(void);
+[; ;ticker.h: 16: extern void sys_ticker_stop(void);
+[; ;ticker.h: 17: extern volatile uint32_t glTicker;
+[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {
@@ -6235,8 +6237,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ex_eeprom.h: 19: extern void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,uint16_t len);
 [; ;in_adc.h: 18: extern void in_adc_init(void);
 [; ;in_adc.h: 19: extern uint16_t in_adc_start_and_read(uint8_t ch);
-[; ;key.h: 50: extern uint8_t keyValue;
-[; ;key.h: 51: extern void key_polling(void);
+[; ;key.h: 51: extern uint8_t key_polling(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;lcd.h: 10: extern uint8_t* pLcdReg;
 [; ;lcd.h: 12: extern uint8_t pLCD[];
@@ -6297,6 +6298,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.h: 35: extern void ui_disp_start_cs600(uint8_t dly);
 [; ;ui.h: 37: extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 [; ;ui.h: 38: extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
+[; ;ui.h: 40: extern void ui_disp_menu(void);
 [; ;data.h: 16: extern uint8_t globleBuffer0[256];
 [; ;data.h: 17: extern uint8_t globleBuffer1[256];
 [; ;data.h: 18: typedef enum{
@@ -6321,7 +6323,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 44: uint16_t density;
 [; ;data.h: 46: int32_t h;
 [; ;data.h: 47: uint32_t d;
-[; ;data.h: 48: int32_t zero;
+[; ;data.h: 48: int32_t baseZero;
 [; ;data.h: 50: st_warnDef diffPressureWarnSet[4];
 [; ;data.h: 51: st_warnDef pressureWarnSet;
 [; ;data.h: 52: uint8_t simplePloyFactor[4];
@@ -6338,4 +6340,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 66: extern const st_sysDataDef defultSystemData;
 [; ;data.h: 68: extern uint8_t data_sys_init(void);
 [; ;data.h: 69: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+[; ;data.h: 74: typedef struct{
+[; ;data.h: 75: int32_t pValue;
+[; ;data.h: 76: int16_t pAdcValue;
+[; ;data.h: 77: int16_t tAdcValue;
+[; ;data.h: 78: }st_prCalibPointDef,prCalibPoint_t;
+[; ;data.h: 80: typedef struct{
+[; ;data.h: 81: uint8_t pCount;
+[; ;data.h: 82: uint8_t reverse0[3];
+[; ;data.h: 83: st_prCalibPointDef prCalibPoint[6];
+[; ;data.h: 84: uint8_t reverse1[2];
+[; ;data.h: 85: uint16_t crc;
+[; ;data.h: 86: }st_prCalibRowDef,prCalibRow_t;
+[; ;data.h: 88: typedef struct{
+[; ;data.h: 89: uint8_t rowCount;
+[; ;data.h: 90: uint8_t reverse0[3];
+[; ;data.h: 91: st_prCalibRowDef prCalibRow[3];
+[; ;data.h: 92: uint8_t reverse1[2];
+[; ;data.h: 93: uint16_t crc;
+[; ;data.h: 94: }st_prCalibTabDef,prCalibTab_t;
+[; ;data.h: 96: extern void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;key_menu.h: 66: volatile extern uint8_t menu;
+[; ;key_menu.h: 67: volatile extern uint8_t keyValue;
+[; ;key_menu.h: 68: volatile extern uint16_t passWord;
+[; ;key_menu.h: 69: volatile extern uint8_t adjLocation;
+[; ;key_menu.h: 71: extern void key_process(void);
 [; ;event.h: 9: extern volatile uint8_t glbEvent;

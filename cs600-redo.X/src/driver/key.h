@@ -47,8 +47,8 @@ extern "C"{
 	#define KEY_VALUE_NONE	(0x0)
 	#define KEY_VALUE_MASK	(KEY_VALUE_UP | KEY_VALUE_DOWN | KEY_VALUE_SET)
 	
-	extern uint8_t keyValue;
-	extern void key_polling(void);
+	
+	extern uint8_t key_polling(void);
 #ifdef __cplusplus
 }
 #endif

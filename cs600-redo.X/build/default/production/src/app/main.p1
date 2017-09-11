@@ -17,21 +17,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 "141 src/app/../includes/../driver/ads1115.h
 [v _ads1115_init_all_chip `(v ~T0 @X0 0 ef ]
 "16 src/app/main.c
-[c E7290 0 1 2 3 4 5 .. ]
-[n E7290 . ADS1013 ADS1014 ADS1015 ADS1113 ADS1114 ADS1115  ]
+[c E7293 0 1 2 3 4 5 .. ]
+[n E7293 . ADS1013 ADS1014 ADS1015 ADS1113 ADS1114 ADS1115  ]
 "116 src/app/../includes/../driver/ads1115.h
 [s S649 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :3 `uc 1 :3 `uc 1 `ui 1 ]
 [n S649 . COMP_QUE COMP_LAT COMP_POL COMP_MODE DR MODE PGA MUX OS ]
 "113
 [u S648 `ui 1 `S649 1 ]
 [n S648 . data bits ]
-[v F7316 `(v ~T0 @X0 0 tf ]
 [v F7319 `(v ~T0 @X0 0 tf ]
-[v F7322 `(uc ~T0 @X0 0 tf1`uc ]
-[v F7325 `(uc ~T0 @X0 0 tf ]
-[v F7328 `(uc ~T0 @X0 0 tf1`uc ]
+[v F7322 `(v ~T0 @X0 0 tf ]
+[v F7325 `(uc ~T0 @X0 0 tf1`uc ]
+[v F7328 `(uc ~T0 @X0 0 tf ]
+[v F7331 `(uc ~T0 @X0 0 tf1`uc ]
 "128
-[s S650 `E7290 1 `uc 1 `S648 1 `*F7316 1 `*F7319 1 `*F7322 1 `*F7325 1 `*F7328 1 ]
+[s S650 `E7293 1 `uc 1 `S648 1 `*F7319 1 `*F7322 1 `*F7325 1 `*F7328 1 `*F7331 1 ]
 [n S650 . chip slaveAddr config iic_start iic_stop iic_send_byte iic_waite_ack iic_received_byte_if_ack ]
 "142
 [v _ads1115_start_conversion `(v ~T0 @X0 0 ef1`*S650 ]
@@ -41,7 +41,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ads1115_read_reg `(ui ~T0 @X0 0 ef2`*S650`uc ]
 "139
 [v _ads1115Chip1 `S650 ~T0 @X0 0 e ]
-"18 src/app/../includes/../soc/ticker.h
+"20 src/app/../includes/../soc/ticker.h
 [v _ticker_dly `(v ~T0 @X0 0 ef1`ui ]
 "143 src/app/../includes/../driver/ads1115.h
 [v _ads1115_read_conversion `(ui ~T0 @X0 0 ef1`*S650 ]
@@ -59,8 +59,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
 "34 src/app/../includes/../api/ui.h
 [v _ui_disp_rtc_mm_ss `(v ~T0 @X0 0 ef ]
+"67 src/app/../includes/../api/key_menu.h
+[v _keyValue `Vuc ~T0 @X0 0 e ]
 "51 src/app/../includes/../driver/key.h
-[v _key_polling `(v ~T0 @X0 0 ef ]
+[v _key_polling `(uc ~T0 @X0 0 ef ]
+"71 src/app/../includes/../api/key_menu.h
+[v _key_process `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6127,12 +6131,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.h: 29: void osc_setup(void);
 [; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
 [; ;clock.h: 32: extern void delay_us(uint16_t dly);
-[; ;ticker.h: 12: extern void sys_ticker_init(void);
-[; ;ticker.h: 13: extern void sys_ticker_start(void);
-[; ;ticker.h: 14: extern void sys_ticker_stop(void);
-[; ;ticker.h: 15: extern volatile uint32_t glTicker;
-[; ;ticker.h: 16: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 18: void ticker_dly(uint16_t ms);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
+[; ;ticker.h: 13: extern volatile uint16_t userTicker_ms;
+[; ;ticker.h: 14: extern void sys_ticker_init(void);
+[; ;ticker.h: 15: extern void sys_ticker_start(void);
+[; ;ticker.h: 16: extern void sys_ticker_stop(void);
+[; ;ticker.h: 17: extern volatile uint32_t glTicker;
+[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {
@@ -6297,8 +6303,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ex_eeprom.h: 19: extern void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,uint16_t len);
 [; ;in_adc.h: 18: extern void in_adc_init(void);
 [; ;in_adc.h: 19: extern uint16_t in_adc_start_and_read(uint8_t ch);
-[; ;key.h: 50: extern uint8_t keyValue;
-[; ;key.h: 51: extern void key_polling(void);
+[; ;key.h: 51: extern uint8_t key_polling(void);
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;lcd.h: 10: extern uint8_t* pLcdReg;
 [; ;lcd.h: 12: extern uint8_t pLCD[];
@@ -6359,6 +6364,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.h: 35: extern void ui_disp_start_cs600(uint8_t dly);
 [; ;ui.h: 37: extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 [; ;ui.h: 38: extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
+[; ;ui.h: 40: extern void ui_disp_menu(void);
 [; ;data.h: 16: extern uint8_t globleBuffer0[256];
 [; ;data.h: 17: extern uint8_t globleBuffer1[256];
 [; ;data.h: 18: typedef enum{
@@ -6383,7 +6389,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 44: uint16_t density;
 [; ;data.h: 46: int32_t h;
 [; ;data.h: 47: uint32_t d;
-[; ;data.h: 48: int32_t zero;
+[; ;data.h: 48: int32_t baseZero;
 [; ;data.h: 50: st_warnDef diffPressureWarnSet[4];
 [; ;data.h: 51: st_warnDef pressureWarnSet;
 [; ;data.h: 52: uint8_t simplePloyFactor[4];
@@ -6400,6 +6406,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 66: extern const st_sysDataDef defultSystemData;
 [; ;data.h: 68: extern uint8_t data_sys_init(void);
 [; ;data.h: 69: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+[; ;data.h: 74: typedef struct{
+[; ;data.h: 75: int32_t pValue;
+[; ;data.h: 76: int16_t pAdcValue;
+[; ;data.h: 77: int16_t tAdcValue;
+[; ;data.h: 78: }st_prCalibPointDef,prCalibPoint_t;
+[; ;data.h: 80: typedef struct{
+[; ;data.h: 81: uint8_t pCount;
+[; ;data.h: 82: uint8_t reverse0[3];
+[; ;data.h: 83: st_prCalibPointDef prCalibPoint[6];
+[; ;data.h: 84: uint8_t reverse1[2];
+[; ;data.h: 85: uint16_t crc;
+[; ;data.h: 86: }st_prCalibRowDef,prCalibRow_t;
+[; ;data.h: 88: typedef struct{
+[; ;data.h: 89: uint8_t rowCount;
+[; ;data.h: 90: uint8_t reverse0[3];
+[; ;data.h: 91: st_prCalibRowDef prCalibRow[3];
+[; ;data.h: 92: uint8_t reverse1[2];
+[; ;data.h: 93: uint16_t crc;
+[; ;data.h: 94: }st_prCalibTabDef,prCalibTab_t;
+[; ;data.h: 96: extern void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;key_menu.h: 66: volatile extern uint8_t menu;
+[; ;key_menu.h: 67: volatile extern uint8_t keyValue;
+[; ;key_menu.h: 68: volatile extern uint16_t passWord;
+[; ;key_menu.h: 69: volatile extern uint8_t adjLocation;
+[; ;key_menu.h: 71: extern void key_process(void);
 [; ;event.h: 9: extern volatile uint8_t glbEvent;
 "3 src/app/main.c
 [v _glbEvent `Vuc ~T0 @X0 1 e ]
@@ -6459,84 +6490,77 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _lcd_disp_level (1 -> -> 60 `i `uc ]
 [; ;main.c: 27: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
 "27
-[e :U 662 ]
-{
 [e :U 665 ]
+{
+[e :U 668 ]
 {
 [e =& _TRISB -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 664 ]
-[e :U 668 ]
+[e :U 667 ]
+[e :U 671 ]
 {
 [e =| _LATB -> << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 667 ]
+[e :U 670 ]
 }
-[e :U 661 ]
-[; ;main.c: 28: __nop();
-"28
+[e :U 664 ]
+[; ;main.c: 29: __nop();
+"29
 [e ( ___nop ..  ]
-[; ;main.c: 30: __nop();
+[; ;main.c: 30: while(1){
 "30
-[e ( ___nop ..  ]
-[; ;main.c: 32: __nop();
+[e :U 673 ]
+{
+[; ;main.c: 31: if(glbEvent & (0x02)){
+"31
+[e $ ! != & -> _glbEvent `i -> 2 `i -> 0 `i 675  ]
+{
+[; ;main.c: 32: glbEvent &= ~(0x02);
 "32
+[e =& _glbEvent -> ~ -> 2 `i `uc ]
+[; ;main.c: 33: __nop();
+"33
 [e ( ___nop ..  ]
-[; ;main.c: 34: __nop();
+[; ;main.c: 34: ui_disp_rtc_mm_ss();
 "34
-[e ( ___nop ..  ]
+[e ( _ui_disp_rtc_mm_ss ..  ]
 [; ;main.c: 35: __nop();
 "35
 [e ( ___nop ..  ]
-[; ;main.c: 36: while(1){
 "36
-[e :U 670 ]
-{
-[; ;main.c: 37: if(glbEvent & (0x02)){
+}
+[e :U 675 ]
+[; ;main.c: 36: }
+[; ;main.c: 37: if(glbEvent & (0x01)){
 "37
-[e $ ! != & -> _glbEvent `i -> 2 `i -> 0 `i 672  ]
+[e $ ! != & -> _glbEvent `i -> 1 `i -> 0 `i 676  ]
 {
-[; ;main.c: 38: glbEvent &= ~(0x02);
+[; ;main.c: 38: glbEvent &= ~(0x01);
 "38
-[e =& _glbEvent -> ~ -> 2 `i `uc ]
+[e =& _glbEvent -> ~ -> 1 `i `uc ]
 [; ;main.c: 39: __nop();
 "39
 [e ( ___nop ..  ]
-[; ;main.c: 40: ui_disp_rtc_mm_ss();
 "40
-[e ( _ui_disp_rtc_mm_ss ..  ]
-[; ;main.c: 41: __nop();
+}
+[e :U 676 ]
+[; ;main.c: 40: }
+[; ;main.c: 41: keyValue=key_polling();
 "41
-[e ( ___nop ..  ]
+[e = _keyValue ( _key_polling ..  ]
+[; ;main.c: 42: if(keyValue!=(0x0))key_process();
 "42
+[e $ ! != -> _keyValue `i -> 0 `i 677  ]
+[e ( _key_process ..  ]
+[e :U 677 ]
+"44
 }
 [e :U 672 ]
-[; ;main.c: 42: }
-[; ;main.c: 43: if(glbEvent & (0x01)){
-"43
-[e $ ! != & -> _glbEvent `i -> 1 `i -> 0 `i 673  ]
-{
-[; ;main.c: 44: glbEvent &= ~(0x01);
-"44
-[e =& _glbEvent -> ~ -> 1 `i `uc ]
-[; ;main.c: 45: __nop();
+"30
+[e $U 673  ]
+[e :U 674 ]
+[; ;main.c: 44: }
+[; ;main.c: 45: }
 "45
-[e ( ___nop ..  ]
-"46
-}
-[e :U 673 ]
-[; ;main.c: 46: }
-[; ;main.c: 47: key_polling();
-"47
-[e ( _key_polling ..  ]
-"48
-}
-[e :U 669 ]
-"36
-[e $U 670  ]
-[e :U 671 ]
-[; ;main.c: 48: }
-[; ;main.c: 49: }
-"49
-[e :UE 659 ]
+[e :UE 662 ]
 }

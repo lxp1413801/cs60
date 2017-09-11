@@ -8328,8 +8328,10 @@ void osc_setup(void);
 void osc_set_power(em_oscMode oscMode);
 
 extern void delay_us(uint16_t dly);
+extern void delay_ms(uint16_t dly);
 
-# 12 "src/api/../includes/../soc/ticker.h"
+# 13 "src/api/../includes/../soc/ticker.h"
+extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);
@@ -8541,9 +8543,8 @@ extern void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t*
 extern void in_adc_init(void);
 extern uint16_t in_adc_start_and_read(uint8_t ch);
 
-# 50 "src/api/../includes/../driver/key.h"
-extern uint8_t keyValue;
-extern void key_polling(void);
+# 51 "src/api/../includes/../driver/key.h"
+extern uint8_t key_polling(void);
 
 # 12 "C:\Program Files\Microchip\xc8\v1.41\include\stdbool.h"
 typedef unsigned char bool;
@@ -8629,6 +8630,8 @@ extern void ui_disp_start_cs600(uint8_t dly);
 extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
+extern void ui_disp_menu(void);
+
 # 16 "src/api/../includes/../api/data.h"
 extern uint8_t globleBuffer0[256];
 extern uint8_t globleBuffer1[256];
@@ -8662,7 +8665,7 @@ uint16_t density;
 
 int32_t h;
 uint32_t d;
-int32_t zero;
+int32_t baseZero;
 
 st_warnDef diffPressureWarnSet[4];
 st_warnDef pressureWarnSet;
@@ -8684,6 +8687,41 @@ extern const st_sysDataDef defultSystemData;
 
 extern uint8_t data_sys_init(void);
 extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+
+
+
+
+typedef struct{
+int32_t pValue;
+int16_t pAdcValue;
+int16_t tAdcValue;
+}st_prCalibPointDef,prCalibPoint_t;
+
+typedef struct{
+uint8_t pCount;
+uint8_t reverse0[3];
+st_prCalibPointDef prCalibPoint[6];
+uint8_t reverse1[2];
+uint16_t crc;
+}st_prCalibRowDef,prCalibRow_t;
+
+typedef struct{
+uint8_t rowCount;
+uint8_t reverse0[3];
+st_prCalibRowDef prCalibRow[3];
+uint8_t reverse1[2];
+uint16_t crc;
+}st_prCalibTabDef,prCalibTab_t;
+
+extern void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+
+# 66 "src/api/../includes/../api/key_menu.h"
+volatile extern uint8_t menu;
+volatile extern uint8_t keyValue;
+volatile extern uint16_t passWord;
+volatile extern uint8_t adjLocation;
+
+extern void key_process(void);
 
 # 9 "src/api/../includes/../app/event.h"
 extern volatile uint8_t glbEvent;
@@ -8750,5 +8788,19 @@ m_flash_write(0xf400,buf,sizeof(st_sysDataDef));
 m_flash_read(0xf400,buf,sizeof(st_sysDataDef));
 ret=crc_verify(buf,sizeof(st_sysDataDef));
 return ret;
+}
+
+void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col)
+{
+uint8_t t8;
+st_prCalibPointDef* stp;
+t8=ptab->rowCount;
+if(row>t8-1)return;
+if(col>6-1)return;
+stp=&(ptab->prCalibRow[row].prCalibPoint[col]);
+stp->pValue=pp->pValue;
+stp->pAdcValue=pp->pAdcValue;
+stp->tAdcValue=pp->tAdcValue;
+
 }
 

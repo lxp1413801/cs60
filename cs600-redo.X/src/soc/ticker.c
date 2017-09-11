@@ -8,6 +8,7 @@
 //used timer2
 //#define OSC_FREQ 11059200 
 volatile uint32_t glTicker=0x00ul;
+volatile uint16_t	userTicker_ms=0x00;
 uint16_t dlyTicker=0;
 bool dlyTickerEn=false;
 void sys_ticker_start(void)
@@ -37,6 +38,7 @@ void sys_ticker_irq_hook(void)
 	if(dlyTickerEn){
 		dlyTicker+=10;
 	}
+	userTicker_ms+=10;
 }
 
 void ticker_dly(uint16_t ms)

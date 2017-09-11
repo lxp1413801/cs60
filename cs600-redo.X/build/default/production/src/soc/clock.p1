@@ -6028,12 +6028,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.h: 29: void osc_setup(void);
 [; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
 [; ;clock.h: 32: extern void delay_us(uint16_t dly);
-[; ;ticker.h: 12: extern void sys_ticker_init(void);
-[; ;ticker.h: 13: extern void sys_ticker_start(void);
-[; ;ticker.h: 14: extern void sys_ticker_stop(void);
-[; ;ticker.h: 15: extern volatile uint32_t glTicker;
-[; ;ticker.h: 16: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 18: void ticker_dly(uint16_t ms);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
+[; ;ticker.h: 13: extern volatile uint16_t userTicker_ms;
+[; ;ticker.h: 14: extern void sys_ticker_init(void);
+[; ;ticker.h: 15: extern void sys_ticker_start(void);
+[; ;ticker.h: 16: extern void sys_ticker_stop(void);
+[; ;ticker.h: 17: extern volatile uint32_t glTicker;
+[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {
@@ -6211,4 +6213,37 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.c: 96: }
 "96
 [e :UE 658 ]
+}
+"97
+[v _delay_ms `(v ~T0 @X0 1 ef1`ui ]
+"98
+{
+[; ;clock.c: 97: void delay_ms(uint16_t dly)
+[; ;clock.c: 98: {
+[e :U _delay_ms ]
+"97
+[v _dly `ui ~T0 @X0 1 r1 ]
+"98
+[f ]
+[; ;clock.c: 99: while(dly>0){
+"99
+[e $U 664  ]
+[e :U 665 ]
+{
+[; ;clock.c: 100: delay_us(1000);
+"100
+[e ( _delay_us (1 -> -> 1000 `i `ui ]
+[; ;clock.c: 101: dly--;
+"101
+[e -- _dly -> -> 1 `i `ui ]
+"102
+}
+[e :U 664 ]
+"99
+[e $ > _dly -> -> 0 `i `ui 665  ]
+[e :U 666 ]
+[; ;clock.c: 102: }
+[; ;clock.c: 103: }
+"103
+[e :UE 663 ]
 }

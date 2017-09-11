@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"12 src/soc/ticker.h
+"14 src/soc/ticker.h
 [v _sys_ticker_init `(v ~T0 @X0 0 ef ]
 "35 src/soc/rtc.h
 [v _rtc_init `(v ~T0 @X0 0 ef ]
@@ -6034,12 +6034,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.h: 29: void osc_setup(void);
 [; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
 [; ;clock.h: 32: extern void delay_us(uint16_t dly);
-[; ;ticker.h: 12: extern void sys_ticker_init(void);
-[; ;ticker.h: 13: extern void sys_ticker_start(void);
-[; ;ticker.h: 14: extern void sys_ticker_stop(void);
-[; ;ticker.h: 15: extern volatile uint32_t glTicker;
-[; ;ticker.h: 16: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 18: void ticker_dly(uint16_t ms);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
+[; ;ticker.h: 13: extern volatile uint16_t userTicker_ms;
+[; ;ticker.h: 14: extern void sys_ticker_init(void);
+[; ;ticker.h: 15: extern void sys_ticker_start(void);
+[; ;ticker.h: 16: extern void sys_ticker_stop(void);
+[; ;ticker.h: 17: extern volatile uint32_t glTicker;
+[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {

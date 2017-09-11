@@ -3,9 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "4796
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"43 C:\Program Files\Microchip\xc8\v1.41\include\pic18.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
+"33 src/driver/../soc/clock.h
+[v _delay_ms `(v ~T0 @X0 0 ef1`ui ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -5980,91 +5979,100 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;key.h: 50: extern uint8_t keyValue;
-[; ;key.h: 51: extern void key_polling(void);
-"10 src/driver/key.c
-[v _keyValue `uc ~T0 @X0 1 e ]
-[i _keyValue
--> -> 0 `i `uc
-]
-[; ;key.c: 10: uint8_t keyValue=(0x0);
-"11
-[v _key_polling `(v ~T0 @X0 1 ef ]
-"12
+[; ;key.h: 51: extern uint8_t key_polling(void);
+[; ;clock.h: 10: typedef enum __OSC_MODE
+[; ;clock.h: 11: {
+[; ;clock.h: 13: OSC_PMODE_SLEEP = 0,
+[; ;clock.h: 15: OSC_PMODE_PRI_RUN,
+[; ;clock.h: 16: OSC_PMODE_SEC_RUN,
+[; ;clock.h: 17: OSC_PMODE_RC_RUN,
+[; ;clock.h: 21: OSC_PMODE_PRI_IDLE,
+[; ;clock.h: 22: OSC_PMODE_SEC_IDLE,
+[; ;clock.h: 23: OSC_PMODE_RC_IDLE,
+[; ;clock.h: 26: OSC_PMODE_MAX
+[; ;clock.h: 27: }em_oscMode;
+[; ;clock.h: 29: void osc_setup(void);
+[; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
+[; ;clock.h: 32: extern void delay_us(uint16_t dly);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
+"8 src/driver/key.c
+[v _key_polling `(uc ~T0 @X0 1 ef ]
+"9
 {
-[; ;key.c: 11: void key_polling(void)
-[; ;key.c: 12: {
+[; ;key.c: 8: uint8_t key_polling(void)
+[; ;key.c: 9: {
 [e :U _key_polling ]
 [f ]
-"13
+"10
 [v _ktemp `uc ~T0 @X0 1 a ]
-[; ;key.c: 13: uint8_t ktemp=(0x0);
+[; ;key.c: 10: uint8_t ktemp=(0x0);
 [e = _ktemp -> -> 0 `i `uc ]
-"14
+"11
 [v _t8 `uc ~T0 @X0 1 a ]
-[; ;key.c: 14: uint8_t t8=0xff;
+[; ;key.c: 11: uint8_t t8=0xff;
 [e = _t8 -> -> 255 `i `uc ]
-[; ;key.c: 16: do{TRISB |= ((1<<1) | (1<<2) | (1<<3) );}while(0);;
-"16
+[; ;key.c: 13: do{TRISB |= ((1<<1) | (1<<2) | (1<<3) );}while(0);;
+"13
 [e :U 646 ]
 {
 [e =| _TRISB -> | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 645 ]
+[; ;key.c: 14: t8=(PORTB & ((1<<1) | (1<<2) | (1<<3) ));
+"14
+[e = _t8 -> & -> _PORTB `i | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i `uc ]
+[; ;key.c: 15: if((t8 & ((1<<1) | (1<<2) | (1<<3) )) !=((1<<1) | (1<<2) | (1<<3) )){
+"15
+[e $ ! != & -> _t8 `i | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i 647  ]
+{
+[; ;key.c: 16: delay_ms(10);
+"16
+[e ( _delay_ms (1 -> -> 10 `i `ui ]
 [; ;key.c: 17: t8=(PORTB & ((1<<1) | (1<<2) | (1<<3) ));
 "17
 [e = _t8 -> & -> _PORTB `i | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i `uc ]
-[; ;key.c: 18: if((t8 & ((1<<1) | (1<<2) | (1<<3) )) !=((1<<1) | (1<<2) | (1<<3) )){
+[; ;key.c: 18: if(!( t8 & (1<<3))){
 "18
-[e $ ! != & -> _t8 `i | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i 647  ]
-{
-[; ;key.c: 19: __nop();;
-"19
-[e ( ___nop ..  ]
-[; ;key.c: 20: t8=(PORTB & ((1<<1) | (1<<2) | (1<<3) ));
-"20
-[e = _t8 -> & -> _PORTB `i | | << -> 1 `i -> 1 `i << -> 1 `i -> 2 `i << -> 1 `i -> 3 `i `uc ]
-[; ;key.c: 21: if(!( t8 & (1<<3))){
-"21
 [e $ ! ! != & -> _t8 `i << -> 1 `i -> 3 `i -> 0 `i 648  ]
 {
-[; ;key.c: 22: ktemp |= (0x01<<0x0);
-"22
+[; ;key.c: 19: ktemp |= (0x01<<0x0);
+"19
 [e =| _ktemp -> << -> 1 `i -> 0 `i `uc ]
-"23
+"20
 }
 [e :U 648 ]
-[; ;key.c: 23: }
-[; ;key.c: 24: if(!( t8 & (1<<2))){
-"24
+[; ;key.c: 20: }
+[; ;key.c: 21: if(!( t8 & (1<<2))){
+"21
 [e $ ! ! != & -> _t8 `i << -> 1 `i -> 2 `i -> 0 `i 649  ]
 {
-[; ;key.c: 25: ktemp |= (0x01<<0x01);
-"25
+[; ;key.c: 22: ktemp |= (0x01<<0x01);
+"22
 [e =| _ktemp -> << -> 1 `i -> 1 `i `uc ]
-"26
+"23
 }
 [e :U 649 ]
-[; ;key.c: 26: }
-[; ;key.c: 27: if(!( t8 & (1<<1))){
-"27
+[; ;key.c: 23: }
+[; ;key.c: 24: if(!( t8 & (1<<1))){
+"24
 [e $ ! ! != & -> _t8 `i << -> 1 `i -> 1 `i -> 0 `i 650  ]
 {
-[; ;key.c: 28: ktemp |= (0x01<<0x02);
-"28
+[; ;key.c: 25: ktemp |= (0x01<<0x02);
+"25
 [e =| _ktemp -> << -> 1 `i -> 2 `i `uc ]
-"29
+"26
 }
 [e :U 650 ]
-"30
+"27
 }
 [e :U 647 ]
-[; ;key.c: 29: }
+[; ;key.c: 26: }
+[; ;key.c: 27: }
+[; ;key.c: 29: return ktemp;
+"29
+[e ) _ktemp ]
+[e $UE 643  ]
 [; ;key.c: 30: }
-[; ;key.c: 31: keyValue= ktemp;
-"31
-[e = _keyValue _ktemp ]
-[; ;key.c: 32: }
-"32
+"30
 [e :UE 643 ]
 }

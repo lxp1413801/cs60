@@ -8328,8 +8328,10 @@ void osc_setup(void);
 void osc_set_power(em_oscMode oscMode);
 
 extern void delay_us(uint16_t dly);
+extern void delay_ms(uint16_t dly);
 
-# 12 "src/api/../includes/../soc/ticker.h"
+# 13 "src/api/../includes/../soc/ticker.h"
+extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);
@@ -8541,9 +8543,8 @@ extern void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t*
 extern void in_adc_init(void);
 extern uint16_t in_adc_start_and_read(uint8_t ch);
 
-# 50 "src/api/../includes/../driver/key.h"
-extern uint8_t keyValue;
-extern void key_polling(void);
+# 51 "src/api/../includes/../driver/key.h"
+extern uint8_t key_polling(void);
 
 # 12 "C:\Program Files\Microchip\xc8\v1.41\include\stdbool.h"
 typedef unsigned char bool;
@@ -8629,6 +8630,8 @@ extern void ui_disp_start_cs600(uint8_t dly);
 extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
+extern void ui_disp_menu(void);
+
 # 16 "src/api/../includes/../api/data.h"
 extern uint8_t globleBuffer0[256];
 extern uint8_t globleBuffer1[256];
@@ -8662,7 +8665,7 @@ uint16_t density;
 
 int32_t h;
 uint32_t d;
-int32_t zero;
+int32_t baseZero;
 
 st_warnDef diffPressureWarnSet[4];
 st_warnDef pressureWarnSet;
@@ -8685,6 +8688,216 @@ extern const st_sysDataDef defultSystemData;
 extern uint8_t data_sys_init(void);
 extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
 
+
+
+
+typedef struct{
+int32_t pValue;
+int16_t pAdcValue;
+int16_t tAdcValue;
+}st_prCalibPointDef,prCalibPoint_t;
+
+typedef struct{
+uint8_t pCount;
+uint8_t reverse0[3];
+st_prCalibPointDef prCalibPoint[6];
+uint8_t reverse1[2];
+uint16_t crc;
+}st_prCalibRowDef,prCalibRow_t;
+
+typedef struct{
+uint8_t rowCount;
+uint8_t reverse0[3];
+st_prCalibRowDef prCalibRow[3];
+uint8_t reverse1[2];
+uint16_t crc;
+}st_prCalibTabDef,prCalibTab_t;
+
+extern void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+
+# 66 "src/api/../includes/../api/key_menu.h"
+volatile extern uint8_t menu;
+volatile extern uint8_t keyValue;
+volatile extern uint16_t passWord;
+volatile extern uint8_t adjLocation;
+
+extern void key_process(void);
+
 # 9 "src/api/../includes/../app/event.h"
 extern volatile uint8_t glbEvent;
+
+# 5 "src/api/key_menu.c"
+volatile uint16_t passWord=0x00;
+volatile uint8_t menu=0x00;
+volatile uint8_t keyValue=(0x0);
+volatile uint8_t adjLocation=0;
+volatile uint32_t adjValue=0x00;
+volatile uint8_t* pAdjValue;
+
+volatile uint8_t calibValueIndex=0x00;
+volatile uint8_t calibTempIndex=0x00;
+
+uint16_t __exp_10(uint8_t n)
+{
+switch(n){
+case 0:return 1;
+case 2:return 10;
+case 3:return 100;
+case 4:return 1000;
+default:return 10000;
+}
+}
+
+uint16_t key_waite_release(uint16_t timeout,uint8_t* key)
+{
+uint8_t t8;
+
+userTicker_ms=0;
+while(userTicker_ms<timeout){
+t8=key_polling();
+if(t8==(0x0))break;
+}
+*key=t8;
+return userTicker_ms;
+}
+
+void key_shift_loc_fixed_point(uint8_t* loc,uint8_t min,uint8_t max)
+{
+uint8_t t8=*loc;
+if(min<max)return;
+t8++;
+if(t8>max)t8=min;
+*loc=t8;
+}
+void key_process_down(void)
+{
+switch(menu){
+case 0x00:
+case 0x01:
+case 0x02:break;
+case 0x10:key_shift_loc_fixed_point(&adjLocation,0,3);break;
+default:break;
+}
+}
+
+void key_adj_value_fixed_point(uint16_t* value,uint8_t loc)
+{
+uint16_t dloc;
+uint16_t t16=*value;
+dloc=(t16/__exp_10(loc))%10;
+t16=t16-dloc*__exp_10(loc);
+dloc++;
+if(dloc>9)dloc=0;
+t16+=(dloc*__exp_10(loc));
+*value=t16;
+}
+void key_process_up(void)
+{
+switch(menu){
+case 0x00:
+case 0x01:
+case 0x02:break;
+case 0x10:key_adj_value_fixed_point(&passWord,adjLocation);break;
+default:break;
+}
+}
+
+
+void __enter_menu_set_density(void){
+st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+adjValue=fps->density;
+adjLocation=0;
+}
+
+void __enter_menu_set_pose(void){
+st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+adjValue=(uint8_t)(fps->pos);
+adjLocation=0;
+}
+void __enter_menu_set_base_zero(void){
+st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+adjValue=(fps->baseZero);
+adjValue=__int32_2_mflot32(adjValue);
+adjLocation=0;
+}
+void __enter_menu_calib_press_diff(void){
+
+
+st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+adjValue=(fps->baseZero);
+adjValue=__int32_2_mflot32(adjValue);
+adjLocation=0;
+}
+void key_process_set_down_long(void)
+{
+if(menu==0x10){
+switch(passWord){
+case 36:
+menu=0x20; __enter_menu_set_density(); break;
+case 66:
+menu=0x30; __enter_menu_set_pose(); break;
+case 56:
+menu=0x40;__enter_menu_set_base_zero(); break;
+case 168:
+menu=0x50; break;
+case 169:
+menu=0x60; break;
+case 133:
+menu=0x70; break;
+case 6:
+menu=0x80; break;
+case 16:
+menu=0x90; break;
+case 138:
+menu=0xa0; break;
+case 139:
+menu=0xb0; break;
+case 188:
+menu=0xc0; break;
+case 18:
+menu=0xf0; break;
+default:break;
+}
+}
+}
+
+void key_process_set_long(void)
+{
+
+}
+
+void key_process_set(void)
+{
+switch(menu){
+case 0x00:
+case 0x01:
+case 0x02:{passWord=0x00;adjLocation=0x00;menu=0x10;break;}
+default:break;
+}
+}
+
+void key_process(void)
+{
+uint16_t tm;
+uint8_t key;
+tm=key_waite_release(2000,&key);
+if(tm>=2000){
+
+if(key==(0x01<<0x02)){
+key_process_set_long();
+}else if(keyValue == ((0x01<<0x02)+(0x01<<0x0))){
+key_process_set_down_long();
+}
+}else{
+
+if(keyValue == (0x01<<0x0)){
+key_process_down();
+}else if(keyValue == (0x01<<0x01)){
+key_process_up();
+}else if(keyValue == (0x01<<0x02)){
+key_process_set();
+}
+}
+ui_disp_menu();
+}
 

@@ -8204,8 +8204,10 @@ void osc_setup(void);
 void osc_set_power(em_oscMode oscMode);
 
 extern void delay_us(uint16_t dly);
+extern void delay_ms(uint16_t dly);
 
-# 12 "src/soc/ticker.h"
+# 13 "src/soc/ticker.h"
+extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);
@@ -8216,6 +8218,7 @@ void ticker_dly(uint16_t ms);
 
 # 10 "src/soc/ticker.c"
 volatile uint32_t glTicker=0x00ul;
+volatile uint16_t userTicker_ms=0x00;
 uint16_t dlyTicker=0;
 bool dlyTickerEn=0;
 void sys_ticker_start(void)
@@ -8245,6 +8248,7 @@ void sys_ticker_irq_hook(void)
 if(dlyTickerEn){
 dlyTicker+=10;
 }
+userTicker_ms+=10;
 }
 
 void ticker_dly(uint16_t ms)

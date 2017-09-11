@@ -30,6 +30,7 @@ extern "C"{
 	void osc_set_power(em_oscMode oscMode);	
     //
     extern void delay_us(uint16_t dly);
+	extern void delay_ms(uint16_t dly);
 
 #ifdef __cplusplus
 }

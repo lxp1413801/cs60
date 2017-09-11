@@ -94,4 +94,11 @@ void delay_us(uint16_t dly)
         __nop();
     }
 }
+void delay_ms(uint16_t dly)
+{
+	while(dly>0){
+		delay_us(1000);
+		dly--;
+	}
+}
 //file end

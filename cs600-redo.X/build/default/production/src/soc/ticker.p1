@@ -6028,12 +6028,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.h: 29: void osc_setup(void);
 [; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
 [; ;clock.h: 32: extern void delay_us(uint16_t dly);
-[; ;ticker.h: 12: extern void sys_ticker_init(void);
-[; ;ticker.h: 13: extern void sys_ticker_start(void);
-[; ;ticker.h: 14: extern void sys_ticker_stop(void);
-[; ;ticker.h: 15: extern volatile uint32_t glTicker;
-[; ;ticker.h: 16: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 18: void ticker_dly(uint16_t ms);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
+[; ;ticker.h: 13: extern volatile uint16_t userTicker_ms;
+[; ;ticker.h: 14: extern void sys_ticker_init(void);
+[; ;ticker.h: 15: extern void sys_ticker_start(void);
+[; ;ticker.h: 16: extern void sys_ticker_stop(void);
+[; ;ticker.h: 17: extern volatile uint32_t glTicker;
+[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
 "10 src/soc/ticker.c
 [v _glTicker `Vul ~T0 @X0 1 e ]
 [i _glTicker
@@ -6041,136 +6043,145 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;ticker.c: 10: volatile uint32_t glTicker=0x00ul;
 "11
+[v _userTicker_ms `Vui ~T0 @X0 1 e ]
+[i _userTicker_ms
+-> -> 0 `i `ui
+]
+[; ;ticker.c: 11: volatile uint16_t userTicker_ms=0x00;
+"12
 [v _dlyTicker `ui ~T0 @X0 1 e ]
 [i _dlyTicker
 -> -> 0 `i `ui
 ]
-[; ;ticker.c: 11: uint16_t dlyTicker=0;
-"12
+[; ;ticker.c: 12: uint16_t dlyTicker=0;
+"13
 [v _dlyTickerEn `uc ~T0 @X0 1 e ]
 [i _dlyTickerEn
 -> -> 0 `i `uc
 ]
-[; ;ticker.c: 12: bool dlyTickerEn=0;
-"13
-[v _sys_ticker_start `(v ~T0 @X0 1 ef ]
+[; ;ticker.c: 13: bool dlyTickerEn=0;
 "14
+[v _sys_ticker_start `(v ~T0 @X0 1 ef ]
+"15
 {
-[; ;ticker.c: 13: void sys_ticker_start(void)
-[; ;ticker.c: 14: {
+[; ;ticker.c: 14: void sys_ticker_start(void)
+[; ;ticker.c: 15: {
 [e :U _sys_ticker_start ]
 [f ]
-[; ;ticker.c: 15: T2CON=0x7f;
-"15
+[; ;ticker.c: 16: T2CON=0x7f;
+"16
 [e = _T2CON -> -> 127 `i `uc ]
-[; ;ticker.c: 18: }
-"18
+[; ;ticker.c: 19: }
+"19
 [e :UE 643 ]
 }
-"19
-[v _sys_ticker_stop `(v ~T0 @X0 1 ef ]
 "20
+[v _sys_ticker_stop `(v ~T0 @X0 1 ef ]
+"21
 {
-[; ;ticker.c: 19: void sys_ticker_stop(void)
-[; ;ticker.c: 20: {
+[; ;ticker.c: 20: void sys_ticker_stop(void)
+[; ;ticker.c: 21: {
 [e :U _sys_ticker_stop ]
 [f ]
-[; ;ticker.c: 21: T2CON=0x00;
-"21
-[e = _T2CON -> -> 0 `i `uc ]
-[; ;ticker.c: 22: }
+[; ;ticker.c: 22: T2CON=0x00;
 "22
+[e = _T2CON -> -> 0 `i `uc ]
+[; ;ticker.c: 23: }
+"23
 [e :UE 644 ]
 }
-"24
-[v _sys_ticker_init `(v ~T0 @X0 1 ef ]
 "25
+[v _sys_ticker_init `(v ~T0 @X0 1 ef ]
+"26
 {
-[; ;ticker.c: 24: void sys_ticker_init(void)
-[; ;ticker.c: 25: {
+[; ;ticker.c: 25: void sys_ticker_init(void)
+[; ;ticker.c: 26: {
 [e :U _sys_ticker_init ]
 [f ]
-[; ;ticker.c: 27: PR2=(uint8_t)((11059200/4/16/16/100));
-"27
-[e = _PR2 -> / / / / -> 11059200 `l -> -> 4 `i `l -> -> 16 `i `l -> -> 16 `i `l -> -> 100 `i `l `uc ]
-[; ;ticker.c: 28: IPR1bits.TMR2IP=1;
+[; ;ticker.c: 28: PR2=(uint8_t)((11059200/4/16/16/100));
 "28
-[e = . . _IPR1bits 0 1 -> -> 1 `i `uc ]
-[; ;ticker.c: 29: PIR1bits.TMR2IF=0;
+[e = _PR2 -> / / / / -> 11059200 `l -> -> 4 `i `l -> -> 16 `i `l -> -> 16 `i `l -> -> 100 `i `l `uc ]
+[; ;ticker.c: 29: IPR1bits.TMR2IP=1;
 "29
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-[; ;ticker.c: 30: PIE1bits.TMR2IE=1;
+[e = . . _IPR1bits 0 1 -> -> 1 `i `uc ]
+[; ;ticker.c: 30: PIR1bits.TMR2IF=0;
 "30
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+[; ;ticker.c: 31: PIE1bits.TMR2IE=1;
+"31
 [e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
-[; ;ticker.c: 32: T2CON=0x7f;
-"32
-[e = _T2CON -> -> 127 `i `uc ]
-[; ;ticker.c: 33: }
+[; ;ticker.c: 33: T2CON=0x7f;
 "33
+[e = _T2CON -> -> 127 `i `uc ]
+[; ;ticker.c: 34: }
+"34
 [e :UE 645 ]
 }
-"35
-[v _sys_ticker_irq_hook `(v ~T0 @X0 1 ef ]
 "36
+[v _sys_ticker_irq_hook `(v ~T0 @X0 1 ef ]
+"37
 {
-[; ;ticker.c: 35: void sys_ticker_irq_hook(void)
-[; ;ticker.c: 36: {
+[; ;ticker.c: 36: void sys_ticker_irq_hook(void)
+[; ;ticker.c: 37: {
 [e :U _sys_ticker_irq_hook ]
 [f ]
-[; ;ticker.c: 37: if(dlyTickerEn){
-"37
+[; ;ticker.c: 38: if(dlyTickerEn){
+"38
 [e $ ! != -> _dlyTickerEn `i -> -> -> 0 `i `uc `i 647  ]
 {
-[; ;ticker.c: 38: dlyTicker+=10;
-"38
-[e =+ _dlyTicker -> -> 10 `i `ui ]
+[; ;ticker.c: 39: dlyTicker+=10;
 "39
+[e =+ _dlyTicker -> -> 10 `i `ui ]
+"40
 }
 [e :U 647 ]
-[; ;ticker.c: 39: }
 [; ;ticker.c: 40: }
-"40
+[; ;ticker.c: 41: userTicker_ms+=10;
+"41
+[e =+ _userTicker_ms -> -> 10 `i `ui ]
+[; ;ticker.c: 42: }
+"42
 [e :UE 646 ]
 }
-"42
-[v _ticker_dly `(v ~T0 @X0 1 ef1`ui ]
-"43
-{
-[; ;ticker.c: 42: void ticker_dly(uint16_t ms)
-[; ;ticker.c: 43: {
-[e :U _ticker_dly ]
-"42
-[v _ms `ui ~T0 @X0 1 r1 ]
-"43
-[f ]
-[; ;ticker.c: 44: dlyTicker=0;
 "44
-[e = _dlyTicker -> -> 0 `i `ui ]
-[; ;ticker.c: 45: dlyTickerEn=1;
+[v _ticker_dly `(v ~T0 @X0 1 ef1`ui ]
 "45
-[e = _dlyTickerEn -> -> 1 `i `uc ]
-[; ;ticker.c: 46: while(dlyTicker<ms){
+{
+[; ;ticker.c: 44: void ticker_dly(uint16_t ms)
+[; ;ticker.c: 45: {
+[e :U _ticker_dly ]
+"44
+[v _ms `ui ~T0 @X0 1 r1 ]
+"45
+[f ]
+[; ;ticker.c: 46: dlyTicker=0;
 "46
+[e = _dlyTicker -> -> 0 `i `ui ]
+[; ;ticker.c: 47: dlyTickerEn=1;
+"47
+[e = _dlyTickerEn -> -> 1 `i `uc ]
+[; ;ticker.c: 48: while(dlyTicker<ms){
+"48
 [e $U 649  ]
 [e :U 650 ]
 {
-[; ;ticker.c: 47: __nop();
-"47
+[; ;ticker.c: 49: __nop();
+"49
 [e ( ___nop ..  ]
-"48
+"50
 }
 [e :U 649 ]
-"46
+"48
 [e $ < _dlyTicker _ms 650  ]
 [e :U 651 ]
-[; ;ticker.c: 48: }
-[; ;ticker.c: 49: dlyTickerEn=0;
-"49
-[e = _dlyTickerEn -> -> 0 `i `uc ]
-[; ;ticker.c: 50: dlyTicker=0;
-"50
-[e = _dlyTicker -> -> 0 `i `ui ]
-[; ;ticker.c: 51: }
+[; ;ticker.c: 50: }
+[; ;ticker.c: 51: dlyTickerEn=0;
 "51
+[e = _dlyTickerEn -> -> 0 `i `uc ]
+[; ;ticker.c: 52: dlyTicker=0;
+"52
+[e = _dlyTicker -> -> 0 `i `ui ]
+[; ;ticker.c: 53: }
+"53
 [e :UE 648 ]
 }

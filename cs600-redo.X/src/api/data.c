@@ -64,4 +64,27 @@ uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len)
 	return ret;
 }
 
+void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col)
+{
+    uint8_t t8;
+	st_prCalibPointDef* stp;
+    t8=ptab->rowCount;
+    if(row>t8-1)return;
+    if(col>CALIB_P_POINT_NUM-1)return;
+	stp=&(ptab->prCalibRow[row].prCalibPoint[col]);
+    stp->pValue=pp->pValue;
+    stp->pAdcValue=pp->pAdcValue;
+    stp->tAdcValue=pp->tAdcValue;
+    /*
+	//另外一种写法
+    uint8_t t8;
+	uint8_t* pt;
+    t8=ptab->rowCount;
+    if(row>t8-1)return;
+    if(col>CALIB_P_POINT_NUM-1)return;
+	pt=(uint8_t*)ptab+4+sizeof(st_prCalibRowDef)*row+4+sizeof(st_prCalibPointDef)*col;
+	m_mem_cpy_len(pt,(uint8_t*)pp,sizeof(st_prCalibPointDef));
+	*/
+}
+
 //file end

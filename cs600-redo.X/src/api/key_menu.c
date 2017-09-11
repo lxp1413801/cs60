@@ -9,8 +9,8 @@ volatile uint8_t adjLocation=0;
 volatile uint32_t adjValue=0x00;
 volatile uint8_t* pAdjValue;
 //
-volatile uint8_t  calibValueIndex=0x00;
-volatile uint8_t  calibTempIndex=0x00;
+volatile uint8_t  calibRow=0x00;
+volatile uint8_t  calibCol=0x00;
 
 uint16_t __exp_10(uint8_t n)
 {

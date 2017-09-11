@@ -17,7 +17,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _iic_waite_ack `(uc ~T0 @X0 0 ef ]
 "45
 [v _iic_received_byte_if_ack `(uc ~T0 @X0 0 ef1`uc ]
-"39 src/driver/ex_eeprom.c
+"40 src/driver/ex_eeprom.c
 [c E6936 1 0 .. ]
 [n E6936 . IIC_NACK IIC_ACK  ]
 [; ;stdint.h: 13: typedef signed char int8_t;
@@ -52,7 +52,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {
@@ -6026,270 +6026,270 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _at24c02Ch0 `S643 ~T0 @X0 1 e ]
 [v _at24c02Ch1 `S643 ~T0 @X0 1 e ]
 [; ;ex_eeprom.c: 4: st_iicDeviceObj at24c02Ch0,at24c02Ch1;
-"5
-[v _at24c02_set_slave_addr `(v ~T0 @X0 1 ef2`*S643`uc ]
 "6
+[v _at24c02_set_slave_addr `(v ~T0 @X0 1 ef2`*S643`uc ]
+"7
 {
-[; ;ex_eeprom.c: 5: void at24c02_set_slave_addr(st_iicDeviceObj* pAt24c02,uint8_t slv)
-[; ;ex_eeprom.c: 6: {
+[; ;ex_eeprom.c: 6: void at24c02_set_slave_addr(st_iicDeviceObj* pAt24c02,uint8_t slv)
+[; ;ex_eeprom.c: 7: {
 [e :U _at24c02_set_slave_addr ]
-"5
+"6
 [v _pAt24c02 `*S643 ~T0 @X0 1 r1 ]
 [v _slv `uc ~T0 @X0 1 r2 ]
-"6
-[f ]
-[; ;ex_eeprom.c: 7: if(!((void*)pAt24c02))return;
 "7
+[f ]
+[; ;ex_eeprom.c: 8: if(!((void*)pAt24c02))return;
+"8
 [e $ ! ! != -> _pAt24c02 `*v -> -> 0 `i `*v 645  ]
 [e $UE 644  ]
 [e :U 645 ]
-[; ;ex_eeprom.c: 8: pAt24c02->slaveAddr=slv;
-"8
-[e = . *U _pAt24c02 0 _slv ]
-[; ;ex_eeprom.c: 9: }
+[; ;ex_eeprom.c: 9: pAt24c02->slaveAddr=slv;
 "9
+[e = . *U _pAt24c02 0 _slv ]
+[; ;ex_eeprom.c: 10: }
+"10
 [e :UE 644 ]
 }
-"11
-[v _at24c02_init `(v ~T0 @X0 1 ef2`*S643`uc ]
 "12
+[v _at24c02_init `(v ~T0 @X0 1 ef2`*S643`uc ]
+"13
 {
-[; ;ex_eeprom.c: 11: void at24c02_init(st_iicDeviceObj* pAt24c02, uint8_t slv)
-[; ;ex_eeprom.c: 12: {
+[; ;ex_eeprom.c: 12: void at24c02_init(st_iicDeviceObj* pAt24c02, uint8_t slv)
+[; ;ex_eeprom.c: 13: {
 [e :U _at24c02_init ]
-"11
+"12
 [v _pAt24c02 `*S643 ~T0 @X0 1 r1 ]
 [v _slv `uc ~T0 @X0 1 r2 ]
-"12
-[f ]
-[; ;ex_eeprom.c: 13: pAt24c02->slaveAddr=slv;
 "13
-[e = . *U _pAt24c02 0 _slv ]
-[; ;ex_eeprom.c: 14: pAt24c02->iic_start=iic_start;
+[f ]
+[; ;ex_eeprom.c: 14: pAt24c02->slaveAddr=slv;
 "14
-[e = . *U _pAt24c02 1 &U _iic_start ]
-[; ;ex_eeprom.c: 15: pAt24c02->iic_stop=iic_stop;
+[e = . *U _pAt24c02 0 _slv ]
+[; ;ex_eeprom.c: 15: pAt24c02->iic_start=iic_start;
 "15
-[e = . *U _pAt24c02 2 &U _iic_stop ]
-[; ;ex_eeprom.c: 16: pAt24c02->iic_send_byte=iic_send_byte;
+[e = . *U _pAt24c02 1 &U _iic_start ]
+[; ;ex_eeprom.c: 16: pAt24c02->iic_stop=iic_stop;
 "16
+[e = . *U _pAt24c02 2 &U _iic_stop ]
+[; ;ex_eeprom.c: 17: pAt24c02->iic_send_byte=iic_send_byte;
+"17
 [e = . *U _pAt24c02 3 &U _iic_send_byte ]
-[; ;ex_eeprom.c: 18: pAt24c02->iic_waite_ack=iic_waite_ack;
-"18
+[; ;ex_eeprom.c: 19: pAt24c02->iic_waite_ack=iic_waite_ack;
+"19
 [e = . *U _pAt24c02 4 &U _iic_waite_ack ]
-[; ;ex_eeprom.c: 20: pAt24c02->iic_received_byte_if_ack=iic_received_byte_if_ack;
-"20
+[; ;ex_eeprom.c: 21: pAt24c02->iic_received_byte_if_ack=iic_received_byte_if_ack;
+"21
 [e = . *U _pAt24c02 5 &U _iic_received_byte_if_ack ]
-[; ;ex_eeprom.c: 23: }
-"23
+[; ;ex_eeprom.c: 24: }
+"24
 [e :UE 646 ]
 }
-"24
-[v _at24c02_init_all_chip `(v ~T0 @X0 1 ef ]
 "25
+[v _at24c02_init_all_chip `(v ~T0 @X0 1 ef ]
+"26
 {
-[; ;ex_eeprom.c: 24: void at24c02_init_all_chip(void)
-[; ;ex_eeprom.c: 25: {
+[; ;ex_eeprom.c: 25: void at24c02_init_all_chip(void)
+[; ;ex_eeprom.c: 26: {
 [e :U _at24c02_init_all_chip ]
 [f ]
-[; ;ex_eeprom.c: 26: at24c02_init(&at24c02Ch0,0xaa);
-"26
-[e ( _at24c02_init (2 , &U _at24c02Ch0 -> -> 170 `i `uc ]
-[; ;ex_eeprom.c: 27: at24c02_init(&at24c02Ch1,0xac);
+[; ;ex_eeprom.c: 27: at24c02_init(&at24c02Ch0,0xaa);
 "27
-[e ( _at24c02_init (2 , &U _at24c02Ch1 -> -> 172 `i `uc ]
-[; ;ex_eeprom.c: 28: }
+[e ( _at24c02_init (2 , &U _at24c02Ch0 -> -> 170 `i `uc ]
+[; ;ex_eeprom.c: 28: at24c02_init(&at24c02Ch1,0xac);
 "28
+[e ( _at24c02_init (2 , &U _at24c02Ch1 -> -> 172 `i `uc ]
+[; ;ex_eeprom.c: 29: }
+"29
 [e :UE 647 ]
 }
-"29
-[v _at24c02_read_byte `(uc ~T0 @X0 1 ef2`*S643`uc ]
 "30
+[v _at24c02_read_byte `(uc ~T0 @X0 1 ef2`*S643`uc ]
+"31
 {
-[; ;ex_eeprom.c: 29: uint8_t at24c02_read_byte(st_iicDeviceObj* pAt24c02,uint8_t addr)
-[; ;ex_eeprom.c: 30: {
+[; ;ex_eeprom.c: 30: uint8_t at24c02_read_byte(st_iicDeviceObj* pAt24c02,uint8_t addr)
+[; ;ex_eeprom.c: 31: {
 [e :U _at24c02_read_byte ]
-"29
+"30
 [v _pAt24c02 `*S643 ~T0 @X0 1 r1 ]
 [v _addr `uc ~T0 @X0 1 r2 ]
-"30
-[f ]
 "31
+[f ]
+"32
 [v _ret `uc ~T0 @X0 1 a ]
-[; ;ex_eeprom.c: 31: uint8_t ret;
-[; ;ex_eeprom.c: 33: pAt24c02->iic_start();
-"33
-[e ( *U . *U _pAt24c02 1 ..  ]
-[; ;ex_eeprom.c: 34: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
+[; ;ex_eeprom.c: 32: uint8_t ret;
+[; ;ex_eeprom.c: 34: pAt24c02->iic_start();
 "34
-[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
-[; ;ex_eeprom.c: 35: pAt24c02->iic_send_byte(addr);
-"35
-[e ( *U . *U _pAt24c02 3 (1 _addr ]
-[; ;ex_eeprom.c: 37: pAt24c02->iic_start();
-"37
 [e ( *U . *U _pAt24c02 1 ..  ]
-[; ;ex_eeprom.c: 38: pAt24c02->iic_send_byte(pAt24c02->slaveAddr+1);
+[; ;ex_eeprom.c: 35: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
+"35
+[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
+[; ;ex_eeprom.c: 36: pAt24c02->iic_send_byte(addr);
+"36
+[e ( *U . *U _pAt24c02 3 (1 _addr ]
+[; ;ex_eeprom.c: 38: pAt24c02->iic_start();
 "38
-[e ( *U . *U _pAt24c02 3 (1 -> + -> . *U _pAt24c02 0 `i -> 1 `i `uc ]
-[; ;ex_eeprom.c: 39: ret=pAt24c02->iic_received_byte_if_ack(IIC_NACK);
+[e ( *U . *U _pAt24c02 1 ..  ]
+[; ;ex_eeprom.c: 39: pAt24c02->iic_send_byte(pAt24c02->slaveAddr+1);
 "39
-[e = _ret ( *U . *U _pAt24c02 5 (1 -> . `E6936 0 `uc ]
-[; ;ex_eeprom.c: 40: pAt24c02->iic_stop();
+[e ( *U . *U _pAt24c02 3 (1 -> + -> . *U _pAt24c02 0 `i -> 1 `i `uc ]
+[; ;ex_eeprom.c: 40: ret=pAt24c02->iic_received_byte_if_ack(IIC_NACK);
 "40
-[e ( *U . *U _pAt24c02 2 ..  ]
-[; ;ex_eeprom.c: 41: return ret;
+[e = _ret ( *U . *U _pAt24c02 5 (1 -> . `E6936 0 `uc ]
+[; ;ex_eeprom.c: 41: pAt24c02->iic_stop();
 "41
+[e ( *U . *U _pAt24c02 2 ..  ]
+[; ;ex_eeprom.c: 42: return ret;
+"42
 [e ) _ret ]
 [e $UE 648  ]
-[; ;ex_eeprom.c: 42: }
-"42
+[; ;ex_eeprom.c: 43: }
+"43
 [e :UE 648 ]
 }
-"43
-[v _at24c02_read_n_byte `(v ~T0 @X0 1 ef4`*S643`uc`*uc`ui ]
 "44
+[v _at24c02_read_n_byte `(v ~T0 @X0 1 ef4`*S643`uc`*uc`ui ]
+"45
 {
-[; ;ex_eeprom.c: 43: void at24c02_read_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,uint16_t len)
-[; ;ex_eeprom.c: 44: {
+[; ;ex_eeprom.c: 44: void at24c02_read_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,uint16_t len)
+[; ;ex_eeprom.c: 45: {
 [e :U _at24c02_read_n_byte ]
-"43
+"44
 [v _pAt24c02 `*S643 ~T0 @X0 1 r1 ]
 [v _addr `uc ~T0 @X0 1 r2 ]
 [v _buf `*uc ~T0 @X0 1 r3 ]
 [v _len `ui ~T0 @X0 1 r4 ]
-"44
+"45
 [f ]
-"46
-[v _i `ui ~T0 @X0 1 a ]
-[; ;ex_eeprom.c: 46: uint16_t i;
-[; ;ex_eeprom.c: 47: pAt24c02->iic_start();
 "47
-[e ( *U . *U _pAt24c02 1 ..  ]
-[; ;ex_eeprom.c: 48: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
+[v _i `ui ~T0 @X0 1 a ]
+[; ;ex_eeprom.c: 47: uint16_t i;
+[; ;ex_eeprom.c: 48: pAt24c02->iic_start();
 "48
-[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
-[; ;ex_eeprom.c: 49: pAt24c02->iic_send_byte(addr);
-"49
-[e ( *U . *U _pAt24c02 3 (1 _addr ]
-[; ;ex_eeprom.c: 51: pAt24c02->iic_start();
-"51
 [e ( *U . *U _pAt24c02 1 ..  ]
-[; ;ex_eeprom.c: 52: pAt24c02->iic_send_byte(pAt24c02->slaveAddr+1);
+[; ;ex_eeprom.c: 49: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
+"49
+[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
+[; ;ex_eeprom.c: 50: pAt24c02->iic_send_byte(addr);
+"50
+[e ( *U . *U _pAt24c02 3 (1 _addr ]
+[; ;ex_eeprom.c: 52: pAt24c02->iic_start();
 "52
-[e ( *U . *U _pAt24c02 3 (1 -> + -> . *U _pAt24c02 0 `i -> 1 `i `uc ]
-[; ;ex_eeprom.c: 53: for(i=0;i<len-1;i++){
+[e ( *U . *U _pAt24c02 1 ..  ]
+[; ;ex_eeprom.c: 53: pAt24c02->iic_send_byte(pAt24c02->slaveAddr+1);
 "53
+[e ( *U . *U _pAt24c02 3 (1 -> + -> . *U _pAt24c02 0 `i -> 1 `i `uc ]
+[; ;ex_eeprom.c: 54: for(i=0;i<len-1;i++){
+"54
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 653  ]
 [e :U 650 ]
 {
-[; ;ex_eeprom.c: 54: *buf++=pAt24c02->iic_received_byte_if_ack(IIC_ACK);
-"54
-[e = *U ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ( *U . *U _pAt24c02 5 (1 -> . `E6936 1 `uc ]
+[; ;ex_eeprom.c: 55: *buf++=pAt24c02->iic_received_byte_if_ack(IIC_ACK);
 "55
+[e = *U ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ( *U . *U _pAt24c02 5 (1 -> . `E6936 1 `uc ]
+"56
 }
-"53
+"54
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 653 ]
 [e $ < _i - _len -> -> 1 `i `ui 650  ]
 [e :U 651 ]
-"55
-}
-[; ;ex_eeprom.c: 55: }
-[; ;ex_eeprom.c: 56: *buf=pAt24c02->iic_received_byte_if_ack(IIC_NACK);
 "56
-[e = *U _buf ( *U . *U _pAt24c02 5 (1 -> . `E6936 0 `uc ]
-[; ;ex_eeprom.c: 57: pAt24c02->iic_stop();
+}
+[; ;ex_eeprom.c: 56: }
+[; ;ex_eeprom.c: 57: *buf=pAt24c02->iic_received_byte_if_ack(IIC_NACK);
 "57
-[e ( *U . *U _pAt24c02 2 ..  ]
-[; ;ex_eeprom.c: 58: }
+[e = *U _buf ( *U . *U _pAt24c02 5 (1 -> . `E6936 0 `uc ]
+[; ;ex_eeprom.c: 58: pAt24c02->iic_stop();
 "58
+[e ( *U . *U _pAt24c02 2 ..  ]
+[; ;ex_eeprom.c: 59: }
+"59
 [e :UE 649 ]
 }
-"59
-[v _at24c02_write_byte `(v ~T0 @X0 1 ef3`*S643`uc`uc ]
 "60
+[v _at24c02_write_byte `(v ~T0 @X0 1 ef3`*S643`uc`uc ]
+"61
 {
-[; ;ex_eeprom.c: 59: void at24c02_write_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t x)
-[; ;ex_eeprom.c: 60: {
+[; ;ex_eeprom.c: 60: void at24c02_write_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t x)
+[; ;ex_eeprom.c: 61: {
 [e :U _at24c02_write_byte ]
-"59
+"60
 [v _pAt24c02 `*S643 ~T0 @X0 1 r1 ]
 [v _addr `uc ~T0 @X0 1 r2 ]
 [v _x `uc ~T0 @X0 1 r3 ]
-"60
-[f ]
-[; ;ex_eeprom.c: 61: pAt24c02->iic_start();
 "61
-[e ( *U . *U _pAt24c02 1 ..  ]
-[; ;ex_eeprom.c: 62: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
+[f ]
+[; ;ex_eeprom.c: 62: pAt24c02->iic_start();
 "62
-[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
-[; ;ex_eeprom.c: 63: pAt24c02->iic_send_byte(addr);
+[e ( *U . *U _pAt24c02 1 ..  ]
+[; ;ex_eeprom.c: 63: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
 "63
+[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
+[; ;ex_eeprom.c: 64: pAt24c02->iic_send_byte(addr);
+"64
 [e ( *U . *U _pAt24c02 3 (1 _addr ]
-[; ;ex_eeprom.c: 65: pAt24c02->iic_send_byte(x);
-"65
-[e ( *U . *U _pAt24c02 3 (1 _x ]
-[; ;ex_eeprom.c: 66: pAt24c02->iic_stop();
+[; ;ex_eeprom.c: 66: pAt24c02->iic_send_byte(x);
 "66
-[e ( *U . *U _pAt24c02 2 ..  ]
-[; ;ex_eeprom.c: 67: }
+[e ( *U . *U _pAt24c02 3 (1 _x ]
+[; ;ex_eeprom.c: 67: pAt24c02->iic_stop();
 "67
+[e ( *U . *U _pAt24c02 2 ..  ]
+[; ;ex_eeprom.c: 68: }
+"68
 [e :UE 654 ]
 }
-"68
-[v _at24c02_write_n_byte `(v ~T0 @X0 1 ef4`*S643`uc`*uc`ui ]
 "69
+[v _at24c02_write_n_byte `(v ~T0 @X0 1 ef4`*S643`uc`*uc`ui ]
+"70
 {
-[; ;ex_eeprom.c: 68: void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,uint16_t len)
-[; ;ex_eeprom.c: 69: {
+[; ;ex_eeprom.c: 69: void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,uint16_t len)
+[; ;ex_eeprom.c: 70: {
 [e :U _at24c02_write_n_byte ]
-"68
+"69
 [v _pAt24c02 `*S643 ~T0 @X0 1 r1 ]
 [v _addr `uc ~T0 @X0 1 r2 ]
 [v _buf `*uc ~T0 @X0 1 r3 ]
 [v _len `ui ~T0 @X0 1 r4 ]
-"69
-[f ]
 "70
-[v _i `ui ~T0 @X0 1 a ]
-[; ;ex_eeprom.c: 70: uint16_t i;
-[; ;ex_eeprom.c: 71: for(i=0;i<len;i++){
+[f ]
 "71
+[v _i `ui ~T0 @X0 1 a ]
+[; ;ex_eeprom.c: 71: uint16_t i;
+[; ;ex_eeprom.c: 72: for(i=0;i<len;i++){
+"72
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 659  ]
 [e :U 656 ]
 {
-[; ;ex_eeprom.c: 72: pAt24c02->iic_start();
-"72
-[e ( *U . *U _pAt24c02 1 ..  ]
-[; ;ex_eeprom.c: 73: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
+[; ;ex_eeprom.c: 73: pAt24c02->iic_start();
 "73
-[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
-[; ;ex_eeprom.c: 74: pAt24c02->iic_send_byte(addr++);
+[e ( *U . *U _pAt24c02 1 ..  ]
+[; ;ex_eeprom.c: 74: pAt24c02->iic_send_byte(pAt24c02->slaveAddr);
 "74
+[e ( *U . *U _pAt24c02 3 (1 . *U _pAt24c02 0 ]
+[; ;ex_eeprom.c: 75: pAt24c02->iic_send_byte(addr++);
+"75
 [e ( *U . *U _pAt24c02 3 (1 ++ _addr -> -> 1 `i `uc ]
-[; ;ex_eeprom.c: 76: pAt24c02->iic_send_byte(*buf++);
-"76
-[e ( *U . *U _pAt24c02 3 (1 *U ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ]
-[; ;ex_eeprom.c: 77: pAt24c02->iic_stop();
+[; ;ex_eeprom.c: 77: pAt24c02->iic_send_byte(*buf++);
 "77
-[e ( *U . *U _pAt24c02 2 ..  ]
+[e ( *U . *U _pAt24c02 3 (1 *U ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ]
+[; ;ex_eeprom.c: 78: pAt24c02->iic_stop();
 "78
+[e ( *U . *U _pAt24c02 2 ..  ]
+"79
 }
-"71
+"72
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 659 ]
 [e $ < _i _len 656  ]
 [e :U 657 ]
-"78
-}
-[; ;ex_eeprom.c: 78: }
-[; ;ex_eeprom.c: 79: }
 "79
+}
+[; ;ex_eeprom.c: 79: }
+[; ;ex_eeprom.c: 80: }
+"80
 [e :UE 655 ]
 }

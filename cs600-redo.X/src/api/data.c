@@ -3,7 +3,15 @@
 //uint8_t	globleBuffer0[]
 uint8_t globleBuffer0[globle_BUFFER_SIZE]={0};
 uint8_t globleBuffer1[globle_BUFFER_SIZE]={0};
+
 const st_sysDataDef* fpSysData=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+
+st_iicDeviceObj* pdiff_prEepromObj=(st_iicDeviceObj*)NULL;
+st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)NULL;
+
+st_prCalibTabDef diff_prCalibTabDef={0};
+st_prCalibTabDef prCalibTabDef={0};
+
 const st_sysDataDef defultSystemData={
 	0x00ul	,//uint32_t 	id;
 	0		,//em_posture	pos;							//立式或者卧式
@@ -64,7 +72,8 @@ uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len)
 	return ret;
 }
 
-void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col)
+//保存标定点数据到数据表
+void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col)
 {
     uint8_t t8;
 	st_prCalibPointDef* stp;
@@ -87,4 +96,77 @@ void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8
 	*/
 }
 
+// 差压标定数据初始化
+// at24c02_init(&at24c02Ch0,0xaa);//压力
+// at24c02_init(&at24c02Ch1,0xac);//差压
+void calib_data_set_default_diff_pr(void)
+{
+    uint8_t i,j;
+	diff_prCalibTabDef.rowCount=3;
+    for(i=0;i<3;i++){
+        diff_prCalibTabDef.prCalibRow[i].pCount=CALIB_P_POINT_NUM;
+        for(j=0;j<CALIB_P_POINT_NUM;j++){
+            diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].pAdcValue=j*6000+i*500;
+            diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].pValue=j*6000;
+            diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].tAdcValue=i+1000;
+        }
+    }
+    //crc_append((uint8_t*)(&diff_prCalibTabDef),sizeof(diff_prCalibTabDef)-2);
+}
+void calib_data_set_default_pr(void)
+{
+    uint8_t i,j;
+	prCalibTabDef.rowCount=1;
+    for(i=0;i<1;i++){
+        prCalibTabDef.prCalibRow[i].pCount=CALIB_P_POINT_NUM;
+        for(j=0;j<CALIB_P_POINT_NUM;j++){
+            prCalibTabDef.prCalibRow[i].prCalibPoint[j].pAdcValue=j*6000+i*500;
+            prCalibTabDef.prCalibRow[i].prCalibPoint[j].pValue=j*6000;
+            prCalibTabDef.prCalibRow[i].prCalibPoint[j].tAdcValue=0;
+        }
+    }
+    //crc_append((uint8_t*)(&prCalibTabDef),sizeof(prCalibTabDef)-2);
+}
+uint8_t  calib_data_init_diff_pr(void)
+{
+	uint8_t ret=0;
+	uint16_t t16;
+	uint8_t* buf=(uint8_t*)(&diff_prCalibTabDef);
+	
+	pdiff_prEepromObj= &at24c02Ch1;
+	at24c02_init(pdiff_prEepromObj,0xac);
+	t16=sizeof(st_prCalibTabDef);
+	at24c02_read_n_byte(pdiff_prEepromObj,0,buf,t16);
+	ret=crc_verify(buf,t16);
+	if(!ret){
+		calib_data_set_default_diff_pr();
+		crc_append(buf,t16-2);
+		at24c02_write_n_byte(pdiff_prEepromObj,0,buf,t16);
+		at24c02_read_n_byte(pdiff_prEepromObj,0,buf,t16);
+		ret=crc_verify(buf,t16);		
+	}
+	return ret;
+}
+
+//压力标定数据初始化
+uint8_t  calib_data_init_pr(void)
+{
+	uint8_t ret=0;
+	uint16_t t16;
+	uint8_t* buf=(uint8_t*)(&prCalibTabDef);
+	
+	p_prEepromObj=&at24c02Ch0;
+	at24c02_init(p_prEepromObj,0xaa);
+	t16=sizeof(st_prCalibTabDef);
+	at24c02_read_n_byte(p_prEepromObj,0,buf,t16);
+	ret=crc_verify(buf,t16);
+	if(!ret){
+		calib_data_set_default_pr();
+		crc_append(buf,t16-2);
+		at24c02_write_n_byte(p_prEepromObj,0,buf,t16);
+		at24c02_read_n_byte(p_prEepromObj,0,buf,t16);
+		ret=crc_verify(buf,t16);		
+	}
+	return ret;	
+}
 //file end

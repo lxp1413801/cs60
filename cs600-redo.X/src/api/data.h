@@ -81,19 +81,22 @@ extern "C"{
 		uint8_t pCount;	//有效点个数
 		uint8_t reverse0[3];
 		st_prCalibPointDef prCalibPoint[CALIB_P_POINT_NUM];
-		uint8_t reverse1[2];
-		uint16_t crc;
 	}st_prCalibRowDef,prCalibRow_t;
 	
 	typedef struct{
 		uint8_t rowCount;	//有效的行数,组数,
 		uint8_t reverse0[3];
 		st_prCalibRowDef prCalibRow[3];
-		uint8_t reverse1[2];
+		//uint8_t reverse1[2];
 		uint16_t crc;		
 	}st_prCalibTabDef,prCalibTab_t;	
+	//
+	extern st_prCalibTabDef diff_prCalibTabDef;
+	extern st_prCalibTabDef prCalibTabDef;
+	//
+	
 	//fk 
-	extern void data_put_point_to_calib(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+	extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 
 #ifdef __cplusplus
 }

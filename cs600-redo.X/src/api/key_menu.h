@@ -63,10 +63,13 @@ extern "C"{
 	#define MENU_SET_PRESSURE_DISP_TYPE				0xf0
 	
 	//variable
-	volatile extern uint8_t menu;
-	volatile extern uint8_t keyValue;
-	volatile extern uint16_t passWord;
-	volatile extern uint8_t adjLocation;
+	extern volatile uint8_t menu;
+	extern volatile uint8_t keyValue;
+	extern volatile uint16_t passWord;
+	extern volatile uint8_t adjLocation;
+	//
+	extern volatile uint8_t  calibRow;
+	extern volatile uint8_t  calibCol;	
 	//function
 	extern void key_process(void);
 	

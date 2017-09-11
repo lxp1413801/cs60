@@ -326,7 +326,6 @@ __size_of_lcd_disp_dp_loc_0 0 0 ABS 0
 __Ltext9 0 0 ABS 0
 __ptext8 139A 0 CODE 0
 __ptext9 125A 0 CODE 0
-ui_disp_start_cs600@F7544 DB 0 BANK0 1
 __size_of_lcd_init 0 0 ABS 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
@@ -335,6 +334,7 @@ lcd_set_com_seg@show 21 0 COMRAM 1
 _lcd_config 1892 0 CODE 0
 __end_of_lcd_disp_chr_loc_2 1172 0 CODE 0
 __end_of_ads1115_read_conversion 16AA 0 CODE 0
+ui_disp_start_cs600@F7546 DB 0 BANK0 1
 _ALRMCFGbits F5B 0 ABS 0
 __end_of_rtc_get 1772 0 CODE 0
 _lcd_disp_chr_loc_0 11E6 0 CODE 0
@@ -636,7 +636,6 @@ __Ltext37 0 0 ABS 0
 __Ltext18 0 0 ABS 0
 __ptext27 8D6 0 CODE 0
 __ptext46 54E 0 CODE 0
-___int32_2_mflot32@F7530 32 0 COMRAM 1
 _RTCCFGbits F5F 0 ABS 0
 __Htext47 0 0 ABS 0
 __Htext28 0 0 ABS 0
@@ -653,6 +652,7 @@ __Ltext38 0 0 ABS 0
 __Ltext19 0 0 ABS 0
 __ptext28 996 0 CODE 0
 __ptext47 17B0 0 CODE 0
+___int32_2_mflot32@F7532 32 0 COMRAM 1
 __size_of_lcd_bl_init 0 0 ABS 0
 __CFG_WDTEN$OFF 0 0 ABS 0
 __Htext48 0 0 ABS 0
@@ -679,10 +679,10 @@ __size_of_lcd_disp_chr_loc_3 0 0 ABS 0
 _OSCCONbits FD3 0 ABS 0
 __ptext49 14BE 0 CODE 0
 _INTCONbits FF2 0 ABS 0
-___mflot32_2_int32@F7535 2E 0 COMRAM 1
 __size_of_sys_ticker_irq_hook 0 0 ABS 0
 ___awdiv@divisor BC 0 BANK0 1
 __HidataCOMRAM 0 0 ABS 0
+___mflot32_2_int32@F7537 2E 0 COMRAM 1
 __LidataCOMRAM 0 0 ABS 0
 __pidataCOMRAM 1AB8 0 CODE 0
 _globleBuffer0 100 0 BANK1 1
@@ -780,8 +780,8 @@ text33 1A9C 1ABA CODE 1A9C 0
 text58 1ABC 1ABF CODE 1ABC 0
 %locals
 dist/default/production\cs600-redo.X.production.obj
-C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f86j93.h
-C:\Users\ADMINI~1\AppData\Local\Temp\s5ajs.
+C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+C:\Users\ADMINI~1\AppData\Local\Temp\s6vs.
 9576 E2E 0 CODE 0
 9578 E2E 0 CODE 0
 9581 E2E 0 CODE 0
@@ -1213,7 +1213,7 @@ src/driver/lcd.c
 41 920 0 CODE 0
 42 954 0 CODE 0
 43 956 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c
 8 996 0 CODE 0
 14 996 0 CODE 0
 15 99C 0 CODE 0

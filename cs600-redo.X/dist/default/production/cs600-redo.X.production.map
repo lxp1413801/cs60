@@ -1,11 +1,11 @@
-Microchip MPLAB XC8 Compiler V1.42 ()
+Microchip MPLAB XC8 Compiler V1.41 ()
 
 Linker command line:
 
--W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.42\dat\en_msgs.txt -cs \
+-W-3 --edf=C:\Program Files\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
   -h+dist/default/production\cs600-redo.X.production.sym \
   --cmf=dist/default/production\cs600-redo.X.production.cmf -z -Q18F86J93 \
-  -oC:\Users\ADMINI~1\AppData\Local\Temp\s5ajs.2 \
+  -oC:\Users\ADMINI~1\AppData\Local\Temp\s6vs.2 \
   -Mdist/default/production/cs600-redo.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0300h-0f53h -pstack=STACK -ACODE=00h-0FFF7h \
   -ACONST=00h-0FFF7h -ASMALLCONST=01000h-010FFhx239,0FF00h-0FFF7h \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\ADMINI~1\AppData\Local\Temp\s5ajs.obj \
+  C:\Users\ADMINI~1\AppData\Local\Temp\s6vs.obj \
   dist/default/production\cs600-redo.X.production.obj 
 
 Object code version is 3.11
@@ -38,7 +38,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\ADMINI~1\AppData\Local\Temp\s5ajs.obj
+C:\Users\ADMINI~1\AppData\Local\Temp\s6vs.obj
                 init                                 DC       DC        4        C       0
                 reset_vec                             0        0        4        0       0
                 config                             FFF8     FFF8        6     FFF8       0
@@ -693,10 +693,10 @@ ___awdiv@divisor                   cstackBANK0   000BC
 ___awdiv@quotient                  cstackBANK0   000C0
 ___awdiv@sign                      cstackBANK0   000BF
 ___extmem_base                     (abs)         20000
-___int32_2_mflot32@F7530           bssCOMRAM     00032
+___int32_2_mflot32@F7532           bssCOMRAM     00032
 ___inthi_sp                        stack         00000
 ___intlo_sp                        stack         00000
-___mflot32_2_int32@F7535           bssCOMRAM     0002E
+___mflot32_2_int32@F7537           bssCOMRAM     0002E
 ___param_bank                      (abs)         00000
 ___rparam_used                     (abs)         00001
 ___sp                              stack         00000
@@ -1084,7 +1084,7 @@ start_initialization               cinit         00E2E
 ticker_dly@ms                      cstackCOMRAM  00020
 ui_disp_rtc_mm_ss@buf              cstackBANK0   000CE
 ui_disp_rtc_mm_ss@t8               cstackBANK0   000D8
-ui_disp_start_cs600@F7544          dataBANK0     000DB
+ui_disp_start_cs600@F7546          dataBANK0     000DB
 ui_disp_start_cs600@buf            cstackBANK0   000CE
 ui_disp_start_cs600@dly            cstackBANK0   000D4
 ui_disp_start_cs600@t8             cstackBANK0   000D5
@@ -1100,7 +1100,7 @@ FUNCTION INFORMATION:
  Auto vars:     Size  Location     Type
   t16             2   31[BANK0 ] unsigned int 
  Return value:  Size  Location     Type
-                  2  169[None  ] int 
+                  2  167[None  ] int 
  Registers used:
 		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclath, tosl, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
  Tracked objects:
@@ -2031,7 +2031,7 @@ Total ram usage:        8 bytes
 
  *************** function ___awdiv *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c"
  Parameters:    Size  Location     Type
   dividend        2    0[BANK0 ] int 
   divisor         2    2[BANK0 ] int 
@@ -3138,11 +3138,6 @@ src/driver/i2c.c
 
 src/driver/i2c.c estimated size: 515
 
-C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c
-		___awdiv       		CODE           	0996	0000	191
-
-C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\awdiv.c estimated size: 191
-
 src/driver/key.c
 		_key_polling   		CODE           	182A	0000	53
 
@@ -3219,6 +3214,11 @@ src/api/ui.c
 		_ui_disp_start_cs600		CODE           	0D02	0000	151
 
 src/api/ui.c estimated size: 314
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c
+		___awdiv       		CODE           	0996	0000	191
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c estimated size: 191
 
 src/driver/in_adc.c
 		_in_adc_start_and_read		CODE           	1334	0000	103

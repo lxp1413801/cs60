@@ -31,4 +31,7 @@
 	客户采用的修改方式
 	pin2		step0-sleep(RH3)
 	pin53		kz-sensor(RB5)	
+	//github社区参考书在线阅读
+	https://book.git-scm.com/book/zh/v2
+	
 	

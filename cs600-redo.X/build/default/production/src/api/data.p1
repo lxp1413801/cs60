@@ -6669,7 +6669,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.c: 77: stp->tAdcValue=pp->tAdcValue;
 "77
 [e = . *U _stp 2 . *U _pp 2 ]
-[; ;data.c: 79: }
-"79
+[; ;data.c: 88: }
+"88
 [e :UE 668 ]
 }

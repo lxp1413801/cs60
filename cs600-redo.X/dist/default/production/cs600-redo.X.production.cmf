@@ -113,7 +113,7 @@ idataBANK0 CODE 0 2684 2684 10 1
 dataBANK0 BANK0 1 EE EE 10 1
 bssCOMRAM COMRAM 1 22 22 1E 1
 mediumconst MEDIUMCONST 0 FCBA FCBA 33E 1
-$C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+$C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 init CODE 0 DC DC 4 1
 reset_vec CODE 0 0 0 4 1
 config CONFIG 0 FFF8 FFF8 6 1
@@ -1081,60 +1081,60 @@ CD0 text0 CODE >39:D:\lxp\cs60\cs600-redo.X\src/app/main.c
 CD2 text0 CODE >41:D:\lxp\cs60\cs600-redo.X\src/app/main.c
 CDA text0 CODE >42:D:\lxp\cs60\cs600-redo.X\src/app/main.c
 CE6 text0 CODE >30:D:\lxp\cs60\cs600-redo.X\src/app/main.c
-1986 cinit CODE >9621:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-1986 cinit CODE >9623:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-1986 cinit CODE >9626:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-1986 cinit CODE >9745:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-1988 cinit CODE >9746:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-198A cinit CODE >9747:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-198C cinit CODE >9748:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-198E cinit CODE >9749:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-1990 cinit CODE >9750:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-1992 cinit CODE >9751:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-1996 cinit CODE >9752:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-199A cinit CODE >9753:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-199A cinit CODE >9754:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-199C cinit CODE >9755:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19A0 cinit CODE >9756:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19A2 cinit CODE >9757:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19A4 cinit CODE >9758:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19A6 cinit CODE >9762:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19AA cinit CODE >9763:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19AE cinit CODE >9764:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19AE cinit CODE >9765:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19B0 cinit CODE >9766:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19B2 cinit CODE >9767:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19B4 cinit CODE >9768:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19B6 cinit CODE >9769:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19B8 cinit CODE >9770:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19BA cinit CODE >9773:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19BE cinit CODE >9774:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19C2 cinit CODE >9775:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19C2 cinit CODE >9776:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19C4 cinit CODE >9777:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19C6 cinit CODE >9778:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19C8 cinit CODE >9779:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19CA cinit CODE >9780:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19CC cinit CODE >9781:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19CE cinit CODE >9784:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19D2 cinit CODE >9785:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19D4 cinit CODE >9786:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19D4 cinit CODE >9787:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19D6 cinit CODE >9788:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19D8 cinit CODE >9789:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19DA cinit CODE >9792:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19DE cinit CODE >9793:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19E0 cinit CODE >9794:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19E0 cinit CODE >9795:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19E2 cinit CODE >9796:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19E4 cinit CODE >9797:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19E6 cinit CODE >9803:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19E6 cinit CODE >9805:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19E8 cinit CODE >9806:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19EA cinit CODE >9808:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19EC cinit CODE >9809:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19EE cinit CODE >9810:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
-19F0 cinit CODE >9811:C:\Users\ADMINI~1\AppData\Local\Temp\s12s.
+1986 cinit CODE >9621:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+1986 cinit CODE >9623:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+1986 cinit CODE >9626:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+1986 cinit CODE >9745:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+1988 cinit CODE >9746:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+198A cinit CODE >9747:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+198C cinit CODE >9748:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+198E cinit CODE >9749:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+1990 cinit CODE >9750:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+1992 cinit CODE >9751:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+1996 cinit CODE >9752:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+199A cinit CODE >9753:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+199A cinit CODE >9754:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+199C cinit CODE >9755:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19A0 cinit CODE >9756:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19A2 cinit CODE >9757:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19A4 cinit CODE >9758:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19A6 cinit CODE >9762:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19AA cinit CODE >9763:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19AE cinit CODE >9764:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19AE cinit CODE >9765:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19B0 cinit CODE >9766:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19B2 cinit CODE >9767:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19B4 cinit CODE >9768:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19B6 cinit CODE >9769:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19B8 cinit CODE >9770:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19BA cinit CODE >9773:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19BE cinit CODE >9774:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19C2 cinit CODE >9775:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19C2 cinit CODE >9776:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19C4 cinit CODE >9777:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19C6 cinit CODE >9778:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19C8 cinit CODE >9779:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19CA cinit CODE >9780:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19CC cinit CODE >9781:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19CE cinit CODE >9784:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19D2 cinit CODE >9785:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19D4 cinit CODE >9786:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19D4 cinit CODE >9787:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19D6 cinit CODE >9788:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19D8 cinit CODE >9789:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19DA cinit CODE >9792:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19DE cinit CODE >9793:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19E0 cinit CODE >9794:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19E0 cinit CODE >9795:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19E2 cinit CODE >9796:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19E4 cinit CODE >9797:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19E6 cinit CODE >9803:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19E6 cinit CODE >9805:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19E8 cinit CODE >9806:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19EA cinit CODE >9808:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19EC cinit CODE >9809:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19EE cinit CODE >9810:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
+19F0 cinit CODE >9811:C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1169,7 +1169,7 @@ __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 __HidataBANK0 0 0 ABS 0 idataBANK0 dist/default/production\cs600-redo.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\cs600-redo.X.production.obj
 m_int8_2_hex@b C5 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
-__mediumconst FCBA 0 MEDIUMCONST 0 mediumconst C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+__mediumconst FCBA 0 MEDIUMCONST 0 mediumconst C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 lcd_set_com_seg@bits D0 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 lcd_set_com_seg@show 21 0 COMRAM 1 cstackCOMRAM dist/default/production\cs600-redo.X.production.obj
 _TBLPTRH FF7 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
@@ -1185,14 +1185,14 @@ _iic_start 2208 0 CODE 0 text74 dist/default/production\cs600-redo.X.production.
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\cs600-redo.X.production.obj
 _LATB F8A 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 _LATC F8B 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+___sp 0 0 STACK 2 stack C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 _main C24 0 CODE 0 text0 dist/default/production\cs600-redo.X.production.obj
 _menu 3C 0 COMRAM 1 bssCOMRAM dist/default/production\cs600-redo.X.production.obj
 _pLCD 60 0 BANK0 1 bssBANK0 dist/default/production\cs600-redo.X.production.obj
 btemp 40 0 COMRAM 1 temp dist/default/production\cs600-redo.X.production.obj
 ads1115_read_conversion@pAds1115 CB 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 _dlyTicker 31 0 COMRAM 1 bssCOMRAM dist/default/production\cs600-redo.X.production.obj
-start DC 0 CODE 0 init C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+start DC 0 CODE 0 init C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 iic_send_byte@i C4 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 iic_send_byte@x C3 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
@@ -1261,11 +1261,11 @@ ___x_arrange_str@len C5 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo
 ___x_arrange_str@str C3 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 __size_of_ui_disp_menu_psw_adj 0 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 lcd_disp_chr_loc_3@code D1 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
-__accesstop 60 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
-intlevel0 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
-intlevel1 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
-intlevel2 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
-intlevel3 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+__accesstop 60 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
+intlevel0 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
+intlevel1 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
+intlevel2 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
+intlevel3 0 0 CODE 0 text C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 __end_of_HexTable FF1D 0 MEDIUMCONST 0 mediumconst dist/default/production\cs600-redo.X.production.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\cs600-redo.X.production.obj
 __end_of_iic_send_ack 2036 0 CODE 0 text79 dist/default/production\cs600-redo.X.production.obj
@@ -1312,8 +1312,8 @@ __size_of_ads1115_init 0 0 ABS 0 - dist/default/production\cs600-redo.X.producti
 __size_of_lcd_set_com_seg 0 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 ___enter_menu_set_density@fps C3 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 ___awdiv@dividend C3 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 _sys_ticker_irq_hook 2654 0 CODE 0 text84 dist/default/production\cs600-redo.X.production.obj
 _EECON1bits FA6 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 _LCDDATA10 F70 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
@@ -1480,7 +1480,7 @@ _at24c02Ch0 B8 0 BANK0 1 bssBANK0 dist/default/production\cs600-redo.X.productio
 _at24c02Ch1 AD 0 BANK0 1 bssBANK0 dist/default/production\cs600-redo.X.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\cs600-redo.X.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production\cs600-redo.X.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 __size_of_lcd_init 0 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 _ads1115_read_conversion 2036 0 CODE 0 text72 dist/default/production\cs600-redo.X.production.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production\cs600-redo.X.production.obj
@@ -1847,8 +1847,8 @@ __size_of_rtc_alrm_irq_hook 0 0 ABS 0 - dist/default/production\cs600-redo.X.pro
 __size_of___enter_menu_set_base_zero 0 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 _LCDDigitalTable FEE4 0 MEDIUMCONST 0 mediumconst dist/default/production\cs600-redo.X.production.obj
 __end_of_lcd_disp_level 1DDE 0 CODE 0 text9 dist/default/production\cs600-redo.X.production.obj
-stackhi F53 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
-stacklo 300 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+stackhi F53 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
+stacklo 300 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 m_mem_cpy@d C3 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 m_mem_cpy@s C5 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 __end_ofi2_sys_ticker_irq_hook 2684 0 CODE 0 text87 dist/default/production\cs600-redo.X.production.obj
@@ -2020,7 +2020,7 @@ __Ltext85 0 0 ABS 0 text85 dist/default/production\cs600-redo.X.production.obj
 __Ltext87 0 0 ABS 0 text87 dist/default/production\cs600-redo.X.production.obj
 __Ltext88 0 0 ABS 0 text88 dist/default/production\cs600-redo.X.production.obj
 __Ltext89 0 0 ABS 0 text89 dist/default/production\cs600-redo.X.production.obj
-__ramtop 1000 0 RAM 0 ramtop C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+__ramtop 1000 0 RAM 0 ramtop C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 __size_of_m_int8_2_hex 0 0 ABS 0 - dist/default/production\cs600-redo.X.production.obj
 __Lpowerup DC 0 CODE 0 powerup dist/default/production\cs600-redo.X.production.obj
 __end_of_ads1115_read_reg 70A 0 CODE 0 text73 dist/default/production\cs600-redo.X.production.obj
@@ -2096,7 +2096,7 @@ __end_of_LCDDigitalIndexTable FEE4 0 MEDIUMCONST 0 mediumconst dist/default/prod
 __end_of_key_process_set 255A 0 CODE 0 text64 dist/default/production\cs600-redo.X.production.obj
 _st_Bj 38 0 COMRAM 1 bssCOMRAM dist/default/production\cs600-redo.X.production.obj
 ads1115_write_reg@pAds1115 C5 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
-___extmem_base 20000 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s12s.obj
+___extmem_base 20000 0 ABS 0 - C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
 ads1115_read_reg@pAds1115 C5 0 BANK0 1 cstackBANK0 dist/default/production\cs600-redo.X.production.obj
 _rtcc_reg_wr_enable 26C2 0 CODE 0 text15 dist/default/production\cs600-redo.X.production.obj
 _ads1115_start_conversion 255A 0 CODE 0 text70 dist/default/production\cs600-redo.X.production.obj

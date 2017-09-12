@@ -34,3 +34,4 @@
 	//github社区参考书在线阅读
 	https://book.git-scm.com/book/zh/v2
 	//add a test line
+	椭圆封头液位储积换算关系见《石油化工设备设计便查手册.pdf》P392

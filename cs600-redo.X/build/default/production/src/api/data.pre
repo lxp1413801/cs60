@@ -1,17 +1,17 @@
 
 # 1 "src/api/data.c"
 
-# 26 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
+# 26 "C:\Program Files\Microchip\xc8\v1.41\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\xc8debug.h"
+# 13 "C:\Program Files\Microchip\xc8\v1.41\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h"
+# 49 "C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h"
 extern volatile unsigned char PADCFG1 @ 0xF54;
 
 asm("PADCFG1 equ 0F54h");
@@ -8064,7 +8064,7 @@ extern volatile __bit nW @ (((unsigned) &SSP1STAT)*8) + 2;
 
 extern volatile __bit nWRITE @ (((unsigned) &SSP1STAT)*8) + 2;
 
-# 18 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h"
+# 18 "C:\Program Files\Microchip\xc8\v1.41\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 
@@ -8087,7 +8087,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdint.h"
+# 13 "C:\Program Files\Microchip\xc8\v1.41\include\stdint.h"
 typedef signed char int8_t;
 
 # 20
@@ -8177,7 +8177,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 30 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\math.h"
+# 30 "C:\Program Files\Microchip\xc8\v1.41\include\math.h"
 extern double fabs(double);
 extern double floor(double);
 extern double ceil(double);
@@ -8205,10 +8205,10 @@ extern double fmod(double, double);
 extern double trunc(double);
 extern double round(double);
 
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\__size_t.h"
+# 4 "C:\Program Files\Microchip\xc8\v1.41\include\__size_t.h"
 typedef unsigned size_t;
 
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdarg.h"
+# 7 "C:\Program Files\Microchip\xc8\v1.41\include\stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -8217,17 +8217,17 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
+# 43 "C:\Program Files\Microchip\xc8\v1.41\include\stdio.h"
 struct __prbuf
 {
 char * ptr;
 void (* func)(char);
 };
 
-# 29 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\errno.h"
+# 29 "C:\Program Files\Microchip\xc8\v1.41\include\errno.h"
 extern int errno;
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\conio.h"
+# 12 "C:\Program Files\Microchip\xc8\v1.41\include\conio.h"
 extern void init_uart(void);
 
 extern char getch(void);
@@ -8241,7 +8241,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
+# 88 "C:\Program Files\Microchip\xc8\v1.41\include\stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -8546,7 +8546,7 @@ extern uint16_t in_adc_start_and_read(uint8_t ch);
 # 51 "src/api/../includes/../driver/key.h"
 extern uint8_t key_polling(void);
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdbool.h"
+# 12 "C:\Program Files\Microchip\xc8\v1.41\include\stdbool.h"
 typedef unsigned char bool;
 
 # 10 "src/api/../includes/../driver/lcd.h"
@@ -8695,7 +8695,7 @@ typedef struct{
 int32_t pValue;
 int16_t pAdcValue;
 int16_t tAdcValue;
-}st_prCalibPointDef,prCalibPoint_t;
+}st_prCalibPointDef,prCalibPoint_t,st_prData;
 
 typedef struct{
 uint8_t pCount;
@@ -8817,9 +8817,6 @@ stp->pValue=pp->pValue;
 stp->pAdcValue=pp->pAdcValue;
 stp->tAdcValue=pp->tAdcValue;
 
-<<<<<<< HEAD
-# 88
-=======
 # 97
 }
 
@@ -8840,6 +8837,7 @@ diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].tAdcValue=i+1000;
 }
 
 }
+
 void calib_data_set_default_pr(void)
 {
 uint8_t i,j;
@@ -8854,6 +8852,7 @@ prCalibTabDef.prCalibRow[i].prCalibPoint[j].tAdcValue=0;
 }
 
 }
+
 uint8_t calib_data_init_diff_pr(void)
 {
 uint8_t ret=0;
@@ -8895,6 +8894,99 @@ at24c02_read_n_byte(p_prEepromObj,0,buf,t16);
 ret=crc_verify(buf,t16);
 }
 return ret;
->>>>>>> 9f9d641371eda9b409f1f7c16d32f9f59ca4aa7b
+}
+
+# 180
+uint8_t m_interp1_cal_p_v(st_prCalibRowDef* tabrow,st_prData* xin,st_prData* xout)
+{
+uint8_t i;
+int32_t x,y;
+for(i=0;i< (tabrow->pCount) - 1 ;i++){
+
+if(tabrow->prCalibPoint[i].pAdcValue < tabrow->prCalibPoint[i+1].pAdcValue){
+if(xin->pAdcValue < tabrow->prCalibPoint[i+1].pAdcValue)break;
+}else{
+if(xin->pAdcValue >= tabrow->prCalibPoint[i+1].pAdcValue)break;
+}
+}
+xin->pValue=tabrow->prCalibPoint[i].pValue;
+y = tabrow->prCalibPoint[i+1].pValue - tabrow->prCalibPoint[i].pValue ;
+x = tabrow->prCalibPoint[i+1].pAdcValue - tabrow->prCalibPoint[i].pAdcValue;
+if(x != 0){
+xin->pValue = xin->pValue + (y/x)*(xin->pAdcValue - tabrow->prCalibPoint[i].pAdcValue);
+}
+if(xout){
+xout->pValue = xin->pValue;
+xout->pAdcValue = xin->pAdcValue;
+xout->tAdcValue = tabrow->prCalibPoint[0].tAdcValue;
+}
+return i;
+}
+
+
+
+
+uint8_t m_interp1_cal_p_t(st_prData* tmpx,st_prData* xin,uint8_t tmpxLen)
+{
+uint8_t i;
+int32_t x,y;
+for(i=0;i<tmpxLen-1;i++){
+if(tmpx[i].tAdcValue < tmpx[i+1].tAdcValue){
+if(xin->tAdcValue < tmpx[i+1].tAdcValue)break;
+}else{
+if(xin->tAdcValue >= tmpx[i+1].tAdcValue)break;
+}
+}
+xin->pValue=tmpx[i].pValue;
+y=tmpx[i+1].pValue-tmpx[i].pValue;
+x=tmpx[i+1].tAdcValue-tmpx[i].tAdcValue;
+if(x!=0){
+xin->pValue = xin->pValue + (y/x)*(xin->tAdcValue - tmpx[i].tAdcValue);
+}
+return i;
+}
+
+
+
+uint8_t cal_diff_press(st_prData* xin)
+{
+
+st_prData tmpx[3];
+uint8_t i=0;
+st_prCalibRowDef* tabrow;
+for(i=0;i<diff_prCalibTabDef.rowCount;i++){
+tabrow = &(diff_prCalibTabDef.prCalibRow[i]);
+m_interp1_cal_p_v(tabrow,xin,&tmpx[i]);
+}
+m_interp1_cal_p_t(&tmpx,xin,i);
+return i;
+}
+
+
+
+uint8_t cal_press(st_prData* xin)
+{
+uint8_t ret;
+st_prCalibRowDef* tabrow;
+tabrow= &prCalibTabDef.prCalibRow[0];
+ret=m_interp1_cal_p_v(tabrow,xin,(0));
+return ret;
+}
+
+# 265
+uint32_t cal_pt100_temperature(int16_t x,uint16_t l,uint16_t b)
+{
+int32_t t32,ret;
+t32=(int32_t)l*x-b;
+
+if(t32>200000)t32=200000;
+if(t32<-200000)t32=-200000;
+ret=t32;
+t32/=10;
+t32=t32*t32/10000;
+t32*=1484;
+t32/=10000;
+ret=ret+t32;
+return ret;
 }
 

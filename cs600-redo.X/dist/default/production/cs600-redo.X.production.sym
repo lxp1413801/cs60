@@ -410,11 +410,11 @@ __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
 lcd_set_com_seg@bits D4 0 BANK0 1
 lcd_set_com_seg@show CE 0 BANK0 1
-ui_disp_start_cs600@F7583 F0 0 BANK0 1
 _lcd_config 26FA 0 CODE 0
 __end_of_lcd_disp_chr_loc_2 1778 0 CODE 0
 __end_of_ads1115_read_conversion 2240 0 CODE 0
 ___int32_2_mflot32 8CC 0 CODE 0
+ui_disp_start_cs600@F7584 F0 0 BANK0 1
 _ALRMCFGbits F5B 0 ABS 0
 __end_of_rtc_get 234C 0 CODE 0
 _lcd_disp_chr_loc_0 1818 0 CODE 0
@@ -822,6 +822,7 @@ __ptext28 1FE6 0 CODE 0
 __ptext47 1D22 0 CODE 0
 __ptext66 2482 0 CODE 0
 __ptext85 28E2 0 CODE 0
+___int32_2_mflot32@F7570 87 0 BANK0 1
 __size_of_lcd_bl_init 0 0 ABS 0
 __CFG_WDTEN$OFF 0 0 ABS 0
 __Htext67 0 0 ABS 0
@@ -886,13 +887,12 @@ __ptext79 21AA 0 CODE 0
 _p_prEepromObj 14 0 COMRAM 1
 key_process@key EF 0 BANK0 1
 __ptext89 0 0 CODE 0
-___int32_2_mflot32@F7569 87 0 BANK0 1
 __size_of_key_process_set_down_long 0 0 ABS 0
 ___lldiv@divisor C9 0 BANK0 1
-___mflot32_2_int32@F7574 83 0 BANK0 1
 __size_of_sys_ticker_irq_hook 0 0 ABS 0
 __size_of___lldiv 0 0 ABS 0
 ___awdiv@divisor C7 0 BANK0 1
+___mflot32_2_int32@F7575 83 0 BANK0 1
 ___lwdiv@divisor CA 0 BANK0 1
 _globleBuffer0 300 0 BANK3 1
 __end_of_ui_disp_start_cs600 1956 0 CODE 0
@@ -1014,66 +1014,8 @@ bssBANK1 100 1A3 BANK1 100 1
 bssBANK2 200 2A1 BANK2 200 1
 %locals
 dist/default/production\cs600-redo.X.production.obj
-<<<<<<< HEAD
 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
-C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.
-9621 1986 0 CODE 0
-9623 1986 0 CODE 0
-9626 1986 0 CODE 0
-9745 1986 0 CODE 0
-9746 1988 0 CODE 0
-9747 198A 0 CODE 0
-9748 198C 0 CODE 0
-9749 198E 0 CODE 0
-9750 1990 0 CODE 0
-9751 1992 0 CODE 0
-9752 1996 0 CODE 0
-9753 199A 0 CODE 0
-9754 199A 0 CODE 0
-9755 199C 0 CODE 0
-9756 19A0 0 CODE 0
-9757 19A2 0 CODE 0
-9758 19A4 0 CODE 0
-9762 19A6 0 CODE 0
-9763 19AA 0 CODE 0
-9764 19AE 0 CODE 0
-9765 19AE 0 CODE 0
-9766 19B0 0 CODE 0
-9767 19B2 0 CODE 0
-9768 19B4 0 CODE 0
-9769 19B6 0 CODE 0
-9770 19B8 0 CODE 0
-9773 19BA 0 CODE 0
-9774 19BE 0 CODE 0
-9775 19C2 0 CODE 0
-9776 19C2 0 CODE 0
-9777 19C4 0 CODE 0
-9778 19C6 0 CODE 0
-9779 19C8 0 CODE 0
-9780 19CA 0 CODE 0
-9781 19CC 0 CODE 0
-9784 19CE 0 CODE 0
-9785 19D2 0 CODE 0
-9786 19D4 0 CODE 0
-9787 19D4 0 CODE 0
-9788 19D6 0 CODE 0
-9789 19D8 0 CODE 0
-9792 19DA 0 CODE 0
-9793 19DE 0 CODE 0
-9794 19E0 0 CODE 0
-9795 19E0 0 CODE 0
-9796 19E2 0 CODE 0
-9797 19E4 0 CODE 0
-9803 19E6 0 CODE 0
-9805 19E6 0 CODE 0
-9806 19E8 0 CODE 0
-9808 19EA 0 CODE 0
-9809 19EC 0 CODE 0
-9810 19EE 0 CODE 0
-9811 19F0 0 CODE 0
-=======
-C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
-C:\Users\ADMINI~1\AppData\Local\Temp\s14sc.
+C:\Users\ADMINI~1\AppData\Local\Temp\s42s.
 9625 19EE 0 CODE 0
 9627 19EE 0 CODE 0
 9630 19EE 0 CODE 0
@@ -1140,7 +1082,6 @@ C:\Users\ADMINI~1\AppData\Local\Temp\s14sc.
 9847 1A6C 0 CODE 0
 9848 1A6E 0 CODE 0
 9849 1A70 0 CODE 0
->>>>>>> 9f9d641371eda9b409f1f7c16d32f9f59ca4aa7b
 src/app/main.c
 5 C88 0 CODE 0
 8 C88 0 CODE 0
@@ -1643,7 +1584,7 @@ src/depend/m_string.c
 268 878 0 CODE 0
 269 896 0 CODE 0
 270 8CA 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c
 8 1316 0 CODE 0
 13 1316 0 CODE 0
 14 131C 0 CODE 0
@@ -1664,7 +1605,7 @@ C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
 32 139A 0 CODE 0
 33 13A4 0 CODE 0
 34 13AE 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c
 8 E1A 0 CODE 0
 14 E1A 0 CODE 0
 15 E20 0 CODE 0
@@ -1770,13 +1711,13 @@ src/api/key_menu.c
 66 B7E 0 CODE 0
 67 BAA 0 CODE 0
 68 BBA 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c
 15 25CC 0 CODE 0
 37 25CC 0 CODE 0
 38 25DC 0 CODE 0
 39 25EA 0 CODE 0
 52 25F8 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c
 8 1F24 0 CODE 0
 13 1F24 0 CODE 0
 14 1F30 0 CODE 0
@@ -1791,7 +1732,7 @@ C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
 24 1F7C 0 CODE 0
 25 1F7C 0 CODE 0
 26 1F84 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c
 8 1AF6 0 CODE 0
 14 1AF6 0 CODE 0
 15 1B00 0 CODE 0
@@ -1875,7 +1816,7 @@ src/api/ui.c
 38 98C 0 CODE 0
 39 9B8 0 CODE 0
 40 9C0 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c
 8 F96 0 CODE 0
 14 F96 0 CODE 0
 15 FA8 0 CODE 0

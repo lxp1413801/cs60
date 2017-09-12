@@ -2,14 +2,10 @@ Microchip MPLAB XC8 Compiler V1.41 ()
 
 Linker command line:
 
--W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
+-W-3 --edf=C:\Program Files\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
   -h+dist/default/production\cs600-redo.X.production.sym \
   --cmf=dist/default/production\cs600-redo.X.production.cmf -z -Q18F86J93 \
-<<<<<<< HEAD
-  -oC:\Users\ADMINI~1\AppData\Local\Temp\s8hs.2 \
-=======
-  -oC:\Users\ADMINI~1\AppData\Local\Temp\s14sc.2 \
->>>>>>> 9f9d641371eda9b409f1f7c16d32f9f59ca4aa7b
+  -oC:\Users\ADMINI~1\AppData\Local\Temp\s42s.2 \
   -Mdist/default/production/cs600-redo.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0500h-0f53h -pstack=STACK -ACODE=00h-0FFF7h \
   -ACONST=00h-0FFF7h -ASMALLCONST=01000h-010FFhx239,0FF00h-0FFF7h \
@@ -29,11 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-<<<<<<< HEAD
-  C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj \
-=======
-  C:\Users\ADMINI~1\AppData\Local\Temp\s14sc.obj \
->>>>>>> 9f9d641371eda9b409f1f7c16d32f9f59ca4aa7b
+  C:\Users\ADMINI~1\AppData\Local\Temp\s42s.obj \
   dist/default/production\cs600-redo.X.production.obj 
 
 Object code version is 3.11
@@ -46,11 +38,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-<<<<<<< HEAD
-C:\Users\ADMINI~1\AppData\Local\Temp\s8hs.obj
-=======
-C:\Users\ADMINI~1\AppData\Local\Temp\s14sc.obj
->>>>>>> 9f9d641371eda9b409f1f7c16d32f9f59ca4aa7b
+C:\Users\ADMINI~1\AppData\Local\Temp\s42s.obj
                 init                                 DC       DC        4        C       0
                 reset_vec                             0        0        4        0       0
                 config                             FFF8     FFF8        6     FFF8       0
@@ -832,7 +820,7 @@ ___exp_10                            text56        01F86
 ___exp_10@n                          cstackBANK0   000C7
 ___extmem_base                       (abs)         20000
 ___int32_2_mflot32                   text62        008CC
-___int32_2_mflot32@F7569             bssBANK0      00087
+___int32_2_mflot32@F7570             bssBANK0      00087
 ___int32_2_mflot32@mf                cstackBANK0   000DE
 ___int32_2_mflot32@t32               cstackBANK0   000DA
 ___int32_2_mflot32@x                 cstackBANK0   000D2
@@ -852,7 +840,7 @@ ___lwmod                             text54        01F24
 ___lwmod@counter                     cstackBANK0   000D3
 ___lwmod@dividend                    cstackBANK0   000CF
 ___lwmod@divisor                     cstackBANK0   000D1
-___mflot32_2_int32@F7574             bssBANK0      00083
+___mflot32_2_int32@F7575             bssBANK0      00083
 ___param_bank                        (abs)         00000
 ___rparam_used                       (abs)         00001
 ___sp                                stack         00000
@@ -1379,7 +1367,7 @@ ui_disp_adj_xfixed_pt@str            cstackBANK0   000DC
 ui_disp_adj_xfixed_pt@x              cstackBANK0   000DE
 ui_disp_rtc_mm_ss@buf                cstackBANK0   000DC
 ui_disp_rtc_mm_ss@t8                 cstackBANK0   000E6
-ui_disp_start_cs600@F7583            dataBANK0     000F0
+ui_disp_start_cs600@F7584            dataBANK0     000F0
 ui_disp_start_cs600@buf              cstackBANK0   000DC
 ui_disp_start_cs600@dly              cstackBANK0   000E2
 ui_disp_start_cs600@t8               cstackBANK0   000E3
@@ -1395,7 +1383,7 @@ FUNCTION INFORMATION:
  Auto vars:     Size  Location     Type
   t16             2    0[BANK1 ] unsigned int 
  Return value:  Size  Location     Type
-                  2  359[None  ] int 
+                  2  396[None  ] int 
  Registers used:
 		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclath, tosl, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
  Tracked objects:
@@ -2838,7 +2826,7 @@ Total ram usage:        4 bytes
 
  *************** function ___awmod *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c"
  Parameters:    Size  Location     Type
   dividend        2    0[BANK0 ] int 
   divisor         2    2[BANK0 ] int 
@@ -2870,7 +2858,7 @@ Total ram usage:        6 bytes
 
  *************** function ___awdiv *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c"
  Parameters:    Size  Location     Type
   dividend        2    0[BANK0 ] int 
   divisor         2    2[BANK0 ] int 
@@ -3132,7 +3120,7 @@ Total ram usage:        7 bytes
 
  *************** function ___wmul *****************
  Defined at:
-		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c"
+		line 15 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c"
  Parameters:    Size  Location     Type
   multiplier      2    3[BANK0 ] unsigned int 
   multiplicand    2    5[BANK0 ] unsigned int 
@@ -3165,7 +3153,7 @@ Total ram usage:        6 bytes
 
  *************** function ___lwmod *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c"
  Parameters:    Size  Location     Type
   dividend        2   10[BANK0 ] unsigned int 
   divisor         2   12[BANK0 ] unsigned int 
@@ -3196,7 +3184,7 @@ Total ram usage:        5 bytes
 
  *************** function ___lwdiv *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c"
  Parameters:    Size  Location     Type
   dividend        2    3[BANK0 ] unsigned int 
   divisor         2    5[BANK0 ] unsigned int 
@@ -3445,7 +3433,7 @@ Total ram usage:       16 bytes
 
  *************** function ___lldiv *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c"
  Parameters:    Size  Location     Type
   dividend        4    0[BANK0 ] unsigned long 
   divisor         4    4[BANK0 ] unsigned long 
@@ -4287,16 +4275,6 @@ Total ram usage:        0 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
-		___lwdiv       		CODE           	1AF6	0000	121
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c estimated size: 121
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
-		___awdiv       		CODE           	0E1A	0000	191
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c estimated size: 191
-
 src/soc/rtc.c
 		_rtc_init      		CODE           	238E	0000	63
 		_rtcc_reg_wr_disable		CODE           	28D0	0000	13
@@ -4318,16 +4296,6 @@ src/driver/i2c.c
 
 src/driver/i2c.c estimated size: 559
 
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c
-		___lldiv       		CODE           	0F96	0000	189
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c estimated size: 189
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
-		___wmul        		CODE           	25CC	0000	55
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c estimated size: 55
-
 src/driver/key.c
 		_key_polling   		CODE           	20A0	0000	93
 
@@ -4338,6 +4306,16 @@ src/soc/clock.c
 		_delay_ms      		CODE           	27AA	0000	39
 
 src/soc/clock.c estimated size: 96
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c
+		___lwmod       		CODE           	1F24	0000	99
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c estimated size: 99
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c
+		___awmod       		CODE           	1316	0000	163
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c estimated size: 163
 
 src/soc/soc.c
 		_soc_init      		CODE           	2896	0000	17
@@ -4402,16 +4380,6 @@ shared
 
 shared estimated size: 965
 
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
-		___lwmod       		CODE           	1F24	0000	99
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c estimated size: 99
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
-		___awmod       		CODE           	1316	0000	163
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c estimated size: 163
-
 src/api/ui.c
 		_ui_disp_menu  		CODE           	27D0	0000	37
 		_ui_disp_adj_xfixed_pt		CODE           	110A	0000	183
@@ -4424,11 +4392,31 @@ src/api/ui.c
 
 src/api/ui.c estimated size: 1050
 
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c
+		___lwdiv       		CODE           	1AF6	0000	121
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c estimated size: 121
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c
+		___awdiv       		CODE           	0E1A	0000	191
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c estimated size: 191
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c
+		___wmul        		CODE           	25CC	0000	55
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c estimated size: 55
+
 src/driver/in_adc.c
 		_in_adc_start_and_read		CODE           	1BDC	0000	111
 		_in_adc_init   		CODE           	27F4	0000	37
 
 src/driver/in_adc.c estimated size: 148
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c
+		___lldiv       		CODE           	0F96	0000	189
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c estimated size: 189
 
 src/soc/int.c
 		_handler_interrupt_low		CODE           	0018	0000	197

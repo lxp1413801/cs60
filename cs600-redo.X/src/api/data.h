@@ -75,7 +75,7 @@ extern "C"{
 		int32_t	pValue;
 		int16_t	pAdcValue;
 		int16_t tAdcValue;		
-	}st_prCalibPointDef,prCalibPoint_t;
+	}st_prCalibPointDef,prCalibPoint_t,st_prData;
 	
 	typedef struct{
 		uint8_t pCount;	//有效点个数

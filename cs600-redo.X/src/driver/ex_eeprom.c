@@ -2,6 +2,7 @@
 #include "ex_eeprom.h"
 
 st_iicDeviceObj at24c02Ch0,at24c02Ch1;
+
 void at24c02_set_slave_addr(st_iicDeviceObj* pAt24c02,uint8_t slv)
 {
     if(!((void*)pAt24c02))return;

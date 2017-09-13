@@ -1,5 +1,7 @@
 #include "ads1115.h"
 st_ads1115ObjDef ads1115Chip0,ads1115Chip1;
+st_ads1115ObjDef* pAds1115DiffPrObj;
+st_ads1115ObjDef* pAds1115PrObj;
 void ads1115_init(st_ads1115ObjDef* pAds1115,uint8_t slvaddr)
 {
 	pAds1115->chip=ADS1115;
@@ -103,13 +105,18 @@ void ads1115_config(
 	pAds1115->config.bits.COMP_QUE=COMP_QUEUE_DISABLE;
 }
 
-
+/*
+st_ads1115ObjDef* pAds1115DiffPrObj;
+st_ads1115ObjDef* pAds1115PrObj;
+*/
 void ads1115_init_all_chip(void)
 {
 	//chip0 addr connect to gnd,addr=1001000
-	ads1115_init(&ads1115Chip0,ADS1x1x_I2C_ADDRESS_ADDR_TO_GND);
+	pAds1115PrObj= &ads1115Chip0;
+	ads1115_init(pAds1115PrObj,ADS1x1x_I2C_ADDRESS_ADDR_TO_GND);	//压力
 	//chip0 addr connect to vcc,addr=1001001
-	ads1115_init(&ads1115Chip1,ADS1x1x_I2C_ADDRESS_ADDR_TO_VCC);
+	pAds1115DiffPrObj=&ads1115Chip1;
+	ads1115_init(pAds1115DiffPrObj,ADS1x1x_I2C_ADDRESS_ADDR_TO_VCC);	//差压
 }
 
 void ads1115_start_conversion(st_ads1115ObjDef* pAds1115)

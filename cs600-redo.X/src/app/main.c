@@ -36,6 +36,7 @@ int main(void)
         }
         if(glbEvent & flg_EVENT_TICKER){
 			glbEvent &= ~flg_EVENT_TICKER;
+			
 			__nop();
         }
 		keyValue=key_polling();

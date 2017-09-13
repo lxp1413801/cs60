@@ -8,6 +8,7 @@ extern "C"{
 	#include "ui.h"
 	#include "data.h"
 	#include "key_menu.h"
+	#include "sample.h"
 	
 #ifdef __cplusplus
 }

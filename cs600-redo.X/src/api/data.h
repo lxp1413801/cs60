@@ -90,11 +90,33 @@ extern "C"{
 		//uint8_t reverse1[2];
 		uint16_t crc;		
 	}st_prCalibTabDef,prCalibTab_t;	
+	
 	//
 	extern st_prCalibTabDef diff_prCalibTabDef;
 	extern st_prCalibTabDef prCalibTabDef;
 	//
-	
+	//declare variables for adc
+	extern volatile int16_t 	adc_diffPr;			//
+	extern volatile int16_t		adc_diffBrg;		//
+	extern volatile int16_t		adc_diffVcc;		//
+	extern volatile int16_t		adc_diffGnd;		//
+
+	extern volatile int16_t		adc_exPt100;		//
+	extern volatile int16_t		adc_exPt100Line;	//
+	extern volatile int16_t		adc_Pr;
+
+	extern volatile int16_t		adc_iPrEx0;
+	extern volatile int16_t		adc_iPrEx1;
+
+	extern volatile int16_t		adc_ibat;
+	extern volatile int16_t		adc_iRef;
+	//declare variables for 	diff pressure;
+	extern volatile int32_t		x_DiffPressure;
+	extern volatile int32_t		x_Hight;
+	extern volatile int32_t		x_Weight;
+
+	extern volatile int32_t		x_Pressure;
+	extern volatile int32_t		x_Pemperature;
 	//fk 
 	extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 

@@ -137,6 +137,8 @@ extern "C"{
 	}st_ads1115ObjDef;
 	
 	extern st_ads1115ObjDef ads1115Chip0,ads1115Chip1;
+	extern st_ads1115ObjDef* pAds1115DiffPrObj;
+	extern st_ads1115ObjDef* pAds1115PrObj;
 	extern void ads1115_init(st_ads1115ObjDef* pAds1115,uint8_t slvaddr);
 	extern void ads1115_init_all_chip(void);
 	extern void ads1115_start_conversion(st_ads1115ObjDef* pAds1115);

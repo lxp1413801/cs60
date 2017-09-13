@@ -11,6 +11,7 @@ volatile uint32_t glTicker=0x00ul;
 volatile uint16_t	userTicker_ms=0x00;
 uint16_t dlyTicker=0;
 bool dlyTickerEn=false;
+
 void sys_ticker_start(void)
 {
 	T2CON=0x7f;

@@ -117,6 +117,8 @@ extern "C"{
 
 	extern volatile int32_t		x_Pressure;
 	extern volatile int32_t		x_Pemperature;
+	
+	extern st_prData	x_prDiffData;
 	//fk 
 	extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 

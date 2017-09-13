@@ -19,7 +19,7 @@
 	extern uint8_t sample_low(void);
 	
 	extern void hook_sample_fast_timer(void);
-	extern 
+	//extern 
 
 
 #ifdef __cplusplus

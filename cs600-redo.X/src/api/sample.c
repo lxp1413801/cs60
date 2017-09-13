@@ -10,6 +10,12 @@ uint8_t	diffSampCh=0;
 
 uint8_t diff_pr_sample_fliter(void)
 {
+	int16_t max,min;
+	uint8_t i,loop,maxLoc,minLoc;
+	int32_t t32=0;
+	int16_t t16;
+	for()
+	
 	
 }
 

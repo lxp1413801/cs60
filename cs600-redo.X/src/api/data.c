@@ -87,7 +87,7 @@ for x=0:0.01:1.0;
     end
 end  
 */
-cost float hKel[]={
+const float hKel[]={
 	0.0000,0.0003,0.0012,0.0026,0.0047,0.0073,0.0104,0.0140,0.0182,0.0228,
 	0.0280,0.0336,0.0397,0.0463,0.0533,0.0607,0.0686,0.0769,0.0855,0.0946,
 	0.1040,0.1138,0.1239,0.1344,0.1452,0.1563,0.1676,0.1793,0.1913,0.2035,
@@ -99,7 +99,7 @@ cost float hKel[]={
 	0.8960,0.9054,0.9145,0.9231,0.9314,0.9392,0.9467,0.9537,0.9603,0.9664,
 	0.9720,0.9772,0.9818,0.9860,0.9896,0.9928,0.9953,0.9974,0.9988,0.9997,
 	1.0000,  
-}
+};
 
 
 const st_sysDataDef defultSystemData={
@@ -328,7 +328,7 @@ uint8_t cal_diff_press(st_prData* xin)
         tabrow = &(diff_prCalibTabDef.prCalibRow[i]);
         m_interp1_cal_p_v(tabrow,xin,&tmpx[i]);
     }
-    m_interp1_cal_p_t(&tmpx,xin,i);
+    m_interp1_cal_p_t(&tmpx[0],xin,i);
 	return i;
 }
 

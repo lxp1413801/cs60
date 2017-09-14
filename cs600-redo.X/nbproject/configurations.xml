@@ -9,6 +9,7 @@
           <itemPath>src/api/data.c</itemPath>
           <itemPath>src/api/key_menu.c</itemPath>
           <itemPath>src/api/ui.c</itemPath>
+          <itemPath>src/api/sample.c</itemPath>
         </logicalFolder>
         <logicalFolder name="app" displayName="app" projectFiles="true">
           <itemPath>src/app/event.c</itemPath>

@@ -33,6 +33,7 @@ int main(void)
 			__nop();
 			ui_disp_rtc_mm_ss();
 			__nop();
+			
         }
         if(glbEvent & flg_EVENT_TICKER){
 			glbEvent &= ~flg_EVENT_TICKER;

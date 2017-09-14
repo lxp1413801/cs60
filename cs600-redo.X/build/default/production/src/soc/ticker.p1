@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"12866 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"12866 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [v _T2CON `Vuc ~T0 @X0 0 e@4042 ]
 "12936
 [v _PR2 `Vuc ~T0 @X0 0 e@4043 ]
@@ -36,7 +36,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S289 . . . ]
 "7742
 [v _PIE1bits `VS289 ~T0 @X0 0 e@3997 ]
-"43 C:\Program Files\Microchip\xc8\v1.41\include\pic18.h
+"43 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
 [; ;stdint.h: 13: typedef signed char int8_t;
@@ -72,7 +72,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {
@@ -6036,152 +6036,152 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ticker.h: 17: extern volatile uint32_t glTicker;
 [; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
 [; ;ticker.h: 20: void ticker_dly(uint16_t ms);
-"10 src/soc/ticker.c
+"11 src/soc/ticker.c
 [v _glTicker `Vul ~T0 @X0 1 e ]
 [i _glTicker
 -> 0 `ul
 ]
-[; ;ticker.c: 10: volatile uint32_t glTicker=0x00ul;
-"11
+[; ;ticker.c: 11: volatile uint32_t glTicker=0x00ul;
+"12
 [v _userTicker_ms `Vui ~T0 @X0 1 e ]
 [i _userTicker_ms
 -> -> 0 `i `ui
 ]
-[; ;ticker.c: 11: volatile uint16_t userTicker_ms=0x00;
-"12
+[; ;ticker.c: 12: volatile uint16_t userTicker_ms=0x00;
+"13
 [v _dlyTicker `ui ~T0 @X0 1 e ]
 [i _dlyTicker
 -> -> 0 `i `ui
 ]
-[; ;ticker.c: 12: uint16_t dlyTicker=0;
-"13
+[; ;ticker.c: 13: uint16_t dlyTicker=0;
+"14
 [v _dlyTickerEn `uc ~T0 @X0 1 e ]
 [i _dlyTickerEn
 -> -> 0 `i `uc
 ]
-[; ;ticker.c: 13: bool dlyTickerEn=0;
-"14
+[; ;ticker.c: 14: bool dlyTickerEn=0;
+"16
 [v _sys_ticker_start `(v ~T0 @X0 1 ef ]
-"15
+"17
 {
-[; ;ticker.c: 14: void sys_ticker_start(void)
-[; ;ticker.c: 15: {
+[; ;ticker.c: 16: void sys_ticker_start(void)
+[; ;ticker.c: 17: {
 [e :U _sys_ticker_start ]
 [f ]
-[; ;ticker.c: 16: T2CON=0x7f;
-"16
+[; ;ticker.c: 18: T2CON=0x7f;
+"18
 [e = _T2CON -> -> 127 `i `uc ]
-[; ;ticker.c: 19: }
-"19
+[; ;ticker.c: 21: }
+"21
 [e :UE 643 ]
 }
-"20
+"22
 [v _sys_ticker_stop `(v ~T0 @X0 1 ef ]
-"21
+"23
 {
-[; ;ticker.c: 20: void sys_ticker_stop(void)
-[; ;ticker.c: 21: {
+[; ;ticker.c: 22: void sys_ticker_stop(void)
+[; ;ticker.c: 23: {
 [e :U _sys_ticker_stop ]
 [f ]
-[; ;ticker.c: 22: T2CON=0x00;
-"22
+[; ;ticker.c: 24: T2CON=0x00;
+"24
 [e = _T2CON -> -> 0 `i `uc ]
-[; ;ticker.c: 23: }
-"23
+[; ;ticker.c: 25: }
+"25
 [e :UE 644 ]
 }
-"25
+"27
 [v _sys_ticker_init `(v ~T0 @X0 1 ef ]
-"26
+"28
 {
-[; ;ticker.c: 25: void sys_ticker_init(void)
-[; ;ticker.c: 26: {
+[; ;ticker.c: 27: void sys_ticker_init(void)
+[; ;ticker.c: 28: {
 [e :U _sys_ticker_init ]
 [f ]
-[; ;ticker.c: 28: PR2=(uint8_t)((11059200/4/16/16/100));
-"28
-[e = _PR2 -> / / / / -> 11059200 `l -> -> 4 `i `l -> -> 16 `i `l -> -> 16 `i `l -> -> 100 `i `l `uc ]
-[; ;ticker.c: 29: IPR1bits.TMR2IP=1;
-"29
-[e = . . _IPR1bits 0 1 -> -> 1 `i `uc ]
-[; ;ticker.c: 30: PIR1bits.TMR2IF=0;
+[; ;ticker.c: 30: PR2=(uint8_t)((11059200/4/16/16/100));
 "30
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-[; ;ticker.c: 31: PIE1bits.TMR2IE=1;
+[e = _PR2 -> / / / / -> 11059200 `l -> -> 4 `i `l -> -> 16 `i `l -> -> 16 `i `l -> -> 100 `i `l `uc ]
+[; ;ticker.c: 31: IPR1bits.TMR2IP=1;
 "31
-[e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
-[; ;ticker.c: 33: T2CON=0x7f;
+[e = . . _IPR1bits 0 1 -> -> 1 `i `uc ]
+[; ;ticker.c: 32: PIR1bits.TMR2IF=0;
+"32
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+[; ;ticker.c: 33: PIE1bits.TMR2IE=1;
 "33
+[e = . . _PIE1bits 0 1 -> -> 1 `i `uc ]
+[; ;ticker.c: 35: T2CON=0x7f;
+"35
 [e = _T2CON -> -> 127 `i `uc ]
-[; ;ticker.c: 34: }
-"34
+[; ;ticker.c: 36: }
+"36
 [e :UE 645 ]
 }
-"36
+"38
 [v _sys_ticker_irq_hook `(v ~T0 @X0 1 ef ]
-"37
+"39
 {
-[; ;ticker.c: 36: void sys_ticker_irq_hook(void)
-[; ;ticker.c: 37: {
+[; ;ticker.c: 38: void sys_ticker_irq_hook(void)
+[; ;ticker.c: 39: {
 [e :U _sys_ticker_irq_hook ]
 [f ]
-[; ;ticker.c: 38: if(dlyTickerEn){
-"38
+[; ;ticker.c: 40: if(dlyTickerEn){
+"40
 [e $ ! != -> _dlyTickerEn `i -> -> -> 0 `i `uc `i 647  ]
 {
-[; ;ticker.c: 39: dlyTicker+=10;
-"39
+[; ;ticker.c: 41: dlyTicker+=10;
+"41
 [e =+ _dlyTicker -> -> 10 `i `ui ]
-"40
+"42
 }
 [e :U 647 ]
-[; ;ticker.c: 40: }
-[; ;ticker.c: 41: userTicker_ms+=10;
-"41
-[e =+ _userTicker_ms -> -> 10 `i `ui ]
 [; ;ticker.c: 42: }
-"42
+[; ;ticker.c: 43: userTicker_ms+=10;
+"43
+[e =+ _userTicker_ms -> -> 10 `i `ui ]
+[; ;ticker.c: 44: }
+"44
 [e :UE 646 ]
 }
-"44
-[v _ticker_dly `(v ~T0 @X0 1 ef1`ui ]
-"45
-{
-[; ;ticker.c: 44: void ticker_dly(uint16_t ms)
-[; ;ticker.c: 45: {
-[e :U _ticker_dly ]
-"44
-[v _ms `ui ~T0 @X0 1 r1 ]
-"45
-[f ]
-[; ;ticker.c: 46: dlyTicker=0;
 "46
-[e = _dlyTicker -> -> 0 `i `ui ]
-[; ;ticker.c: 47: dlyTickerEn=1;
+[v _ticker_dly `(v ~T0 @X0 1 ef1`ui ]
 "47
-[e = _dlyTickerEn -> -> 1 `i `uc ]
-[; ;ticker.c: 48: while(dlyTicker<ms){
+{
+[; ;ticker.c: 46: void ticker_dly(uint16_t ms)
+[; ;ticker.c: 47: {
+[e :U _ticker_dly ]
+"46
+[v _ms `ui ~T0 @X0 1 r1 ]
+"47
+[f ]
+[; ;ticker.c: 48: dlyTicker=0;
 "48
+[e = _dlyTicker -> -> 0 `i `ui ]
+[; ;ticker.c: 49: dlyTickerEn=1;
+"49
+[e = _dlyTickerEn -> -> 1 `i `uc ]
+[; ;ticker.c: 50: while(dlyTicker<ms){
+"50
 [e $U 649  ]
 [e :U 650 ]
 {
-[; ;ticker.c: 49: __nop();
-"49
+[; ;ticker.c: 51: __nop();
+"51
 [e ( ___nop ..  ]
-"50
+"52
 }
 [e :U 649 ]
-"48
+"50
 [e $ < _dlyTicker _ms 650  ]
 [e :U 651 ]
-[; ;ticker.c: 50: }
-[; ;ticker.c: 51: dlyTickerEn=0;
-"51
-[e = _dlyTickerEn -> -> 0 `i `uc ]
-[; ;ticker.c: 52: dlyTicker=0;
-"52
-[e = _dlyTicker -> -> 0 `i `ui ]
-[; ;ticker.c: 53: }
+[; ;ticker.c: 52: }
+[; ;ticker.c: 53: dlyTickerEn=0;
 "53
+[e = _dlyTickerEn -> -> 0 `i `uc ]
+[; ;ticker.c: 54: dlyTicker=0;
+"54
+[e = _dlyTicker -> -> 0 `i `ui ]
+[; ;ticker.c: 55: }
+"55
 [e :UE 648 ]
 }

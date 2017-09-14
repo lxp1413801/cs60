@@ -32,4 +32,5 @@ src/api/../includes/../soc/int.h  \
 src/api/../includes/../depend/depend.h  \
 src/api/../includes/../driver/m_gpio.h  \
 src/api/../includes/../depend/m_string.h  \
+src/api/../includes/../api/sample.h  \
 src/api/../includes/../api/api.h 

@@ -4,15 +4,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "51 src/api/../includes/../driver/key.h
 [v _key_polling `(uc ~T0 @X0 0 ef ]
 "82 src/api/key_menu.c
-[c E7481 0 1 .. ]
-[n E7481 . HOTIZONTAL VERTICAL  ]
-[c E7486 0 1 .. ]
-[n E7486 . HIGHT PRESSURE  ]
+[c E7483 0 1 .. ]
+[n E7483 . HOTIZONTAL VERTICAL  ]
+[c E7488 0 1 .. ]
+[n E7488 . HIGHT PRESSURE  ]
 "31 src/api/../includes/../api/data.h
-[s S657 `ul 1 `ul 1 `uc 1 `E7486 1 `uc -> 2 `i ]
+[s S657 `ul 1 `ul 1 `uc 1 `E7488 1 `uc -> 2 `i ]
 [n S657 . warnValue retDiff upLimit type . ]
 "39
-[s S658 `ul 1 `E7481 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `S657 -> 4 `i `S657 1 `uc -> 4 `i `ul -> 2 `i `ul -> 2 `i `ul -> 2 `i `ul -> 2 `i `ul 1 `ul 1 `ul 1 `ul 1 `ui 1 ]
+[s S658 `ul 1 `E7483 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `S657 -> 4 `i `S657 1 `uc -> 4 `i `ul -> 2 `i `ul -> 2 `i `ul -> 2 `i `ul -> 2 `i `ul 1 `ul 1 `ul 1 `ul 1 `ui 1 ]
 [n S658 . id pos maxValueForlevelBar density h d baseZero diffPressureWarnSet pressureWarnSet simplePloyFactor ex_pressZero ex_pressLine ex_pressCurrentLoopLow ex_pressCurrentLoopUpper ex_TempZero ex_TempLine ex_TempCurrentLoopLow ex_TempCurrentLoopUpper crc ]
 "28 src/api/../includes/../api/ui.h
 [v ___int32_2_mflot32 `(l ~T0 @X0 0 ef1`l ]
@@ -22,7 +22,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {
@@ -6241,12 +6241,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ads1115.h: 136: uint8_t (*iic_received_byte_if_ack)(uint8_t ack);
 [; ;ads1115.h: 137: }st_ads1115ObjDef;
 [; ;ads1115.h: 139: extern st_ads1115ObjDef ads1115Chip0,ads1115Chip1;
-[; ;ads1115.h: 140: extern void ads1115_init(st_ads1115ObjDef* pAds1115,uint8_t slvaddr);
-[; ;ads1115.h: 141: extern void ads1115_init_all_chip(void);
-[; ;ads1115.h: 142: extern void ads1115_start_conversion(st_ads1115ObjDef* pAds1115);
-[; ;ads1115.h: 143: extern uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115);
-[; ;ads1115.h: 144: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
-[; ;ads1115.h: 145: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
+[; ;ads1115.h: 140: extern st_ads1115ObjDef* pAds1115DiffPrObj;
+[; ;ads1115.h: 141: extern st_ads1115ObjDef* pAds1115PrObj;
+[; ;ads1115.h: 142: extern void ads1115_init(st_ads1115ObjDef* pAds1115,uint8_t slvaddr);
+[; ;ads1115.h: 143: extern void ads1115_init_all_chip(void);
+[; ;ads1115.h: 144: extern void ads1115_start_conversion(st_ads1115ObjDef* pAds1115);
+[; ;ads1115.h: 145: extern uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115);
+[; ;ads1115.h: 146: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
+[; ;ads1115.h: 147: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
 [; ;ex_eeprom.h: 13: extern st_iicDeviceObj at24c02Ch0,at24c02Ch1;
 [; ;ex_eeprom.h: 14: extern void at24c02_init(st_iicDeviceObj* pAt24c02, uint8_t slv);
 [; ;ex_eeprom.h: 15: extern void at24c02_init_all_chip(void);
@@ -6375,9 +6377,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 89: st_prCalibRowDef prCalibRow[3];
 [; ;data.h: 91: uint16_t crc;
 [; ;data.h: 92: }st_prCalibTabDef,prCalibTab_t;
-[; ;data.h: 94: extern st_prCalibTabDef diff_prCalibTabDef;
-[; ;data.h: 95: extern st_prCalibTabDef prCalibTabDef;
-[; ;data.h: 99: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 95: extern st_prCalibTabDef diff_prCalibTabDef;
+[; ;data.h: 96: extern st_prCalibTabDef prCalibTabDef;
+[; ;data.h: 99: extern volatile int16_t adc_diffPr;
+[; ;data.h: 100: extern volatile int16_t adc_diffBrg;
+[; ;data.h: 101: extern volatile int16_t adc_diffVcc;
+[; ;data.h: 102: extern volatile int16_t adc_diffGnd;
+[; ;data.h: 104: extern volatile int16_t adc_exPt100;
+[; ;data.h: 105: extern volatile int16_t adc_exPt100Line;
+[; ;data.h: 106: extern volatile int16_t adc_Pr;
+[; ;data.h: 108: extern volatile int16_t adc_iPrEx0;
+[; ;data.h: 109: extern volatile int16_t adc_iPrEx1;
+[; ;data.h: 111: extern volatile int16_t adc_ibat;
+[; ;data.h: 112: extern volatile int16_t adc_iRef;
+[; ;data.h: 114: extern volatile int32_t x_DiffPressure;
+[; ;data.h: 115: extern volatile int32_t x_Hight;
+[; ;data.h: 116: extern volatile int32_t x_Weight;
+[; ;data.h: 118: extern volatile int32_t x_Pressure;
+[; ;data.h: 119: extern volatile int32_t x_Pemperature;
+[; ;data.h: 121: extern st_prData x_prDiffData;
+[; ;data.h: 123: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 [; ;key_menu.h: 66: extern volatile uint8_t menu;
 [; ;key_menu.h: 67: extern volatile uint8_t keyValue;
 [; ;key_menu.h: 68: extern volatile uint16_t passWord;
@@ -6385,6 +6404,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;key_menu.h: 71: extern volatile uint8_t calibRow;
 [; ;key_menu.h: 72: extern volatile uint8_t calibCol;
 [; ;key_menu.h: 74: extern void key_process(void);
+[; ;sample.h: 13: extern volatile uint16_t fastSampTimer;
+[; ;sample.h: 14: extern volatile uint16_t commonSampTimer;
+[; ;sample.h: 15: extern volatile uint16_t lowSampTimer;
+[; ;sample.h: 17: extern uint8_t sample_fast(void);
+[; ;sample.h: 18: extern uint8_t sample_common(void);
+[; ;sample.h: 19: extern uint8_t sample_low(void);
+[; ;sample.h: 21: extern void hook_sample_fast_timer(void);
 [; ;event.h: 9: extern volatile uint8_t glbEvent;
 "5 src/api/key_menu.c
 [v _passWord `Vui ~T0 @X0 1 e ]

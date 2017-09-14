@@ -10,9 +10,9 @@
 	#include <float.h>
 
 	#define DIFF_SAMPLE_FREQ	20
-	volatile extern uint16_t fastSampTimer;		//快速采样定时器
-	volatile extern uint16_t commonSampTimer;	//普通速度采样定时器
-	volatile extern uint16_t lowSampTimer;		//慢速采样定时器
+	extern volatile  uint16_t fastSampTimer;		//快速采样定时器
+	extern volatile  uint16_t commonSampTimer;	//普通速度采样定时器
+	extern volatile  uint16_t lowSampTimer;		//慢速采样定时器
 	
 	extern uint8_t sample_fast(void);	
 	extern uint8_t sample_common(void);

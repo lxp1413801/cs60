@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
 [t ~ __interrupt . k ]
 [t T46 __interrupt high_priority  ]
-"14357 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"14357 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [s S618 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S618 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
 "14367
@@ -29,10 +29,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S613 . . . . ]
 "14287
 [v _INTCON2bits `VS613 ~T0 @X0 0 e@4081 ]
-"43 C:\Program Files\Microchip\xc8\v1.41\include\pic18.h
+"43 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
-"7726 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"7726 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [s S290 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S290 . TMR1IE TMR2IE . SSPIE TX1IE RC1IE ADIE ]
 "7735
@@ -71,7 +71,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _glbEvent `Vuc ~T0 @X0 0 e ]
 "18 src/soc/ticker.h
 [v _sys_ticker_irq_hook `(v ~T0 @X0 0 ef ]
-"8101 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"8101 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [s S308 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S308 . RTCCIE CCP1IE CCP2IE CTMUIE TX2IE RC2IE LCDIE ]
 "8110
@@ -142,7 +142,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {

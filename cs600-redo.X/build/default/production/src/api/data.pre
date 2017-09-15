@@ -8643,7 +8643,12 @@ VERTICAL,
 
 }em_posture,posture_t;
 
+typedef enum{
+TEST_MODE=0,
+WORK_MODE,
+}st_deviceOpMode;
 
+extern volatile st_deviceOpMode dwm;
 
 typedef enum{
 HIGHT=0,
@@ -8766,8 +8771,14 @@ extern uint8_t sample_low(void);
 
 extern void hook_sample_fast_timer(void);
 
-# 9 "src/api/../includes/../app/event.h"
+# 10 "src/api/../includes/../app/event.h"
 extern volatile uint8_t glbEvent;
+extern volatile uint8_t glNoEventTimeOut;
+
+
+
+
+extern int8_t event_process(void);
 
 # 4 "src/api/data.c"
 uint8_t globleBuffer0[256]={0};
@@ -8806,7 +8817,9 @@ volatile int32_t x_Pemperature;
 
 st_prData x_prDiffData;
 
-# 58
+volatile st_deviceOpMode dwm=TEST_MODE;
+
+# 59
 const float hKcy[]={
 0.0000,0.0017,0.0048,0.0087,0.0134,0.0187,0.0245,0.0308,0.0375,0.0446,
 0.0520,0.0598,0.0680,0.0764,0.0851,0.0941,0.1033,0.1127,0.1224,0.1323,
@@ -8821,7 +8834,7 @@ const float hKcy[]={
 1.0000,
 };
 
-# 90
+# 91
 const float hKel[]={
 0.0000,0.0003,0.0012,0.0026,0.0047,0.0073,0.0104,0.0140,0.0182,0.0228,
 0.0280,0.0336,0.0397,0.0463,0.0533,0.0607,0.0686,0.0769,0.0855,0.0946,
@@ -8910,7 +8923,7 @@ stp->pValue=pp->pValue;
 stp->pAdcValue=pp->pAdcValue;
 stp->tAdcValue=pp->tAdcValue;
 
-# 187
+# 188
 }
 
 
@@ -8989,7 +9002,7 @@ ret=crc_verify(buf,t16);
 return ret;
 }
 
-# 270
+# 271
 uint8_t m_interp1_cal_p_v(st_prCalibRowDef* tabrow,st_prData* xin,st_prData* xout)
 {
 uint8_t i;
@@ -9066,7 +9079,7 @@ ret=m_interp1_cal_p_v(tabrow,xin,(0));
 return ret;
 }
 
-# 355
+# 356
 uint32_t cal_pt100_temperature(int16_t x,uint16_t l,uint16_t b)
 {
 int32_t t32,ret;

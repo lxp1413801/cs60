@@ -8643,7 +8643,12 @@ VERTICAL,
 
 }em_posture,posture_t;
 
+typedef enum{
+TEST_MODE=0,
+WORK_MODE,
+}st_deviceOpMode;
 
+extern volatile st_deviceOpMode dwm;
 
 typedef enum{
 HIGHT=0,
@@ -8766,8 +8771,14 @@ extern uint8_t sample_low(void);
 
 extern void hook_sample_fast_timer(void);
 
-# 9 "src/api/../includes/../app/event.h"
+# 10 "src/api/../includes/../app/event.h"
 extern volatile uint8_t glbEvent;
+extern volatile uint8_t glNoEventTimeOut;
+
+
+
+
+extern int8_t event_process(void);
 
 # 6 "src/api/ui.c"
 extern st_RtcDef glRtc;

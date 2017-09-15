@@ -16,39 +16,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _lcd_init `(v ~T0 @X0 0 ef ]
 "143 src/app/../includes/../driver/ads1115.h
 [v _ads1115_init_all_chip `(v ~T0 @X0 0 ef ]
-"16 src/app/main.c
-[c E7293 0 1 2 3 4 5 .. ]
-[n E7293 . ADS1013 ADS1014 ADS1015 ADS1113 ADS1114 ADS1115  ]
-"116 src/app/../includes/../driver/ads1115.h
-[s S649 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :3 `uc 1 :3 `uc 1 `ui 1 ]
-[n S649 . COMP_QUE COMP_LAT COMP_POL COMP_MODE DR MODE PGA MUX OS ]
-"113
-[u S648 `ui 1 `S649 1 ]
-[n S648 . data bits ]
-[v F7319 `(v ~T0 @X0 0 tf ]
-[v F7322 `(v ~T0 @X0 0 tf ]
-[v F7325 `(uc ~T0 @X0 0 tf1`uc ]
-[v F7328 `(uc ~T0 @X0 0 tf ]
-[v F7331 `(uc ~T0 @X0 0 tf1`uc ]
-"128
-[s S650 `E7293 1 `uc 1 `S648 1 `*F7319 1 `*F7322 1 `*F7325 1 `*F7328 1 `*F7331 1 ]
-[n S650 . chip slaveAddr config iic_start iic_stop iic_send_byte iic_waite_ack iic_received_byte_if_ack ]
-"144
-[v _ads1115_start_conversion `(v ~T0 @X0 0 ef1`*S650 ]
-"139
-[v _ads1115Chip0 `S650 ~T0 @X0 0 e ]
-"147
-[v _ads1115_read_reg `(ui ~T0 @X0 0 ef2`*S650`uc ]
-"139
-[v _ads1115Chip1 `S650 ~T0 @X0 0 e ]
-"20 src/app/../includes/../soc/ticker.h
-[v _ticker_dly `(v ~T0 @X0 0 ef1`ui ]
-"145 src/app/../includes/../driver/ads1115.h
-[v _ads1115_read_conversion `(ui ~T0 @X0 0 ef1`*S650 ]
 "18 src/app/../includes/../driver/in_adc.h
 [v _in_adc_init `(v ~T0 @X0 0 ef ]
-"19
-[v _in_adc_start_and_read `(ui ~T0 @X0 0 ef1`uc ]
 "35 src/app/../includes/../api/ui.h
 [v _ui_disp_start_cs600 `(v ~T0 @X0 0 ef1`uc ]
 "28 src/app/../includes/../driver/lcd.h
@@ -57,14 +26,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "6267
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"34 src/app/../includes/../api/ui.h
-[v _ui_disp_rtc_mm_ss `(v ~T0 @X0 0 ef ]
-"67 src/app/../includes/../api/key_menu.h
-[v _keyValue `Vuc ~T0 @X0 0 e ]
-"51 src/app/../includes/../driver/key.h
-[v _key_polling `(uc ~T0 @X0 0 ef ]
-"74 src/app/../includes/../api/key_menu.h
-[v _key_process `(v ~T0 @X0 0 ef ]
+"16 src/app/../includes/../app/event.h
+[v _event_process `(c ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6373,77 +6336,82 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 19: HOTIZONTAL=0,
 [; ;data.h: 20: VERTICAL,
 [; ;data.h: 22: }em_posture,posture_t;
-[; ;data.h: 26: typedef enum{
-[; ;data.h: 27: HIGHT=0,
-[; ;data.h: 28: PRESSURE,
-[; ;data.h: 29: }em_warnType,warnType_t;
-[; ;data.h: 31: typedef struct{
-[; ;data.h: 32: uint32_t warnValue;
-[; ;data.h: 33: uint32_t retDiff;
-[; ;data.h: 34: bool upLimit;
-[; ;data.h: 35: em_warnType type;
-[; ;data.h: 36: uint8_t[2];
-[; ;data.h: 37: }st_warnDef,warnDef_t;
-[; ;data.h: 39: typedef struct{
-[; ;data.h: 40: uint32_t id;
-[; ;data.h: 41: em_posture pos;
-[; ;data.h: 42: uint8_t maxValueForlevelBar;
-[; ;data.h: 44: uint16_t density;
-[; ;data.h: 46: int32_t h;
-[; ;data.h: 47: uint32_t d;
-[; ;data.h: 48: int32_t baseZero;
-[; ;data.h: 50: st_warnDef diffPressureWarnSet[4];
-[; ;data.h: 51: st_warnDef pressureWarnSet;
-[; ;data.h: 52: uint8_t simplePloyFactor[4];
-[; ;data.h: 54: uint32_t ex_pressZero[2];
-[; ;data.h: 55: uint32_t ex_pressLine[2];
-[; ;data.h: 56: uint32_t ex_pressCurrentLoopLow[2];
-[; ;data.h: 57: uint32_t ex_pressCurrentLoopUpper[2];
-[; ;data.h: 59: uint32_t ex_TempZero;
-[; ;data.h: 60: uint32_t ex_TempLine;
-[; ;data.h: 61: uint32_t ex_TempCurrentLoopLow;
-[; ;data.h: 62: uint32_t ex_TempCurrentLoopUpper;
-[; ;data.h: 64: uint16_t crc;
-[; ;data.h: 65: }st_sysDataDef,sysDataDef_t;
-[; ;data.h: 66: extern const st_sysDataDef defultSystemData;
-[; ;data.h: 68: extern uint8_t data_sys_init(void);
-[; ;data.h: 69: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
-[; ;data.h: 74: typedef struct{
-[; ;data.h: 75: int32_t pValue;
-[; ;data.h: 76: int16_t pAdcValue;
-[; ;data.h: 77: int16_t tAdcValue;
-[; ;data.h: 78: }st_prCalibPointDef,prCalibPoint_t,st_prData;
-[; ;data.h: 80: typedef struct{
-[; ;data.h: 81: uint8_t pCount;
-[; ;data.h: 82: uint8_t reverse0[3];
-[; ;data.h: 83: st_prCalibPointDef prCalibPoint[6];
-[; ;data.h: 84: }st_prCalibRowDef,prCalibRow_t;
-[; ;data.h: 86: typedef struct{
-[; ;data.h: 87: uint8_t rowCount;
-[; ;data.h: 88: uint8_t reverse0[3];
-[; ;data.h: 89: st_prCalibRowDef prCalibRow[3];
-[; ;data.h: 91: uint16_t crc;
-[; ;data.h: 92: }st_prCalibTabDef,prCalibTab_t;
-[; ;data.h: 95: extern st_prCalibTabDef diff_prCalibTabDef;
-[; ;data.h: 96: extern st_prCalibTabDef prCalibTabDef;
-[; ;data.h: 99: extern volatile int16_t adc_diffPr;
-[; ;data.h: 100: extern volatile int16_t adc_diffBrg;
-[; ;data.h: 101: extern volatile int16_t adc_diffVcc;
-[; ;data.h: 102: extern volatile int16_t adc_diffGnd;
-[; ;data.h: 104: extern volatile int16_t adc_exPt100;
-[; ;data.h: 105: extern volatile int16_t adc_exPt100Line;
-[; ;data.h: 106: extern volatile int16_t adc_Pr;
-[; ;data.h: 108: extern volatile int16_t adc_iPrEx0;
-[; ;data.h: 109: extern volatile int16_t adc_iPrEx1;
-[; ;data.h: 111: extern volatile int16_t adc_ibat;
-[; ;data.h: 112: extern volatile int16_t adc_iRef;
-[; ;data.h: 114: extern volatile int32_t x_DiffPressure;
-[; ;data.h: 115: extern volatile int32_t x_Hight;
-[; ;data.h: 116: extern volatile int32_t x_Weight;
-[; ;data.h: 118: extern volatile int32_t x_Pressure;
-[; ;data.h: 119: extern volatile int32_t x_Pemperature;
-[; ;data.h: 121: extern st_prData x_prDiffData;
-[; ;data.h: 123: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 24: typedef enum{
+[; ;data.h: 25: TEST_MODE=0,
+[; ;data.h: 26: WORK_MODE,
+[; ;data.h: 27: }st_deviceOpMode;
+[; ;data.h: 29: extern volatile st_deviceOpMode dwm;
+[; ;data.h: 31: typedef enum{
+[; ;data.h: 32: HIGHT=0,
+[; ;data.h: 33: PRESSURE,
+[; ;data.h: 34: }em_warnType,warnType_t;
+[; ;data.h: 36: typedef struct{
+[; ;data.h: 37: uint32_t warnValue;
+[; ;data.h: 38: uint32_t retDiff;
+[; ;data.h: 39: bool upLimit;
+[; ;data.h: 40: em_warnType type;
+[; ;data.h: 41: uint8_t[2];
+[; ;data.h: 42: }st_warnDef,warnDef_t;
+[; ;data.h: 44: typedef struct{
+[; ;data.h: 45: uint32_t id;
+[; ;data.h: 46: em_posture pos;
+[; ;data.h: 47: uint8_t maxValueForlevelBar;
+[; ;data.h: 49: uint16_t density;
+[; ;data.h: 51: int32_t h;
+[; ;data.h: 52: uint32_t d;
+[; ;data.h: 53: int32_t baseZero;
+[; ;data.h: 55: st_warnDef diffPressureWarnSet[4];
+[; ;data.h: 56: st_warnDef pressureWarnSet;
+[; ;data.h: 57: uint8_t simplePloyFactor[4];
+[; ;data.h: 59: uint32_t ex_pressZero[2];
+[; ;data.h: 60: uint32_t ex_pressLine[2];
+[; ;data.h: 61: uint32_t ex_pressCurrentLoopLow[2];
+[; ;data.h: 62: uint32_t ex_pressCurrentLoopUpper[2];
+[; ;data.h: 64: uint32_t ex_TempZero;
+[; ;data.h: 65: uint32_t ex_TempLine;
+[; ;data.h: 66: uint32_t ex_TempCurrentLoopLow;
+[; ;data.h: 67: uint32_t ex_TempCurrentLoopUpper;
+[; ;data.h: 69: uint16_t crc;
+[; ;data.h: 70: }st_sysDataDef,sysDataDef_t;
+[; ;data.h: 71: extern const st_sysDataDef defultSystemData;
+[; ;data.h: 73: extern uint8_t data_sys_init(void);
+[; ;data.h: 74: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+[; ;data.h: 79: typedef struct{
+[; ;data.h: 80: int32_t pValue;
+[; ;data.h: 81: int16_t pAdcValue;
+[; ;data.h: 82: int16_t tAdcValue;
+[; ;data.h: 83: }st_prCalibPointDef,prCalibPoint_t,st_prData;
+[; ;data.h: 85: typedef struct{
+[; ;data.h: 86: uint8_t pCount;
+[; ;data.h: 87: uint8_t reverse0[3];
+[; ;data.h: 88: st_prCalibPointDef prCalibPoint[6];
+[; ;data.h: 89: }st_prCalibRowDef,prCalibRow_t;
+[; ;data.h: 91: typedef struct{
+[; ;data.h: 92: uint8_t rowCount;
+[; ;data.h: 93: uint8_t reverse0[3];
+[; ;data.h: 94: st_prCalibRowDef prCalibRow[3];
+[; ;data.h: 96: uint16_t crc;
+[; ;data.h: 97: }st_prCalibTabDef,prCalibTab_t;
+[; ;data.h: 100: extern st_prCalibTabDef diff_prCalibTabDef;
+[; ;data.h: 101: extern st_prCalibTabDef prCalibTabDef;
+[; ;data.h: 104: extern volatile int16_t adc_diffPr;
+[; ;data.h: 105: extern volatile int16_t adc_diffBrg;
+[; ;data.h: 106: extern volatile int16_t adc_diffVcc;
+[; ;data.h: 107: extern volatile int16_t adc_diffGnd;
+[; ;data.h: 109: extern volatile int16_t adc_exPt100;
+[; ;data.h: 110: extern volatile int16_t adc_exPt100Line;
+[; ;data.h: 111: extern volatile int16_t adc_Pr;
+[; ;data.h: 113: extern volatile int16_t adc_iPrEx0;
+[; ;data.h: 114: extern volatile int16_t adc_iPrEx1;
+[; ;data.h: 116: extern volatile int16_t adc_ibat;
+[; ;data.h: 117: extern volatile int16_t adc_iRef;
+[; ;data.h: 119: extern volatile int32_t x_DiffPressure;
+[; ;data.h: 120: extern volatile int32_t x_Hight;
+[; ;data.h: 121: extern volatile int32_t x_Weight;
+[; ;data.h: 123: extern volatile int32_t x_Pressure;
+[; ;data.h: 124: extern volatile int32_t x_Pemperature;
+[; ;data.h: 126: extern st_prData x_prDiffData;
+[; ;data.h: 128: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 [; ;key_menu.h: 66: extern volatile uint8_t menu;
 [; ;key_menu.h: 67: extern volatile uint8_t keyValue;
 [; ;key_menu.h: 68: extern volatile uint16_t passWord;
@@ -6458,7 +6426,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.h: 18: extern uint8_t sample_common(void);
 [; ;sample.h: 19: extern uint8_t sample_low(void);
 [; ;sample.h: 21: extern void hook_sample_fast_timer(void);
-[; ;event.h: 9: extern volatile uint8_t glbEvent;
+[; ;event.h: 10: extern volatile uint8_t glbEvent;
+[; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
+[; ;event.h: 16: extern int8_t event_process(void);
 "3 src/app/main.c
 [v _glbEvent `Vuc ~T0 @X0 1 e ]
 [i _glbEvent
@@ -6491,32 +6461,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 14: ads1115_init_all_chip();
 "14
 [e ( _ads1115_init_all_chip ..  ]
-[; ;main.c: 16: ads1115_start_conversion(&ads1115Chip0);
-"16
-[e ( _ads1115_start_conversion (1 &U _ads1115Chip0 ]
-[; ;main.c: 17: t16=ads1115_read_reg(&ads1115Chip1,(0x01));
-"17
-[e = _t16 ( _ads1115_read_reg (2 , &U _ads1115Chip1 -> -> 1 `i `uc ]
-[; ;main.c: 18: ticker_dly(100);
-"18
-[e ( _ticker_dly (1 -> -> 100 `i `ui ]
-[; ;main.c: 19: t16=ads1115_read_conversion(&ads1115Chip0);
-"19
-[e = _t16 ( _ads1115_read_conversion (1 &U _ads1115Chip0 ]
-[; ;main.c: 21: in_adc_init();
-"21
+[; ;main.c: 15: in_adc_init();
+"15
 [e ( _in_adc_init ..  ]
-[; ;main.c: 22: t16=in_adc_start_and_read(3);
-"22
-[e = _t16 ( _in_adc_start_and_read (1 -> -> 3 `i `uc ]
-[; ;main.c: 23: ui_disp_start_cs600(10);
-"23
+[; ;main.c: 17: ui_disp_start_cs600(10);
+"17
 [e ( _ui_disp_start_cs600 (1 -> -> 10 `i `uc ]
-[; ;main.c: 25: lcd_disp_level(60);
-"25
+[; ;main.c: 19: lcd_disp_level(60);
+"19
 [e ( _lcd_disp_level (1 -> -> 60 `i `uc ]
-[; ;main.c: 27: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
-"27
+[; ;main.c: 21: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
+"21
 [e :U 665 ]
 {
 [e :U 668 ]
@@ -6531,63 +6486,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 670 ]
 }
 [e :U 664 ]
-[; ;main.c: 29: __nop();
-"29
+[; ;main.c: 22: __nop();
+"22
 [e ( ___nop ..  ]
-[; ;main.c: 30: while(1){
-"30
+[; ;main.c: 23: while(1){
+"23
 [e :U 673 ]
 {
-[; ;main.c: 31: if(glbEvent & (0x02)){
-"31
-[e $ ! != & -> _glbEvent `i -> 2 `i -> 0 `i 675  ]
-{
-[; ;main.c: 32: glbEvent &= ~(0x02);
-"32
-[e =& _glbEvent -> ~ -> 2 `i `uc ]
-[; ;main.c: 33: __nop();
-"33
-[e ( ___nop ..  ]
-[; ;main.c: 34: ui_disp_rtc_mm_ss();
-"34
-[e ( _ui_disp_rtc_mm_ss ..  ]
-[; ;main.c: 35: __nop();
-"35
-[e ( ___nop ..  ]
-"37
-}
-[e :U 675 ]
-[; ;main.c: 37: }
-[; ;main.c: 38: if(glbEvent & (0x01)){
-"38
-[e $ ! != & -> _glbEvent `i -> 1 `i -> 0 `i 676  ]
-{
-[; ;main.c: 39: glbEvent &= ~(0x01);
-"39
-[e =& _glbEvent -> ~ -> 1 `i `uc ]
-[; ;main.c: 41: __nop();
-"41
-[e ( ___nop ..  ]
-"42
-}
-[e :U 676 ]
-[; ;main.c: 42: }
-[; ;main.c: 43: keyValue=key_polling();
-"43
-[e = _keyValue ( _key_polling ..  ]
-[; ;main.c: 44: if(keyValue!=(0x0))key_process();
-"44
-[e $ ! != -> _keyValue `i -> 0 `i 677  ]
-[e ( _key_process ..  ]
-[e :U 677 ]
-"46
+[; ;main.c: 24: event_process();
+"24
+[e ( _event_process ..  ]
+"26
 }
 [e :U 672 ]
-"30
+"23
 [e $U 673  ]
 [e :U 674 ]
-[; ;main.c: 46: }
-[; ;main.c: 47: }
-"47
+[; ;main.c: 26: }
+[; ;main.c: 27: }
+"27
 [e :UE 662 ]
 }

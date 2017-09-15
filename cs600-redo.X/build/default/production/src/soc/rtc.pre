@@ -8208,8 +8208,14 @@ extern void rtc_stop(void);
 
 extern void rtc_alrm_irq_hook(void);
 
-# 9 "src/soc/../app/event.h"
+# 10 "src/soc/../app/event.h"
 extern volatile uint8_t glbEvent;
+extern volatile uint8_t glNoEventTimeOut;
+
+
+
+
+extern int8_t event_process(void);
 
 # 6 "src/soc/rtc.c"
 st_RtcDef glRtc;

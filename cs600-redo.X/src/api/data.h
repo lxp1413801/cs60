@@ -21,7 +21,12 @@ extern "C"{
 		
 	}em_posture,posture_t;
 
-
+	typedef enum{
+		TEST_MODE=0,
+		WORK_MODE,
+	}st_deviceOpMode;
+	
+	extern volatile st_deviceOpMode dwm;
 	
 	typedef enum{
 		HIGHT=0,	//高度报警

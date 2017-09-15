@@ -8643,7 +8643,12 @@ VERTICAL,
 
 }em_posture,posture_t;
 
+typedef enum{
+TEST_MODE=0,
+WORK_MODE,
+}st_deviceOpMode;
 
+extern volatile st_deviceOpMode dwm;
 
 typedef enum{
 HIGHT=0,
@@ -8766,6 +8771,70 @@ extern uint8_t sample_low(void);
 
 extern void hook_sample_fast_timer(void);
 
-# 9 "src/app/../includes/../app/event.h"
+# 10 "src/app/../includes/../app/event.h"
 extern volatile uint8_t glbEvent;
+extern volatile uint8_t glNoEventTimeOut;
+
+
+
+
+extern int8_t event_process(void);
+
+# 4 "src/app/event.c"
+volatile uint8_t glNoEventTimeOut=30;
+
+int8_t event_process_rtc(void)
+{
+if(dwm==WORK_MODE){
+sample_diff_pr_chip_slow();
+}
+sample_pr_chip_comm();
+sample_in_soc_adc_ch();
+if(glNoEventTimeOut){
+glNoEventTimeOut--;
+if(!glNoEventTimeOut){
+glbEvent |= (1<<2);
+}
+}
+
+ui_disp_menu();
+return 1;
+}
+
+int8_t event_process_ticker(void)
+{
+if(dwm!=WORK_MODE){
+sample_diff_pr_chip_fast();
+}
+return 1;
+}
+
+int8_t event_process_time_out(void)
+{
+if(dwm!=WORK_MODE){
+sample_diff_pr_chip_fast();
+}
+return 1;
+}
+int8_t event_process(void)
+{
+if(glbEvent & (1<<1)){
+glbEvent &= ~(1<<1);
+
+event_process_rtc();
+}
+if(glbEvent & (1<<0)){
+glbEvent &= ~(1<<0);
+event_process_ticker();
+}
+if(glbEvent & (1<<2)){
+glbEvent &= ~(1<<2);
+event_process_time_out();
+}
+
+keyValue=key_polling();
+if(keyValue!=(0x0))key_process();
+
+return 1;
+}
 

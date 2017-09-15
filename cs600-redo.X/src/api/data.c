@@ -37,6 +37,7 @@ volatile int32_t	x_Pemperature;
 //
 st_prData	x_prDiffData;
 
+volatile st_deviceOpMode dwm=TEST_MODE;
 
 // %水平圆筒的局部容积系数,其中x=H/D
 // %Vp=k*Va

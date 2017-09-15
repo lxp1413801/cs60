@@ -7,10 +7,23 @@ int16_t sampBufDiffPr_S1;
 uint8_t diffSampCount_D01=0;
 uint8_t diffSampCount_D23=0;
 uint8_t	diffSampCh=0;	
+
+int16_t	sampBufPt100ExA[4]={0};
+int16_t	sampBufPt100ExB[4]={0};
+int16_t	sampBufPr[4]={0};
+
+uint16_t sampBufExPr0InSoc;
+uint16_t sampBufExPr1InSoc;
+uint16_t sampBufBatInSoc;
+uint16_t sampBufRefInSoc;
+
+
 volatile uint16_t fastSampTimer=0;
 volatile uint8_t slowSampleTimer=0;
+volatile uint8_t commonSampleTimer=0;
+volatile uint8_t inSocSampleTimer=0;
 
-int16_t __x_fliter(int16_t* buf,uint8_t len,uint8_t loop)
+int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
 {
 	int16_t max,min;
 	uint8_t i,maxLoc,minLoc;
@@ -33,15 +46,28 @@ int16_t __x_fliter(int16_t* buf,uint8_t len,uint8_t loop)
 	return (int16_t)t32;
 }
 
-uint8_t diff_pr_sample_fliter(st_prData* xin)
+int16_t __x_sample_fifo(int16_t* buf,int16_t x,uint8_t len)
 {
-    xin->tAdcValue=__x_fliter(sampBufDiffPr_D01,DIFF_SAMPLE_FREQ/3,4);
-    xin->pAdcValue=__x_fliter(sampBufDiffPr_D23,DIFF_SAMPLE_FREQ/3,4);
+	int32_t ret=0;
+	uint8_t i;
+	for(i=len-1;i>0;i--){
+		buf[i]=buf[i-1];
+		ret+=buf[i];
+	}
+	buf[i]=x;
+	ret+=x;
+	ret/=len;
+	return (uint16_t)(len);
+}
+uint8_t sample_diff_pr_fliter(st_prData* xin)
+{
+    xin->tAdcValue=__x_sample_fliter(sampBufDiffPr_D01,DIFF_SAMPLE_FREQ/3,4);
+    xin->pAdcValue=__x_sample_fliter(sampBufDiffPr_D23,DIFF_SAMPLE_FREQ/3,4);
     xin->pValue=0;
     return 0;
 }
 
-uint8_t diff_pr_chip_sample_fast(void)
+uint8_t sample_diff_pr_chip_fast(void)
 {
 	uint8_t ret=0;
 	int16_t t16;
@@ -72,19 +98,21 @@ uint8_t diff_pr_chip_sample_fast(void)
 		ads1115_start_conversion(pAds1115DiffPrObj);
 		
 		if((diffSampCount_D01 >=  diffSampCount_D23) && (diffSampCount_D01 >= DIFF_SAMPLE_FREQ/3)){
-			diff_pr_sample_fliter(&x_prDiffData);
+			sample_diff_pr_fliter(&x_prDiffData);
 			diffSampCount_D01=diffSampCount_D23=0;
 		}
+		return 1;
 	}
-	return ret;
+	return 0;
 }
 
-uint8_t diff_pr_chip_sample_slow(void)
+uint8_t sample_diff_pr_chip_slow(void)
 {
 	uint8_t ret=0;
 	int16_t t16;	
 	slowSampleTimer++;
 	if(slowSampleTimer>=60){//one minute
+		slowSampleTimer=0;
 		peripheral_power_enable();
 		sensor_power_enable();
 		delay_ms(20);
@@ -112,10 +140,90 @@ uint8_t diff_pr_chip_sample_slow(void)
 		sensor_power_disable();
 
 		if((diffSampCount_D01 >=  diffSampCount_D23) && (diffSampCount_D01 >= DIFF_SAMPLE_FREQ/3)){
-			diff_pr_sample_fliter(&x_prDiffData);
+			sample_diff_pr_fliter(&x_prDiffData);
 			diffSampCount_D01=diffSampCount_D23=0;
 		}	
-        return ret;
+        return 1;
 	}
+	return 0;
 }
+
+uint8_t sample_pr_chip_comm(void)
+{
+	uint8_t ret=0;
+	int16_t t16;	
+	commonSampleTimer++;
+	if(commonSampleTimer>=60){//one minute
+		commonSampleTimer=0;
+		peripheral_power_enable();
+		sensor_power_enable();
+		delay_ms(20);
+		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
+		ads1115_start_conversion(pAds1115PrObj);
+		delay_ms(20);
+		t16=ads1115_read_conversion(pAds1115PrObj);
+		__x_sample_fifo(sampBufPt100ExA,t16,sizeof(sampBufPt100ExA)/sizeof(int16_t));
+		
+		
+		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
+		ads1115_start_conversion(pAds1115PrObj);
+		delay_ms(20);
+		t16=ads1115_read_conversion(pAds1115PrObj);
+		__x_sample_fifo(sampBufPt100ExB,t16,sizeof(sampBufPt100ExB)/sizeof(int16_t));
+
+		
+		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
+		ads1115_start_conversion(pAds1115PrObj);
+		delay_ms(20);
+		t16=ads1115_read_conversion(pAds1115PrObj);
+		__x_sample_fifo(sampBufPr,t16,sizeof(sampBufPr)/sizeof(int16_t));
+		
+		sensor_power_disable();
+        return 1;
+	}
+	return 0;
+}
+#define IN_SOC_ADC_SAMPLE_OV 4
+uint8_t sample_in_soc_adc_ch(void)
+{
+	uint8_t i;
+	uint16_t t16;	
+	uint32_t ret=0;
+	inSocSampleTimer++;
+	if(inSocSampleTimer>=60){
+		inSocSampleTimer=0;
+		
+		in_adc_init();
+		ret=0;
+		for(i=0;i<IN_SOC_ADC_SAMPLE_OV;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_EXT_YALI_1);
+			ret+=t16;
+		}
+		sampBufExPr0InSoc=(uint16_t)(ret/IN_SOC_ADC_SAMPLE_OV);
+
+		ret=0;
+		for(i=0;i<IN_SOC_ADC_SAMPLE_OV;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_EXT_YALI_2);
+			ret+=t16;
+		}
+		sampBufExPr1InSoc=(uint16_t)(ret/IN_SOC_ADC_SAMPLE_OV);		
+		
+		ret=0;
+		for(i=0;i<IN_SOC_ADC_SAMPLE_OV;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_BAT);
+			ret+=t16;
+		}
+		sampBufBatInSoc=(uint16_t)(ret/IN_SOC_ADC_SAMPLE_OV);			
+		
+		ret=0;
+		for(i=0;i<IN_SOC_ADC_SAMPLE_OV;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_VREF_3V);
+			ret+=t16;
+		}
+		sampBufRefInSoc=(uint16_t)(ret/IN_SOC_ADC_SAMPLE_OV);	
+		return 1;
+	}
+	return 0;
+}
+
 //file end

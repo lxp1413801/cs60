@@ -67,7 +67,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _IPR1bits `VS295 ~T0 @X0 0 e@3999 ]
 "17 src/soc/ticker.h
 [v _glTicker `Vul ~T0 @X0 0 e ]
-"9 src/soc/../app/event.h
+"10 src/soc/../app/event.h
 [v _glbEvent `Vuc ~T0 @X0 0 e ]
 "18 src/soc/ticker.h
 [v _sys_ticker_irq_hook `(v ~T0 @X0 0 ef ]
@@ -6084,7 +6084,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;event.h: 9: extern volatile uint8_t glbEvent;
+[; ;event.h: 10: extern volatile uint8_t glbEvent;
+[; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
+[; ;event.h: 16: extern int8_t event_process(void);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {
@@ -6171,9 +6173,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;int.c: 27: glTicker++;
 "27
 [e ++ _glTicker -> -> -> 1 `i `l `ul ]
-[; ;int.c: 28: glbEvent |= (0x01);
+[; ;int.c: 28: glbEvent |= (1<<0);
 "28
-[e =| _glbEvent -> -> 1 `i `uc ]
+[e =| _glbEvent -> << -> 1 `i -> 0 `i `uc ]
 [; ;int.c: 29: sys_ticker_irq_hook();
 "29
 [e ( _sys_ticker_irq_hook ..  ]
@@ -6188,9 +6190,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;int.c: 32: PIR3bits.RTCCIF=0;
 "32
 [e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;int.c: 33: glbEvent |= (0x02);
+[; ;int.c: 33: glbEvent |= (1<<1);
 "33
-[e =| _glbEvent -> -> 2 `i `uc ]
+[e =| _glbEvent -> << -> 1 `i -> 1 `i `uc ]
 [; ;int.c: 34: rtc_alrm_irq_hook();
 "34
 [e ( _rtc_alrm_irq_hook ..  ]
@@ -6220,9 +6222,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;int.c: 42: glTicker++;
 "42
 [e ++ _glTicker -> -> -> 1 `i `l `ul ]
-[; ;int.c: 43: glbEvent |= (0x01);
+[; ;int.c: 43: glbEvent |= (1<<0);
 "43
-[e =| _glbEvent -> -> 1 `i `uc ]
+[e =| _glbEvent -> << -> 1 `i -> 0 `i `uc ]
 [; ;int.c: 44: sys_ticker_irq_hook();
 "44
 [e ( _sys_ticker_irq_hook ..  ]
@@ -6237,9 +6239,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;int.c: 47: PIR3bits.RTCCIF=0;
 "47
 [e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;int.c: 48: glbEvent |= (0x02);
+[; ;int.c: 48: glbEvent |= (1<<1);
 "48
-[e =| _glbEvent -> -> 2 `i `uc ]
+[e =| _glbEvent -> << -> 1 `i -> 1 `i `uc ]
 [; ;int.c: 49: rtc_alrm_irq_hook();
 "49
 [e ( _rtc_alrm_irq_hook ..  ]

@@ -8643,7 +8643,12 @@ VERTICAL,
 
 }em_posture,posture_t;
 
+typedef enum{
+TEST_MODE=0,
+WORK_MODE,
+}st_deviceOpMode;
 
+extern volatile st_deviceOpMode dwm;
 
 typedef enum{
 HIGHT=0,
@@ -8766,8 +8771,14 @@ extern uint8_t sample_low(void);
 
 extern void hook_sample_fast_timer(void);
 
-# 9 "src/app/../includes/../app/event.h"
+# 10 "src/app/../includes/../app/event.h"
 extern volatile uint8_t glbEvent;
+extern volatile uint8_t glNoEventTimeOut;
+
+
+
+
+extern int8_t event_process(void);
 
 # 3 "src/app/main.c"
 volatile uint8_t glbEvent=0x00;
@@ -8782,36 +8793,17 @@ rtc_set((st_RtcDef*)defalutRtc);
 lcd_init();
 
 ads1115_init_all_chip();
-
-ads1115_start_conversion(&ads1115Chip0);
-t16=ads1115_read_reg(&ads1115Chip1,(0x01));
-ticker_dly(100);
-t16=ads1115_read_conversion(&ads1115Chip0);
-
 in_adc_init();
-t16=in_adc_start_and_read(3);
+
 ui_disp_start_cs600(10);
 
 lcd_disp_level(60);
 
 do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
-
 __nop();
 while(1){
-if(glbEvent & (0x02)){
-glbEvent &= ~(0x02);
-__nop();
-ui_disp_rtc_mm_ss();
-__nop();
-
-}
-if(glbEvent & (0x01)){
-glbEvent &= ~(0x01);
-
-__nop();
-}
-keyValue=key_polling();
-if(keyValue!=(0x0))key_process();
+event_process();
 
 }
 }
+

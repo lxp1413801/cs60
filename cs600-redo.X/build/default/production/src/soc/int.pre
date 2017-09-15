@@ -8177,8 +8177,14 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 9 "src/soc/../app/event.h"
+# 10 "src/soc/../app/event.h"
 extern volatile uint8_t glbEvent;
+extern volatile uint8_t glNoEventTimeOut;
+
+
+
+
+extern int8_t event_process(void);
 
 # 13 "src/soc/rtc.h"
 typedef union {
@@ -8241,12 +8247,12 @@ if(INTCONbits.PEIE && PIE1bits.TMR1IE && PIR1bits.TMR1IF ){
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && IPR1bits.TMR2IP){
 PIR1bits.TMR2IF=0;
 glTicker++;
-glbEvent |= (0x01);
+glbEvent |= (1<<0);
 sys_ticker_irq_hook();
 }
 if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && IPR3bits.RTCCIP){
 PIR3bits.RTCCIF=0;
-glbEvent |= (0x02);
+glbEvent |= (1<<1);
 rtc_alrm_irq_hook();
 }
 }
@@ -8256,12 +8262,12 @@ void __interrupt(low_priority) handler_interrupt_low(void)
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && (!IPR1bits.TMR2IP)){
 PIR1bits.TMR2IF=0;
 glTicker++;
-glbEvent |= (0x01);
+glbEvent |= (1<<0);
 sys_ticker_irq_hook();
 }
 if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && (!(IPR3bits.RTCCIP))){
 PIR3bits.RTCCIF=0;
-glbEvent |= (0x02);
+glbEvent |= (1<<1);
 rtc_alrm_irq_hook();
 }
 }

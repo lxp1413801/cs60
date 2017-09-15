@@ -8,20 +8,25 @@
 HOTIZONTAL 0
 VERTICAL 1
 ]
-[e E7488 . `uc
+[e E7493 . `uc
 HIGHT 0
 PRESSURE 1
+]
+"40
+[e E7488 . `uc
+TEST_MODE 0
+WORK_MODE 1
 ]
 "82 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
 [e E7483 . `uc
 HOTIZONTAL 0
 VERTICAL 1
 ]
-[e E7488 . `uc
+[e E7493 . `uc
 HIGHT 0
 PRESSURE 1
 ]
-"51 D:\lxp\cs60\cs600-redo.X\src/api/sample.c
+"77 D:\lxp\cs60\cs600-redo.X\src/api/sample.c
 [e E7293 . `uc
 ADS1013 0
 ADS1014 1
@@ -30,7 +35,7 @@ ADS1113 3
 ADS1114 4
 ADS1115 5
 ]
-"57
+"83
 [e E7231 . `uc
 ADS1X1X_MUX_DIFF_0_1 0
 ADS1X1X_MUX_DIFF_0_3 1
@@ -41,14 +46,10 @@ ADS1X1X_MUX_SINGLE_1 5
 ADS1X1X_MUX_SINGLE_2 6
 ADS1X1X_MUX_SINGLE_3 7
 ]
-"16 D:\lxp\cs60\cs600-redo.X\src/app/main.c
-[e E7293 . `uc
-ADS1013 0
-ADS1014 1
-ADS1015 2
-ADS1113 3
-ADS1114 4
-ADS1115 5
+"8 D:\lxp\cs60\cs600-redo.X\src/app/event.c
+[e E7488 . `uc
+TEST_MODE 0
+WORK_MODE 1
 ]
 "2 D:\lxp\cs60\cs600-redo.X\src/driver/ads1115.c
 [e E7038 . `uc
@@ -187,13 +188,13 @@ OSC_PMODE_MAX 7
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"192 D:\lxp\cs60\cs600-redo.X\src/api/data.c
+"193 D:\lxp\cs60\cs600-redo.X\src/api/data.c
 [v _calib_data_set_default_diff_pr calib_data_set_default_diff_pr `(v  1 e 1 0 ]
-"207
+"208
 [v _calib_data_set_default_pr calib_data_set_default_pr `(v  1 e 1 0 ]
-"270
+"271
 [v _m_interp1_cal_p_v m_interp1_cal_p_v `(uc  1 e 1 0 ]
-"299
+"300
 [v _m_interp1_cal_p_t m_interp1_cal_p_t `(uc  1 e 1 0 ]
 "15 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
 [v ___exp_10 __exp_10 `(ui  1 e 2 0 ]
@@ -221,18 +222,26 @@ OSC_PMODE_MAX 7
 [v _key_process_set key_process_set `(v  1 e 1 0 ]
 "154
 [v _key_process key_process `(v  1 e 1 0 ]
-"13 D:\lxp\cs60\cs600-redo.X\src/api/sample.c
-[v ___x_fliter __x_fliter `(i  1 e 2 0 ]
-"36
-[v _diff_pr_sample_fliter diff_pr_sample_fliter `(uc  1 e 1 0 ]
+"26 D:\lxp\cs60\cs600-redo.X\src/api/sample.c
+[v ___x_sample_fliter __x_sample_fliter `(i  1 e 2 0 ]
+"49
+[v ___x_sample_fifo __x_sample_fifo `(i  1 e 2 0 ]
+"62
+[v _sample_diff_pr_fliter sample_diff_pr_fliter `(uc  1 e 1 0 ]
+"70
+[v _sample_diff_pr_chip_fast sample_diff_pr_chip_fast `(uc  1 e 1 0 ]
+"109
+[v _sample_diff_pr_chip_slow sample_diff_pr_chip_slow `(uc  1 e 1 0 ]
+"151
+[v _sample_pr_chip_comm sample_pr_chip_comm `(uc  1 e 1 0 ]
+"187
+[v _sample_in_soc_adc_ch sample_in_soc_adc_ch `(uc  1 e 1 0 ]
 "9 D:\lxp\cs60\cs600-redo.X\src/api/ui.c
 [v ___x_arrange_str __x_arrange_str `(v  1 e 1 0 ]
 "24
 [v ___int32_2_mflot32 __int32_2_mflot32 `(l  1 e 4 0 ]
 "113
 [v _ui_disp_start_cs600 ui_disp_start_cs600 `(v  1 e 1 0 ]
-"133
-[v _ui_disp_rtc_mm_ss ui_disp_rtc_mm_ss `(v  1 e 1 0 ]
 "159
 [v _ui_disp_clear_num_dp ui_disp_clear_num_dp `(v  1 e 1 0 ]
 "186
@@ -241,6 +250,14 @@ OSC_PMODE_MAX 7
 [v _ui_disp_menu_psw_adj ui_disp_menu_psw_adj `(v  1 e 1 0 ]
 "205
 [v _ui_disp_menu ui_disp_menu `(v  1 e 1 0 ]
+"6 D:\lxp\cs60\cs600-redo.X\src/app/event.c
+[v _event_process_rtc event_process_rtc `(c  1 e 1 0 ]
+"24
+[v _event_process_ticker event_process_ticker `(c  1 e 1 0 ]
+"32
+[v _event_process_time_out event_process_time_out `(c  1 e 1 0 ]
+"39
+[v _event_process event_process `(c  1 e 1 0 ]
 "5 D:\lxp\cs60\cs600-redo.X\src/app/main.c
 [v _main main `(i  1 e 2 0 ]
 "61 D:\lxp\cs60\cs600-redo.X\src/depend/crc16.c
@@ -397,35 +414,35 @@ OSC_PMODE_MAX 7
 [v i2_sys_ticker_irq_hook sys_ticker_irq_hook `(v  1 e 1 0 ]
 "46
 [v _ticker_dly ticker_dly `(v  1 e 1 0 ]
-[s S2818 . 1 `uc 1 . 1 0 :1:0 
+[s S2817 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RTSECSEL0 1 0 :1:1 
 `uc 1 RTSECSEL1 1 0 :1:2 
 ]
 "61 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
-[u S2822 . 1 `S2818 1 . 1 0 ]
-[v _PADCFG1bits PADCFG1bits `VES2822  1 e 1 @3924 ]
+[u S2821 . 1 `S2817 1 . 1 0 ]
+[v _PADCFG1bits PADCFG1bits `VES2821  1 e 1 @3924 ]
 "305
 [v _ALRMRPT ALRMRPT `VEuc  1 e 1 @3930 ]
-[s S2842 . 1 `uc 1 ALRMPTR 1 0 :2:0 
+[s S2841 . 1 `uc 1 ALRMPTR 1 0 :2:0 
 `uc 1 AMASK 1 0 :4:2 
 `uc 1 CHIME 1 0 :1:6 
 `uc 1 ALRMEN 1 0 :1:7 
 ]
 "395
-[s S2847 . 1 `uc 1 ALRMPTR0 1 0 :1:0 
+[s S2846 . 1 `uc 1 ALRMPTR0 1 0 :1:0 
 `uc 1 ALRMPTR1 1 0 :1:1 
 `uc 1 AMASK0 1 0 :1:2 
 `uc 1 AMASK1 1 0 :1:3 
 `uc 1 AMASK2 1 0 :1:4 
 `uc 1 AMASK3 1 0 :1:5 
 ]
-[u S2854 . 1 `S2842 1 . 1 0 `S2847 1 . 1 0 ]
-[v _ALRMCFGbits ALRMCFGbits `VES2854  1 e 1 @3931 ]
+[u S2853 . 1 `S2841 1 . 1 0 `S2846 1 . 1 0 ]
+[v _ALRMCFGbits ALRMCFGbits `VES2853  1 e 1 @3931 ]
 "449
 [v _RTCVALL RTCVALL `VEuc  1 e 1 @3932 ]
 "468
 [v _RTCVALH RTCVALH `VEuc  1 e 1 @3933 ]
-[s S592 . 1 `uc 1 RTCPTR0 1 0 :1:0 
+[s S596 . 1 `uc 1 RTCPTR0 1 0 :1:0 
 `uc 1 RTCPTR1 1 0 :1:1 
 `uc 1 RTCOE 1 0 :1:2 
 `uc 1 HALFSEC 1 0 :1:3 
@@ -435,8 +452,8 @@ OSC_PMODE_MAX 7
 `uc 1 RTCEN 1 0 :1:7 
 ]
 "623
-[u S601 . 1 `S592 1 . 1 0 ]
-[v _RTCCFGbits RTCCFGbits `VES601  1 e 1 @3935 ]
+[u S605 . 1 `S596 1 . 1 0 ]
+[v _RTCCFGbits RTCCFGbits `VES605  1 e 1 @3935 ]
 "1430
 [v _LCDDATA5 LCDDATA5 `VEuc  1 e 1 @3947 ]
 "1557
@@ -489,7 +506,7 @@ OSC_PMODE_MAX 7
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
 "7468
 [v _TRISG TRISG `VEuc  1 e 1 @3992 ]
-[s S2047 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S2046 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -498,14 +515,14 @@ OSC_PMODE_MAX 7
 `uc 1 ADIE 1 0 :1:6 
 ]
 "7742
-[s S2055 . 1 `uc 1 . 1 0 :3:0 
+[s S2054 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSP1IE 1 0 :1:3 
 `uc 1 TXIE 1 0 :1:4 
 `uc 1 RCIE 1 0 :1:5 
 ]
-[u S2060 . 1 `S2047 1 . 1 0 `S2055 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES2060  1 e 1 @3997 ]
-[s S2017 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S2059 . 1 `S2046 1 . 1 0 `S2054 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES2059  1 e 1 @3997 ]
+[s S2016 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -514,14 +531,14 @@ OSC_PMODE_MAX 7
 `uc 1 ADIF 1 0 :1:6 
 ]
 "7813
-[s S2025 . 1 `uc 1 . 1 0 :3:0 
+[s S2024 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSP1IF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S2030 . 1 `S2017 1 . 1 0 `S2025 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES2030  1 e 1 @3998 ]
-[s S2077 . 1 `uc 1 TMR1IP 1 0 :1:0 
+[u S2029 . 1 `S2016 1 . 1 0 `S2024 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES2029  1 e 1 @3998 ]
+[s S2076 . 1 `uc 1 TMR1IP 1 0 :1:0 
 `uc 1 TMR2IP 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 SSPIP 1 0 :1:3 
@@ -530,14 +547,14 @@ OSC_PMODE_MAX 7
 `uc 1 ADIP 1 0 :1:6 
 ]
 "7884
-[s S2085 . 1 `uc 1 . 1 0 :3:0 
+[s S2084 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSP1IP 1 0 :1:3 
 `uc 1 TXIP 1 0 :1:4 
 `uc 1 RCIP 1 0 :1:5 
 ]
-[u S2090 . 1 `S2077 1 . 1 0 `S2085 1 . 1 0 ]
-[v _IPR1bits IPR1bits `VES2090  1 e 1 @3999 ]
-[s S2664 . 1 `uc 1 RTCCIE 1 0 :1:0 
+[u S2089 . 1 `S2076 1 . 1 0 `S2084 1 . 1 0 ]
+[v _IPR1bits IPR1bits `VES2089  1 e 1 @3999 ]
+[s S2663 . 1 `uc 1 RTCCIE 1 0 :1:0 
 `uc 1 CCP1IE 1 0 :1:1 
 `uc 1 CCP2IE 1 0 :1:2 
 `uc 1 CTMUIE 1 0 :1:3 
@@ -546,20 +563,20 @@ OSC_PMODE_MAX 7
 `uc 1 LCDIE 1 0 :1:6 
 ]
 "8124
-[s S2672 . 1 `uc 1 RXB0IE 1 0 :1:0 
+[s S2671 . 1 `uc 1 RXB0IE 1 0 :1:0 
 `uc 1 RXB1IE 1 0 :1:1 
 `uc 1 TXB0IE 1 0 :1:2 
 `uc 1 TXB1IE 1 0 :1:3 
 `uc 1 TXB2IE 1 0 :1:4 
 ]
-[s S2678 . 1 `uc 1 . 1 0 :1:0 
+[s S2677 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIE 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIE 1 0 :1:4 
 ]
-[u S2683 . 1 `S2664 1 . 1 0 `S2672 1 . 1 0 `S2678 1 . 1 0 ]
-[v _PIE3bits PIE3bits `VES2683  1 e 1 @4003 ]
-[s S2707 . 1 `uc 1 RTCCIF 1 0 :1:0 
+[u S2682 . 1 `S2663 1 . 1 0 `S2671 1 . 1 0 `S2677 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES2682  1 e 1 @4003 ]
+[s S2706 . 1 `uc 1 RTCCIF 1 0 :1:0 
 `uc 1 CCP1IF 1 0 :1:1 
 `uc 1 CCP2IF 1 0 :1:2 
 `uc 1 CTMUIF 1 0 :1:3 
@@ -568,14 +585,14 @@ OSC_PMODE_MAX 7
 `uc 1 LCDIF 1 0 :1:6 
 ]
 "8220
-[s S2715 . 1 `uc 1 . 1 0 :1:0 
+[s S2714 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIF 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIF 1 0 :1:4 
 ]
-[u S2720 . 1 `S2707 1 . 1 0 `S2715 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES2720  1 e 1 @4004 ]
-[s S2737 . 1 `uc 1 RTCCIP 1 0 :1:0 
+[u S2719 . 1 `S2706 1 . 1 0 `S2714 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES2719  1 e 1 @4004 ]
+[s S2736 . 1 `uc 1 RTCCIP 1 0 :1:0 
 `uc 1 CCP1IP 1 0 :1:1 
 `uc 1 CCP2IP 1 0 :1:2 
 `uc 1 CTMUIP 1 0 :1:3 
@@ -584,14 +601,14 @@ OSC_PMODE_MAX 7
 `uc 1 LCDIP 1 0 :1:6 
 ]
 "8291
-[s S2745 . 1 `uc 1 . 1 0 :1:0 
+[s S2744 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIP 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIP 1 0 :1:4 
 ]
-[u S2750 . 1 `S2737 1 . 1 0 `S2745 1 . 1 0 ]
-[v _IPR3bits IPR3bits `VES2750  1 e 1 @4005 ]
-[s S2420 . 1 `uc 1 . 1 0 :1:0 
+[u S2749 . 1 `S2736 1 . 1 0 `S2744 1 . 1 0 ]
+[v _IPR3bits IPR3bits `VES2749  1 e 1 @4005 ]
+[s S2419 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -599,13 +616,13 @@ OSC_PMODE_MAX 7
 `uc 1 WPROG 1 0 :1:5 
 ]
 "8355
-[u S2427 . 1 `S2420 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES2427  1 e 1 @4006 ]
+[u S2426 . 1 `S2419 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES2426  1 e 1 @4006 ]
 "8403
 [v _LCDCON LCDCON `VEuc  1 e 1 @4008 ]
 "8487
 [v _LCDSE0 LCDSE0 `VEuc  1 e 1 @4009 ]
-[s S2184 . 1 `uc 1 LP0 1 0 :1:0 
+[s S2183 . 1 `uc 1 LP0 1 0 :1:0 
 `uc 1 LP1 1 0 :1:1 
 `uc 1 LP2 1 0 :1:2 
 `uc 1 LP3 1 0 :1:3 
@@ -615,13 +632,13 @@ OSC_PMODE_MAX 7
 `uc 1 WFT 1 0 :1:7 
 ]
 "8679
-[s S2193 . 1 `uc 1 LCDPS0 1 0 :1:0 
+[s S2192 . 1 `uc 1 LCDPS0 1 0 :1:0 
 `uc 1 LCDPS1 1 0 :1:1 
 `uc 1 LCDPS2 1 0 :1:2 
 `uc 1 LCDPS3 1 0 :1:3 
 ]
-[u S2198 . 1 `S2184 1 . 1 0 `S2193 1 . 1 0 ]
-[v _LCDPSbits LCDPSbits `VES2198  1 e 1 @4010 ]
+[u S2197 . 1 `S2183 1 . 1 0 `S2192 1 . 1 0 ]
+[v _LCDPSbits LCDPSbits `VES2197  1 e 1 @4010 ]
 "9807
 [v _LCDSE1 LCDSE1 `VEuc  1 e 1 @4022 ]
 "9940
@@ -642,57 +659,57 @@ OSC_PMODE_MAX 7
 [v _LCDDATA3 LCDDATA3 `VEuc  1 e 1 @4030 ]
 "10956
 [v _LCDDATA4 LCDDATA4 `VEuc  1 e 1 @4031 ]
-[s S1917 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S1916 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "11096
-[s S1922 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S1921 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
 `uc 1 ACQT1 1 0 :1:4 
 `uc 1 ACQT2 1 0 :1:5 
 ]
-[u S1929 . 1 `S1917 1 . 1 0 `S1922 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES1929  1 e 1 @4032 ]
+[u S1928 . 1 `S1916 1 . 1 0 `S1921 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES1928  1 e 1 @4032 ]
 "11145
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-[s S1945 . 1 `uc 1 . 1 0 :1:0 
+[s S1944 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "11282
-[s S1948 . 1 `uc 1 ADON 1 0 :1:0 
+[s S1947 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADCAL 1 0 :1:7 
 ]
-[s S1954 . 1 `uc 1 . 1 0 :1:0 
+[s S1953 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[s S1961 . 1 `uc 1 . 1 0 :1:0 
+[s S1960 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S1964 . 1 `uc 1 . 1 0 :1:0 
+[s S1963 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[s S1967 . 1 `uc 1 . 1 0 :1:0 
+[s S1966 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S1970 . 1 `uc 1 . 1 0 :1:0 
+[s S1969 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S1973 . 1 `uc 1 . 1 0 :1:0 
+[s S1972 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S1976 . 1 `S1945 1 . 1 0 `S1948 1 . 1 0 `S1954 1 . 1 0 `S1961 1 . 1 0 `S1964 1 . 1 0 `S1967 1 . 1 0 `S1970 1 . 1 0 `S1973 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES1976  1 e 1 @4034 ]
+[u S1975 . 1 `S1944 1 . 1 0 `S1947 1 . 1 0 `S1953 1 . 1 0 `S1960 1 . 1 0 `S1963 1 . 1 0 `S1966 1 . 1 0 `S1969 1 . 1 0 `S1972 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES1975  1 e 1 @4034 ]
 "11367
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "11386
@@ -701,11 +718,11 @@ OSC_PMODE_MAX 7
 [v _T2CON T2CON `VEuc  1 e 1 @4042 ]
 "12936
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
-[s S2929 . 1 `uc 1 . 1 0 :2:0 
+[s S2928 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_T1SYNC 1 0 :1:2 
 ]
 "13117
-[s S2932 . 1 `uc 1 TMR1ON 1 0 :1:0 
+[s S2931 . 1 `uc 1 TMR1ON 1 0 :1:0 
 `uc 1 TMR1CS 1 0 :1:1 
 `uc 1 nT1SYNC 1 0 :1:2 
 `uc 1 T1OSCEN 1 0 :1:3 
@@ -713,41 +730,41 @@ OSC_PMODE_MAX 7
 `uc 1 T1RUN 1 0 :1:6 
 `uc 1 RD16 1 0 :1:7 
 ]
-[s S2940 . 1 `uc 1 . 1 0 :2:0 
+[s S2939 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T1INSYNC 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T1CKPS0 1 0 :1:4 
 `uc 1 T1CKPS1 1 0 :1:5 
 ]
-[s S2946 . 1 `uc 1 . 1 0 :2:0 
+[s S2945 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T1SYNC 1 0 :1:2 
 ]
-[s S2949 . 1 `uc 1 . 1 0 :3:0 
+[s S2948 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SOSCEN 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 T1RD16 1 0 :1:7 
 ]
-[u S2954 . 1 `S2929 1 . 1 0 `S2932 1 . 1 0 `S2940 1 . 1 0 `S2946 1 . 1 0 `S2949 1 . 1 0 ]
-[v _T1CONbits T1CONbits `VES2954  1 e 1 @4045 ]
-[s S3069 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[u S2953 . 1 `S2928 1 . 1 0 `S2931 1 . 1 0 `S2939 1 . 1 0 `S2945 1 . 1 0 `S2948 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES2953  1 e 1 @4045 ]
+[s S3068 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "13283
-[s S3071 . 1 `uc 1 . 1 0 :1:0 
+[s S3070 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S3074 . 1 `uc 1 . 1 0 :2:0 
+[s S3073 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S3077 . 1 `uc 1 . 1 0 :3:0 
+[s S3076 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S3080 . 1 `uc 1 . 1 0 :4:0 
+[s S3079 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S3083 . 1 `uc 1 . 1 0 :5:0 
+[s S3082 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_CM 1 0 :1:5 
 ]
-[s S3086 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S3085 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -756,42 +773,42 @@ OSC_PMODE_MAX 7
 `uc 1 . 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S3095 . 1 `uc 1 BOR 1 0 :1:0 
+[s S3094 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 `uc 1 CM 1 0 :1:5 
 ]
-[u S3102 . 1 `S3069 1 . 1 0 `S3071 1 . 1 0 `S3074 1 . 1 0 `S3077 1 . 1 0 `S3080 1 . 1 0 `S3083 1 . 1 0 `S3086 1 . 1 0 `S3095 1 . 1 0 ]
-[v _RCONbits RCONbits `VES3102  1 e 1 @4048 ]
+[u S3101 . 1 `S3068 1 . 1 0 `S3070 1 . 1 0 `S3073 1 . 1 0 `S3076 1 . 1 0 `S3079 1 . 1 0 `S3082 1 . 1 0 `S3085 1 . 1 0 `S3094 1 . 1 0 ]
+[v _RCONbits RCONbits `VES3101  1 e 1 @4048 ]
 "13416
 [v _LCDREG LCDREG `VEuc  1 e 1 @4050 ]
-[s S2494 . 1 `uc 1 SCS 1 0 :2:0 
+[s S2493 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 IOFS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 `uc 1 IDLEN 1 0 :1:7 
 ]
 "13508
-[s S2500 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S2499 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S2507 . 1 `S2494 1 . 1 0 `S2500 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES2507  1 e 1 @4051 ]
+[u S2506 . 1 `S2493 1 . 1 0 `S2499 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES2506  1 e 1 @4051 ]
 "14028
 [v _FSR0L FSR0L `VEuc  1 e 1 @4073 ]
 "14047
 [v _FSR0H FSR0H `VEuc  1 e 1 @4074 ]
-[s S2565 . 1 `uc 1 . 1 0 :7:0 
+[s S2564 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "14287
-[s S2568 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S2567 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 INT3IP 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 INTEDG3 1 0 :1:3 
@@ -800,17 +817,17 @@ OSC_PMODE_MAX 7
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S2577 . 1 `uc 1 . 1 0 :1:0 
+[s S2576 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT3P 1 0 :1:1 
 `uc 1 T0IP 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S2583 . 1 `S2565 1 . 1 0 `S2568 1 . 1 0 `S2577 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES2583  1 e 1 @4081 ]
+[u S2582 . 1 `S2564 1 . 1 0 `S2567 1 . 1 0 `S2576 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES2582  1 e 1 @4081 ]
 "14351
 [v _INTCON INTCON `VEuc  1 e 1 @4082 ]
-[s S2370 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S2369 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -820,7 +837,7 @@ OSC_PMODE_MAX 7
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "14383
-[s S2379 . 1 `uc 1 . 1 0 :1:0 
+[s S2378 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -829,12 +846,12 @@ OSC_PMODE_MAX 7
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S2388 . 1 `uc 1 . 1 0 :6:0 
+[s S2387 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S2392 . 1 `S2370 1 . 1 0 `S2379 1 . 1 0 `S2388 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES2392  1 e 1 @4082 ]
+[u S2391 . 1 `S2369 1 . 1 0 `S2378 1 . 1 0 `S2387 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES2391  1 e 1 @4082 ]
 "14511
 [v _TABLAT TABLAT `VEuc  1 e 1 @4085 ]
 "14538
@@ -891,8 +908,10 @@ OSC_PMODE_MAX 7
 [v _x_Pemperature x_Pemperature `VEl  1 e 4 0 ]
 "38
 [v _x_prDiffData x_prDiffData `S73  1 e 8 0 ]
-[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7488 1 type 1 9 `[2]uc 1 . 2 10 ]
-"105
+"40
+[v _dwm dwm `VEE7488  1 e 1 0 ]
+[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7493 1 type 1 9 `[2]uc 1 . 2 10 ]
+"106
 [s S33 . 134 `ul 1 id 4 0 `E7483 1 pos 1 4 `uc 1 maxValueForlevelBar 1 5 `ui 1 density 2 6 `l 1 h 4 8 `ul 1 d 4 12 `l 1 baseZero 4 16 `[4]S27 1 diffPressureWarnSet 48 20 `S27 1 pressureWarnSet 12 68 `[4]uc 1 simplePloyFactor 4 80 `[2]ul 1 ex_pressZero 8 84 `[2]ul 1 ex_pressLine 8 92 `[2]ul 1 ex_pressCurrentLoopLow 8 100 `[2]ul 1 ex_pressCurrentLoopUpper 8 108 `ul 1 ex_TempZero 4 116 `ul 1 ex_TempLine 4 120 `ul 1 ex_TempCurrentLoopLow 4 124 `ul 1 ex_TempCurrentLoopUpper 4 128 `ui 1 crc 2 132 ]
 [v _defultSystemData defultSystemData `CS33  1 e 134 0 ]
 "5 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
@@ -921,10 +940,30 @@ OSC_PMODE_MAX 7
 [v _diffSampCount_D23 diffSampCount_D23 `uc  1 e 1 0 ]
 "9
 [v _diffSampCh diffSampCh `uc  1 e 1 0 ]
-"10
-[v _fastSampTimer fastSampTimer `VEui  1 e 2 0 ]
 "11
+[v _sampBufPt100ExA sampBufPt100ExA `[4]i  1 e 8 0 ]
+"12
+[v _sampBufPt100ExB sampBufPt100ExB `[4]i  1 e 8 0 ]
+"13
+[v _sampBufPr sampBufPr `[4]i  1 e 8 0 ]
+"15
+[v _sampBufExPr0InSoc sampBufExPr0InSoc `ui  1 e 2 0 ]
+"16
+[v _sampBufExPr1InSoc sampBufExPr1InSoc `ui  1 e 2 0 ]
+"17
+[v _sampBufBatInSoc sampBufBatInSoc `ui  1 e 2 0 ]
+"18
+[v _sampBufRefInSoc sampBufRefInSoc `ui  1 e 2 0 ]
+"21
+[v _fastSampTimer fastSampTimer `VEui  1 e 2 0 ]
+"22
 [v _slowSampleTimer slowSampleTimer `VEuc  1 e 1 0 ]
+"23
+[v _commonSampleTimer commonSampleTimer `VEuc  1 e 1 0 ]
+"24
+[v _inSocSampleTimer inSocSampleTimer `VEuc  1 e 1 0 ]
+"4 D:\lxp\cs60\cs600-redo.X\src/app/event.c
+[v _glNoEventTimeOut glNoEventTimeOut `VEuc  1 e 1 0 ]
 "3 D:\lxp\cs60\cs600-redo.X\src/app/main.c
 [v _glbEvent glbEvent `VEuc  1 e 1 0 ]
 "3 D:\lxp\cs60\cs600-redo.X\src/depend/crc16.c
@@ -933,7 +972,7 @@ OSC_PMODE_MAX 7
 [v _auchCRCLo auchCRCLo `C[256]uc  1 e 256 0 ]
 "3 D:\lxp\cs60\cs600-redo.X\src/depend/m_string.c
 [v _HexTable HexTable `C[17]uc  1 e 17 0 ]
-[s S754 . 4 `uc 1 COMP_QUE 1 0 :2:0 
+[s S758 . 4 `uc 1 COMP_QUE 1 0 :2:0 
 `uc 1 COMP_LAT 1 0 :1:2 
 `uc 1 COMP_POL 1 0 :1:3 
 `uc 1 COMP_MODE 1 0 :1:4 
@@ -943,14 +982,14 @@ OSC_PMODE_MAX 7
 `uc 1 MUX 1 1 :3:4 
 `ui 1 OS 2 2 ]
 "2 D:\lxp\cs60\cs600-redo.X\src/driver/ads1115.c
-[u S764 . 4 `ui 1 data 2 0 `S754 1 bits 4 0 ]
-[s S772 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S764 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
-[v _ads1115Chip0 ads1115Chip0 `S772  1 e 16 0 ]
-[v _ads1115Chip1 ads1115Chip1 `S772  1 e 16 0 ]
+[u S768 . 4 `ui 1 data 2 0 `S758 1 bits 4 0 ]
+[s S776 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S768 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
+[v _ads1115Chip0 ads1115Chip0 `S776  1 e 16 0 ]
+[v _ads1115Chip1 ads1115Chip1 `S776  1 e 16 0 ]
 "3
-[v _pAds1115DiffPrObj pAds1115DiffPrObj `*.39S772  1 e 2 0 ]
+[v _pAds1115DiffPrObj pAds1115DiffPrObj `*.39S776  1 e 2 0 ]
 "4
-[v _pAds1115PrObj pAds1115PrObj `*.39S772  1 e 2 0 ]
+[v _pAds1115PrObj pAds1115PrObj `*.39S776  1 e 2 0 ]
 "4 D:\lxp\cs60\cs600-redo.X\src/driver/ex_eeprom.c
 [v _at24c02Ch1 at24c02Ch1 `S58  1 e 11 0 ]
 [v _at24c02Ch0 at24c02Ch0 `S58  1 e 11 0 ]
@@ -966,17 +1005,17 @@ OSC_PMODE_MAX 7
 [v _LCDDigitalTable LCDDigitalTable `C[40]uc  1 e 40 0 ]
 "100 D:\lxp\cs60\cs600-redo.X\src/driver/m_flash.c
 [v _flashTestbuf flashTestbuf `C[65]uc  1 e 65 0 ]
-[s S623 . 7 `uc 1 year 1 0 `uc 1 month 1 1 `uc 1 date 1 2 `uc 1 hour 1 3 `uc 1 minute 1 4 `uc 1 second 1 5 `uc 1 day 1 6 ]
+[s S627 . 7 `uc 1 year 1 0 `uc 1 month 1 1 `uc 1 date 1 2 `uc 1 hour 1 3 `uc 1 minute 1 4 `uc 1 second 1 5 `uc 1 day 1 6 ]
 "6 D:\lxp\cs60\cs600-redo.X\src/soc/rtc.c
-[v _glRtc glRtc `S623  1 e 7 0 ]
+[v _glRtc glRtc `S627  1 e 7 0 ]
 "7
 [v _defalutRtc defalutRtc `[7]uc  1 e 7 0 ]
-[s S2986 . 1 `uc 1 RTCPTR 1 0 :2:0 
+[s S2985 . 1 `uc 1 RTCPTR 1 0 :2:0 
 `uc 1 . 1 0 :6:2 
 ]
 "20 D:\lxp\cs60\cs600-redo.X\src/soc/rtc.h
-[u S2989 . 1 `uc 1 data 1 0 `S2986 1 . 1 0 ]
-[v _stRTCCFGbits stRTCCFGbits `VES2989  1 e 1 @3935 ]
+[u S2988 . 1 `uc 1 data 1 0 `S2985 1 . 1 0 ]
+[v _stRTCCFGbits stRTCCFGbits `VES2988  1 e 1 @3935 ]
 "11 D:\lxp\cs60\cs600-redo.X\src/soc/ticker.c
 [v _glTicker glTicker `VEul  1 e 4 0 ]
 "12
@@ -988,23 +1027,21 @@ OSC_PMODE_MAX 7
 "5 D:\lxp\cs60\cs600-redo.X\src/app/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"7
-[v main@t16 t16 `ui  1 a 2 17 ]
-"47
+"27
 } 0
 "113 D:\lxp\cs60\cs600-redo.X\src/api/ui.c
 [v _ui_disp_start_cs600 ui_disp_start_cs600 `(v  1 e 1 0 ]
 {
 [v ui_disp_start_cs600@dly dly `uc  1 a 1 wreg ]
 "116
-[v ui_disp_start_cs600@buf buf `[6]uc  1 a 6 0 ]
+[v ui_disp_start_cs600@buf buf `[6]uc  1 a 6 9 ]
 "115
-[v ui_disp_start_cs600@t8 t8 `uc  1 a 1 7 ]
+[v ui_disp_start_cs600@t8 t8 `uc  1 a 1 16 ]
 "113
 [v ui_disp_start_cs600@dly dly `uc  1 a 1 wreg ]
 "115
-[v ui_disp_start_cs600@F7614 F7614 `[6]uc  1 s 6 F7614 ]
-[v ui_disp_start_cs600@dly dly `uc  1 a 1 6 ]
+[v ui_disp_start_cs600@F7622 F7622 `[6]uc  1 s 6 F7622 ]
+[v ui_disp_start_cs600@dly dly `uc  1 a 1 15 ]
 "131
 } 0
 "46 D:\lxp\cs60\cs600-redo.X\src/soc/ticker.c
@@ -1013,22 +1050,32 @@ OSC_PMODE_MAX 7
 [v ticker_dly@ms ms `ui  1 p 2 0 ]
 "55
 } 0
+"243 D:\lxp\cs60\cs600-redo.X\src/depend/m_string.c
+[v _m_int8_2_hex m_int8_2_hex `(v  1 e 1 0 ]
+{
+"245
+[v m_int8_2_hex@t8 t8 `uc  1 a 1 3 ]
+"243
+[v m_int8_2_hex@str str `*.39uc  1 p 2 0 ]
+[v m_int8_2_hex@b b `uc  1 p 1 2 ]
+"258
+} 0
 "524 D:\lxp\cs60\cs600-redo.X\src/driver/lcd.c
 [v _lcd_show_string_l1 lcd_show_string_l1 `(v  1 e 1 0 ]
 {
 "526
-[v lcd_show_string_l1@t8 t8 `uc  1 a 1 21 ]
+[v lcd_show_string_l1@t8 t8 `uc  1 a 1 8 ]
 "524
-[v lcd_show_string_l1@str str `*.39uc  1 p 2 19 ]
+[v lcd_show_string_l1@str str `*.39uc  1 p 2 6 ]
 "532
 } 0
 "514
 [v _lcd_show_string_l0 lcd_show_string_l0 `(v  1 e 1 0 ]
 {
 "516
-[v lcd_show_string_l0@t8 t8 `uc  1 a 1 21 ]
+[v lcd_show_string_l0@t8 t8 `uc  1 a 1 8 ]
 "514
-[v lcd_show_string_l0@str str `*.25uc  1 p 2 19 ]
+[v lcd_show_string_l0@str str `*.25uc  1 p 2 6 ]
 "522
 } 0
 "378
@@ -1037,45 +1084,19 @@ OSC_PMODE_MAX 7
 [v lcd_disp_logo@show show `uc  1 a 1 wreg ]
 [v lcd_disp_logo@show show `uc  1 a 1 wreg ]
 "380
-[v lcd_disp_logo@show show `uc  1 a 1 31 ]
+[v lcd_disp_logo@show show `uc  1 a 1 13 ]
 "384
 } 0
-"133 D:\lxp\cs60\cs600-redo.X\src/api/ui.c
-[v _ui_disp_rtc_mm_ss ui_disp_rtc_mm_ss `(v  1 e 1 0 ]
-{
-"135
-[v ui_disp_rtc_mm_ss@buf buf `[10]uc  1 a 10 0 ]
-"136
-[v ui_disp_rtc_mm_ss@t8 t8 `uc  1 a 1 10 ]
-"158
-} 0
-"74 D:\lxp\cs60\cs600-redo.X\src/soc/rtc.c
-[v _rtc_get rtc_get `(v  1 e 1 0 ]
-{
-"76
-[v rtc_get@t8 t8 `uc  1 a 1 31 ]
-"91
-} 0
-"243 D:\lxp\cs60\cs600-redo.X\src/depend/m_string.c
-[v _m_int8_2_hex m_int8_2_hex `(v  1 e 1 0 ]
-{
-"245
-[v m_int8_2_hex@t8 t8 `uc  1 a 1 31 ]
-"243
-[v m_int8_2_hex@str str `*.39uc  1 p 2 0 ]
-[v m_int8_2_hex@b b `uc  1 p 1 2 ]
-"258
-} 0
-"118 D:\lxp\cs60\cs600-redo.X\src/driver/lcd.c
+"118
 [v _lcd_disp_level lcd_disp_level `(v  1 e 1 0 ]
 {
 [v lcd_disp_level@level level `uc  1 a 1 wreg ]
 "120
-[v lcd_disp_level@i i `uc  1 a 1 19 ]
+[v lcd_disp_level@i i `uc  1 a 1 6 ]
 "118
 [v lcd_disp_level@level level `uc  1 a 1 wreg ]
 "121
-[v lcd_disp_level@level level `uc  1 a 1 18 ]
+[v lcd_disp_level@level level `uc  1 a 1 5 ]
 "129
 } 0
 "46
@@ -1083,12 +1104,12 @@ OSC_PMODE_MAX 7
 {
 [v lcd_disp_level_bar@bar bar `uc  1 a 1 wreg ]
 "49
-[v lcd_disp_level_bar@__bar __bar `uc  1 a 1 16 ]
+[v lcd_disp_level_bar@__bar __bar `uc  1 a 1 3 ]
 "46
 [v lcd_disp_level_bar@bar bar `uc  1 a 1 wreg ]
-[v lcd_disp_level_bar@show show `uc  1 p 1 31 ]
+[v lcd_disp_level_bar@show show `uc  1 p 1 13 ]
 "50
-[v lcd_disp_level_bar@bar bar `uc  1 a 1 17 ]
+[v lcd_disp_level_bar@bar bar `uc  1 a 1 4 ]
 "116
 } 0
 "2 D:\lxp\cs60\cs600-redo.X\src/soc/soc.c
@@ -1109,9 +1130,9 @@ OSC_PMODE_MAX 7
 "54
 [v _rtc_set rtc_set `(v  1 e 1 0 ]
 {
-[s S623 . 7 `uc 1 year 1 0 `uc 1 month 1 1 `uc 1 date 1 2 `uc 1 hour 1 3 `uc 1 minute 1 4 `uc 1 second 1 5 `uc 1 day 1 6 ]
+[s S627 . 7 `uc 1 year 1 0 `uc 1 month 1 1 `uc 1 date 1 2 `uc 1 hour 1 3 `uc 1 minute 1 4 `uc 1 second 1 5 `uc 1 day 1 6 ]
 "56
-[v rtc_set@stp stp `*.39S623  1 a 2 2 ]
+[v rtc_set@stp stp `*.39S627  1 a 2 2 ]
 "54
 [v rtc_set@rtc rtc `*.39uc  1 p 2 0 ]
 "72
@@ -1153,14 +1174,204 @@ OSC_PMODE_MAX 7
 {
 "627
 } 0
+"39 D:\lxp\cs60\cs600-redo.X\src/app/event.c
+[v _event_process event_process `(c  1 e 1 0 ]
+{
+"59
+} 0
 "154 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
 [v _key_process key_process `(v  1 e 1 0 ]
 {
 "156
-[v key_process@tm tm `ui  1 a 2 0 ]
+[v key_process@tm tm `ui  1 a 2 26 ]
 "157
-[v key_process@key key `uc  1 a 1 2 ]
+[v key_process@key key `uc  1 a 1 28 ]
 "177
+} 0
+"26
+[v _key_waite_release key_waite_release `(ui  1 e 2 0 ]
+{
+"28
+[v key_waite_release@t8 t8 `uc  1 a 1 12 ]
+"26
+[v key_waite_release@timeout timeout `ui  1 p 2 8 ]
+[v key_waite_release@key key `*.39uc  1 p 2 10 ]
+"37
+} 0
+"8 D:\lxp\cs60\cs600-redo.X\src/driver/key.c
+[v _key_polling key_polling `(uc  1 e 1 0 ]
+{
+"11
+[v key_polling@t8 t8 `uc  1 a 1 7 ]
+"10
+[v key_polling@ktemp ktemp `uc  1 a 1 6 ]
+"30
+} 0
+"69 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
+[v _key_process_up key_process_up `(v  1 e 1 0 ]
+{
+"78
+} 0
+"58
+[v _key_adj_value_fixed_point key_adj_value_fixed_point `(v  1 e 1 0 ]
+{
+"61
+[v key_adj_value_fixed_point@t16 t16 `ui  1 a 2 6 ]
+"60
+[v key_adj_value_fixed_point@dloc dloc `ui  1 a 2 4 ]
+"58
+[v key_adj_value_fixed_point@value value `*.39ui  1 p 2 1 ]
+[v key_adj_value_fixed_point@loc loc `uc  1 p 1 3 ]
+"68
+} 0
+"15 C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 7 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 3 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 5 ]
+"53
+} 0
+"8 C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 0 ]
+"8
+[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 12 ]
+"26
+} 0
+"8 C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 8 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 7 ]
+"8
+[v ___lwdiv@dividend dividend `ui  1 p 2 3 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 5 ]
+"31
+} 0
+"15 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
+[v ___exp_10 __exp_10 `(ui  1 e 2 0 ]
+{
+[v ___exp_10@n n `uc  1 a 1 wreg ]
+[v ___exp_10@n n `uc  1 a 1 wreg ]
+[v ___exp_10@n n `uc  1 a 1 2 ]
+"24
+} 0
+"139
+[v _key_process_set_long key_process_set_long `(v  1 e 1 0 ]
+{
+"142
+} 0
+"106
+[v _key_process_set_down_long key_process_set_down_long `(v  1 e 1 0 ]
+{
+"137
+} 0
+"87
+[v ___enter_menu_set_pose __enter_menu_set_pose `(v  1 e 1 0 ]
+{
+[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7493 1 type 1 9 `[2]uc 1 . 2 10 ]
+"88
+[s S33 . 134 `ul 1 id 4 0 `E7483 1 pos 1 4 `uc 1 maxValueForlevelBar 1 5 `ui 1 density 2 6 `l 1 h 4 8 `ul 1 d 4 12 `l 1 baseZero 4 16 `[4]S27 1 diffPressureWarnSet 48 20 `S27 1 pressureWarnSet 12 68 `[4]uc 1 simplePloyFactor 4 80 `[2]ul 1 ex_pressZero 8 84 `[2]ul 1 ex_pressLine 8 92 `[2]ul 1 ex_pressCurrentLoopLow 8 100 `[2]ul 1 ex_pressCurrentLoopUpper 8 108 `ul 1 ex_TempZero 4 116 `ul 1 ex_TempLine 4 120 `ul 1 ex_TempCurrentLoopLow 4 124 `ul 1 ex_TempCurrentLoopUpper 4 128 `ui 1 crc 2 132 ]
+[v ___enter_menu_set_pose@fps fps `*.39S33  1 a 2 1 ]
+"91
+} 0
+"81
+[v ___enter_menu_set_density __enter_menu_set_density `(v  1 e 1 0 ]
+{
+[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7493 1 type 1 9 `[2]uc 1 . 2 10 ]
+"82
+[s S33 . 134 `ul 1 id 4 0 `E7483 1 pos 1 4 `uc 1 maxValueForlevelBar 1 5 `ui 1 density 2 6 `l 1 h 4 8 `ul 1 d 4 12 `l 1 baseZero 4 16 `[4]S27 1 diffPressureWarnSet 48 20 `S27 1 pressureWarnSet 12 68 `[4]uc 1 simplePloyFactor 4 80 `[2]ul 1 ex_pressZero 8 84 `[2]ul 1 ex_pressLine 8 92 `[2]ul 1 ex_pressCurrentLoopLow 8 100 `[2]ul 1 ex_pressCurrentLoopUpper 8 108 `ul 1 ex_TempZero 4 116 `ul 1 ex_TempLine 4 120 `ul 1 ex_TempCurrentLoopLow 4 124 `ul 1 ex_TempCurrentLoopUpper 4 128 `ui 1 crc 2 132 ]
+[v ___enter_menu_set_density@fps fps `*.39S33  1 a 2 2 ]
+"85
+} 0
+"92
+[v ___enter_menu_set_base_zero __enter_menu_set_base_zero `(v  1 e 1 0 ]
+{
+[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7493 1 type 1 9 `[2]uc 1 . 2 10 ]
+"93
+[s S33 . 134 `ul 1 id 4 0 `E7483 1 pos 1 4 `uc 1 maxValueForlevelBar 1 5 `ui 1 density 2 6 `l 1 h 4 8 `ul 1 d 4 12 `l 1 baseZero 4 16 `[4]S27 1 diffPressureWarnSet 48 20 `S27 1 pressureWarnSet 12 68 `[4]uc 1 simplePloyFactor 4 80 `[2]ul 1 ex_pressZero 8 84 `[2]ul 1 ex_pressLine 8 92 `[2]ul 1 ex_pressCurrentLoopLow 8 100 `[2]ul 1 ex_pressCurrentLoopUpper 8 108 `ul 1 ex_TempZero 4 116 `ul 1 ex_TempLine 4 120 `ul 1 ex_TempCurrentLoopLow 4 124 `ul 1 ex_TempCurrentLoopUpper 4 128 `ui 1 crc 2 132 ]
+[v ___enter_menu_set_base_zero@fps fps `*.39S33  1 a 2 16 ]
+"97
+} 0
+"24 D:\lxp\cs60\cs600-redo.X\src/api/ui.c
+[v ___int32_2_mflot32 __int32_2_mflot32 `(l  1 e 4 0 ]
+{
+[s S549 . 4 `ui 1 significand 2 0 `uc 1 exponent 1 2 `uc 1 sign 1 3 ]
+"26
+[u S553 . 4 `ul 1 t32 4 0 `S549 1 stru 4 0 ]
+[v ___int32_2_mflot32@mf mf `S553  1 a 4 12 ]
+"27
+[v ___int32_2_mflot32@t32 t32 `ul  1 a 4 8 ]
+"24
+[v ___int32_2_mflot32@x x `l  1 p 4 0 ]
+"26
+[v ___int32_2_mflot32@F7608 F7608 `S553  1 s 4 F7608 ]
+"41
+} 0
+"8 C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+{
+"11
+[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+"12
+[v ___lldiv@counter counter `uc  1 a 1 12 ]
+"8
+[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
+[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
+"31
+} 0
+"144 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
+[v _key_process_set key_process_set `(v  1 e 1 0 ]
+{
+"152
+} 0
+"47
+[v _key_process_down key_process_down `(v  1 e 1 0 ]
+{
+"56
+} 0
+"39
+[v _key_shift_loc_fixed_point key_shift_loc_fixed_point `(v  1 e 1 0 ]
+{
+"41
+[v key_shift_loc_fixed_point@t8 t8 `uc  1 a 1 4 ]
+"39
+[v key_shift_loc_fixed_point@loc loc `*.39uc  1 p 2 0 ]
+[v key_shift_loc_fixed_point@min min `uc  1 p 1 2 ]
+[v key_shift_loc_fixed_point@max max `uc  1 p 1 3 ]
+"46
+} 0
+"32 D:\lxp\cs60\cs600-redo.X\src/app/event.c
+[v _event_process_time_out event_process_time_out `(c  1 e 1 0 ]
+{
+"38
+} 0
+"24
+[v _event_process_ticker event_process_ticker `(c  1 e 1 0 ]
+{
+"30
+} 0
+"70 D:\lxp\cs60\cs600-redo.X\src/api/sample.c
+[v _sample_diff_pr_chip_fast sample_diff_pr_chip_fast `(uc  1 e 1 0 ]
+{
+"73
+[v sample_diff_pr_chip_fast@t16 t16 `i  1 a 2 24 ]
+"72
+[v sample_diff_pr_chip_fast@ret ret `uc  1 a 1 23 ]
+"107
+} 0
+"6 D:\lxp\cs60\cs600-redo.X\src/app/event.c
+[v _event_process_rtc event_process_rtc `(c  1 e 1 0 ]
+{
+"22
 } 0
 "205 D:\lxp\cs60\cs600-redo.X\src/api/ui.c
 [v _ui_disp_menu ui_disp_menu `(v  1 e 1 0 ]
@@ -1176,11 +1387,11 @@ OSC_PMODE_MAX 7
 [v _ui_disp_adj_xfixed_pt ui_disp_adj_xfixed_pt `(v  1 e 1 0 ]
 {
 "188
-[v ui_disp_adj_xfixed_pt@buf buf `[10]uc  1 a 10 7 ]
+[v ui_disp_adj_xfixed_pt@buf buf `[10]uc  1 a 10 16 ]
 "186
-[v ui_disp_adj_xfixed_pt@str str `*.25uc  1 p 2 0 ]
-[v ui_disp_adj_xfixed_pt@x x `ui  1 p 2 2 ]
-[v ui_disp_adj_xfixed_pt@loc loc `uc  1 p 1 4 ]
+[v ui_disp_adj_xfixed_pt@str str `*.25uc  1 p 2 9 ]
+[v ui_disp_adj_xfixed_pt@x x `ui  1 p 2 11 ]
+[v ui_disp_adj_xfixed_pt@loc loc `uc  1 p 1 13 ]
 "198
 } 0
 "159
@@ -1192,9 +1403,9 @@ OSC_PMODE_MAX 7
 [v _lcd_show_string lcd_show_string `(v  1 e 1 0 ]
 {
 "536
-[v lcd_show_string@t8 t8 `uc  1 a 1 21 ]
+[v lcd_show_string@t8 t8 `uc  1 a 1 8 ]
 "534
-[v lcd_show_string@str str `*.35uc  1 p 2 19 ]
+[v lcd_show_string@str str `*.35uc  1 p 2 6 ]
 "543
 } 0
 "489
@@ -1202,12 +1413,12 @@ OSC_PMODE_MAX 7
 {
 [v lcd_show_chr@loc loc `uc  1 a 1 wreg ]
 "491
-[v lcd_show_chr@code code `uc  1 a 1 18 ]
+[v lcd_show_chr@code code `uc  1 a 1 5 ]
 "489
 [v lcd_show_chr@loc loc `uc  1 a 1 wreg ]
-[v lcd_show_chr@chr chr `uc  1 p 1 16 ]
+[v lcd_show_chr@chr chr `uc  1 p 1 3 ]
 "491
-[v lcd_show_chr@loc loc `uc  1 a 1 17 ]
+[v lcd_show_chr@loc loc `uc  1 a 1 4 ]
 "503
 } 0
 "461
@@ -1230,7 +1441,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_7@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_7@code code `uc  1 a 1 wreg ]
 "355
-[v lcd_disp_chr_loc_7@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_7@code code `uc  1 a 1 13 ]
 "363
 } 0
 "334
@@ -1239,7 +1450,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_6@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_6@code code `uc  1 a 1 wreg ]
 "336
-[v lcd_disp_chr_loc_6@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_6@code code `uc  1 a 1 13 ]
 "344
 } 0
 "315
@@ -1248,7 +1459,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_5@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_5@code code `uc  1 a 1 wreg ]
 "317
-[v lcd_disp_chr_loc_5@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_5@code code `uc  1 a 1 13 ]
 "325
 } 0
 "296
@@ -1257,7 +1468,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_4@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_4@code code `uc  1 a 1 wreg ]
 "298
-[v lcd_disp_chr_loc_4@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_4@code code `uc  1 a 1 13 ]
 "306
 } 0
 "284
@@ -1266,7 +1477,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_3@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_3@code code `uc  1 a 1 wreg ]
 "286
-[v lcd_disp_chr_loc_3@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_3@code code `uc  1 a 1 13 ]
 "294
 } 0
 "265
@@ -1275,7 +1486,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_2@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_2@code code `uc  1 a 1 wreg ]
 "267
-[v lcd_disp_chr_loc_2@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_2@code code `uc  1 a 1 13 ]
 "275
 } 0
 "246
@@ -1284,7 +1495,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_1@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_1@code code `uc  1 a 1 wreg ]
 "248
-[v lcd_disp_chr_loc_1@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_1@code code `uc  1 a 1 13 ]
 "256
 } 0
 "226
@@ -1293,7 +1504,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_chr_loc_0@code code `uc  1 a 1 wreg ]
 [v lcd_disp_chr_loc_0@code code `uc  1 a 1 wreg ]
 "228
-[v lcd_disp_chr_loc_0@code code `uc  1 a 1 31 ]
+[v lcd_disp_chr_loc_0@code code `uc  1 a 1 13 ]
 "237
 } 0
 "474
@@ -1301,8 +1512,8 @@ OSC_PMODE_MAX 7
 {
 [v lcd_show_dp@loc loc `uc  1 a 1 wreg ]
 [v lcd_show_dp@loc loc `uc  1 a 1 wreg ]
-[v lcd_show_dp@show show `uc  1 p 1 16 ]
-[v lcd_show_dp@loc loc `uc  1 a 1 17 ]
+[v lcd_show_dp@show show `uc  1 p 1 3 ]
+[v lcd_show_dp@loc loc `uc  1 a 1 4 ]
 "487
 } 0
 "276
@@ -1311,7 +1522,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_dp_loc_2@dp dp `uc  1 a 1 wreg ]
 [v lcd_disp_dp_loc_2@dp dp `uc  1 a 1 wreg ]
 "278
-[v lcd_disp_dp_loc_2@dp dp `uc  1 a 1 31 ]
+[v lcd_disp_dp_loc_2@dp dp `uc  1 a 1 13 ]
 "282
 } 0
 "257
@@ -1320,7 +1531,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_dp_loc_1@dp dp `uc  1 a 1 wreg ]
 [v lcd_disp_dp_loc_1@dp dp `uc  1 a 1 wreg ]
 "259
-[v lcd_disp_dp_loc_1@dp dp `uc  1 a 1 31 ]
+[v lcd_disp_dp_loc_1@dp dp `uc  1 a 1 13 ]
 "263
 } 0
 "238
@@ -1329,7 +1540,7 @@ OSC_PMODE_MAX 7
 [v lcd_disp_dp_loc_0@dp dp `uc  1 a 1 wreg ]
 [v lcd_disp_dp_loc_0@dp dp `uc  1 a 1 wreg ]
 "240
-[v lcd_disp_dp_loc_0@dp dp `uc  1 a 1 31 ]
+[v lcd_disp_dp_loc_0@dp dp `uc  1 a 1 13 ]
 "244
 } 0
 "32
@@ -1337,15 +1548,15 @@ OSC_PMODE_MAX 7
 {
 [v lcd_set_com_seg@com com `uc  1 a 1 wreg ]
 "35
-[v lcd_set_com_seg@bits bits `uc  1 a 1 15 ]
+[v lcd_set_com_seg@bits bits `uc  1 a 1 2 ]
 "34
-[v lcd_set_com_seg@offset offset `uc  1 a 1 14 ]
+[v lcd_set_com_seg@offset offset `uc  1 a 1 1 ]
 "32
 [v lcd_set_com_seg@com com `uc  1 a 1 wreg ]
 [v lcd_set_com_seg@seg seg `uc  1 p 1 8 ]
 [v lcd_set_com_seg@show show `uc  1 p 1 9 ]
 "36
-[v lcd_set_com_seg@com com `uc  1 a 1 13 ]
+[v lcd_set_com_seg@com com `uc  1 a 1 0 ]
 "45
 } 0
 "51 D:\lxp\cs60\cs600-redo.X\src/depend/m_string.c
@@ -1395,30 +1606,108 @@ OSC_PMODE_MAX 7
 [v ___x_arrange_str __x_arrange_str `(v  1 e 1 0 ]
 {
 "11
-[v ___x_arrange_str@i i `uc  1 a 1 31 ]
+[v ___x_arrange_str@i i `uc  1 a 1 3 ]
 "9
 [v ___x_arrange_str@str str `*.39uc  1 p 2 0 ]
 [v ___x_arrange_str@len len `uc  1 p 1 2 ]
 "16
 } 0
-"26 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
-[v _key_waite_release key_waite_release `(ui  1 e 2 0 ]
+"151 D:\lxp\cs60\cs600-redo.X\src/api/sample.c
+[v _sample_pr_chip_comm sample_pr_chip_comm `(uc  1 e 1 0 ]
 {
-"28
-[v key_waite_release@t8 t8 `uc  1 a 1 31 ]
-"26
-[v key_waite_release@timeout timeout `ui  1 p 2 8 ]
-[v key_waite_release@key key `*.39uc  1 p 2 10 ]
-"37
+"154
+[v sample_pr_chip_comm@t16 t16 `i  1 a 2 17 ]
+"153
+[v sample_pr_chip_comm@ret ret `uc  1 a 1 16 ]
+"185
 } 0
-"8 D:\lxp\cs60\cs600-redo.X\src/driver/key.c
-[v _key_polling key_polling `(uc  1 e 1 0 ]
+"49
+[v ___x_sample_fifo __x_sample_fifo `(i  1 e 2 0 ]
+{
+"51
+[v ___x_sample_fifo@ret ret `l  1 a 4 11 ]
+"52
+[v ___x_sample_fifo@i i `uc  1 a 1 15 ]
+"49
+[v ___x_sample_fifo@buf buf `*.39i  1 p 2 0 ]
+[v ___x_sample_fifo@x x `i  1 p 2 2 ]
+[v ___x_sample_fifo@len len `uc  1 p 1 4 ]
+"61
+} 0
+"187
+[v _sample_in_soc_adc_ch sample_in_soc_adc_ch `(uc  1 e 1 0 ]
+{
+"191
+[v sample_in_soc_adc_ch@ret ret `ul  1 a 4 2 ]
+"190
+[v sample_in_soc_adc_ch@t16 t16 `ui  1 a 2 0 ]
+"189
+[v sample_in_soc_adc_ch@i i `uc  1 a 1 6 ]
+"227
+} 0
+"21 D:\lxp\cs60\cs600-redo.X\src/driver/in_adc.c
+[v _in_adc_start_and_read in_adc_start_and_read `(ui  1 e 2 0 ]
+{
+[v in_adc_start_and_read@ch ch `uc  1 a 1 wreg ]
+"23
+[v in_adc_start_and_read@ret ret `ui  1 a 2 8 ]
+"21
+[v in_adc_start_and_read@ch ch `uc  1 a 1 wreg ]
+"23
+[v in_adc_start_and_read@ch ch `uc  1 a 1 7 ]
+"36
+} 0
+"9
+[v _in_adc_init in_adc_init `(v  1 e 1 0 ]
+{
+"20
+} 0
+"109 D:\lxp\cs60\cs600-redo.X\src/api/sample.c
+[v _sample_diff_pr_chip_slow sample_diff_pr_chip_slow `(uc  1 e 1 0 ]
+{
+"112
+[v sample_diff_pr_chip_slow@t16 t16 `i  1 a 2 24 ]
+"111
+[v sample_diff_pr_chip_slow@ret ret `uc  1 a 1 23 ]
+"149
+} 0
+"62
+[v _sample_diff_pr_fliter sample_diff_pr_fliter `(uc  1 e 1 0 ]
+{
+[s S73 . 8 `l 1 pValue 4 0 `i 1 pAdcValue 2 4 `i 1 tAdcValue 2 6 ]
+[v sample_diff_pr_fliter@xin xin `*.39S73  1 p 2 21 ]
+"68
+} 0
+"26
+[v ___x_sample_fliter __x_sample_fliter `(i  1 e 2 0 ]
+{
+"30
+[v ___x_sample_fliter@t32 t32 `l  1 a 4 16 ]
+"28
+[v ___x_sample_fliter@min min `i  1 a 2 14 ]
+[v ___x_sample_fliter@max max `i  1 a 2 12 ]
+"29
+[v ___x_sample_fliter@i i `uc  1 a 1 20 ]
+[v ___x_sample_fliter@minLoc minLoc `uc  1 a 1 11 ]
+[v ___x_sample_fliter@maxLoc maxLoc `uc  1 a 1 10 ]
+"26
+[v ___x_sample_fliter@buf buf `*.39i  1 p 2 0 ]
+[v ___x_sample_fliter@len len `uc  1 p 1 2 ]
+[v ___x_sample_fliter@loop loop `uc  1 p 1 3 ]
+"47
+} 0
+"8 C:\Program Files\Microchip\xc8\v1.41\sources\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
 {
 "11
-[v key_polling@t8 t8 `uc  1 a 1 7 ]
-"10
-[v key_polling@ktemp ktemp `uc  1 a 1 6 ]
-"30
+[v ___aldiv@quotient quotient `l  1 a 4 10 ]
+"12
+[v ___aldiv@sign sign `uc  1 a 1 9 ]
+[v ___aldiv@counter counter `uc  1 a 1 8 ]
+"8
+[v ___aldiv@dividend dividend `l  1 p 4 0 ]
+[v ___aldiv@divisor divisor `l  1 p 4 4 ]
+"42
 } 0
 "97 D:\lxp\cs60\cs600-redo.X\src/soc/clock.c
 [v _delay_ms delay_ms `(v  1 e 1 0 ]
@@ -1426,161 +1715,7 @@ OSC_PMODE_MAX 7
 [v delay_ms@dly dly `ui  1 p 2 4 ]
 "103
 } 0
-"69 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
-[v _key_process_up key_process_up `(v  1 e 1 0 ]
-{
-"78
-} 0
-"58
-[v _key_adj_value_fixed_point key_adj_value_fixed_point `(v  1 e 1 0 ]
-{
-"61
-[v key_adj_value_fixed_point@t16 t16 `ui  1 a 2 19 ]
-"60
-[v key_adj_value_fixed_point@dloc dloc `ui  1 a 2 17 ]
-"58
-[v key_adj_value_fixed_point@value value `*.39ui  1 p 2 14 ]
-[v key_adj_value_fixed_point@loc loc `uc  1 p 1 16 ]
-"68
-} 0
-"15 C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 6 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 2 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 4 ]
-"53
-} 0
-"8 C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c
-[v ___lwmod __lwmod `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwmod@counter counter `uc  1 a 1 13 ]
-"8
-[v ___lwmod@dividend dividend `ui  1 p 2 9 ]
-[v ___lwmod@divisor divisor `ui  1 p 2 11 ]
-"26
-} 0
-"8 C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c
-[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-{
-"11
-[v ___lwdiv@quotient quotient `ui  1 a 2 7 ]
-"12
-[v ___lwdiv@counter counter `uc  1 a 1 6 ]
-"8
-[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
-[v ___lwdiv@divisor divisor `ui  1 p 2 4 ]
-"31
-} 0
-"15 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
-[v ___exp_10 __exp_10 `(ui  1 e 2 0 ]
-{
-[v ___exp_10@n n `uc  1 a 1 wreg ]
-[v ___exp_10@n n `uc  1 a 1 wreg ]
-[v ___exp_10@n n `uc  1 a 1 31 ]
-"24
-} 0
-"139
-[v _key_process_set_long key_process_set_long `(v  1 e 1 0 ]
-{
-"142
-} 0
-"106
-[v _key_process_set_down_long key_process_set_down_long `(v  1 e 1 0 ]
-{
-"137
-} 0
-"87
-[v ___enter_menu_set_pose __enter_menu_set_pose `(v  1 e 1 0 ]
-{
-[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7488 1 type 1 9 `[2]uc 1 . 2 10 ]
-"88
-[s S33 . 134 `ul 1 id 4 0 `E7483 1 pos 1 4 `uc 1 maxValueForlevelBar 1 5 `ui 1 density 2 6 `l 1 h 4 8 `ul 1 d 4 12 `l 1 baseZero 4 16 `[4]S27 1 diffPressureWarnSet 48 20 `S27 1 pressureWarnSet 12 68 `[4]uc 1 simplePloyFactor 4 80 `[2]ul 1 ex_pressZero 8 84 `[2]ul 1 ex_pressLine 8 92 `[2]ul 1 ex_pressCurrentLoopLow 8 100 `[2]ul 1 ex_pressCurrentLoopUpper 8 108 `ul 1 ex_TempZero 4 116 `ul 1 ex_TempLine 4 120 `ul 1 ex_TempCurrentLoopLow 4 124 `ul 1 ex_TempCurrentLoopUpper 4 128 `ui 1 crc 2 132 ]
-[v ___enter_menu_set_pose@fps fps `*.39S33  1 a 2 0 ]
-"91
-} 0
-"81
-[v ___enter_menu_set_density __enter_menu_set_density `(v  1 e 1 0 ]
-{
-[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7488 1 type 1 9 `[2]uc 1 . 2 10 ]
 "82
-[s S33 . 134 `ul 1 id 4 0 `E7483 1 pos 1 4 `uc 1 maxValueForlevelBar 1 5 `ui 1 density 2 6 `l 1 h 4 8 `ul 1 d 4 12 `l 1 baseZero 4 16 `[4]S27 1 diffPressureWarnSet 48 20 `S27 1 pressureWarnSet 12 68 `[4]uc 1 simplePloyFactor 4 80 `[2]ul 1 ex_pressZero 8 84 `[2]ul 1 ex_pressLine 8 92 `[2]ul 1 ex_pressCurrentLoopLow 8 100 `[2]ul 1 ex_pressCurrentLoopUpper 8 108 `ul 1 ex_TempZero 4 116 `ul 1 ex_TempLine 4 120 `ul 1 ex_TempCurrentLoopLow 4 124 `ul 1 ex_TempCurrentLoopUpper 4 128 `ui 1 crc 2 132 ]
-[v ___enter_menu_set_density@fps fps `*.39S33  1 a 2 2 ]
-"85
-} 0
-"92
-[v ___enter_menu_set_base_zero __enter_menu_set_base_zero `(v  1 e 1 0 ]
-{
-[s S27 . 12 `ul 1 warnValue 4 0 `ul 1 retDiff 4 4 `uc 1 upLimit 1 8 `E7488 1 type 1 9 `[2]uc 1 . 2 10 ]
-"93
-[s S33 . 134 `ul 1 id 4 0 `E7483 1 pos 1 4 `uc 1 maxValueForlevelBar 1 5 `ui 1 density 2 6 `l 1 h 4 8 `ul 1 d 4 12 `l 1 baseZero 4 16 `[4]S27 1 diffPressureWarnSet 48 20 `S27 1 pressureWarnSet 12 68 `[4]uc 1 simplePloyFactor 4 80 `[2]ul 1 ex_pressZero 8 84 `[2]ul 1 ex_pressLine 8 92 `[2]ul 1 ex_pressCurrentLoopLow 8 100 `[2]ul 1 ex_pressCurrentLoopUpper 8 108 `ul 1 ex_TempZero 4 116 `ul 1 ex_TempLine 4 120 `ul 1 ex_TempCurrentLoopLow 4 124 `ul 1 ex_TempCurrentLoopUpper 4 128 `ui 1 crc 2 132 ]
-[v ___enter_menu_set_base_zero@fps fps `*.39S33  1 a 2 21 ]
-"97
-} 0
-"24 D:\lxp\cs60\cs600-redo.X\src/api/ui.c
-[v ___int32_2_mflot32 __int32_2_mflot32 `(l  1 e 4 0 ]
-{
-[s S545 . 4 `ui 1 significand 2 0 `uc 1 exponent 1 2 `uc 1 sign 1 3 ]
-"26
-[u S549 . 4 `ul 1 t32 4 0 `S545 1 stru 4 0 ]
-[v ___int32_2_mflot32@mf mf `S549  1 a 4 4 ]
-"27
-[v ___int32_2_mflot32@t32 t32 `ul  1 a 4 0 ]
-"24
-[v ___int32_2_mflot32@x x `l  1 p 4 13 ]
-"26
-[v ___int32_2_mflot32@F7600 F7600 `S549  1 s 4 F7600 ]
-"41
-} 0
-"8 C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c
-[v ___lldiv __lldiv `(ul  1 e 4 0 ]
-{
-"11
-[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
-"12
-[v ___lldiv@counter counter `uc  1 a 1 12 ]
-"8
-[v ___lldiv@dividend dividend `ul  1 p 4 0 ]
-[v ___lldiv@divisor divisor `ul  1 p 4 4 ]
-"31
-} 0
-"144 D:\lxp\cs60\cs600-redo.X\src/api/key_menu.c
-[v _key_process_set key_process_set `(v  1 e 1 0 ]
-{
-"152
-} 0
-"47
-[v _key_process_down key_process_down `(v  1 e 1 0 ]
-{
-"56
-} 0
-"39
-[v _key_shift_loc_fixed_point key_shift_loc_fixed_point `(v  1 e 1 0 ]
-{
-"41
-[v key_shift_loc_fixed_point@t8 t8 `uc  1 a 1 31 ]
-"39
-[v key_shift_loc_fixed_point@loc loc `*.39uc  1 p 2 0 ]
-[v key_shift_loc_fixed_point@min min `uc  1 p 1 2 ]
-[v key_shift_loc_fixed_point@max max `uc  1 p 1 3 ]
-"46
-} 0
-"21 D:\lxp\cs60\cs600-redo.X\src/driver/in_adc.c
-[v _in_adc_start_and_read in_adc_start_and_read `(ui  1 e 2 0 ]
-{
-[v in_adc_start_and_read@ch ch `uc  1 a 1 wreg ]
-"23
-[v in_adc_start_and_read@ret ret `ui  1 a 2 7 ]
-"21
-[v in_adc_start_and_read@ch ch `uc  1 a 1 wreg ]
-"23
-[v in_adc_start_and_read@ch ch `uc  1 a 1 6 ]
-"36
-} 0
-"82 D:\lxp\cs60\cs600-redo.X\src/soc/clock.c
 [v _delay_us delay_us `(v  1 e 1 0 ]
 {
 "84
@@ -1589,15 +1724,10 @@ OSC_PMODE_MAX 7
 [v delay_us@dly dly `ui  1 p 2 0 ]
 "96
 } 0
-"9 D:\lxp\cs60\cs600-redo.X\src/driver/in_adc.c
-[v _in_adc_init in_adc_init `(v  1 e 1 0 ]
-{
-"20
-} 0
 "122 D:\lxp\cs60\cs600-redo.X\src/driver/ads1115.c
 [v _ads1115_start_conversion ads1115_start_conversion `(v  1 e 1 0 ]
 {
-[s S754 . 4 `uc 1 COMP_QUE 1 0 :2:0 
+[s S758 . 4 `uc 1 COMP_QUE 1 0 :2:0 
 `uc 1 COMP_LAT 1 0 :1:2 
 `uc 1 COMP_POL 1 0 :1:3 
 `uc 1 COMP_MODE 1 0 :1:4 
@@ -1606,15 +1736,15 @@ OSC_PMODE_MAX 7
 `uc 1 PGA 1 1 :3:1 
 `uc 1 MUX 1 1 :3:4 
 `ui 1 OS 2 2 ]
-[u S764 . 4 `ui 1 data 2 0 `S754 1 bits 4 0 ]
-[s S772 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S764 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
-[v ads1115_start_conversion@pAds1115 pAds1115 `*.39S772  1 p 2 7 ]
+[u S768 . 4 `ui 1 data 2 0 `S758 1 bits 4 0 ]
+[s S776 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S768 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
+[v ads1115_start_conversion@pAds1115 pAds1115 `*.39S776  1 p 2 8 ]
 "125
 } 0
 "17
 [v _ads1115_write_reg ads1115_write_reg `(v  1 e 1 0 ]
 {
-[s S754 . 4 `uc 1 COMP_QUE 1 0 :2:0 
+[s S758 . 4 `uc 1 COMP_QUE 1 0 :2:0 
 `uc 1 COMP_LAT 1 0 :1:2 
 `uc 1 COMP_POL 1 0 :1:3 
 `uc 1 COMP_MODE 1 0 :1:4 
@@ -1623,19 +1753,37 @@ OSC_PMODE_MAX 7
 `uc 1 PGA 1 1 :3:1 
 `uc 1 MUX 1 1 :3:4 
 `ui 1 OS 2 2 ]
-[u S764 . 4 `ui 1 data 2 0 `S754 1 bits 4 0 ]
-[s S772 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S764 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
-[v ads1115_write_reg@pAds1115 pAds1115 `*.39S772  1 p 2 2 ]
-[v ads1115_write_reg@addr addr `uc  1 p 1 4 ]
-[v ads1115_write_reg@value value `ui  1 p 2 5 ]
+[u S768 . 4 `ui 1 data 2 0 `S758 1 bits 4 0 ]
+[s S776 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S768 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
+[v ads1115_write_reg@pAds1115 pAds1115 `*.39S776  1 p 2 3 ]
+[v ads1115_write_reg@addr addr `uc  1 p 1 5 ]
+[v ads1115_write_reg@value value `ui  1 p 2 6 ]
 "27
+} 0
+"54
+[v _ads1115_set_mux ads1115_set_mux `(v  1 e 1 0 ]
+{
+[s S758 . 4 `uc 1 COMP_QUE 1 0 :2:0 
+`uc 1 COMP_LAT 1 0 :1:2 
+`uc 1 COMP_POL 1 0 :1:3 
+`uc 1 COMP_MODE 1 0 :1:4 
+`uc 1 DR 1 0 :3:5 
+`uc 1 MODE 1 1 :1:0 
+`uc 1 PGA 1 1 :3:1 
+`uc 1 MUX 1 1 :3:4 
+`ui 1 OS 2 2 ]
+[u S768 . 4 `ui 1 data 2 0 `S758 1 bits 4 0 ]
+[s S776 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S768 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
+[v ads1115_set_mux@pAds1115 pAds1115 `*.39S776  1 p 2 0 ]
+[v ads1115_set_mux@mux mux `E6976  1 p 1 2 ]
+"57
 } 0
 "127
 [v _ads1115_read_conversion ads1115_read_conversion `(ui  1 e 2 0 ]
 {
 "129
-[v ads1115_read_conversion@result result `ui  1 a 2 13 ]
-[s S754 . 4 `uc 1 COMP_QUE 1 0 :2:0 
+[v ads1115_read_conversion@result result `ui  1 a 2 0 ]
+[s S758 . 4 `uc 1 COMP_QUE 1 0 :2:0 
 `uc 1 COMP_LAT 1 0 :1:2 
 `uc 1 COMP_POL 1 0 :1:3 
 `uc 1 COMP_MODE 1 0 :1:4 
@@ -1645,9 +1793,9 @@ OSC_PMODE_MAX 7
 `uc 1 MUX 1 1 :3:4 
 `ui 1 OS 2 2 ]
 "127
-[u S764 . 4 `ui 1 data 2 0 `S754 1 bits 4 0 ]
-[s S772 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S764 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
-[v ads1115_read_conversion@pAds1115 pAds1115 `*.39S772  1 p 2 10 ]
+[u S768 . 4 `ui 1 data 2 0 `S758 1 bits 4 0 ]
+[s S776 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S768 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
+[v ads1115_read_conversion@pAds1115 pAds1115 `*.39S776  1 p 2 10 ]
 "135
 } 0
 "29
@@ -1655,7 +1803,7 @@ OSC_PMODE_MAX 7
 {
 "31
 [v ads1115_read_reg@t16 t16 `ui  1 a 2 8 ]
-[s S754 . 4 `uc 1 COMP_QUE 1 0 :2:0 
+[s S758 . 4 `uc 1 COMP_QUE 1 0 :2:0 
 `uc 1 COMP_LAT 1 0 :1:2 
 `uc 1 COMP_POL 1 0 :1:3 
 `uc 1 COMP_MODE 1 0 :1:4 
@@ -1665,9 +1813,9 @@ OSC_PMODE_MAX 7
 `uc 1 MUX 1 1 :3:4 
 `ui 1 OS 2 2 ]
 "29
-[u S764 . 4 `ui 1 data 2 0 `S754 1 bits 4 0 ]
-[s S772 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S764 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
-[v ads1115_read_reg@pAds1115 pAds1115 `*.39S772  1 p 2 4 ]
+[u S768 . 4 `ui 1 data 2 0 `S758 1 bits 4 0 ]
+[s S776 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S768 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
+[v ads1115_read_reg@pAds1115 pAds1115 `*.39S776  1 p 2 4 ]
 [v ads1115_read_reg@addr addr `uc  1 p 1 6 ]
 "46
 } 0
@@ -1681,17 +1829,17 @@ OSC_PMODE_MAX 7
 {
 [v iic_send_byte@x x `uc  1 a 1 wreg ]
 "82
-[v iic_send_byte@i i `uc  1 a 1 1 ]
+[v iic_send_byte@i i `uc  1 a 1 2 ]
 "80
 [v iic_send_byte@x x `uc  1 a 1 wreg ]
-[v iic_send_byte@x x `uc  1 a 1 0 ]
+[v iic_send_byte@x x `uc  1 a 1 1 ]
 "100
 } 0
 "60
 [v _iic_waite_ack iic_waite_ack `(uc  1 e 1 0 ]
 {
 "62
-[v iic_waite_ack@timeout timeout `uc  1 a 1 31 ]
+[v iic_waite_ack@timeout timeout `uc  1 a 1 0 ]
 "78
 } 0
 "32
@@ -1716,7 +1864,7 @@ OSC_PMODE_MAX 7
 {
 [v iic_send_ack@ack ack `c  1 a 1 wreg ]
 [v iic_send_ack@ack ack `c  1 a 1 wreg ]
-[v iic_send_ack@ack ack `c  1 a 1 31 ]
+[v iic_send_ack@ack ack `c  1 a 1 0 ]
 "58
 } 0
 "102
@@ -1736,7 +1884,7 @@ OSC_PMODE_MAX 7
 "5
 [v _ads1115_init ads1115_init `(v  1 e 1 0 ]
 {
-[s S754 . 4 `uc 1 COMP_QUE 1 0 :2:0 
+[s S758 . 4 `uc 1 COMP_QUE 1 0 :2:0 
 `uc 1 COMP_LAT 1 0 :1:2 
 `uc 1 COMP_POL 1 0 :1:3 
 `uc 1 COMP_MODE 1 0 :1:4 
@@ -1745,9 +1893,9 @@ OSC_PMODE_MAX 7
 `uc 1 PGA 1 1 :3:1 
 `uc 1 MUX 1 1 :3:4 
 `ui 1 OS 2 2 ]
-[u S764 . 4 `ui 1 data 2 0 `S754 1 bits 4 0 ]
-[s S772 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S764 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
-[v ads1115_init@pAds1115 pAds1115 `*.39S772  1 p 2 0 ]
+[u S768 . 4 `ui 1 data 2 0 `S758 1 bits 4 0 ]
+[s S776 . 16 `E7293 1 chip 1 0 `uc 1 slaveAddr 1 1 `S768 1 config 4 2 `*.37(v 1 iic_start 2 6 `*.37(v 1 iic_stop 2 8 `*.37(uc 1 iic_send_byte 2 10 `*.37(uc 1 iic_waite_ack 2 12 `*.37(uc 1 iic_received_byte_if_ack 2 14 ]
+[v ads1115_init@pAds1115 pAds1115 `*.39S776  1 p 2 0 ]
 [v ads1115_init@slvaddr slvaddr `uc  1 p 1 2 ]
 "15
 } 0

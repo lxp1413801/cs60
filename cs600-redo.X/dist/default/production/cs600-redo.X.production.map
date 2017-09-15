@@ -2,10 +2,10 @@ Microchip MPLAB XC8 Compiler V1.41 ()
 
 Linker command line:
 
--W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
+-W-3 --edf=C:\Program Files\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
   -h+dist/default/production\cs600-redo.X.production.sym \
   --cmf=dist/default/production\cs600-redo.X.production.cmf -z -Q18F86J93 \
-  -oC:\Users\ADMINI~1\AppData\Local\Temp\srcs.2 \
+  -oC:\Users\ADMINI~1\AppData\Local\Temp\s5a0.2 \
   -Mdist/default/production/cs600-redo.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0500h-0f53h -pstack=STACK -ACODE=00h-0FFF7h \
   -ACONST=00h-0FFF7h -ASMALLCONST=01000h-010FFhx239,0FF00h-0FFF7h \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\ADMINI~1\AppData\Local\Temp\srcs.obj \
+  C:\Users\ADMINI~1\AppData\Local\Temp\s5a0.obj \
   dist/default/production\cs600-redo.X.production.obj 
 
 Object code version is 3.11
@@ -38,7 +38,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\ADMINI~1\AppData\Local\Temp\srcs.obj
+C:\Users\ADMINI~1\AppData\Local\Temp\s5a0.obj
                 init                                 DC       DC        4        C       0
                 reset_vec                             0        0        4        0       0
                 config                             FFF8     FFF8        6     FFF8       0
@@ -1165,8 +1165,8 @@ _adc_iRef                            bssBANK0      000AE
 _adc_ibat                            bssBANK0      000B0
 _adjLocation                         bssCOMRAM     0003F
 _adjValue                            bssCOMRAM     00021
-_ads1115Chip0                        bssBANK1      001D2
-_ads1115Chip1                        bssBANK1      001C2
+_ads1115Chip0                        bssBANK1      001B2
+_ads1115Chip1                        bssBANK1      001A2
 _ads1115_init                        text82        01272
 _ads1115_init_all_chip               text81        02438
 _ads1115_read_conversion             text72        02148
@@ -1183,13 +1183,13 @@ _defalutRtc                          dataBANK0     000F9
 _defultSystemData                    mediumconst   0FF1D
 _delay_ms                            text50        026D8
 _delay_us                            text68        023CA
-_diffSampCh                          bssCOMRAM     00034
-_diffSampCount_D01                   bssCOMRAM     00036
-_diffSampCount_D23                   bssCOMRAM     00035
+_diffSampCh                          bssCOMRAM     00037
+_diffSampCount_D01                   bssCOMRAM     00039
+_diffSampCount_D23                   bssCOMRAM     00038
 _diff_prCalibTabDef                  bssBANK1      00100
-_dlyTicker                           bssCOMRAM     00027
-_dlyTickerEn                         bssCOMRAM     00037
-_fastSampTimer                       bssCOMRAM     00025
+_dlyTicker                           bssCOMRAM     00025
+_dlyTickerEn                         bssCOMRAM     00033
+_fastSampTimer                       bssCOMRAM     00029
 _flashTestbuf                        mediumconst   0FFA3
 _fpSysData                           dataBANK0     000F6
 _glRtc                               bssBANK0      00083
@@ -1254,12 +1254,12 @@ _main                                text0         00C88
 _menu                                bssCOMRAM     0003C
 _pAdjValue                           bssBANK0      000AC
 _pAds1115DiffPrObj                   bssCOMRAM     0002B
-_pAds1115PrObj                       bssCOMRAM     00029
+_pAds1115PrObj                       bssCOMRAM     00027
 _pLCD                                bssBANK0      00060
 _p_prEepromObj                       bssCOMRAM     0002F
 _passWord                            bssCOMRAM     0003D
 _pcf8574                             bssBANK0      00078
-_pcf8574Value                        bssCOMRAM     00039
+_pcf8574Value                        bssCOMRAM     00035
 _pdiff_prEepromObj                   bssCOMRAM     00031
 _prCalibTabDef                       bssBANK2      00200
 _rtc_alrm_irq_hook                   text85        02810
@@ -1268,13 +1268,13 @@ _rtc_init                            text13        0229A
 _rtc_set                             text14        01052
 _rtcc_reg_wr_disable                 text16        027FE
 _rtcc_reg_wr_enable                  text15        027F2
-_sampBufDiffPr_D01                   bssBANK1      001B2
-_sampBufDiffPr_D23                   bssBANK1      001A2
+_sampBufDiffPr_D01                   bssBANK1      001D2
+_sampBufDiffPr_D23                   bssBANK1      001C2
 _sampBufDiffPr_S1                    bssBANK0      000AA
-_slowSampleTimer                     bssCOMRAM     00033
+_slowSampleTimer                     bssCOMRAM     00036
 _soc_init                            text11        027C4
 _stRTCCFGbits                        (abs)         00F5F
-_st_Bj                               bssCOMRAM     00038
+_st_Bj                               bssCOMRAM     00034
 _sys_ticker_init                     text12        027D4
 _sys_ticker_irq_hook                 text84        02784
 _ticker_dly                          text2         025FA
@@ -1416,7 +1416,7 @@ FUNCTION INFORMATION:
  Auto vars:     Size  Location     Type
   t16             2   17[BANK1 ] unsigned int 
  Return value:  Size  Location     Type
-                  2  434[None  ] int 
+                  2  521[None  ] int 
  Registers used:
 		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, pclath, tosl, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
  Tracked objects:
@@ -2859,7 +2859,7 @@ Total ram usage:        4 bytes
 
  *************** function ___awmod *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c"
  Parameters:    Size  Location     Type
   dividend        2    0[BANK0 ] int 
   divisor         2    2[BANK0 ] int 
@@ -2891,7 +2891,7 @@ Total ram usage:        6 bytes
 
  *************** function ___awdiv *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c"
  Parameters:    Size  Location     Type
   dividend        2    0[BANK0 ] int 
   divisor         2    2[BANK0 ] int 
@@ -3154,7 +3154,7 @@ Total ram usage:        7 bytes
 
  *************** function ___wmul *****************
  Defined at:
-		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c"
+		line 15 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c"
  Parameters:    Size  Location     Type
   multiplier      2    2[BANK0 ] unsigned int 
   multiplicand    2    4[BANK0 ] unsigned int 
@@ -3187,7 +3187,7 @@ Total ram usage:        6 bytes
 
  *************** function ___lwmod *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c"
  Parameters:    Size  Location     Type
   dividend        2    9[BANK0 ] unsigned int 
   divisor         2   11[BANK0 ] unsigned int 
@@ -3218,7 +3218,7 @@ Total ram usage:        5 bytes
 
  *************** function ___lwdiv *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c"
  Parameters:    Size  Location     Type
   dividend        2    2[BANK0 ] unsigned int 
   divisor         2    4[BANK0 ] unsigned int 
@@ -3467,7 +3467,7 @@ Total ram usage:       16 bytes
 
  *************** function ___lldiv *****************
  Defined at:
-		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c"
+		line 8 in file "C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c"
  Parameters:    Size  Location     Type
   dividend        4    0[BANK0 ] unsigned long 
   divisor         4    4[BANK0 ] unsigned long 
@@ -4313,16 +4313,6 @@ Total ram usage:        0 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
-		___lwdiv       		CODE           	1A76	0000	121
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c estimated size: 121
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
-		___awdiv       		CODE           	0E1A	0000	191
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c estimated size: 191
-
 src/soc/rtc.c
 		_rtc_init      		CODE           	229A	0000	63
 		_rtcc_reg_wr_disable		CODE           	27FE	0000	13
@@ -4344,16 +4334,6 @@ src/driver/i2c.c
 
 src/driver/i2c.c estimated size: 543
 
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c
-		___lldiv       		CODE           	0F96	0000	189
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c estimated size: 189
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
-		___wmul        		CODE           	2402	0000	55
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c estimated size: 55
-
 src/driver/key.c
 		_key_polling   		CODE           	1EE6	0000	93
 
@@ -4364,6 +4344,16 @@ src/soc/clock.c
 		_delay_ms      		CODE           	26D8	0000	39
 
 src/soc/clock.c estimated size: 96
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c
+		___lwmod       		CODE           	1D6A	0000	99
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c estimated size: 99
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c
+		___awmod       		CODE           	1316	0000	163
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c estimated size: 163
 
 src/soc/soc.c
 		_soc_init      		CODE           	27C4	0000	17
@@ -4430,16 +4420,6 @@ shared
 
 shared estimated size: 1775
 
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
-		___lwmod       		CODE           	1D6A	0000	99
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c estimated size: 99
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
-		___awmod       		CODE           	1316	0000	163
-
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c estimated size: 163
-
 src/api/ui.c
 		_ui_disp_menu  		CODE           	26FE	0000	37
 		_ui_disp_adj_xfixed_pt		CODE           	110A	0000	183
@@ -4452,11 +4432,31 @@ src/api/ui.c
 
 src/api/ui.c estimated size: 1038
 
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c
+		___lwdiv       		CODE           	1A76	0000	121
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c estimated size: 121
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c
+		___awdiv       		CODE           	0E1A	0000	191
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c estimated size: 191
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c
+		___wmul        		CODE           	2402	0000	55
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c estimated size: 55
+
 src/driver/in_adc.c
 		_in_adc_start_and_read		CODE           	1C34	0000	107
 		_in_adc_init   		CODE           	2722	0000	37
 
 src/driver/in_adc.c estimated size: 144
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c
+		___lldiv       		CODE           	0F96	0000	189
+
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c estimated size: 189
 
 src/soc/int.c
 		_handler_interrupt_low		CODE           	0018	0000	197

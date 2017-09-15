@@ -28,13 +28,13 @@ key_adj_value_fixed_point@t16 EC 0 BANK0 1
 _pLCD 60 0 BANK0 1
 _LATC F8B 0 ABS 0
 __end_of_ui_disp_adj_xfixed_pt 11C0 0 CODE 0
-_slowSampleTimer 33 0 COMRAM 1
+_slowSampleTimer 36 0 COMRAM 1
 m_int8_2_hex@t8 20 0 COMRAM 1
 _key_process_down 2352 0 CODE 0
 m_mem_cpy@d D9 0 BANK0 1
 __end_of_in_adc_start_and_read 1C9E 0 CODE 0
 ?_ads1115_read_reg DD 0 BANK0 1
-_ads1115Chip1 1C2 0 BANK1 1
+_ads1115Chip1 1A2 0 BANK1 1
 lcd_show_chr@chr E9 0 BANK0 1
 __size_of_iic_received_byte 0 0 ABS 0
 _pAds1115DiffPrObj 2B 0 COMRAM 1
@@ -69,7 +69,7 @@ __LRAM 1 0 ABS 0
 _T2CON FCA 0 ABS 0
 _TRISG F98 0 ABS 0
 _calibCol 3A 0 COMRAM 1
-_diffSampCh 34 0 COMRAM 1
+_diffSampCh 37 0 COMRAM 1
 __size_of_lcd_config 0 0 ABS 0
 __CFG_WDTPS$32768 0 0 ABS 0
 __Hconfig FFFE 0 CONFIG 0
@@ -78,7 +78,7 @@ key_waite_release@t8 20 0 COMRAM 1
 lcd_disp_level@level EB 0 BANK0 1
 ?___awmod D9 0 BANK0 1
 _passWord 3D 0 COMRAM 1
-_st_Bj 38 0 COMRAM 1
+_st_Bj 34 0 COMRAM 1
 ?___lwmod E2 0 BANK0 1
 _key_process_set 2684 0 CODE 0
 _adjValue 21 0 COMRAM 1
@@ -117,8 +117,8 @@ _glTicker 8A 0 BANK0 1
 ui_disp_adj_xfixed_pt@buf 1F4 0 BANK1 1
 _LCDSE0 FA9 0 ABS 0
 _LCDDATA20 F7A 0 ABS 0
-_diffSampCount_D01 36 0 COMRAM 1
-_diffSampCount_D23 35 0 COMRAM 1
+_diffSampCount_D01 39 0 COMRAM 1
+_diffSampCount_D23 38 0 COMRAM 1
 _LCDSE1 FB6 0 ABS 0
 _LCDSE2 FB7 0 ABS 0
 _handler_interrupt_hight 8 0 CODE 0
@@ -263,7 +263,7 @@ __size_of_ui_disp_menu_psw_adj 0 0 ABS 0
 __Hintcodelo DC 0 CODE 0
 __Lintcodelo 18 0 CODE 0
 ___wmul 2402 0 CODE 0
-_fastSampTimer 25 0 COMRAM 1
+_fastSampTimer 29 0 COMRAM 1
 __Hrbss 0 0 COMRAM 1
 __end_of_main D52 0 CODE 0
 __Lrbss 0 0 COMRAM 1
@@ -287,7 +287,7 @@ end_of_initialization 19E6 0 CODE 0
 _ads1115_read_conversion 2148 0 CODE 0
 in_adc_start_and_read@ret E0 0 BANK0 1
 ___awdiv@sign DE 0 BANK0 1
-_dlyTicker 27 0 COMRAM 1
+_dlyTicker 25 0 COMRAM 1
 ?___int32_2_mflot32 E6 0 BANK0 1
 ui_disp_adj_xfixed_pt@x 1EF 0 BANK1 1
 ?___exp_10 D9 0 BANK0 1
@@ -478,7 +478,7 @@ _lcd_bl_init 280A 0 CODE 0
 ___int32_2_mflot32@mf 1F1 0 BANK1 1
 __end_of_lcd_disp_chr_loc_5 169E 0 CODE 0
 delay_ms@dly DD 0 BANK0 1
-_dlyTickerEn 37 0 COMRAM 1
+_dlyTickerEn 33 0 COMRAM 1
 lcd_show_string_l0@t8 EE 0 BANK0 1
 lcd_show_string_l1@t8 EE 0 BANK0 1
 __end_of_rtc_set 110A 0 CODE 0
@@ -518,8 +518,8 @@ __size_of_ui_disp_rtc_mm_ss 0 0 ABS 0
 ui_disp_rtc_mm_ss@t8 1F7 0 BANK1 1
 __pcstackCOMRAM 1 0 COMRAM 1
 lcd_set_com_seg@offset E7 0 BANK0 1
-_sampBufDiffPr_D01 1B2 0 BANK1 1
-_sampBufDiffPr_D23 1A2 0 BANK1 1
+_sampBufDiffPr_D01 1D2 0 BANK1 1
+_sampBufDiffPr_D23 1C2 0 BANK1 1
 __end_of_lcd_disp_chr_loc_7 157E 0 CODE 0
 __Hspace_1 500 0 ABS 0
 __Lspace_1 0 0 ABS 0
@@ -963,7 +963,7 @@ __end_of_lcd_disp_dp_loc_0 25FA 0 CODE 0
 __size_of_handler_interrupt_hight 0 0 ABS 0
 __end_of_key_process_set_long 2810 0 CODE 0
 intlevel2 0 0 CODE 0
-_pcf8574Value 39 0 COMRAM 1
+_pcf8574Value 35 0 COMRAM 1
 _ticker_dly 25FA 0 CODE 0
 intlevel3 0 0 CODE 0
 __end_of_lcd_disp_dp_loc_1 25CA 0 CODE 0
@@ -1010,7 +1010,7 @@ __size_of_iic_send_ack 0 0 ABS 0
 _globleBuffer1 400 0 BANK4 1
 __initialization 196E 0 CODE 0
 m_int8_2_hex@str D9 0 BANK0 1
-_pAds1115PrObj 29 0 COMRAM 1
+_pAds1115PrObj 27 0 COMRAM 1
 _stRTCCFGbits F5F 0 ABS 0
 ___enter_menu_set_pose@fps D9 0 BANK0 1
 _key_waite_release 2316 0 CODE 0
@@ -1022,7 +1022,7 @@ ___awmod@dividend D9 0 BANK0 1
 iic_received_byte_if_ack@ack DB 0 BANK0 1
 ___lwmod@dividend E2 0 BANK0 1
 __activetblptr 2 0 ABS 0
-_ads1115Chip0 1D2 0 BANK1 1
+_ads1115Chip0 1B2 0 BANK1 1
 _LCDDigitalTable FEE4 0 MEDIUMCONST 0
 ___awmod@counter DD 0 BANK0 1
 ___wmul@product DF 0 BANK0 1
@@ -1048,8 +1048,8 @@ bssBANK1 100 1FF BANK1 100 1
 bssBANK2 200 2A4 BANK2 200 1
 %locals
 dist/default/production\cs600-redo.X.production.obj
-C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
-C:\Users\ADMINI~1\AppData\Local\Temp\srcs.
+C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+C:\Users\ADMINI~1\AppData\Local\Temp\s5a0.
 10468 196E 0 CODE 0
 10470 196E 0 CODE 0
 10473 196E 0 CODE 0
@@ -1618,7 +1618,7 @@ src/depend/m_string.c
 268 878 0 CODE 0
 269 896 0 CODE 0
 270 8CA 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awmod.c
 8 1316 0 CODE 0
 13 1316 0 CODE 0
 14 131C 0 CODE 0
@@ -1639,7 +1639,7 @@ C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awmod.c
 32 139A 0 CODE 0
 33 13A4 0 CODE 0
 34 13AE 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\awdiv.c
 8 E1A 0 CODE 0
 14 E1A 0 CODE 0
 15 E20 0 CODE 0
@@ -1745,13 +1745,13 @@ src/api/key_menu.c
 66 B7E 0 CODE 0
 67 BAA 0 CODE 0
 68 BBA 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\Umul16.c
 15 2402 0 CODE 0
 37 2402 0 CODE 0
 38 2412 0 CODE 0
 39 2420 0 CODE 0
 52 242E 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwmod.c
 8 1D6A 0 CODE 0
 13 1D6A 0 CODE 0
 14 1D76 0 CODE 0
@@ -1766,7 +1766,7 @@ C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
 24 1DC2 0 CODE 0
 25 1DC2 0 CODE 0
 26 1DCA 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lwdiv.c
 8 1A76 0 CODE 0
 14 1A76 0 CODE 0
 15 1A80 0 CODE 0
@@ -1850,7 +1850,7 @@ src/api/ui.c
 38 98C 0 CODE 0
 39 9B8 0 CODE 0
 40 9C0 0 CODE 0
-C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lldiv.c
+C:\Program Files\Microchip\xc8\v1.41\sources\common\lldiv.c
 8 F96 0 CODE 0
 14 F96 0 CODE 0
 15 FA8 0 CODE 0

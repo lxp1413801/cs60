@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"14351 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
+"14351 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
 [v _INTCON `Vuc ~T0 @X0 0 e@4082 ]
 "14357
 [s S618 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -15,10 +15,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S617 . . . . ]
 "14383
 [v _INTCONbits `VS617 ~T0 @X0 0 e@4082 ]
-"43 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h
+"43 C:\Program Files\Microchip\xc8\v1.41\include\pic18.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
-"8346 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
+"8346 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
 [s S318 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S318 . . WR WREN WRERR FREE WPROG ]
 "8345
@@ -38,7 +38,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _globleBuffer0 `uc ~T0 @X0 -> 0 `x e ]
 "10 src/driver/../depend/m_string.h
 [v _m_mem_cpy_len `(v ~T0 @X0 0 ef3`*uc`*uc`ui ]
-"14028 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
+"14028 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
 [v _FSR0L `Vuc ~T0 @X0 0 e@4073 ]
 "14047
 [v _FSR0H `Vuc ~T0 @X0 0 e@4074 ]
@@ -46,7 +46,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {

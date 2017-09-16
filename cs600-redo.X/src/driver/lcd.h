@@ -22,10 +22,17 @@ extern "C"{
 	extern void lcd_show_string_l0(uint8_t* str);
 	extern void lcd_show_string_l1(uint8_t* str);
 	extern void lcd_show_string(uint8_t* str);
+	extern void lcd_clear_all_dp(void);
 	extern void lcd_show_dp(uint8_t loc,bool show);
 	extern void lcd_disp_logo(bool show);
     
     extern void lcd_disp_level(uint8_t level);
+	extern void lcd_disp_unit_1st_m(bool show);
+	extern void lcd_disp_unit_1st_m3(bool show);
+	extern void lcd_disp_unit_t(bool show);
+	
+	
+	extern void lcd_disp_unit_mpa(bool show);
 	#define lcd_disp_clear_buffer() lcd_disp_all(0);
 #ifdef __cplusplus
 }

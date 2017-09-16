@@ -139,11 +139,16 @@ extern "C"{
 	// extern volatile int32_t		x_Pemperature;
 	
 	extern st_prData	x_prDiffData;
+    extern volatile int32_t	rtDiffPressure;
+	extern volatile int32_t	rtVolume;
+    extern volatile int32_t	rtHight;
+	extern volatile int32_t	rtWeight;
 	//fk 
 	extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 
     //apl
 	extern uint8_t cal_diff_press(void);
+	extern uint8_t cal_diff_hight_level(void);
 	extern  void cal_pt100_temperature_in(void);
 
 	extern uint8_t cal_press(void);

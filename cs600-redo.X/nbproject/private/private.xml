@@ -19,13 +19,8 @@
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/api/key_menu.c</file>
         </group>
         <group name="cs600_test">
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/sample.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.h</file>
         </group>
     </open-files>
 </project-private>

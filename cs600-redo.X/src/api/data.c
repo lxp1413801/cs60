@@ -42,6 +42,8 @@ volatile int32_t	rtHight;
 volatile int32_t	rtWeight;
 volatile int32_t	rtVolume;
 
+volatile uint8_t    rtLevel;
+
 volatile int32_t    rtTemperatureIn=0;
 
 volatile int32_t    rtPressure=0;
@@ -410,7 +412,24 @@ int32_t cal_diff_hight_to_vol_h(int32_t h)
     v1=v1+v2;
 	return (int32_t)v1;
 }
-
+//计算高度百分比,刻度条
+uint8_t cal_diff_hight_level(void)
+{
+    float f1,f2;
+	if(fpSysData->pos==HOTIZONTAL){
+        f1=(float)fpSysData->d;
+    }else{
+        f1=(float)fpSysData->h;
+        f1=(f1+fpSysData->d)+(f1+fpSysData->d);
+    }
+    f1=f1*(fpSysData->maxValueForlevelBar)/100;
+    f2=(float)rtHight;
+    f1=f2/f1;
+    f1*=100;
+    if(f1>100)f1=100;
+	rtLevel=(uint8_t)f1;
+    return rtLevel;
+}
 //高度折算容积，竖直放置
 int32_t cal_diff_hight_to_vol_v(int32_t h)
 {
@@ -574,6 +593,8 @@ void cal_battery_voltage(void)
 {
 	
 }
+
+
 
 uint32_t cal_pt100_temperature(int16_t x,uint32_t l,uint32_t b)
 {

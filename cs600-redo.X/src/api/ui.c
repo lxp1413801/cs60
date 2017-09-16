@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #define __STR_cs66 (uint8_t*)("cs66")
 #define fi_twinkle() (RTCCFGbits.HALFSEC)
+#define LCD_LINE_0		0
+#define LCD_LINE_1		1
 //uint8_t tmpBuffer[16];
 extern st_RtcDef glRtc;
 
@@ -166,6 +168,7 @@ void ui_disp_clear_num_dp(void)
     lcd_show_dp(5,false);
     lcd_show_dp(6,false);
 }
+
 void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 {
     uint8_t buf[10];
@@ -183,6 +186,7 @@ void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 	lcd_show_string(buf); 
 	lcd_disp_refresh();    
 }
+
 void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
 {
     uint8_t buf[10];
@@ -197,18 +201,99 @@ void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
 	lcd_disp_refresh();
 }
 
+void ui_disp_xfloat_pt(st_float32_m* xpf,uint8_t line)
+{
+    uint8_t buf[10];
+    uint8_t t8;
+	uint16_t x;
+	if(line>1)return; 
+	x=xpf->stru.significand;
+	if(x>9999)x=9999;
+	m_int16_2_str_4(buf,x);
+	buf[5]='\0';
+	if(line==0){
+		lcd_show_string_l0(buf);
+	}else{
+		lcd_show_string_l1(buf);
+	}
+    t8=xpf->stru.exponent;
+    if(t8<3)lcd_show_dp(t8+4*line,true);
+	//lcd_disp_refresh();    
+}
+
 void ui_disp_menu_psw_adj(void)
 {
 	ui_disp_adj_xfixed_pt((uint8_t*)" psd",passWord,adjLocation);
 }
 
+// 第一个界面第一行显示高度,第二行压力MPA;
+void ui_disp_menu_home_00(void)
+{
+	//差压
+	uint8_t t8;
+	st_float32 mf;
+	ui_disp_clear_num_dp();
+	mf.t32=__int32_2_mflot32(rtHight);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+	lcd_disp_unit_1st_m(true);
+	
+	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+	lcd_disp_unit_mpa(true);
+	t8=cal_diff_hight_level();
+	lcd_disp_level(t8);
+
+	lcd_disp_refresh(); 
+}
+
+// 第二个界面第一行显示体积,第二行压力MPA;
+void ui_disp_menu_home_01(void)
+{
+	//差压
+	uint8_t t8;
+	st_float32 mf;
+	ui_disp_clear_num_dp();
+	mf.t32=__int32_2_mflot32(rtVolume);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+	lcd_disp_unit_1st_m3(true);
+	
+	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+	lcd_disp_unit_mpa(true);
+	t8=cal_diff_hight_level();
+	lcd_disp_level(t8);
+
+	lcd_disp_refresh(); 
+}
+
+// 第三个界面第一行显示重量吨,第二行压力MPA;
+void ui_disp_menu_home_02(void)
+{
+	//差压
+	uint8_t t8;
+	st_float32 mf;
+	ui_disp_clear_num_dp();
+	mf.t32=__int32_2_mflot32(rtWeight);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+	//lcd_disp_unit_1st_m3(true);
+	lcd_disp_unit_t(true);
+	
+	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+	lcd_disp_unit_mpa(true);
+	t8=cal_diff_hight_level();
+	lcd_disp_level(t8);
+
+	lcd_disp_refresh(); 
+}
+
 void ui_disp_menu(void)
 {
 	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:
-			break;
+		case MENU_HOME_00:ui_disp_menu_home_00();break;
+		case MENU_HOME_01:ui_disp_menu_home_01();break;
+		case MENU_HOME_02:ui_disp_menu_home_02();break;
+
 		case MENU_PASSWORD:ui_disp_menu_psw_adj();break;
 		default:break;
 

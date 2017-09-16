@@ -2,7 +2,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "22 src/soc/rtc.h
 [s S645 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S645 . year month date hour minute second day ]
-"55 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"55 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [s S2 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S2 . . RTSECSEL0 RTSECSEL1 ]
 "54
@@ -31,10 +31,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S17 . . . ]
 "395
 [v _ALRMCFGbits `VS17 ~T0 @X0 0 e@3931 ]
-"43 C:\Program Files\Microchip\xc8\v1.41\include\pic18.h
+"43 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h
 [v ___nop `(v ~T0 @X0 0 ef ]
 [p i ___nop ]
-"8275 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"8275 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [s S315 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S315 . RTCCIP CCP1IP CCP2IP CTMUIP TX2IP RC2IP LCDIP ]
 "8284
@@ -98,7 +98,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S643 . data . ]
 "20
 [v _stRTCCFGbits `VS643 ~T0 @X0 0 e@3935 ]
-"449 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"449 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [v _RTCVALL `Vuc ~T0 @X0 0 e@3932 ]
 "468
 [v _RTCVALH `Vuc ~T0 @X0 0 e@3933 ]
@@ -134,7 +134,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {

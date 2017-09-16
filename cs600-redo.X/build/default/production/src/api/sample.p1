@@ -1,8 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"79 src/api/../includes/../api/data.h
+"89 src/api/../includes/../api/data.h
 [s S659 `l 1 `i 1 `i 1 ]
 [n S659 . pValue pAdcValue tAdcValue ]
-"77 src/api/sample.c
+"89 src/api/sample.c
 [c E7293 0 1 2 3 4 5 .. ]
 [n E7293 . ADS1013 ADS1014 ADS1015 ADS1113 ADS1114 ADS1115  ]
 "116 src/api/../includes/../driver/ads1115.h
@@ -23,16 +23,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ads1115_read_conversion `(ui ~T0 @X0 0 ef1`*S650 ]
 "140
 [v _pAds1115DiffPrObj `*S650 ~T0 @X0 0 e ]
-"83 src/api/sample.c
+"95 src/api/sample.c
 [c E7231 0 1 2 3 4 5 6 7 .. ]
 [n E7231 . ADS1X1X_MUX_DIFF_0_1 ADS1X1X_MUX_DIFF_0_3 ADS1X1X_MUX_DIFF_1_3 ADS1X1X_MUX_DIFF_2_3 ADS1X1X_MUX_SINGLE_0 ADS1X1X_MUX_SINGLE_1 ADS1X1X_MUX_SINGLE_2 ADS1X1X_MUX_SINGLE_3  ]
 "146 src/api/../includes/../driver/ads1115.h
 [v _ads1115_set_mux `(v ~T0 @X0 0 ef2`*S650`E7231 ]
-"144
+"119 src/api/../includes/../api/data.h
+[v _adc_inPt100 `Vi ~T0 @X0 0 e ]
+"144 src/api/../includes/../driver/ads1115.h
 [v _ads1115_start_conversion `(v ~T0 @X0 0 ef1`*S650 ]
-"126 src/api/../includes/../api/data.h
+"141 src/api/../includes/../api/data.h
 [v _x_prDiffData `S659 ~T0 @X0 0 e ]
-"7173 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"7173 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "6267
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
@@ -44,15 +46,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _delay_ms `(v ~T0 @X0 0 ef1`ui ]
 "141 src/api/../includes/../driver/ads1115.h
 [v _pAds1115PrObj `*S650 ~T0 @X0 0 e ]
+"122 src/api/../includes/../api/data.h
+[v _adc_exPt100 `Vi ~T0 @X0 0 e ]
+"121
+[v _adc_pressure `Vi ~T0 @X0 0 e ]
 "18 src/api/../includes/../driver/in_adc.h
 [v _in_adc_init `(v ~T0 @X0 0 ef ]
 "19
 [v _in_adc_start_and_read `(ui ~T0 @X0 0 ef1`uc ]
+"128 src/api/../includes/../api/data.h
+[v _adc_iPrEx `Vi ~T0 @X0 -> 0 `x e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {
@@ -6372,66 +6380,66 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 40: em_warnType type;
 [; ;data.h: 41: uint8_t[2];
 [; ;data.h: 42: }st_warnDef,warnDef_t;
-[; ;data.h: 44: typedef struct{
-[; ;data.h: 45: uint32_t id;
-[; ;data.h: 46: em_posture pos;
-[; ;data.h: 47: uint8_t maxValueForlevelBar;
-[; ;data.h: 49: uint16_t density;
-[; ;data.h: 51: int32_t h;
-[; ;data.h: 52: uint32_t d;
-[; ;data.h: 53: int32_t baseZero;
-[; ;data.h: 55: st_warnDef diffPressureWarnSet[4];
-[; ;data.h: 56: st_warnDef pressureWarnSet;
-[; ;data.h: 57: uint8_t simplePloyFactor[4];
-[; ;data.h: 59: uint32_t ex_pressZero[2];
-[; ;data.h: 60: uint32_t ex_pressLine[2];
-[; ;data.h: 61: uint32_t ex_pressCurrentLoopLow[2];
-[; ;data.h: 62: uint32_t ex_pressCurrentLoopUpper[2];
-[; ;data.h: 64: uint32_t ex_TempZero;
-[; ;data.h: 65: uint32_t ex_TempLine;
-[; ;data.h: 66: uint32_t ex_TempCurrentLoopLow;
-[; ;data.h: 67: uint32_t ex_TempCurrentLoopUpper;
-[; ;data.h: 69: uint16_t crc;
-[; ;data.h: 70: }st_sysDataDef,sysDataDef_t;
-[; ;data.h: 71: extern const st_sysDataDef defultSystemData;
-[; ;data.h: 73: extern uint8_t data_sys_init(void);
-[; ;data.h: 74: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
-[; ;data.h: 79: typedef struct{
-[; ;data.h: 80: int32_t pValue;
-[; ;data.h: 81: int16_t pAdcValue;
-[; ;data.h: 82: int16_t tAdcValue;
-[; ;data.h: 83: }st_prCalibPointDef,prCalibPoint_t,st_prData;
-[; ;data.h: 85: typedef struct{
-[; ;data.h: 86: uint8_t pCount;
-[; ;data.h: 87: uint8_t reverse0[3];
-[; ;data.h: 88: st_prCalibPointDef prCalibPoint[6];
-[; ;data.h: 89: }st_prCalibRowDef,prCalibRow_t;
-[; ;data.h: 91: typedef struct{
-[; ;data.h: 92: uint8_t rowCount;
-[; ;data.h: 93: uint8_t reverse0[3];
-[; ;data.h: 94: st_prCalibRowDef prCalibRow[3];
-[; ;data.h: 96: uint16_t crc;
-[; ;data.h: 97: }st_prCalibTabDef,prCalibTab_t;
-[; ;data.h: 100: extern st_prCalibTabDef diff_prCalibTabDef;
-[; ;data.h: 101: extern st_prCalibTabDef prCalibTabDef;
-[; ;data.h: 104: extern volatile int16_t adc_diffPr;
-[; ;data.h: 105: extern volatile int16_t adc_diffBrg;
-[; ;data.h: 106: extern volatile int16_t adc_diffVcc;
-[; ;data.h: 107: extern volatile int16_t adc_diffGnd;
-[; ;data.h: 109: extern volatile int16_t adc_exPt100;
-[; ;data.h: 110: extern volatile int16_t adc_exPt100Line;
-[; ;data.h: 111: extern volatile int16_t adc_Pr;
-[; ;data.h: 113: extern volatile int16_t adc_iPrEx0;
-[; ;data.h: 114: extern volatile int16_t adc_iPrEx1;
-[; ;data.h: 116: extern volatile int16_t adc_ibat;
-[; ;data.h: 117: extern volatile int16_t adc_iRef;
-[; ;data.h: 119: extern volatile int32_t x_DiffPressure;
-[; ;data.h: 120: extern volatile int32_t x_Hight;
-[; ;data.h: 121: extern volatile int32_t x_Weight;
-[; ;data.h: 123: extern volatile int32_t x_Pressure;
-[; ;data.h: 124: extern volatile int32_t x_Pemperature;
-[; ;data.h: 126: extern st_prData x_prDiffData;
-[; ;data.h: 128: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 45: typedef struct{
+[; ;data.h: 46: uint32_t id;
+[; ;data.h: 47: em_posture pos;
+[; ;data.h: 48: uint8_t maxValueForlevelBar;
+[; ;data.h: 50: uint16_t density;
+[; ;data.h: 52: int32_t h;
+[; ;data.h: 53: uint32_t d;
+[; ;data.h: 55: int32_t V1;
+[; ;data.h: 56: int32_t V2;
+[; ;data.h: 58: int32_t baseZero;
+[; ;data.h: 60: st_warnDef diffPressureWarnSet[4];
+[; ;data.h: 61: st_warnDef pressureWarnSet;
+[; ;data.h: 62: uint8_t simplePloyFactor[4];
+[; ;data.h: 64: uint32_t TempZero;
+[; ;data.h: 65: uint32_t TempLine;
+[; ;data.h: 68: uint32_t ex_pressZero[2];
+[; ;data.h: 69: uint32_t ex_pressLine[2];
+[; ;data.h: 70: uint32_t ex_pressCurrentLoopLow[2];
+[; ;data.h: 71: uint32_t ex_pressCurrentLoopUpper[2];
+[; ;data.h: 73: uint32_t ex_TempZero;
+[; ;data.h: 74: uint32_t ex_TempLine;
+[; ;data.h: 76: uint32_t ex_TempCurrentLoopLow;
+[; ;data.h: 77: uint32_t ex_TempCurrentLoopUpper;
+[; ;data.h: 79: uint16_t crc;
+[; ;data.h: 80: }st_sysDataDef,sysDataDef_t;
+[; ;data.h: 81: extern const st_sysDataDef defultSystemData;
+[; ;data.h: 83: extern uint8_t data_sys_init(void);
+[; ;data.h: 84: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+[; ;data.h: 89: typedef struct{
+[; ;data.h: 90: int32_t pValue;
+[; ;data.h: 91: int16_t pAdcValue;
+[; ;data.h: 92: int16_t tAdcValue;
+[; ;data.h: 93: }st_prCalibPointDef,prCalibPoint_t,st_prData;
+[; ;data.h: 95: typedef struct{
+[; ;data.h: 96: uint8_t pCount;
+[; ;data.h: 97: uint8_t reverse0[3];
+[; ;data.h: 98: st_prCalibPointDef prCalibPoint[6];
+[; ;data.h: 99: }st_prCalibRowDef,prCalibRow_t;
+[; ;data.h: 101: typedef struct{
+[; ;data.h: 102: uint8_t rowCount;
+[; ;data.h: 103: uint8_t reverse0[3];
+[; ;data.h: 104: st_prCalibRowDef prCalibRow[3];
+[; ;data.h: 106: uint16_t crc;
+[; ;data.h: 107: }st_prCalibTabDef,prCalibTab_t;
+[; ;data.h: 110: extern st_prCalibTabDef diff_prCalibTabDef;
+[; ;data.h: 111: extern st_prCalibTabDef prCalibTabDef;
+[; ;data.h: 119: extern volatile int16_t adc_inPt100;
+[; ;data.h: 121: extern volatile int16_t adc_pressure;
+[; ;data.h: 122: extern volatile int16_t adc_exPt100;
+[; ;data.h: 128: extern volatile int16_t adc_iPrEx[2];
+[; ;data.h: 131: extern volatile int16_t adc_ibat;
+[; ;data.h: 132: extern volatile int16_t adc_iRef;
+[; ;data.h: 141: extern st_prData x_prDiffData;
+[; ;data.h: 143: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 146: extern uint8_t cal_diff_press(void);
+[; ;data.h: 147: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 149: extern uint8_t cal_press(void);
+[; ;data.h: 150: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 152: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 154: extern void data_init_all(void);
 [; ;key_menu.h: 66: extern volatile uint8_t menu;
 [; ;key_menu.h: 67: extern volatile uint8_t keyValue;
 [; ;key_menu.h: 68: extern volatile uint16_t passWord;
@@ -6439,13 +6447,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;key_menu.h: 71: extern volatile uint8_t calibRow;
 [; ;key_menu.h: 72: extern volatile uint8_t calibCol;
 [; ;key_menu.h: 74: extern void key_process(void);
-[; ;sample.h: 13: extern volatile uint16_t fastSampTimer;
-[; ;sample.h: 14: extern volatile uint16_t commonSampTimer;
-[; ;sample.h: 15: extern volatile uint16_t lowSampTimer;
-[; ;sample.h: 17: extern uint8_t sample_fast(void);
-[; ;sample.h: 18: extern uint8_t sample_common(void);
-[; ;sample.h: 19: extern uint8_t sample_low(void);
-[; ;sample.h: 21: extern void hook_sample_fast_timer(void);
+[; ;sample.h: 13: extern volatile int16_t sampBufDiffPr_S1;
+[; ;sample.h: 15: extern volatile uint16_t fastSampTimer;
+[; ;sample.h: 16: extern volatile uint16_t commonSampTimer;
+[; ;sample.h: 17: extern volatile uint16_t lowSampTimer;
+[; ;sample.h: 19: extern bool diffPrSampleUpdate;
+[; ;sample.h: 20: extern bool in_pt100SampleUpdate;
+[; ;sample.h: 22: extern bool prSampleUpdate;
+[; ;sample.h: 23: extern bool ex_pt100SampleUpdate;
+[; ;sample.h: 25: extern bool inSocAdcSampleUpdate;
+[; ;sample.h: 28: extern uint8_t sample_fast(void);
+[; ;sample.h: 29: extern uint8_t sample_common(void);
+[; ;sample.h: 30: extern uint8_t sample_low(void);
+[; ;sample.h: 32: extern void hook_sample_fast_timer(void);
 [; ;event.h: 10: extern volatile uint8_t glbEvent;
 [; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
 [; ;event.h: 16: extern int8_t event_process(void);
@@ -6465,443 +6479,482 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;sample.c: 5: int16_t sampBufDiffPr_D23[20/3+2]={0};
-"6
-[v _sampBufDiffPr_S1 `i ~T0 @X0 1 e ]
-[; ;sample.c: 6: int16_t sampBufDiffPr_S1;
 "7
+[v _sampBufDiffPr_S1 `Vi ~T0 @X0 1 e ]
+[; ;sample.c: 7: volatile int16_t sampBufDiffPr_S1;
+"9
 [v _diffSampCount_D01 `uc ~T0 @X0 1 e ]
 [i _diffSampCount_D01
 -> -> 0 `i `uc
 ]
-[; ;sample.c: 7: uint8_t diffSampCount_D01=0;
-"8
+[; ;sample.c: 9: uint8_t diffSampCount_D01=0;
+"10
 [v _diffSampCount_D23 `uc ~T0 @X0 1 e ]
 [i _diffSampCount_D23
 -> -> 0 `i `uc
 ]
-[; ;sample.c: 8: uint8_t diffSampCount_D23=0;
-"9
+[; ;sample.c: 10: uint8_t diffSampCount_D23=0;
+"11
 [v _diffSampCh `uc ~T0 @X0 1 e ]
 [i _diffSampCh
 -> -> 0 `i `uc
 ]
-[; ;sample.c: 9: uint8_t diffSampCh=0;
-"11
+[; ;sample.c: 11: uint8_t diffSampCh=0;
+"13
+[v _diffPrSampleUpdate `uc ~T0 @X0 1 e ]
+[i _diffPrSampleUpdate
+-> -> 0 `i `uc
+]
+[; ;sample.c: 13: bool diffPrSampleUpdate=0;
+"14
+[v _in_pt100SampleUpdate `uc ~T0 @X0 1 e ]
+[i _in_pt100SampleUpdate
+-> -> 0 `i `uc
+]
+[; ;sample.c: 14: bool in_pt100SampleUpdate=0;
+"16
 [v _sampBufPt100ExA `i ~T0 @X0 -> 4 `i e ]
 [i _sampBufPt100ExA
 :U ..
 -> 0 `i
 ..
 ]
-[; ;sample.c: 11: int16_t sampBufPt100ExA[4]={0};
-"12
+[; ;sample.c: 16: int16_t sampBufPt100ExA[4]={0};
+"17
 [v _sampBufPt100ExB `i ~T0 @X0 -> 4 `i e ]
 [i _sampBufPt100ExB
 :U ..
 -> 0 `i
 ..
 ]
-[; ;sample.c: 12: int16_t sampBufPt100ExB[4]={0};
-"13
+[; ;sample.c: 17: int16_t sampBufPt100ExB[4]={0};
+"18
 [v _sampBufPr `i ~T0 @X0 -> 4 `i e ]
 [i _sampBufPr
 :U ..
 -> 0 `i
 ..
 ]
-[; ;sample.c: 13: int16_t sampBufPr[4]={0};
-"15
-[v _sampBufExPr0InSoc `ui ~T0 @X0 1 e ]
-[; ;sample.c: 15: uint16_t sampBufExPr0InSoc;
-"16
-[v _sampBufExPr1InSoc `ui ~T0 @X0 1 e ]
-[; ;sample.c: 16: uint16_t sampBufExPr1InSoc;
-"17
-[v _sampBufBatInSoc `ui ~T0 @X0 1 e ]
-[; ;sample.c: 17: uint16_t sampBufBatInSoc;
-"18
-[v _sampBufRefInSoc `ui ~T0 @X0 1 e ]
-[; ;sample.c: 18: uint16_t sampBufRefInSoc;
+[; ;sample.c: 18: int16_t sampBufPr[4]={0};
 "21
+[v _ex_pt100SampleUpdate `uc ~T0 @X0 1 e ]
+[i _ex_pt100SampleUpdate
+-> -> 0 `i `uc
+]
+[; ;sample.c: 21: bool ex_pt100SampleUpdate=0;
+"22
+[v _prSampleUpdate `uc ~T0 @X0 1 e ]
+[i _prSampleUpdate
+-> -> 0 `i `uc
+]
+[; ;sample.c: 22: bool prSampleUpdate=0;
+"24
+[v _sampBufExPr0InSoc `ui ~T0 @X0 1 e ]
+[; ;sample.c: 24: uint16_t sampBufExPr0InSoc;
+"25
+[v _sampBufExPr1InSoc `ui ~T0 @X0 1 e ]
+[; ;sample.c: 25: uint16_t sampBufExPr1InSoc;
+"26
+[v _sampBufBatInSoc `ui ~T0 @X0 1 e ]
+[; ;sample.c: 26: uint16_t sampBufBatInSoc;
+"27
+[v _sampBufRefInSoc `ui ~T0 @X0 1 e ]
+[; ;sample.c: 27: uint16_t sampBufRefInSoc;
+"29
+[v _inSocAdcSampleUpdate `uc ~T0 @X0 1 e ]
+[i _inSocAdcSampleUpdate
+-> -> 0 `i `uc
+]
+[; ;sample.c: 29: bool inSocAdcSampleUpdate=0;
+"31
 [v _fastSampTimer `Vui ~T0 @X0 1 e ]
 [i _fastSampTimer
 -> -> 0 `i `ui
 ]
-[; ;sample.c: 21: volatile uint16_t fastSampTimer=0;
-"22
+[; ;sample.c: 31: volatile uint16_t fastSampTimer=0;
+"32
 [v _slowSampleTimer `Vuc ~T0 @X0 1 e ]
 [i _slowSampleTimer
 -> -> 0 `i `uc
 ]
-[; ;sample.c: 22: volatile uint8_t slowSampleTimer=0;
-"23
+[; ;sample.c: 32: volatile uint8_t slowSampleTimer=0;
+"33
 [v _commonSampleTimer `Vuc ~T0 @X0 1 e ]
 [i _commonSampleTimer
 -> -> 0 `i `uc
 ]
-[; ;sample.c: 23: volatile uint8_t commonSampleTimer=0;
-"24
+[; ;sample.c: 33: volatile uint8_t commonSampleTimer=0;
+"34
 [v _inSocSampleTimer `Vuc ~T0 @X0 1 e ]
 [i _inSocSampleTimer
 -> -> 0 `i `uc
 ]
-[; ;sample.c: 24: volatile uint8_t inSocSampleTimer=0;
-"26
+[; ;sample.c: 34: volatile uint8_t inSocSampleTimer=0;
+"38
 [v ___x_sample_fliter `(i ~T0 @X0 1 ef3`*i`uc`uc ]
-"27
+"39
 {
-[; ;sample.c: 26: int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
-[; ;sample.c: 27: {
+[; ;sample.c: 38: int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
+[; ;sample.c: 39: {
 [e :U ___x_sample_fliter ]
-"26
+"38
 [v _buf `*i ~T0 @X0 1 r1 ]
 [v _len `uc ~T0 @X0 1 r2 ]
 [v _loop `uc ~T0 @X0 1 r3 ]
-"27
+"39
 [f ]
-"28
+"40
 [v _max `i ~T0 @X0 1 a ]
 [v _min `i ~T0 @X0 1 a ]
-"29
+"41
 [v _i `uc ~T0 @X0 1 a ]
 [v _maxLoc `uc ~T0 @X0 1 a ]
 [v _minLoc `uc ~T0 @X0 1 a ]
-"30
+"42
 [v _t32 `l ~T0 @X0 1 a ]
-[; ;sample.c: 28: int16_t max,min;
-[; ;sample.c: 29: uint8_t i,maxLoc,minLoc;
-[; ;sample.c: 30: int32_t t32=0;
+[; ;sample.c: 40: int16_t max,min;
+[; ;sample.c: 41: uint8_t i,maxLoc,minLoc;
+[; ;sample.c: 42: int32_t t32=0;
 [e = _t32 -> -> 0 `i `l ]
-[; ;sample.c: 31: if(len<3)return 0;
-"31
+[; ;sample.c: 43: if(len<3)return 0;
+"43
 [e $ ! < -> _len `i -> 3 `i 663  ]
 [e ) -> 0 `i ]
 [e $UE 662  ]
 [e :U 663 ]
-[; ;sample.c: 32: while(loop>0){
-"32
+[; ;sample.c: 44: while(loop>0){
+"44
 [e $U 664  ]
 [e :U 665 ]
 {
-[; ;sample.c: 33: min=max=buf[0];
-"33
+[; ;sample.c: 45: min=max=buf[0];
+"45
 [e = _min = _max *U + _buf * -> -> 0 `i `x -> -> # *U _buf `i `x ]
-[; ;sample.c: 34: t32=0;
-"34
+[; ;sample.c: 46: t32=0;
+"46
 [e = _t32 -> -> 0 `i `l ]
-[; ;sample.c: 35: for(i=0;i<len;i++){
-"35
+[; ;sample.c: 47: for(i=0;i<len;i++){
+"47
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 670  ]
 [e :U 667 ]
 {
-[; ;sample.c: 36: if(min>buf[i]){min=buf[i];minLoc=i;}
-"36
+[; ;sample.c: 48: if(min>buf[i]){min=buf[i];minLoc=i;}
+"48
 [e $ ! > _min *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 671  ]
 {
 [e = _min *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
 [e = _minLoc _i ]
 }
 [e :U 671 ]
-[; ;sample.c: 37: if(max<buf[i]){max=buf[i];maxLoc=i;}
-"37
+[; ;sample.c: 49: if(max<buf[i]){max=buf[i];maxLoc=i;}
+"49
 [e $ ! < _max *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 672  ]
 {
 [e = _max *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
 [e = _maxLoc _i ]
 }
 [e :U 672 ]
-[; ;sample.c: 38: t32+=buf[i];
-"38
+[; ;sample.c: 50: t32+=buf[i];
+"50
 [e =+ _t32 -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `l ]
-"39
+"51
 }
-"35
+"47
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 670 ]
 [e $ < -> _i `i -> _len `i 667  ]
 [e :U 668 ]
-"39
+"51
 }
-[; ;sample.c: 39: }
-[; ;sample.c: 40: t32-=(max+min);
-"40
+[; ;sample.c: 51: }
+[; ;sample.c: 52: t32-=(max+min);
+"52
 [e =- _t32 -> + _max _min `l ]
-[; ;sample.c: 41: t32=t32/(len-2);
-"41
+[; ;sample.c: 53: t32=t32/(len-2);
+"53
 [e = _t32 / _t32 -> - -> _len `i -> 2 `i `l ]
-[; ;sample.c: 42: buf[minLoc]=(int16_t)t32;
-"42
+[; ;sample.c: 54: buf[minLoc]=(int16_t)t32;
+"54
 [e = *U + _buf * -> _minLoc `ux -> -> # *U _buf `ui `ux -> _t32 `i ]
-[; ;sample.c: 43: buf[maxLoc]=(int16_t)t32;
-"43
+[; ;sample.c: 55: buf[maxLoc]=(int16_t)t32;
+"55
 [e = *U + _buf * -> _maxLoc `ux -> -> # *U _buf `ui `ux -> _t32 `i ]
-[; ;sample.c: 44: loop--;
-"44
+[; ;sample.c: 56: loop--;
+"56
 [e -- _loop -> -> 1 `i `uc ]
-"45
+"57
 }
 [e :U 664 ]
-"32
+"44
 [e $ > -> _loop `i -> 0 `i 665  ]
 [e :U 666 ]
-[; ;sample.c: 45: }
-[; ;sample.c: 46: return (int16_t)t32;
-"46
+[; ;sample.c: 57: }
+[; ;sample.c: 58: return (int16_t)t32;
+"58
 [e ) -> _t32 `i ]
 [e $UE 662  ]
-[; ;sample.c: 47: }
-"47
+[; ;sample.c: 59: }
+"59
 [e :UE 662 ]
 }
-"49
+"61
 [v ___x_sample_fifo `(i ~T0 @X0 1 ef3`*i`i`uc ]
-"50
+"62
 {
-[; ;sample.c: 49: int16_t __x_sample_fifo(int16_t* buf,int16_t x,uint8_t len)
-[; ;sample.c: 50: {
+[; ;sample.c: 61: int16_t __x_sample_fifo(int16_t* buf,int16_t x,uint8_t len)
+[; ;sample.c: 62: {
 [e :U ___x_sample_fifo ]
-"49
+"61
 [v _buf `*i ~T0 @X0 1 r1 ]
 [v _x `i ~T0 @X0 1 r2 ]
 [v _len `uc ~T0 @X0 1 r3 ]
-"50
+"62
 [f ]
-"51
+"63
 [v _ret `l ~T0 @X0 1 a ]
-[; ;sample.c: 51: int32_t ret=0;
+[; ;sample.c: 63: int32_t ret=0;
 [e = _ret -> -> 0 `i `l ]
-"52
+"64
 [v _i `uc ~T0 @X0 1 a ]
-[; ;sample.c: 52: uint8_t i;
-[; ;sample.c: 53: for(i=len-1;i>0;i--){
-"53
+[; ;sample.c: 64: uint8_t i;
+[; ;sample.c: 65: for(i=len-1;i>0;i--){
+"65
 {
 [e = _i -> - -> _len `i -> 1 `i `uc ]
 [e $ > -> _i `i -> 0 `i 674  ]
 [e $U 675  ]
 [e :U 674 ]
 {
-[; ;sample.c: 54: buf[i]=buf[i-1];
-"54
+[; ;sample.c: 66: buf[i]=buf[i-1];
+"66
 [e = *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux *U + _buf * -> - -> _i `i -> 1 `i `x -> -> # *U _buf `i `x ]
-[; ;sample.c: 55: ret+=buf[i];
-"55
+[; ;sample.c: 67: ret+=buf[i];
+"67
 [e =+ _ret -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `l ]
-"56
+"68
 }
-"53
+"65
 [e -- _i -> -> 1 `i `uc ]
 [e $ > -> _i `i -> 0 `i 674  ]
 [e :U 675 ]
-"56
+"68
 }
-[; ;sample.c: 56: }
-[; ;sample.c: 57: buf[i]=x;
-"57
+[; ;sample.c: 68: }
+[; ;sample.c: 69: buf[i]=x;
+"69
 [e = *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux _x ]
-[; ;sample.c: 58: ret+=x;
-"58
+[; ;sample.c: 70: ret+=x;
+"70
 [e =+ _ret -> _x `l ]
-[; ;sample.c: 59: ret/=len;
-"59
+[; ;sample.c: 71: ret/=len;
+"71
 [e =/ _ret -> _len `l ]
-[; ;sample.c: 60: return (uint16_t)(len);
-"60
-[e ) -> -> _len `ui `i ]
+[; ;sample.c: 72: return (int16_t)(ret);
+"72
+[e ) -> _ret `i ]
 [e $UE 673  ]
-[; ;sample.c: 61: }
-"61
+[; ;sample.c: 73: }
+"73
 [e :UE 673 ]
 }
-"62
+"74
 [v _sample_diff_pr_fliter `(uc ~T0 @X0 1 ef1`*S659 ]
-"63
+"75
 {
-[; ;sample.c: 62: uint8_t sample_diff_pr_fliter(st_prData* xin)
-[; ;sample.c: 63: {
+[; ;sample.c: 74: uint8_t sample_diff_pr_fliter(st_prData* xin)
+[; ;sample.c: 75: {
 [e :U _sample_diff_pr_fliter ]
-"62
+"74
 [v _xin `*S659 ~T0 @X0 1 r1 ]
-"63
+"75
 [f ]
-[; ;sample.c: 64: xin->tAdcValue=__x_sample_fliter(sampBufDiffPr_D01,20/3,4);
-"64
+[; ;sample.c: 76: xin->tAdcValue=__x_sample_fliter(sampBufDiffPr_D01,20/3,4);
+"76
 [e = . *U _xin 2 ( ___x_sample_fliter (3 , , &U _sampBufDiffPr_D01 -> / -> 20 `i -> 3 `i `uc -> -> 4 `i `uc ]
-[; ;sample.c: 65: xin->pAdcValue=__x_sample_fliter(sampBufDiffPr_D23,20/3,4);
-"65
+[; ;sample.c: 77: xin->pAdcValue=__x_sample_fliter(sampBufDiffPr_D23,20/3,4);
+"77
 [e = . *U _xin 1 ( ___x_sample_fliter (3 , , &U _sampBufDiffPr_D23 -> / -> 20 `i -> 3 `i `uc -> -> 4 `i `uc ]
-[; ;sample.c: 66: xin->pValue=0;
-"66
+[; ;sample.c: 78: xin->pValue=0;
+"78
 [e = . *U _xin 0 -> -> 0 `i `l ]
-[; ;sample.c: 67: return 0;
-"67
+[; ;sample.c: 79: return 0;
+"79
 [e ) -> -> 0 `i `uc ]
 [e $UE 677  ]
-[; ;sample.c: 68: }
-"68
+[; ;sample.c: 80: }
+"80
 [e :UE 677 ]
 }
-"70
+"82
 [v _sample_diff_pr_chip_fast `(uc ~T0 @X0 1 ef ]
-"71
+"83
 {
-[; ;sample.c: 70: uint8_t sample_diff_pr_chip_fast(void)
-[; ;sample.c: 71: {
+[; ;sample.c: 82: uint8_t sample_diff_pr_chip_fast(void)
+[; ;sample.c: 83: {
 [e :U _sample_diff_pr_chip_fast ]
 [f ]
-"72
+"84
 [v _ret `uc ~T0 @X0 1 a ]
-[; ;sample.c: 72: uint8_t ret=0;
+[; ;sample.c: 84: uint8_t ret=0;
 [e = _ret -> -> 0 `i `uc ]
-"73
+"85
 [v _t16 `i ~T0 @X0 1 a ]
-[; ;sample.c: 73: int16_t t16;
-[; ;sample.c: 74: fastSampTimer+=100;
-"74
+[; ;sample.c: 85: int16_t t16;
+[; ;sample.c: 86: fastSampTimer+=100;
+"86
 [e =+ _fastSampTimer -> -> 100 `i `ui ]
-[; ;sample.c: 75: if(fastSampTimer>(1000/20)){
-"75
+[; ;sample.c: 87: if(fastSampTimer>(1000/20)){
+"87
 [e $ ! > _fastSampTimer -> / -> 1000 `i -> 20 `i `ui 679  ]
 {
-[; ;sample.c: 76: fastSampTimer=0;
-"76
+[; ;sample.c: 88: fastSampTimer=0;
+"88
 [e = _fastSampTimer -> -> 0 `i `ui ]
-[; ;sample.c: 77: t16=ads1115_read_conversion(pAds1115DiffPrObj);
-"77
+[; ;sample.c: 89: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+"89
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 78: if(diffSampCh==0){
-"78
+[; ;sample.c: 90: if(diffSampCh==0){
+"90
 [e $ ! == -> _diffSampCh `i -> 0 `i 680  ]
 {
-[; ;sample.c: 79: if(diffSampCount_D01<20/3){
-"79
+[; ;sample.c: 91: if(diffSampCount_D01<20/3){
+"91
 [e $ ! < -> _diffSampCount_D01 `i / -> 20 `i -> 3 `i 681  ]
 {
-[; ;sample.c: 80: sampBufDiffPr_D01[diffSampCount_D01]=t16;
-"80
+[; ;sample.c: 92: sampBufDiffPr_D01[diffSampCount_D01]=t16;
+"92
 [e = *U + &U _sampBufDiffPr_D01 * -> _diffSampCount_D01 `ux -> -> # *U &U _sampBufDiffPr_D01 `ui `ux _t16 ]
-[; ;sample.c: 81: diffSampCount_D01++;
-"81
+[; ;sample.c: 93: diffSampCount_D01++;
+"93
 [e ++ _diffSampCount_D01 -> -> 1 `i `uc ]
-"82
+"94
 }
 [e :U 681 ]
-[; ;sample.c: 82: }
-[; ;sample.c: 83: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
-"83
+[; ;sample.c: 94: }
+[; ;sample.c: 95: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
+"95
 [e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 3 ]
-[; ;sample.c: 84: diffSampCh=1;
-"84
+[; ;sample.c: 96: diffSampCh=1;
+"96
 [e = _diffSampCh -> -> 1 `i `uc ]
-"85
+"97
 }
-[; ;sample.c: 85: }else if(diffSampCh==1){
+[; ;sample.c: 97: }else if(diffSampCh==1){
 [e $U 682  ]
 [e :U 680 ]
 [e $ ! == -> _diffSampCh `i -> 1 `i 683  ]
 {
-[; ;sample.c: 86: if(diffSampCount_D23<20/3){
-"86
+[; ;sample.c: 98: if(diffSampCount_D23<20/3){
+"98
 [e $ ! < -> _diffSampCount_D23 `i / -> 20 `i -> 3 `i 684  ]
 {
-[; ;sample.c: 87: sampBufDiffPr_D23[diffSampCount_D23]=t16;
-"87
+[; ;sample.c: 99: sampBufDiffPr_D23[diffSampCount_D23]=t16;
+"99
 [e = *U + &U _sampBufDiffPr_D23 * -> _diffSampCount_D23 `ux -> -> # *U &U _sampBufDiffPr_D23 `ui `ux _t16 ]
-[; ;sample.c: 88: diffSampCount_D23++;
-"88
+[; ;sample.c: 100: diffSampCount_D23++;
+"100
 [e ++ _diffSampCount_D23 -> -> 1 `i `uc ]
-"89
+"101
 }
 [e :U 684 ]
-[; ;sample.c: 89: }
-[; ;sample.c: 90: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
-"90
+[; ;sample.c: 101: }
+[; ;sample.c: 102: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
+"102
 [e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 5 ]
-[; ;sample.c: 91: diffSampCh=2;
-"91
+[; ;sample.c: 103: diffSampCh=2;
+"103
 [e = _diffSampCh -> -> 2 `i `uc ]
-"92
+"104
 }
-[; ;sample.c: 92: }else{
+[; ;sample.c: 104: }else{
 [e $U 685  ]
 [e :U 683 ]
 {
-[; ;sample.c: 93: sampBufDiffPr_S1=t16;
-"93
+[; ;sample.c: 105: sampBufDiffPr_S1=t16;
+"105
 [e = _sampBufDiffPr_S1 _t16 ]
-[; ;sample.c: 94: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
-"94
+[; ;sample.c: 106: adc_inPt100=t16;
+"106
+[e = _adc_inPt100 _t16 ]
+[; ;sample.c: 107: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
+"107
 [e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 0 ]
-[; ;sample.c: 95: diffSampCh=0;
-"95
+[; ;sample.c: 108: diffSampCh=0;
+"108
 [e = _diffSampCh -> -> 0 `i `uc ]
-"96
+"109
 }
 [e :U 685 ]
 [e :U 682 ]
-[; ;sample.c: 96: }
-[; ;sample.c: 98: ads1115_start_conversion(pAds1115DiffPrObj);
-"98
+[; ;sample.c: 109: }
+[; ;sample.c: 111: ads1115_start_conversion(pAds1115DiffPrObj);
+"111
 [e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 100: if((diffSampCount_D01 >= diffSampCount_D23) && (diffSampCount_D01 >= 20/3)){
-"100
+[; ;sample.c: 113: if((diffSampCount_D01 >= diffSampCount_D23) && (diffSampCount_D01 >= 20/3)){
+"113
 [e $ ! && >= -> _diffSampCount_D01 `i -> _diffSampCount_D23 `i >= -> _diffSampCount_D01 `i / -> 20 `i -> 3 `i 686  ]
 {
-[; ;sample.c: 101: sample_diff_pr_fliter(&x_prDiffData);
-"101
+[; ;sample.c: 114: sample_diff_pr_fliter(&x_prDiffData);
+"114
 [e ( _sample_diff_pr_fliter (1 &U _x_prDiffData ]
-[; ;sample.c: 102: diffSampCount_D01=diffSampCount_D23=0;
-"102
+[; ;sample.c: 115: diffSampCount_D01=diffSampCount_D23=0;
+"115
 [e = _diffSampCount_D01 = _diffSampCount_D23 -> -> 0 `i `uc ]
-"103
-}
-[e :U 686 ]
-[; ;sample.c: 103: }
-[; ;sample.c: 104: return 1;
-"104
+[; ;sample.c: 116: diffPrSampleUpdate=1;
+"116
+[e = _diffPrSampleUpdate -> -> 1 `i `uc ]
+[; ;sample.c: 118: in_pt100SampleUpdate=1;
+"118
+[e = _in_pt100SampleUpdate -> -> 1 `i `uc ]
+[; ;sample.c: 119: return 1;
+"119
 [e ) -> -> 1 `i `uc ]
 [e $UE 678  ]
-"105
+"120
+}
+[e :U 686 ]
+"121
 }
 [e :U 679 ]
-[; ;sample.c: 105: }
-[; ;sample.c: 106: return 0;
-"106
+[; ;sample.c: 120: }
+[; ;sample.c: 121: }
+[; ;sample.c: 122: return 0;
+"122
 [e ) -> -> 0 `i `uc ]
 [e $UE 678  ]
-[; ;sample.c: 107: }
-"107
+[; ;sample.c: 123: }
+"123
 [e :UE 678 ]
 }
-"109
+"125
 [v _sample_diff_pr_chip_slow `(uc ~T0 @X0 1 ef ]
-"110
+"126
 {
-[; ;sample.c: 109: uint8_t sample_diff_pr_chip_slow(void)
-[; ;sample.c: 110: {
+[; ;sample.c: 125: uint8_t sample_diff_pr_chip_slow(void)
+[; ;sample.c: 126: {
 [e :U _sample_diff_pr_chip_slow ]
 [f ]
-"111
+"127
 [v _ret `uc ~T0 @X0 1 a ]
-[; ;sample.c: 111: uint8_t ret=0;
+[; ;sample.c: 127: uint8_t ret=0;
 [e = _ret -> -> 0 `i `uc ]
-"112
+"128
 [v _t16 `i ~T0 @X0 1 a ]
-[; ;sample.c: 112: int16_t t16;
-[; ;sample.c: 113: slowSampleTimer++;
-"113
+[; ;sample.c: 128: int16_t t16;
+[; ;sample.c: 129: slowSampleTimer++;
+"129
 [e ++ _slowSampleTimer -> -> 1 `i `uc ]
-[; ;sample.c: 114: if(slowSampleTimer>=60){
-"114
+[; ;sample.c: 130: if(slowSampleTimer>=60){
+"130
 [e $ ! >= -> _slowSampleTimer `i -> 60 `i 688  ]
 {
-[; ;sample.c: 115: slowSampleTimer=0;
-"115
+[; ;sample.c: 131: slowSampleTimer=0;
+"131
 [e = _slowSampleTimer -> -> 0 `i `uc ]
-[; ;sample.c: 116: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
-"116
+[; ;sample.c: 132: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
+"132
 [e :U 691 ]
 {
 [e :U 694 ]
@@ -6916,8 +6969,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 696 ]
 }
 [e :U 690 ]
-[; ;sample.c: 117: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
-"117
+[; ;sample.c: 133: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
+"133
 [e :U 700 ]
 {
 [e :U 703 ]
@@ -6932,64 +6985,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 705 ]
 }
 [e :U 699 ]
-[; ;sample.c: 118: delay_ms(20);
-"118
-[e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;sample.c: 119: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
-"119
-[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 0 ]
-[; ;sample.c: 120: ads1115_start_conversion(pAds1115DiffPrObj);
-"120
-[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 121: delay_ms(20);
-"121
-[e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;sample.c: 122: t16=ads1115_read_conversion(pAds1115DiffPrObj);
-"122
-[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 123: if(diffSampCount_D01<20/3){
-"123
-[e $ ! < -> _diffSampCount_D01 `i / -> 20 `i -> 3 `i 707  ]
-{
-[; ;sample.c: 124: sampBufDiffPr_D01[diffSampCount_D01]=t16;
-"124
-[e = *U + &U _sampBufDiffPr_D01 * -> _diffSampCount_D01 `ux -> -> # *U &U _sampBufDiffPr_D01 `ui `ux _t16 ]
-[; ;sample.c: 125: diffSampCount_D01++;
-"125
-[e ++ _diffSampCount_D01 -> -> 1 `i `uc ]
-"126
-}
-[e :U 707 ]
-[; ;sample.c: 126: }
-[; ;sample.c: 127: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
-"127
-[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 3 ]
-[; ;sample.c: 128: ads1115_start_conversion(pAds1115DiffPrObj);
-"128
-[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 129: delay_ms(20);
-"129
-[e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;sample.c: 130: t16=ads1115_read_conversion(pAds1115DiffPrObj);
-"130
-[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 131: if(diffSampCount_D23<20/3){
-"131
-[e $ ! < -> _diffSampCount_D23 `i / -> 20 `i -> 3 `i 708  ]
-{
-[; ;sample.c: 132: sampBufDiffPr_D23[diffSampCount_D23]=t16;
-"132
-[e = *U + &U _sampBufDiffPr_D23 * -> _diffSampCount_D23 `ux -> -> # *U &U _sampBufDiffPr_D23 `ui `ux _t16 ]
-[; ;sample.c: 133: diffSampCount_D23++;
-"133
-[e ++ _diffSampCount_D23 -> -> 1 `i `uc ]
+[; ;sample.c: 134: delay_ms(20);
 "134
-}
-[e :U 708 ]
-[; ;sample.c: 134: }
-[; ;sample.c: 135: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
+[e ( _delay_ms (1 -> -> 20 `i `ui ]
+[; ;sample.c: 135: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
 "135
-[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 5 ]
+[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 0 ]
 [; ;sample.c: 136: ads1115_start_conversion(pAds1115DiffPrObj);
 "136
 [e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
@@ -6999,352 +7000,390 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 138: t16=ads1115_read_conversion(pAds1115DiffPrObj);
 "138
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 139: sampBufDiffPr_S1=t16;
-"139
+[; ;sample.c: 141: __x_sample_fifo(sampBufDiffPr_D01,t16,sizeof(sampBufDiffPr_D01)/sizeof(sampBufDiffPr_D01[0]));
+"141
+[e ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D01 _t16 -> / -> # _sampBufDiffPr_D01 `ui -> # *U + &U _sampBufDiffPr_D01 * -> -> -> 0 `i `ui `ux -> -> # *U &U _sampBufDiffPr_D01 `ui `ux `ui `uc ]
+[; ;sample.c: 148: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
+"148
+[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 3 ]
+[; ;sample.c: 149: ads1115_start_conversion(pAds1115DiffPrObj);
+"149
+[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
+[; ;sample.c: 150: delay_ms(20);
+"150
+[e ( _delay_ms (1 -> -> 20 `i `ui ]
+[; ;sample.c: 151: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+"151
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
+[; ;sample.c: 153: __x_sample_fifo(sampBufDiffPr_D23,t16,sizeof(sampBufDiffPr_D23)/sizeof(sampBufDiffPr_D23[0]));
+"153
+[e ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D23 _t16 -> / -> # _sampBufDiffPr_D23 `ui -> # *U + &U _sampBufDiffPr_D23 * -> -> -> 0 `i `ui `ux -> -> # *U &U _sampBufDiffPr_D23 `ui `ux `ui `uc ]
+[; ;sample.c: 160: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
+"160
+[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7231 5 ]
+[; ;sample.c: 161: ads1115_start_conversion(pAds1115DiffPrObj);
+"161
+[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
+[; ;sample.c: 162: delay_ms(20);
+"162
+[e ( _delay_ms (1 -> -> 20 `i `ui ]
+[; ;sample.c: 163: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+"163
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
+[; ;sample.c: 164: sampBufDiffPr_S1=t16;
+"164
 [e = _sampBufDiffPr_S1 _t16 ]
-[; ;sample.c: 140: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
-"140
-[e :U 711 ]
+[; ;sample.c: 165: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
+"165
+[e :U 709 ]
 {
-[e :U 714 ]
+[e :U 712 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 713 ]
-[e :U 717 ]
+[e :U 711 ]
+[e :U 715 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 716 ]
+[e :U 714 ]
 }
-[e :U 710 ]
-[; ;sample.c: 142: if((diffSampCount_D01 >= diffSampCount_D23) && (diffSampCount_D01 >= 20/3)){
-"142
-[e $ ! && >= -> _diffSampCount_D01 `i -> _diffSampCount_D23 `i >= -> _diffSampCount_D01 `i / -> 20 `i -> 3 `i 718  ]
+[e :U 708 ]
+[; ;sample.c: 167: if((diffSampCount_D01 >= diffSampCount_D23) && (diffSampCount_D01 >= 20/3)){
+"167
+[e $ ! && >= -> _diffSampCount_D01 `i -> _diffSampCount_D23 `i >= -> _diffSampCount_D01 `i / -> 20 `i -> 3 `i 716  ]
 {
-[; ;sample.c: 143: sample_diff_pr_fliter(&x_prDiffData);
-"143
+[; ;sample.c: 168: sample_diff_pr_fliter(&x_prDiffData);
+"168
 [e ( _sample_diff_pr_fliter (1 &U _x_prDiffData ]
-[; ;sample.c: 144: diffSampCount_D01=diffSampCount_D23=0;
-"144
-[e = _diffSampCount_D01 = _diffSampCount_D23 -> -> 0 `i `uc ]
-"145
+[; ;sample.c: 172: diffPrSampleUpdate=1;
+"172
+[e = _diffPrSampleUpdate -> -> 1 `i `uc ]
+"173
 }
-[e :U 718 ]
-[; ;sample.c: 145: }
-[; ;sample.c: 146: return 1;
-"146
-[e ) -> -> 1 `i `uc ]
-[e $UE 687  ]
-"147
+[e :U 716 ]
+"175
 }
 [e :U 688 ]
-[; ;sample.c: 147: }
-[; ;sample.c: 148: return 0;
-"148
+[; ;sample.c: 173: }
+[; ;sample.c: 175: }
+[; ;sample.c: 176: return 0;
+"176
 [e ) -> -> 0 `i `uc ]
 [e $UE 687  ]
-[; ;sample.c: 149: }
-"149
+[; ;sample.c: 177: }
+"177
 [e :UE 687 ]
 }
-"151
+"179
 [v _sample_pr_chip_comm `(uc ~T0 @X0 1 ef ]
-"152
+"180
 {
-[; ;sample.c: 151: uint8_t sample_pr_chip_comm(void)
-[; ;sample.c: 152: {
+[; ;sample.c: 179: uint8_t sample_pr_chip_comm(void)
+[; ;sample.c: 180: {
 [e :U _sample_pr_chip_comm ]
 [f ]
-"153
+"181
 [v _ret `uc ~T0 @X0 1 a ]
-[; ;sample.c: 153: uint8_t ret=0;
+[; ;sample.c: 181: uint8_t ret=0;
 [e = _ret -> -> 0 `i `uc ]
-"154
+"182
 [v _t16 `i ~T0 @X0 1 a ]
-[; ;sample.c: 154: int16_t t16;
-[; ;sample.c: 155: commonSampleTimer++;
-"155
+[; ;sample.c: 182: int16_t t16;
+[; ;sample.c: 183: commonSampleTimer++;
+"183
 [e ++ _commonSampleTimer -> -> 1 `i `uc ]
-[; ;sample.c: 156: if(commonSampleTimer>=60){
-"156
-[e $ ! >= -> _commonSampleTimer `i -> 60 `i 720  ]
+[; ;sample.c: 184: if(commonSampleTimer>=60){
+"184
+[e $ ! >= -> _commonSampleTimer `i -> 60 `i 718  ]
 {
-[; ;sample.c: 157: commonSampleTimer=0;
-"157
+[; ;sample.c: 185: commonSampleTimer=0;
+"185
 [e = _commonSampleTimer -> -> 0 `i `uc ]
-[; ;sample.c: 158: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
-"158
-[e :U 723 ]
+[; ;sample.c: 186: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
+"186
+[e :U 721 ]
 {
-[e :U 726 ]
+[e :U 724 ]
 {
 [e =& _TRISB -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 725 ]
-[e :U 729 ]
+[e :U 723 ]
+[e :U 727 ]
 {
 [e =| _LATB -> << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 728 ]
+[e :U 726 ]
 }
-[e :U 722 ]
-[; ;sample.c: 159: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
-"159
-[e :U 732 ]
+[e :U 720 ]
+[; ;sample.c: 187: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
+"187
+[e :U 730 ]
 {
-[e :U 735 ]
+[e :U 733 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 734 ]
-[e :U 738 ]
+[e :U 732 ]
+[e :U 736 ]
 {
 [e =| _LATC -> << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 737 ]
+[e :U 735 ]
 }
-[e :U 731 ]
-[; ;sample.c: 160: delay_ms(20);
-"160
+[e :U 729 ]
+[; ;sample.c: 188: delay_ms(20);
+"188
 [e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;sample.c: 161: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
-"161
+[; ;sample.c: 189: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
+"189
 [e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7231 4 ]
-[; ;sample.c: 162: ads1115_start_conversion(pAds1115PrObj);
-"162
+[; ;sample.c: 190: ads1115_start_conversion(pAds1115PrObj);
+"190
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 163: delay_ms(20);
-"163
+[; ;sample.c: 191: delay_ms(20);
+"191
 [e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;sample.c: 164: t16=ads1115_read_conversion(pAds1115PrObj);
-"164
+[; ;sample.c: 192: t16=ads1115_read_conversion(pAds1115PrObj);
+"192
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
-[; ;sample.c: 165: __x_sample_fifo(sampBufPt100ExA,t16,sizeof(sampBufPt100ExA)/sizeof(int16_t));
-"165
-[e ( ___x_sample_fifo (3 , , &U _sampBufPt100ExA _t16 -> / -> # _sampBufPt100ExA `ui -> # `i `ui `uc ]
-[; ;sample.c: 168: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
-"168
+[; ;sample.c: 193: adc_exPt100=__x_sample_fifo(sampBufPt100ExA,t16,sizeof(sampBufPt100ExA)/sizeof(int16_t));
+"193
+[e = _adc_exPt100 ( ___x_sample_fifo (3 , , &U _sampBufPt100ExA _t16 -> / -> # _sampBufPt100ExA `ui -> # `i `ui `uc ]
+[; ;sample.c: 196: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
+"196
 [e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7231 4 ]
-[; ;sample.c: 169: ads1115_start_conversion(pAds1115PrObj);
-"169
+[; ;sample.c: 197: ads1115_start_conversion(pAds1115PrObj);
+"197
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 170: delay_ms(20);
-"170
+[; ;sample.c: 198: delay_ms(20);
+"198
 [e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;sample.c: 171: t16=ads1115_read_conversion(pAds1115PrObj);
-"171
+[; ;sample.c: 199: t16=ads1115_read_conversion(pAds1115PrObj);
+"199
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
-[; ;sample.c: 172: __x_sample_fifo(sampBufPt100ExB,t16,sizeof(sampBufPt100ExB)/sizeof(int16_t));
-"172
-[e ( ___x_sample_fifo (3 , , &U _sampBufPt100ExB _t16 -> / -> # _sampBufPt100ExB `ui -> # `i `ui `uc ]
-[; ;sample.c: 175: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
-"175
+[; ;sample.c: 200: t16=__x_sample_fifo(sampBufPt100ExB,t16,sizeof(sampBufPt100ExB)/sizeof(int16_t));
+"200
+[e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufPt100ExB _t16 -> / -> # _sampBufPt100ExB `ui -> # `i `ui `uc ]
+[; ;sample.c: 201: adc_exPt100=adc_exPt100-t16-t16;
+"201
+[e = _adc_exPt100 - - _adc_exPt100 _t16 _t16 ]
+[; ;sample.c: 202: ex_pt100SampleUpdate=1;
+"202
+[e = _ex_pt100SampleUpdate -> -> 1 `i `uc ]
+[; ;sample.c: 204: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
+"204
 [e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7231 3 ]
-[; ;sample.c: 176: ads1115_start_conversion(pAds1115PrObj);
-"176
+[; ;sample.c: 205: ads1115_start_conversion(pAds1115PrObj);
+"205
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 177: delay_ms(20);
-"177
+[; ;sample.c: 206: delay_ms(20);
+"206
 [e ( _delay_ms (1 -> -> 20 `i `ui ]
-[; ;sample.c: 178: t16=ads1115_read_conversion(pAds1115PrObj);
-"178
+[; ;sample.c: 207: t16=ads1115_read_conversion(pAds1115PrObj);
+"207
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
-[; ;sample.c: 179: __x_sample_fifo(sampBufPr,t16,sizeof(sampBufPr)/sizeof(int16_t));
-"179
-[e ( ___x_sample_fifo (3 , , &U _sampBufPr _t16 -> / -> # _sampBufPr `ui -> # `i `ui `uc ]
-[; ;sample.c: 181: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
-"181
-[e :U 741 ]
+[; ;sample.c: 208: adc_pressure=__x_sample_fifo(sampBufPr,t16,sizeof(sampBufPr)/sizeof(int16_t));
+"208
+[e = _adc_pressure ( ___x_sample_fifo (3 , , &U _sampBufPr _t16 -> / -> # _sampBufPr `ui -> # `i `ui `uc ]
+[; ;sample.c: 209: prSampleUpdate=1;
+"209
+[e = _prSampleUpdate -> -> 1 `i `uc ]
+[; ;sample.c: 211: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
+"211
+[e :U 739 ]
 {
-[e :U 744 ]
+[e :U 742 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 743 ]
-[e :U 747 ]
+[e :U 741 ]
+[e :U 745 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 746 ]
+[e :U 744 ]
 }
-[e :U 740 ]
-[; ;sample.c: 182: return 1;
-"182
+[e :U 738 ]
+[; ;sample.c: 213: return 1;
+"213
 [e ) -> -> 1 `i `uc ]
-[e $UE 719  ]
-"183
+[e $UE 717  ]
+"214
 }
-[e :U 720 ]
-[; ;sample.c: 183: }
-[; ;sample.c: 184: return 0;
-"184
+[e :U 718 ]
+[; ;sample.c: 214: }
+[; ;sample.c: 215: return 0;
+"215
 [e ) -> -> 0 `i `uc ]
-[e $UE 719  ]
-[; ;sample.c: 185: }
-"185
-[e :UE 719 ]
+[e $UE 717  ]
+[; ;sample.c: 216: }
+"216
+[e :UE 717 ]
 }
-"187
+"218
 [v _sample_in_soc_adc_ch `(uc ~T0 @X0 1 ef ]
-"188
+"219
 {
-[; ;sample.c: 187: uint8_t sample_in_soc_adc_ch(void)
-[; ;sample.c: 188: {
+[; ;sample.c: 218: uint8_t sample_in_soc_adc_ch(void)
+[; ;sample.c: 219: {
 [e :U _sample_in_soc_adc_ch ]
 [f ]
-"189
-[v _i `uc ~T0 @X0 1 a ]
-"190
-[v _t16 `ui ~T0 @X0 1 a ]
-"191
-[v _ret `ul ~T0 @X0 1 a ]
-[; ;sample.c: 189: uint8_t i;
-[; ;sample.c: 190: uint16_t t16;
-[; ;sample.c: 191: uint32_t ret=0;
-[e = _ret -> -> -> 0 `i `l `ul ]
-[; ;sample.c: 192: inSocSampleTimer++;
-"192
-[e ++ _inSocSampleTimer -> -> 1 `i `uc ]
-[; ;sample.c: 193: if(inSocSampleTimer>=60){
-"193
-[e $ ! >= -> _inSocSampleTimer `i -> 60 `i 749  ]
-{
-[; ;sample.c: 194: inSocSampleTimer=0;
-"194
-[e = _inSocSampleTimer -> -> 0 `i `uc ]
-[; ;sample.c: 196: in_adc_init();
-"196
-[e ( _in_adc_init ..  ]
-[; ;sample.c: 197: ret=0;
-"197
-[e = _ret -> -> -> 0 `i `l `ul ]
-[; ;sample.c: 198: for(i=0;i<4;i++){
-"198
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 750  ]
-[e $U 751  ]
-[e :U 750 ]
-{
-[; ;sample.c: 199: t16=in_adc_start_and_read(2);
-"199
-[e = _t16 ( _in_adc_start_and_read (1 -> -> 2 `i `uc ]
-[; ;sample.c: 200: ret+=t16;
-"200
-[e =+ _ret -> _t16 `ul ]
-"201
-}
-"198
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 750  ]
-[e :U 751 ]
-"201
-}
-[; ;sample.c: 201: }
-[; ;sample.c: 202: sampBufExPr0InSoc=(uint16_t)(ret/4);
-"202
-[e = _sampBufExPr0InSoc -> / _ret -> -> -> 4 `i `l `ul `ui ]
-[; ;sample.c: 204: ret=0;
-"204
-[e = _ret -> -> -> 0 `i `l `ul ]
-[; ;sample.c: 205: for(i=0;i<4;i++){
-"205
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 753  ]
-[e $U 754  ]
-[e :U 753 ]
-{
-[; ;sample.c: 206: t16=in_adc_start_and_read(1);
-"206
-[e = _t16 ( _in_adc_start_and_read (1 -> -> 1 `i `uc ]
-[; ;sample.c: 207: ret+=t16;
-"207
-[e =+ _ret -> _t16 `ul ]
-"208
-}
-"205
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 753  ]
-[e :U 754 ]
-"208
-}
-[; ;sample.c: 208: }
-[; ;sample.c: 209: sampBufExPr1InSoc=(uint16_t)(ret/4);
-"209
-[e = _sampBufExPr1InSoc -> / _ret -> -> -> 4 `i `l `ul `ui ]
-[; ;sample.c: 211: ret=0;
-"211
-[e = _ret -> -> -> 0 `i `l `ul ]
-[; ;sample.c: 212: for(i=0;i<4;i++){
-"212
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 756  ]
-[e $U 757  ]
-[e :U 756 ]
-{
-[; ;sample.c: 213: t16=in_adc_start_and_read(0);
-"213
-[e = _t16 ( _in_adc_start_and_read (1 -> -> 0 `i `uc ]
-[; ;sample.c: 214: ret+=t16;
-"214
-[e =+ _ret -> _t16 `ul ]
-"215
-}
-"212
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 756  ]
-[e :U 757 ]
-"215
-}
-[; ;sample.c: 215: }
-[; ;sample.c: 216: sampBufBatInSoc=(uint16_t)(ret/4);
-"216
-[e = _sampBufBatInSoc -> / _ret -> -> -> 4 `i `l `ul `ui ]
-[; ;sample.c: 218: ret=0;
-"218
-[e = _ret -> -> -> 0 `i `l `ul ]
-[; ;sample.c: 219: for(i=0;i<4;i++){
-"219
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 4 `i 759  ]
-[e $U 760  ]
-[e :U 759 ]
-{
-[; ;sample.c: 220: t16=in_adc_start_and_read(3);
 "220
-[e = _t16 ( _in_adc_start_and_read (1 -> -> 3 `i `uc ]
-[; ;sample.c: 221: ret+=t16;
+[v _i `uc ~T0 @X0 1 a ]
 "221
-[e =+ _ret -> _t16 `ul ]
+[v _t16 `ui ~T0 @X0 1 a ]
 "222
-}
-"219
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 4 `i 759  ]
-[e :U 760 ]
-"222
-}
-[; ;sample.c: 222: }
-[; ;sample.c: 223: sampBufRefInSoc=(uint16_t)(ret/4);
+[v _ret `ul ~T0 @X0 1 a ]
+[; ;sample.c: 220: uint8_t i;
+[; ;sample.c: 221: uint16_t t16;
+[; ;sample.c: 222: uint32_t ret=0;
+[e = _ret -> -> -> 0 `i `l `ul ]
+[; ;sample.c: 223: inSocSampleTimer++;
 "223
-[e = _sampBufRefInSoc -> / _ret -> -> -> 4 `i `l `ul `ui ]
-[; ;sample.c: 224: return 1;
+[e ++ _inSocSampleTimer -> -> 1 `i `uc ]
+[; ;sample.c: 224: if(inSocSampleTimer>=60){
 "224
-[e ) -> -> 1 `i `uc ]
-[e $UE 748  ]
+[e $ ! >= -> _inSocSampleTimer `i -> 60 `i 747  ]
+{
+[; ;sample.c: 225: inSocSampleTimer=0;
 "225
-}
-[e :U 749 ]
-[; ;sample.c: 225: }
-[; ;sample.c: 226: return 0;
-"226
-[e ) -> -> 0 `i `uc ]
-[e $UE 748  ]
-[; ;sample.c: 227: }
+[e = _inSocSampleTimer -> -> 0 `i `uc ]
+[; ;sample.c: 227: in_adc_init();
 "227
-[e :UE 748 ]
+[e ( _in_adc_init ..  ]
+[; ;sample.c: 228: ret=0;
+"228
+[e = _ret -> -> -> 0 `i `l `ul ]
+[; ;sample.c: 229: for(i=0;i<4;i++){
+"229
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 748  ]
+[e $U 749  ]
+[e :U 748 ]
+{
+[; ;sample.c: 230: t16=in_adc_start_and_read(2);
+"230
+[e = _t16 ( _in_adc_start_and_read (1 -> -> 2 `i `uc ]
+[; ;sample.c: 231: ret+=t16;
+"231
+[e =+ _ret -> _t16 `ul ]
+"232
+}
+"229
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 748  ]
+[e :U 749 ]
+"232
+}
+[; ;sample.c: 232: }
+[; ;sample.c: 233: adc_iPrEx[0]=(uint16_t)(ret/4);
+"233
+[e = *U + &U _adc_iPrEx * -> -> -> 0 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux -> -> / _ret -> -> -> 4 `i `l `ul `ui `i ]
+[; ;sample.c: 236: ret=0;
+"236
+[e = _ret -> -> -> 0 `i `l `ul ]
+[; ;sample.c: 237: for(i=0;i<4;i++){
+"237
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 751  ]
+[e $U 752  ]
+[e :U 751 ]
+{
+[; ;sample.c: 238: t16=in_adc_start_and_read(1);
+"238
+[e = _t16 ( _in_adc_start_and_read (1 -> -> 1 `i `uc ]
+[; ;sample.c: 239: ret+=t16;
+"239
+[e =+ _ret -> _t16 `ul ]
+"240
+}
+"237
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 751  ]
+[e :U 752 ]
+"240
+}
+[; ;sample.c: 240: }
+[; ;sample.c: 241: adc_iPrEx[1]=(uint16_t)(ret/4);
+"241
+[e = *U + &U _adc_iPrEx * -> -> -> 1 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux -> -> / _ret -> -> -> 4 `i `l `ul `ui `i ]
+[; ;sample.c: 243: ret=0;
+"243
+[e = _ret -> -> -> 0 `i `l `ul ]
+[; ;sample.c: 244: for(i=0;i<4;i++){
+"244
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 754  ]
+[e $U 755  ]
+[e :U 754 ]
+{
+[; ;sample.c: 245: t16=in_adc_start_and_read(0);
+"245
+[e = _t16 ( _in_adc_start_and_read (1 -> -> 0 `i `uc ]
+[; ;sample.c: 246: ret+=t16;
+"246
+[e =+ _ret -> _t16 `ul ]
+"247
+}
+"244
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 754  ]
+[e :U 755 ]
+"247
+}
+[; ;sample.c: 247: }
+[; ;sample.c: 248: sampBufBatInSoc=(uint16_t)(ret/4);
+"248
+[e = _sampBufBatInSoc -> / _ret -> -> -> 4 `i `l `ul `ui ]
+[; ;sample.c: 250: ret=0;
+"250
+[e = _ret -> -> -> 0 `i `l `ul ]
+[; ;sample.c: 251: for(i=0;i<4;i++){
+"251
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 757  ]
+[e $U 758  ]
+[e :U 757 ]
+{
+[; ;sample.c: 252: t16=in_adc_start_and_read(3);
+"252
+[e = _t16 ( _in_adc_start_and_read (1 -> -> 3 `i `uc ]
+[; ;sample.c: 253: ret+=t16;
+"253
+[e =+ _ret -> _t16 `ul ]
+"254
+}
+"251
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 757  ]
+[e :U 758 ]
+"254
+}
+[; ;sample.c: 254: }
+[; ;sample.c: 255: sampBufRefInSoc=(uint16_t)(ret/4);
+"255
+[e = _sampBufRefInSoc -> / _ret -> -> -> 4 `i `l `ul `ui ]
+[; ;sample.c: 256: inSocAdcSampleUpdate=1;
+"256
+[e = _inSocAdcSampleUpdate -> -> 1 `i `uc ]
+[; ;sample.c: 257: return 1;
+"257
+[e ) -> -> 1 `i `uc ]
+[e $UE 746  ]
+"258
+}
+[e :U 747 ]
+[; ;sample.c: 258: }
+[; ;sample.c: 259: return 0;
+"259
+[e ) -> -> 0 `i `uc ]
+[e $UE 746  ]
+[; ;sample.c: 260: }
+"260
+[e :UE 746 ]
 }

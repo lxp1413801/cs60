@@ -1,17 +1,17 @@
 
 # 1 "src/api/data.c"
 
-# 26 "C:\Program Files\Microchip\xc8\v1.41\include\htc.h"
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "C:\Program Files\Microchip\xc8\v1.41\include\xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h"
+# 49 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h"
 extern volatile unsigned char PADCFG1 @ 0xF54;
 
 asm("PADCFG1 equ 0F54h");
@@ -8064,7 +8064,7 @@ extern volatile __bit nW @ (((unsigned) &SSP1STAT)*8) + 2;
 
 extern volatile __bit nWRITE @ (((unsigned) &SSP1STAT)*8) + 2;
 
-# 18 "C:\Program Files\Microchip\xc8\v1.41\include\pic18.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 
@@ -8087,7 +8087,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 13 "C:\Program Files\Microchip\xc8\v1.41\include\stdint.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdint.h"
 typedef signed char int8_t;
 
 # 20
@@ -8177,7 +8177,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 30 "C:\Program Files\Microchip\xc8\v1.41\include\math.h"
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\math.h"
 extern double fabs(double);
 extern double floor(double);
 extern double ceil(double);
@@ -8205,10 +8205,10 @@ extern double fmod(double, double);
 extern double trunc(double);
 extern double round(double);
 
-# 4 "C:\Program Files\Microchip\xc8\v1.41\include\__size_t.h"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\__size_t.h"
 typedef unsigned size_t;
 
-# 7 "C:\Program Files\Microchip\xc8\v1.41\include\stdarg.h"
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -8217,17 +8217,17 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 43 "C:\Program Files\Microchip\xc8\v1.41\include\stdio.h"
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
 struct __prbuf
 {
 char * ptr;
 void (* func)(char);
 };
 
-# 29 "C:\Program Files\Microchip\xc8\v1.41\include\errno.h"
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\errno.h"
 extern int errno;
 
-# 12 "C:\Program Files\Microchip\xc8\v1.41\include\conio.h"
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\conio.h"
 extern void init_uart(void);
 
 extern char getch(void);
@@ -8241,7 +8241,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 88 "C:\Program Files\Microchip\xc8\v1.41\include\stdio.h"
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -8548,7 +8548,7 @@ extern uint16_t in_adc_start_and_read(uint8_t ch);
 # 51 "src/api/../includes/../driver/key.h"
 extern uint8_t key_polling(void);
 
-# 12 "C:\Program Files\Microchip\xc8\v1.41\include\stdbool.h"
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdbool.h"
 typedef unsigned char bool;
 
 # 10 "src/api/../includes/../driver/lcd.h"
@@ -8663,6 +8663,7 @@ em_warnType type;
 uint8_t[2];
 }st_warnDef,warnDef_t;
 
+
 typedef struct{
 uint32_t id;
 em_posture pos;
@@ -8672,11 +8673,19 @@ uint16_t density;
 
 int32_t h;
 uint32_t d;
+
+int32_t V1;
+int32_t V2;
+
 int32_t baseZero;
 
 st_warnDef diffPressureWarnSet[4];
 st_warnDef pressureWarnSet;
 uint8_t simplePloyFactor[4];
+
+uint32_t TempZero;
+uint32_t TempLine;
+
 
 uint32_t ex_pressZero[2];
 uint32_t ex_pressLine[2];
@@ -8685,6 +8694,7 @@ uint32_t ex_pressCurrentLoopUpper[2];
 
 uint32_t ex_TempZero;
 uint32_t ex_TempLine;
+
 uint32_t ex_TempCurrentLoopLow;
 uint32_t ex_TempCurrentLoopUpper;
 
@@ -8722,32 +8732,34 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
+# 119
+extern volatile int16_t adc_inPt100;
 
-extern volatile int16_t adc_diffPr;
-extern volatile int16_t adc_diffBrg;
-extern volatile int16_t adc_diffVcc;
-extern volatile int16_t adc_diffGnd;
-
+extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
-extern volatile int16_t adc_exPt100Line;
-extern volatile int16_t adc_Pr;
 
-extern volatile int16_t adc_iPrEx0;
-extern volatile int16_t adc_iPrEx1;
+# 128
+extern volatile int16_t adc_iPrEx[2];
+
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-extern volatile int32_t x_DiffPressure;
-extern volatile int32_t x_Hight;
-extern volatile int32_t x_Weight;
-
-extern volatile int32_t x_Pressure;
-extern volatile int32_t x_Pemperature;
-
+# 141
 extern st_prData x_prDiffData;
 
 extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+
+
+extern uint8_t cal_diff_press(void);
+extern void cal_pt100_temperature_in(void);
+
+extern uint8_t cal_press(void);
+extern void cal_pt100_temperature_ex(void);
+
+extern void cal_additional_pressute(uint8_t index);
+
+extern void data_init_all(void);
 
 # 66 "src/api/../includes/../api/key_menu.h"
 extern volatile uint8_t menu;
@@ -8761,9 +8773,20 @@ extern volatile uint8_t calibCol;
 extern void key_process(void);
 
 # 13 "src/api/../includes/../api/sample.h"
+extern volatile int16_t sampBufDiffPr_S1;
+
 extern volatile uint16_t fastSampTimer;
 extern volatile uint16_t commonSampTimer;
 extern volatile uint16_t lowSampTimer;
+
+extern bool diffPrSampleUpdate;
+extern bool in_pt100SampleUpdate;
+
+extern bool prSampleUpdate;
+extern bool ex_pt100SampleUpdate;
+
+extern bool inSocAdcSampleUpdate;
+
 
 extern uint8_t sample_fast(void);
 extern uint8_t sample_common(void);
@@ -8792,34 +8815,39 @@ st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)(0);
 st_prCalibTabDef diff_prCalibTabDef={0};
 st_prCalibTabDef prCalibTabDef={0};
 
+# 20
+st_prData x_prDiffData;
+volatile int16_t adc_inPt100;
 
-volatile int16_t adc_diffPr;
-volatile int16_t adc_diffBrg;
-volatile int16_t adc_diffVcc;
-volatile int16_t adc_diffGnd;
-
+volatile int16_t adc_pressure;
 volatile int16_t adc_exPt100;
-volatile int16_t adc_exPt100Line;
-volatile int16_t adc_Pr;
 
-volatile int16_t adc_iPrEx0;
-volatile int16_t adc_iPrEx1;
+# 30
+volatile int16_t adc_iPrEx[2];
+
 
 volatile int16_t adc_ibat;
 volatile int16_t adc_iRef;
 
-volatile int32_t x_DiffPressure;
-volatile int32_t x_Hight;
-volatile int32_t x_Weight;
+# 40
+volatile int32_t rtDiffPressure;
+volatile int32_t rtHight;
+volatile int32_t rtWeight;
+volatile int32_t rtVolume;
 
-volatile int32_t x_Pressure;
+volatile int32_t rtTemperatureIn=0;
+
+volatile int32_t rtPressure=0;
+volatile int32_t rtExTemperatureIn=0;
+
+volatile int32_t rtExPressure[2];
 volatile int32_t x_Pemperature;
 
-st_prData x_prDiffData;
+
 
 volatile st_deviceOpMode dwm=TEST_MODE;
 
-# 59
+# 74
 const float hKcy[]={
 0.0000,0.0017,0.0048,0.0087,0.0134,0.0187,0.0245,0.0308,0.0375,0.0446,
 0.0520,0.0598,0.0680,0.0764,0.0851,0.0941,0.1033,0.1127,0.1224,0.1323,
@@ -8834,7 +8862,7 @@ const float hKcy[]={
 1.0000,
 };
 
-# 91
+# 106
 const float hKel[]={
 0.0000,0.0003,0.0012,0.0026,0.0047,0.0073,0.0104,0.0140,0.0182,0.0228,
 0.0280,0.0336,0.0397,0.0463,0.0533,0.0607,0.0686,0.0769,0.0855,0.0946,
@@ -8859,11 +8887,15 @@ const st_sysDataDef defultSystemData={
 
 10000 ,
 5000 ,
+0 ,
+0 ,
 -200 ,
 
 {0} ,
 {0} ,
 {40,30,20,10},
+1000,
+1000,
 
 {0} ,
 {1000,1000} ,
@@ -8877,16 +8909,40 @@ const st_sysDataDef defultSystemData={
 
 0 ,
 };
+uint32_t data_sys_cal_v1(st_sysDataDef* stp)
+{
+float r,h,f;
+r=(float)(stp->d);
+h=(float)(stp->h);
+r=r/1000/2;
+h=h/1000;
+f=h*(r*r)*3.1416f;
+f*=1000;
+return (uint32_t)f;
+}
+
+uint32_t data_sys_cal_v2(st_sysDataDef* stp)
+{
+float d,f;
+d=(float)(stp->d);
+d=d/1000;
+f=0.2618f*d*d*d;
+f*=1000;
+return (uint32_t)f;
+}
 
 uint8_t data_sys_init(void)
 {
 uint8_t ret;
 uint8_t* buf=globleBuffer0;
+st_sysDataDef* stp=(st_sysDataDef*)buf;
 if(sizeof(globleBuffer0)<sizeof(st_sysDataDef))return 0;
 m_flash_read(0xf400,buf,sizeof(st_sysDataDef));
 ret=crc_verify(buf,sizeof(st_sysDataDef));
 if(!ret){
 m_mem_cpy_len(buf,(uint8_t*)(&defultSystemData),sizeof(st_sysDataDef));
+stp->V1=data_sys_cal_v1(stp);
+stp->V2=data_sys_cal_v2(stp);
 crc_append(buf,sizeof(st_sysDataDef)-2);
 m_flash_write(0xf400,buf,sizeof(st_sysDataDef));
 m_flash_read(0xf400,buf,sizeof(st_sysDataDef));
@@ -8923,7 +8979,7 @@ stp->pValue=pp->pValue;
 stp->pAdcValue=pp->pAdcValue;
 stp->tAdcValue=pp->tAdcValue;
 
-# 188
+# 231
 }
 
 
@@ -9002,7 +9058,7 @@ ret=crc_verify(buf,t16);
 return ret;
 }
 
-# 271
+# 314
 uint8_t m_interp1_cal_p_v(st_prCalibRowDef* tabrow,st_prData* xin,st_prData* xout)
 {
 uint8_t i;
@@ -9010,7 +9066,7 @@ int32_t x,y;
 for(i=0;i< (tabrow->pCount) - 1 ;i++){
 
 if(tabrow->prCalibPoint[i].pAdcValue < tabrow->prCalibPoint[i+1].pAdcValue){
-if(xin->pAdcValue < tabrow->prCalibPoint[i+1].pAdcValue)break;
+if(xin->pAdcValue <= tabrow->prCalibPoint[i+1].pAdcValue)break;
 }else{
 if(xin->pAdcValue >= tabrow->prCalibPoint[i+1].pAdcValue)break;
 }
@@ -9038,7 +9094,7 @@ uint8_t i;
 int32_t x,y;
 for(i=0;i<tmpxLen-1;i++){
 if(tmpx[i].tAdcValue < tmpx[i+1].tAdcValue){
-if(xin->tAdcValue < tmpx[i+1].tAdcValue)break;
+if(xin->tAdcValue <= tmpx[i+1].tAdcValue)break;
 }else{
 if(xin->tAdcValue >= tmpx[i+1].tAdcValue)break;
 }
@@ -9051,11 +9107,105 @@ xin->pValue = xin->pValue + (y/x)*(xin->tAdcValue - tmpx[i].tAdcValue);
 }
 return i;
 }
-
-
-
-uint8_t cal_diff_press(st_prData* xin)
+float m_interp1_float_fast(float* tab,float in,int16_t len)
 {
+uint16_t i;
+float f,x,y;
+for(i=0;i<len-1;i++){
+if(tab[i]<tab[i+1]){
+if(in<=tab[i+1])break;
+}else{
+if(in>=tab[i+1])break;
+}
+}
+f=tab[i];
+x=0.01f;
+y=tab[i+1]-tab[i];
+f=f+(in-0.01*i)*(y/x);
+return f;
+}
+
+
+
+
+void data_init_all(void)
+{
+data_sys_init();
+calib_data_init_diff_pr();
+calib_data_init_pr();
+}
+
+
+int32_t cal_diff_hight_to_vol_h(int32_t h)
+{
+float v1,v2;
+float f1,f2;
+f1=(float)h;
+f2=(float)(fpSysData->d);
+f1=f1/f2;
+if(f1>1.0)f1=1.0;
+
+f2=f1;
+f1=m_interp1_float_fast((float*)hKcy,f1,sizeof(hKcy)/sizeof(hKcy[0]));
+v1=(float)(fpSysData->V1);
+v1=v1*f1;
+
+f1=f2;
+f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
+v2=(float)(fpSysData->V2);
+v2=v2*f1;
+
+v1=v1+v2;
+return (int32_t)v1;
+}
+
+
+int32_t cal_diff_hight_to_vol_v(int32_t h)
+{
+float v1,v2;
+float f1,D;
+v1=(float)(fpSysData->V1);
+v2=(float)(fpSysData->V2);
+
+f1=(float)h;
+D=(float)(fpSysData->d);
+if(f1<D/4){
+f1=2*f1/D;
+f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
+v2=(float)(fpSysData->V2);
+return (int32_t)v2;
+}else if(f1<D/4+fpSysData->h){
+f1=f1-D/4;
+v2=v2*(f1/fpSysData->h);
+v1=v1/2;
+return (int32_t)(v1+v2);
+}else{
+if(f1>(float)(fpSysData->h)+D/2)f1=(float)(fpSysData->h)+D/2;
+
+f1=f1-(D/4)-(float)(fpSysData->h);
+f1=2*f1/D;
+f1=0.5-f1;
+v2=v2*(0.5+f1);
+return (int32_t)(v1+v2);
+}
+}
+
+
+int32_t cal_diff_p_to_h(st_prData* xin)
+{
+float f1,f2;
+
+f1=(float)(xin->pValue);
+f2=(float)(fpSysData->density);
+f1=f1/(f2*9.8f);
+rtHight=(int32_t)f1;
+return rtHight;
+}
+
+
+uint8_t cal_diff_press()
+{
+st_prData* xin= &x_prDiffData;
 
 st_prData tmpx[3];
 uint8_t i=0;
@@ -9065,22 +9215,98 @@ tabrow = &(diff_prCalibTabDef.prCalibRow[i]);
 m_interp1_cal_p_v(tabrow,xin,&tmpx[i]);
 }
 m_interp1_cal_p_t(&tmpx[0],xin,i);
+
+rtDiffPressure=xin->pValue;
+
+cal_diff_p_to_h(xin);
+if(fpSysData->pos==HOTIZONTAL){
+rtVolume=cal_diff_hight_to_vol_h(rtHight);
+}else{
+rtVolume=cal_diff_hight_to_vol_v(rtHight);
+}
 return i;
 }
 
-
-
-uint8_t cal_press(st_prData* xin)
+# 493
+uint8_t cal_press(void)
 {
 uint8_t ret;
+st_prData xin={0};
+xin.pValue=0;
+xin.pAdcValue=adc_pressure;
+xin.tAdcValue=0;
 st_prCalibRowDef* tabrow;
 tabrow= &prCalibTabDef.prCalibRow[0];
-ret=m_interp1_cal_p_v(tabrow,xin,(0));
+ret=m_interp1_cal_p_v(tabrow,&xin,(0));
+rtPressure=xin.pValue;
 return ret;
 }
 
-# 356
-uint32_t cal_pt100_temperature(int16_t x,uint16_t l,uint16_t b)
+# 515
+void cal_pt100_temperature_in(void)
+{
+float f1,f2;
+f1=(float)(adc_inPt100);
+
+f2=(float)(fpSysData->TempZero);
+f1=f1-f2;
+
+f2=(float)(fpSysData->TempLine);
+f2/=1000;
+f1=f1*f2;
+
+f1/=1000;
+f2=(1.484e-4f);
+f2=f2*f1*f1;
+f1=f1+f2;
+
+f1=f1*1000;
+rtTemperatureIn= (int32_t)f1;
+}
+
+void cal_pt100_temperature_ex(void)
+{
+float f1,f2;
+f1=(float)(adc_exPt100);
+
+f2=(float)(fpSysData->ex_pressZero);
+f1=f1-f2;
+
+f2=(float)(fpSysData->ex_pressLine);
+f2/=1000;
+f1=f1*f2;
+
+f1/=1000;
+f2=(1.484e-4f);
+f2=f2*f1*f1;
+f1=f1+f2;
+
+f1=f1*1000;
+rtExTemperatureIn= (int32_t)f1;
+}
+
+void cal_additional_pressute(uint8_t index)
+{
+if(index>1)return;
+float f1,f2;
+f1=(float)adc_iPrEx[index];
+f2=(float)(fpSysData->ex_pressZero[index]);
+f1=f1-f2;
+
+f2=(float)(fpSysData->ex_pressLine[index]);
+f2/=1000;
+
+f1=f1*f2;
+rtExPressure[index]=(int32_t)f1;
+}
+
+
+void cal_battery_voltage(void)
+{
+
+}
+
+uint32_t cal_pt100_temperature(int16_t x,uint32_t l,uint32_t b)
 {
 int32_t t32,ret;
 t32=(int32_t)l*x-b;

@@ -1,17 +1,17 @@
 
 # 1 "src/api/ui.c"
 
-# 26 "C:\Program Files\Microchip\xc8\v1.41\include\htc.h"
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "C:\Program Files\Microchip\xc8\v1.41\include\xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h"
+# 49 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h"
 extern volatile unsigned char PADCFG1 @ 0xF54;
 
 asm("PADCFG1 equ 0F54h");
@@ -8064,7 +8064,7 @@ extern volatile __bit nW @ (((unsigned) &SSP1STAT)*8) + 2;
 
 extern volatile __bit nWRITE @ (((unsigned) &SSP1STAT)*8) + 2;
 
-# 18 "C:\Program Files\Microchip\xc8\v1.41\include\pic18.h"
+# 18 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
 
@@ -8087,7 +8087,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 13 "C:\Program Files\Microchip\xc8\v1.41\include\stdint.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdint.h"
 typedef signed char int8_t;
 
 # 20
@@ -8177,7 +8177,7 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 30 "C:\Program Files\Microchip\xc8\v1.41\include\math.h"
+# 30 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\math.h"
 extern double fabs(double);
 extern double floor(double);
 extern double ceil(double);
@@ -8205,10 +8205,10 @@ extern double fmod(double, double);
 extern double trunc(double);
 extern double round(double);
 
-# 4 "C:\Program Files\Microchip\xc8\v1.41\include\__size_t.h"
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\__size_t.h"
 typedef unsigned size_t;
 
-# 7 "C:\Program Files\Microchip\xc8\v1.41\include\stdarg.h"
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdarg.h"
 typedef void * va_list[1];
 
 #pragma intrinsic(__va_start)
@@ -8217,17 +8217,17 @@ extern void * __va_start(void);
 #pragma intrinsic(__va_arg)
 extern void * __va_arg(void *, ...);
 
-# 43 "C:\Program Files\Microchip\xc8\v1.41\include\stdio.h"
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
 struct __prbuf
 {
 char * ptr;
 void (* func)(char);
 };
 
-# 29 "C:\Program Files\Microchip\xc8\v1.41\include\errno.h"
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\errno.h"
 extern int errno;
 
-# 12 "C:\Program Files\Microchip\xc8\v1.41\include\conio.h"
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\conio.h"
 extern void init_uart(void);
 
 extern char getch(void);
@@ -8241,7 +8241,7 @@ extern __bit kbhit(void);
 extern char * cgets(char *);
 extern void cputs(const char *);
 
-# 88 "C:\Program Files\Microchip\xc8\v1.41\include\stdio.h"
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
 extern int cprintf(char *, ...);
 #pragma printf_check(cprintf)
 
@@ -8548,7 +8548,7 @@ extern uint16_t in_adc_start_and_read(uint8_t ch);
 # 51 "src/api/../includes/../driver/key.h"
 extern uint8_t key_polling(void);
 
-# 12 "C:\Program Files\Microchip\xc8\v1.41\include\stdbool.h"
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdbool.h"
 typedef unsigned char bool;
 
 # 10 "src/api/../includes/../driver/lcd.h"
@@ -8663,6 +8663,7 @@ em_warnType type;
 uint8_t[2];
 }st_warnDef,warnDef_t;
 
+
 typedef struct{
 uint32_t id;
 em_posture pos;
@@ -8672,11 +8673,19 @@ uint16_t density;
 
 int32_t h;
 uint32_t d;
+
+int32_t V1;
+int32_t V2;
+
 int32_t baseZero;
 
 st_warnDef diffPressureWarnSet[4];
 st_warnDef pressureWarnSet;
 uint8_t simplePloyFactor[4];
+
+uint32_t TempZero;
+uint32_t TempLine;
+
 
 uint32_t ex_pressZero[2];
 uint32_t ex_pressLine[2];
@@ -8685,6 +8694,7 @@ uint32_t ex_pressCurrentLoopUpper[2];
 
 uint32_t ex_TempZero;
 uint32_t ex_TempLine;
+
 uint32_t ex_TempCurrentLoopLow;
 uint32_t ex_TempCurrentLoopUpper;
 
@@ -8722,32 +8732,34 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
+# 119
+extern volatile int16_t adc_inPt100;
 
-extern volatile int16_t adc_diffPr;
-extern volatile int16_t adc_diffBrg;
-extern volatile int16_t adc_diffVcc;
-extern volatile int16_t adc_diffGnd;
-
+extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
-extern volatile int16_t adc_exPt100Line;
-extern volatile int16_t adc_Pr;
 
-extern volatile int16_t adc_iPrEx0;
-extern volatile int16_t adc_iPrEx1;
+# 128
+extern volatile int16_t adc_iPrEx[2];
+
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-extern volatile int32_t x_DiffPressure;
-extern volatile int32_t x_Hight;
-extern volatile int32_t x_Weight;
-
-extern volatile int32_t x_Pressure;
-extern volatile int32_t x_Pemperature;
-
+# 141
 extern st_prData x_prDiffData;
 
 extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+
+
+extern uint8_t cal_diff_press(void);
+extern void cal_pt100_temperature_in(void);
+
+extern uint8_t cal_press(void);
+extern void cal_pt100_temperature_ex(void);
+
+extern void cal_additional_pressute(uint8_t index);
+
+extern void data_init_all(void);
 
 # 66 "src/api/../includes/../api/key_menu.h"
 extern volatile uint8_t menu;
@@ -8761,9 +8773,20 @@ extern volatile uint8_t calibCol;
 extern void key_process(void);
 
 # 13 "src/api/../includes/../api/sample.h"
+extern volatile int16_t sampBufDiffPr_S1;
+
 extern volatile uint16_t fastSampTimer;
 extern volatile uint16_t commonSampTimer;
 extern volatile uint16_t lowSampTimer;
+
+extern bool diffPrSampleUpdate;
+extern bool in_pt100SampleUpdate;
+
+extern bool prSampleUpdate;
+extern bool ex_pt100SampleUpdate;
+
+extern bool inSocAdcSampleUpdate;
+
 
 extern uint8_t sample_fast(void);
 extern uint8_t sample_common(void);

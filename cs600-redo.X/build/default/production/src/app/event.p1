@@ -1,20 +1,40 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"8 src/app/event.c
+"9 src/app/event.c
 [c E7488 0 1 .. ]
 [n E7488 . TEST_MODE WORK_MODE  ]
 "29 src/app/../includes/../api/data.h
 [v _dwm `VE7488 ~T0 @X0 0 e ]
-"9 src/app/event.c
+"10 src/app/event.c
 [v _sample_diff_pr_chip_slow `(i ~T0 @X0 0 ef ]
-"11
-[v _sample_pr_chip_comm `(i ~T0 @X0 0 ef ]
 "12
+[v _sample_pr_chip_comm `(i ~T0 @X0 0 ef ]
+"13
 [v _sample_in_soc_adc_ch `(i ~T0 @X0 0 ef ]
 "10 src/app/../includes/../app/event.h
 [v _glbEvent `Vuc ~T0 @X0 0 e ]
+"19 src/app/../includes/../api/sample.h
+[v _diffPrSampleUpdate `uc ~T0 @X0 0 e ]
+"146 src/app/../includes/../api/data.h
+[v _cal_diff_press `(uc ~T0 @X0 0 ef ]
+"20 src/app/../includes/../api/sample.h
+[v _in_pt100SampleUpdate `uc ~T0 @X0 0 e ]
+"147 src/app/../includes/../api/data.h
+[v _cal_pt100_temperature_in `(v ~T0 @X0 0 ef ]
+"22 src/app/../includes/../api/sample.h
+[v _prSampleUpdate `uc ~T0 @X0 0 e ]
+"149 src/app/../includes/../api/data.h
+[v _cal_press `(uc ~T0 @X0 0 ef ]
+"23 src/app/../includes/../api/sample.h
+[v _ex_pt100SampleUpdate `uc ~T0 @X0 0 e ]
+"150 src/app/../includes/../api/data.h
+[v _cal_pt100_temperature_ex `(v ~T0 @X0 0 ef ]
+"25 src/app/../includes/../api/sample.h
+[v _inSocAdcSampleUpdate `uc ~T0 @X0 0 e ]
+"152 src/app/../includes/../api/data.h
+[v _cal_additional_pressute `(v ~T0 @X0 0 ef1`uc ]
 "40 src/app/../includes/../api/ui.h
 [v _ui_disp_menu `(v ~T0 @X0 0 ef ]
-"27 src/app/event.c
+"51 src/app/event.c
 [v _sample_diff_pr_chip_fast `(i ~T0 @X0 0 ef ]
 "67 src/app/../includes/../api/key_menu.h
 [v _keyValue `Vuc ~T0 @X0 0 e ]
@@ -26,7 +46,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f86j93.h: 49: extern volatile unsigned char PADCFG1 @ 0xF54;
-"51 C:\Program Files\Microchip\xc8\v1.41\include\pic18f86j93.h
+"51 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [; ;pic18f86j93.h: 51: asm("PADCFG1 equ 0F54h");
 [; <" PADCFG1 equ 0F54h ;# ">
 [; ;pic18f86j93.h: 54: typedef union {
@@ -6346,66 +6366,66 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 40: em_warnType type;
 [; ;data.h: 41: uint8_t[2];
 [; ;data.h: 42: }st_warnDef,warnDef_t;
-[; ;data.h: 44: typedef struct{
-[; ;data.h: 45: uint32_t id;
-[; ;data.h: 46: em_posture pos;
-[; ;data.h: 47: uint8_t maxValueForlevelBar;
-[; ;data.h: 49: uint16_t density;
-[; ;data.h: 51: int32_t h;
-[; ;data.h: 52: uint32_t d;
-[; ;data.h: 53: int32_t baseZero;
-[; ;data.h: 55: st_warnDef diffPressureWarnSet[4];
-[; ;data.h: 56: st_warnDef pressureWarnSet;
-[; ;data.h: 57: uint8_t simplePloyFactor[4];
-[; ;data.h: 59: uint32_t ex_pressZero[2];
-[; ;data.h: 60: uint32_t ex_pressLine[2];
-[; ;data.h: 61: uint32_t ex_pressCurrentLoopLow[2];
-[; ;data.h: 62: uint32_t ex_pressCurrentLoopUpper[2];
-[; ;data.h: 64: uint32_t ex_TempZero;
-[; ;data.h: 65: uint32_t ex_TempLine;
-[; ;data.h: 66: uint32_t ex_TempCurrentLoopLow;
-[; ;data.h: 67: uint32_t ex_TempCurrentLoopUpper;
-[; ;data.h: 69: uint16_t crc;
-[; ;data.h: 70: }st_sysDataDef,sysDataDef_t;
-[; ;data.h: 71: extern const st_sysDataDef defultSystemData;
-[; ;data.h: 73: extern uint8_t data_sys_init(void);
-[; ;data.h: 74: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
-[; ;data.h: 79: typedef struct{
-[; ;data.h: 80: int32_t pValue;
-[; ;data.h: 81: int16_t pAdcValue;
-[; ;data.h: 82: int16_t tAdcValue;
-[; ;data.h: 83: }st_prCalibPointDef,prCalibPoint_t,st_prData;
-[; ;data.h: 85: typedef struct{
-[; ;data.h: 86: uint8_t pCount;
-[; ;data.h: 87: uint8_t reverse0[3];
-[; ;data.h: 88: st_prCalibPointDef prCalibPoint[6];
-[; ;data.h: 89: }st_prCalibRowDef,prCalibRow_t;
-[; ;data.h: 91: typedef struct{
-[; ;data.h: 92: uint8_t rowCount;
-[; ;data.h: 93: uint8_t reverse0[3];
-[; ;data.h: 94: st_prCalibRowDef prCalibRow[3];
-[; ;data.h: 96: uint16_t crc;
-[; ;data.h: 97: }st_prCalibTabDef,prCalibTab_t;
-[; ;data.h: 100: extern st_prCalibTabDef diff_prCalibTabDef;
-[; ;data.h: 101: extern st_prCalibTabDef prCalibTabDef;
-[; ;data.h: 104: extern volatile int16_t adc_diffPr;
-[; ;data.h: 105: extern volatile int16_t adc_diffBrg;
-[; ;data.h: 106: extern volatile int16_t adc_diffVcc;
-[; ;data.h: 107: extern volatile int16_t adc_diffGnd;
-[; ;data.h: 109: extern volatile int16_t adc_exPt100;
-[; ;data.h: 110: extern volatile int16_t adc_exPt100Line;
-[; ;data.h: 111: extern volatile int16_t adc_Pr;
-[; ;data.h: 113: extern volatile int16_t adc_iPrEx0;
-[; ;data.h: 114: extern volatile int16_t adc_iPrEx1;
-[; ;data.h: 116: extern volatile int16_t adc_ibat;
-[; ;data.h: 117: extern volatile int16_t adc_iRef;
-[; ;data.h: 119: extern volatile int32_t x_DiffPressure;
-[; ;data.h: 120: extern volatile int32_t x_Hight;
-[; ;data.h: 121: extern volatile int32_t x_Weight;
-[; ;data.h: 123: extern volatile int32_t x_Pressure;
-[; ;data.h: 124: extern volatile int32_t x_Pemperature;
-[; ;data.h: 126: extern st_prData x_prDiffData;
-[; ;data.h: 128: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 45: typedef struct{
+[; ;data.h: 46: uint32_t id;
+[; ;data.h: 47: em_posture pos;
+[; ;data.h: 48: uint8_t maxValueForlevelBar;
+[; ;data.h: 50: uint16_t density;
+[; ;data.h: 52: int32_t h;
+[; ;data.h: 53: uint32_t d;
+[; ;data.h: 55: int32_t V1;
+[; ;data.h: 56: int32_t V2;
+[; ;data.h: 58: int32_t baseZero;
+[; ;data.h: 60: st_warnDef diffPressureWarnSet[4];
+[; ;data.h: 61: st_warnDef pressureWarnSet;
+[; ;data.h: 62: uint8_t simplePloyFactor[4];
+[; ;data.h: 64: uint32_t TempZero;
+[; ;data.h: 65: uint32_t TempLine;
+[; ;data.h: 68: uint32_t ex_pressZero[2];
+[; ;data.h: 69: uint32_t ex_pressLine[2];
+[; ;data.h: 70: uint32_t ex_pressCurrentLoopLow[2];
+[; ;data.h: 71: uint32_t ex_pressCurrentLoopUpper[2];
+[; ;data.h: 73: uint32_t ex_TempZero;
+[; ;data.h: 74: uint32_t ex_TempLine;
+[; ;data.h: 76: uint32_t ex_TempCurrentLoopLow;
+[; ;data.h: 77: uint32_t ex_TempCurrentLoopUpper;
+[; ;data.h: 79: uint16_t crc;
+[; ;data.h: 80: }st_sysDataDef,sysDataDef_t;
+[; ;data.h: 81: extern const st_sysDataDef defultSystemData;
+[; ;data.h: 83: extern uint8_t data_sys_init(void);
+[; ;data.h: 84: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+[; ;data.h: 89: typedef struct{
+[; ;data.h: 90: int32_t pValue;
+[; ;data.h: 91: int16_t pAdcValue;
+[; ;data.h: 92: int16_t tAdcValue;
+[; ;data.h: 93: }st_prCalibPointDef,prCalibPoint_t,st_prData;
+[; ;data.h: 95: typedef struct{
+[; ;data.h: 96: uint8_t pCount;
+[; ;data.h: 97: uint8_t reverse0[3];
+[; ;data.h: 98: st_prCalibPointDef prCalibPoint[6];
+[; ;data.h: 99: }st_prCalibRowDef,prCalibRow_t;
+[; ;data.h: 101: typedef struct{
+[; ;data.h: 102: uint8_t rowCount;
+[; ;data.h: 103: uint8_t reverse0[3];
+[; ;data.h: 104: st_prCalibRowDef prCalibRow[3];
+[; ;data.h: 106: uint16_t crc;
+[; ;data.h: 107: }st_prCalibTabDef,prCalibTab_t;
+[; ;data.h: 110: extern st_prCalibTabDef diff_prCalibTabDef;
+[; ;data.h: 111: extern st_prCalibTabDef prCalibTabDef;
+[; ;data.h: 119: extern volatile int16_t adc_inPt100;
+[; ;data.h: 121: extern volatile int16_t adc_pressure;
+[; ;data.h: 122: extern volatile int16_t adc_exPt100;
+[; ;data.h: 128: extern volatile int16_t adc_iPrEx[2];
+[; ;data.h: 131: extern volatile int16_t adc_ibat;
+[; ;data.h: 132: extern volatile int16_t adc_iRef;
+[; ;data.h: 141: extern st_prData x_prDiffData;
+[; ;data.h: 143: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 146: extern uint8_t cal_diff_press(void);
+[; ;data.h: 147: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 149: extern uint8_t cal_press(void);
+[; ;data.h: 150: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 152: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 154: extern void data_init_all(void);
 [; ;key_menu.h: 66: extern volatile uint8_t menu;
 [; ;key_menu.h: 67: extern volatile uint8_t keyValue;
 [; ;key_menu.h: 68: extern volatile uint16_t passWord;
@@ -6413,13 +6433,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;key_menu.h: 71: extern volatile uint8_t calibRow;
 [; ;key_menu.h: 72: extern volatile uint8_t calibCol;
 [; ;key_menu.h: 74: extern void key_process(void);
-[; ;sample.h: 13: extern volatile uint16_t fastSampTimer;
-[; ;sample.h: 14: extern volatile uint16_t commonSampTimer;
-[; ;sample.h: 15: extern volatile uint16_t lowSampTimer;
-[; ;sample.h: 17: extern uint8_t sample_fast(void);
-[; ;sample.h: 18: extern uint8_t sample_common(void);
-[; ;sample.h: 19: extern uint8_t sample_low(void);
-[; ;sample.h: 21: extern void hook_sample_fast_timer(void);
+[; ;sample.h: 13: extern volatile int16_t sampBufDiffPr_S1;
+[; ;sample.h: 15: extern volatile uint16_t fastSampTimer;
+[; ;sample.h: 16: extern volatile uint16_t commonSampTimer;
+[; ;sample.h: 17: extern volatile uint16_t lowSampTimer;
+[; ;sample.h: 19: extern bool diffPrSampleUpdate;
+[; ;sample.h: 20: extern bool in_pt100SampleUpdate;
+[; ;sample.h: 22: extern bool prSampleUpdate;
+[; ;sample.h: 23: extern bool ex_pt100SampleUpdate;
+[; ;sample.h: 25: extern bool inSocAdcSampleUpdate;
+[; ;sample.h: 28: extern uint8_t sample_fast(void);
+[; ;sample.h: 29: extern uint8_t sample_common(void);
+[; ;sample.h: 30: extern uint8_t sample_low(void);
+[; ;sample.h: 32: extern void hook_sample_fast_timer(void);
 [; ;event.h: 10: extern volatile uint8_t glbEvent;
 [; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
 [; ;event.h: 16: extern int8_t event_process(void);
@@ -6437,173 +6463,250 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;event.c: 7: {
 [e :U _event_process_rtc ]
 [f ]
-[; ;event.c: 8: if(dwm==WORK_MODE){
 "8
+[v _ret `uc ~T0 @X0 1 a ]
+[; ;event.c: 8: uint8_t ret=0;
+[e = _ret -> -> 0 `i `uc ]
+[; ;event.c: 9: if(dwm==WORK_MODE){
+"9
 [e $ ! == -> _dwm `i -> . `E7488 1 `i 663  ]
 {
-[; ;event.c: 9: sample_diff_pr_chip_slow();
-"9
-[e ( _sample_diff_pr_chip_slow ..  ]
+[; ;event.c: 10: sample_diff_pr_chip_slow();
 "10
+[e ( _sample_diff_pr_chip_slow ..  ]
+"11
 }
 [e :U 663 ]
-[; ;event.c: 10: }
-[; ;event.c: 11: sample_pr_chip_comm();
-"11
-[e ( _sample_pr_chip_comm ..  ]
-[; ;event.c: 12: sample_in_soc_adc_ch();
+[; ;event.c: 11: }
+[; ;event.c: 12: sample_pr_chip_comm();
 "12
-[e ( _sample_in_soc_adc_ch ..  ]
-[; ;event.c: 13: if(glNoEventTimeOut){
+[e ( _sample_pr_chip_comm ..  ]
+[; ;event.c: 13: sample_in_soc_adc_ch();
 "13
+[e ( _sample_in_soc_adc_ch ..  ]
+[; ;event.c: 15: if(glNoEventTimeOut){
+"15
 [e $ ! != -> _glNoEventTimeOut `i -> -> -> 0 `i `Vuc `i 664  ]
 {
-[; ;event.c: 14: glNoEventTimeOut--;
-"14
+[; ;event.c: 16: glNoEventTimeOut--;
+"16
 [e -- _glNoEventTimeOut -> -> 1 `i `uc ]
-[; ;event.c: 15: if(!glNoEventTimeOut){
-"15
+[; ;event.c: 17: if(!glNoEventTimeOut){
+"17
 [e $ ! ! != -> _glNoEventTimeOut `i -> -> -> 0 `i `Vuc `i 665  ]
 {
-[; ;event.c: 16: glbEvent |= (1<<2);
-"16
+[; ;event.c: 18: glbEvent |= (1<<2);
+"18
 [e =| _glbEvent -> << -> 1 `i -> 2 `i `uc ]
-"17
+"19
 }
 [e :U 665 ]
-"18
+"20
 }
 [e :U 664 ]
-[; ;event.c: 17: }
-[; ;event.c: 18: }
-[; ;event.c: 20: ui_disp_menu();
-"20
-[e ( _ui_disp_menu ..  ]
-[; ;event.c: 21: return 1;
+[; ;event.c: 19: }
+[; ;event.c: 20: }
+[; ;event.c: 21: if(diffPrSampleUpdate){
 "21
-[e ) -> -> 1 `i `c ]
-[e $UE 662  ]
-[; ;event.c: 22: }
-"22
-[e :UE 662 ]
-}
+[e $ ! != -> _diffPrSampleUpdate `i -> -> -> 0 `i `uc `i 666  ]
+{
+[; ;event.c: 23: diffPrSampleUpdate=0;
+"23
+[e = _diffPrSampleUpdate -> -> 0 `i `uc ]
+[; ;event.c: 24: cal_diff_press();
 "24
-[v _event_process_ticker `(c ~T0 @X0 1 ef ]
+[e ( _cal_diff_press ..  ]
 "25
-{
-[; ;event.c: 24: int8_t event_process_ticker(void)
-[; ;event.c: 25: {
-[e :U _event_process_ticker ]
-[f ]
-[; ;event.c: 26: if(dwm!=WORK_MODE){
+}
+[e :U 666 ]
+[; ;event.c: 25: }
+[; ;event.c: 26: if(in_pt100SampleUpdate){
 "26
-[e $ ! != -> _dwm `i -> . `E7488 1 `i 667  ]
+[e $ ! != -> _in_pt100SampleUpdate `i -> -> -> 0 `i `uc `i 667  ]
 {
-[; ;event.c: 27: sample_diff_pr_chip_fast();
+[; ;event.c: 27: in_pt100SampleUpdate=0;
 "27
-[e ( _sample_diff_pr_chip_fast ..  ]
+[e = _in_pt100SampleUpdate -> -> 0 `i `uc ]
+[; ;event.c: 28: cal_pt100_temperature_in();
 "28
+[e ( _cal_pt100_temperature_in ..  ]
+"29
 }
 [e :U 667 ]
-[; ;event.c: 28: }
-[; ;event.c: 29: return 1;
-"29
-[e ) -> -> 1 `i `c ]
-[e $UE 666  ]
-[; ;event.c: 30: }
+[; ;event.c: 29: }
+[; ;event.c: 30: if(prSampleUpdate){
 "30
-[e :UE 666 ]
-}
+[e $ ! != -> _prSampleUpdate `i -> -> -> 0 `i `uc `i 668  ]
+{
+[; ;event.c: 31: prSampleUpdate=0;
+"31
+[e = _prSampleUpdate -> -> 0 `i `uc ]
+[; ;event.c: 32: cal_press();
 "32
-[v _event_process_time_out `(c ~T0 @X0 1 ef ]
+[e ( _cal_press ..  ]
 "33
-{
-[; ;event.c: 32: int8_t event_process_time_out(void)
-[; ;event.c: 33: {
-[e :U _event_process_time_out ]
-[f ]
-[; ;event.c: 34: if(dwm!=WORK_MODE){
+}
+[e :U 668 ]
+[; ;event.c: 33: }
+[; ;event.c: 34: if(ex_pt100SampleUpdate){
 "34
-[e $ ! != -> _dwm `i -> . `E7488 1 `i 669  ]
+[e $ ! != -> _ex_pt100SampleUpdate `i -> -> -> 0 `i `uc `i 669  ]
 {
-[; ;event.c: 35: sample_diff_pr_chip_fast();
+[; ;event.c: 35: ex_pt100SampleUpdate=0;
 "35
-[e ( _sample_diff_pr_chip_fast ..  ]
+[e = _ex_pt100SampleUpdate -> -> 0 `i `uc ]
+[; ;event.c: 36: cal_pt100_temperature_ex();
 "36
+[e ( _cal_pt100_temperature_ex ..  ]
+"37
 }
 [e :U 669 ]
-[; ;event.c: 36: }
-[; ;event.c: 37: return 1;
-"37
-[e ) -> -> 1 `i `c ]
-[e $UE 668  ]
-[; ;event.c: 38: }
+[; ;event.c: 37: }
+[; ;event.c: 38: if(inSocAdcSampleUpdate){
 "38
-[e :UE 668 ]
-}
+[e $ ! != -> _inSocAdcSampleUpdate `i -> -> -> 0 `i `uc `i 670  ]
+{
+[; ;event.c: 39: inSocAdcSampleUpdate=0;
 "39
-[v _event_process `(c ~T0 @X0 1 ef ]
+[e = _inSocAdcSampleUpdate -> -> 0 `i `uc ]
+[; ;event.c: 40: cal_additional_pressute(0);
 "40
-{
-[; ;event.c: 39: int8_t event_process(void)
-[; ;event.c: 40: {
-[e :U _event_process ]
-[f ]
-[; ;event.c: 41: if(glbEvent & (1<<1)){
+[e ( _cal_additional_pressute (1 -> -> 0 `i `uc ]
+[; ;event.c: 41: cal_additional_pressute(1);
 "41
-[e $ ! != & -> _glbEvent `i << -> 1 `i -> 1 `i -> 0 `i 671  ]
-{
-[; ;event.c: 42: glbEvent &= ~(1<<1);
-"42
-[e =& _glbEvent -> ~ << -> 1 `i -> 1 `i `uc ]
-[; ;event.c: 44: event_process_rtc();
-"44
-[e ( _event_process_rtc ..  ]
-"45
+[e ( _cal_additional_pressute (1 -> -> 1 `i `uc ]
+"43
 }
-[e :U 671 ]
-[; ;event.c: 45: }
-[; ;event.c: 46: if(glbEvent & (1<<0)){
+[e :U 670 ]
+[; ;event.c: 43: }
+[; ;event.c: 44: ui_disp_menu();
+"44
+[e ( _ui_disp_menu ..  ]
+[; ;event.c: 45: return 1;
+"45
+[e ) -> -> 1 `i `c ]
+[e $UE 662  ]
+[; ;event.c: 46: }
 "46
-[e $ ! != & -> _glbEvent `i << -> 1 `i -> 0 `i -> 0 `i 672  ]
-{
-[; ;event.c: 47: glbEvent &= ~(1<<0);
-"47
-[e =& _glbEvent -> ~ << -> 1 `i -> 0 `i `uc ]
-[; ;event.c: 48: event_process_ticker();
+[e :UE 662 ]
+}
 "48
-[e ( _event_process_ticker ..  ]
+[v _event_process_ticker `(c ~T0 @X0 1 ef ]
 "49
+{
+[; ;event.c: 48: int8_t event_process_ticker(void)
+[; ;event.c: 49: {
+[e :U _event_process_ticker ]
+[f ]
+[; ;event.c: 50: if(dwm!=WORK_MODE){
+"50
+[e $ ! != -> _dwm `i -> . `E7488 1 `i 672  ]
+{
+[; ;event.c: 51: sample_diff_pr_chip_fast();
+"51
+[e ( _sample_diff_pr_chip_fast ..  ]
+"52
 }
 [e :U 672 ]
-[; ;event.c: 49: }
-[; ;event.c: 50: if(glbEvent & (1<<2)){
-"50
-[e $ ! != & -> _glbEvent `i << -> 1 `i -> 2 `i -> 0 `i 673  ]
-{
-[; ;event.c: 51: glbEvent &= ~(1<<2);
-"51
-[e =& _glbEvent -> ~ << -> 1 `i -> 2 `i `uc ]
-[; ;event.c: 52: event_process_time_out();
-"52
-[e ( _event_process_time_out ..  ]
+[; ;event.c: 52: }
+[; ;event.c: 53: return 1;
 "53
-}
-[e :U 673 ]
-[; ;event.c: 53: }
-[; ;event.c: 55: keyValue=key_polling();
-"55
-[e = _keyValue ( _key_polling ..  ]
-[; ;event.c: 56: if(keyValue!=(0x0))key_process();
-"56
-[e $ ! != -> _keyValue `i -> 0 `i 674  ]
-[e ( _key_process ..  ]
-[e :U 674 ]
-[; ;event.c: 58: return 1;
-"58
 [e ) -> -> 1 `i `c ]
-[e $UE 670  ]
-[; ;event.c: 59: }
+[e $UE 671  ]
+[; ;event.c: 54: }
+"54
+[e :UE 671 ]
+}
+"56
+[v _event_process_time_out `(c ~T0 @X0 1 ef ]
+"57
+{
+[; ;event.c: 56: int8_t event_process_time_out(void)
+[; ;event.c: 57: {
+[e :U _event_process_time_out ]
+[f ]
+[; ;event.c: 58: if(dwm!=WORK_MODE){
+"58
+[e $ ! != -> _dwm `i -> . `E7488 1 `i 674  ]
+{
+[; ;event.c: 59: sample_diff_pr_chip_fast();
 "59
-[e :UE 670 ]
+[e ( _sample_diff_pr_chip_fast ..  ]
+"60
+}
+[e :U 674 ]
+[; ;event.c: 60: }
+[; ;event.c: 61: return 1;
+"61
+[e ) -> -> 1 `i `c ]
+[e $UE 673  ]
+[; ;event.c: 62: }
+"62
+[e :UE 673 ]
+}
+"63
+[v _event_process `(c ~T0 @X0 1 ef ]
+"64
+{
+[; ;event.c: 63: int8_t event_process(void)
+[; ;event.c: 64: {
+[e :U _event_process ]
+[f ]
+[; ;event.c: 65: if(glbEvent & (1<<1)){
+"65
+[e $ ! != & -> _glbEvent `i << -> 1 `i -> 1 `i -> 0 `i 676  ]
+{
+[; ;event.c: 66: glbEvent &= ~(1<<1);
+"66
+[e =& _glbEvent -> ~ << -> 1 `i -> 1 `i `uc ]
+[; ;event.c: 68: event_process_rtc();
+"68
+[e ( _event_process_rtc ..  ]
+"69
+}
+[e :U 676 ]
+[; ;event.c: 69: }
+[; ;event.c: 70: if(glbEvent & (1<<0)){
+"70
+[e $ ! != & -> _glbEvent `i << -> 1 `i -> 0 `i -> 0 `i 677  ]
+{
+[; ;event.c: 71: glbEvent &= ~(1<<0);
+"71
+[e =& _glbEvent -> ~ << -> 1 `i -> 0 `i `uc ]
+[; ;event.c: 72: event_process_ticker();
+"72
+[e ( _event_process_ticker ..  ]
+"73
+}
+[e :U 677 ]
+[; ;event.c: 73: }
+[; ;event.c: 74: if(glbEvent & (1<<2)){
+"74
+[e $ ! != & -> _glbEvent `i << -> 1 `i -> 2 `i -> 0 `i 678  ]
+{
+[; ;event.c: 75: glbEvent &= ~(1<<2);
+"75
+[e =& _glbEvent -> ~ << -> 1 `i -> 2 `i `uc ]
+[; ;event.c: 76: event_process_time_out();
+"76
+[e ( _event_process_time_out ..  ]
+"77
+}
+[e :U 678 ]
+[; ;event.c: 77: }
+[; ;event.c: 79: keyValue=key_polling();
+"79
+[e = _keyValue ( _key_polling ..  ]
+[; ;event.c: 80: if(keyValue!=(0x0))key_process();
+"80
+[e $ ! != -> _keyValue `i -> 0 `i 679  ]
+[e ( _key_process ..  ]
+[e :U 679 ]
+[; ;event.c: 82: return 1;
+"82
+[e ) -> -> 1 `i `c ]
+[e $UE 675  ]
+[; ;event.c: 83: }
+"83
+[e :UE 675 ]
 }

@@ -16,10 +16,10 @@ uint16_t __exp_10(uint8_t n)
 {
 	switch(n){
 		case 0:return 	1;
-		case 2:return 	10;
-		case 3:return 	100;
-		case 4:return 	1000;
-		default:return 	10000;		
+		case 1:return 	10;
+		case 2:return 	100;
+		case 3:return 	1000;
+		default:return 	1000;		
 	}
 }
 
@@ -39,21 +39,15 @@ uint16_t key_waite_release(uint16_t timeout,uint8_t* key)
 void key_shift_loc_fixed_point(uint8_t* loc,uint8_t min,uint8_t max)
 {
 	uint8_t t8=*loc;
-	if(min<max)return;
-	t8++;
-	if(t8>max)t8=min;
+	if(min>=max)return;
+	if(t8<=min){
+		t8=max;
+	}else{
+		t8--;
+	}
 	*loc=t8;
 }
-void key_process_down(void)
-{
-	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:break;
-		case MENU_PASSWORD:key_shift_loc_fixed_point(&adjLocation,0,3);break;
-		default:break;
-	}	
-}
+
 //adj value
 void key_adj_value_fixed_point(uint16_t* value,uint8_t loc)
 {
@@ -66,16 +60,6 @@ void key_adj_value_fixed_point(uint16_t* value,uint8_t loc)
 	if(dloc>9)dloc=0;
 	t16+=(dloc*__exp_10(loc));
 	*value=t16;
-}
-void key_process_up(void)
-{
-	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:break;
-		case MENU_PASSWORD:key_adj_value_fixed_point(&passWord,adjLocation);break;
-		default:break;
-	}		
 }
 
 //set long time press process
@@ -103,6 +87,27 @@ void __enter_menu_calib_press_diff(void){
 	adjValue=(fps->baseZero);
 	adjValue=__int32_2_mflot32(adjValue);
 	adjLocation=0;
+}
+
+void key_process_down(void)
+{
+	switch(menu){
+		case MENU_HOME_00:
+		case MENU_HOME_01:
+		case MENU_HOME_02:break;
+		case MENU_PASSWORD:key_shift_loc_fixed_point(&adjLocation,0,3);break;
+		default:break;
+	}	
+}
+void key_process_up(void)
+{
+	switch(menu){
+		case MENU_HOME_00:
+		case MENU_HOME_01:
+		case MENU_HOME_02:break;
+		case MENU_PASSWORD:key_adj_value_fixed_point(&passWord,adjLocation);break;
+		default:break;
+	}		
 }
 void key_process_set_down_long(void)
 {

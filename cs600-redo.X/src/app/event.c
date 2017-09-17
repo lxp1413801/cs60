@@ -10,7 +10,9 @@ int8_t event_process_rtc(void)
 		ret=sample_diff_pr_chip_slow();
 	}
     if(!ret){
+        lcd_bl_off();
         ret=sample_pr_chip_comm();
+        lcd_bl_on();
     }
     if(!ret){
         sample_in_soc_adc_ch();

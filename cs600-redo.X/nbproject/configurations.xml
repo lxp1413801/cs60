@@ -206,8 +206,8 @@
         <property key="output-file-format" value="-mcof,+elf"/>
         <property key="stack-size-high" value="auto"/>
         <property key="stack-size-low" value="auto"/>
-        <property key="stack-size-main" value="300"/>
-        <property key="stack-type" value="compiled"/>
+        <property key="stack-size-main" value="auto"/>
+        <property key="stack-type" value="hybrid"/>
       </XC8-config-global>
     </conf>
   </confs>

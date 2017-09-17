@@ -499,9 +499,9 @@ void lcd_show_dp(uint8_t loc,bool show)
 		case 1:lcd_disp_dp_loc_1(show);break;
 		case 2:lcd_disp_dp_loc_2(show);break;
 		//case 3:
-		case 4:lcd_disp_dp_loc_0(show);break;
-		case 5:lcd_disp_dp_loc_1(show);break;
-		case 6:lcd_disp_dp_loc_2(show);break;
+		case 4:lcd_disp_dp_loc_4(show);break;
+		case 5:lcd_disp_dp_loc_5(show);break;
+		case 6:lcd_disp_dp_loc_6(show);break;
 		//case 7:
 		default:break;
 	}		
@@ -651,7 +651,7 @@ void lcd_bl_on(void)
 void lcd_bl_off(void)
 {
     set_portg_mode_in(PIN4);
-    // RTCCFGbits.RTCOE=1;
+     RTCCFGbits.RTCOE=0;
     // set_portg_value_hight(PIN4);
 }
 

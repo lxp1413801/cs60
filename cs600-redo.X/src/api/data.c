@@ -9,8 +9,8 @@ const st_sysDataDef* fpSysData=(const st_sysDataDef*)SYSTEM_DATA_ADDR;
 st_iicDeviceObj* pdiff_prEepromObj=(st_iicDeviceObj*)NULL;
 st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)NULL;
 
-st_prCalibTabDef diff_prCalibTabDef={0};
-st_prCalibTabDef prCalibTabDef={0};
+static st_prCalibTabDef diff_prCalibTabDef={0};
+static st_prCalibTabDef prCalibTabDef={0};
 
 //declare variables for adc
 // volatile int16_t        adc_diffPr;			//
@@ -244,7 +244,7 @@ void calib_data_set_default_diff_pr(void)
         for(j=0;j<CALIB_P_POINT_NUM;j++){
             diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].pAdcValue=j*6000+i*500;
             diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].pValue=j*6000;
-            diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].tAdcValue=i+1000;
+            diff_prCalibTabDef.prCalibRow[i].prCalibPoint[j].tAdcValue=i*1000;
         }
     }
     //crc_append((uint8_t*)(&diff_prCalibTabDef),sizeof(diff_prCalibTabDef)-2);
@@ -321,12 +321,12 @@ uint8_t  calib_data_init_pr(void)
 //返回xin:	[pvalue(已知),pAdcvalue(已知),tAdcValue(实际温度)];并且返回的pvalue无实际意义;
 //返回xout:	[pvalue(已知),pAdcvalue(已知),tAdcValue(图表中选定的温度)];
 //无温度补偿的情况，直接用xin返回计算结果;
+/*
 uint8_t m_interp1_cal_p_v(st_prCalibRowDef* tabrow,st_prData* xin,st_prData* xout)
 {
 	uint8_t i;
 	int32_t x,y;
 	for(i=0;i< (tabrow->pCount) - 1 ;i++){
-		//waht !!!!
 		if(tabrow->prCalibPoint[i].pAdcValue < tabrow->prCalibPoint[i+1].pAdcValue){
 			if(xin->pAdcValue <= tabrow->prCalibPoint[i+1].pAdcValue)break;
 		}else{
@@ -346,10 +346,41 @@ uint8_t m_interp1_cal_p_v(st_prCalibRowDef* tabrow,st_prData* xin,st_prData* xou
 	}
     return i;
 }
-
+*/
+uint8_t m_interp1_cal_p_v(st_prCalibRowDef* tabrow,st_prData* xin,st_prData* xout)
+{
+	uint8_t i;
+	int32_t x,y,pr;
+	int16_t t16;
+	t16=xin->pAdcValue;
+	for(i=0;i< (tabrow->pCount) - 2 ;i++){
+		//waht !!!!
+		if(tabrow->prCalibPoint[i].pAdcValue < tabrow->prCalibPoint[i+1].pAdcValue){
+			if(t16 <= tabrow->prCalibPoint[i+1].pAdcValue)break;
+		}else{
+			if(t16 >= tabrow->prCalibPoint[i+1].pAdcValue)break;
+		}		
+	}
+	pr=tabrow->prCalibPoint[i].pValue;
+    //xin->pValue=tabrow->prCalibPoint[i].pValue;
+    y = tabrow->prCalibPoint[i+1].pValue - tabrow->prCalibPoint[i].pValue ;
+    x = (int32_t)(tabrow->prCalibPoint[i+1].pAdcValue - tabrow->prCalibPoint[i].pAdcValue);
+    if(x != 0){
+        //pr = pr + (y/x)*(int32_t)(t16 -  tabrow->prCalibPoint[i].pAdcValue);
+        pr = pr + y*((int32_t)(t16 -  tabrow->prCalibPoint[i].pAdcValue))/x;
+    }
+	xin->pValue=pr;
+	if(xout){
+		xout->pValue =   pr;
+		xout->pAdcValue = xin->pAdcValue;
+		xout->tAdcValue = tabrow->prCalibPoint[0].tAdcValue;
+	}
+    return i;
+}
 //一阶线性插值p-t 压力温度
 //输入tmpx[]:在温度曲线簇上与x=(pAdcValue)相交的一组点，表示温度压力关系;
 //输入xin:	[pvalue(未知),pAdcvalue(已知),tAdcValue(实际温度)];
+/*
 uint8_t m_interp1_cal_p_t(st_prData* tmpx,st_prData* xin,uint8_t tmpxLen)
 {
 	uint8_t i;
@@ -369,6 +400,31 @@ uint8_t m_interp1_cal_p_t(st_prData* tmpx,st_prData* xin,uint8_t tmpxLen)
     }
     return i;
 }
+*/
+uint8_t m_interp1_cal_p_t(st_prData* tmpx,st_prData* xin,uint8_t tmpxLen)
+{
+	uint8_t i;
+	int16_t t16;
+	int32_t x,y,pr;
+	t16=xin->tAdcValue;
+    for(i=0;i<tmpxLen-2;i++){
+        if(tmpx[i].tAdcValue < tmpx[i+1].tAdcValue){
+            if(t16 <= tmpx[i+1].tAdcValue)break;
+        }else{
+            if(t16  >= tmpx[i+1].tAdcValue)break;
+        }
+    }
+	pr=tmpx[i].pValue;
+    y=(tmpx[i+1].pValue-tmpx[i].pValue);
+    x=(int32_t)(tmpx[i+1].tAdcValue-tmpx[i].tAdcValue);
+    if(x!=0){
+        //pr = pr + (y/x)*(int32_t)(xin->tAdcValue - tmpx[i].tAdcValue);
+        pr = pr + y*((int32_t)(t16 - tmpx[i].tAdcValue))/x;
+    }
+	xin->pValue=pr;
+    return i;
+}
+
 float m_interp1_float_fast(float* tab,float in,int16_t len)
 {
 	uint16_t i;
@@ -482,11 +538,12 @@ int32_t cal_diff_p_to_h(st_prData* xin)
 }
 //计算差压
 //计算结果直接用xin返回
+st_prData tmpx[3];
 uint8_t cal_diff_press()
 {
 	st_prData* xin= &x_prDiffData;
 	//table data used globle 
-	st_prData tmpx[3];
+	m_mem_set((uint8_t*)tmpx,0,sizeof(tmpx));
 	uint8_t i=0;
 	st_prCalibRowDef* tabrow;
     for(i=0;i<diff_prCalibTabDef.rowCount;i++){

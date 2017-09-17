@@ -143,6 +143,8 @@ extern "C"{
 	extern volatile int32_t	rtVolume;
     extern volatile int32_t	rtHight;
 	extern volatile int32_t	rtWeight;
+	
+	volatile int32_t    rtPressure;
 	//fk 
 	extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 

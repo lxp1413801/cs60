@@ -9,8 +9,8 @@ const st_sysDataDef* fpSysData=(const st_sysDataDef*)SYSTEM_DATA_ADDR;
 st_iicDeviceObj* pdiff_prEepromObj=(st_iicDeviceObj*)NULL;
 st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)NULL;
 
-static st_prCalibTabDef diff_prCalibTabDef={0};
-static st_prCalibTabDef prCalibTabDef={0};
+st_prCalibTabDef diff_prCalibTabDef={0};
+st_prCalibTabDef prCalibTabDef={0};
 
 //declare variables for adc
 // volatile int16_t        adc_diffPr;			//

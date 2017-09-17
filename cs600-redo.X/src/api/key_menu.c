@@ -39,11 +39,11 @@ uint16_t key_waite_release(uint16_t timeout,uint8_t* key)
 void key_shift_loc_fixed_point(uint8_t* loc,uint8_t min,uint8_t max)
 {
 	uint8_t t8=*loc;
-	if(min>=max)return;
-	if(t8<=min){
-		t8=max;
+	if(min>=max){
+		t8=min;
 	}else{
-		t8--;
+		t8++;
+		if(t8>max)t8=min;
 	}
 	*loc=t8;
 }
@@ -95,7 +95,7 @@ void key_process_down(void)
 		case MENU_HOME_00:
 		case MENU_HOME_01:
 		case MENU_HOME_02:break;
-		case MENU_PASSWORD:key_shift_loc_fixed_point(&adjLocation,0,3);break;
+		case MENU_PASSWORD:key_shift_loc_fixed_point((uint8_t*)(&adjLocation),0,3);break;
 		default:break;
 	}	
 }
@@ -105,7 +105,7 @@ void key_process_up(void)
 		case MENU_HOME_00:
 		case MENU_HOME_01:
 		case MENU_HOME_02:break;
-		case MENU_PASSWORD:key_adj_value_fixed_point(&passWord,adjLocation);break;
+		case MENU_PASSWORD:key_adj_value_fixed_point((uint16_t*)(&passWord),adjLocation);break;
 		default:break;
 	}		
 }

@@ -20,8 +20,40 @@ void __x_arrange_str(uint8_t *str,uint8_t len)
 /*
 	下面两个函数非常恶心，液晶面板上面4个有效数字，3个小数点。
 	显示的数据范围为0.000~9999.000。
+	如果为负数
+	显示范围为-0.00~999,00
 	规定，int32类型固定为三个小数位，
 	通过下面的函数调整小数点的位置。
+*/
+/*
+int32_t __int32_2_mflot32(int32_t x)
+{
+	st_float32 mf={0};
+	uint32_t t32;
+	t32=x;
+	if(x<0){
+		t32 = ((~x) +1);
+		mf.stru.sign=1;
+	}
+	if(mf.stru.sign){
+		while(t32>999){
+			mf.stru.exponent++;
+			t32/=10;
+			if( mf.stru.exponent>=2)break;			
+		}
+		if(t32>999)t32=999;
+		mf.stru.significand=t32;		
+	}else{
+		while(t32>9999){
+			mf.stru.exponent++;
+			t32/=10;
+			if( mf.stru.exponent>=3)break;
+		}
+		if(t32>9999)t32=9999;
+		mf.stru.significand=t32;
+	}
+	return mf.t32;
+}
 */
 int32_t __int32_2_mflot32(int32_t x)
 {
@@ -35,7 +67,7 @@ int32_t __int32_2_mflot32(int32_t x)
 	while(t32>9999){
 		mf.stru.exponent++;
 		t32/=10;
-		if( mf.stru.exponent==3)break;
+		if( mf.stru.exponent>=3)break;
 	}
 	if(t32>9999)t32=9999;
 	mf.stru.significand=t32;
@@ -175,16 +207,25 @@ void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
     uint8_t t8;
 	uint16_t x;
 	x=xpf->stru.significand;
-	if(x>9999)x=9999;
 	m_mem_cpy(buf,str);
-	m_int16_2_str_4(buf+4,x);
+	if(xpf->stru.sign){
+		x/=10;
+        if(x>999)x=999;
+		m_int16_2_str_4(buf+4,x);
+		buf[4]='-';
+		if(loc>2)loc=2;
+		loc++;
+    }else{
+		if(x>9999)x=9999;
+		m_int16_2_str_4(buf+4,x);
+		if(loc>3)loc=3;
+	}
 	__x_arrange_str(buf,8);
-	if(loc>3)loc=3;
 	//if(lcdTwinkle){
 		if(!fi_twinkle())buf[4+loc]=' ';
 	//}
-    t8=xpf->stru.exponent;
-    if(t8<3)lcd_show_dp(4+t8,true);
+	t8=xpf->stru.exponent+xpf->stru.sign;
+	if(t8<3)lcd_show_dp(4+t8,true);
 	lcd_show_string(buf); 
 	lcd_disp_refresh();    
 }
@@ -213,15 +254,22 @@ void ui_disp_xfloat_pt(st_float32_m* xpf,uint8_t line)
 	uint16_t x;
 	if(line>1)return; 
 	x=xpf->stru.significand;
-	if(x>9999)x=9999;
-	m_int16_2_str_4(buf,x);
-	buf[5]='\0';
+	if(xpf->stru.sign){
+		x/=10;
+        if(x>999)x=999;
+        m_int16_2_str_4(buf,x);
+        buf[0]='-';
+    }else{
+        if(x>9999)x=9999;
+        m_int16_2_str_4(buf,x);
+    }
+    buf[5]='\0';
 	if(line==0){
 		lcd_show_string_l0(buf);
 	}else{
 		lcd_show_string_l1(buf);
 	}
-    t8=xpf->stru.exponent;
+    t8=xpf->stru.exponent+xpf->stru.sign;
     if(t8<3)lcd_show_dp(t8+4*line,true);
 	//lcd_disp_refresh();    
 }
@@ -244,7 +292,7 @@ void ui_disp_menu_home_00(void)
 	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
 	lcd_disp_unit_1st_m(true);
 	
-	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	mf.t32=__int32_2_mflot32(rtDiffPressure);//rtPressure
 	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
 	lcd_disp_unit_mpa(true);
 	t8=cal_diff_hight_level();

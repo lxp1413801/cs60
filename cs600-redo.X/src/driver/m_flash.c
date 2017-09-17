@@ -60,7 +60,7 @@ uint16_t m_flash_read(uint32_t addr,uint8_t*buf,uint16_t len)
 	}
 	return len;
 }
-uint16_t m_flash_write(uint32_t addr,uint8_t*buf,uint16_t len)
+uint16_t m_flash_write(uint32_t addr,uint8_t* buf,uint16_t len)
 {
 	uint8_t i,j,writeTimes;
 	uint32_t pageAddr;
@@ -77,7 +77,7 @@ uint16_t m_flash_write(uint32_t addr,uint8_t*buf,uint16_t len)
 	m_flash_erase(pageAddr);
     
 	writeTimes=MAX_FLASH_USED_SIZE_IN_BLOCK/FLASH_WRITE_BLOCK_SIZE;
-	t16=(uint16_t)(&tmpBuf);
+	t16=(uint16_t)(tmpBuf);
 	
 	FSR0L=(uint8_t)(t16&0x00ff);
 	t16>>=8;

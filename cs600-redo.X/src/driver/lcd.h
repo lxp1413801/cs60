@@ -18,6 +18,10 @@ extern "C"{
 	extern void lcd_set_com_seg(uint8_t com,uint8_t s,uint8_t show);
 	extern void lcd_disp_all(uint8_t x);
 	extern void lcd_init(void);
+	
+	extern void lcd_bl_on(void);
+	extern void lcd_bl_off(void);
+	
 	extern void lcd_disp_refresh(void);
 	extern void lcd_show_string_l0(uint8_t* str);
 	extern void lcd_show_string_l1(uint8_t* str);

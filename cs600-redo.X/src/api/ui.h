@@ -4,6 +4,8 @@
 #ifdef __cplusplus
 extern "C"{
 #endif
+	#include <stdint.h>
+	#include <stdbool.h>
 	typedef union{
 		uint32_t t32;
         struct{
@@ -25,6 +27,8 @@ extern "C"{
 		}stru;
 	}st_paramAdjFormat,paramAdjFormat_t;
 	*/
+	extern bool lcdTwinkle;
+	
 	extern int32_t __int32_2_mflot32(int32_t x);
 	extern int32_t __mflot32_2_int32(int32_t x);
 	

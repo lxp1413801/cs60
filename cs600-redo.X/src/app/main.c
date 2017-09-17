@@ -15,9 +15,9 @@ int main(void)
 	data_init_all();
     in_adc_init();
 
-	ui_disp_start_cs600(10);
+	ui_disp_start_cs600(4);
     
-    lcd_disp_level(60);
+    //lcd_disp_level(60);
   
     peripheral_power_enable();
     __nop();    

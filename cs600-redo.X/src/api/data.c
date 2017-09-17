@@ -4,7 +4,7 @@
 uint8_t globleBuffer0[globle_BUFFER_SIZE]={0};
 uint8_t globleBuffer1[globle_BUFFER_SIZE]={0};
 
-const st_sysDataDef* fpSysData=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+const st_sysDataDef* fpSysData=(const st_sysDataDef*)SYSTEM_DATA_ADDR;
 
 st_iicDeviceObj* pdiff_prEepromObj=(st_iicDeviceObj*)NULL;
 st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)NULL;
@@ -176,9 +176,9 @@ uint32_t data_sys_cal_v2(st_sysDataDef* stp)
 uint8_t data_sys_init(void)
 {
 	uint8_t ret;
-	uint8_t* buf=globleBuffer0;
+	uint8_t* buf=globleBuffer1;
     st_sysDataDef* stp=(st_sysDataDef*)buf; 
-	if(sizeof(globleBuffer0)<sizeof(st_sysDataDef))return 0;
+	if(sizeof(globleBuffer1)<sizeof(st_sysDataDef))return 0;
 	m_flash_read(SYSTEM_DATA_ADDR,buf,sizeof(st_sysDataDef));
 	ret=crc_verify(buf,sizeof(st_sysDataDef));
 	if(!ret){
@@ -282,6 +282,10 @@ uint8_t  calib_data_init_diff_pr(void)
 		at24c02_write_n_byte(pdiff_prEepromObj,0,buf,t16);
 		at24c02_read_n_byte(pdiff_prEepromObj,0,buf,t16);
 		ret=crc_verify(buf,t16);		
+        if(!ret){
+            calib_data_set_default_diff_pr();
+            crc_append(buf,t16-2);
+           }
 	}
 	return ret;
 }
@@ -303,7 +307,11 @@ uint8_t  calib_data_init_pr(void)
 		crc_append(buf,t16-2);
 		at24c02_write_n_byte(p_prEepromObj,0,buf,t16);
 		at24c02_read_n_byte(p_prEepromObj,0,buf,t16);
-		ret=crc_verify(buf,t16);		
+		ret=crc_verify(buf,t16);
+        if(!ret){
+            calib_data_set_default_pr();
+            crc_append(buf,t16-2);
+        }
 	}
 	return ret;	
 }
@@ -354,10 +362,10 @@ uint8_t m_interp1_cal_p_t(st_prData* tmpx,st_prData* xin,uint8_t tmpxLen)
         }
     }
     xin->pValue=tmpx[i].pValue;
-    y=tmpx[i+1].pValue-tmpx[i].pValue;
-    x=tmpx[i+1].tAdcValue-tmpx[i].tAdcValue;
+    y=(int32_t)(tmpx[i+1].pValue-tmpx[i].pValue);
+    x=(int32_t)(tmpx[i+1].tAdcValue-tmpx[i].tAdcValue);
     if(x!=0){
-        xin->pValue = xin->pValue + (y/x)*(xin->tAdcValue - tmpx[i].tAdcValue);
+        xin->pValue = xin->pValue + (y/x)*(int32_t)(xin->tAdcValue - tmpx[i].tAdcValue);
     }
     return i;
 }

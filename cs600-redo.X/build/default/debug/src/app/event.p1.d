@@ -1,0 +1,36 @@
+ build/default/debug/src/app/event.d  \
+ build/default/debug/src/app/event.p1:  \
+ src/app/event.c  \
+src/app/../includes/../app/main.h  \
+src/app/../includes/../driver/i2c.h  \
+src/app/../includes/../configs/configs.h  \
+src/app/../includes/../driver/lcd.h  \
+src/app/../includes/../driver/../configs/configs.h  \
+src/app/../includes/../driver/key.h  \
+src/app/../includes/../soc/ticker.h  \
+src/app/../includes/../driver/ad421.h  \
+src/app/../includes/../driver/ex_eeprom.h  \
+src/app/../includes/../driver/iic_gpio.h  \
+src/app/../includes/../soc/soc.h  \
+src/app/../includes/../driver/driver.h  \
+src/app/../includes/../driver/ex_pwr.h  \
+src/app/../includes/../driver/uart.h  \
+src/app/../includes/../soc/rtc.h  \
+src/app/../includes/includes.h  \
+src/app/../includes/../depend/crc16.h  \
+src/app/../includes/../api/data.h  \
+src/app/../includes/../driver/ads1115.h  \
+src/app/../includes/../soc/bootloader.h  \
+src/app/../includes/../driver/in_adc.h  \
+src/app/../includes/../app/app.h  \
+src/app/../includes/../api/key_menu.h  \
+src/app/../includes/../app/event.h  \
+src/app/../includes/../api/ui.h  \
+src/app/../includes/../driver/m_flash.h  \
+src/app/../includes/../soc/clock.h  \
+src/app/../includes/../soc/int.h  \
+src/app/../includes/../depend/depend.h  \
+src/app/../includes/../driver/m_gpio.h  \
+src/app/../includes/../depend/m_string.h  \
+src/app/../includes/../api/sample.h  \
+src/app/../includes/../api/api.h 

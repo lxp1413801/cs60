@@ -6,7 +6,7 @@
 #define LCD_LINE_1		1
 //uint8_t tmpBuffer[16];
 extern st_RtcDef glRtc;
-
+bool lcdTwinkle=false;
 
 void __x_arrange_str(uint8_t *str,uint8_t len)
 {
@@ -125,7 +125,7 @@ void ui_disp_start_cs600(uint8_t dly)
 		m_int8_2_hex(buf+1,t8-1);
 		buf[4]='\0';
 		lcd_show_string_l1(buf);
-        lcd_disp_level(60);
+        //lcd_disp_level(60);
 		lcd_disp_refresh();
 		ticker_dly(1000);
 		t8--;
@@ -180,7 +180,9 @@ void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 	m_int16_2_str_4(buf+4,x);
 	__x_arrange_str(buf,8);
 	if(loc>3)loc=3;
-	if(!fi_twinkle())buf[4+loc]=' ';
+	//if(lcdTwinkle){
+		if(!fi_twinkle())buf[4+loc]=' ';
+	//}
     t8=xpf->stru.exponent;
     if(t8<3)lcd_show_dp(4+t8,true);
 	lcd_show_string(buf); 
@@ -196,7 +198,10 @@ void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
 	m_int16_2_str_4(buf+4,x);
 	__x_arrange_str(buf,8);
 	if(loc>3)loc=3;
-	if(!fi_twinkle())buf[4+loc]=' ';
+	loc=3-loc;
+	//if(lcdTwinkle){
+		if(!fi_twinkle())buf[4+loc]=' ';
+	//}
 	lcd_show_string(buf); 
 	lcd_disp_refresh();
 }
@@ -223,6 +228,8 @@ void ui_disp_xfloat_pt(st_float32_m* xpf,uint8_t line)
 
 void ui_disp_menu_psw_adj(void)
 {
+	lcd_clear_all();
+	lcd_disp_logo(true);
 	ui_disp_adj_xfixed_pt((uint8_t*)" psd",passWord,adjLocation);
 }
 

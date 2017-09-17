@@ -641,15 +641,30 @@ void lcd_config(void)
 
 	//lcd_on();
 }
+void lcd_bl_on(void)
+{
+    set_portg_mode_out(PIN4);
+    RTCCFGbits.RTCOE=1;
+    set_portg_value_hight(PIN4);
+}
+
+void lcd_bl_off(void)
+{
+    set_portg_mode_in(PIN4);
+    // RTCCFGbits.RTCOE=1;
+    // set_portg_value_hight(PIN4);
+}
+
 void lcd_bl_init(void)
 {
-	set_portg_mode_in(PIN4);
-	//set_portg_value_hight(PIN4);
+	set_portg_mode_out(PIN4);
+	set_portg_value_hight(PIN4);
 }
 void lcd_init(void)
 {
 	lcd_config();
-	lcd_bl_init();
+	//lcd_bl_init();
 	lcd_on();
+	lcd_bl_on();
 }
 //file end

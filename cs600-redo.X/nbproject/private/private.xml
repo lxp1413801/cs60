@@ -19,8 +19,19 @@
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/api/key_menu.c</file>
         </group>
         <group name="cs600_test">
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/sample.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c</file>
         </group>
     </open-files>
 </project-private>

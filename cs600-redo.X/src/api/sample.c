@@ -116,8 +116,9 @@ uint8_t sample_diff_pr_chip_fast(void)
 			diffPrSampleUpdate=true;
 			
 			in_pt100SampleUpdate=true;
-			return 1;
+			
 		}
+        return 1;
 	}
 	return 0;
 }
@@ -171,7 +172,7 @@ uint8_t sample_diff_pr_chip_slow(void)
 			#endif
 			diffPrSampleUpdate=true;
 		}			
-
+        return 1;
 	}
 	return 0;
 }
@@ -209,7 +210,7 @@ uint8_t sample_pr_chip_comm(void)
 		prSampleUpdate=true;
 		
 		sensor_power_disable();
-		
+		peripheral_power_disable();
         return 1;
 	}
 	return 0;

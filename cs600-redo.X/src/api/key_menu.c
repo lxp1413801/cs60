@@ -59,6 +59,7 @@ void key_adj_value_fixed_point(uint16_t* value,uint8_t loc)
 {
 	uint16_t dloc;
 	uint16_t t16=*value;
+	if(loc>3)loc=3;
 	dloc=(t16/__exp_10(loc))%10;
 	t16=t16-dloc*__exp_10(loc);
 	dloc++;
@@ -138,7 +139,14 @@ void key_process_set_down_long(void)
 
 void key_process_set_long(void)
 {
-	
+	switch(menu){
+		case MENU_HOME_00:
+		case MENU_HOME_01:
+		case MENU_HOME_02:
+		case MENU_PASSWORD:
+			{passWord=0x00;adjLocation=0x00;menu=MENU_HOME_00;break;}
+		default:break;
+	}
 }
 
 void key_process_set(void)
@@ -173,7 +181,11 @@ void key_process(void)
 			key_process_set();		
 		}	
 	}
+	//点亮闪烁的数位，禁止闪烁
+	//if(key!=)
+	//lcdTwinkle=false;
 	ui_disp_menu();
+	key_waite_release(LONG_PRESS_TIME,&key);
 }
 
 //file end

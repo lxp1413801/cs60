@@ -5,18 +5,49 @@ volatile uint8_t glNoEventTimeOut=MAX_NO_EVEN_TIME_OUT;
 
 int8_t event_process_rtc(void)
 {
+	uint8_t ret=0;
 	if(dwm==WORK_MODE){
-		sample_diff_pr_chip_slow();
+		ret=sample_diff_pr_chip_slow();
 	}
-	sample_pr_chip_comm();
-	sample_in_soc_adc_ch();
+    if(!ret){
+        lcd_bl_off();
+        ret=sample_pr_chip_comm();
+        lcd_bl_on();
+    }
+    if(!ret){
+        sample_in_soc_adc_ch();
+    }
+	
 	if(glNoEventTimeOut){
 		glNoEventTimeOut--;
 		if(!glNoEventTimeOut){
 			glbEvent |= flg_EVENT_TIME_OUT;
 		}
 	}
-	
+	if(diffPrSampleUpdate){
+		//数据已经装入x_prDiffData
+		diffPrSampleUpdate=false;
+		cal_diff_press();
+	}
+	if(in_pt100SampleUpdate){
+		in_pt100SampleUpdate=0;
+		cal_pt100_temperature_in();
+	}
+	if(prSampleUpdate){
+		prSampleUpdate=false;
+		cal_press();
+	}
+	if(ex_pt100SampleUpdate){
+		ex_pt100SampleUpdate=false;
+		cal_pt100_temperature_ex();
+	}
+	if(inSocAdcSampleUpdate){
+		inSocAdcSampleUpdate=false;
+		cal_additional_pressute(0);
+		cal_additional_pressute(1);
+	}
+	//重秒事件进入显示，运行需要闪烁的数位闪烁
+	//lcdTwinkle=true;
 	ui_disp_menu();
 	return 1;
 }
@@ -53,7 +84,9 @@ int8_t event_process(void)
 	}
 	
 	keyValue=key_polling();
-	if(keyValue!=KEY_VALUE_NONE)key_process();	
+	if(keyValue!=KEY_VALUE_NONE){
+        key_process();	
+    }
 	
 	return 1;
 }

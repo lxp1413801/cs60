@@ -385,6 +385,8 @@ void lcd_disp_logo(bool show)
 
 void lcd_disp_unit_t(bool show)
 {
+	lcd_set_com_seg(3,41,0);
+	lcd_set_com_seg(2,41,0);
 	if(show)
 		lcd_set_com_seg(3,42,1);
 	else
@@ -394,17 +396,19 @@ void lcd_disp_unit_t(bool show)
 void lcd_disp_unit_1st_m(bool show)
 {
 	//t2=3;t3=m
+	lcd_set_com_seg(3,42,0);
 	lcd_set_com_seg(3,41,0);
-	if(show)
+	if(show){
 		lcd_set_com_seg(2,41,1);
-	else
+	}else{
 		lcd_set_com_seg(2,41,0);
+	}
 }
 
 void lcd_disp_unit_1st_m3(bool show)
 {
 	//t2=3;t3=m
-	
+	lcd_set_com_seg(3,42,0);
 	if(show){
 		lcd_set_com_seg(2,41,1);
 		lcd_set_com_seg(3,41,1);
@@ -427,7 +431,9 @@ void lcd_disp_unit_temperature(bool show)
 void lcd_disp_unit_2nd_m(bool show)
 {
 	//t4=3;t5=m
+	lcd_set_com_seg(0,40,0);
 	lcd_set_com_seg(1,41,0);
+	lcd_set_com_seg(3,13,0);
 	if(show)
 		lcd_set_com_seg(0,41,1);
 	else
@@ -437,6 +443,8 @@ void lcd_disp_unit_2nd_m(bool show)
 void lcd_disp_unit_2nd_m3(bool show)
 {
 	//t4=3;t5=m
+	lcd_set_com_seg(0,40,0);
+	lcd_set_com_seg(3,13,0);
 	
 	if(show){
 		lcd_set_com_seg(0,41,1);
@@ -450,6 +458,9 @@ void lcd_disp_unit_2nd_m3(bool show)
 void lcd_disp_unit_mpa(bool show)
 {
 	//mpa=t6
+	lcd_set_com_seg(3,13,0);
+	lcd_set_com_seg(1,41,0);
+	lcd_set_com_seg(0,41,0);
 	if(show){
 		lcd_set_com_seg(0,40,1);
 	}else{
@@ -471,6 +482,16 @@ uint8_t lcd_disp_get_code(uint8_t chr)
 	return ret;
 }
 
+void lcd_clear_all_dp(void)
+{
+	lcd_disp_dp_loc_0(false);
+	lcd_disp_dp_loc_1(false);
+	lcd_disp_dp_loc_2(false);
+	lcd_disp_dp_loc_4(false);
+	lcd_disp_dp_loc_5(false);
+	lcd_disp_dp_loc_6(false);
+}
+
 void lcd_show_dp(uint8_t loc,bool show)
 {
 	switch(loc){
@@ -478,9 +499,9 @@ void lcd_show_dp(uint8_t loc,bool show)
 		case 1:lcd_disp_dp_loc_1(show);break;
 		case 2:lcd_disp_dp_loc_2(show);break;
 		//case 3:
-		case 4:lcd_disp_dp_loc_0(show);break;
-		case 5:lcd_disp_dp_loc_1(show);break;
-		case 6:lcd_disp_dp_loc_2(show);break;
+		case 4:lcd_disp_dp_loc_4(show);break;
+		case 5:lcd_disp_dp_loc_5(show);break;
+		case 6:lcd_disp_dp_loc_6(show);break;
 		//case 7:
 		default:break;
 	}		
@@ -620,15 +641,30 @@ void lcd_config(void)
 
 	//lcd_on();
 }
+void lcd_bl_on(void)
+{
+    set_portg_mode_out(PIN4);
+    RTCCFGbits.RTCOE=1;
+    set_portg_value_hight(PIN4);
+}
+
+void lcd_bl_off(void)
+{
+    set_portg_mode_in(PIN4);
+     RTCCFGbits.RTCOE=0;
+    // set_portg_value_hight(PIN4);
+}
+
 void lcd_bl_init(void)
 {
-	set_portg_mode_in(PIN4);
-	//set_portg_value_hight(PIN4);
+	set_portg_mode_out(PIN4);
+	set_portg_value_hight(PIN4);
 }
 void lcd_init(void)
 {
 	lcd_config();
-	lcd_bl_init();
+	//lcd_bl_init();
 	lcd_on();
+	lcd_bl_on();
 }
 //file end

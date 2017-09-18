@@ -2,9 +2,11 @@
 #include <stdbool.h>
 #define __STR_cs66 (uint8_t*)("cs66")
 #define fi_twinkle() (RTCCFGbits.HALFSEC)
+#define LCD_LINE_0		0
+#define LCD_LINE_1		1
 //uint8_t tmpBuffer[16];
 extern st_RtcDef glRtc;
-
+bool lcdTwinkle=false;
 
 void __x_arrange_str(uint8_t *str,uint8_t len)
 {
@@ -18,8 +20,40 @@ void __x_arrange_str(uint8_t *str,uint8_t len)
 /*
 	下面两个函数非常恶心，液晶面板上面4个有效数字，3个小数点。
 	显示的数据范围为0.000~9999.000。
+	如果为负数
+	显示范围为-0.00~999,00
 	规定，int32类型固定为三个小数位，
 	通过下面的函数调整小数点的位置。
+*/
+/*
+int32_t __int32_2_mflot32(int32_t x)
+{
+	st_float32 mf={0};
+	uint32_t t32;
+	t32=x;
+	if(x<0){
+		t32 = ((~x) +1);
+		mf.stru.sign=1;
+	}
+	if(mf.stru.sign){
+		while(t32>999){
+			mf.stru.exponent++;
+			t32/=10;
+			if( mf.stru.exponent>=2)break;			
+		}
+		if(t32>999)t32=999;
+		mf.stru.significand=t32;		
+	}else{
+		while(t32>9999){
+			mf.stru.exponent++;
+			t32/=10;
+			if( mf.stru.exponent>=3)break;
+		}
+		if(t32>9999)t32=9999;
+		mf.stru.significand=t32;
+	}
+	return mf.t32;
+}
 */
 int32_t __int32_2_mflot32(int32_t x)
 {
@@ -33,7 +67,7 @@ int32_t __int32_2_mflot32(int32_t x)
 	while(t32>9999){
 		mf.stru.exponent++;
 		t32/=10;
-		if( mf.stru.exponent==3)break;
+		if( mf.stru.exponent>=3)break;
 	}
 	if(t32>9999)t32=9999;
 	mf.stru.significand=t32;
@@ -123,7 +157,7 @@ void ui_disp_start_cs600(uint8_t dly)
 		m_int8_2_hex(buf+1,t8-1);
 		buf[4]='\0';
 		lcd_show_string_l1(buf);
-        lcd_disp_level(60);
+        //lcd_disp_level(60);
 		lcd_disp_refresh();
 		ticker_dly(1000);
 		t8--;
@@ -166,23 +200,36 @@ void ui_disp_clear_num_dp(void)
     lcd_show_dp(5,false);
     lcd_show_dp(6,false);
 }
+
 void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 {
     uint8_t buf[10];
     uint8_t t8;
 	uint16_t x;
 	x=xpf->stru.significand;
-	if(x>9999)x=9999;
 	m_mem_cpy(buf,str);
-	m_int16_2_str_4(buf+4,x);
+	if(xpf->stru.sign){
+		x/=10;
+        if(x>999)x=999;
+		m_int16_2_str_4(buf+4,x);
+		buf[4]='-';
+		if(loc>2)loc=2;
+		loc++;
+    }else{
+		if(x>9999)x=9999;
+		m_int16_2_str_4(buf+4,x);
+		if(loc>3)loc=3;
+	}
 	__x_arrange_str(buf,8);
-	if(loc>3)loc=3;
-	if(!fi_twinkle())buf[4+loc]=' ';
-    t8=xpf->stru.exponent;
-    if(t8<3)lcd_show_dp(4+t8,true);
+	//if(lcdTwinkle){
+		if(!fi_twinkle())buf[4+loc]=' ';
+	//}
+	t8=xpf->stru.exponent+xpf->stru.sign;
+	if(t8<3)lcd_show_dp(4+t8,true);
 	lcd_show_string(buf); 
 	lcd_disp_refresh();    
 }
+
 void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
 {
     uint8_t buf[10];
@@ -192,23 +239,116 @@ void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
 	m_int16_2_str_4(buf+4,x);
 	__x_arrange_str(buf,8);
 	if(loc>3)loc=3;
-	if(!fi_twinkle())buf[4+loc]=' ';
+	loc=3-loc;
+	//if(lcdTwinkle){
+		if(!fi_twinkle())buf[4+loc]=' ';
+	//}
 	lcd_show_string(buf); 
 	lcd_disp_refresh();
 }
 
+void ui_disp_xfloat_pt(st_float32_m* xpf,uint8_t line)
+{
+    uint8_t buf[10];
+    uint8_t t8;
+	uint16_t x;
+	if(line>1)return; 
+	x=xpf->stru.significand;
+	if(xpf->stru.sign){
+		x/=10;
+        if(x>999)x=999;
+        m_int16_2_str_4(buf,x);
+        buf[0]='-';
+    }else{
+        if(x>9999)x=9999;
+        m_int16_2_str_4(buf,x);
+    }
+    buf[5]='\0';
+	if(line==0){
+		lcd_show_string_l0(buf);
+	}else{
+		lcd_show_string_l1(buf);
+	}
+    t8=xpf->stru.exponent+xpf->stru.sign;
+    if(t8<3)lcd_show_dp(t8+4*line,true);
+	//lcd_disp_refresh();    
+}
+
 void ui_disp_menu_psw_adj(void)
 {
+	lcd_clear_all();
+	lcd_disp_logo(true);
 	ui_disp_adj_xfixed_pt((uint8_t*)" psd",passWord,adjLocation);
+}
+
+// 第一个界面第一行显示高度,第二行压力MPA;
+void ui_disp_menu_home_00(void)
+{
+	//差压
+	uint8_t t8;
+	st_float32 mf;
+	ui_disp_clear_num_dp();
+	mf.t32=__int32_2_mflot32(rtHight);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+	lcd_disp_unit_1st_m(true);
+	
+	mf.t32=__int32_2_mflot32(rtDiffPressure);//rtPressure
+	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+	lcd_disp_unit_mpa(true);
+	t8=cal_diff_hight_level();
+	lcd_disp_level(t8);
+
+	lcd_disp_refresh(); 
+}
+
+// 第二个界面第一行显示体积,第二行压力MPA;
+void ui_disp_menu_home_01(void)
+{
+	//差压
+	uint8_t t8;
+	st_float32 mf;
+	ui_disp_clear_num_dp();
+	mf.t32=__int32_2_mflot32(rtVolume);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+	lcd_disp_unit_1st_m3(true);
+	
+	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+	lcd_disp_unit_mpa(true);
+	t8=cal_diff_hight_level();
+	lcd_disp_level(t8);
+
+	lcd_disp_refresh(); 
+}
+
+// 第三个界面第一行显示重量吨,第二行压力MPA;
+void ui_disp_menu_home_02(void)
+{
+	//差压
+	uint8_t t8;
+	st_float32 mf;
+	ui_disp_clear_num_dp();
+	mf.t32=__int32_2_mflot32(rtWeight);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+	//lcd_disp_unit_1st_m3(true);
+	lcd_disp_unit_t(true);
+	
+	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+	lcd_disp_unit_mpa(true);
+	t8=cal_diff_hight_level();
+	lcd_disp_level(t8);
+
+	lcd_disp_refresh(); 
 }
 
 void ui_disp_menu(void)
 {
 	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:
-			break;
+		case MENU_HOME_00:ui_disp_menu_home_00();break;
+		case MENU_HOME_01:ui_disp_menu_home_01();break;
+		case MENU_HOME_02:ui_disp_menu_home_02();break;
+
 		case MENU_PASSWORD:ui_disp_menu_psw_adj();break;
 		default:break;
 

@@ -41,6 +41,7 @@ extern "C"{
 		uint8_t[2];
 	}st_warnDef,warnDef_t;
 	
+	//定点数固定放大1000倍
 	typedef struct{
 		uint32_t 	id;
 		em_posture	pos;							//立式或者卧式
@@ -50,11 +51,19 @@ extern "C"{
 		
 		int32_t		h;		//高
 		uint32_t	d;		//直径
+		
+		int32_t		V1;		//圆筒部分体积
+		int32_t		V2;		//封头椭球体积
+		
 		int32_t		baseZero;	//基础零位
 		//
 		st_warnDef	diffPressureWarnSet[4];			//差压报警设置
 		st_warnDef	pressureWarnSet;				//压力报警设置
 		uint8_t		simplePloyFactor[4];			//v0'=a0.v0+a1.v1+ ...+an.vn
+		
+		uint32_t	TempZero;					//外部温度零点
+		uint32_t	TempLine;					//外部温度线性系数		
+		
 		//
 		uint32_t	ex_pressZero[2];				//外部差压零点
 		uint32_t	ex_pressLine[2];				//外部差压线性系数
@@ -63,6 +72,7 @@ extern "C"{
 		//
 		uint32_t	ex_TempZero;					//外部温度零点
 		uint32_t	ex_TempLine;					//外部温度线性系数
+		
 		uint32_t	ex_TempCurrentLoopLow;			//温度4-20ma下限
 		uint32_t	ex_TempCurrentLoopUpper;		//温度4-20ma上限	
 		//
@@ -101,32 +111,54 @@ extern "C"{
 	extern st_prCalibTabDef prCalibTabDef;
 	//
 	//declare variables for adc
-	extern volatile int16_t 	adc_diffPr;			//
-	extern volatile int16_t		adc_diffBrg;		//
-	extern volatile int16_t		adc_diffVcc;		//
-	extern volatile int16_t		adc_diffGnd;		//
+	// extern volatile int16_t 	adc_diffPr;			//
+	// extern volatile int16_t		adc_diffBrg;		//
+	// extern volatile int16_t		adc_diffVcc;		//
+	// extern volatile int16_t		adc_diffGnd;		//
+	
+	extern volatile int16_t 	adc_inPt100;
+	
+	extern volatile int16_t		adc_pressure;
+	extern volatile int16_t		adc_exPt100;
 
-	extern volatile int16_t		adc_exPt100;		//
-	extern volatile int16_t		adc_exPt100Line;	//
-	extern volatile int16_t		adc_Pr;
+	// extern volatile int16_t		adc_exPt100;		//
+	// extern volatile int16_t		adc_exPt100Line;	//
+	// extern volatile int16_t		adc_Pr;
 
-	extern volatile int16_t		adc_iPrEx0;
-	extern volatile int16_t		adc_iPrEx1;
+	extern volatile int16_t		adc_iPrEx[2];
+	//extern volatile int16_t		adc_iPrEx1;
 
 	extern volatile int16_t		adc_ibat;
 	extern volatile int16_t		adc_iRef;
-	//declare variables for 	diff pressure;
-	extern volatile int32_t		x_DiffPressure;
-	extern volatile int32_t		x_Hight;
-	extern volatile int32_t		x_Weight;
+	// declare variables for 	diff pressure;
+	// extern volatile int32_t		x_DiffPressure;
+	// extern volatile int32_t		x_Hight;
+	// extern volatile int32_t		x_Weight;
 
-	extern volatile int32_t		x_Pressure;
-	extern volatile int32_t		x_Pemperature;
+	// extern volatile int32_t		x_Pressure;
+	// extern volatile int32_t		x_Pemperature;
 	
 	extern st_prData	x_prDiffData;
+    extern volatile int32_t	rtDiffPressure;
+	extern volatile int32_t	rtVolume;
+    extern volatile int32_t	rtHight;
+	extern volatile int32_t	rtWeight;
+	
+	volatile int32_t    rtPressure;
 	//fk 
 	extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 
+    //apl
+	extern uint8_t cal_diff_press(void);
+	extern uint8_t cal_diff_hight_level(void);
+	extern  void cal_pt100_temperature_in(void);
+
+	extern uint8_t cal_press(void);
+	extern  void cal_pt100_temperature_ex(void);
+	
+	extern void cal_additional_pressute(uint8_t index);
+
+	extern void data_init_all(void);
 #ifdef __cplusplus
 }
 #endif

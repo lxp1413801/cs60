@@ -6,7 +6,7 @@
 #define LCD_LINE_1		1
 //uint8_t tmpBuffer[16];
 extern st_RtcDef glRtc;
-bool lcdTwinkle=false;
+uint8_t lcdTwinkle=0;
 
 void __x_arrange_str(uint8_t *str,uint8_t len)
 {
@@ -221,9 +221,9 @@ void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 		if(loc>3)loc=3;
 	}
 	__x_arrange_str(buf,8);
-	//if(lcdTwinkle){
+	if(!fi_lcd_twinkle_lock()){
 		if(!fi_twinkle())buf[4+loc]=' ';
-	//}
+	}
 	t8=xpf->stru.exponent+xpf->stru.sign;
 	if(t8<3)lcd_show_dp(4+t8,true);
 	lcd_show_string(buf); 
@@ -240,9 +240,9 @@ void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
 	__x_arrange_str(buf,8);
 	if(loc>3)loc=3;
 	loc=3-loc;
-	//if(lcdTwinkle){
+	if(!fi_lcd_twinkle_lock()){
 		if(!fi_twinkle())buf[4+loc]=' ';
-	//}
+	}
 	lcd_show_string(buf); 
 	lcd_disp_refresh();
 }

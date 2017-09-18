@@ -7,7 +7,7 @@ int8_t event_process_rtc(void)
 {
 	uint8_t ret=0;
 	if(dwm==WORK_MODE){
-		ret=sample_diff_pr_chip_slow();
+		//ret=sample_diff_pr_chip_slow();
 	}
     if(!ret){
         lcd_bl_off();
@@ -47,17 +47,22 @@ int8_t event_process_rtc(void)
 		cal_additional_pressute(1);
 	}
 	//重秒事件进入显示，运行需要闪烁的数位闪烁
-	//lcdTwinkle=true;
+	if(lcdTwinkle>0)lcdTwinkle--;
 	ui_disp_menu();
 	return 1;
 }
 
 int8_t event_process_ticker(void)
 {
-	if(dwm!=WORK_MODE){
-		sample_diff_pr_chip_fast();
+	uint8_t ret=0;
+	if((dwm!=WORK_MODE ) || (diffPrChipFastSampleEn)){
+		ret=sample_diff_pr_chip_fast();
+		if(dwm==WORK_MODE){
+			sensor_power_disable();
+		}
+		if(ret)diffPrChipFastSampleEn=false;
 	}
-	return 1;
+	return ret;
 }
 
 int8_t event_process_time_out(void)

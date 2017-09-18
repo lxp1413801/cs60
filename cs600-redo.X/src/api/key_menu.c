@@ -187,8 +187,8 @@ void key_process(void)
 		}	
 	}
 	//点亮闪烁的数位，禁止闪烁
-	//if(key!=)
-	//lcdTwinkle=false;
+
+	lcd_twinkle_lock(TWINKLE_LOCK_TIME_s);
 	ui_disp_menu();
 	key_waite_release(LONG_PRESS_TIME,&key);
 }

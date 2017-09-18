@@ -1,0 +1,7 @@
+
+Memory Summary:
+    Program space        used  7859h ( 30809) of  F400h bytes   ( 49.3%)
+    Data space           used   557h (  1367) of   F54h bytes   ( 34.8%)
+    Configuration bits   used     3h (     3) of     4h words   ( 75.0%)
+    Data stack space     used   954h (  2388) of   954h bytes   (100.0%)
+

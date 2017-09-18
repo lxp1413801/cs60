@@ -33,7 +33,7 @@ volatile uint8_t slowSampleTimer=0;
 volatile uint8_t commonSampleTimer=0;
 volatile uint8_t inSocSampleTimer=0;
 
-
+volatile bool diffPrChipFastSampleEn=false;
 
 int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
 {
@@ -122,6 +122,8 @@ uint8_t sample_diff_pr_chip_fast(void)
 	}
 	return 0;
 }
+
+/*
 #define SLOW_SAMPLE_USED_FIFO_EN 1 
 uint8_t sample_diff_pr_chip_slow(void)
 {
@@ -176,7 +178,18 @@ uint8_t sample_diff_pr_chip_slow(void)
 	}
 	return 0;
 }
-
+*/
+uint8_t sample_diff_pr_chip_slow(void)
+{
+	slowSampleTimer++;
+	if(slowSampleTimer>=60){//one minute
+		slowSampleTimer=0;
+		peripheral_power_enable();
+		sensor_power_enable();
+		diffPrChipFastSampleEn=true;
+	}
+	return 1;
+}
 uint8_t sample_pr_chip_comm(void)
 {
 	uint8_t ret=0;

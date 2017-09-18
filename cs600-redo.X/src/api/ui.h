@@ -27,8 +27,10 @@ extern "C"{
 		}stru;
 	}st_paramAdjFormat,paramAdjFormat_t;
 	*/
-	extern bool lcdTwinkle;
-	
+    #define TWINKLE_LOCK_TIME_s 4 
+	extern uint8_t lcdTwinkle;
+    #define lcd_twinkle_lock(s) do{lcdTwinkle=s;}while(0);
+	#define fi_lcd_twinkle_lock() (lcdTwinkle>0)
 	extern int32_t __int32_2_mflot32(int32_t x);
 	extern int32_t __mflot32_2_int32(int32_t x);
 	

@@ -19,7 +19,7 @@ int main(void)
     
     //lcd_disp_level(60);
   
-    peripheral_power_enable();
+    //peripheral_power_enable();
     __nop();    
     while(1){
         event_process();

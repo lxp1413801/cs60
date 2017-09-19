@@ -29,16 +29,18 @@ extern "C"{
 	extern volatile st_deviceOpMode dwm;
 	
 	typedef enum{
-		HIGHT=0,	//高度报警
-		PRESSURE,	//压力报警,
+		HIGHT_HI=0,	//高度报警
+		HIGHT_LO,
+		PRESSURE_HI,	//压力报警,
+		PRESSURE_LO,
 	}em_warnType,warnType_t;	
 	
 	typedef struct{
-		uint32_t 	warnValue;//报警值
-		uint32_t	retDiff;//回差
-		bool upLimit;
+		uint32_t 	warnValueLo;//报警值
+		uint32_t	warnValueHi;//回差
+		//bool upLimit;
 		em_warnType	type;
-		uint8_t[2];
+		uint8_t[3];
 	}st_warnDef,warnDef_t;
 	
 	//定点数固定放大1000倍

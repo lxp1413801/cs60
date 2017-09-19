@@ -34,6 +34,7 @@ extern "C"{
 	extern void lcd_disp_unit_1st_m(bool show);
 	extern void lcd_disp_unit_1st_m3(bool show);
 	extern void lcd_disp_unit_t(bool show);
+    extern void lcd_disp_unit_2nd_m(bool show);
 	
 	
 	extern void lcd_disp_unit_mpa(bool show);

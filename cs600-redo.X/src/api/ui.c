@@ -341,17 +341,214 @@ void ui_disp_menu_home_02(void)
 
 	lcd_disp_refresh(); 
 }
+void ui_disp_menu_home(void)
+{
+	switch(subMenu){
+		case sub_MENU_HOME_00:ui_disp_menu_home_00();break;
+		case sub_MENU_HOME_01:ui_disp_menu_home_01();break;
+		case sub_MENU_HOME_02:ui_disp_menu_home_02();break;
+		default:break;
+	}
+}
+void ui_disp_menu_density_adj(void)
+{
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	ui_disp_adj_xfixed_pt((uint8_t*)"   p",&m_floatAdj,adjLocation);		
+}
+
+void ui_disp_menu_pos_adj(void)
+{
+	uint8_t buf[6];
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	m_mem_cpy(buf,(uint8_t*)"  fs");
+	lcd_show_string_l0(buf);
+	uint8_t* p=(uint8_t*)(&adjValue);
+	m_mem_cpy(buf,(uint8_t*)"    ");
+	if(*p==HOTIZONTAL){
+		buf[3]='l';
+	}else{
+		buf[3]='h';
+	}
+	lcd_show_string_l1(buf);
+	lcd_disp_refresh(); 
+}
+
+void ui_disp_menu_h_adj(void)
+{
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	ui_disp_adj_xfixed_pt((uint8_t*)"   h",&m_floatAdj,adjLocation);	
+}
+
+void ui_disp_menu_d_adj(void)
+{
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	ui_disp_adj_xfixed_pt((uint8_t*)"   d",&m_floatAdj,adjLocation);		
+}
+void ui_disp_menu_pose_size(void)
+{
+    switch(subMenu){
+        case sub_MENU_SET_POSE: ui_disp_menu_pos_adj(); break;
+        case sub_MENU_SET_L:    ui_disp_menu_h_adj();   break;
+        case sub_MENU_SET_D:    ui_disp_menu_d_adj();   break;
+        default:break;
+    }
+
+}
+void ui_disp_menu_bzero_adj(void)
+{
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	ui_disp_adj_xfixed_pt((uint8_t*)"  hd",&m_floatAdj,adjLocation);	
+}
+
+void ui_disp_menu_calib_diff_adj(void)
+{
+	
+}
+
+void ui_disp_menu_calib_pr_adj(void)
+{
+	
+}
+
+void ui_disp_menu_poly_c_adj(void)
+{
+	uint8_t buf[6];
+	uint8_t t8;
+	
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	
+	t8=subMenu;
+	if(t8>3)return;
+	m_mem_cpy(buf,(uint8_t*)"    ");
+	
+	buf[3]='a'+t8;
+	ui_disp_adj_xfixed_pt(buf,adjValue,adjLocation);
+}
+
+void ui_disp_menu_warn_t_adj(void)
+{
+	uint8_t buf[6];
+	uint8_t t8;		
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	t8=subMenu;
+	if(t8>3)return;
+	//这个地方的显示字符需要确认用atx还是alx
+	m_mem_cpy(buf,(uint8_t*)"alt0");
+	buf[3]='0'+t8;
+	
+	lcd_show_string_l0(buf);
+	uint8_t* p=(uint8_t*)(&adjValue);
+	m_mem_cpy(buf,(uint8_t*)"    ");
+	if(*p==HIGHT_HI){
+		m_mem_cpy(buf,(uint8_t*)" h-u");
+	}else if(*p==HIGHT_LO){
+		m_mem_cpy(buf,(uint8_t*)" h-d");
+	}else if(*p==PRESSURE_HI){
+		m_mem_cpy(buf,(uint8_t*)" p-u");
+	}else{
+		m_mem_cpy(buf,(uint8_t*)" p-d");
+	}
+	lcd_show_string_l1(buf);
+	lcd_disp_refresh(); 
+	
+}
+
+void ui_disp_menu_warn_v_adj(void)
+{
+	uint8_t buf[6];
+	uint8_t t8,type;
+	int32_t t32	;
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	t8=subMenu;
+	if(t8>7)return;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//if(fps->diffPressureWarnSet[t8>>1].type);
+	if(t8<3){
+		//t32=fps->diffPressureWarnSet[t8].warnValueLo;
+		type=fps->diffPressureWarnSet[t8].type;
+		m_mem_cpy(buf,(uint8_t*)" al0");
+	}else{
+		t8=t8-4;
+		//t32=fps->diffPressureWarnSet[t8].warnValueHi;
+		type=fps->diffPressureWarnSet[t8].type;	
+		m_mem_cpy(buf,(uint8_t*)" ah0");
+	}
+	buf[3]='0'+t8;
+	
+	if(type == HIGHT_HI || type== HIGHT_HI){
+		lcd_disp_unit_2nd_m(true);
+	}else{
+		lcd_disp_unit_mpa(true);
+	}
+	ui_disp_adj_xfixed_pt(buf,&m_floatAdj,adjLocation);
+}
+
+void ui_disp_menu_ep_z_adj(void)
+{
+	
+	
+}
+
+void ui_disp_menu_ep_l_adj(void)
+{
+	
+	
+}
+
+void ui_disp_menu_epr_param_adj(void)
+{
+    
+}
+void ui_disp_menu_ep_ilp_lo_adj(void)
+{
+	
+}
+
+void ui_disp_menu_ep_ilp_hi_adj(void)
+{
+	
+}
+void ui_disp_menu_epr_ilp_param_adj(void)
+{
+    
+}
+
+void ui_disp_menu_bar_full_adj(void)
+{
+	
+}
 
 void ui_disp_menu(void)
 {
 	switch(menu){
-		case MENU_HOME_00:ui_disp_menu_home_00();break;
-		case MENU_HOME_01:ui_disp_menu_home_01();break;
-		case MENU_HOME_02:ui_disp_menu_home_02();break;
-
-		case MENU_PASSWORD:ui_disp_menu_psw_adj();break;
+		case MENU_HOME:					ui_disp_menu_home();			break;
+		case MENU_PASSWORD:				ui_disp_menu_psw_adj();			break;		
+		case MENU_SET_DENSITY:			ui_disp_menu_density_adj();		break;		
+		case MENU_SET_POSE_SIZE:		ui_disp_menu_pose_size();		break;
+		case MENU_SET_BASE_ZERO:		ui_disp_menu_bzero_adj();		break;
+		
+		case MENU_DIFF_CALIB:			ui_disp_menu_calib_diff_adj();	break;
+		case MENU_PRESSURE_CALIB:		ui_disp_menu_calib_pr_adj();	break;
+		
+		case MENU_POLY_COEFFIC:			ui_disp_menu_poly_c_adj();		break;
+		
+		case MENU_SET_WARN_TYPE:        ui_disp_menu_warn_t_adj();		break;
+		case MENU_SET_WARN_VALUE:		ui_disp_menu_warn_v_adj();		break;
+		
+		case MENU_SET_EPR_ZERO_LINE:		
+									ui_disp_menu_epr_param_adj();		break;
+		case MENU_SET_EPR_ILOOP_SCALE:	
+									ui_disp_menu_epr_ilp_param_adj();	break;
+		case MENU_SET_FULL_LEVEL_BAR:	ui_disp_menu_bar_full_adj();	break;
 		default:break;
-
 	}	
 }
 //file end

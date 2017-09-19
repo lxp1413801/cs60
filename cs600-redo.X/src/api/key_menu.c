@@ -3,10 +3,13 @@
 #define LONG_PRESS_TIME		2000
 
 volatile uint16_t passWord=0x00;
-volatile uint8_t menu=MENU_HOME_00;
+volatile uint8_t menu=MENU_HOME;
+volatile uint8_t subMenu=0;
 volatile uint8_t keyValue=KEY_VALUE_NONE;
 volatile uint8_t adjLocation=0;
-volatile uint32_t adjValue=0x00;
+volatile int32_t adjValue=0x00;
+//add lxp
+volatile st_float32_m m_floatAdj={0};
 volatile uint8_t* pAdjValue;
 //
 volatile uint8_t  calibRow=0x00;
@@ -63,38 +66,187 @@ void key_adj_value_fixed_point(uint16_t* value,uint8_t loc)
 }
 
 //set long time press process
-void __enter_menu_set_density(void){
+void __enter_menu_set_density(void)
+{
+	int32_t t32;
+	menu=MENU_SET_DENSITY;
+	subMenu=sub_MENU_SET_DENSITY;
 	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
-	adjValue=fps->density;
+	t32=fps->density;
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;
+}
+//
+void __enter_menu_set_pose_size(void)
+{
+	menu=MENU_SET_POSE_SIZE;
+	subMenu=sub_MENU_SET_POSE;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	adjValue=0x00ul;
+	*((uint8_t*)(&adjValue))=(uint8_t)(fps->pos);
+	adjLocation=0;
+}
+void __enter_menu_set_d(void){
+	int32_t t32;
+	subMenu=sub_MENU_SET_D;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	t32=fps->d;
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;
+}
+void __enter_menu_set_h(void){
+	int32_t t32;
+	subMenu=sub_MENU_SET_L;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	t32=(fps->h);
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;
+}
+//
+void __enter_menu_set_base_zero(void)
+{
+	int32_t t32;
+	menu=MENU_SET_BASE_ZERO;
+	subMenu=0;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	t32=(fps->baseZero);
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;
+}
+//
+void __enter_menu_calib_press_diff(void)
+{
+	//git pressure calib data
+	int32_t t32;
+	st_prCalibTabDef* stp;    
+    
+	menu=MENU_DIFF_CALIB;
+	subMenu=0;
+	calibRow=0;
+	calibCol=0;
+
+	stp=(st_prCalibTabDef*)(&diff_prCalibTabDef);
+	t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
+    
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
 	adjLocation=0;
 }
 
-void __enter_menu_set_pose(void){
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
-	adjValue=(uint8_t)(fps->pos);
-	adjLocation=0;
-}
-void __enter_menu_set_base_zero(void){
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
-	adjValue=(fps->baseZero);
-	adjValue=__int32_2_mflot32(adjValue);
-	adjLocation=0;
-}
-void __enter_menu_calib_press_diff(void){
+void __enter_menu_calib_press_diff_ex(uint8_t row,uint8_t col)
+{
 	//git pressure calib data
-	
+	int32_t t32;
+	st_prCalibTabDef* stp;    
+    
+	menu=MENU_DIFF_CALIB;
+	subMenu=0;
+	calibRow=row;
+	calibCol=col;
+
+	stp=(st_prCalibTabDef*)(&diff_prCalibTabDef);
+	t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
+    
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;
+}
+
+//
+void __enter_menu_calib_press_ex(uint8_t row,uint8_t col)
+{
+	//git pressure calib data
+	int32_t t32;
+	st_prCalibTabDef* stp;    
+    
+	menu=MENU_PRESSURE_CALIB;
+	subMenu=0;
+	calibRow=row;
+	calibCol=col;
+
+	stp=(st_prCalibTabDef*)(&prCalibTabDef);
+	t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
+    
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;
+}
+
+void __enter_menu_poly_coeffic(void)
+{
+    menu=MENU_POLY_COEFFIC;
+    subMenu=sub_MENU_POLY_COEFFIC_a;
 	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
-	adjValue=(fps->baseZero);
-	adjValue=__int32_2_mflot32(adjValue);
+	//adjValue=0x00ul;
+	adjValue=(int32_t)(fps->ployCoeffic[subMenu]);
+	adjLocation=0;    
+}
+
+void __enter_menu_warn_type(void)
+{
+	menu=MENU_SET_WARN_TYPE;
+	subMenu=sub_MENU_SET_WARN_TYPE_0;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	adjValue=0x00ul;
+	*((uint8_t*)(&adjValue))=(uint8_t)(fps->diffPressureWarnSet[subMenu].type);
+	adjLocation=0;	
+}
+
+void __enter_menu_warn_value(void)
+{
+	int32_t t32;
+	menu=MENU_SET_WARN_VALUE;
+	subMenu=sub_MENU_SET_WARN_VALUE_0;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	if(subMenu>=4){
+		t32=fps->diffPressureWarnSet[subMenu-4].warnValueHi;
+	}else{
+		t32=fps->diffPressureWarnSet[subMenu].warnValueLo;
+	}
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;
+}
+
+void __enter_menu_epr_zero_line(void)
+{
+	int32_t t32;
+	menu=MENU_SET_EPR_ZERO_LINE;
+	subMenu=sub_MENU_SET_EPR_ZERO_0;
+	if(subMenu>sub_MENU_SET_EPR_LINE_1)subMenu=sub_MENU_SET_EPR_LINE_1;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	if(subMenu>=2){
+		t32=fps->ex_pressLine[subMenu-2];
+	}else{
+		t32=fps->ex_pressZero[subMenu];
+	}
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;	
+}
+
+void __enter_menu_epr_ilp_scale(void)
+{
+	menu=PSW_SET_EPR_ILOOP_SCALE;
+	subMenu=sub_MENU_SET_EX_DPR_ILP_Lo0;
+	if(subMenu>sub_MENU_SET_EX_DPR_ILP_Hi1)subMenu=sub_MENU_SET_EX_DPR_ILP_Hi1;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	if(subMenu>=2){
+		adjValue=(int32_t)(fps->ex_pressiLoopUpper[subMenu-2]);
+	}else{
+		adjValue=(int32_t)(fps->ex_pressiLoopLow[subMenu]);
+	}
 	adjLocation=0;
 }
 
 void key_process_down(void)
 {
 	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:break;
+		case MENU_HOME:break;
 		case MENU_PASSWORD:key_shift_loc_fixed_point((uint8_t*)(&adjLocation),0,3);break;
 		default:break;
 	}	
@@ -102,37 +254,26 @@ void key_process_down(void)
 void key_process_up(void)
 {
 	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:break;
+		case MENU_HOME:break;
 		case MENU_PASSWORD:key_adj_value_fixed_point((uint16_t*)(&passWord),adjLocation);break;
 		default:break;
 	}		
 }
+
 void key_process_set_down_long(void)
 {
 	if(menu==MENU_PASSWORD){
 		switch(passWord){
-		case PSW_SET_DENSITY:	
-			menu=MENU_SET_DENSITY;	__enter_menu_set_density();     break;
-		case PSW_SET_SIZE:
-			menu=MENU_SET_SIZE;     __enter_menu_set_pose();        break;
-		case PSW_SET_BASE_ZERO_LEVEL:
-			menu=MENU_SET_BASE_ZERO;__enter_menu_set_base_zero();	break;
-		case PSW_CALIB_DIFF_PRESSURE:
-			menu=MENU_DIFF_CALIB;						break;
-		case PSW_CALIB_PRESSURE:
-			menu=MENU_PRESSURE_CALIB;					break;
-		case PSW_SET_POLY_COEFFIC:
-			menu=MENU_POLY_COEFFIC;						break;
-		case PSW_SET_WARN_TYPE:
-			menu=MENU_SET_WARN_TYPE;					break;
-		case PSW_SET_WARN_VALUE_DIFF:
-			menu=MENU_SET_WARN_VALUE_DIFF;				break;
-		case PSW_SET_EX_DIFF_PRESSURE_ZERO_LINE:
-			menu=MENU_SET_EX_DIFF_PRESSURE_ZERO_LINE;	break;
-		case PSW_SET_EX_DIFF_PRESSURE_ILOOP_OUT:	
-			menu=MENU_SET_EX_DIFF_PRESSURE_ILOOP_OUT;	break;
+		case PSW_SET_DENSITY:           __enter_menu_set_density();             break;
+		case PSW_SET_POSE_SIZE:         __enter_menu_set_pose_size();           break;  
+		case PSW_SET_BASE_ZERO:         __enter_menu_set_base_zero();           break;
+		case PSW_CALIB_DIFF_PRESSURE:   __enter_menu_calib_press_diff_ex(0,0);  break;
+		case PSW_CALIB_PRESSURE:        __enter_menu_calib_press_ex(0,0);       break;   
+		case PSW_SET_POLY_COEFFIC:		__enter_menu_poly_coeffic();			break;
+		case PSW_SET_WARN_TYPE:			__enter_menu_warn_type();				break;
+		case PSW_SET_WARN_VALUE:		__enter_menu_warn_value();				break;
+		case PSW_SET_EPR_ZERO_LINE:		__enter_menu_epr_zero_line();			break;
+		case PSW_SET_EPR_ILOOP_SCALE:	__enter_menu_epr_ilp_scale();			break;
 		case PSW_SET_FULL_LEVEL_BAR:
 			menu=MENU_SET_FULL_LEVEL_BAR;				break;
 		case PSW_SET_PRESSURE_DISP_TYPE:
@@ -145,11 +286,11 @@ void key_process_set_down_long(void)
 void key_process_set_long(void)
 {
 	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:
+		case MENU_HOME:
+		//case sub_MENU_HOME_01:
+		//case sub_MENU_HOME_02:
 		case MENU_PASSWORD:
-			{passWord=0x00;adjLocation=0x00;menu=MENU_HOME_00;break;}
+			{passWord=0x00;adjLocation=0x00;menu=MENU_HOME;break;}
 		default:break;
 	}
 }
@@ -157,9 +298,7 @@ void key_process_set_long(void)
 void key_process_set(void)
 {
 	switch(menu){
-		case MENU_HOME_00:
-		case MENU_HOME_01:
-		case MENU_HOME_02:{passWord=0x00;adjLocation=0x00;menu=MENU_PASSWORD;break;}
+		case MENU_HOME:{passWord=0x00;adjLocation=0x00;menu=MENU_PASSWORD;break;}
 		default:break;
 	}
 }
@@ -187,7 +326,6 @@ void key_process(void)
 		}	
 	}
 	//点亮闪烁的数位，禁止闪烁
-
 	lcd_twinkle_lock(TWINKLE_LOCK_TIME_s);
 	ui_disp_menu();
 	key_waite_release(LONG_PRESS_TIME,&key);

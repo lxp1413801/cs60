@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="cs600_test">
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/sample.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c</file>
+        </group>
         <group>
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/driver/ex_eeprom.c</file>
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/api/ui.c</file>
@@ -18,21 +33,6 @@
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/app/event.c</file>
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/depend/depend.h</file>
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/api/key_menu.c</file>
-        </group>
-        <group name="cs600_test">
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.h</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.h</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_flash.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.h</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/sample.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c</file>
         </group>
     </open-files>
 </project-private>

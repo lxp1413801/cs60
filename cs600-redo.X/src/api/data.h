@@ -49,28 +49,28 @@ extern "C"{
 		em_posture	pos;							//立式或者卧式
 		uint8_t		maxValueForlevelBar;			//状态条显示满时对应的高度值,
 													//(95%或者100%)
-		uint16_t	density;//密度
+		uint16_t	density;						//密度
 		
-		int32_t		h;		//高
-		uint32_t	d;		//直径
+		int32_t		h;								//高
+		uint32_t	d;								//直径
 		
-		int32_t		V1;		//圆筒部分体积
-		int32_t		V2;		//封头椭球体积
+		int32_t		V1;								//圆筒部分体积
+		int32_t		V2;								//封头椭球体积
 		
-		int32_t		baseZero;	//基础零位
+		int32_t		baseZero;						//基础零位
 		//
 		st_warnDef	diffPressureWarnSet[4];			//差压报警设置
 		st_warnDef	pressureWarnSet;				//压力报警设置
-		uint16_t	ployCoeffic[4];			//v0'=a0.v0+a1.v1+ ...+an.vn
+		uint16_t	ployCoeffic[4];					//v0'=a0.v0+a1.v1+ ...+an.vn
 		
-		uint32_t	TempZero;					//外部温度零点
-		uint32_t	TempLine;					//外部温度线性系数		
+		uint32_t	TempZero;						//外部温度零点
+		uint32_t	TempLine;						//外部温度线性系数		
 		
 		//
 		uint32_t	ex_pressZero[2];				//外部差压零点
 		uint32_t	ex_pressLine[2];				//外部差压线性系数
-		uint32_t	ex_pressiLoopLow[2];		//差压4-20ma下限
-		uint32_t	ex_pressiLoopUpper[2];	//差压4-20ma上限	
+		uint32_t	ex_pressiLoopLow[2];			//差压4-20ma下限
+		uint32_t	ex_pressiLoopUpper[2];			//差压4-20ma上限	
 		//
 		uint32_t	ex_TempZero;					//外部温度零点
 		uint32_t	ex_TempLine;					//外部温度线性系数

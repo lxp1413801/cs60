@@ -25,5 +25,17 @@
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/driver/lcd.c</file>
             <file>file:/D:/lxp/cs60/cs600-redo.X/src/api/key_menu.c</file>
         </group>
+<<<<<<< HEAD
+        <group name="cs600_test">
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/sample.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c</file>
+        </group>
+=======
+>>>>>>> fd71348c78f69e1621b282e3474d04aeba0f1989
     </open-files>
 </project-private>

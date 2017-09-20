@@ -61,7 +61,7 @@ extern "C"{
 		//
 		st_warnDef	diffPressureWarnSet[4];			//差压报警设置
 		st_warnDef	pressureWarnSet;				//压力报警设置
-		uint8_t		simplePloyFactor[4];			//v0'=a0.v0+a1.v1+ ...+an.vn
+		uint16_t	ployCoeffic[4];			//v0'=a0.v0+a1.v1+ ...+an.vn
 		
 		uint32_t	TempZero;					//外部温度零点
 		uint32_t	TempLine;					//外部温度线性系数		
@@ -69,8 +69,8 @@ extern "C"{
 		//
 		uint32_t	ex_pressZero[2];				//外部差压零点
 		uint32_t	ex_pressLine[2];				//外部差压线性系数
-		uint32_t	ex_pressCurrentLoopLow[2];		//差压4-20ma下限
-		uint32_t	ex_pressCurrentLoopUpper[2];	//差压4-20ma上限	
+		uint32_t	ex_pressiLoopLow[2];		//差压4-20ma下限
+		uint32_t	ex_pressiLoopUpper[2];	//差压4-20ma上限	
 		//
 		uint32_t	ex_TempZero;					//外部温度零点
 		uint32_t	ex_TempLine;					//外部温度线性系数

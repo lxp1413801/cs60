@@ -1,5 +1,8 @@
 #include "../includes/includes.h"
 
+#define goHOME  true
+#define unGoHome    false
+
 #define LONG_PRESS_TIME		2000
 
 volatile uint16_t passWord=0x00;
@@ -9,7 +12,7 @@ volatile uint8_t keyValue=KEY_VALUE_NONE;
 volatile uint8_t adjLocation=0;
 volatile int32_t adjValue=0x00;
 //add lxp
-volatile st_float32_m m_floatAdj={0};
+st_float32_m m_floatAdj={0};
 volatile uint8_t* pAdjValue;
 //
 volatile uint8_t  calibRow=0x00;
@@ -39,7 +42,7 @@ uint16_t key_waite_release(uint16_t timeout,uint8_t* key)
 	return userTicker_ms;
 }
 //shift
-void key_shift_loc_fixed_point(uint8_t* loc,uint8_t min,uint8_t max)
+void key_shift_loc(uint8_t* loc,uint8_t min,uint8_t max)
 {
 	uint8_t t8=*loc;
 	if(min>=max){
@@ -51,8 +54,7 @@ void key_shift_loc_fixed_point(uint8_t* loc,uint8_t min,uint8_t max)
 	*loc=t8;
 }
 
-//adj value
-void key_adj_value_fixed_point(uint16_t* value,uint8_t loc)
+void key_adj_value_fixed(uint16_t* value,uint8_t loc)
 {
 	uint16_t dloc;
 	uint16_t t16=*value;
@@ -65,7 +67,42 @@ void key_adj_value_fixed_point(uint16_t* value,uint8_t loc)
 	*value=t16;
 }
 
+//adj my float value
+void key_adj_value_float(st_float32_m* mfp,uint8_t loc)
+{
+    uint16_t t16;
+    uint8_t t8;
+    t16=mfp->stru.significand;
+    if(loc<4){
+        key_adj_value_fixed(&t16,loc);
+        mfp->stru.significand=t16;
+    }else if(loc==4){
+        t8=mfp->stru.exponent;
+        t8++;
+        if(t8>3)t8=0;
+        mfp->stru.exponent=t8;
+    }else{
+        t8=mfp->stru.sign;
+        t8++;
+        if(t8)t8=0;
+        else
+            t8=1;
+        mfp->stru.sign=t8;
+    }
+}
+
+
+
 //set long time press process
+void __enter_menu_password(void)
+{	
+	menu=MENU_PASSWORD;
+	subMenu=0x00;
+	
+	passWord=0x00;
+	adjLocation=0x00;
+}
+
 void __enter_menu_set_density(void)
 {
 	int32_t t32;
@@ -87,6 +124,7 @@ void __enter_menu_set_pose_size(void)
 	*((uint8_t*)(&adjValue))=(uint8_t)(fps->pos);
 	adjLocation=0;
 }
+
 void __enter_menu_set_d(void){
 	int32_t t32;
 	subMenu=sub_MENU_SET_D;
@@ -96,6 +134,7 @@ void __enter_menu_set_d(void){
 	m_floatAdj.t32=t32;
 	adjLocation=0;
 }
+
 void __enter_menu_set_h(void){
 	int32_t t32;
 	subMenu=sub_MENU_SET_L;
@@ -176,31 +215,31 @@ void __enter_menu_calib_press_ex(uint8_t row,uint8_t col)
 	adjLocation=0;
 }
 
-void __enter_menu_poly_coeffic(void)
+void __enter_menu_poly_coeffic(uint8_t __subMenu)
 {
     menu=MENU_POLY_COEFFIC;
-    subMenu=sub_MENU_POLY_COEFFIC_a;
+    subMenu=__subMenu;
 	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
 	//adjValue=0x00ul;
 	adjValue=(int32_t)(fps->ployCoeffic[subMenu]);
 	adjLocation=0;    
 }
 
-void __enter_menu_warn_type(void)
+void __enter_menu_warn_type(uint8_t __subMenu)
 {
 	menu=MENU_SET_WARN_TYPE;
-	subMenu=sub_MENU_SET_WARN_TYPE_0;
+	subMenu=__subMenu;
 	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
 	adjValue=0x00ul;
 	*((uint8_t*)(&adjValue))=(uint8_t)(fps->diffPressureWarnSet[subMenu].type);
 	adjLocation=0;	
 }
 
-void __enter_menu_warn_value(void)
+void __enter_menu_warn_value(uint8_t __subMenu)
 {
 	int32_t t32;
 	menu=MENU_SET_WARN_VALUE;
-	subMenu=sub_MENU_SET_WARN_VALUE_0;
+	subMenu=__subMenu;
 	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
 	if(subMenu>=4){
 		t32=fps->diffPressureWarnSet[subMenu-4].warnValueHi;
@@ -212,11 +251,11 @@ void __enter_menu_warn_value(void)
 	adjLocation=0;
 }
 
-void __enter_menu_epr_zero_line(void)
+void __enter_menu_epr_zero_line(uint8_t __subMenu)
 {
 	int32_t t32;
 	menu=MENU_SET_EPR_ZERO_LINE;
-	subMenu=sub_MENU_SET_EPR_ZERO_0;
+	subMenu=__subMenu;
 	if(subMenu>sub_MENU_SET_EPR_LINE_1)subMenu=sub_MENU_SET_EPR_LINE_1;
 	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
 	if(subMenu>=2){
@@ -229,10 +268,10 @@ void __enter_menu_epr_zero_line(void)
 	adjLocation=0;	
 }
 
-void __enter_menu_epr_ilp_scale(void)
+void __enter_menu_epr_ilp_scale(uint8_t __subMenu)
 {
 	menu=PSW_SET_EPR_ILOOP_SCALE;
-	subMenu=sub_MENU_SET_EX_DPR_ILP_Lo0;
+	subMenu=__subMenu;
 	if(subMenu>sub_MENU_SET_EX_DPR_ILP_Hi1)subMenu=sub_MENU_SET_EX_DPR_ILP_Hi1;
 	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
 	if(subMenu>=2){
@@ -243,19 +282,169 @@ void __enter_menu_epr_ilp_scale(void)
 	adjLocation=0;
 }
 
+void __enter_menu_bar_scale(void)
+{
+	menu=MENU_SET_BAR_LEVEL_SCALE;
+	subMenu=sub_MENU_SET_BAR_LEVEL_SCALE;
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	adjValue=fps->barScale;
+	adjLocation=0;
+}
+
+void __enter_menu_work_mode(void)
+{
+	menu=MENU_SET_WORK_MODE;
+	subMenu=sub_MENU_SET_WORK_MODE;
+	*((uint8_t*)(&adjValue))=dwm;
+	adjLocation=0;
+}
+
+void __exit_menu_to_home_unsave(void)
+{
+	menu=MENU_HOME;
+	subMenu=0x00;
+
+	adjValue=0;
+	m_floatAdj.t32=0;
+	adjLocation=0x00;
+	
+	calibRow=0;
+	calibCol=0;
+	passWord=0x00;
+}
 void key_process_down(void)
 {
 	switch(menu){
 		case MENU_HOME:break;
-		case MENU_PASSWORD:key_shift_loc_fixed_point((uint8_t*)(&adjLocation),0,3);break;
+		case MENU_PASSWORD:key_shift_loc((uint8_t*)(&adjLocation),0,3);break;
 		default:break;
 	}	
 }
+
+void __up_home_adj(void)
+{
+	subMenu++;
+	if(subMenu>sub_MENU_HOME_02)subMenu=sub_MENU_HOME_00;
+}
+
+void __up_psw_adj(void)
+{
+	key_adj_value_fixed((uint16_t*)(&passWord),adjLocation);
+}
+
+void __up_density_adj(void)
+{
+	key_adj_value_float(&m_floatAdj,adjLocation);
+}
+
+void __up_pose_size_adj(void)
+{
+	uint8_t* p;
+	switch(subMenu){
+		case sub_MENU_SET_POSE:
+			p=(uint8_t*)(&adjValue);
+			(*p)=(*p)+1;
+			if(*p>VERTICAL)*p=HOTIZONTAL;
+			break;
+		case sub_MENU_SET_L:
+		case sub_MENU_SET_D:
+			key_adj_value_float(&m_floatAdj,adjLocation);
+			break;
+		default:break;
+	}
+}
+
+void __up_base_zero_adj(void)
+{
+	key_adj_value_float(&m_floatAdj,adjLocation);
+}
+
+
+
+void __up_diff_calib_adj(void)
+{
+	key_adj_value_float(&m_floatAdj,adjLocation);
+}
+
+void __up_pr_calib_adj(void)
+{
+	key_adj_value_float(&m_floatAdj,adjLocation);
+}
+
+void __up_poly_coefic_adj(void)
+{
+	key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
+}
+
+void __up_warn_type_adj(void)
+{
+	uint8_t* p;
+	p=(uint8_t*)(&adjValue);
+	(*p)=(*p)+1;
+	if(*p>PRESSURE_LO)*p=HIGHT_HI;
+}
+
+void __up_warn_value_adj(void)
+{
+	key_adj_value_float(&m_floatAdj,adjLocation);
+}
+
+void __up_epr_param_adj(void)
+{
+	switch(subMenu){
+		case sub_MENU_SET_EPR_ZERO_0:
+		case sub_MENU_SET_EPR_ZERO_1:
+			key_adj_value_float(&m_floatAdj,adjLocation);
+			break;
+		case sub_MENU_SET_EPR_LINE_0:
+		case sub_MENU_SET_EPR_LINE_1:
+			key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
+			break;
+		default:break;
+	}
+}
+
+void __up_epr_ilp_scale_adj(void)
+{
+	key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
+}
+
+//-----------------------------------------------------
+void __up_adj_bar_level_scale(void)
+{
+	key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
+}
+
+void __up_adj_work_mode(void)
+{
+	uint8_t* p;
+	p=(uint8_t*)(&adjValue);
+	if(*p==TEST_MODE){
+		*p=WORK_MODE;
+	}else{
+		*p=TEST_MODE;
+	}
+}
+
 void key_process_up(void)
 {
 	switch(menu){
-		case MENU_HOME:break;
-		case MENU_PASSWORD:key_adj_value_fixed_point((uint16_t*)(&passWord),adjLocation);break;
+		case MENU_HOME:					__up_home_adj();				break;
+		case MENU_PASSWORD:				__up_psw_adj();					break;
+		case MENU_SET_DENSITY:			__up_density_adj();				break;
+		case MENU_SET_POSE_SIZE:		__up_pose_size_adj();			break;
+		case MENU_SET_BASE_ZERO:		__up_base_zero_adj();			break;
+		case MENU_DIFF_CALIB:			__up_diff_calib_adj();			break;
+		case MENU_PRESSURE_CALIB:		__up_pr_calib_adj();			break;
+		case MENU_POLY_COEFFIC:			__up_poly_coefic_adj();			break;
+		case MENU_SET_WARN_TYPE:		__up_warn_type_adj();			break;
+		case MENU_SET_WARN_VALUE:		__up_warn_value_adj();			break;
+		case MENU_SET_EPR_ZERO_LINE:	__up_epr_param_adj();			break;
+		case MENU_SET_EPR_ILOOP_SCALE:	__up_epr_ilp_scale_adj();		break;
+		
+		case MENU_SET_BAR_LEVEL_SCALE:	__up_adj_bar_level_scale();	break;
+		case MENU_SET_WORK_MODE:        __up_adj_work_mode();		break;
+		//case 
 		default:break;
 	}		
 }
@@ -269,39 +458,290 @@ void key_process_set_down_long(void)
 		case PSW_SET_BASE_ZERO:         __enter_menu_set_base_zero();           break;
 		case PSW_CALIB_DIFF_PRESSURE:   __enter_menu_calib_press_diff_ex(0,0);  break;
 		case PSW_CALIB_PRESSURE:        __enter_menu_calib_press_ex(0,0);       break;   
-		case PSW_SET_POLY_COEFFIC:		__enter_menu_poly_coeffic();			break;
-		case PSW_SET_WARN_TYPE:			__enter_menu_warn_type();				break;
-		case PSW_SET_WARN_VALUE:		__enter_menu_warn_value();				break;
-		case PSW_SET_EPR_ZERO_LINE:		__enter_menu_epr_zero_line();			break;
-		case PSW_SET_EPR_ILOOP_SCALE:	__enter_menu_epr_ilp_scale();			break;
-		case PSW_SET_FULL_LEVEL_BAR:
-			menu=MENU_SET_FULL_LEVEL_BAR;				break;
-		case PSW_SET_PRESSURE_DISP_TYPE:
-			menu=MENU_SET_PRESSURE_DISP_TYPE;			break;
+		case PSW_SET_POLY_COEFFIC:		__enter_menu_poly_coeffic(0);			break;
+		case PSW_SET_WARN_TYPE:			__enter_menu_warn_type(0);				break;
+		case PSW_SET_WARN_VALUE:		__enter_menu_warn_value(0);				break;
+		case PSW_SET_EPR_ZERO_LINE:		__enter_menu_epr_zero_line(0);			break;
+		case PSW_SET_EPR_ILOOP_SCALE:	__enter_menu_epr_ilp_scale(0);			break;
+		case PSW_SET_BAR_LEVEL_SCALE:	__enter_menu_bar_scale();				break;
+		case PSW_SET_WORK_MODE:			__enter_menu_work_mode();				break;
 		default:break;
 		}
 	}
 }
+//============================================================================
+// uint8_t __sys_data_save_load_buf(void)
+// {
+	// uint8_t* buf=ldbuf;
+    
+	// if(sizeof(globleBuffer1)<sizeof(st_sysDataDef))return 0;
+	// m_flash_read(SYSTEM_DATA_ADDR,buf,sizeof(st_sysDataDef));	
+	// return 1;
+// }
+uint8_t __sys_data_save_write_flash(void)
+{
+    uint8_t ret=0;
+    st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+    stp->V1=data_sys_cal_v1(stp);
+    stp->V2=data_sys_cal_v2(stp);
+    crc_append(globleBuffer1,sizeof(st_sysDataDef)-2);
+    m_flash_write(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));
+    m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));
+    ret=crc_verify(globleBuffer1,sizeof(st_sysDataDef));
+    return ret;
+}
 
+//============================================================================
+void __set_short_pose_size(bool gohome)
+{
+	uint8_t* p;
+	int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));
+	switch(subMenu){
+        case sub_MENU_SET_POSE:
+            p=(uint8_t*)(&adjValue);
+			stp->pos=(*p);
+			break;
+		case sub_MENU_SET_L:
+			t32=__mflot32_2_int32(m_floatAdj.t32);
+			stp->h=t32;
+            break;
+		case sub_MENU_SET_D:
+            t32=__mflot32_2_int32(m_floatAdj.t32);
+            stp->d=t32;
+			break;
+    }
+	if(gohome){__exit_menu_to_home_unsave(); return;}
+    __sys_data_save_write_flash();
+    subMenu++;
+    if(subMenu>sub_MENU_SET_D)subMenu=sub_MENU_SET_POSE;
+    switch(subMenu){
+        case sub_MENU_SET_POSE: __enter_menu_set_pose_size();   break;
+        case sub_MENU_SET_L:    __enter_menu_set_h();           break;
+        case sub_MENU_SET_D:    __enter_menu_set_d();           break;
+        default:break;
+    }
+}
+
+void __set_short_diff_calib(bool gohome)
+{
+	if(gohome){__exit_menu_to_home_unsave(); return;}
+}
+
+void __set_short_pr_calib(bool gohome)
+{
+	if(gohome){__exit_menu_to_home_unsave(); return;}
+}
+
+void __set_short_poly_coefic(bool gohome)
+{
+	int16_t* p;
+	//int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	//t32=adjValue;
+    p=(int16_t*)(&adjValue);
+    stp->ployCoeffic[subMenu]=*p;
+    __sys_data_save_write_flash();
+	
+	if(gohome){__exit_menu_to_home_unsave(); return;}
+	
+    subMenu++;
+    if(subMenu>sub_MENU_POLY_COEFFIC_d)subMenu=sub_MENU_POLY_COEFFIC_a;
+    __enter_menu_poly_coeffic(subMenu);
+}
+
+void __set_short_warn_type(bool gohome)
+{
+	uint8_t* p;
+	//int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	p=(uint8_t*)(&adjValue);
+	stp->diffPressureWarnSet[subMenu].type=*p;
+    __sys_data_save_write_flash();
+    
+    if(gohome){__exit_menu_to_home_unsave(); return;}
+    
+    subMenu++;
+    if(subMenu>sub_MENU_SET_WARN_TYPE_3)subMenu=sub_MENU_SET_WARN_TYPE_0;
+    __enter_menu_warn_type(subMenu);  
+}
+
+void  __set_short_warn_value(bool gohome)
+{
+	uint8_t* p;
+	int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	t32=__mflot32_2_int32(m_floatAdj.t32);	
+	if(subMenu<sub_MENU_SET_WARN_VALUE_4){
+		stp->diffPressureWarnSet[subMenu].warnValueLo=t32;
+	}else{
+        stp->diffPressureWarnSet[subMenu-sub_MENU_SET_WARN_VALUE_4].warnValueHi=t32;
+    }
+	__sys_data_save_write_flash();
+    
+    if(gohome){__exit_menu_to_home_unsave(); return;}
+    
+    subMenu++;
+    if(subMenu>sub_MENU_SET_WARN_VALUE_7)subMenu=sub_MENU_SET_WARN_VALUE_0;
+    __enter_menu_warn_value(subMenu);     
+}
+
+void __set_short_epr_param(bool gohome)
+{
+	uint8_t* p;
+	int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+    t32=__mflot32_2_int32(m_floatAdj.t32);
+    switch(subMenu){
+        case sub_MENU_SET_EPR_ZERO_0:
+		case sub_MENU_SET_EPR_ZERO_1:
+            stp->ex_pressZero[subMenu]=t32;
+            break;
+		case sub_MENU_SET_EPR_LINE_0:
+		case sub_MENU_SET_EPR_LINE_1:
+			stp->ex_pressLine[subMenu-sub_MENU_SET_EPR_LINE_0]=t32;
+            break;
+		default:break;
+    }
+	__sys_data_save_write_flash();
+	
+    if(gohome){__exit_menu_to_home_unsave(); return;}
+    
+    subMenu++;
+    if(subMenu>sub_MENU_SET_EPR_LINE_1)subMenu=sub_MENU_SET_EPR_ZERO_0;
+    __enter_menu_warn_value(subMenu);   	
+}
+
+void __set_short_epr_ilp_scale(bool gohome)
+{
+	uint8_t* p;
+	int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+    t32=__mflot32_2_int32(m_floatAdj.t32);
+	switch(subMenu){
+		case sub_MENU_SET_EX_DPR_ILP_Lo0:
+		case sub_MENU_SET_EX_DPR_ILP_Lo1:
+			stp->ex_pressiLoopLow[subMenu]=t32;
+			break;
+		case sub_MENU_SET_EX_DPR_ILP_Hi0:
+		case sub_MENU_SET_EX_DPR_ILP_Hi1:
+            stp->ex_pressiLoopUpper[subMenu-sub_MENU_SET_EX_DPR_ILP_Hi0]=t32;
+		default:break;
+	}
+	__sys_data_save_write_flash();
+    
+    if(gohome){__exit_menu_to_home_unsave(); return;}
+    
+    subMenu++;
+    if(subMenu>sub_MENU_SET_EX_DPR_ILP_Hi1)subMenu=sub_MENU_SET_EX_DPR_ILP_Lo0;
+    __enter_menu_epr_ilp_scale(subMenu); 	
+}
+
+void __set_long_density(void)
+{
+	uint8_t* p;
+	int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+    t32=__mflot32_2_int32(m_floatAdj.t32);	
+	stp->density=t32;
+    
+    __sys_data_save_write_flash();
+    
+    __exit_menu_to_home_unsave();
+}
+
+void __set_long_base_zero(void)
+{
+	uint8_t* p;
+	int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+    t32=__mflot32_2_int32(m_floatAdj.t32);	
+	stp->baseZero=t32;
+    
+    __sys_data_save_write_flash();
+    
+    __exit_menu_to_home_unsave();
+}
+void __set_long_bar_level_scale(void)
+{
+	int16_t* p;
+	int32_t t32;
+	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+    p=(uint16_t*)(&adjValue);	
+	stp->barScale=*p;
+    
+    __sys_data_save_write_flash();
+    
+    __exit_menu_to_home_unsave();    
+}
+
+void __set_long_work_mode(void)
+{
+	uint8_t* p;
+	int32_t t32;
+	//st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	//m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+    p=(uint8_t**)(&adjValue);	
+	//stp->barScale=*p;
+    dwm=*p;
+    __exit_menu_to_home_unsave();  	
+}
+//============================================================================
 void key_process_set_long(void)
 {
 	switch(menu){
 		case MENU_HOME:
-		//case sub_MENU_HOME_01:
-		//case sub_MENU_HOME_02:
-		case MENU_PASSWORD:
-			{passWord=0x00;adjLocation=0x00;menu=MENU_HOME;break;}
+		case MENU_PASSWORD:             __exit_menu_to_home_unsave();       break;
+		case MENU_SET_DENSITY:          __set_long_density();               break;
+        case MENU_SET_POSE_SIZE:        __set_short_pose_size(goHOME);      break;
+        case MENU_SET_BASE_ZERO:        __set_long_base_zero();             break;
+		case MENU_DIFF_CALIB:			__set_short_diff_calib(goHOME);     break;
+		case MENU_PRESSURE_CALIB:		__set_short_pr_calib(goHOME);		break;
+ 		case MENU_POLY_COEFFIC:			__set_short_poly_coefic(goHOME);	break;    
+		case MENU_SET_WARN_TYPE:		__set_short_warn_type(goHOME);      break;        
+        case MENU_SET_WARN_VALUE:		__set_short_warn_value(goHOME);     break;
+		case MENU_SET_EPR_ZERO_LINE:	__set_short_epr_param(goHOME);      break;
+		case MENU_SET_EPR_ILOOP_SCALE:	__set_short_epr_ilp_scale(goHOME);  break;    
+        
+		case MENU_SET_BAR_LEVEL_SCALE:	__set_long_bar_level_scale();       break;
+		case MENU_SET_WORK_MODE:        __set_long_work_mode();             break;		
+		default:break;
+	}
+}
+//============================================================================
+void key_process_set(void)
+{
+	switch(menu){
+		case MENU_HOME:             	__enter_menu_password();	break;
+		case MENU_PASSWORD:				break;
+		case MENU_SET_DENSITY:			break;
+		case MENU_SET_POSE_SIZE:		__set_short_pose_size(unGoHome);	break;
+		case MENU_SET_BASE_ZERO:		break;
+		case MENU_DIFF_CALIB:			__set_short_diff_calib(unGoHome);	break;
+		case MENU_PRESSURE_CALIB:		__set_short_pr_calib(unGoHome);		break;
+		
+		case MENU_POLY_COEFFIC:			__set_short_poly_coefic(unGoHome);	break;
+		case MENU_SET_WARN_TYPE:		__set_short_warn_type(unGoHome);	break;
+		
+		case MENU_SET_WARN_VALUE:		__set_short_warn_value(unGoHome);	break;
+		case MENU_SET_EPR_ZERO_LINE:	__set_short_epr_param(unGoHome);	break;
+		case MENU_SET_EPR_ILOOP_SCALE:	__set_short_epr_ilp_scale(unGoHome);break;
+		
+		case MENU_SET_BAR_LEVEL_SCALE:	break;
+		case MENU_SET_WORK_MODE:        break;		
 		default:break;
 	}
 }
 
-void key_process_set(void)
-{
-	switch(menu){
-		case MENU_HOME:{passWord=0x00;adjLocation=0x00;menu=MENU_PASSWORD;break;}
-		default:break;
-	}
-}
 
 void key_process(void)
 {

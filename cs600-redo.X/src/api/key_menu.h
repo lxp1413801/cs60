@@ -19,13 +19,15 @@ extern "C"{
 	#define PSW_SET_POLY_COEFFIC				133
 	#define PSW_SET_WARN_TYPE					6
 	#define PSW_SET_WARN_VALUE					16
-	//外部差压零点和线性
+	//外压零点和线性
 	#define PSW_SET_EPR_ZERO_LINE               138
+	//差压二次修正
+	//压力二次修正
 	//外部差压输出范围
 	#define PSW_SET_EPR_ILOOP_SCALE				139
 	//高度条满刻度对应的值95%还是100%
-	#define PSW_SET_FULL_LEVEL_BAR				188
-	#define PSW_SET_PRESSURE_DISP_TYPE			18
+	#define PSW_SET_BAR_LEVEL_SCALE				188
+	#define PSW_SET_WORK_MODE					18
 	
 	//==============================================================
 	//定义菜单,主界面
@@ -88,9 +90,11 @@ extern "C"{
 	#define sub_MENU_SET_EX_DPR_ILP_Hi1			0x03
 	
 	//高度条满刻度对应的值95%还是100%,psd=188	
-	#define MENU_SET_FULL_LEVEL_BAR				0xc0
+	#define MENU_SET_BAR_LEVEL_SCALE			0xc0
+	#define sub_MENU_SET_BAR_LEVEL_SCALE		0x00
 	//显示方式,显示即时值还是平均值
-	#define MENU_SET_PRESSURE_DISP_TYPE			0xf0
+	#define MENU_SET_WORK_MODE					0xf0
+	#define sub_MENU_SET_WORK_MODE				0x00
 	
 	//variable
 	extern volatile uint8_t menu;
@@ -99,7 +103,7 @@ extern "C"{
 	extern volatile uint16_t passWord;
 	extern volatile uint8_t adjLocation;
     extern volatile int32_t adjValue;
-	extern volatile st_float32_m m_floatAdj;
+	extern  st_float32_m m_floatAdj;
 	//
 	extern volatile uint8_t  calibRow;
 	extern volatile uint8_t  calibCol;	

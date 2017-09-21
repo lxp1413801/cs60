@@ -77,6 +77,7 @@ extern "C"{
 		
 		uint32_t	ex_TempCurrentLoopLow;			//温度4-20ma下限
 		uint32_t	ex_TempCurrentLoopUpper;		//温度4-20ma上限	
+		uint16_t	barScale;
 		//
 		uint16_t	crc;
 	}st_sysDataDef,sysDataDef_t;
@@ -148,6 +149,8 @@ extern "C"{
 	
 	volatile int32_t    rtPressure;
 	//fk 
+    extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
+    extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
 	extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
 
     //apl

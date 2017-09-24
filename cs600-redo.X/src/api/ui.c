@@ -203,9 +203,18 @@ void ui_disp_clear_num_dp(void)
 
 void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 {
+	
     uint8_t buf[10];
-    uint8_t t8;
+    
 	uint16_t x;
+	uint8_t t8;
+	//add 
+	// uint32_t t32;
+	// t32=xpf->t32;
+	// t32=__mflot32_2_int32(t32);
+	// t32=__int32_2_mflot32(t32);
+	// xpf->t32=t32;
+	//add end
 	x=xpf->stru.significand;
 	m_mem_cpy(buf,str);
 	if(xpf->stru.sign==0){
@@ -446,7 +455,8 @@ void ui_disp_menu_h_adj(void)
 {
 	lcd_clear_all();
 	lcd_disp_logo(true);
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	if(fps->pos==HOTIZONTAL){
         ui_disp_adj_xfloat_pt((uint8_t*)"   l",&m_floatAdj,adjLocation);	
     }else{
@@ -481,7 +491,8 @@ void ui_disp_menu_calib_diff_adj(void)
 {
 	uint8_t t8;
 	uint8_t buf[10];
-	
+	lcd_clear_all();
+	lcd_disp_logo(true);
 	buf[0]='d';
 	if(calibRow==0)buf[1]='l';
 	else if(calibRow==1)buf[1]='c';
@@ -508,7 +519,8 @@ void ui_disp_menu_calib_pr_adj(void)
 {
 	uint8_t t8;
 	uint8_t buf[10];
-	
+	lcd_clear_all();
+	lcd_disp_logo(true);	
 	buf[0]=' ';
 	// if(calibRow==0)buf[1]='l';
 	// else if(calibRow==1)buf[1]='c';
@@ -544,7 +556,7 @@ void ui_disp_menu_poly_c_adj(void)
 	m_mem_cpy(buf,(uint8_t*)"    ");
 	
 	buf[3]='a'+t8;
-	ui_disp_adj_xfixed_pt(buf,adjValue,adjLocation);
+	ui_disp_adj_xfixed_pt_dp(buf,adjValue,adjLocation,0);
 }
 
 void ui_disp_menu_warn_t_adj(void)
@@ -585,9 +597,11 @@ void ui_disp_menu_warn_v_adj(void)
 	lcd_disp_logo(true);
 	t8=subMenu;
 	if(t8>7)return;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
+	/*
 	//if(fps->diffPressureWarnSet[t8>>1].type);
-	if(t8<3){
+	if(t8<4){
 		//t32=fps->diffPressureWarnSet[t8].warnValueLo;
 		type=fps->diffPressureWarnSet[t8].type;
 		m_mem_cpy(buf,(uint8_t*)" al0");
@@ -597,9 +611,19 @@ void ui_disp_menu_warn_v_adj(void)
 		type=fps->diffPressureWarnSet[t8].type;	
 		m_mem_cpy(buf,(uint8_t*)" ah0");
 	}
-	buf[3]='0'+t8;
+	*/
+	t8=subMenu>>1;
 	
-	if(type == HIGHT_HI || type== HIGHT_HI){
+	buf[3]='0'+t8;
+	type=fps->diffPressureWarnSet[t8].type;
+	m_mem_cpy(buf,(uint8_t*)" al0");
+	buf[3]='0'+t8;
+	if(subMenu & 0x01){
+		//m_mem_cpy(buf,(uint8_t*)" ah0");
+		buf[2]='H';
+	}
+	
+	if(type == HIGHT_HI || type== HIGHT_LO){
 		lcd_disp_unit_2nd_m(true);
 	}else{
 		lcd_disp_unit_mpa(true);
@@ -607,45 +631,40 @@ void ui_disp_menu_warn_v_adj(void)
 	ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);
 }
 
-void ui_disp_menu_epr_param_adj(void)
+void ui_disp_menu_epr_calib_adj(void)
 {
 	uint8_t buf[6];
+	lcd_clear_all();
+	lcd_disp_logo(true);	
     switch(subMenu){
-		case sub_MENU_SET_EPR_ZERO_0:
-		case sub_MENU_SET_EPR_ZERO_1:
-			m_mem_cpy(buf,(uint8_t*)"epz0");
-			buf[3]='0'+subMenu-sub_MENU_SET_EPR_ZERO_0;
-			break;
-		case sub_MENU_SET_EPR_LINE_0:
-		case sub_MENU_SET_EPR_LINE_1:
-			m_mem_cpy(buf,(uint8_t*)"epl0");
-			buf[3]='0'+subMenu-sub_MENU_SET_EPR_LINE_0;
-			break;
+		case sub_MENU_SET_EPR_CH0_P0:m_mem_cpy(buf,(uint8_t*)"ep00");break;
+		case sub_MENU_SET_EPR_CH0_P1:m_mem_cpy(buf,(uint8_t*)"ep01");break;
+		case sub_MENU_SET_EPR_CH1_P0:m_mem_cpy(buf,(uint8_t*)"ep10");break;
+		case sub_MENU_SET_EPR_CH1_P1:m_mem_cpy(buf,(uint8_t*)"ep11");break;
 		default: break;
 	}
 	ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);		
 }
 
-void ui_disp_menu_epr_ilp_param_adj(void)
+void ui_disp_menu_epr_ilp_scale_adj(void)
 {
     uint8_t buf[6];
+	lcd_clear_all();
+	lcd_disp_logo(true);	
 	switch(subMenu){
-		case sub_MENU_SET_EX_DPR_ILP_Lo0:
-		case sub_MENU_SET_EX_DPR_ILP_Lo1:
-			m_mem_cpy(buf,(uint8_t*)"epl0");
-			buf[3]='0'+subMenu-sub_MENU_SET_EX_DPR_ILP_Lo0;
-			break;	
-		case sub_MENU_SET_EX_DPR_ILP_Hi0:
-		case sub_MENU_SET_EX_DPR_ILP_Hi1:
-			m_mem_cpy(buf,(uint8_t*)"eph0");
-			buf[3]='0'+subMenu-sub_MENU_SET_EX_DPR_ILP_Hi0;
-			break;		
+		case sub_MENU_SET_EXPR_ILP_CH0_Lo:m_mem_cpy(buf,(uint8_t*)"lp0l");break;
+		case sub_MENU_SET_EXPR_ILP_CH0_Hi:m_mem_cpy(buf,(uint8_t*)"lp0H");break;
+		case sub_MENU_SET_EXPR_ILP_CH1_Lo:m_mem_cpy(buf,(uint8_t*)"lp1l");break;
+		case sub_MENU_SET_EXPR_ILP_CH1_Hi:m_mem_cpy(buf,(uint8_t*)"lp1H");break;
+        default:return;
 	}
 	ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);	
 }
 
 void ui_disp_menu_bar_full_adj(void)
 {
+	lcd_clear_all();
+	lcd_disp_logo(true);	
 	ui_disp_adj_xfixed_pt_dp((uint8_t*)" scl",(int16_t)adjValue,adjLocation,0);
 }
 
@@ -683,9 +702,9 @@ void ui_disp_menu(void)
 		case MENU_SET_WARN_VALUE:		ui_disp_menu_warn_v_adj();		break;
 		
 		case MENU_SET_EPR_ZERO_LINE:		
-									ui_disp_menu_epr_param_adj();		break;
+									ui_disp_menu_epr_calib_adj();		break;
 		case MENU_SET_EPR_ILOOP_SCALE:	
-									ui_disp_menu_epr_ilp_param_adj();	break;
+									ui_disp_menu_epr_ilp_scale_adj();	break;
 		case MENU_SET_BAR_LEVEL_SCALE:	ui_disp_menu_bar_full_adj();	break;
         case MENU_SET_WORK_MODE:        ui_disp_menu_work_mode_adj();       break;
 		default:break;

@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"92 src/api/../includes/../api/data.h
-[s S659 `l 1 `i 1 `i 1 ]
-[n S659 . pValue pAdcValue tAdcValue ]
+"112 src/api/../includes/../api/data.h
+[s S662 `l 1 `i 1 `i 1 ]
+[n S662 . pValue pAdcValue tAdcValue ]
 "7173 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "6267
@@ -10,21 +10,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
 "6378
 [v _LATC `Vuc ~T0 @X0 0 e@3979 ]
-"158 src/api/../includes/../api/data.h
+"178 src/api/../includes/../api/data.h
 [v _cal_diff_press `(uc ~T0 @X0 0 ef ]
-"160
+"180
 [v _cal_pt100_temperature_in `(v ~T0 @X0 0 ef ]
-"162
+"182
 [v _cal_press `(uc ~T0 @X0 0 ef ]
-"163
+"183
 [v _cal_pt100_temperature_ex `(v ~T0 @X0 0 ef ]
-"165
+"185
 [v _cal_additional_pressute `(v ~T0 @X0 0 ef1`uc ]
 "150 src/api/sample.c
-[c E7505 0 1 .. ]
-[n E7505 . TEST_MODE WORK_MODE  ]
+[c E7504 0 1 .. ]
+[n E7504 . TEST_MODE WORK_MODE  ]
 "29 src/api/../includes/../api/data.h
-[v _dwm `VE7505 ~T0 @X0 0 e ]
+[v _dwm `VE7504 ~T0 @X0 0 e ]
 "45 src/api/../includes/../api/sample.h
 [v _sample_diff_pr_chip_fast `(uc ~T0 @X0 0 ef ]
 "46
@@ -59,21 +59,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ads1115_start_conversion `(v ~T0 @X0 0 ef1`*S650 ]
 "145
 [v _ads1115_read_conversion `(ui ~T0 @X0 0 ef1`*S650 ]
-"122 src/api/../includes/../api/data.h
+"142 src/api/../includes/../api/data.h
 [v _adc_inPt100 `Vi ~T0 @X0 0 e ]
-"144
-[v _x_prDiffData `S659 ~T0 @X0 0 e ]
+"164
+[v _x_prDiffData `S662 ~T0 @X0 0 e ]
 "141 src/api/../includes/../driver/ads1115.h
 [v _pAds1115PrObj `*S650 ~T0 @X0 0 e ]
-"125 src/api/../includes/../api/data.h
+"145 src/api/../includes/../api/data.h
 [v _adc_exPt100 `Vi ~T0 @X0 0 e ]
-"124
+"144
 [v _adc_pressure `Vi ~T0 @X0 0 e ]
 "18 src/api/../includes/../driver/in_adc.h
 [v _in_adc_init `(v ~T0 @X0 0 ef ]
 "19
 [v _in_adc_start_and_read `(ui ~T0 @X0 0 ef1`uc ]
-"131 src/api/../includes/../api/data.h
+"151 src/api/../includes/../api/data.h
 [v _adc_iPrEx `Vi ~T0 @X0 -> 0 `x e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -6386,8 +6386,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.h: 43: extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 [; ;ui.h: 44: extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 [; ;ui.h: 46: extern void ui_disp_menu(void);
-[; ;data.h: 16: extern uint8_t globleBuffer0[256];
-[; ;data.h: 17: extern uint8_t globleBuffer1[256];
+[; ;data.h: 17: extern uint8_t globleBuffer[256];
 [; ;data.h: 18: typedef enum{
 [; ;data.h: 19: HOTIZONTAL=0,
 [; ;data.h: 20: VERTICAL,
@@ -6410,76 +6409,90 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 43: uint8_t[3];
 [; ;data.h: 44: }st_warnDef,warnDef_t;
 [; ;data.h: 47: typedef struct{
-[; ;data.h: 48: uint32_t id;
-[; ;data.h: 49: em_posture pos;
-[; ;data.h: 50: uint8_t maxValueForlevelBar;
-[; ;data.h: 52: uint16_t density;
-[; ;data.h: 54: int32_t h;
-[; ;data.h: 55: uint32_t d;
-[; ;data.h: 57: int32_t V1;
-[; ;data.h: 58: int32_t V2;
-[; ;data.h: 60: int32_t baseZero;
-[; ;data.h: 62: st_warnDef diffPressureWarnSet[4];
-[; ;data.h: 63: st_warnDef pressureWarnSet;
-[; ;data.h: 64: uint16_t ployCoeffic[4];
-[; ;data.h: 66: uint32_t TempZero;
-[; ;data.h: 67: uint32_t TempLine;
-[; ;data.h: 70: uint32_t ex_pressZero[2];
-[; ;data.h: 71: uint32_t ex_pressLine[2];
-[; ;data.h: 72: uint32_t ex_pressiLoopLow[2];
-[; ;data.h: 73: uint32_t ex_pressiLoopUpper[2];
-[; ;data.h: 75: uint32_t ex_TempZero;
-[; ;data.h: 76: uint32_t ex_TempLine;
-[; ;data.h: 78: uint32_t ex_TempCurrentLoopLow;
-[; ;data.h: 79: uint32_t ex_TempCurrentLoopUpper;
-[; ;data.h: 80: uint16_t barScale;
-[; ;data.h: 82: uint16_t crc;
-[; ;data.h: 83: }st_sysDataDef,sysDataDef_t;
-[; ;data.h: 84: extern const st_sysDataDef defultSystemData;
-[; ;data.h: 86: extern uint8_t data_sys_init(void);
-[; ;data.h: 87: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
-[; ;data.h: 92: typedef struct{
-[; ;data.h: 93: int32_t pValue;
-[; ;data.h: 94: int16_t pAdcValue;
-[; ;data.h: 95: int16_t tAdcValue;
-[; ;data.h: 96: }st_prCalibPointDef,prCalibPoint_t,st_prData;
-[; ;data.h: 98: typedef struct{
-[; ;data.h: 99: uint8_t pCount;
-[; ;data.h: 100: uint8_t reverse0[3];
-[; ;data.h: 101: st_prCalibPointDef prCalibPoint[6];
-[; ;data.h: 102: }st_prCalibRowDef,prCalibRow_t;
-[; ;data.h: 104: typedef struct{
-[; ;data.h: 105: uint8_t rowCount;
-[; ;data.h: 106: uint8_t reverse0[3];
-[; ;data.h: 107: st_prCalibRowDef prCalibRow[3];
-[; ;data.h: 109: uint16_t crc;
-[; ;data.h: 110: }st_prCalibTabDef,prCalibTab_t;
-[; ;data.h: 113: extern st_prCalibTabDef diff_prCalibTabDef;
-[; ;data.h: 114: extern st_prCalibTabDef prCalibTabDef;
-[; ;data.h: 122: extern volatile int16_t adc_inPt100;
-[; ;data.h: 124: extern volatile int16_t adc_pressure;
-[; ;data.h: 125: extern volatile int16_t adc_exPt100;
-[; ;data.h: 131: extern volatile int16_t adc_iPrEx[2];
-[; ;data.h: 134: extern volatile int16_t adc_ibat;
-[; ;data.h: 135: extern volatile int16_t adc_iRef;
-[; ;data.h: 144: extern st_prData x_prDiffData;
-[; ;data.h: 145: extern volatile int32_t rtDiffPressure;
-[; ;data.h: 146: extern volatile int32_t rtVolume;
-[; ;data.h: 147: extern volatile int32_t rtHight;
-[; ;data.h: 148: extern volatile int32_t rtWeight;
-"150 src/api/../includes/../api/data.h
+[; ;data.h: 48: int32_t value;
+[; ;data.h: 49: uint16_t adcValue;
+[; ;data.h: 50: uint16_t reverse;
+[; ;data.h: 51: }st_exCalibDef,exClibDef_t;
+[; ;data.h: 54: typedef struct{
+[; ;data.h: 55: int32_t prOut;
+[; ;data.h: 56: int32_t prIn;
+[; ;data.h: 57: }st_2ndCalibDef;
+[; ;data.h: 58: typedef struct{
+[; ;data.h: 59: int32_t ilpLow;
+[; ;data.h: 60: int32_t ilpHi;
+[; ;data.h: 61: }st_ilpScaleDef;
+[; ;data.h: 63: typedef struct{
+[; ;data.h: 64: uint32_t id;
+[; ;data.h: 65: em_posture pos;
+[; ;data.h: 66: uint8_t maxValueForlevelBar;
+[; ;data.h: 68: uint16_t density;
+[; ;data.h: 70: int32_t h;
+[; ;data.h: 71: uint32_t d;
+[; ;data.h: 73: int32_t V1;
+[; ;data.h: 74: int32_t V2;
+[; ;data.h: 76: int32_t baseZero;
+[; ;data.h: 79: st_2ndCalibDef _2ndPrDiffCalib[2];
+[; ;data.h: 80: st_2ndCalibDef _2ndPrCalib[2];
+[; ;data.h: 82: st_warnDef diffPressureWarnSet[4];
+[; ;data.h: 83: st_warnDef pressureWarnSet[2];
+[; ;data.h: 86: uint16_t ployCoeffic[4];
+[; ;data.h: 88: st_exCalibDef TmepCalib[2];
+[; ;data.h: 90: st_exCalibDef exPr0Calib[2];
+[; ;data.h: 91: st_exCalibDef exPr1Calib[2];
+[; ;data.h: 92: st_exCalibDef exTempCalib[2];
+[; ;data.h: 94: st_ilpScaleDef diffPrilpScale0;
+[; ;data.h: 95: st_ilpScaleDef PrilpScale0;
+[; ;data.h: 96: st_ilpScaleDef exPrIpScaleCh0;
+[; ;data.h: 97: st_ilpScaleDef exPrIpScaleCh1;
+[; ;data.h: 99: uint16_t barScale;
+[; ;data.h: 101: uint16_t crc;
+[; ;data.h: 102: }st_sysDataDef,sysDataDef_t;
+[; ;data.h: 103: extern const st_sysDataDef defultSystemData;
+[; ;data.h: 105: extern st_sysDataDef stSysData;
+[; ;data.h: 106: extern uint8_t data_sys_init(void);
+[; ;data.h: 107: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+[; ;data.h: 112: typedef struct{
+[; ;data.h: 113: int32_t pValue;
+[; ;data.h: 114: int16_t pAdcValue;
+[; ;data.h: 115: int16_t tAdcValue;
+[; ;data.h: 116: }st_prCalibPointDef,prCalibPoint_t,st_prData;
+[; ;data.h: 118: typedef struct{
+[; ;data.h: 119: uint8_t pCount;
+[; ;data.h: 120: uint8_t reverse0[3];
+[; ;data.h: 121: st_prCalibPointDef prCalibPoint[6];
+[; ;data.h: 122: }st_prCalibRowDef,prCalibRow_t;
+[; ;data.h: 124: typedef struct{
+[; ;data.h: 125: uint8_t rowCount;
+[; ;data.h: 126: uint8_t reverse0[3];
+[; ;data.h: 127: st_prCalibRowDef prCalibRow[3];
+[; ;data.h: 129: uint16_t crc;
+[; ;data.h: 130: }st_prCalibTabDef,prCalibTab_t;
+[; ;data.h: 133: extern st_prCalibTabDef diff_prCalibTabDef;
+[; ;data.h: 134: extern st_prCalibTabDef prCalibTabDef;
+[; ;data.h: 142: extern volatile int16_t adc_inPt100;
+[; ;data.h: 144: extern volatile int16_t adc_pressure;
+[; ;data.h: 145: extern volatile int16_t adc_exPt100;
+[; ;data.h: 151: extern volatile int16_t adc_iPrEx[2];
+[; ;data.h: 154: extern volatile int16_t adc_ibat;
+[; ;data.h: 155: extern volatile int16_t adc_iRef;
+[; ;data.h: 164: extern st_prData x_prDiffData;
+[; ;data.h: 165: extern volatile int32_t rtDiffPressure;
+[; ;data.h: 166: extern volatile int32_t rtVolume;
+[; ;data.h: 167: extern volatile int32_t rtHight;
+[; ;data.h: 168: extern volatile int32_t rtWeight;
+"170 src/api/../includes/../api/data.h
 [v _rtPressure `Vl ~T0 @X0 1 e ]
-[; ;data.h: 150: volatile int32_t rtPressure;
-[; ;data.h: 152: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
-[; ;data.h: 153: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
-[; ;data.h: 154: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
-[; ;data.h: 158: extern uint8_t cal_diff_press(void);
-[; ;data.h: 159: extern uint8_t cal_diff_hight_level(void);
-[; ;data.h: 160: extern void cal_pt100_temperature_in(void);
-[; ;data.h: 162: extern uint8_t cal_press(void);
-[; ;data.h: 163: extern void cal_pt100_temperature_ex(void);
-[; ;data.h: 165: extern void cal_additional_pressute(uint8_t index);
-[; ;data.h: 167: extern void data_init_all(void);
+[; ;data.h: 170: volatile int32_t rtPressure;
+[; ;data.h: 172: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
+[; ;data.h: 173: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
+[; ;data.h: 174: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 178: extern uint8_t cal_diff_press(void);
+[; ;data.h: 179: extern uint8_t cal_diff_hight_level(void);
+[; ;data.h: 180: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 182: extern uint8_t cal_press(void);
+[; ;data.h: 183: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 185: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 187: extern void data_init_all(void);
 [; ;key_menu.h: 100: extern volatile uint8_t menu;
 [; ;key_menu.h: 101: extern volatile uint8_t subMenu;
 [; ;key_menu.h: 102: extern volatile uint8_t keyValue;
@@ -6710,14 +6723,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _t32 -> -> 0 `i `l ]
 [; ;sample.c: 47: if(len<3)return 0;
 "47
-[e $ ! < -> _len `i -> 3 `i 663  ]
+[e $ ! < -> _len `i -> 3 `i 666  ]
 [e ) -> 0 `i ]
-[e $UE 662  ]
-[e :U 663 ]
+[e $UE 665  ]
+[e :U 666 ]
 [; ;sample.c: 48: while(loop>0){
 "48
-[e $U 664  ]
-[e :U 665 ]
+[e $U 667  ]
+[e :U 668 ]
 {
 [; ;sample.c: 49: min=max=buf[0];
 "49
@@ -6729,25 +6742,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 "51
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 670  ]
-[e :U 667 ]
+[e $U 673  ]
+[e :U 670 ]
 {
 [; ;sample.c: 52: if(min>buf[i]){min=buf[i];minLoc=i;}
 "52
-[e $ ! > _min *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 671  ]
+[e $ ! > _min *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 674  ]
 {
 [e = _min *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
 [e = _minLoc _i ]
 }
-[e :U 671 ]
+[e :U 674 ]
 [; ;sample.c: 53: if(max<buf[i]){max=buf[i];maxLoc=i;}
 "53
-[e $ ! < _max *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 672  ]
+[e $ ! < _max *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 675  ]
 {
 [e = _max *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
 [e = _maxLoc _i ]
 }
-[e :U 672 ]
+[e :U 675 ]
 [; ;sample.c: 54: t32+=buf[i];
 "54
 [e =+ _t32 -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `l ]
@@ -6755,9 +6768,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "51
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 670 ]
-[e $ < -> _i `i -> _len `i 667  ]
-[e :U 668 ]
+[e :U 673 ]
+[e $ < -> _i `i -> _len `i 670  ]
+[e :U 671 ]
 "55
 }
 [; ;sample.c: 55: }
@@ -6778,18 +6791,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e -- _loop -> -> 1 `i `uc ]
 "61
 }
-[e :U 664 ]
+[e :U 667 ]
 "48
-[e $ > -> _loop `i -> 0 `i 665  ]
-[e :U 666 ]
+[e $ > -> _loop `i -> 0 `i 668  ]
+[e :U 669 ]
 [; ;sample.c: 61: }
 [; ;sample.c: 62: return (int16_t)t32;
 "62
 [e ) -> _t32 `i ]
-[e $UE 662  ]
+[e $UE 665  ]
 [; ;sample.c: 63: }
 "63
-[e :UE 662 ]
+[e :UE 665 ]
 }
 "65
 [v ___x_sample_fifo `(i ~T0 @X0 1 ef3`*i`i`uc ]
@@ -6815,9 +6828,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "69
 {
 [e = _i -> - -> _len `i -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 674  ]
-[e $U 675  ]
-[e :U 674 ]
+[e $ > -> _i `i -> 0 `i 677  ]
+[e $U 678  ]
+[e :U 677 ]
 {
 [; ;sample.c: 70: buf[i]=buf[i-1];
 "70
@@ -6829,8 +6842,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "69
 [e -- _i -> -> 1 `i `uc ]
-[e $ > -> _i `i -> 0 `i 674  ]
-[e :U 675 ]
+[e $ > -> _i `i -> 0 `i 677  ]
+[e :U 678 ]
 "72
 }
 [; ;sample.c: 72: }
@@ -6846,20 +6859,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 76: return (int16_t)(ret);
 "76
 [e ) -> _ret `i ]
-[e $UE 673  ]
+[e $UE 676  ]
 [; ;sample.c: 77: }
 "77
-[e :UE 673 ]
+[e :UE 676 ]
 }
 "78
-[v _sample_diff_pr_fliter `(uc ~T0 @X0 1 ef1`*S659 ]
+[v _sample_diff_pr_fliter `(uc ~T0 @X0 1 ef1`*S662 ]
 "79
 {
 [; ;sample.c: 78: uint8_t sample_diff_pr_fliter(st_prData* xin)
 [; ;sample.c: 79: {
 [e :U _sample_diff_pr_fliter ]
 "78
-[v _xin `*S659 ~T0 @X0 1 r1 ]
+[v _xin `*S662 ~T0 @X0 1 r1 ]
 "79
 [f ]
 [; ;sample.c: 80: xin->tAdcValue=__x_sample_fliter(sampBufDiffPr_D01,4,4);
@@ -6874,10 +6887,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 83: return 0;
 "83
 [e ) -> -> 0 `i `uc ]
-[e $UE 677  ]
+[e $UE 680  ]
 [; ;sample.c: 84: }
 "84
-[e :UE 677 ]
+[e :UE 680 ]
 }
 "86
 [v _sample_all_power_on `(v ~T0 @X0 1 ef ]
@@ -6889,50 +6902,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;sample.c: 88: if(!sensorPowerOn){
 "88
-[e $ ! ! != -> _sensorPowerOn `i -> -> -> 0 `i `Vuc `i 679  ]
+[e $ ! ! != -> _sensorPowerOn `i -> -> -> 0 `i `Vuc `i 682  ]
 {
 [; ;sample.c: 89: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
 "89
-[e :U 682 ]
-{
 [e :U 685 ]
+{
+[e :U 688 ]
 {
 [e =& _TRISB -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 684 ]
-[e :U 688 ]
+[e :U 687 ]
+[e :U 691 ]
 {
 [e =| _LATB -> << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 687 ]
+[e :U 690 ]
 }
-[e :U 681 ]
+[e :U 684 ]
 [; ;sample.c: 90: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
 "90
-[e :U 691 ]
-{
 [e :U 694 ]
+{
+[e :U 697 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 693 ]
-[e :U 697 ]
+[e :U 696 ]
+[e :U 700 ]
 {
 [e =| _LATC -> << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 696 ]
+[e :U 699 ]
 }
-[e :U 690 ]
+[e :U 693 ]
 [; ;sample.c: 91: sensorPowerOn=1;
 "91
 [e = _sensorPowerOn -> -> 1 `i `uc ]
 "92
 }
-[e :U 679 ]
+[e :U 682 ]
 [; ;sample.c: 92: }
 [; ;sample.c: 93: }
 "93
-[e :UE 678 ]
+[e :UE 681 ]
 }
 "95
 [v _sample_all_power_off `(v ~T0 @X0 1 ef ]
@@ -6944,42 +6957,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;sample.c: 97: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB &= ~(1<<4);}while(0);; }while(0);;
 "97
-[e :U 701 ]
-{
 [e :U 704 ]
+{
+[e :U 707 ]
 {
 [e =& _TRISB -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 703 ]
-[e :U 707 ]
+[e :U 706 ]
+[e :U 710 ]
 {
 [e =& _LATB -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 706 ]
+[e :U 709 ]
 }
-[e :U 700 ]
+[e :U 703 ]
 [; ;sample.c: 98: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
 "98
-[e :U 710 ]
-{
 [e :U 713 ]
+{
+[e :U 716 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 712 ]
-[e :U 716 ]
+[e :U 715 ]
+[e :U 719 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 5 `i `uc ]
 }
-[e :U 715 ]
+[e :U 718 ]
 }
-[e :U 709 ]
+[e :U 712 ]
 [; ;sample.c: 99: sensorPowerOn=0;
 "99
 [e = _sensorPowerOn -> -> 0 `i `uc ]
 [; ;sample.c: 100: }
 "100
-[e :UE 698 ]
+[e :UE 701 ]
 }
 "102
 [v _sample_variable_init `(v ~T0 @X0 1 ef ]
@@ -7027,7 +7040,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _inSocAdcSampleFinish -> -> 0 `i `uc ]
 [; ;sample.c: 119: }
 "119
-[e :UE 717 ]
+[e :UE 720 ]
 }
 "121
 [v _sample_call_cal_diff_pr `(uc ~T0 @X0 1 ef ]
@@ -7039,10 +7052,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;sample.c: 123: if(!diffPrChipSampleFinish)return 0;
 "123
-[e $ ! ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 719  ]
+[e $ ! ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 722  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 718  ]
-[e :U 719 ]
+[e $UE 721  ]
+[e :U 722 ]
 [; ;sample.c: 124: cal_diff_press();
 "124
 [e ( _cal_diff_press ..  ]
@@ -7055,10 +7068,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 127: return 1;
 "127
 [e ) -> -> 1 `i `uc ]
-[e $UE 718  ]
+[e $UE 721  ]
 [; ;sample.c: 128: }
 "128
-[e :UE 718 ]
+[e :UE 721 ]
 }
 "129
 [v _sample_call_cal_pr `(uc ~T0 @X0 1 ef ]
@@ -7070,10 +7083,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;sample.c: 131: if(!PrChipSampleFinish)return 0;
 "131
-[e $ ! ! != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 721  ]
+[e $ ! ! != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 724  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 720  ]
-[e :U 721 ]
+[e $UE 723  ]
+[e :U 724 ]
 [; ;sample.c: 132: cal_press();
 "132
 [e ( _cal_press ..  ]
@@ -7086,10 +7099,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 135: return 1;
 "135
 [e ) -> -> 1 `i `uc ]
-[e $UE 720  ]
+[e $UE 723  ]
 [; ;sample.c: 136: }
 "136
-[e :UE 720 ]
+[e :UE 723 ]
 }
 "137
 [v _sample_call_cal_in_soc `(uc ~T0 @X0 1 ef ]
@@ -7101,10 +7114,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;sample.c: 139: if(!inSocAdcSampleFinish)return 0;
 "139
-[e $ ! ! != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 723  ]
+[e $ ! ! != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 726  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 722  ]
-[e :U 723 ]
+[e $UE 725  ]
+[e :U 726 ]
 [; ;sample.c: 140: cal_additional_pressute(0);
 "140
 [e ( _cal_additional_pressute (1 -> -> 0 `i `uc ]
@@ -7117,10 +7130,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 143: return 1;
 "143
 [e ) -> -> 1 `i `uc ]
-[e $UE 722  ]
+[e $UE 725  ]
 [; ;sample.c: 144: }
 "144
-[e :UE 722 ]
+[e :UE 725 ]
 }
 "146
 [v _sample_call_in_ticker `(v ~T0 @X0 1 ef ]
@@ -7136,50 +7149,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 [; ;sample.c: 149: if(!sensorSimpleEn)return;
 "149
-[e $ ! ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 725  ]
-[e $UE 724  ]
-[e :U 725 ]
+[e $ ! ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 728  ]
+[e $UE 727  ]
+[e :U 728 ]
 [; ;sample.c: 150: if(dwm!=WORK_MODE){
 "150
-[e $ ! != -> _dwm `i -> . `E7505 1 `i 726  ]
+[e $ ! != -> _dwm `i -> . `E7504 1 `i 729  ]
 {
 [; ;sample.c: 151: if(sample_call_cal_diff_pr())return;
 "151
-[e $ ! != -> ( _sample_call_cal_diff_pr ..  `i -> -> -> 0 `i `uc `i 727  ]
-[e $UE 724  ]
-[e :U 727 ]
+[e $ ! != -> ( _sample_call_cal_diff_pr ..  `i -> -> -> 0 `i `uc `i 730  ]
+[e $UE 727  ]
+[e :U 730 ]
 [; ;sample.c: 152: if(sample_call_cal_pr())return;
 "152
-[e $ ! != -> ( _sample_call_cal_pr ..  `i -> -> -> 0 `i `uc `i 728  ]
-[e $UE 724  ]
-[e :U 728 ]
+[e $ ! != -> ( _sample_call_cal_pr ..  `i -> -> -> 0 `i `uc `i 731  ]
+[e $UE 727  ]
+[e :U 731 ]
 [; ;sample.c: 153: if(sample_call_cal_in_soc())return;
 "153
-[e $ ! != -> ( _sample_call_cal_in_soc ..  `i -> -> -> 0 `i `uc `i 729  ]
-[e $UE 724  ]
-[e :U 729 ]
+[e $ ! != -> ( _sample_call_cal_in_soc ..  `i -> -> -> 0 `i `uc `i 732  ]
+[e $UE 727  ]
+[e :U 732 ]
 "154
 }
-[e :U 726 ]
+[e :U 729 ]
 [; ;sample.c: 154: }
 [; ;sample.c: 155: if(sample_diff_pr_chip_fast())return;
 "155
-[e $ ! != -> ( _sample_diff_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 730  ]
-[e $UE 724  ]
-[e :U 730 ]
+[e $ ! != -> ( _sample_diff_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 733  ]
+[e $UE 727  ]
+[e :U 733 ]
 [; ;sample.c: 156: if(sample_pr_chip_fast())return;
 "156
-[e $ ! != -> ( _sample_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 731  ]
-[e $UE 724  ]
-[e :U 731 ]
+[e $ ! != -> ( _sample_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 734  ]
+[e $UE 727  ]
+[e :U 734 ]
 [; ;sample.c: 157: if(sample_in_soc_adc_ch())return;
 "157
-[e $ ! != -> ( _sample_in_soc_adc_ch ..  `i -> -> -> 0 `i `uc `i 732  ]
-[e $UE 724  ]
-[e :U 732 ]
+[e $ ! != -> ( _sample_in_soc_adc_ch ..  `i -> -> -> 0 `i `uc `i 735  ]
+[e $UE 727  ]
+[e :U 735 ]
 [; ;sample.c: 158: }
 "158
-[e :UE 724 ]
+[e :UE 727 ]
 }
 "160
 [v _sample_function_enable_fi_in_rtc `(v ~T0 @X0 1 ef ]
@@ -7195,15 +7208,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 [; ;sample.c: 164: if(dwm==WORK_MODE){
 "164
-[e $ ! == -> _dwm `i -> . `E7505 1 `i 734  ]
+[e $ ! == -> _dwm `i -> . `E7504 1 `i 737  ]
 {
 [; ;sample.c: 165: if(sensorSimpleEn){
 "165
-[e $ ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 735  ]
+[e $ ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 738  ]
 {
 [; ;sample.c: 166: if(diffPrChipSampleFinish && PrChipSampleFinish && inSocAdcSampleFinish){
 "166
-[e $ ! && && != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 736  ]
+[e $ ! && && != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 739  ]
 {
 [; ;sample.c: 168: sensorSimpleEn=0;
 "168
@@ -7216,39 +7229,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _sensorSimpleTsLong -> -> 0 `i `uc ]
 "171
 }
-[e :U 736 ]
+[e :U 739 ]
 "172
 }
 [; ;sample.c: 171: }
 [; ;sample.c: 172: }else{
-[e $U 737  ]
-[e :U 735 ]
+[e $U 740  ]
+[e :U 738 ]
 {
 [; ;sample.c: 173: if(diffPrChipSampleFinish || PrChipSampleFinish || inSocAdcSampleFinish){
 "173
-[e $ ! || || != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 738  ]
+[e $ ! || || != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 741  ]
 {
 [; ;sample.c: 175: if(diffPrChipSampleFinish)ret=sample_call_cal_diff_pr();
 "175
-[e $ ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 739  ]
+[e $ ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 742  ]
 [e = _ret ( _sample_call_cal_diff_pr ..  ]
-[e :U 739 ]
+[e :U 742 ]
 [; ;sample.c: 176: if(!ret && PrChipSampleFinish)ret=sample_call_cal_pr();
 "176
-[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 740  ]
+[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 743  ]
 [e = _ret ( _sample_call_cal_pr ..  ]
-[e :U 740 ]
+[e :U 743 ]
 [; ;sample.c: 177: if(!ret && inSocAdcSampleFinish)ret=sample_call_cal_in_soc();
 "177
-[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 741  ]
+[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 744  ]
 [e = _ret ( _sample_call_cal_in_soc ..  ]
-[e :U 741 ]
+[e :U 744 ]
 "178
 }
 [; ;sample.c: 178: }else if(sensorSimpleTsLong>=30*2){
-[e $U 742  ]
-[e :U 738 ]
-[e $ ! >= -> _sensorSimpleTsLong `i * -> 30 `i -> 2 `i 743  ]
+[e $U 745  ]
+[e :U 741 ]
+[e $ ! >= -> _sensorSimpleTsLong `i * -> 30 `i -> 2 `i 746  ]
 {
 [; ;sample.c: 180: sensorSimpleEn=1;
 "180
@@ -7262,26 +7275,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 "183
 }
 [; ;sample.c: 183: }else{
-[e $U 744  ]
-[e :U 743 ]
+[e $U 747  ]
+[e :U 746 ]
 {
 [; ;sample.c: 185: sensorSimpleTsLong++;
 "185
 [e ++ _sensorSimpleTsLong -> -> 1 `i `uc ]
 "186
 }
-[e :U 744 ]
-[e :U 742 ]
+[e :U 747 ]
+[e :U 745 ]
 "187
 }
-[e :U 737 ]
+[e :U 740 ]
 "188
 }
 [; ;sample.c: 186: }
 [; ;sample.c: 187: }
 [; ;sample.c: 188: }else{
-[e $U 745  ]
-[e :U 734 ]
+[e $U 748  ]
+[e :U 737 ]
 {
 [; ;sample.c: 189: sensorSimpleEn=1;
 "189
@@ -7294,11 +7307,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _sensorSimpleTsLong -> -> 0 `i `uc ]
 "192
 }
-[e :U 745 ]
+[e :U 748 ]
 [; ;sample.c: 192: }
 [; ;sample.c: 193: }
 "193
-[e :UE 733 ]
+[e :UE 736 ]
 }
 "195
 [v _sample_diff_pr_chip_fast `(uc ~T0 @X0 1 ef ]
@@ -7316,16 +7329,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =+ _diffPrChipSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
 [; ;sample.c: 199: if(diffPrChipSampleTimer<100)return 0;
 "199
-[e $ ! < _diffPrChipSampleTimer -> -> 100 `i `ui 747  ]
+[e $ ! < _diffPrChipSampleTimer -> -> 100 `i `ui 750  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 746  ]
-[e :U 747 ]
+[e $UE 749  ]
+[e :U 750 ]
 [; ;sample.c: 200: diffPrChipSampleTimer=0;
 "200
 [e = _diffPrChipSampleTimer -> -> 0 `i `ui ]
 [; ;sample.c: 201: if(diffPrChipSampleCount==0){
 "201
-[e $ ! == -> _diffPrChipSampleCount `i -> 0 `i 748  ]
+[e $ ! == -> _diffPrChipSampleCount `i -> 0 `i 751  ]
 {
 [; ;sample.c: 202: diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 "202
@@ -7342,17 +7355,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 206: return 1;
 "206
 [e ) -> -> 1 `i `uc ]
-[e $UE 746  ]
+[e $UE 749  ]
 "207
 }
-[e :U 748 ]
+[e :U 751 ]
 [; ;sample.c: 207: }
 [; ;sample.c: 208: t16=ads1115_read_conversion(pAds1115DiffPrObj);
 "208
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
 [; ;sample.c: 209: if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_0_1){
 "209
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7231 0 `i 749  ]
+[e $ ! == -> _diffPrChipSampCh `i -> . `E7231 0 `i 752  ]
 {
 [; ;sample.c: 210: __x_sample_fifo(sampBufDiffPr_D01,t16,4);
 "210
@@ -7363,9 +7376,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "212
 }
 [; ;sample.c: 212: }else if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_2_3){
-[e $U 750  ]
-[e :U 749 ]
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7231 3 `i 751  ]
+[e $U 753  ]
+[e :U 752 ]
+[e $ ! == -> _diffPrChipSampCh `i -> . `E7231 3 `i 754  ]
 {
 [; ;sample.c: 213: __x_sample_fifo(sampBufDiffPr_D23,t16,4);
 "213
@@ -7376,9 +7389,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "215
 }
 [; ;sample.c: 215: }else if(diffPrChipSampCh==ADS1X1X_MUX_SINGLE_1){
-[e $U 752  ]
-[e :U 751 ]
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7231 5 `i 753  ]
+[e $U 755  ]
+[e :U 754 ]
+[e $ ! == -> _diffPrChipSampCh `i -> . `E7231 5 `i 756  ]
 {
 [; ;sample.c: 216: adc_inPt100=__x_sample_fifo(sampBufDiffPr_S1,t16,4);
 "216
@@ -7392,17 +7405,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "219
 }
 [; ;sample.c: 219: }else{
-[e $U 754  ]
-[e :U 753 ]
+[e $U 757  ]
+[e :U 756 ]
 {
 [; ;sample.c: 220: diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 "220
 [e = _diffPrChipSampCh -> . `E7231 0 `uc ]
 "221
 }
-[e :U 754 ]
-[e :U 752 ]
-[e :U 750 ]
+[e :U 757 ]
+[e :U 755 ]
+[e :U 753 ]
 [; ;sample.c: 221: }
 [; ;sample.c: 222: ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 "222
@@ -7412,7 +7425,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
 [; ;sample.c: 224: if(diffPrChipSampleCount>4){
 "224
-[e $ ! > -> _diffPrChipSampleCount `i -> 4 `i 755  ]
+[e $ ! > -> _diffPrChipSampleCount `i -> 4 `i 758  ]
 {
 [; ;sample.c: 225: sample_diff_pr_fliter(&x_prDiffData);
 "225
@@ -7425,15 +7438,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _diffPrChipSampleCount -> -> 0 `i `uc ]
 "228
 }
-[e :U 755 ]
+[e :U 758 ]
 [; ;sample.c: 228: }
 [; ;sample.c: 229: return 1;
 "229
 [e ) -> -> 1 `i `uc ]
-[e $UE 746  ]
+[e $UE 749  ]
 [; ;sample.c: 230: }
 "230
-[e :UE 746 ]
+[e :UE 749 ]
 }
 "232
 [v _sample_pr_chip_fast `(uc ~T0 @X0 1 ef ]
@@ -7455,16 +7468,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =+ _PrChipSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
 [; ;sample.c: 237: if(PrChipSampleTimer<100)return 0;
 "237
-[e $ ! < _PrChipSampleTimer -> -> 100 `i `ui 757  ]
+[e $ ! < _PrChipSampleTimer -> -> 100 `i `ui 760  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 756  ]
-[e :U 757 ]
+[e $UE 759  ]
+[e :U 760 ]
 [; ;sample.c: 238: PrChipSampleTimer=0;
 "238
 [e = _PrChipSampleTimer -> -> 0 `i `ui ]
 [; ;sample.c: 239: if(prChipSampleCount==0){
 "239
-[e $ ! == -> _prChipSampleCount `i -> 0 `i 758  ]
+[e $ ! == -> _prChipSampleCount `i -> 0 `i 761  ]
 {
 [; ;sample.c: 240: prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
 "240
@@ -7481,17 +7494,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 244: return 1;
 "244
 [e ) -> -> 1 `i `uc ]
-[e $UE 756  ]
+[e $UE 759  ]
 "245
 }
-[e :U 758 ]
+[e :U 761 ]
 [; ;sample.c: 245: }
 [; ;sample.c: 247: t16=ads1115_read_conversion(pAds1115PrObj);
 "247
 [e = _t16 ( _ads1115_read_conversion (1 _pAds1115PrObj ]
 [; ;sample.c: 248: if(prChipSampleCh==ADS1X1X_MUX_SINGLE_0){
 "248
-[e $ ! == -> _prChipSampleCh `i -> . `E7231 4 `i 759  ]
+[e $ ! == -> _prChipSampleCh `i -> . `E7231 4 `i 762  ]
 {
 [; ;sample.c: 249: adc_exPt100=__x_sample_fifo(sampBufPt100ExA,t16,4);
 "249
@@ -7502,9 +7515,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "251
 }
 [; ;sample.c: 251: }else if(prChipSampleCh==ADS1X1X_MUX_SINGLE_1){
-[e $U 760  ]
-[e :U 759 ]
-[e $ ! == -> _prChipSampleCh `i -> . `E7231 5 `i 761  ]
+[e $U 763  ]
+[e :U 762 ]
+[e $ ! == -> _prChipSampleCh `i -> . `E7231 5 `i 764  ]
 {
 [; ;sample.c: 252: t16=__x_sample_fifo(sampBufPt100ExB,t16,4);
 "252
@@ -7521,9 +7534,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "256
 }
 [; ;sample.c: 256: }else if(prChipSampleCh==ADS1X1X_MUX_DIFF_2_3){
-[e $U 762  ]
-[e :U 761 ]
-[e $ ! == -> _prChipSampleCh `i -> . `E7231 3 `i 763  ]
+[e $U 765  ]
+[e :U 764 ]
+[e $ ! == -> _prChipSampleCh `i -> . `E7231 3 `i 766  ]
 {
 [; ;sample.c: 257: adc_pressure=__x_sample_fifo(sampBufPr,t16,4);
 "257
@@ -7537,17 +7550,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "260
 }
 [; ;sample.c: 260: }else{
-[e $U 764  ]
-[e :U 763 ]
+[e $U 767  ]
+[e :U 766 ]
 {
 [; ;sample.c: 261: prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
 "261
 [e = _prChipSampleCh -> . `E7231 4 `uc ]
 "262
 }
-[e :U 764 ]
-[e :U 762 ]
-[e :U 760 ]
+[e :U 767 ]
+[e :U 765 ]
+[e :U 763 ]
 [; ;sample.c: 262: }
 [; ;sample.c: 264: ads1115_set_mux(pAds1115PrObj,prChipSampleCh);
 "264
@@ -7557,7 +7570,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
 [; ;sample.c: 266: if(prChipSampleCount>4){
 "266
-[e $ ! > -> _prChipSampleCount `i -> 4 `i 765  ]
+[e $ ! > -> _prChipSampleCount `i -> 4 `i 768  ]
 {
 [; ;sample.c: 267: PrChipSampleFinish=1;
 "267
@@ -7567,15 +7580,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _prChipSampleCount -> -> 0 `i `uc ]
 "269
 }
-[e :U 765 ]
+[e :U 768 ]
 [; ;sample.c: 269: }
 [; ;sample.c: 270: return 1;
 "270
 [e ) -> -> 1 `i `uc ]
-[e $UE 756  ]
+[e $UE 759  ]
 [; ;sample.c: 271: }
 "271
-[e :UE 756 ]
+[e :UE 759 ]
 }
 "273
 [v _sample_in_soc_adc_ch `(uc ~T0 @X0 1 ef ]
@@ -7593,16 +7606,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =+ _inSocAdcSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
 [; ;sample.c: 277: if(inSocAdcSampleTimer<100)return 0;
 "277
-[e $ ! < _inSocAdcSampleTimer -> -> 100 `i `ui 767  ]
+[e $ ! < _inSocAdcSampleTimer -> -> 100 `i `ui 770  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 766  ]
-[e :U 767 ]
+[e $UE 769  ]
+[e :U 770 ]
 [; ;sample.c: 278: inSocAdcSampleTimer=0;
 "278
 [e = _inSocAdcSampleTimer -> -> 0 `i `ui ]
 [; ;sample.c: 279: if(inSocAdcSampleCount==0){
 "279
-[e $ ! == -> _inSocAdcSampleCount `i -> 0 `i 768  ]
+[e $ ! == -> _inSocAdcSampleCount `i -> 0 `i 771  ]
 {
 [; ;sample.c: 280: in_adc_init();
 "280
@@ -7616,14 +7629,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 283: return 1;
 "283
 [e ) -> -> 1 `i `uc ]
-[e $UE 766  ]
+[e $UE 769  ]
 "284
 }
-[e :U 768 ]
+[e :U 771 ]
 [; ;sample.c: 284: }
 [; ;sample.c: 285: if(inSocAdcSampleCh==2){
 "285
-[e $ ! == -> _inSocAdcSampleCh `i -> 2 `i 769  ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 2 `i 772  ]
 {
 [; ;sample.c: 286: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "286
@@ -7637,9 +7650,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "289
 }
 [; ;sample.c: 289: }else if(inSocAdcSampleCh==1){
-[e $U 770  ]
-[e :U 769 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 1 `i 771  ]
+[e $U 773  ]
+[e :U 772 ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 1 `i 774  ]
 {
 [; ;sample.c: 290: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "290
@@ -7653,9 +7666,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "293
 }
 [; ;sample.c: 293: }else if(inSocAdcSampleCh==0){
-[e $U 772  ]
-[e :U 771 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 0 `i 773  ]
+[e $U 775  ]
+[e :U 774 ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 0 `i 776  ]
 {
 [; ;sample.c: 294: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "294
@@ -7669,9 +7682,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "297
 }
 [; ;sample.c: 297: }else if(inSocAdcSampleCh==3){
-[e $U 774  ]
-[e :U 773 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 3 `i 775  ]
+[e $U 777  ]
+[e :U 776 ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 3 `i 778  ]
 {
 [; ;sample.c: 298: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "298
@@ -7688,22 +7701,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 "302
 }
 [; ;sample.c: 302: }else{
-[e $U 776  ]
-[e :U 775 ]
+[e $U 779  ]
+[e :U 778 ]
 {
 [; ;sample.c: 303: inSocAdcSampleCh=2;
 "303
 [e = _inSocAdcSampleCh -> -> 2 `i `uc ]
 "304
 }
-[e :U 776 ]
-[e :U 774 ]
-[e :U 772 ]
-[e :U 770 ]
+[e :U 779 ]
+[e :U 777 ]
+[e :U 775 ]
+[e :U 773 ]
 [; ;sample.c: 304: }
 [; ;sample.c: 305: if(inSocAdcSampleCount>4){
 "305
-[e $ ! > -> _inSocAdcSampleCount `i -> 4 `i 777  ]
+[e $ ! > -> _inSocAdcSampleCount `i -> 4 `i 780  ]
 {
 [; ;sample.c: 306: inSocAdcSampleFinish=1;
 "306
@@ -7713,13 +7726,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _inSocAdcSampleCount -> -> 0 `i `uc ]
 "308
 }
-[e :U 777 ]
+[e :U 780 ]
 [; ;sample.c: 308: }
 [; ;sample.c: 309: return 1;
 "309
 [e ) -> -> 1 `i `uc ]
-[e $UE 766  ]
+[e $UE 769  ]
 [; ;sample.c: 310: }
 "310
-[e :UE 766 ]
+[e :UE 769 ]
 }

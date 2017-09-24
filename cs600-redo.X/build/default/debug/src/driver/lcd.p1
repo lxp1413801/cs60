@@ -6061,7 +6061,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;lcd_code_table.h: 69: extern const uint8_t LCDDigitalTable[];
+[; ;lcd_code_table.h: 71: extern const uint8_t LCDDigitalTable[];
 [; ;lcd.h: 10: extern uint8_t* pLcdReg;
 [; ;lcd.h: 12: extern uint8_t pLCD[];
 [; ;lcd.h: 18: extern void lcd_set_com_seg(uint8_t com,uint8_t s,uint8_t show);
@@ -6151,10 +6151,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> 45 `c
 -> 58 `c
 -> 32 `c
+-> 71 `c
+-> 72 `c
 -> 0 `c
 ..
 ]
-[; ;lcd.c: 17: const uint8_t LCDDigitalIndexTable[]="0123456789abcdefghijklmnopqrstuvwxyz.-: ";
+[; ;lcd.c: 17: const uint8_t LCDDigitalIndexTable[]="0123456789abcdefghijklmnopqrstuvwxyz.-: GH";
 "18
 [v _LCDDigitalTable `Cuc ~T0 @X0 -> 0 `x e ]
 [i _LCDDigitalTable
@@ -6181,7 +6183,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> + + + -> 1 `i -> 32 `i -> 16 `i -> 64 `i `uc
 "24
 -> + + + + + -> 1 `i -> 32 `i -> 64 `i -> 2 `i -> 4 `i -> 8 `i `uc
--> + + + + -> 2 `i -> 4 `i -> 16 `i -> 32 `i -> 64 `i `uc
+-> + + + -> 4 `i -> 16 `i -> 32 `i -> 64 `i `uc
 -> + -> 2 `i -> 4 `i `uc
 -> + + -> 2 `i -> 4 `i -> 8 `i `uc
 "25
@@ -6209,6 +6211,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 64 `i `uc
 -> + -> 64 `i -> 8 `i `uc
 -> -> 0 `i `uc
+"30
+-> + + + + -> 1 `i -> 4 `i -> 8 `i -> 16 `i -> 32 `i `uc
+-> + + + + -> 2 `i -> 4 `i -> 16 `i -> 32 `i -> 64 `i `uc
 ..
 ]
 [; ;lcd.c: 18: const uint8_t LCDDigitalTable[]=
@@ -6217,354 +6222,355 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.c: 21: (0x20 + 0x40 + 0x02 + 0x04),(0x20 + 0x40 + 0x04 + 0x08 + 0x01),(0x01 + 0x20 + 0x10 + 0x08 + 0x04 + 0x40),(0x01 + 0x02 + 0x04),
 [; ;lcd.c: 22: (0x01 + 0x02 + 0x04 + 0x08 + 0x10 + 0x20 + 0x40),(0x01 + 0x20 + 0x40 + 0x02 + 0x04+ 0x08),(0x01 + 0x20 + 0x10 + 0x02 + 0x04 + 0x40),(0x20 + 0x10 + 0x40 + 0x04 + 0x08),
 [; ;lcd.c: 23: (0x01 + 0x20 + 0x10 + 0x08),(0x02 + 0x10 + 0x40 + 0x04 + 0x08),(0x01 + 0x20 + 0x10 + 0x08 + 0x40),(0x01 + 0x20 + 0x10 + 0x40),
-[; ;lcd.c: 24: (0x01 + 0x20 + 0x40 + 0x02 + 0x04+ 0x08),(0x02 + 0x04 + 0x10 + 0x20 + 0x40),(0x02 + 0x04),(0x02 + 0x04 + 0x08),
+[; ;lcd.c: 24: (0x01 + 0x20 + 0x40 + 0x02 + 0x04+ 0x08),(0x04 + 0x10 + 0x20 + 0x40),(0x02 + 0x04),(0x02 + 0x04 + 0x08),
 [; ;lcd.c: 25: (0x02+0x08+0x10+0x20+0x40),(0x20 +0x10 +0x08),0,(0x20 +0x10 +0x01+0x02+0x04),
 [; ;lcd.c: 26: (0x04 + 0x08 + 0x10 + 0x40),(0x01 +0x02 +0x10+0x20+0x40),(0x01 +0x02 +0x04+0x20+0x40),(0x10 + 0x40),
 [; ;lcd.c: 27: (0x20 + 0x40 + 0x04 + 0x08 + 0x01),(0x20 +0x10 +0x08+0x40),(0x02 +0x04 +0x08+0x10+0x20),0,
 [; ;lcd.c: 28: 0,0,(0x02 +0x04 +0x08+0x40+0x20),(0x01 + 0x02 + 0x40 + 0x10 + 0x08),
 [; ;lcd.c: 29: (0x40),(0x40),(0x40+0x08),0x00,
-[; ;lcd.c: 30: };
-"32
-[v _lcd_set_com_seg `(v ~T0 @X0 1 ef3`uc`uc`uc ]
+[; ;lcd.c: 30: (0x01 + 0x04 + 0x08 + 0x10 + 0x20),(0x02 + 0x04 + 0x10 + 0x20 + 0x40),
+[; ;lcd.c: 31: };
 "33
+[v _lcd_set_com_seg `(v ~T0 @X0 1 ef3`uc`uc`uc ]
+"34
 {
-[; ;lcd.c: 32: void lcd_set_com_seg(uint8_t com,uint8_t seg,uint8_t show)
-[; ;lcd.c: 33: {
+[; ;lcd.c: 33: void lcd_set_com_seg(uint8_t com,uint8_t seg,uint8_t show)
+[; ;lcd.c: 34: {
 [e :U _lcd_set_com_seg ]
-"32
+"33
 [v _com `uc ~T0 @X0 1 r1 ]
 [v _seg `uc ~T0 @X0 1 r2 ]
 [v _show `uc ~T0 @X0 1 r3 ]
-"33
-[f ]
 "34
-[v _offset `uc ~T0 @X0 1 a ]
+[f ]
 "35
-[v _bits `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 34: uint8_t offset;
-[; ;lcd.c: 35: uint8_t bits;
-[; ;lcd.c: 36: if(com>3)return;
+[v _offset `uc ~T0 @X0 1 a ]
 "36
+[v _bits `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 35: uint8_t offset;
+[; ;lcd.c: 36: uint8_t bits;
+[; ;lcd.c: 37: if(com>3)return;
+"37
 [e $ ! > -> _com `i -> 3 `i 644  ]
 [e $UE 643  ]
 [e :U 644 ]
-[; ;lcd.c: 37: if(seg>47)return;
-"37
+[; ;lcd.c: 38: if(seg>47)return;
+"38
 [e $ ! > -> _seg `i -> 47 `i 645  ]
 [e $UE 643  ]
 [e :U 645 ]
-[; ;lcd.c: 38: offset=com*6 + seg/8;
-"38
-[e = _offset -> + * -> _com `i -> 6 `i / -> _seg `i -> 8 `i `uc ]
-[; ;lcd.c: 39: bits=seg%8;
+[; ;lcd.c: 39: offset=com*6 + seg/8;
 "39
-[e = _bits -> % -> _seg `i -> 8 `i `uc ]
-[; ;lcd.c: 40: if(show){
+[e = _offset -> + * -> _com `i -> 6 `i / -> _seg `i -> 8 `i `uc ]
+[; ;lcd.c: 40: bits=seg%8;
 "40
+[e = _bits -> % -> _seg `i -> 8 `i `uc ]
+[; ;lcd.c: 41: if(show){
+"41
 [e $ ! != -> _show `i -> -> -> 0 `i `uc `i 646  ]
 {
-[; ;lcd.c: 41: pLCD[offset] |= (1<<bits);
-"41
-[e =| *U + &U _pLCD * -> _offset `ux -> -> # *U &U _pLCD `ui `ux -> << -> 1 `i _bits `uc ]
+[; ;lcd.c: 42: pLCD[offset] |= (1<<bits);
 "42
+[e =| *U + &U _pLCD * -> _offset `ux -> -> # *U &U _pLCD `ui `ux -> << -> 1 `i _bits `uc ]
+"43
 }
-[; ;lcd.c: 42: }else{
+[; ;lcd.c: 43: }else{
 [e $U 647  ]
 [e :U 646 ]
 {
-[; ;lcd.c: 43: pLCD[offset] &= ~(1<<bits);
-"43
-[e =& *U + &U _pLCD * -> _offset `ux -> -> # *U &U _pLCD `ui `ux -> ~ << -> 1 `i _bits `uc ]
+[; ;lcd.c: 44: pLCD[offset] &= ~(1<<bits);
 "44
+[e =& *U + &U _pLCD * -> _offset `ux -> -> # *U &U _pLCD `ui `ux -> ~ << -> 1 `i _bits `uc ]
+"45
 }
 [e :U 647 ]
-[; ;lcd.c: 44: }
 [; ;lcd.c: 45: }
-"45
+[; ;lcd.c: 46: }
+"46
 [e :UE 643 ]
 }
-"46
-[v _lcd_disp_level_bar `(v ~T0 @X0 1 ef2`uc`uc ]
 "47
+[v _lcd_disp_level_bar `(v ~T0 @X0 1 ef2`uc`uc ]
+"48
 {
-[; ;lcd.c: 46: void lcd_disp_level_bar(uint8_t bar,uint8_t show)
-[; ;lcd.c: 47: {
+[; ;lcd.c: 47: void lcd_disp_level_bar(uint8_t bar,uint8_t show)
+[; ;lcd.c: 48: {
 [e :U _lcd_disp_level_bar ]
-"46
+"47
 [v _bar `uc ~T0 @X0 1 r1 ]
 [v _show `uc ~T0 @X0 1 r2 ]
-"47
+"48
 [f ]
-"49
-[v ___bar `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 49: uint8_t __bar;
-[; ;lcd.c: 50: if(bar>49)return;
 "50
+[v ___bar `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 50: uint8_t __bar;
+[; ;lcd.c: 51: if(bar>49)return;
+"51
 [e $ ! > -> _bar `i -> 49 `i 649  ]
 [e $UE 648  ]
 [e :U 649 ]
-[; ;lcd.c: 51: __bar=49-bar;
-"51
-[e = ___bar -> - -> 49 `i -> _bar `i `uc ]
-[; ;lcd.c: 52: switch(__bar){
+[; ;lcd.c: 52: __bar=49-bar;
 "52
+[e = ___bar -> - -> 49 `i -> _bar `i `uc ]
+[; ;lcd.c: 53: switch(__bar){
+"53
 [e $U 651  ]
 {
-[; ;lcd.c: 53: case 0: lcd_set_com_seg(0,46,show); break;
-"53
+[; ;lcd.c: 54: case 0: lcd_set_com_seg(0,46,show); break;
+"54
 [e :U 652 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 46 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 54: case 1: lcd_set_com_seg(1,46,show); break;
-"54
+[; ;lcd.c: 55: case 1: lcd_set_com_seg(1,46,show); break;
+"55
 [e :U 653 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 46 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 55: case 2: lcd_set_com_seg(2,46,show); break;
-"55
+[; ;lcd.c: 56: case 2: lcd_set_com_seg(2,46,show); break;
+"56
 [e :U 654 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 46 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 56: case 3: lcd_set_com_seg(3,46,show); break;
-"56
+[; ;lcd.c: 57: case 3: lcd_set_com_seg(3,46,show); break;
+"57
 [e :U 655 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 46 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 58: case 4: lcd_set_com_seg(3,47,show); break;
-"58
+[; ;lcd.c: 59: case 4: lcd_set_com_seg(3,47,show); break;
+"59
 [e :U 656 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 47 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 59: case 5: lcd_set_com_seg(2,47,show); break;
-"59
+[; ;lcd.c: 60: case 5: lcd_set_com_seg(2,47,show); break;
+"60
 [e :U 657 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 47 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 60: case 6: lcd_set_com_seg(1,47,show); break;
-"60
+[; ;lcd.c: 61: case 6: lcd_set_com_seg(1,47,show); break;
+"61
 [e :U 658 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 47 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 61: case 7: lcd_set_com_seg(0,47,show); break;
-"61
+[; ;lcd.c: 62: case 7: lcd_set_com_seg(0,47,show); break;
+"62
 [e :U 659 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 47 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 63: case 8: lcd_set_com_seg(0,31,show); break;
-"63
+[; ;lcd.c: 64: case 8: lcd_set_com_seg(0,31,show); break;
+"64
 [e :U 660 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 31 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 64: case 9: lcd_set_com_seg(1,31,show); break;
-"64
+[; ;lcd.c: 65: case 9: lcd_set_com_seg(1,31,show); break;
+"65
 [e :U 661 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 31 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 65: case 10: lcd_set_com_seg(2,31,show); break;
-"65
+[; ;lcd.c: 66: case 10: lcd_set_com_seg(2,31,show); break;
+"66
 [e :U 662 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 31 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 66: case 11: lcd_set_com_seg(3,31,show); break;
-"66
+[; ;lcd.c: 67: case 11: lcd_set_com_seg(3,31,show); break;
+"67
 [e :U 663 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 31 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 68: case 12: lcd_set_com_seg(3,0,show); break;
-"68
+[; ;lcd.c: 69: case 12: lcd_set_com_seg(3,0,show); break;
+"69
 [e :U 664 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 0 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 69: case 13: lcd_set_com_seg(2,0,show); break;
-"69
+[; ;lcd.c: 70: case 13: lcd_set_com_seg(2,0,show); break;
+"70
 [e :U 665 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 0 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 70: case 14: lcd_set_com_seg(1,0,show); break;
-"70
+[; ;lcd.c: 71: case 14: lcd_set_com_seg(1,0,show); break;
+"71
 [e :U 666 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 0 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 71: case 15: lcd_set_com_seg(0,0,show); break;
-"71
+[; ;lcd.c: 72: case 15: lcd_set_com_seg(0,0,show); break;
+"72
 [e :U 667 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 0 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 73: case 16: lcd_set_com_seg(0,1,show); break;
-"73
+[; ;lcd.c: 74: case 16: lcd_set_com_seg(0,1,show); break;
+"74
 [e :U 668 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 1 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 74: case 17: lcd_set_com_seg(1,1,show); break;
-"74
+[; ;lcd.c: 75: case 17: lcd_set_com_seg(1,1,show); break;
+"75
 [e :U 669 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 1 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 75: case 18: lcd_set_com_seg(2,1,show); break;
-"75
+[; ;lcd.c: 76: case 18: lcd_set_com_seg(2,1,show); break;
+"76
 [e :U 670 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 1 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 76: case 19: lcd_set_com_seg(3,1,show); break;
-"76
+[; ;lcd.c: 77: case 19: lcd_set_com_seg(3,1,show); break;
+"77
 [e :U 671 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 1 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 78: case 20: lcd_set_com_seg(3,2,show); break;
-"78
+[; ;lcd.c: 79: case 20: lcd_set_com_seg(3,2,show); break;
+"79
 [e :U 672 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 2 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 79: case 21: lcd_set_com_seg(2,2,show); break;
-"79
+[; ;lcd.c: 80: case 21: lcd_set_com_seg(2,2,show); break;
+"80
 [e :U 673 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 2 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 80: case 22: lcd_set_com_seg(1,2,show); break;
-"80
+[; ;lcd.c: 81: case 22: lcd_set_com_seg(1,2,show); break;
+"81
 [e :U 674 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 2 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 81: case 23: lcd_set_com_seg(0,2,show); break;
-"81
+[; ;lcd.c: 82: case 23: lcd_set_com_seg(0,2,show); break;
+"82
 [e :U 675 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 2 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 83: case 24: lcd_set_com_seg(0,3,show); break;
-"83
+[; ;lcd.c: 84: case 24: lcd_set_com_seg(0,3,show); break;
+"84
 [e :U 676 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 3 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 84: case 25: lcd_set_com_seg(1,3,show); break;
-"84
+[; ;lcd.c: 85: case 25: lcd_set_com_seg(1,3,show); break;
+"85
 [e :U 677 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 3 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 85: case 26: lcd_set_com_seg(2,3,show); break;
-"85
+[; ;lcd.c: 86: case 26: lcd_set_com_seg(2,3,show); break;
+"86
 [e :U 678 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 3 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 86: case 27: lcd_set_com_seg(3,3,show); break;
-"86
+[; ;lcd.c: 87: case 27: lcd_set_com_seg(3,3,show); break;
+"87
 [e :U 679 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 3 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 88: case 28: lcd_set_com_seg(3,4,show); break;
-"88
+[; ;lcd.c: 89: case 28: lcd_set_com_seg(3,4,show); break;
+"89
 [e :U 680 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 4 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 89: case 29: lcd_set_com_seg(2,4,show); break;
-"89
+[; ;lcd.c: 90: case 29: lcd_set_com_seg(2,4,show); break;
+"90
 [e :U 681 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 4 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 90: case 30: lcd_set_com_seg(1,4,show); break;
-"90
+[; ;lcd.c: 91: case 30: lcd_set_com_seg(1,4,show); break;
+"91
 [e :U 682 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 4 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 91: case 31: lcd_set_com_seg(0,4,show); break;
-"91
+[; ;lcd.c: 92: case 31: lcd_set_com_seg(0,4,show); break;
+"92
 [e :U 683 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 4 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 93: case 32: lcd_set_com_seg(0,5,show); break;
-"93
+[; ;lcd.c: 94: case 32: lcd_set_com_seg(0,5,show); break;
+"94
 [e :U 684 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 5 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 94: case 33: lcd_set_com_seg(1,5,show); break;
-"94
+[; ;lcd.c: 95: case 33: lcd_set_com_seg(1,5,show); break;
+"95
 [e :U 685 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 5 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 95: case 34: lcd_set_com_seg(2,5,show); break;
-"95
+[; ;lcd.c: 96: case 34: lcd_set_com_seg(2,5,show); break;
+"96
 [e :U 686 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 5 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 96: case 35: lcd_set_com_seg(3,5,show); break;
-"96
+[; ;lcd.c: 97: case 35: lcd_set_com_seg(3,5,show); break;
+"97
 [e :U 687 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 5 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 98: case 36: lcd_set_com_seg(3,6,show); break;
-"98
+[; ;lcd.c: 99: case 36: lcd_set_com_seg(3,6,show); break;
+"99
 [e :U 688 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 6 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 99: case 37: lcd_set_com_seg(2,6,show); break;
-"99
+[; ;lcd.c: 100: case 37: lcd_set_com_seg(2,6,show); break;
+"100
 [e :U 689 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 6 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 100: case 38: lcd_set_com_seg(1,6,show); break;
-"100
+[; ;lcd.c: 101: case 38: lcd_set_com_seg(1,6,show); break;
+"101
 [e :U 690 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 6 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 101: case 39: lcd_set_com_seg(0,6,show); break;
-"101
+[; ;lcd.c: 102: case 39: lcd_set_com_seg(0,6,show); break;
+"102
 [e :U 691 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 6 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 103: case 40: lcd_set_com_seg(0,7,show); break;
-"103
+[; ;lcd.c: 104: case 40: lcd_set_com_seg(0,7,show); break;
+"104
 [e :U 692 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 7 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 104: case 41: lcd_set_com_seg(1,7,show); break;
-"104
+[; ;lcd.c: 105: case 41: lcd_set_com_seg(1,7,show); break;
+"105
 [e :U 693 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 7 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 105: case 42: lcd_set_com_seg(2,7,show); break;
-"105
+[; ;lcd.c: 106: case 42: lcd_set_com_seg(2,7,show); break;
+"106
 [e :U 694 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 7 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 106: case 43: lcd_set_com_seg(3,7,show); break;
-"106
+[; ;lcd.c: 107: case 43: lcd_set_com_seg(3,7,show); break;
+"107
 [e :U 695 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 7 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 108: case 44: lcd_set_com_seg(3,33,show); break;
-"108
+[; ;lcd.c: 109: case 44: lcd_set_com_seg(3,33,show); break;
+"109
 [e :U 696 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 33 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 109: case 45: lcd_set_com_seg(2,33,show); break;
-"109
+[; ;lcd.c: 110: case 45: lcd_set_com_seg(2,33,show); break;
+"110
 [e :U 697 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 33 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 110: case 46: lcd_set_com_seg(1,33,show); break;
-"110
+[; ;lcd.c: 111: case 46: lcd_set_com_seg(1,33,show); break;
+"111
 [e :U 698 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 33 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 111: case 47: lcd_set_com_seg(0,33,show); break;
-"111
+[; ;lcd.c: 112: case 47: lcd_set_com_seg(0,33,show); break;
+"112
 [e :U 699 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 33 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 113: case 48: lcd_set_com_seg(0,34,show); break;
-"113
+[; ;lcd.c: 114: case 48: lcd_set_com_seg(0,34,show); break;
+"114
 [e :U 700 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 34 `i `uc _show ]
 [e $U 650  ]
-[; ;lcd.c: 114: case 49: lcd_set_com_seg(1,34,show); break;
-"114
+[; ;lcd.c: 115: case 49: lcd_set_com_seg(1,34,show); break;
+"115
 [e :U 701 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 34 `i `uc _show ]
 [e $U 650  ]
-"115
+"116
 }
-[; ;lcd.c: 115: }
+[; ;lcd.c: 116: }
 [e $U 650  ]
-"52
+"53
 [e :U 651 ]
 [e [\ ___bar , $ -> -> 0 `i `uc 652
  , $ -> -> 1 `i `uc 653
@@ -6617,1459 +6623,1459 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 48 `i `uc 700
  , $ -> -> 49 `i `uc 701
  650 ]
-"115
-[e :U 650 ]
-[; ;lcd.c: 116: }
 "116
+[e :U 650 ]
+[; ;lcd.c: 117: }
+"117
 [e :UE 648 ]
 }
-"118
+"119
 [v _lcd_disp_level `(v ~T0 @X0 1 ef1`uc ]
-"119
-{
-[; ;lcd.c: 118: void lcd_disp_level(uint8_t level)
-[; ;lcd.c: 119: {
-[e :U _lcd_disp_level ]
-"118
-[v _level `uc ~T0 @X0 1 r1 ]
-"119
-[f ]
 "120
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 120: uint8_t i;
-[; ;lcd.c: 121: if(level>=99)level=99;
+{
+[; ;lcd.c: 119: void lcd_disp_level(uint8_t level)
+[; ;lcd.c: 120: {
+[e :U _lcd_disp_level ]
+"119
+[v _level `uc ~T0 @X0 1 r1 ]
+"120
+[f ]
 "121
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 121: uint8_t i;
+[; ;lcd.c: 122: if(level>=99)level=99;
+"122
 [e $ ! >= -> _level `i -> 99 `i 703  ]
 [e = _level -> -> 99 `i `uc ]
 [e :U 703 ]
-[; ;lcd.c: 122: level/=2;
-"122
-[e =/ _level -> 2 `uc ]
-[; ;lcd.c: 123: for(i=0;i<level;i++){
+[; ;lcd.c: 123: level/=2;
 "123
+[e =/ _level -> 2 `uc ]
+[; ;lcd.c: 124: for(i=0;i<level;i++){
+"124
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 707  ]
 [e :U 704 ]
 {
-[; ;lcd.c: 124: lcd_disp_level_bar(i,1);
-"124
-[e ( _lcd_disp_level_bar (2 , _i -> -> 1 `i `uc ]
+[; ;lcd.c: 125: lcd_disp_level_bar(i,1);
 "125
+[e ( _lcd_disp_level_bar (2 , _i -> -> 1 `i `uc ]
+"126
 }
-"123
+"124
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 707 ]
 [e $ < -> _i `i -> _level `i 704  ]
 [e :U 705 ]
-"125
-}
-[; ;lcd.c: 125: }
-[; ;lcd.c: 126: for(;i<50;i++){
 "126
+}
+[; ;lcd.c: 126: }
+[; ;lcd.c: 127: for(;i<50;i++){
+"127
 {
 [e $ < -> _i `i -> 50 `i 708  ]
 [e $U 709  ]
 [e :U 708 ]
 {
-[; ;lcd.c: 127: lcd_disp_level_bar(i,0);
-"127
-[e ( _lcd_disp_level_bar (2 , _i -> -> 0 `i `uc ]
+[; ;lcd.c: 128: lcd_disp_level_bar(i,0);
 "128
+[e ( _lcd_disp_level_bar (2 , _i -> -> 0 `i `uc ]
+"129
 }
-"126
+"127
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 50 `i 708  ]
 [e :U 709 ]
-"128
-}
-[; ;lcd.c: 128: }
-[; ;lcd.c: 129: }
 "129
+}
+[; ;lcd.c: 129: }
+[; ;lcd.c: 130: }
+"130
 [e :UE 702 ]
 }
-"130
-[v _lcd_disp_level_off `(v ~T0 @X0 1 ef ]
 "131
+[v _lcd_disp_level_off `(v ~T0 @X0 1 ef ]
+"132
 {
-[; ;lcd.c: 130: void lcd_disp_level_off(void)
-[; ;lcd.c: 131: {
+[; ;lcd.c: 131: void lcd_disp_level_off(void)
+[; ;lcd.c: 132: {
 [e :U _lcd_disp_level_off ]
 [f ]
-"132
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 132: uint8_t i;
-[; ;lcd.c: 133: for(i=0;i<50;i++){
 "133
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 133: uint8_t i;
+[; ;lcd.c: 134: for(i=0;i<50;i++){
+"134
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 50 `i 712  ]
 [e $U 713  ]
 [e :U 712 ]
 {
-[; ;lcd.c: 134: lcd_disp_level_bar(i,0);
-"134
-[e ( _lcd_disp_level_bar (2 , _i -> -> 0 `i `uc ]
+[; ;lcd.c: 135: lcd_disp_level_bar(i,0);
 "135
+[e ( _lcd_disp_level_bar (2 , _i -> -> 0 `i `uc ]
+"136
 }
-"133
+"134
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 50 `i 712  ]
 [e :U 713 ]
-"135
-}
-[; ;lcd.c: 135: }
-[; ;lcd.c: 136: }
 "136
+}
+[; ;lcd.c: 136: }
+[; ;lcd.c: 137: }
+"137
 [e :UE 711 ]
 }
-"139
-[v _lcd_disp_battary_bar `(v ~T0 @X0 1 ef2`uc`uc ]
 "140
+[v _lcd_disp_battary_bar `(v ~T0 @X0 1 ef2`uc`uc ]
+"141
 {
-[; ;lcd.c: 139: void lcd_disp_battary_bar(uint8_t bar,uint8_t show)
-[; ;lcd.c: 140: {
+[; ;lcd.c: 140: void lcd_disp_battary_bar(uint8_t bar,uint8_t show)
+[; ;lcd.c: 141: {
 [e :U _lcd_disp_battary_bar ]
-"139
+"140
 [v _bar `uc ~T0 @X0 1 r1 ]
 [v _show `uc ~T0 @X0 1 r2 ]
-"140
-[f ]
-[; ;lcd.c: 141: if(bar>=4)bar=4;
 "141
+[f ]
+[; ;lcd.c: 142: if(bar>=4)bar=4;
+"142
 [e $ ! >= -> _bar `i -> 4 `i 716  ]
 [e = _bar -> -> 4 `i `uc ]
 [e :U 716 ]
-[; ;lcd.c: 142: switch(bar){
-"142
+[; ;lcd.c: 143: switch(bar){
+"143
 [e $U 718  ]
 {
-[; ;lcd.c: 143: case 0: lcd_set_com_seg(3,35,show); break;
-"143
+[; ;lcd.c: 144: case 0: lcd_set_com_seg(3,35,show); break;
+"144
 [e :U 719 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 35 `i `uc _show ]
 [e $U 717  ]
-[; ;lcd.c: 144: case 1: lcd_set_com_seg(2,35,show); break;
-"144
+[; ;lcd.c: 145: case 1: lcd_set_com_seg(2,35,show); break;
+"145
 [e :U 720 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 35 `i `uc _show ]
 [e $U 717  ]
-[; ;lcd.c: 145: case 2: lcd_set_com_seg(1,35,show); break;
-"145
+[; ;lcd.c: 146: case 2: lcd_set_com_seg(1,35,show); break;
+"146
 [e :U 721 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 35 `i `uc _show ]
 [e $U 717  ]
-[; ;lcd.c: 146: case 3: lcd_set_com_seg(0,35,show); break;
-"146
+[; ;lcd.c: 147: case 3: lcd_set_com_seg(0,35,show); break;
+"147
 [e :U 722 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 35 `i `uc _show ]
 [e $U 717  ]
-"147
+"148
 }
-[; ;lcd.c: 147: }
+[; ;lcd.c: 148: }
 [e $U 717  ]
-"142
+"143
 [e :U 718 ]
 [e [\ _bar , $ -> -> 0 `i `uc 719
  , $ -> -> 1 `i `uc 720
  , $ -> -> 2 `i `uc 721
  , $ -> -> 3 `i `uc 722
  717 ]
-"147
-[e :U 717 ]
-[; ;lcd.c: 148: }
 "148
+[e :U 717 ]
+[; ;lcd.c: 149: }
+"149
 [e :UE 715 ]
 }
-"149
+"150
 [v _lcd_disp_battary `(v ~T0 @X0 1 ef1`uc ]
-"150
-{
-[; ;lcd.c: 149: void lcd_disp_battary(uint8_t level)
-[; ;lcd.c: 150: {
-[e :U _lcd_disp_battary ]
-"149
-[v _level `uc ~T0 @X0 1 r1 ]
-"150
-[f ]
 "151
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 151: uint8_t i;
-[; ;lcd.c: 152: if(level>=99)level=99;
+{
+[; ;lcd.c: 150: void lcd_disp_battary(uint8_t level)
+[; ;lcd.c: 151: {
+[e :U _lcd_disp_battary ]
+"150
+[v _level `uc ~T0 @X0 1 r1 ]
+"151
+[f ]
 "152
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 152: uint8_t i;
+[; ;lcd.c: 153: if(level>=99)level=99;
+"153
 [e $ ! >= -> _level `i -> 99 `i 724  ]
 [e = _level -> -> 99 `i `uc ]
 [e :U 724 ]
-[; ;lcd.c: 153: level/=25;
-"153
-[e =/ _level -> 25 `uc ]
-[; ;lcd.c: 154: for(i=0;i<level;i++){
+[; ;lcd.c: 154: level/=25;
 "154
+[e =/ _level -> 25 `uc ]
+[; ;lcd.c: 155: for(i=0;i<level;i++){
+"155
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 728  ]
 [e :U 725 ]
 {
-[; ;lcd.c: 155: lcd_disp_battary_bar(i,1);
-"155
-[e ( _lcd_disp_battary_bar (2 , _i -> -> 1 `i `uc ]
+[; ;lcd.c: 156: lcd_disp_battary_bar(i,1);
 "156
+[e ( _lcd_disp_battary_bar (2 , _i -> -> 1 `i `uc ]
+"157
 }
-"154
+"155
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 728 ]
 [e $ < -> _i `i -> _level `i 725  ]
 [e :U 726 ]
-"156
-}
-[; ;lcd.c: 156: }
-[; ;lcd.c: 157: for(;i<4;i++){
 "157
+}
+[; ;lcd.c: 157: }
+[; ;lcd.c: 158: for(;i<4;i++){
+"158
 {
 [e $ < -> _i `i -> 4 `i 729  ]
 [e $U 730  ]
 [e :U 729 ]
 {
-[; ;lcd.c: 158: lcd_disp_battary_bar(i,0);
-"158
-[e ( _lcd_disp_battary_bar (2 , _i -> -> 0 `i `uc ]
+[; ;lcd.c: 159: lcd_disp_battary_bar(i,0);
 "159
+[e ( _lcd_disp_battary_bar (2 , _i -> -> 0 `i `uc ]
+"160
 }
-"157
+"158
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 4 `i 729  ]
 [e :U 730 ]
-"159
-}
-[; ;lcd.c: 159: }
-[; ;lcd.c: 160: }
 "160
+}
+[; ;lcd.c: 160: }
+[; ;lcd.c: 161: }
+"161
 [e :UE 723 ]
 }
-"161
-[v _lcd_disp_battary_off `(v ~T0 @X0 1 ef ]
 "162
+[v _lcd_disp_battary_off `(v ~T0 @X0 1 ef ]
+"163
 {
-[; ;lcd.c: 161: void lcd_disp_battary_off(void)
-[; ;lcd.c: 162: {
+[; ;lcd.c: 162: void lcd_disp_battary_off(void)
+[; ;lcd.c: 163: {
 [e :U _lcd_disp_battary_off ]
 [f ]
-"163
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 163: uint8_t i;
-[; ;lcd.c: 164: for(i=0;i<4;i++){
 "164
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 164: uint8_t i;
+[; ;lcd.c: 165: for(i=0;i<4;i++){
+"165
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 4 `i 733  ]
 [e $U 734  ]
 [e :U 733 ]
 {
-[; ;lcd.c: 165: lcd_disp_battary_bar(i,0);
-"165
-[e ( _lcd_disp_battary_bar (2 , _i -> -> 0 `i `uc ]
+[; ;lcd.c: 166: lcd_disp_battary_bar(i,0);
 "166
+[e ( _lcd_disp_battary_bar (2 , _i -> -> 0 `i `uc ]
+"167
 }
-"164
+"165
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 4 `i 733  ]
 [e :U 734 ]
-"166
-}
-[; ;lcd.c: 166: }
-[; ;lcd.c: 167: }
 "167
+}
+[; ;lcd.c: 167: }
+[; ;lcd.c: 168: }
+"168
 [e :UE 732 ]
 }
-"169
-[v _lcd_disp_rf_bar `(v ~T0 @X0 1 ef2`uc`uc ]
 "170
+[v _lcd_disp_rf_bar `(v ~T0 @X0 1 ef2`uc`uc ]
+"171
 {
-[; ;lcd.c: 169: void lcd_disp_rf_bar(uint8_t bar,uint8_t show)
-[; ;lcd.c: 170: {
+[; ;lcd.c: 170: void lcd_disp_rf_bar(uint8_t bar,uint8_t show)
+[; ;lcd.c: 171: {
 [e :U _lcd_disp_rf_bar ]
-"169
+"170
 [v _bar `uc ~T0 @X0 1 r1 ]
 [v _show `uc ~T0 @X0 1 r2 ]
-"170
-[f ]
-[; ;lcd.c: 171: if(bar>=4)bar=4;
 "171
+[f ]
+[; ;lcd.c: 172: if(bar>=4)bar=4;
+"172
 [e $ ! >= -> _bar `i -> 4 `i 737  ]
 [e = _bar -> -> 4 `i `uc ]
 [e :U 737 ]
-[; ;lcd.c: 172: switch(bar){
-"172
+[; ;lcd.c: 173: switch(bar){
+"173
 [e $U 739  ]
 {
-[; ;lcd.c: 173: case 0: lcd_set_com_seg(0,30,show); break;
-"173
+[; ;lcd.c: 174: case 0: lcd_set_com_seg(0,30,show); break;
+"174
 [e :U 740 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 30 `i `uc _show ]
 [e $U 738  ]
-[; ;lcd.c: 174: case 1: lcd_set_com_seg(1,30,show); break;
-"174
+[; ;lcd.c: 175: case 1: lcd_set_com_seg(1,30,show); break;
+"175
 [e :U 741 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 30 `i `uc _show ]
 [e $U 738  ]
-[; ;lcd.c: 175: case 2: lcd_set_com_seg(2,30,show); break;
-"175
+[; ;lcd.c: 176: case 2: lcd_set_com_seg(2,30,show); break;
+"176
 [e :U 742 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 30 `i `uc _show ]
 [e $U 738  ]
-[; ;lcd.c: 176: case 3: lcd_set_com_seg(3,30,show); break;
-"176
+[; ;lcd.c: 177: case 3: lcd_set_com_seg(3,30,show); break;
+"177
 [e :U 743 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 30 `i `uc _show ]
 [e $U 738  ]
-"177
+"178
 }
-[; ;lcd.c: 177: }
+[; ;lcd.c: 178: }
 [e $U 738  ]
-"172
+"173
 [e :U 739 ]
 [e [\ _bar , $ -> -> 0 `i `uc 740
  , $ -> -> 1 `i `uc 741
  , $ -> -> 2 `i `uc 742
  , $ -> -> 3 `i `uc 743
  738 ]
-"177
-[e :U 738 ]
-[; ;lcd.c: 178: }
 "178
+[e :U 738 ]
+[; ;lcd.c: 179: }
+"179
 [e :UE 736 ]
 }
-"179
+"180
 [v _lcd_disp_rf `(v ~T0 @X0 1 ef1`uc ]
-"180
-{
-[; ;lcd.c: 179: void lcd_disp_rf(uint8_t rssi)
-[; ;lcd.c: 180: {
-[e :U _lcd_disp_rf ]
-"179
-[v _rssi `uc ~T0 @X0 1 r1 ]
-"180
-[f ]
 "181
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 181: uint8_t i;
-[; ;lcd.c: 182: if(rssi>=99)rssi=99;
+{
+[; ;lcd.c: 180: void lcd_disp_rf(uint8_t rssi)
+[; ;lcd.c: 181: {
+[e :U _lcd_disp_rf ]
+"180
+[v _rssi `uc ~T0 @X0 1 r1 ]
+"181
+[f ]
 "182
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 182: uint8_t i;
+[; ;lcd.c: 183: if(rssi>=99)rssi=99;
+"183
 [e $ ! >= -> _rssi `i -> 99 `i 745  ]
 [e = _rssi -> -> 99 `i `uc ]
 [e :U 745 ]
-[; ;lcd.c: 183: rssi/=25;
-"183
-[e =/ _rssi -> 25 `uc ]
-[; ;lcd.c: 184: for(i=0;i<rssi;i++){
+[; ;lcd.c: 184: rssi/=25;
 "184
+[e =/ _rssi -> 25 `uc ]
+[; ;lcd.c: 185: for(i=0;i<rssi;i++){
+"185
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 749  ]
 [e :U 746 ]
 {
-[; ;lcd.c: 185: lcd_disp_rf_bar(i,1);
-"185
-[e ( _lcd_disp_rf_bar (2 , _i -> -> 1 `i `uc ]
+[; ;lcd.c: 186: lcd_disp_rf_bar(i,1);
 "186
+[e ( _lcd_disp_rf_bar (2 , _i -> -> 1 `i `uc ]
+"187
 }
-"184
+"185
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 749 ]
 [e $ < -> _i `i -> _rssi `i 746  ]
 [e :U 747 ]
-"186
-}
-[; ;lcd.c: 186: }
-[; ;lcd.c: 187: for(;i<4;i++){
 "187
+}
+[; ;lcd.c: 187: }
+[; ;lcd.c: 188: for(;i<4;i++){
+"188
 {
 [e $ < -> _i `i -> 4 `i 750  ]
 [e $U 751  ]
 [e :U 750 ]
 {
-[; ;lcd.c: 188: lcd_disp_rf_bar(i,0);
-"188
-[e ( _lcd_disp_rf_bar (2 , _i -> -> 0 `i `uc ]
+[; ;lcd.c: 189: lcd_disp_rf_bar(i,0);
 "189
+[e ( _lcd_disp_rf_bar (2 , _i -> -> 0 `i `uc ]
+"190
 }
-"187
+"188
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 4 `i 750  ]
 [e :U 751 ]
-"189
-}
-[; ;lcd.c: 189: }
-[; ;lcd.c: 190: }
 "190
+}
+[; ;lcd.c: 190: }
+[; ;lcd.c: 191: }
+"191
 [e :UE 744 ]
 }
-"191
-[v _lcd_disp_rf_off `(v ~T0 @X0 1 ef ]
 "192
+[v _lcd_disp_rf_off `(v ~T0 @X0 1 ef ]
+"193
 {
-[; ;lcd.c: 191: void lcd_disp_rf_off(void)
-[; ;lcd.c: 192: {
+[; ;lcd.c: 192: void lcd_disp_rf_off(void)
+[; ;lcd.c: 193: {
 [e :U _lcd_disp_rf_off ]
 [f ]
-"193
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 193: uint8_t i;
-[; ;lcd.c: 194: for(i=0;i<4;i++){
 "194
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 194: uint8_t i;
+[; ;lcd.c: 195: for(i=0;i<4;i++){
+"195
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 4 `i 754  ]
 [e $U 755  ]
 [e :U 754 ]
 {
-[; ;lcd.c: 195: lcd_disp_rf_bar(i,0);
-"195
-[e ( _lcd_disp_rf_bar (2 , _i -> -> 0 `i `uc ]
+[; ;lcd.c: 196: lcd_disp_rf_bar(i,0);
 "196
+[e ( _lcd_disp_rf_bar (2 , _i -> -> 0 `i `uc ]
+"197
 }
-"194
+"195
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 4 `i 754  ]
 [e :U 755 ]
-"196
-}
-[; ;lcd.c: 196: }
-[; ;lcd.c: 197: }
 "197
+}
+[; ;lcd.c: 197: }
+[; ;lcd.c: 198: }
+"198
 [e :UE 753 ]
 }
-"199
-[v _lcd_disp_light_bar `(v ~T0 @X0 1 ef2`uc`uc ]
 "200
+[v _lcd_disp_light_bar `(v ~T0 @X0 1 ef2`uc`uc ]
+"201
 {
-[; ;lcd.c: 199: void lcd_disp_light_bar(uint8_t bar,uint8_t show)
-[; ;lcd.c: 200: {
+[; ;lcd.c: 200: void lcd_disp_light_bar(uint8_t bar,uint8_t show)
+[; ;lcd.c: 201: {
 [e :U _lcd_disp_light_bar ]
-"199
+"200
 [v _bar `uc ~T0 @X0 1 r1 ]
 [v _show `uc ~T0 @X0 1 r2 ]
-"200
-[f ]
-[; ;lcd.c: 201: if(bar>=1)bar=1;
 "201
+[f ]
+[; ;lcd.c: 202: if(bar>=1)bar=1;
+"202
 [e $ ! >= -> _bar `i -> 1 `i 758  ]
 [e = _bar -> -> 1 `i `uc ]
 [e :U 758 ]
-[; ;lcd.c: 202: switch(bar){
-"202
+[; ;lcd.c: 203: switch(bar){
+"203
 [e $U 760  ]
 {
-[; ;lcd.c: 203: case 0: lcd_set_com_seg(3,34,show); break;
-"203
+[; ;lcd.c: 204: case 0: lcd_set_com_seg(3,34,show); break;
+"204
 [e :U 761 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 34 `i `uc _show ]
 [e $U 759  ]
-[; ;lcd.c: 204: case 1: lcd_set_com_seg(2,34,show); break;
-"204
+[; ;lcd.c: 205: case 1: lcd_set_com_seg(2,34,show); break;
+"205
 [e :U 762 ]
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 34 `i `uc _show ]
 [e $U 759  ]
-"205
+"206
 }
-[; ;lcd.c: 205: }
+[; ;lcd.c: 206: }
 [e $U 759  ]
-"202
+"203
 [e :U 760 ]
 [e [\ _bar , $ -> -> 0 `i `uc 761
  , $ -> -> 1 `i `uc 762
  759 ]
-"205
-[e :U 759 ]
-[; ;lcd.c: 206: }
 "206
+[e :U 759 ]
+[; ;lcd.c: 207: }
+"207
 [e :UE 757 ]
 }
-"207
+"208
 [v _lcd_disp_light `(v ~T0 @X0 1 ef1`uc ]
-"208
-{
-[; ;lcd.c: 207: void lcd_disp_light(uint8_t light)
-[; ;lcd.c: 208: {
-[e :U _lcd_disp_light ]
-"207
-[v _light `uc ~T0 @X0 1 r1 ]
-"208
-[f ]
 "209
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 209: uint8_t i;
-[; ;lcd.c: 210: if(light>=99)light=99;
+{
+[; ;lcd.c: 208: void lcd_disp_light(uint8_t light)
+[; ;lcd.c: 209: {
+[e :U _lcd_disp_light ]
+"208
+[v _light `uc ~T0 @X0 1 r1 ]
+"209
+[f ]
 "210
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 210: uint8_t i;
+[; ;lcd.c: 211: if(light>=99)light=99;
+"211
 [e $ ! >= -> _light `i -> 99 `i 764  ]
 [e = _light -> -> 99 `i `uc ]
 [e :U 764 ]
-[; ;lcd.c: 211: light/=50;
-"211
-[e =/ _light -> 50 `uc ]
-[; ;lcd.c: 212: if(1==light){
+[; ;lcd.c: 212: light/=50;
 "212
+[e =/ _light -> 50 `uc ]
+[; ;lcd.c: 213: if(1==light){
+"213
 [e $ ! == -> 1 `i -> _light `i 765  ]
 {
-[; ;lcd.c: 213: lcd_disp_light_bar(0,1);
-"213
-[e ( _lcd_disp_light_bar (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;lcd.c: 214: lcd_disp_light_bar(1,1);
+[; ;lcd.c: 214: lcd_disp_light_bar(0,1);
 "214
-[e ( _lcd_disp_light_bar (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[e ( _lcd_disp_light_bar (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;lcd.c: 215: lcd_disp_light_bar(1,1);
 "215
+[e ( _lcd_disp_light_bar (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+"216
 }
-[; ;lcd.c: 215: }else{
+[; ;lcd.c: 216: }else{
 [e $U 766  ]
 [e :U 765 ]
 {
-[; ;lcd.c: 216: lcd_disp_light_bar(0,1);
-"216
-[e ( _lcd_disp_light_bar (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+[; ;lcd.c: 217: lcd_disp_light_bar(0,1);
 "217
+[e ( _lcd_disp_light_bar (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+"218
 }
 [e :U 766 ]
-[; ;lcd.c: 217: }
 [; ;lcd.c: 218: }
-"218
+[; ;lcd.c: 219: }
+"219
 [e :UE 763 ]
 }
-"219
-[v _lcd_disp_light_off `(v ~T0 @X0 1 ef ]
 "220
+[v _lcd_disp_light_off `(v ~T0 @X0 1 ef ]
+"221
 {
-[; ;lcd.c: 219: void lcd_disp_light_off(void)
-[; ;lcd.c: 220: {
+[; ;lcd.c: 220: void lcd_disp_light_off(void)
+[; ;lcd.c: 221: {
 [e :U _lcd_disp_light_off ]
 [f ]
-[; ;lcd.c: 221: lcd_disp_light_bar(0,0);
-"221
-[e ( _lcd_disp_light_bar (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 222: lcd_disp_light_bar(1,0);
+[; ;lcd.c: 222: lcd_disp_light_bar(0,0);
 "222
-[e ( _lcd_disp_light_bar (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 223: }
+[e ( _lcd_disp_light_bar (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 223: lcd_disp_light_bar(1,0);
 "223
+[e ( _lcd_disp_light_bar (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 224: }
+"224
 [e :UE 767 ]
 }
-"226
+"227
 [v _lcd_disp_chr_loc_0 `(v ~T0 @X0 1 ef1`uc ]
-"227
-{
-[; ;lcd.c: 226: void lcd_disp_chr_loc_0(uint8_t code)
-[; ;lcd.c: 227: {
-[e :U _lcd_disp_chr_loc_0 ]
-"226
-[v _code `uc ~T0 @X0 1 r1 ]
-"227
-[f ]
-[; ;lcd.c: 228: lcd_set_com_seg(0,25,code&0x01);
 "228
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 25 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 229: lcd_set_com_seg(1,25,code&0x20);
+{
+[; ;lcd.c: 227: void lcd_disp_chr_loc_0(uint8_t code)
+[; ;lcd.c: 228: {
+[e :U _lcd_disp_chr_loc_0 ]
+"227
+[v _code `uc ~T0 @X0 1 r1 ]
+"228
+[f ]
+[; ;lcd.c: 229: lcd_set_com_seg(0,25,code&0x01);
 "229
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 25 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 230: lcd_set_com_seg(2,25,code&0x10);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 25 `i `uc -> & -> _code `i -> 1 `i `uc ]
+[; ;lcd.c: 230: lcd_set_com_seg(1,25,code&0x20);
 "230
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 25 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 231: lcd_set_com_seg(3,25,code&0x08);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 25 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 231: lcd_set_com_seg(2,25,code&0x10);
 "231
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 25 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 232: lcd_set_com_seg(3,25,code&0x08);
+"232
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 25 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 233: lcd_set_com_seg(0,24,code&0x02);
-"233
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 24 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 234: lcd_set_com_seg(1,24,code&0x40);
+[; ;lcd.c: 234: lcd_set_com_seg(0,24,code&0x02);
 "234
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 24 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 235: lcd_set_com_seg(2,24,code&0x04);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 24 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 235: lcd_set_com_seg(1,24,code&0x40);
 "235
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 24 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 236: lcd_set_com_seg(2,24,code&0x04);
+"236
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 24 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 237: }
-"237
+[; ;lcd.c: 238: }
+"238
 [e :UE 768 ]
 }
-"238
+"239
 [v _lcd_disp_dp_loc_0 `(v ~T0 @X0 1 ef1`uc ]
-"239
-{
-[; ;lcd.c: 238: void lcd_disp_dp_loc_0(bool dp)
-[; ;lcd.c: 239: {
-[e :U _lcd_disp_dp_loc_0 ]
-"238
-[v _dp `uc ~T0 @X0 1 r1 ]
-"239
-[f ]
-[; ;lcd.c: 240: if(dp)
 "240
-[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 770  ]
-[; ;lcd.c: 241: lcd_set_com_seg(3,24,0x80);
+{
+[; ;lcd.c: 239: void lcd_disp_dp_loc_0(bool dp)
+[; ;lcd.c: 240: {
+[e :U _lcd_disp_dp_loc_0 ]
+"239
+[v _dp `uc ~T0 @X0 1 r1 ]
+"240
+[f ]
+[; ;lcd.c: 241: if(dp)
 "241
+[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 770  ]
+[; ;lcd.c: 242: lcd_set_com_seg(3,24,0x80);
+"242
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 24 `i `uc -> -> 128 `i `uc ]
 [e $U 771  ]
-"242
-[e :U 770 ]
-[; ;lcd.c: 242: else
-[; ;lcd.c: 243: lcd_set_com_seg(3,24,0);
 "243
+[e :U 770 ]
+[; ;lcd.c: 243: else
+[; ;lcd.c: 244: lcd_set_com_seg(3,24,0);
+"244
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 24 `i `uc -> -> 0 `i `uc ]
 [e :U 771 ]
-[; ;lcd.c: 244: }
-"244
+[; ;lcd.c: 245: }
+"245
 [e :UE 769 ]
 }
-"246
+"247
 [v _lcd_disp_chr_loc_1 `(v ~T0 @X0 1 ef1`uc ]
-"247
-{
-[; ;lcd.c: 246: void lcd_disp_chr_loc_1(uint8_t code)
-[; ;lcd.c: 247: {
-[e :U _lcd_disp_chr_loc_1 ]
-"246
-[v _code `uc ~T0 @X0 1 r1 ]
-"247
-[f ]
-[; ;lcd.c: 248: lcd_set_com_seg(0,23,code&0x01);
 "248
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 23 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 249: lcd_set_com_seg(1,23,code&0x20);
+{
+[; ;lcd.c: 247: void lcd_disp_chr_loc_1(uint8_t code)
+[; ;lcd.c: 248: {
+[e :U _lcd_disp_chr_loc_1 ]
+"247
+[v _code `uc ~T0 @X0 1 r1 ]
+"248
+[f ]
+[; ;lcd.c: 249: lcd_set_com_seg(0,23,code&0x01);
 "249
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 23 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 250: lcd_set_com_seg(2,23,code&0x10);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 23 `i `uc -> & -> _code `i -> 1 `i `uc ]
+[; ;lcd.c: 250: lcd_set_com_seg(1,23,code&0x20);
 "250
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 23 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 251: lcd_set_com_seg(3,23,code&0x08);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 23 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 251: lcd_set_com_seg(2,23,code&0x10);
 "251
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 23 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 252: lcd_set_com_seg(3,23,code&0x08);
+"252
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 23 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 253: lcd_set_com_seg(0,22,code&0x02);
-"253
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 22 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 254: lcd_set_com_seg(1,22,code&0x40);
+[; ;lcd.c: 254: lcd_set_com_seg(0,22,code&0x02);
 "254
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 22 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 255: lcd_set_com_seg(2,22,code&0x04);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 22 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 255: lcd_set_com_seg(1,22,code&0x40);
 "255
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 22 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 256: }
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 22 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 256: lcd_set_com_seg(2,22,code&0x04);
 "256
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 22 `i `uc -> & -> _code `i -> 4 `i `uc ]
+[; ;lcd.c: 257: }
+"257
 [e :UE 772 ]
 }
-"257
+"258
 [v _lcd_disp_dp_loc_1 `(v ~T0 @X0 1 ef1`uc ]
-"258
-{
-[; ;lcd.c: 257: void lcd_disp_dp_loc_1(bool dp)
-[; ;lcd.c: 258: {
-[e :U _lcd_disp_dp_loc_1 ]
-"257
-[v _dp `uc ~T0 @X0 1 r1 ]
-"258
-[f ]
-[; ;lcd.c: 259: if(dp)
 "259
-[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 774  ]
-[; ;lcd.c: 260: lcd_set_com_seg(3,22,0x80);
+{
+[; ;lcd.c: 258: void lcd_disp_dp_loc_1(bool dp)
+[; ;lcd.c: 259: {
+[e :U _lcd_disp_dp_loc_1 ]
+"258
+[v _dp `uc ~T0 @X0 1 r1 ]
+"259
+[f ]
+[; ;lcd.c: 260: if(dp)
 "260
+[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 774  ]
+[; ;lcd.c: 261: lcd_set_com_seg(3,22,0x80);
+"261
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 22 `i `uc -> -> 128 `i `uc ]
 [e $U 775  ]
-"261
-[e :U 774 ]
-[; ;lcd.c: 261: else
-[; ;lcd.c: 262: lcd_set_com_seg(3,22,0);
 "262
+[e :U 774 ]
+[; ;lcd.c: 262: else
+[; ;lcd.c: 263: lcd_set_com_seg(3,22,0);
+"263
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 22 `i `uc -> -> 0 `i `uc ]
 [e :U 775 ]
-[; ;lcd.c: 263: }
-"263
+[; ;lcd.c: 264: }
+"264
 [e :UE 773 ]
 }
-"265
+"266
 [v _lcd_disp_chr_loc_2 `(v ~T0 @X0 1 ef1`uc ]
-"266
-{
-[; ;lcd.c: 265: void lcd_disp_chr_loc_2(uint8_t code)
-[; ;lcd.c: 266: {
-[e :U _lcd_disp_chr_loc_2 ]
-"265
-[v _code `uc ~T0 @X0 1 r1 ]
-"266
-[f ]
-[; ;lcd.c: 267: lcd_set_com_seg(0,21,code&0x01);
 "267
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 21 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 268: lcd_set_com_seg(1,21,code&0x20);
+{
+[; ;lcd.c: 266: void lcd_disp_chr_loc_2(uint8_t code)
+[; ;lcd.c: 267: {
+[e :U _lcd_disp_chr_loc_2 ]
+"266
+[v _code `uc ~T0 @X0 1 r1 ]
+"267
+[f ]
+[; ;lcd.c: 268: lcd_set_com_seg(0,21,code&0x01);
 "268
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 21 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 269: lcd_set_com_seg(2,21,code&0x10);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 21 `i `uc -> & -> _code `i -> 1 `i `uc ]
+[; ;lcd.c: 269: lcd_set_com_seg(1,21,code&0x20);
 "269
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 21 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 270: lcd_set_com_seg(3,21,code&0x08);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 21 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 270: lcd_set_com_seg(2,21,code&0x10);
 "270
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 21 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 271: lcd_set_com_seg(3,21,code&0x08);
+"271
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 21 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 272: lcd_set_com_seg(0,20,code&0x02);
-"272
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 20 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 273: lcd_set_com_seg(1,20,code&0x40);
+[; ;lcd.c: 273: lcd_set_com_seg(0,20,code&0x02);
 "273
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 20 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 274: lcd_set_com_seg(2,20,code&0x04);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 20 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 274: lcd_set_com_seg(1,20,code&0x40);
 "274
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 20 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 275: }
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 20 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 275: lcd_set_com_seg(2,20,code&0x04);
 "275
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 20 `i `uc -> & -> _code `i -> 4 `i `uc ]
+[; ;lcd.c: 276: }
+"276
 [e :UE 776 ]
 }
-"276
+"277
 [v _lcd_disp_dp_loc_2 `(v ~T0 @X0 1 ef1`uc ]
-"277
-{
-[; ;lcd.c: 276: void lcd_disp_dp_loc_2(bool dp)
-[; ;lcd.c: 277: {
-[e :U _lcd_disp_dp_loc_2 ]
-"276
-[v _dp `uc ~T0 @X0 1 r1 ]
-"277
-[f ]
-[; ;lcd.c: 278: if(dp)
 "278
-[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 778  ]
-[; ;lcd.c: 279: lcd_set_com_seg(3,20,0x80);
+{
+[; ;lcd.c: 277: void lcd_disp_dp_loc_2(bool dp)
+[; ;lcd.c: 278: {
+[e :U _lcd_disp_dp_loc_2 ]
+"277
+[v _dp `uc ~T0 @X0 1 r1 ]
+"278
+[f ]
+[; ;lcd.c: 279: if(dp)
 "279
+[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 778  ]
+[; ;lcd.c: 280: lcd_set_com_seg(3,20,0x80);
+"280
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 20 `i `uc -> -> 128 `i `uc ]
 [e $U 779  ]
-"280
-[e :U 778 ]
-[; ;lcd.c: 280: else
-[; ;lcd.c: 281: lcd_set_com_seg(3,20,0);
 "281
+[e :U 778 ]
+[; ;lcd.c: 281: else
+[; ;lcd.c: 282: lcd_set_com_seg(3,20,0);
+"282
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 20 `i `uc -> -> 0 `i `uc ]
 [e :U 779 ]
-[; ;lcd.c: 282: }
-"282
+[; ;lcd.c: 283: }
+"283
 [e :UE 777 ]
 }
-"284
+"285
 [v _lcd_disp_chr_loc_3 `(v ~T0 @X0 1 ef1`uc ]
-"285
-{
-[; ;lcd.c: 284: void lcd_disp_chr_loc_3(uint8_t code)
-[; ;lcd.c: 285: {
-[e :U _lcd_disp_chr_loc_3 ]
-"284
-[v _code `uc ~T0 @X0 1 r1 ]
-"285
-[f ]
-[; ;lcd.c: 286: lcd_set_com_seg(0,43,code&0x01);
 "286
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 43 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 287: lcd_set_com_seg(1,43,code&0x20);
+{
+[; ;lcd.c: 285: void lcd_disp_chr_loc_3(uint8_t code)
+[; ;lcd.c: 286: {
+[e :U _lcd_disp_chr_loc_3 ]
+"285
+[v _code `uc ~T0 @X0 1 r1 ]
+"286
+[f ]
+[; ;lcd.c: 287: lcd_set_com_seg(0,43,code&0x01);
 "287
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 43 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 288: lcd_set_com_seg(2,43,code&0x10);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 43 `i `uc -> & -> _code `i -> 1 `i `uc ]
+[; ;lcd.c: 288: lcd_set_com_seg(1,43,code&0x20);
 "288
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 43 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 289: lcd_set_com_seg(3,43,code&0x08);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 43 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 289: lcd_set_com_seg(2,43,code&0x10);
 "289
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 43 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 290: lcd_set_com_seg(3,43,code&0x08);
+"290
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 43 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 291: lcd_set_com_seg(0,42,code&0x02);
-"291
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 42 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 292: lcd_set_com_seg(1,42,code&0x40);
+[; ;lcd.c: 292: lcd_set_com_seg(0,42,code&0x02);
 "292
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 42 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 293: lcd_set_com_seg(2,42,code&0x04);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 42 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 293: lcd_set_com_seg(1,42,code&0x40);
 "293
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 42 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 294: }
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 42 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 294: lcd_set_com_seg(2,42,code&0x04);
 "294
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 42 `i `uc -> & -> _code `i -> 4 `i `uc ]
+[; ;lcd.c: 295: }
+"295
 [e :UE 780 ]
 }
-"296
+"297
 [v _lcd_disp_chr_loc_4 `(v ~T0 @X0 1 ef1`uc ]
-"297
-{
-[; ;lcd.c: 296: void lcd_disp_chr_loc_4(uint8_t code)
-[; ;lcd.c: 297: {
-[e :U _lcd_disp_chr_loc_4 ]
-"296
-[v _code `uc ~T0 @X0 1 r1 ]
-"297
-[f ]
-[; ;lcd.c: 298: lcd_set_com_seg(0,36,code&0x08);
 "298
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 36 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 299: lcd_set_com_seg(1,36,code&0x10);
+{
+[; ;lcd.c: 297: void lcd_disp_chr_loc_4(uint8_t code)
+[; ;lcd.c: 298: {
+[e :U _lcd_disp_chr_loc_4 ]
+"297
+[v _code `uc ~T0 @X0 1 r1 ]
+"298
+[f ]
+[; ;lcd.c: 299: lcd_set_com_seg(0,36,code&0x08);
 "299
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 36 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 300: lcd_set_com_seg(2,36,code&0x20);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 36 `i `uc -> & -> _code `i -> 8 `i `uc ]
+[; ;lcd.c: 300: lcd_set_com_seg(1,36,code&0x10);
 "300
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 36 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 301: lcd_set_com_seg(3,36,code&0x01);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 36 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 301: lcd_set_com_seg(2,36,code&0x20);
 "301
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 36 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 302: lcd_set_com_seg(3,36,code&0x01);
+"302
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 36 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 303: lcd_set_com_seg(1,37,code&0x04);
-"303
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 37 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 304: lcd_set_com_seg(2,37,code&0x40);
+[; ;lcd.c: 304: lcd_set_com_seg(1,37,code&0x04);
 "304
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 37 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 305: lcd_set_com_seg(3,37,code&0x02);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 37 `i `uc -> & -> _code `i -> 4 `i `uc ]
+[; ;lcd.c: 305: lcd_set_com_seg(2,37,code&0x40);
 "305
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 37 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 306: }
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 37 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 306: lcd_set_com_seg(3,37,code&0x02);
 "306
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 37 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 307: }
+"307
 [e :UE 781 ]
 }
-"307
+"308
 [v _lcd_disp_dp_loc_4 `(v ~T0 @X0 1 ef1`uc ]
-"308
-{
-[; ;lcd.c: 307: void lcd_disp_dp_loc_4(bool dp)
-[; ;lcd.c: 308: {
-[e :U _lcd_disp_dp_loc_4 ]
-"307
-[v _dp `uc ~T0 @X0 1 r1 ]
-"308
-[f ]
-[; ;lcd.c: 309: if(dp)
 "309
-[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 783  ]
-[; ;lcd.c: 310: lcd_set_com_seg(0,37,0x80);
+{
+[; ;lcd.c: 308: void lcd_disp_dp_loc_4(bool dp)
+[; ;lcd.c: 309: {
+[e :U _lcd_disp_dp_loc_4 ]
+"308
+[v _dp `uc ~T0 @X0 1 r1 ]
+"309
+[f ]
+[; ;lcd.c: 310: if(dp)
 "310
+[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 783  ]
+[; ;lcd.c: 311: lcd_set_com_seg(0,37,0x80);
+"311
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 37 `i `uc -> -> 128 `i `uc ]
 [e $U 784  ]
-"311
-[e :U 783 ]
-[; ;lcd.c: 311: else
-[; ;lcd.c: 312: lcd_set_com_seg(0,37,0);
 "312
+[e :U 783 ]
+[; ;lcd.c: 312: else
+[; ;lcd.c: 313: lcd_set_com_seg(0,37,0);
+"313
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 37 `i `uc -> -> 0 `i `uc ]
 [e :U 784 ]
-[; ;lcd.c: 313: }
-"313
+[; ;lcd.c: 314: }
+"314
 [e :UE 782 ]
 }
-"315
+"316
 [v _lcd_disp_chr_loc_5 `(v ~T0 @X0 1 ef1`uc ]
-"316
-{
-[; ;lcd.c: 315: void lcd_disp_chr_loc_5(uint8_t code)
-[; ;lcd.c: 316: {
-[e :U _lcd_disp_chr_loc_5 ]
-"315
-[v _code `uc ~T0 @X0 1 r1 ]
-"316
-[f ]
-[; ;lcd.c: 317: lcd_set_com_seg(0,38,code&0x08);
 "317
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 38 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 318: lcd_set_com_seg(1,38,code&0x10);
+{
+[; ;lcd.c: 316: void lcd_disp_chr_loc_5(uint8_t code)
+[; ;lcd.c: 317: {
+[e :U _lcd_disp_chr_loc_5 ]
+"316
+[v _code `uc ~T0 @X0 1 r1 ]
+"317
+[f ]
+[; ;lcd.c: 318: lcd_set_com_seg(0,38,code&0x08);
 "318
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 38 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 319: lcd_set_com_seg(2,38,code&0x20);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 38 `i `uc -> & -> _code `i -> 8 `i `uc ]
+[; ;lcd.c: 319: lcd_set_com_seg(1,38,code&0x10);
 "319
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 38 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 320: lcd_set_com_seg(3,38,code&0x01);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 38 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 320: lcd_set_com_seg(2,38,code&0x20);
 "320
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 38 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 321: lcd_set_com_seg(3,38,code&0x01);
+"321
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 38 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 322: lcd_set_com_seg(1,39,code&0x04);
-"322
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 39 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 323: lcd_set_com_seg(2,39,code&0x40);
+[; ;lcd.c: 323: lcd_set_com_seg(1,39,code&0x04);
 "323
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 39 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 324: lcd_set_com_seg(3,39,code&0x02);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 39 `i `uc -> & -> _code `i -> 4 `i `uc ]
+[; ;lcd.c: 324: lcd_set_com_seg(2,39,code&0x40);
 "324
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 39 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 325: }
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 39 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 325: lcd_set_com_seg(3,39,code&0x02);
 "325
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 39 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 326: }
+"326
 [e :UE 785 ]
 }
-"326
+"327
 [v _lcd_disp_dp_loc_5 `(v ~T0 @X0 1 ef1`uc ]
-"327
-{
-[; ;lcd.c: 326: void lcd_disp_dp_loc_5(bool dp)
-[; ;lcd.c: 327: {
-[e :U _lcd_disp_dp_loc_5 ]
-"326
-[v _dp `uc ~T0 @X0 1 r1 ]
-"327
-[f ]
-[; ;lcd.c: 328: if(dp)
 "328
-[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 787  ]
-[; ;lcd.c: 329: lcd_set_com_seg(0,39,0x80);
+{
+[; ;lcd.c: 327: void lcd_disp_dp_loc_5(bool dp)
+[; ;lcd.c: 328: {
+[e :U _lcd_disp_dp_loc_5 ]
+"327
+[v _dp `uc ~T0 @X0 1 r1 ]
+"328
+[f ]
+[; ;lcd.c: 329: if(dp)
 "329
+[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 787  ]
+[; ;lcd.c: 330: lcd_set_com_seg(0,39,0x80);
+"330
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 39 `i `uc -> -> 128 `i `uc ]
 [e $U 788  ]
-"330
-[e :U 787 ]
-[; ;lcd.c: 330: else
-[; ;lcd.c: 331: lcd_set_com_seg(0,39,0);
 "331
+[e :U 787 ]
+[; ;lcd.c: 331: else
+[; ;lcd.c: 332: lcd_set_com_seg(0,39,0);
+"332
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 39 `i `uc -> -> 0 `i `uc ]
 [e :U 788 ]
-[; ;lcd.c: 332: }
-"332
+[; ;lcd.c: 333: }
+"333
 [e :UE 786 ]
 }
-"334
+"335
 [v _lcd_disp_chr_loc_6 `(v ~T0 @X0 1 ef1`uc ]
-"335
-{
-[; ;lcd.c: 334: void lcd_disp_chr_loc_6(uint8_t code)
-[; ;lcd.c: 335: {
-[e :U _lcd_disp_chr_loc_6 ]
-"334
-[v _code `uc ~T0 @X0 1 r1 ]
-"335
-[f ]
-[; ;lcd.c: 336: lcd_set_com_seg(0,14,code&0x08);
 "336
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 14 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 337: lcd_set_com_seg(1,14,code&0x10);
+{
+[; ;lcd.c: 335: void lcd_disp_chr_loc_6(uint8_t code)
+[; ;lcd.c: 336: {
+[e :U _lcd_disp_chr_loc_6 ]
+"335
+[v _code `uc ~T0 @X0 1 r1 ]
+"336
+[f ]
+[; ;lcd.c: 337: lcd_set_com_seg(0,14,code&0x08);
 "337
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 14 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 338: lcd_set_com_seg(2,14,code&0x20);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 14 `i `uc -> & -> _code `i -> 8 `i `uc ]
+[; ;lcd.c: 338: lcd_set_com_seg(1,14,code&0x10);
 "338
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 14 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 339: lcd_set_com_seg(3,14,code&0x01);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 14 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 339: lcd_set_com_seg(2,14,code&0x20);
 "339
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 14 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 340: lcd_set_com_seg(3,14,code&0x01);
+"340
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 14 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 341: lcd_set_com_seg(1,15,code&0x04);
-"341
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 15 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 342: lcd_set_com_seg(2,15,code&0x40);
+[; ;lcd.c: 342: lcd_set_com_seg(1,15,code&0x04);
 "342
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 15 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 343: lcd_set_com_seg(3,15,code&0x02);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 15 `i `uc -> & -> _code `i -> 4 `i `uc ]
+[; ;lcd.c: 343: lcd_set_com_seg(2,15,code&0x40);
 "343
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 15 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 344: }
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 15 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 344: lcd_set_com_seg(3,15,code&0x02);
 "344
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 15 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 345: }
+"345
 [e :UE 789 ]
 }
-"345
+"346
 [v _lcd_disp_dp_loc_6 `(v ~T0 @X0 1 ef1`uc ]
-"346
-{
-[; ;lcd.c: 345: void lcd_disp_dp_loc_6(bool dp)
-[; ;lcd.c: 346: {
-[e :U _lcd_disp_dp_loc_6 ]
-"345
-[v _dp `uc ~T0 @X0 1 r1 ]
-"346
-[f ]
-[; ;lcd.c: 347: if(dp)
 "347
-[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 791  ]
-[; ;lcd.c: 348: lcd_set_com_seg(0,15,0x80);
+{
+[; ;lcd.c: 346: void lcd_disp_dp_loc_6(bool dp)
+[; ;lcd.c: 347: {
+[e :U _lcd_disp_dp_loc_6 ]
+"346
+[v _dp `uc ~T0 @X0 1 r1 ]
+"347
+[f ]
+[; ;lcd.c: 348: if(dp)
 "348
+[e $ ! != -> _dp `i -> -> -> 0 `i `uc `i 791  ]
+[; ;lcd.c: 349: lcd_set_com_seg(0,15,0x80);
+"349
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 15 `i `uc -> -> 128 `i `uc ]
 [e $U 792  ]
-"349
-[e :U 791 ]
-[; ;lcd.c: 349: else
-[; ;lcd.c: 350: lcd_set_com_seg(0,15,0);
 "350
+[e :U 791 ]
+[; ;lcd.c: 350: else
+[; ;lcd.c: 351: lcd_set_com_seg(0,15,0);
+"351
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 15 `i `uc -> -> 0 `i `uc ]
 [e :U 792 ]
-[; ;lcd.c: 351: }
-"351
+[; ;lcd.c: 352: }
+"352
 [e :UE 790 ]
 }
-"353
+"354
 [v _lcd_disp_chr_loc_7 `(v ~T0 @X0 1 ef1`uc ]
-"354
-{
-[; ;lcd.c: 353: void lcd_disp_chr_loc_7(uint8_t code)
-[; ;lcd.c: 354: {
-[e :U _lcd_disp_chr_loc_7 ]
-"353
-[v _code `uc ~T0 @X0 1 r1 ]
-"354
-[f ]
-[; ;lcd.c: 355: lcd_set_com_seg(0,19,code&0x08);
 "355
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 19 `i `uc -> & -> _code `i -> 8 `i `uc ]
-[; ;lcd.c: 356: lcd_set_com_seg(1,19,code&0x10);
+{
+[; ;lcd.c: 354: void lcd_disp_chr_loc_7(uint8_t code)
+[; ;lcd.c: 355: {
+[e :U _lcd_disp_chr_loc_7 ]
+"354
+[v _code `uc ~T0 @X0 1 r1 ]
+"355
+[f ]
+[; ;lcd.c: 356: lcd_set_com_seg(0,19,code&0x08);
 "356
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 19 `i `uc -> & -> _code `i -> 16 `i `uc ]
-[; ;lcd.c: 357: lcd_set_com_seg(2,19,code&0x20);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 19 `i `uc -> & -> _code `i -> 8 `i `uc ]
+[; ;lcd.c: 357: lcd_set_com_seg(1,19,code&0x10);
 "357
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 19 `i `uc -> & -> _code `i -> 32 `i `uc ]
-[; ;lcd.c: 358: lcd_set_com_seg(3,19,code&0x01);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 19 `i `uc -> & -> _code `i -> 16 `i `uc ]
+[; ;lcd.c: 358: lcd_set_com_seg(2,19,code&0x20);
 "358
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 19 `i `uc -> & -> _code `i -> 32 `i `uc ]
+[; ;lcd.c: 359: lcd_set_com_seg(3,19,code&0x01);
+"359
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 19 `i `uc -> & -> _code `i -> 1 `i `uc ]
-[; ;lcd.c: 360: lcd_set_com_seg(1,40,code&0x04);
-"360
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 40 `i `uc -> & -> _code `i -> 4 `i `uc ]
-[; ;lcd.c: 361: lcd_set_com_seg(2,40,code&0x40);
+[; ;lcd.c: 361: lcd_set_com_seg(1,40,code&0x04);
 "361
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 40 `i `uc -> & -> _code `i -> 64 `i `uc ]
-[; ;lcd.c: 362: lcd_set_com_seg(3,40,code&0x02);
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 40 `i `uc -> & -> _code `i -> 4 `i `uc ]
+[; ;lcd.c: 362: lcd_set_com_seg(2,40,code&0x40);
 "362
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 40 `i `uc -> & -> _code `i -> 2 `i `uc ]
-[; ;lcd.c: 363: }
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 40 `i `uc -> & -> _code `i -> 64 `i `uc ]
+[; ;lcd.c: 363: lcd_set_com_seg(3,40,code&0x02);
 "363
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 40 `i `uc -> & -> _code `i -> 2 `i `uc ]
+[; ;lcd.c: 364: }
+"364
 [e :UE 793 ]
 }
-"378
+"379
 [v _lcd_disp_logo `(v ~T0 @X0 1 ef1`uc ]
-"379
-{
-[; ;lcd.c: 378: void lcd_disp_logo(bool show)
-[; ;lcd.c: 379: {
-[e :U _lcd_disp_logo ]
-"378
-[v _show `uc ~T0 @X0 1 r1 ]
-"379
-[f ]
-[; ;lcd.c: 380: if(show)
 "380
-[e $ ! != -> _show `i -> -> -> 0 `i `uc `i 795  ]
-[; ;lcd.c: 381: lcd_set_com_seg(2,13,1);
+{
+[; ;lcd.c: 379: void lcd_disp_logo(bool show)
+[; ;lcd.c: 380: {
+[e :U _lcd_disp_logo ]
+"379
+[v _show `uc ~T0 @X0 1 r1 ]
+"380
+[f ]
+[; ;lcd.c: 381: if(show)
 "381
+[e $ ! != -> _show `i -> -> -> 0 `i `uc `i 795  ]
+[; ;lcd.c: 382: lcd_set_com_seg(2,13,1);
+"382
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 13 `i `uc -> -> 1 `i `uc ]
 [e $U 796  ]
-"382
-[e :U 795 ]
-[; ;lcd.c: 382: else
-[; ;lcd.c: 383: lcd_set_com_seg(2,13,0);
 "383
+[e :U 795 ]
+[; ;lcd.c: 383: else
+[; ;lcd.c: 384: lcd_set_com_seg(2,13,0);
+"384
 [e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
 [e :U 796 ]
-[; ;lcd.c: 384: }
-"384
+[; ;lcd.c: 385: }
+"385
 [e :UE 794 ]
 }
-"386
+"387
 [v _lcd_disp_unit_t `(v ~T0 @X0 1 ef1`uc ]
-"387
-{
-[; ;lcd.c: 386: void lcd_disp_unit_t(bool show)
-[; ;lcd.c: 387: {
-[e :U _lcd_disp_unit_t ]
-"386
-[v _show `uc ~T0 @X0 1 r1 ]
-"387
-[f ]
-[; ;lcd.c: 388: lcd_set_com_seg(3,41,0);
 "388
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 389: lcd_set_com_seg(2,41,0);
+{
+[; ;lcd.c: 387: void lcd_disp_unit_t(bool show)
+[; ;lcd.c: 388: {
+[e :U _lcd_disp_unit_t ]
+"387
+[v _show `uc ~T0 @X0 1 r1 ]
+"388
+[f ]
+[; ;lcd.c: 389: lcd_set_com_seg(3,41,0);
 "389
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 390: if(show)
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 390: lcd_set_com_seg(2,41,0);
 "390
-[e $ ! != -> _show `i -> -> -> 0 `i `uc `i 798  ]
-[; ;lcd.c: 391: lcd_set_com_seg(3,42,1);
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 391: if(show)
 "391
+[e $ ! != -> _show `i -> -> -> 0 `i `uc `i 798  ]
+[; ;lcd.c: 392: lcd_set_com_seg(3,42,1);
+"392
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 42 `i `uc -> -> 1 `i `uc ]
 [e $U 799  ]
-"392
-[e :U 798 ]
-[; ;lcd.c: 392: else
-[; ;lcd.c: 393: lcd_set_com_seg(3,42,0);
 "393
+[e :U 798 ]
+[; ;lcd.c: 393: else
+[; ;lcd.c: 394: lcd_set_com_seg(3,42,0);
+"394
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 42 `i `uc -> -> 0 `i `uc ]
 [e :U 799 ]
-[; ;lcd.c: 394: }
-"394
+[; ;lcd.c: 395: }
+"395
 [e :UE 797 ]
 }
-"396
+"397
 [v _lcd_disp_unit_1st_m `(v ~T0 @X0 1 ef1`uc ]
-"397
+"398
 {
-[; ;lcd.c: 396: void lcd_disp_unit_1st_m(bool show)
-[; ;lcd.c: 397: {
+[; ;lcd.c: 397: void lcd_disp_unit_1st_m(bool show)
+[; ;lcd.c: 398: {
 [e :U _lcd_disp_unit_1st_m ]
-"396
-[v _show `uc ~T0 @X0 1 r1 ]
 "397
+[v _show `uc ~T0 @X0 1 r1 ]
+"398
 [f ]
-[; ;lcd.c: 399: lcd_set_com_seg(3,42,0);
-"399
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 42 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 400: lcd_set_com_seg(3,41,0);
+[; ;lcd.c: 400: lcd_set_com_seg(3,42,0);
 "400
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 401: if(show){
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 42 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 401: lcd_set_com_seg(3,41,0);
 "401
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 402: if(show){
+"402
 [e $ ! != -> _show `i -> -> -> 0 `i `uc `i 801  ]
 {
-[; ;lcd.c: 402: lcd_set_com_seg(2,41,1);
-"402
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+[; ;lcd.c: 403: lcd_set_com_seg(2,41,1);
 "403
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+"404
 }
-[; ;lcd.c: 403: }else{
+[; ;lcd.c: 404: }else{
 [e $U 802  ]
 [e :U 801 ]
 {
-[; ;lcd.c: 404: lcd_set_com_seg(2,41,0);
-"404
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 405: lcd_set_com_seg(2,41,0);
 "405
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+"406
 }
 [e :U 802 ]
-[; ;lcd.c: 405: }
 [; ;lcd.c: 406: }
-"406
+[; ;lcd.c: 407: }
+"407
 [e :UE 800 ]
 }
-"408
+"409
 [v _lcd_disp_unit_1st_m3 `(v ~T0 @X0 1 ef1`uc ]
-"409
+"410
 {
-[; ;lcd.c: 408: void lcd_disp_unit_1st_m3(bool show)
-[; ;lcd.c: 409: {
+[; ;lcd.c: 409: void lcd_disp_unit_1st_m3(bool show)
+[; ;lcd.c: 410: {
 [e :U _lcd_disp_unit_1st_m3 ]
-"408
-[v _show `uc ~T0 @X0 1 r1 ]
 "409
+[v _show `uc ~T0 @X0 1 r1 ]
+"410
 [f ]
-[; ;lcd.c: 411: lcd_set_com_seg(3,42,0);
-"411
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 42 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 412: if(show){
+[; ;lcd.c: 412: lcd_set_com_seg(3,42,0);
 "412
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 42 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 413: if(show){
+"413
 [e $ ! != -> _show `i -> -> -> 0 `i `uc `i 804  ]
 {
-[; ;lcd.c: 413: lcd_set_com_seg(2,41,1);
-"413
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
-[; ;lcd.c: 414: lcd_set_com_seg(3,41,1);
+[; ;lcd.c: 414: lcd_set_com_seg(2,41,1);
 "414
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+[; ;lcd.c: 415: lcd_set_com_seg(3,41,1);
 "415
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+"416
 }
-[; ;lcd.c: 415: }else{
+[; ;lcd.c: 416: }else{
 [e $U 805  ]
 [e :U 804 ]
 {
-[; ;lcd.c: 416: lcd_set_com_seg(2,41,0);
-"416
-[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 417: lcd_set_com_seg(3,41,0);
+[; ;lcd.c: 417: lcd_set_com_seg(2,41,0);
 "417
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[e ( _lcd_set_com_seg (3 , , -> -> 2 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 418: lcd_set_com_seg(3,41,0);
 "418
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+"419
 }
 [e :U 805 ]
-[; ;lcd.c: 418: }
 [; ;lcd.c: 419: }
-"419
+[; ;lcd.c: 420: }
+"420
 [e :UE 803 ]
 }
-"421
+"422
 [v _lcd_disp_unit_temperature `(v ~T0 @X0 1 ef1`uc ]
-"422
+"423
 {
-[; ;lcd.c: 421: void lcd_disp_unit_temperature(bool show)
-[; ;lcd.c: 422: {
+[; ;lcd.c: 422: void lcd_disp_unit_temperature(bool show)
+[; ;lcd.c: 423: {
 [e :U _lcd_disp_unit_temperature ]
-"421
-[v _show `uc ~T0 @X0 1 r1 ]
 "422
+[v _show `uc ~T0 @X0 1 r1 ]
+"423
 [f ]
-[; ;lcd.c: 424: if(show){
-"424
+[; ;lcd.c: 425: if(show){
+"425
 [e $ ! != -> _show `i -> -> -> 0 `i `uc `i 807  ]
 {
-[; ;lcd.c: 425: lcd_set_com_seg(3,13,1);
-"425
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 1 `i `uc ]
+[; ;lcd.c: 426: lcd_set_com_seg(3,13,1);
 "426
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 1 `i `uc ]
+"427
 }
-[; ;lcd.c: 426: }else{
+[; ;lcd.c: 427: }else{
 [e $U 808  ]
 [e :U 807 ]
 {
-[; ;lcd.c: 427: lcd_set_com_seg(3,13,0);
-"427
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 428: lcd_set_com_seg(3,13,0);
 "428
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
+"429
 }
 [e :U 808 ]
-[; ;lcd.c: 428: }
 [; ;lcd.c: 429: }
-"429
+[; ;lcd.c: 430: }
+"430
 [e :UE 806 ]
 }
-"431
+"432
 [v _lcd_disp_unit_2nd_m `(v ~T0 @X0 1 ef1`uc ]
-"432
+"433
 {
-[; ;lcd.c: 431: void lcd_disp_unit_2nd_m(bool show)
-[; ;lcd.c: 432: {
+[; ;lcd.c: 432: void lcd_disp_unit_2nd_m(bool show)
+[; ;lcd.c: 433: {
 [e :U _lcd_disp_unit_2nd_m ]
-"431
-[v _show `uc ~T0 @X0 1 r1 ]
 "432
+[v _show `uc ~T0 @X0 1 r1 ]
+"433
 [f ]
-[; ;lcd.c: 434: lcd_set_com_seg(0,40,0);
-"434
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 435: lcd_set_com_seg(1,41,0);
+[; ;lcd.c: 435: lcd_set_com_seg(0,40,0);
 "435
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 436: lcd_set_com_seg(3,13,0);
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 436: lcd_set_com_seg(1,41,0);
 "436
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 437: if(show)
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 437: lcd_set_com_seg(3,13,0);
 "437
-[e $ ! != -> _show `i -> -> -> 0 `i `uc `i 810  ]
-[; ;lcd.c: 438: lcd_set_com_seg(0,41,1);
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 438: if(show)
 "438
+[e $ ! != -> _show `i -> -> -> 0 `i `uc `i 810  ]
+[; ;lcd.c: 439: lcd_set_com_seg(0,41,1);
+"439
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
 [e $U 811  ]
-"439
-[e :U 810 ]
-[; ;lcd.c: 439: else
-[; ;lcd.c: 440: lcd_set_com_seg(0,41,0);
 "440
+[e :U 810 ]
+[; ;lcd.c: 440: else
+[; ;lcd.c: 441: lcd_set_com_seg(0,41,0);
+"441
 [e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
 [e :U 811 ]
-[; ;lcd.c: 441: }
-"441
+[; ;lcd.c: 442: }
+"442
 [e :UE 809 ]
 }
-"443
+"444
 [v _lcd_disp_unit_2nd_m3 `(v ~T0 @X0 1 ef1`uc ]
-"444
+"445
 {
-[; ;lcd.c: 443: void lcd_disp_unit_2nd_m3(bool show)
-[; ;lcd.c: 444: {
+[; ;lcd.c: 444: void lcd_disp_unit_2nd_m3(bool show)
+[; ;lcd.c: 445: {
 [e :U _lcd_disp_unit_2nd_m3 ]
-"443
-[v _show `uc ~T0 @X0 1 r1 ]
 "444
+[v _show `uc ~T0 @X0 1 r1 ]
+"445
 [f ]
-[; ;lcd.c: 446: lcd_set_com_seg(0,40,0);
-"446
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 447: lcd_set_com_seg(3,13,0);
+[; ;lcd.c: 447: lcd_set_com_seg(0,40,0);
 "447
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 448: lcd_set_com_seg(3,13,0);
+"448
 [e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 449: if(show){
-"449
+[; ;lcd.c: 450: if(show){
+"450
 [e $ ! != -> _show `i -> -> -> 0 `i `uc `i 813  ]
 {
-[; ;lcd.c: 450: lcd_set_com_seg(0,41,1);
-"450
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
-[; ;lcd.c: 451: lcd_set_com_seg(1,41,1);
+[; ;lcd.c: 451: lcd_set_com_seg(0,41,1);
 "451
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+[; ;lcd.c: 452: lcd_set_com_seg(1,41,1);
 "452
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 1 `i `uc ]
+"453
 }
-[; ;lcd.c: 452: }else{
+[; ;lcd.c: 453: }else{
 [e $U 814  ]
 [e :U 813 ]
 {
-[; ;lcd.c: 453: lcd_set_com_seg(0,41,0);
-"453
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 454: lcd_set_com_seg(1,41,0);
+[; ;lcd.c: 454: lcd_set_com_seg(0,41,0);
 "454
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 455: lcd_set_com_seg(1,41,0);
 "455
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+"456
 }
 [e :U 814 ]
-[; ;lcd.c: 455: }
 [; ;lcd.c: 456: }
-"456
+[; ;lcd.c: 457: }
+"457
 [e :UE 812 ]
 }
-"458
+"459
 [v _lcd_disp_unit_mpa `(v ~T0 @X0 1 ef1`uc ]
-"459
+"460
 {
-[; ;lcd.c: 458: void lcd_disp_unit_mpa(bool show)
-[; ;lcd.c: 459: {
+[; ;lcd.c: 459: void lcd_disp_unit_mpa(bool show)
+[; ;lcd.c: 460: {
 [e :U _lcd_disp_unit_mpa ]
-"458
-[v _show `uc ~T0 @X0 1 r1 ]
 "459
+[v _show `uc ~T0 @X0 1 r1 ]
+"460
 [f ]
-[; ;lcd.c: 461: lcd_set_com_seg(3,13,0);
-"461
-[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 462: lcd_set_com_seg(1,41,0);
+[; ;lcd.c: 462: lcd_set_com_seg(3,13,0);
 "462
-[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 463: lcd_set_com_seg(0,41,0);
+[e ( _lcd_set_com_seg (3 , , -> -> 3 `i `uc -> -> 13 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 463: lcd_set_com_seg(1,41,0);
 "463
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
-[; ;lcd.c: 464: if(show){
+[e ( _lcd_set_com_seg (3 , , -> -> 1 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 464: lcd_set_com_seg(0,41,0);
 "464
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 41 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 465: if(show){
+"465
 [e $ ! != -> _show `i -> -> -> 0 `i `uc `i 816  ]
 {
-[; ;lcd.c: 465: lcd_set_com_seg(0,40,1);
-"465
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 1 `i `uc ]
+[; ;lcd.c: 466: lcd_set_com_seg(0,40,1);
 "466
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 1 `i `uc ]
+"467
 }
-[; ;lcd.c: 466: }else{
+[; ;lcd.c: 467: }else{
 [e $U 817  ]
 [e :U 816 ]
 {
-[; ;lcd.c: 467: lcd_set_com_seg(0,40,0);
-"467
-[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 0 `i `uc ]
+[; ;lcd.c: 468: lcd_set_com_seg(0,40,0);
 "468
+[e ( _lcd_set_com_seg (3 , , -> -> 0 `i `uc -> -> 40 `i `uc -> -> 0 `i `uc ]
+"469
 }
 [e :U 817 ]
-[; ;lcd.c: 468: }
 [; ;lcd.c: 469: }
-"469
+[; ;lcd.c: 470: }
+"470
 [e :UE 815 ]
 }
-"472
+"473
 [v _lcd_disp_get_code `(uc ~T0 @X0 1 ef1`uc ]
-"473
-{
-[; ;lcd.c: 472: uint8_t lcd_disp_get_code(uint8_t chr)
-[; ;lcd.c: 473: {
-[e :U _lcd_disp_get_code ]
-"472
-[v _chr `uc ~T0 @X0 1 r1 ]
-"473
-[f ]
 "474
-[v _i `uc ~T0 @X0 1 a ]
+{
+[; ;lcd.c: 473: uint8_t lcd_disp_get_code(uint8_t chr)
+[; ;lcd.c: 474: {
+[e :U _lcd_disp_get_code ]
+"473
+[v _chr `uc ~T0 @X0 1 r1 ]
+"474
+[f ]
 "475
-[v _ret `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 474: uint8_t i;
-[; ;lcd.c: 475: uint8_t ret;
-[; ;lcd.c: 476: for(i=0;i<sizeof(LCDDigitalIndexTable);i++){
+[v _i `uc ~T0 @X0 1 a ]
 "476
+[v _ret `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 475: uint8_t i;
+[; ;lcd.c: 476: uint8_t ret;
+[; ;lcd.c: 477: for(i=0;i<sizeof(LCDDigitalIndexTable);i++){
+"477
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `ui -> # _LCDDigitalIndexTable `ui 819  ]
 [e $U 820  ]
 [e :U 819 ]
 {
-[; ;lcd.c: 477: if(chr==LCDDigitalIndexTable[i])break;
-"477
+[; ;lcd.c: 478: if(chr==LCDDigitalIndexTable[i])break;
+"478
 [e $ ! == -> _chr `i -> *U + &U _LCDDigitalIndexTable * -> _i `ux -> -> # *U &U _LCDDigitalIndexTable `ui `ux `i 822  ]
 [e $U 820  ]
 [e :U 822 ]
-"478
+"479
 }
-"476
+"477
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `ui -> # _LCDDigitalIndexTable `ui 819  ]
 [e :U 820 ]
-"478
-}
-[; ;lcd.c: 478: }
-[; ;lcd.c: 479: if(i<sizeof(LCDDigitalIndexTable)){
 "479
+}
+[; ;lcd.c: 479: }
+[; ;lcd.c: 480: if(i<sizeof(LCDDigitalIndexTable)){
+"480
 [e $ ! < -> _i `ui -> # _LCDDigitalIndexTable `ui 823  ]
 {
-[; ;lcd.c: 480: ret= LCDDigitalTable[i];
-"480
-[e = _ret *U + &U _LCDDigitalTable * -> _i `ux -> -> # *U &U _LCDDigitalTable `ui `ux ]
+[; ;lcd.c: 481: ret= LCDDigitalTable[i];
 "481
+[e = _ret *U + &U _LCDDigitalTable * -> _i `ux -> -> # *U &U _LCDDigitalTable `ui `ux ]
+"482
 }
 [e :U 823 ]
-[; ;lcd.c: 481: }
-[; ;lcd.c: 482: return ret;
-"482
+[; ;lcd.c: 482: }
+[; ;lcd.c: 483: return ret;
+"483
 [e ) _ret ]
 [e $UE 818  ]
-[; ;lcd.c: 483: }
-"483
+[; ;lcd.c: 484: }
+"484
 [e :UE 818 ]
 }
-"485
-[v _lcd_clear_all_dp `(v ~T0 @X0 1 ef ]
 "486
+[v _lcd_clear_all_dp `(v ~T0 @X0 1 ef ]
+"487
 {
-[; ;lcd.c: 485: void lcd_clear_all_dp(void)
-[; ;lcd.c: 486: {
+[; ;lcd.c: 486: void lcd_clear_all_dp(void)
+[; ;lcd.c: 487: {
 [e :U _lcd_clear_all_dp ]
 [f ]
-[; ;lcd.c: 487: lcd_disp_dp_loc_0(0);
-"487
-[e ( _lcd_disp_dp_loc_0 (1 -> -> 0 `i `uc ]
-[; ;lcd.c: 488: lcd_disp_dp_loc_1(0);
+[; ;lcd.c: 488: lcd_disp_dp_loc_0(0);
 "488
-[e ( _lcd_disp_dp_loc_1 (1 -> -> 0 `i `uc ]
-[; ;lcd.c: 489: lcd_disp_dp_loc_2(0);
+[e ( _lcd_disp_dp_loc_0 (1 -> -> 0 `i `uc ]
+[; ;lcd.c: 489: lcd_disp_dp_loc_1(0);
 "489
-[e ( _lcd_disp_dp_loc_2 (1 -> -> 0 `i `uc ]
-[; ;lcd.c: 490: lcd_disp_dp_loc_4(0);
+[e ( _lcd_disp_dp_loc_1 (1 -> -> 0 `i `uc ]
+[; ;lcd.c: 490: lcd_disp_dp_loc_2(0);
 "490
-[e ( _lcd_disp_dp_loc_4 (1 -> -> 0 `i `uc ]
-[; ;lcd.c: 491: lcd_disp_dp_loc_5(0);
+[e ( _lcd_disp_dp_loc_2 (1 -> -> 0 `i `uc ]
+[; ;lcd.c: 491: lcd_disp_dp_loc_4(0);
 "491
-[e ( _lcd_disp_dp_loc_5 (1 -> -> 0 `i `uc ]
-[; ;lcd.c: 492: lcd_disp_dp_loc_6(0);
+[e ( _lcd_disp_dp_loc_4 (1 -> -> 0 `i `uc ]
+[; ;lcd.c: 492: lcd_disp_dp_loc_5(0);
 "492
-[e ( _lcd_disp_dp_loc_6 (1 -> -> 0 `i `uc ]
-[; ;lcd.c: 493: }
+[e ( _lcd_disp_dp_loc_5 (1 -> -> 0 `i `uc ]
+[; ;lcd.c: 493: lcd_disp_dp_loc_6(0);
 "493
+[e ( _lcd_disp_dp_loc_6 (1 -> -> 0 `i `uc ]
+[; ;lcd.c: 494: }
+"494
 [e :UE 824 ]
 }
-"495
-[v _lcd_show_dp `(v ~T0 @X0 1 ef2`uc`uc ]
 "496
+[v _lcd_show_dp `(v ~T0 @X0 1 ef2`uc`uc ]
+"497
 {
-[; ;lcd.c: 495: void lcd_show_dp(uint8_t loc,bool show)
-[; ;lcd.c: 496: {
+[; ;lcd.c: 496: void lcd_show_dp(uint8_t loc,bool show)
+[; ;lcd.c: 497: {
 [e :U _lcd_show_dp ]
-"495
+"496
 [v _loc `uc ~T0 @X0 1 r1 ]
 [v _show `uc ~T0 @X0 1 r2 ]
-"496
-[f ]
-[; ;lcd.c: 497: switch(loc){
 "497
+[f ]
+[; ;lcd.c: 498: switch(loc){
+"498
 [e $U 827  ]
 {
-[; ;lcd.c: 498: case 0:lcd_disp_dp_loc_0(show);break;
-"498
+[; ;lcd.c: 499: case 0:lcd_disp_dp_loc_0(show);break;
+"499
 [e :U 828 ]
 [e ( _lcd_disp_dp_loc_0 (1 _show ]
 [e $U 826  ]
-[; ;lcd.c: 499: case 1:lcd_disp_dp_loc_1(show);break;
-"499
+[; ;lcd.c: 500: case 1:lcd_disp_dp_loc_1(show);break;
+"500
 [e :U 829 ]
 [e ( _lcd_disp_dp_loc_1 (1 _show ]
 [e $U 826  ]
-[; ;lcd.c: 500: case 2:lcd_disp_dp_loc_2(show);break;
-"500
+[; ;lcd.c: 501: case 2:lcd_disp_dp_loc_2(show);break;
+"501
 [e :U 830 ]
 [e ( _lcd_disp_dp_loc_2 (1 _show ]
 [e $U 826  ]
-[; ;lcd.c: 502: case 4:lcd_disp_dp_loc_4(show);break;
-"502
+[; ;lcd.c: 503: case 4:lcd_disp_dp_loc_4(show);break;
+"503
 [e :U 831 ]
 [e ( _lcd_disp_dp_loc_4 (1 _show ]
 [e $U 826  ]
-[; ;lcd.c: 503: case 5:lcd_disp_dp_loc_5(show);break;
-"503
+[; ;lcd.c: 504: case 5:lcd_disp_dp_loc_5(show);break;
+"504
 [e :U 832 ]
 [e ( _lcd_disp_dp_loc_5 (1 _show ]
 [e $U 826  ]
-[; ;lcd.c: 504: case 6:lcd_disp_dp_loc_6(show);break;
-"504
+[; ;lcd.c: 505: case 6:lcd_disp_dp_loc_6(show);break;
+"505
 [e :U 833 ]
 [e ( _lcd_disp_dp_loc_6 (1 _show ]
 [e $U 826  ]
-[; ;lcd.c: 506: default:break;
-"506
+[; ;lcd.c: 507: default:break;
+"507
 [e :U 834 ]
 [e $U 826  ]
-"507
+"508
 }
-[; ;lcd.c: 507: }
+[; ;lcd.c: 508: }
 [e $U 826  ]
-"497
+"498
 [e :U 827 ]
 [e [\ _loc , $ -> -> 0 `i `uc 828
  , $ -> -> 1 `i `uc 829
@@ -8078,81 +8084,81 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 5 `i `uc 832
  , $ -> -> 6 `i `uc 833
  834 ]
-"507
-[e :U 826 ]
-[; ;lcd.c: 508: }
 "508
+[e :U 826 ]
+[; ;lcd.c: 509: }
+"509
 [e :UE 825 ]
 }
-"510
-[v _lcd_show_chr `(v ~T0 @X0 1 ef2`uc`uc ]
 "511
+[v _lcd_show_chr `(v ~T0 @X0 1 ef2`uc`uc ]
+"512
 {
-[; ;lcd.c: 510: void lcd_show_chr(uint8_t loc,uint8_t chr)
-[; ;lcd.c: 511: {
+[; ;lcd.c: 511: void lcd_show_chr(uint8_t loc,uint8_t chr)
+[; ;lcd.c: 512: {
 [e :U _lcd_show_chr ]
-"510
+"511
 [v _loc `uc ~T0 @X0 1 r1 ]
 [v _chr `uc ~T0 @X0 1 r2 ]
-"511
-[f ]
 "512
-[v _code `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 512: uint8_t code=lcd_disp_get_code(chr);
-[e = _code ( _lcd_disp_get_code (1 _chr ]
-[; ;lcd.c: 513: switch(loc){
+[f ]
 "513
+[v _code `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 513: uint8_t code=lcd_disp_get_code(chr);
+[e = _code ( _lcd_disp_get_code (1 _chr ]
+[; ;lcd.c: 514: switch(loc){
+"514
 [e $U 837  ]
 {
-[; ;lcd.c: 514: case 0:lcd_disp_chr_loc_0(code);break;
-"514
+[; ;lcd.c: 515: case 0:lcd_disp_chr_loc_0(code);break;
+"515
 [e :U 838 ]
 [e ( _lcd_disp_chr_loc_0 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 515: case 1:lcd_disp_chr_loc_1(code);break;
-"515
+[; ;lcd.c: 516: case 1:lcd_disp_chr_loc_1(code);break;
+"516
 [e :U 839 ]
 [e ( _lcd_disp_chr_loc_1 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 516: case 2:lcd_disp_chr_loc_2(code);break;
-"516
+[; ;lcd.c: 517: case 2:lcd_disp_chr_loc_2(code);break;
+"517
 [e :U 840 ]
 [e ( _lcd_disp_chr_loc_2 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 517: case 3:lcd_disp_chr_loc_3(code);break;
-"517
+[; ;lcd.c: 518: case 3:lcd_disp_chr_loc_3(code);break;
+"518
 [e :U 841 ]
 [e ( _lcd_disp_chr_loc_3 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 518: case 4:lcd_disp_chr_loc_4(code);break;
-"518
+[; ;lcd.c: 519: case 4:lcd_disp_chr_loc_4(code);break;
+"519
 [e :U 842 ]
 [e ( _lcd_disp_chr_loc_4 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 519: case 5:lcd_disp_chr_loc_5(code);break;
-"519
+[; ;lcd.c: 520: case 5:lcd_disp_chr_loc_5(code);break;
+"520
 [e :U 843 ]
 [e ( _lcd_disp_chr_loc_5 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 520: case 6:lcd_disp_chr_loc_6(code);break;
-"520
+[; ;lcd.c: 521: case 6:lcd_disp_chr_loc_6(code);break;
+"521
 [e :U 844 ]
 [e ( _lcd_disp_chr_loc_6 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 521: case 7:lcd_disp_chr_loc_7(code);break;
-"521
+[; ;lcd.c: 522: case 7:lcd_disp_chr_loc_7(code);break;
+"522
 [e :U 845 ]
 [e ( _lcd_disp_chr_loc_7 (1 _code ]
 [e $U 836  ]
-[; ;lcd.c: 522: default:break;
-"522
+[; ;lcd.c: 523: default:break;
+"523
 [e :U 846 ]
 [e $U 836  ]
-"523
+"524
 }
-[; ;lcd.c: 523: }
+[; ;lcd.c: 524: }
 [e $U 836  ]
-"513
+"514
 [e :U 837 ]
 [e [\ _loc , $ -> -> 0 `i `uc 838
  , $ -> -> 1 `i `uc 839
@@ -8163,441 +8169,441 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 6 `i `uc 844
  , $ -> -> 7 `i `uc 845
  846 ]
-"523
-[e :U 836 ]
-[; ;lcd.c: 524: }
 "524
+[e :U 836 ]
+[; ;lcd.c: 525: }
+"525
 [e :UE 835 ]
 }
-"526
-[v _lcd_show_chr_lc `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 "527
+[v _lcd_show_chr_lc `(v ~T0 @X0 1 ef3`uc`uc`uc ]
+"528
 {
-[; ;lcd.c: 526: void lcd_show_chr_lc(uint8_t line,uint8_t col,uint8_t chr)
-[; ;lcd.c: 527: {
+[; ;lcd.c: 527: void lcd_show_chr_lc(uint8_t line,uint8_t col,uint8_t chr)
+[; ;lcd.c: 528: {
 [e :U _lcd_show_chr_lc ]
-"526
+"527
 [v _line `uc ~T0 @X0 1 r1 ]
 [v _col `uc ~T0 @X0 1 r2 ]
 [v _chr `uc ~T0 @X0 1 r3 ]
-"527
-[f ]
 "528
-[v _loc `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 528: uint8_t loc;
-[; ;lcd.c: 529: if(line>1)return;
+[f ]
 "529
+[v _loc `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 529: uint8_t loc;
+[; ;lcd.c: 530: if(line>1)return;
+"530
 [e $ ! > -> _line `i -> 1 `i 848  ]
 [e $UE 847  ]
 [e :U 848 ]
-[; ;lcd.c: 530: if(col>3)return;
-"530
+[; ;lcd.c: 531: if(col>3)return;
+"531
 [e $ ! > -> _col `i -> 3 `i 849  ]
 [e $UE 847  ]
 [e :U 849 ]
-[; ;lcd.c: 531: loc=(line<<1)+col;
-"531
-[e = _loc -> + << -> _line `i -> 1 `i -> _col `i `uc ]
-[; ;lcd.c: 532: lcd_show_chr(loc,chr);
+[; ;lcd.c: 532: loc=(line<<1)+col;
 "532
-[e ( _lcd_show_chr (2 , _loc _chr ]
-[; ;lcd.c: 533: }
+[e = _loc -> + << -> _line `i -> 1 `i -> _col `i `uc ]
+[; ;lcd.c: 533: lcd_show_chr(loc,chr);
 "533
+[e ( _lcd_show_chr (2 , _loc _chr ]
+[; ;lcd.c: 534: }
+"534
 [e :UE 847 ]
 }
-"535
+"536
 [v _lcd_show_string_l0 `(v ~T0 @X0 1 ef1`*uc ]
-"536
-{
-[; ;lcd.c: 535: void lcd_show_string_l0(uint8_t* str)
-[; ;lcd.c: 536: {
-[e :U _lcd_show_string_l0 ]
-"535
-[v _str `*uc ~T0 @X0 1 r1 ]
-"536
-[f ]
 "537
-[v _t8 `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 537: uint8_t t8=0;
-[e = _t8 -> -> 0 `i `uc ]
-[; ;lcd.c: 538: while(*str!='\0' && t8<4){
+{
+[; ;lcd.c: 536: void lcd_show_string_l0(uint8_t* str)
+[; ;lcd.c: 537: {
+[e :U _lcd_show_string_l0 ]
+"536
+[v _str `*uc ~T0 @X0 1 r1 ]
+"537
+[f ]
 "538
+[v _t8 `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 538: uint8_t t8=0;
+[e = _t8 -> -> 0 `i `uc ]
+[; ;lcd.c: 539: while(*str!='\0' && t8<4){
+"539
 [e $U 851  ]
 [e :U 852 ]
 {
-[; ;lcd.c: 539: lcd_show_chr(t8,*str);
-"539
-[e ( _lcd_show_chr (2 , _t8 *U _str ]
-[; ;lcd.c: 540: str++;
+[; ;lcd.c: 540: lcd_show_chr(t8,*str);
 "540
-[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
-[; ;lcd.c: 541: t8++;
+[e ( _lcd_show_chr (2 , _t8 *U _str ]
+[; ;lcd.c: 541: str++;
 "541
-[e ++ _t8 -> -> 1 `i `uc ]
+[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
+[; ;lcd.c: 542: t8++;
 "542
+[e ++ _t8 -> -> 1 `i `uc ]
+"543
 }
 [e :U 851 ]
-"538
+"539
 [e $ && != -> *U _str `ui -> 0 `ui < -> _t8 `i -> 4 `i 852  ]
 [e :U 853 ]
-[; ;lcd.c: 542: }
 [; ;lcd.c: 543: }
-"543
+[; ;lcd.c: 544: }
+"544
 [e :UE 850 ]
 }
-"545
+"546
 [v _lcd_show_string_l1 `(v ~T0 @X0 1 ef1`*uc ]
-"546
-{
-[; ;lcd.c: 545: void lcd_show_string_l1(uint8_t* str)
-[; ;lcd.c: 546: {
-[e :U _lcd_show_string_l1 ]
-"545
-[v _str `*uc ~T0 @X0 1 r1 ]
-"546
-[f ]
 "547
-[v _t8 `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 547: uint8_t t8=0;
-[e = _t8 -> -> 0 `i `uc ]
-[; ;lcd.c: 548: while(*str!='\0' && t8<4){
+{
+[; ;lcd.c: 546: void lcd_show_string_l1(uint8_t* str)
+[; ;lcd.c: 547: {
+[e :U _lcd_show_string_l1 ]
+"546
+[v _str `*uc ~T0 @X0 1 r1 ]
+"547
+[f ]
 "548
+[v _t8 `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 548: uint8_t t8=0;
+[e = _t8 -> -> 0 `i `uc ]
+[; ;lcd.c: 549: while(*str!='\0' && t8<4){
+"549
 [e $U 855  ]
 [e :U 856 ]
 {
-[; ;lcd.c: 549: lcd_show_chr(t8+4,*str);
-"549
-[e ( _lcd_show_chr (2 , -> + -> _t8 `i -> 4 `i `uc *U _str ]
-[; ;lcd.c: 550: str++;
+[; ;lcd.c: 550: lcd_show_chr(t8+4,*str);
 "550
-[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
-[; ;lcd.c: 551: t8++;
+[e ( _lcd_show_chr (2 , -> + -> _t8 `i -> 4 `i `uc *U _str ]
+[; ;lcd.c: 551: str++;
 "551
-[e ++ _t8 -> -> 1 `i `uc ]
+[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
+[; ;lcd.c: 552: t8++;
 "552
+[e ++ _t8 -> -> 1 `i `uc ]
+"553
 }
 [e :U 855 ]
-"548
+"549
 [e $ && != -> *U _str `ui -> 0 `ui < -> _t8 `i -> 4 `i 856  ]
 [e :U 857 ]
-[; ;lcd.c: 552: }
 [; ;lcd.c: 553: }
-"553
+[; ;lcd.c: 554: }
+"554
 [e :UE 854 ]
 }
-"555
+"556
 [v _lcd_show_string `(v ~T0 @X0 1 ef1`*uc ]
-"556
-{
-[; ;lcd.c: 555: void lcd_show_string(uint8_t* str)
-[; ;lcd.c: 556: {
-[e :U _lcd_show_string ]
-"555
-[v _str `*uc ~T0 @X0 1 r1 ]
-"556
-[f ]
 "557
-[v _t8 `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 557: uint8_t t8=0;
-[e = _t8 -> -> 0 `i `uc ]
-[; ;lcd.c: 558: while(*str!='\0' && t8<8){
+{
+[; ;lcd.c: 556: void lcd_show_string(uint8_t* str)
+[; ;lcd.c: 557: {
+[e :U _lcd_show_string ]
+"556
+[v _str `*uc ~T0 @X0 1 r1 ]
+"557
+[f ]
 "558
+[v _t8 `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 558: uint8_t t8=0;
+[e = _t8 -> -> 0 `i `uc ]
+[; ;lcd.c: 559: while(*str!='\0' && t8<8){
+"559
 [e $U 859  ]
 [e :U 860 ]
 {
-[; ;lcd.c: 559: lcd_show_chr(t8,*str);
-"559
-[e ( _lcd_show_chr (2 , _t8 *U _str ]
-[; ;lcd.c: 560: str++;
+[; ;lcd.c: 560: lcd_show_chr(t8,*str);
 "560
-[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
-[; ;lcd.c: 561: t8++;
+[e ( _lcd_show_chr (2 , _t8 *U _str ]
+[; ;lcd.c: 561: str++;
 "561
-[e ++ _t8 -> -> 1 `i `uc ]
+[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
+[; ;lcd.c: 562: t8++;
 "562
+[e ++ _t8 -> -> 1 `i `uc ]
+"563
 }
 [e :U 859 ]
-"558
+"559
 [e $ && != -> *U _str `ui -> 0 `ui < -> _t8 `i -> 8 `i 860  ]
 [e :U 861 ]
-[; ;lcd.c: 562: }
-[; ;lcd.c: 564: }
-"564
+[; ;lcd.c: 563: }
+[; ;lcd.c: 565: }
+"565
 [e :UE 858 ]
 }
-"568
-[v _lcd_disp_refresh `(v ~T0 @X0 1 ef ]
 "569
+[v _lcd_disp_refresh `(v ~T0 @X0 1 ef ]
+"570
 {
-[; ;lcd.c: 568: void lcd_disp_refresh(void)
-[; ;lcd.c: 569: {
+[; ;lcd.c: 569: void lcd_disp_refresh(void)
+[; ;lcd.c: 570: {
 [e :U _lcd_disp_refresh ]
 [f ]
-[; ;lcd.c: 571: LCDDATA0=pLCD[0];
-"571
-[e = _LCDDATA0 *U + &U _pLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 572: LCDDATA1=pLCD[1];
+[; ;lcd.c: 572: LCDDATA0=pLCD[0];
 "572
-[e = _LCDDATA1 *U + &U _pLCD * -> -> -> 1 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 573: LCDDATA2=pLCD[2];
+[e = _LCDDATA0 *U + &U _pLCD * -> -> -> 0 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 573: LCDDATA1=pLCD[1];
 "573
-[e = _LCDDATA2 *U + &U _pLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 574: LCDDATA3=pLCD[3];
+[e = _LCDDATA1 *U + &U _pLCD * -> -> -> 1 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 574: LCDDATA2=pLCD[2];
 "574
-[e = _LCDDATA3 *U + &U _pLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 575: LCDDATA4=pLCD[4];
+[e = _LCDDATA2 *U + &U _pLCD * -> -> -> 2 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 575: LCDDATA3=pLCD[3];
 "575
-[e = _LCDDATA4 *U + &U _pLCD * -> -> -> 4 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 576: LCDDATA5=pLCD[5];
+[e = _LCDDATA3 *U + &U _pLCD * -> -> -> 3 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 576: LCDDATA4=pLCD[4];
 "576
-[e = _LCDDATA5 *U + &U _pLCD * -> -> -> 5 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 577: LCDDATA6=pLCD[6];
+[e = _LCDDATA4 *U + &U _pLCD * -> -> -> 4 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 577: LCDDATA5=pLCD[5];
 "577
-[e = _LCDDATA6 *U + &U _pLCD * -> -> -> 6 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 578: LCDDATA7=pLCD[7];
+[e = _LCDDATA5 *U + &U _pLCD * -> -> -> 5 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 578: LCDDATA6=pLCD[6];
 "578
-[e = _LCDDATA7 *U + &U _pLCD * -> -> -> 7 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 579: LCDDATA8=pLCD[8];
+[e = _LCDDATA6 *U + &U _pLCD * -> -> -> 6 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 579: LCDDATA7=pLCD[7];
 "579
-[e = _LCDDATA8 *U + &U _pLCD * -> -> -> 8 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 580: LCDDATA9=pLCD[9];
+[e = _LCDDATA7 *U + &U _pLCD * -> -> -> 7 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 580: LCDDATA8=pLCD[8];
 "580
+[e = _LCDDATA8 *U + &U _pLCD * -> -> -> 8 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 581: LCDDATA9=pLCD[9];
+"581
 [e = _LCDDATA9 *U + &U _pLCD * -> -> -> 9 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 582: LCDDATA10=pLCD[10];
-"582
-[e = _LCDDATA10 *U + &U _pLCD * -> -> -> 10 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 583: LCDDATA11=pLCD[11];
+[; ;lcd.c: 583: LCDDATA10=pLCD[10];
 "583
-[e = _LCDDATA11 *U + &U _pLCD * -> -> -> 11 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 584: LCDDATA12=pLCD[12];
+[e = _LCDDATA10 *U + &U _pLCD * -> -> -> 10 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 584: LCDDATA11=pLCD[11];
 "584
-[e = _LCDDATA12 *U + &U _pLCD * -> -> -> 12 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 585: LCDDATA13=pLCD[13];
+[e = _LCDDATA11 *U + &U _pLCD * -> -> -> 11 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 585: LCDDATA12=pLCD[12];
 "585
-[e = _LCDDATA13 *U + &U _pLCD * -> -> -> 13 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 586: LCDDATA14=pLCD[14];
+[e = _LCDDATA12 *U + &U _pLCD * -> -> -> 12 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 586: LCDDATA13=pLCD[13];
 "586
-[e = _LCDDATA14 *U + &U _pLCD * -> -> -> 14 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 587: LCDDATA15=pLCD[15];
+[e = _LCDDATA13 *U + &U _pLCD * -> -> -> 13 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 587: LCDDATA14=pLCD[14];
 "587
-[e = _LCDDATA15 *U + &U _pLCD * -> -> -> 15 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 588: LCDDATA16=pLCD[16];
+[e = _LCDDATA14 *U + &U _pLCD * -> -> -> 14 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 588: LCDDATA15=pLCD[15];
 "588
-[e = _LCDDATA16 *U + &U _pLCD * -> -> -> 16 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 589: LCDDATA17=pLCD[17];
+[e = _LCDDATA15 *U + &U _pLCD * -> -> -> 15 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 589: LCDDATA16=pLCD[16];
 "589
-[e = _LCDDATA17 *U + &U _pLCD * -> -> -> 17 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 590: LCDDATA18=pLCD[18];
+[e = _LCDDATA16 *U + &U _pLCD * -> -> -> 16 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 590: LCDDATA17=pLCD[17];
 "590
-[e = _LCDDATA18 *U + &U _pLCD * -> -> -> 18 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 591: LCDDATA19=pLCD[19];
+[e = _LCDDATA17 *U + &U _pLCD * -> -> -> 17 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 591: LCDDATA18=pLCD[18];
 "591
+[e = _LCDDATA18 *U + &U _pLCD * -> -> -> 18 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 592: LCDDATA19=pLCD[19];
+"592
 [e = _LCDDATA19 *U + &U _pLCD * -> -> -> 19 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 593: LCDDATA20=pLCD[20];
-"593
-[e = _LCDDATA20 *U + &U _pLCD * -> -> -> 20 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 594: LCDDATA21=pLCD[21];
+[; ;lcd.c: 594: LCDDATA20=pLCD[20];
 "594
-[e = _LCDDATA21 *U + &U _pLCD * -> -> -> 21 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 595: LCDDATA22=pLCD[22];
+[e = _LCDDATA20 *U + &U _pLCD * -> -> -> 20 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 595: LCDDATA21=pLCD[21];
 "595
-[e = _LCDDATA22 *U + &U _pLCD * -> -> -> 22 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 596: LCDDATA23=pLCD[23];
+[e = _LCDDATA21 *U + &U _pLCD * -> -> -> 21 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 596: LCDDATA22=pLCD[22];
 "596
-[e = _LCDDATA23 *U + &U _pLCD * -> -> -> 23 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
-[; ;lcd.c: 597: }
+[e = _LCDDATA22 *U + &U _pLCD * -> -> -> 22 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 597: LCDDATA23=pLCD[23];
 "597
+[e = _LCDDATA23 *U + &U _pLCD * -> -> -> 23 `i `ui `ux -> -> # *U &U _pLCD `ui `ux ]
+[; ;lcd.c: 598: }
+"598
 [e :UE 862 ]
 }
-"599
+"600
 [v _lcd_disp_all `(v ~T0 @X0 1 ef1`uc ]
-"600
-{
-[; ;lcd.c: 599: void lcd_disp_all(uint8_t x)
-[; ;lcd.c: 600: {
-[e :U _lcd_disp_all ]
-"599
-[v _x `uc ~T0 @X0 1 r1 ]
-"600
-[f ]
 "601
-[v _i `uc ~T0 @X0 1 a ]
-[; ;lcd.c: 601: uint8_t i;
-[; ;lcd.c: 602: for(i=0;i<24;i++)
+{
+[; ;lcd.c: 600: void lcd_disp_all(uint8_t x)
+[; ;lcd.c: 601: {
+[e :U _lcd_disp_all ]
+"600
+[v _x `uc ~T0 @X0 1 r1 ]
+"601
+[f ]
 "602
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lcd.c: 602: uint8_t i;
+[; ;lcd.c: 603: for(i=0;i<24;i++)
+"603
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 24 `i 864  ]
 [e $U 865  ]
-"603
-[e :U 864 ]
-[; ;lcd.c: 603: {
-{
-[; ;lcd.c: 604: pLCD[i]=x;
 "604
-[e = *U + &U _pLCD * -> _i `ux -> -> # *U &U _pLCD `ui `ux _x ]
+[e :U 864 ]
+[; ;lcd.c: 604: {
+{
+[; ;lcd.c: 605: pLCD[i]=x;
 "605
+[e = *U + &U _pLCD * -> _i `ux -> -> # *U &U _pLCD `ui `ux _x ]
+"606
 }
-"602
+"603
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 24 `i 864  ]
 [e :U 865 ]
-"605
+"606
 }
-[; ;lcd.c: 605: }
-[; ;lcd.c: 607: }
-"607
+[; ;lcd.c: 606: }
+[; ;lcd.c: 608: }
+"608
 [e :UE 863 ]
 }
-"609
-[v _lcd_config `(v ~T0 @X0 1 ef ]
 "610
+[v _lcd_config `(v ~T0 @X0 1 ef ]
+"611
 {
-[; ;lcd.c: 609: void lcd_config(void)
-[; ;lcd.c: 610: {
+[; ;lcd.c: 610: void lcd_config(void)
+[; ;lcd.c: 611: {
 [e :U _lcd_config ]
 [f ]
-[; ;lcd.c: 615: LCDREG=0x3f;
-"615
+[; ;lcd.c: 616: LCDREG=0x3f;
+"616
 [e = _LCDREG -> -> 63 `i `uc ]
-[; ;lcd.c: 623: LCDPSbits.WFT = 0;
-"623
-[e = . . _LCDPSbits 0 7 -> -> 0 `i `uc ]
-[; ;lcd.c: 624: LCDPSbits.BIASMD = 0;
+[; ;lcd.c: 624: LCDPSbits.WFT = 0;
 "624
-[e = . . _LCDPSbits 0 6 -> -> 0 `i `uc ]
-[; ;lcd.c: 625: LCDPSbits.LP3 = 0;
+[e = . . _LCDPSbits 0 7 -> -> 0 `i `uc ]
+[; ;lcd.c: 625: LCDPSbits.BIASMD = 0;
 "625
-[e = . . _LCDPSbits 0 3 -> -> 0 `i `uc ]
-[; ;lcd.c: 626: LCDPSbits.LP2 = 1;
+[e = . . _LCDPSbits 0 6 -> -> 0 `i `uc ]
+[; ;lcd.c: 626: LCDPSbits.LP3 = 0;
 "626
-[e = . . _LCDPSbits 0 2 -> -> 1 `i `uc ]
-[; ;lcd.c: 627: LCDPSbits.LP1 = 0;
+[e = . . _LCDPSbits 0 3 -> -> 0 `i `uc ]
+[; ;lcd.c: 627: LCDPSbits.LP2 = 1;
 "627
-[e = . . _LCDPSbits 0 1 -> -> 0 `i `uc ]
-[; ;lcd.c: 628: LCDPSbits.LP0 = 0;
+[e = . . _LCDPSbits 0 2 -> -> 1 `i `uc ]
+[; ;lcd.c: 628: LCDPSbits.LP1 = 0;
 "628
+[e = . . _LCDPSbits 0 1 -> -> 0 `i `uc ]
+[; ;lcd.c: 629: LCDPSbits.LP0 = 0;
+"629
 [e = . . _LCDPSbits 0 0 -> -> 0 `i `uc ]
-[; ;lcd.c: 631: LCDSE0 = 0b11111111;
-"631
-[e = _LCDSE0 -> -> 255 `i `uc ]
-[; ;lcd.c: 632: LCDSE1 = 0b11100000;
+[; ;lcd.c: 632: LCDSE0 = 0b11111111;
 "632
-[e = _LCDSE1 -> -> 224 `i `uc ]
-[; ;lcd.c: 633: LCDSE2 = 0b11111000;
+[e = _LCDSE0 -> -> 255 `i `uc ]
+[; ;lcd.c: 633: LCDSE1 = 0b11100000;
 "633
-[e = _LCDSE2 -> -> 248 `i `uc ]
-[; ;lcd.c: 634: LCDSE3 = 0b11000011;
+[e = _LCDSE1 -> -> 224 `i `uc ]
+[; ;lcd.c: 634: LCDSE2 = 0b11111000;
 "634
-[e = _LCDSE3 -> -> 195 `i `uc ]
-[; ;lcd.c: 635: LCDSE4 = 0b11111110;
+[e = _LCDSE2 -> -> 248 `i `uc ]
+[; ;lcd.c: 635: LCDSE3 = 0b11000011;
 "635
-[e = _LCDSE4 -> -> 254 `i `uc ]
-[; ;lcd.c: 636: LCDSE5 = 0b11001111;
+[e = _LCDSE3 -> -> 195 `i `uc ]
+[; ;lcd.c: 636: LCDSE4 = 0b11111110;
 "636
+[e = _LCDSE4 -> -> 254 `i `uc ]
+[; ;lcd.c: 637: LCDSE5 = 0b11001111;
+"637
 [e = _LCDSE5 -> -> 207 `i `uc ]
-[; ;lcd.c: 639: lcd_disp_all(0x00);;
-"639
+[; ;lcd.c: 640: lcd_disp_all(0x00);;
+"640
 [e ( _lcd_disp_all (1 -> -> 0 `i `uc ]
-[; ;lcd.c: 643: }
-"643
+[; ;lcd.c: 644: }
+"644
 [e :UE 867 ]
 }
-"644
-[v _lcd_bl_on `(v ~T0 @X0 1 ef ]
 "645
+[v _lcd_bl_on `(v ~T0 @X0 1 ef ]
+"646
 {
-[; ;lcd.c: 644: void lcd_bl_on(void)
-[; ;lcd.c: 645: {
+[; ;lcd.c: 645: void lcd_bl_on(void)
+[; ;lcd.c: 646: {
 [e :U _lcd_bl_on ]
 [f ]
-[; ;lcd.c: 646: do{TRISG &= ~(1<<4);}while(0);;
-"646
+[; ;lcd.c: 647: do{TRISG &= ~(1<<4);}while(0);;
+"647
 [e :U 871 ]
 {
 [e =& _TRISG -> ~ << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 870 ]
-[; ;lcd.c: 647: RTCCFGbits.RTCOE=1;
-"647
-[e = . . _RTCCFGbits 0 2 -> -> 1 `i `uc ]
-[; ;lcd.c: 648: do{LATG |= (1<<4);}while(0);;
+[; ;lcd.c: 648: RTCCFGbits.RTCOE=1;
 "648
+[e = . . _RTCCFGbits 0 2 -> -> 1 `i `uc ]
+[; ;lcd.c: 649: do{LATG |= (1<<4);}while(0);;
+"649
 [e :U 874 ]
 {
 [e =| _LATG -> << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 873 ]
-[; ;lcd.c: 649: }
-"649
+[; ;lcd.c: 650: }
+"650
 [e :UE 868 ]
 }
-"651
-[v _lcd_bl_off `(v ~T0 @X0 1 ef ]
 "652
+[v _lcd_bl_off `(v ~T0 @X0 1 ef ]
+"653
 {
-[; ;lcd.c: 651: void lcd_bl_off(void)
-[; ;lcd.c: 652: {
+[; ;lcd.c: 652: void lcd_bl_off(void)
+[; ;lcd.c: 653: {
 [e :U _lcd_bl_off ]
 [f ]
-[; ;lcd.c: 653: do{TRISG |= (1<<4);}while(0);;
-"653
+[; ;lcd.c: 654: do{TRISG |= (1<<4);}while(0);;
+"654
 [e :U 878 ]
 {
 [e =| _TRISG -> << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 877 ]
-[; ;lcd.c: 654: RTCCFGbits.RTCOE=0;
-"654
+[; ;lcd.c: 655: RTCCFGbits.RTCOE=0;
+"655
 [e = . . _RTCCFGbits 0 2 -> -> 0 `i `uc ]
-[; ;lcd.c: 656: }
-"656
+[; ;lcd.c: 657: }
+"657
 [e :UE 875 ]
 }
-"658
-[v _lcd_bl_init `(v ~T0 @X0 1 ef ]
 "659
+[v _lcd_bl_init `(v ~T0 @X0 1 ef ]
+"660
 {
-[; ;lcd.c: 658: void lcd_bl_init(void)
-[; ;lcd.c: 659: {
+[; ;lcd.c: 659: void lcd_bl_init(void)
+[; ;lcd.c: 660: {
 [e :U _lcd_bl_init ]
 [f ]
-[; ;lcd.c: 660: do{TRISG &= ~(1<<4);}while(0);;
-"660
+[; ;lcd.c: 661: do{TRISG &= ~(1<<4);}while(0);;
+"661
 [e :U 882 ]
 {
 [e =& _TRISG -> ~ << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 881 ]
-[; ;lcd.c: 661: do{LATG |= (1<<4);}while(0);;
-"661
+[; ;lcd.c: 662: do{LATG |= (1<<4);}while(0);;
+"662
 [e :U 885 ]
 {
 [e =| _LATG -> << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 884 ]
-[; ;lcd.c: 662: }
-"662
+[; ;lcd.c: 663: }
+"663
 [e :UE 879 ]
 }
-"663
-[v _lcd_init `(v ~T0 @X0 1 ef ]
 "664
+[v _lcd_init `(v ~T0 @X0 1 ef ]
+"665
 {
-[; ;lcd.c: 663: void lcd_init(void)
-[; ;lcd.c: 664: {
+[; ;lcd.c: 664: void lcd_init(void)
+[; ;lcd.c: 665: {
 [e :U _lcd_init ]
 [f ]
-[; ;lcd.c: 665: lcd_config();
-"665
+[; ;lcd.c: 666: lcd_config();
+"666
 [e ( _lcd_config ..  ]
-[; ;lcd.c: 667: LCDCON=0x8f;;
-"667
-[e = _LCDCON -> -> 143 `i `uc ]
-[; ;lcd.c: 668: lcd_bl_on();
+[; ;lcd.c: 668: LCDCON=0x8f;;
 "668
-[e ( _lcd_bl_on ..  ]
-[; ;lcd.c: 669: }
+[e = _LCDCON -> -> 143 `i `uc ]
+[; ;lcd.c: 669: lcd_bl_on();
 "669
+[e ( _lcd_bl_on ..  ]
+[; ;lcd.c: 670: }
+"670
 [e :UE 886 ]
 }

@@ -34,8 +34,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TBLPTRU `Vuc ~T0 @X0 0 e@4088 ]
 "14511
 [v _TABLAT `Vuc ~T0 @X0 0 e@4085 ]
-"16 src/driver/../api/data.h
-[v _globleBuffer0 `uc ~T0 @X0 -> 0 `x e ]
+"17 src/driver/../api/data.h
+[v _globleBuffer `uc ~T0 @X0 -> 0 `x e ]
 "10 src/driver/../depend/m_string.h
 [v _m_mem_cpy_len `(v ~T0 @X0 0 ef3`*uc`*uc`ui ]
 "14028 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
@@ -6060,8 +6060,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 36: extern void lcd_disp_unit_t(bool show);
 [; ;lcd.h: 37: extern void lcd_disp_unit_2nd_m(bool show);
 [; ;lcd.h: 40: extern void lcd_disp_unit_mpa(bool show);
-[; ;data.h: 16: extern uint8_t globleBuffer0[256];
-[; ;data.h: 17: extern uint8_t globleBuffer1[256];
+[; ;data.h: 17: extern uint8_t globleBuffer[256];
 [; ;data.h: 18: typedef enum{
 [; ;data.h: 19: HOTIZONTAL=0,
 [; ;data.h: 20: VERTICAL,
@@ -6084,76 +6083,90 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 43: uint8_t[3];
 [; ;data.h: 44: }st_warnDef,warnDef_t;
 [; ;data.h: 47: typedef struct{
-[; ;data.h: 48: uint32_t id;
-[; ;data.h: 49: em_posture pos;
-[; ;data.h: 50: uint8_t maxValueForlevelBar;
-[; ;data.h: 52: uint16_t density;
-[; ;data.h: 54: int32_t h;
-[; ;data.h: 55: uint32_t d;
-[; ;data.h: 57: int32_t V1;
-[; ;data.h: 58: int32_t V2;
-[; ;data.h: 60: int32_t baseZero;
-[; ;data.h: 62: st_warnDef diffPressureWarnSet[4];
-[; ;data.h: 63: st_warnDef pressureWarnSet;
-[; ;data.h: 64: uint16_t ployCoeffic[4];
-[; ;data.h: 66: uint32_t TempZero;
-[; ;data.h: 67: uint32_t TempLine;
-[; ;data.h: 70: uint32_t ex_pressZero[2];
-[; ;data.h: 71: uint32_t ex_pressLine[2];
-[; ;data.h: 72: uint32_t ex_pressiLoopLow[2];
-[; ;data.h: 73: uint32_t ex_pressiLoopUpper[2];
-[; ;data.h: 75: uint32_t ex_TempZero;
-[; ;data.h: 76: uint32_t ex_TempLine;
-[; ;data.h: 78: uint32_t ex_TempCurrentLoopLow;
-[; ;data.h: 79: uint32_t ex_TempCurrentLoopUpper;
-[; ;data.h: 80: uint16_t barScale;
-[; ;data.h: 82: uint16_t crc;
-[; ;data.h: 83: }st_sysDataDef,sysDataDef_t;
-[; ;data.h: 84: extern const st_sysDataDef defultSystemData;
-[; ;data.h: 86: extern uint8_t data_sys_init(void);
-[; ;data.h: 87: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
-[; ;data.h: 92: typedef struct{
-[; ;data.h: 93: int32_t pValue;
-[; ;data.h: 94: int16_t pAdcValue;
-[; ;data.h: 95: int16_t tAdcValue;
-[; ;data.h: 96: }st_prCalibPointDef,prCalibPoint_t,st_prData;
-[; ;data.h: 98: typedef struct{
-[; ;data.h: 99: uint8_t pCount;
-[; ;data.h: 100: uint8_t reverse0[3];
-[; ;data.h: 101: st_prCalibPointDef prCalibPoint[6];
-[; ;data.h: 102: }st_prCalibRowDef,prCalibRow_t;
-[; ;data.h: 104: typedef struct{
-[; ;data.h: 105: uint8_t rowCount;
-[; ;data.h: 106: uint8_t reverse0[3];
-[; ;data.h: 107: st_prCalibRowDef prCalibRow[3];
-[; ;data.h: 109: uint16_t crc;
-[; ;data.h: 110: }st_prCalibTabDef,prCalibTab_t;
-[; ;data.h: 113: extern st_prCalibTabDef diff_prCalibTabDef;
-[; ;data.h: 114: extern st_prCalibTabDef prCalibTabDef;
-[; ;data.h: 122: extern volatile int16_t adc_inPt100;
-[; ;data.h: 124: extern volatile int16_t adc_pressure;
-[; ;data.h: 125: extern volatile int16_t adc_exPt100;
-[; ;data.h: 131: extern volatile int16_t adc_iPrEx[2];
-[; ;data.h: 134: extern volatile int16_t adc_ibat;
-[; ;data.h: 135: extern volatile int16_t adc_iRef;
-[; ;data.h: 144: extern st_prData x_prDiffData;
-[; ;data.h: 145: extern volatile int32_t rtDiffPressure;
-[; ;data.h: 146: extern volatile int32_t rtVolume;
-[; ;data.h: 147: extern volatile int32_t rtHight;
-[; ;data.h: 148: extern volatile int32_t rtWeight;
-"150 src/driver/../api/data.h
+[; ;data.h: 48: int32_t value;
+[; ;data.h: 49: uint16_t adcValue;
+[; ;data.h: 50: uint16_t reverse;
+[; ;data.h: 51: }st_exCalibDef,exClibDef_t;
+[; ;data.h: 54: typedef struct{
+[; ;data.h: 55: int32_t prOut;
+[; ;data.h: 56: int32_t prIn;
+[; ;data.h: 57: }st_2ndCalibDef;
+[; ;data.h: 58: typedef struct{
+[; ;data.h: 59: int32_t ilpLow;
+[; ;data.h: 60: int32_t ilpHi;
+[; ;data.h: 61: }st_ilpScaleDef;
+[; ;data.h: 63: typedef struct{
+[; ;data.h: 64: uint32_t id;
+[; ;data.h: 65: em_posture pos;
+[; ;data.h: 66: uint8_t maxValueForlevelBar;
+[; ;data.h: 68: uint16_t density;
+[; ;data.h: 70: int32_t h;
+[; ;data.h: 71: uint32_t d;
+[; ;data.h: 73: int32_t V1;
+[; ;data.h: 74: int32_t V2;
+[; ;data.h: 76: int32_t baseZero;
+[; ;data.h: 79: st_2ndCalibDef _2ndPrDiffCalib[2];
+[; ;data.h: 80: st_2ndCalibDef _2ndPrCalib[2];
+[; ;data.h: 82: st_warnDef diffPressureWarnSet[4];
+[; ;data.h: 83: st_warnDef pressureWarnSet[2];
+[; ;data.h: 86: uint16_t ployCoeffic[4];
+[; ;data.h: 88: st_exCalibDef TmepCalib[2];
+[; ;data.h: 90: st_exCalibDef exPr0Calib[2];
+[; ;data.h: 91: st_exCalibDef exPr1Calib[2];
+[; ;data.h: 92: st_exCalibDef exTempCalib[2];
+[; ;data.h: 94: st_ilpScaleDef diffPrilpScale0;
+[; ;data.h: 95: st_ilpScaleDef PrilpScale0;
+[; ;data.h: 96: st_ilpScaleDef exPrIpScaleCh0;
+[; ;data.h: 97: st_ilpScaleDef exPrIpScaleCh1;
+[; ;data.h: 99: uint16_t barScale;
+[; ;data.h: 101: uint16_t crc;
+[; ;data.h: 102: }st_sysDataDef,sysDataDef_t;
+[; ;data.h: 103: extern const st_sysDataDef defultSystemData;
+[; ;data.h: 105: extern st_sysDataDef stSysData;
+[; ;data.h: 106: extern uint8_t data_sys_init(void);
+[; ;data.h: 107: extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
+[; ;data.h: 112: typedef struct{
+[; ;data.h: 113: int32_t pValue;
+[; ;data.h: 114: int16_t pAdcValue;
+[; ;data.h: 115: int16_t tAdcValue;
+[; ;data.h: 116: }st_prCalibPointDef,prCalibPoint_t,st_prData;
+[; ;data.h: 118: typedef struct{
+[; ;data.h: 119: uint8_t pCount;
+[; ;data.h: 120: uint8_t reverse0[3];
+[; ;data.h: 121: st_prCalibPointDef prCalibPoint[6];
+[; ;data.h: 122: }st_prCalibRowDef,prCalibRow_t;
+[; ;data.h: 124: typedef struct{
+[; ;data.h: 125: uint8_t rowCount;
+[; ;data.h: 126: uint8_t reverse0[3];
+[; ;data.h: 127: st_prCalibRowDef prCalibRow[3];
+[; ;data.h: 129: uint16_t crc;
+[; ;data.h: 130: }st_prCalibTabDef,prCalibTab_t;
+[; ;data.h: 133: extern st_prCalibTabDef diff_prCalibTabDef;
+[; ;data.h: 134: extern st_prCalibTabDef prCalibTabDef;
+[; ;data.h: 142: extern volatile int16_t adc_inPt100;
+[; ;data.h: 144: extern volatile int16_t adc_pressure;
+[; ;data.h: 145: extern volatile int16_t adc_exPt100;
+[; ;data.h: 151: extern volatile int16_t adc_iPrEx[2];
+[; ;data.h: 154: extern volatile int16_t adc_ibat;
+[; ;data.h: 155: extern volatile int16_t adc_iRef;
+[; ;data.h: 164: extern st_prData x_prDiffData;
+[; ;data.h: 165: extern volatile int32_t rtDiffPressure;
+[; ;data.h: 166: extern volatile int32_t rtVolume;
+[; ;data.h: 167: extern volatile int32_t rtHight;
+[; ;data.h: 168: extern volatile int32_t rtWeight;
+"170 src/driver/../api/data.h
 [v _rtPressure `Vl ~T0 @X0 1 e ]
-[; ;data.h: 150: volatile int32_t rtPressure;
-[; ;data.h: 152: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
-[; ;data.h: 153: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
-[; ;data.h: 154: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
-[; ;data.h: 158: extern uint8_t cal_diff_press(void);
-[; ;data.h: 159: extern uint8_t cal_diff_hight_level(void);
-[; ;data.h: 160: extern void cal_pt100_temperature_in(void);
-[; ;data.h: 162: extern uint8_t cal_press(void);
-[; ;data.h: 163: extern void cal_pt100_temperature_ex(void);
-[; ;data.h: 165: extern void cal_additional_pressute(uint8_t index);
-[; ;data.h: 167: extern void data_init_all(void);
+[; ;data.h: 170: volatile int32_t rtPressure;
+[; ;data.h: 172: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
+[; ;data.h: 173: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
+[; ;data.h: 174: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 178: extern uint8_t cal_diff_press(void);
+[; ;data.h: 179: extern uint8_t cal_diff_hight_level(void);
+[; ;data.h: 180: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 182: extern uint8_t cal_press(void);
+[; ;data.h: 183: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 185: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 187: extern void data_init_all(void);
 "9 src/driver/m_flash.c
 [v _m_flash_unlock `(v ~T0 @X0 1 ef ]
 "10
@@ -6197,10 +6210,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _INTCON _oldGIE ]
 [; ;m_flash.c: 28: return;
 "28
-[e $UE 648  ]
+[e $UE 651  ]
 [; ;m_flash.c: 29: }
 "29
-[e :UE 648 ]
+[e :UE 651 ]
 }
 "30
 [v _m_flash_erase `(v ~T0 @X0 1 ef1`ul ]
@@ -6249,7 +6262,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
 [; ;m_flash.c: 45: }
 "45
-[e :UE 649 ]
+[e :UE 652 ]
 }
 "46
 [v _m_flash_read `(ui ~T0 @X0 1 ef3`ul`*uc`ui ]
@@ -6290,8 +6303,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "57
 {
 [e = _i -> -> 0 `i `ui ]
-[e $U 654  ]
-[e :U 651 ]
+[e $U 657  ]
+[e :U 654 ]
 {
 [; ;m_flash.c: 58: asm("TBLRD*+");
 "58
@@ -6303,19 +6316,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "57
 [e ++ _i -> -> 1 `i `ui ]
-[e :U 654 ]
-[e $ < _i _len 651  ]
-[e :U 652 ]
+[e :U 657 ]
+[e $ < _i _len 654  ]
+[e :U 655 ]
 "60
 }
 [; ;m_flash.c: 60: }
 [; ;m_flash.c: 61: return len;
 "61
 [e ) _len ]
-[e $UE 650  ]
+[e $UE 653  ]
 [; ;m_flash.c: 62: }
 "62
-[e :UE 650 ]
+[e :UE 653 ]
 }
 "63
 [v _m_flash_write `(ui ~T0 @X0 1 ef3`ul`*uc`ui ]
@@ -6343,17 +6356,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;m_flash.c: 65: uint8_t i,j,writeTimes;
 [; ;m_flash.c: 66: uint32_t pageAddr;
 [; ;m_flash.c: 67: uint16_t t16;
-[; ;m_flash.c: 68: uint8_t* tmpBuf=globleBuffer0;
-[e = _tmpBuf &U _globleBuffer0 ]
+[; ;m_flash.c: 68: uint8_t* tmpBuf=globleBuffer;
+[e = _tmpBuf &U _globleBuffer ]
 [; ;m_flash.c: 70: t16=addr & ((1024)-1);
 "70
 [e = _t16 -> & _addr -> -> - -> 1024 `i -> 1 `i `l `ul `ui ]
 [; ;m_flash.c: 71: if(t16+len>(64)*4)return 0;
 "71
-[e $ ! > + _t16 _len -> * -> 64 `i -> 4 `i `ui 656  ]
+[e $ ! > + _t16 _len -> * -> 64 `i -> 4 `i `ui 659  ]
 [e ) -> -> 0 `i `ui ]
-[e $UE 655  ]
-[e :U 656 ]
+[e $UE 658  ]
+[e :U 659 ]
 [; ;m_flash.c: 73: pageAddr=addr & ~((1024)-1);
 "73
 [e = _pageAddr & _addr -> -> ~ - -> 1024 `i -> 1 `i `l `ul ]
@@ -6385,16 +6398,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "86
 {
 [e = _i -> -> 0 `i `uc ]
-[e $U 660  ]
-[e :U 657 ]
+[e $U 663  ]
+[e :U 660 ]
 {
 [; ;m_flash.c: 87: for(j=0;j<(64);j++){
 "87
 {
 [e = _j -> -> 0 `i `uc ]
-[e $ < -> _j `i -> 64 `i 661  ]
-[e $U 662  ]
-[e :U 661 ]
+[e $ < -> _j `i -> 64 `i 664  ]
+[e $U 665  ]
+[e :U 664 ]
 {
 [; ;m_flash.c: 88: asm("MOVFF POSTINC0, WREG");
 "88
@@ -6409,8 +6422,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "87
 [e ++ _j -> -> 1 `i `uc ]
-[e $ < -> _j `i -> 64 `i 661  ]
-[e :U 662 ]
+[e $ < -> _j `i -> 64 `i 664  ]
+[e :U 665 ]
 "91
 }
 [; ;m_flash.c: 91: }
@@ -6433,19 +6446,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "86
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 660 ]
-[e $ < -> _i `i -> _writeTimes `i 657  ]
-[e :U 658 ]
+[e :U 663 ]
+[e $ < -> _i `i -> _writeTimes `i 660  ]
+[e :U 661 ]
 "97
 }
 [; ;m_flash.c: 97: }
 [; ;m_flash.c: 98: return len;
 "98
 [e ) _len ]
-[e $UE 655  ]
+[e $UE 658  ]
 [; ;m_flash.c: 99: }
 "99
-[e :UE 655 ]
+[e :UE 658 ]
 }
 "100
 [v _flashTestbuf `Cuc ~T0 @X0 -> 0 `x e ]
@@ -6547,5 +6560,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( ___nop ..  ]
 [; ;m_flash.c: 109: }
 "109
-[e :UE 664 ]
+[e :UE 667 ]
 }

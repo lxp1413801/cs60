@@ -65,7 +65,7 @@ uint16_t m_flash_write(uint32_t addr,uint8_t* buf,uint16_t len)
 	uint8_t i,j,writeTimes;
 	uint32_t pageAddr;
 	uint16_t t16;
-	uint8_t* tmpBuf=globleBuffer0;
+	uint8_t* tmpBuf=globleBuffer;
 	//uint8_t tmpBuf[MAX_FLASH_USED_SIZE_IN_BLOCK];
 	t16=addr & (FLASH_PAGE_SIZE-1);
 	if(t16+len>MAX_FLASH_USED_SIZE_IN_BLOCK)return 0;

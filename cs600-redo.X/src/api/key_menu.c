@@ -114,7 +114,8 @@ void __enter_menu_set_density(void)
 	int32_t t32;
 	menu=MENU_SET_DENSITY;
 	subMenu=sub_MENU_SET_DENSITY;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	t32=fps->density;
 	t32=__int32_2_mflot32(t32);
 	m_floatAdj.t32=t32;
@@ -125,7 +126,8 @@ void __enter_menu_set_pose_size(void)
 {
 	menu=MENU_SET_POSE_SIZE;
 	subMenu=sub_MENU_SET_POSE;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	adjValue=0x00ul;
 	*((uint8_t*)(&adjValue))=(uint8_t)(fps->pos);
 	adjLocation=0;
@@ -134,7 +136,8 @@ void __enter_menu_set_pose_size(void)
 void __enter_menu_set_d(void){
 	int32_t t32;
 	subMenu=sub_MENU_SET_D;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	t32=fps->d;
 	t32=__int32_2_mflot32(t32);
 	m_floatAdj.t32=t32;
@@ -144,7 +147,8 @@ void __enter_menu_set_d(void){
 void __enter_menu_set_h(void){
 	int32_t t32;
 	subMenu=sub_MENU_SET_L;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	t32=(fps->h);
 	t32=__int32_2_mflot32(t32);
 	m_floatAdj.t32=t32;
@@ -156,7 +160,8 @@ void __enter_menu_set_base_zero(void)
 	int32_t t32;
 	menu=MENU_SET_BASE_ZERO;
 	subMenu=0;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	t32=(fps->baseZero);
 	t32=__int32_2_mflot32(t32);
 	m_floatAdj.t32=t32;
@@ -234,7 +239,8 @@ void __enter_menu_poly_coeffic(uint8_t __subMenu)
 {
     menu=MENU_POLY_COEFFIC;
     subMenu=__subMenu;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	//adjValue=0x00ul;
 	adjValue=(int32_t)(fps->ployCoeffic[subMenu]);
 	adjLocation=0;    
@@ -244,7 +250,8 @@ void __enter_menu_warn_type(uint8_t __subMenu)
 {
 	menu=MENU_SET_WARN_TYPE;
 	subMenu=__subMenu;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	adjValue=0x00ul;
 	*((uint8_t*)(&adjValue))=(uint8_t)(fps->diffPressureWarnSet[subMenu].type);
 	adjLocation=0;	
@@ -252,32 +259,48 @@ void __enter_menu_warn_type(uint8_t __subMenu)
 
 void __enter_menu_warn_value(uint8_t __subMenu)
 {
+	uint8_t t8;
 	int32_t t32;
 	menu=MENU_SET_WARN_VALUE;
 	subMenu=__subMenu;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
+	/*
 	if(subMenu>=4){
 		t32=fps->diffPressureWarnSet[subMenu-4].warnValueHi;
 	}else{
 		t32=fps->diffPressureWarnSet[subMenu].warnValueLo;
 	}
+	*/
+	t8=subMenu >>1;
+	if(subMenu & 0x01){
+		//value hight
+		t32=fps->diffPressureWarnSet[t8].warnValueHi;
+	}else{
+		t32=fps->diffPressureWarnSet[t8].warnValueLo;
+	}
+	
 	t32=__int32_2_mflot32(t32);
 	m_floatAdj.t32=t32;
 	adjLocation=0;
 }
 
-void __enter_menu_epr_zero_line(uint8_t __subMenu)
+void __enter_menu_epr_calib(uint8_t __subMenu)
 {
 	int32_t t32;
 	menu=MENU_SET_EPR_ZERO_LINE;
 	subMenu=__subMenu;
-	if(subMenu>sub_MENU_SET_EPR_LINE_1)subMenu=sub_MENU_SET_EPR_LINE_1;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
-	if(subMenu>=2){
-		t32=fps->ex_pressLine[subMenu-2];
-	}else{
-		t32=fps->ex_pressZero[subMenu];
+	//if(subMenu>sub_MENU_SET_EPR_LINE_1)subMenu=sub_MENU_SET_EPR_LINE_1;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+    st_sysDataDef* fps= &stSysData;
+	switch(subMenu){
+		case sub_MENU_SET_EPR_CH0_P0:t32=fps->exPr0Calib[0].value;break;
+		case sub_MENU_SET_EPR_CH0_P1:t32=fps->exPr0Calib[1].value;break;
+		case sub_MENU_SET_EPR_CH1_P0:t32=fps->exPr1Calib[0].value;break;
+		case sub_MENU_SET_EPR_CH1_P1:t32=fps->exPr1Calib[1].value;break;
+		default:return;
 	}
+
 	t32=__int32_2_mflot32(t32);
 	m_floatAdj.t32=t32;
 	adjLocation=0;	
@@ -285,23 +308,32 @@ void __enter_menu_epr_zero_line(uint8_t __subMenu)
 
 void __enter_menu_epr_ilp_scale(uint8_t __subMenu)
 {
-	menu=PSW_SET_EPR_ILOOP_SCALE;
+	menu=MENU_SET_EPR_ILOOP_SCALE;
 	subMenu=__subMenu;
-	if(subMenu>sub_MENU_SET_EX_DPR_ILP_Hi1)subMenu=sub_MENU_SET_EX_DPR_ILP_Hi1;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
-	if(subMenu>=2){
-		adjValue=(int32_t)(fps->ex_pressiLoopUpper[subMenu-2]);
-	}else{
-		adjValue=(int32_t)(fps->ex_pressiLoopLow[subMenu]);
+    int32_t t32=0;
+	//if(subMenu>sub_MENU_SET_EX_DPR_ILP_Hi1)subMenu=sub_MENU_SET_EX_DPR_ILP_Hi1;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+    st_sysDataDef* fps= &stSysData;
+	switch(subMenu)
+	{
+		case sub_MENU_SET_EXPR_ILP_CH0_Lo:t32=fps->exPrIpScaleCh0.ilpLow;break;
+		case sub_MENU_SET_EXPR_ILP_CH0_Hi:t32=fps->exPrIpScaleCh0.ilpHi;break;
+		case sub_MENU_SET_EXPR_ILP_CH1_Lo:t32=fps->exPrIpScaleCh1.ilpLow;break;
+		case sub_MENU_SET_EXPR_ILP_CH1_Hi:t32=fps->exPrIpScaleCh1.ilpHi;break;
+		default:return;
 	}
-	adjLocation=0;
+    
+	t32=__int32_2_mflot32(t32);
+	m_floatAdj.t32=t32;
+	adjLocation=0;	
 }
 
 void __enter_menu_bar_scale(void)
 {
 	menu=MENU_SET_BAR_LEVEL_SCALE;
 	subMenu=sub_MENU_SET_BAR_LEVEL_SCALE;
-	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	//st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	st_sysDataDef* fps= &stSysData;
 	adjValue=fps->barScale;
 	adjLocation=0;
 }
@@ -351,7 +383,10 @@ void __down_pr_calib(void)
 		key_shift_loc((uint8_t*)(&adjLocation),0,4);
 	}
 }
-
+/*
+key_shift_loc(*loc,min,max)
+loc:up键修改的位置;0-3表示(个位到千位)数位级，4表示小数点，5表示符号
+*/
 void key_process_down(void)
 {
 	switch(menu){
@@ -362,6 +397,12 @@ void key_process_down(void)
 		case MENU_SET_BASE_ZERO:key_shift_loc((uint8_t*)(&adjLocation),0,5);break;
 		case MENU_DIFF_CALIB:__down_dpr_calib();break;
 		case MENU_PRESSURE_CALIB:__down_pr_calib();break;
+		case MENU_POLY_COEFFIC:key_shift_loc((uint8_t*)(&adjLocation),0,2);break;
+		case MENU_SET_WARN_TYPE:break;
+		case MENU_SET_WARN_VALUE:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
+		case MENU_SET_EPR_ZERO_LINE:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
+		case MENU_SET_EPR_ILOOP_SCALE:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
+		case MENU_SET_BAR_LEVEL_SCALE:key_shift_loc((uint8_t*)(&adjLocation),0,2);break;
 		default:break;
 	}	
 }
@@ -450,16 +491,17 @@ void __up_warn_value_adj(void)
 	key_adj_value_float(&m_floatAdj,adjLocation);
 }
 
-void __up_epr_param_adj(void)
+void __up_epr_calib_adj(void)
 {
 	switch(subMenu){
-		case sub_MENU_SET_EPR_ZERO_0:
-		case sub_MENU_SET_EPR_ZERO_1:
+		case sub_MENU_SET_EPR_CH0_P0:
+		case sub_MENU_SET_EPR_CH0_P1:
+			// key_adj_value_float(&m_floatAdj,adjLocation);
+			// break;
+		case sub_MENU_SET_EPR_CH1_P0:
+		case sub_MENU_SET_EPR_CH1_P1:
+			//key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
 			key_adj_value_float(&m_floatAdj,adjLocation);
-			break;
-		case sub_MENU_SET_EPR_LINE_0:
-		case sub_MENU_SET_EPR_LINE_1:
-			key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
 			break;
 		default:break;
 	}
@@ -467,7 +509,8 @@ void __up_epr_param_adj(void)
 
 void __up_epr_ilp_scale_adj(void)
 {
-	key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
+	//key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
+	key_adj_value_float(&m_floatAdj,adjLocation);
 }
 
 //-----------------------------------------------------
@@ -500,7 +543,7 @@ void key_process_up(void)
 		case MENU_POLY_COEFFIC:			__up_poly_coefic_adj();			break;
 		case MENU_SET_WARN_TYPE:		__up_warn_type_adj();			break;
 		case MENU_SET_WARN_VALUE:		__up_warn_value_adj();			break;
-		case MENU_SET_EPR_ZERO_LINE:	__up_epr_param_adj();			break;
+		case MENU_SET_EPR_ZERO_LINE:	__up_epr_calib_adj();			break;
 		case MENU_SET_EPR_ILOOP_SCALE:	__up_epr_ilp_scale_adj();		break;
 		
 		case MENU_SET_BAR_LEVEL_SCALE:	__up_adj_bar_level_scale();	break;
@@ -522,7 +565,7 @@ void key_process_set_down_long(void)
 		case PSW_SET_POLY_COEFFIC:		__enter_menu_poly_coeffic(0);			break;
 		case PSW_SET_WARN_TYPE:			__enter_menu_warn_type(0);				break;
 		case PSW_SET_WARN_VALUE:		__enter_menu_warn_value(0);				break;
-		case PSW_SET_EPR_ZERO_LINE:		__enter_menu_epr_zero_line(0);			break;
+		case PSW_SET_EPR_ZERO_LINE:		__enter_menu_epr_calib(0);			break;
 		case PSW_SET_EPR_ILOOP_SCALE:	__enter_menu_epr_ilp_scale(0);			break;
 		case PSW_SET_BAR_LEVEL_SCALE:	__enter_menu_bar_scale();				break;
 		case PSW_SET_WORK_MODE:			__enter_menu_work_mode();				break;
@@ -542,13 +585,16 @@ void key_process_set_down_long(void)
 uint8_t __sys_data_save_write_flash(void)
 {
     uint8_t ret=0;
-    st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+    //st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	
+	st_sysDataDef* stp=&stSysData;
+	uint8_t* buf=(uint8_t*)(&stSysData);
     stp->V1=data_sys_cal_v1(stp);
     stp->V2=data_sys_cal_v2(stp);
-    crc_append(globleBuffer1,sizeof(st_sysDataDef)-2);
-    m_flash_write(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));
-    m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));
-    ret=crc_verify(globleBuffer1,sizeof(st_sysDataDef));
+    crc_append(buf,sizeof(st_sysDataDef)-2);
+    m_flash_write(SYSTEM_DATA_ADDR,buf,sizeof(st_sysDataDef));
+    m_flash_read(SYSTEM_DATA_ADDR,buf,sizeof(st_sysDataDef));
+    ret=crc_verify(buf,sizeof(st_sysDataDef));
     return ret;
 }
 
@@ -557,8 +603,9 @@ void __set_short_pose_size(bool gohome)
 {
 	uint8_t* p;
 	int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));
+	//st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	//m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));
+	st_sysDataDef* stp=&stSysData;
 	switch(subMenu){
         case sub_MENU_SET_POSE:
             p=(uint8_t*)(&adjValue);
@@ -662,7 +709,7 @@ void __set_short_pr_calib(bool gohome)
         //calibRow++;
         //if(calibRow>2)calibRow=0;
     }
-    __enter_menu_calib_press_diff(0,calibCol);
+    __enter_menu_calib_press(0,calibCol);
 	
 }
 
@@ -670,8 +717,9 @@ void __set_short_poly_coefic(bool gohome)
 {
 	int16_t* p;
 	//int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
 	//t32=adjValue;
     p=(int16_t*)(&adjValue);
     stp->ployCoeffic[subMenu]=*p;
@@ -688,8 +736,9 @@ void __set_short_warn_type(bool gohome)
 {
 	uint8_t* p;
 	//int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
 	p=(uint8_t*)(&adjValue);
 	stp->diffPressureWarnSet[subMenu].type=*p;
     __sys_data_save_write_flash();
@@ -703,16 +752,27 @@ void __set_short_warn_type(bool gohome)
 
 void  __set_short_warn_value(bool gohome)
 {
-	uint8_t* p;
+	uint8_t t8;
+	//uint8_t* p;
 	int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
 	t32=__mflot32_2_int32(m_floatAdj.t32);	
+	/*
 	if(subMenu<sub_MENU_SET_WARN_VALUE_4){
 		stp->diffPressureWarnSet[subMenu].warnValueLo=t32;
 	}else{
         stp->diffPressureWarnSet[subMenu-sub_MENU_SET_WARN_VALUE_4].warnValueHi=t32;
     }
+	*/
+	t8=subMenu>>1;
+	if(subMenu & 0x01){
+		stp->diffPressureWarnSet[t8].warnValueHi=t32;
+	}else{
+		stp->diffPressureWarnSet[t8].warnValueLo=t32;
+	}
+	//
 	__sys_data_save_write_flash();
     
     if(gohome){__exit_menu_to_home_unsave(); return;}
@@ -726,18 +786,15 @@ void __set_short_epr_param(bool gohome)
 {
 	uint8_t* p;
 	int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
     t32=__mflot32_2_int32(m_floatAdj.t32);
     switch(subMenu){
-        case sub_MENU_SET_EPR_ZERO_0:
-		case sub_MENU_SET_EPR_ZERO_1:
-            stp->ex_pressZero[subMenu]=t32;
-            break;
-		case sub_MENU_SET_EPR_LINE_0:
-		case sub_MENU_SET_EPR_LINE_1:
-			stp->ex_pressLine[subMenu-sub_MENU_SET_EPR_LINE_0]=t32;
-            break;
+		case sub_MENU_SET_EPR_CH0_P0:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx[0];break;
+		case sub_MENU_SET_EPR_CH0_P1:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx[0];break;
+		case sub_MENU_SET_EPR_CH1_P0:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx[1];break;
+		case sub_MENU_SET_EPR_CH1_P1:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx[1];break;
 		default:break;
     }
 	__sys_data_save_write_flash();
@@ -745,25 +802,23 @@ void __set_short_epr_param(bool gohome)
     if(gohome){__exit_menu_to_home_unsave(); return;}
     
     subMenu++;
-    if(subMenu>sub_MENU_SET_EPR_LINE_1)subMenu=sub_MENU_SET_EPR_ZERO_0;
-    __enter_menu_warn_value(subMenu);   	
+    if(subMenu>sub_MENU_SET_EPR_CH1_P1)subMenu=sub_MENU_SET_EPR_CH0_P0;
+    __enter_menu_epr_calib(subMenu);   	
 }
 
 void __set_short_epr_ilp_scale(bool gohome)
 {
 	uint8_t* p;
 	int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
     t32=__mflot32_2_int32(m_floatAdj.t32);
 	switch(subMenu){
-		case sub_MENU_SET_EX_DPR_ILP_Lo0:
-		case sub_MENU_SET_EX_DPR_ILP_Lo1:
-			stp->ex_pressiLoopLow[subMenu]=t32;
-			break;
-		case sub_MENU_SET_EX_DPR_ILP_Hi0:
-		case sub_MENU_SET_EX_DPR_ILP_Hi1:
-            stp->ex_pressiLoopUpper[subMenu-sub_MENU_SET_EX_DPR_ILP_Hi0]=t32;
+		case sub_MENU_SET_EXPR_ILP_CH0_Lo:stp->exPrIpScaleCh0.ilpLow=t32;break;
+		case sub_MENU_SET_EXPR_ILP_CH0_Hi:stp->exPrIpScaleCh0.ilpHi=t32;break;
+		case sub_MENU_SET_EXPR_ILP_CH1_Lo:stp->exPrIpScaleCh1.ilpLow=t32;break;
+		case sub_MENU_SET_EXPR_ILP_CH1_Hi:stp->exPrIpScaleCh1.ilpHi=t32;break;
 		default:break;
 	}
 	__sys_data_save_write_flash();
@@ -771,7 +826,7 @@ void __set_short_epr_ilp_scale(bool gohome)
     if(gohome){__exit_menu_to_home_unsave(); return;}
     
     subMenu++;
-    if(subMenu>sub_MENU_SET_EX_DPR_ILP_Hi1)subMenu=sub_MENU_SET_EX_DPR_ILP_Lo0;
+    if(subMenu>sub_MENU_SET_EXPR_ILP_CH1_Hi)subMenu=sub_MENU_SET_EXPR_ILP_CH0_Lo;
     __enter_menu_epr_ilp_scale(subMenu); 	
 }
 
@@ -779,8 +834,9 @@ void __set_long_density(void)
 {
 	uint8_t* p;
 	int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
     t32=__mflot32_2_int32(m_floatAdj.t32);	
 	stp->density=t32;
     
@@ -793,8 +849,9 @@ void __set_long_base_zero(void)
 {
 	uint8_t* p;
 	int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
     t32=__mflot32_2_int32(m_floatAdj.t32);	
 	stp->baseZero=t32;
     
@@ -806,8 +863,9 @@ void __set_long_bar_level_scale(void)
 {
 	int16_t* p;
 	int32_t t32;
-	st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
-	m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
+	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
+	st_sysDataDef* stp=&stSysData;
     p=(uint16_t*)(&adjValue);	
 	stp->barScale=*p;
     

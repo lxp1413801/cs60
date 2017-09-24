@@ -8650,9 +8650,8 @@ extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
 extern void ui_disp_menu(void);
 
-# 16 "src/api/../includes/../api/data.h"
-extern uint8_t globleBuffer0[256];
-extern uint8_t globleBuffer1[256];
+# 17 "src/api/../includes/../api/data.h"
+extern uint8_t globleBuffer[256];
 typedef enum{
 HOTIZONTAL=0,
 VERTICAL,
@@ -8683,6 +8682,22 @@ uint8_t[3];
 
 
 typedef struct{
+int32_t value;
+uint16_t adcValue;
+uint16_t reverse;
+}st_exCalibDef,exClibDef_t;
+
+
+typedef struct{
+int32_t prOut;
+int32_t prIn;
+}st_2ndCalibDef;
+typedef struct{
+int32_t ilpLow;
+int32_t ilpHi;
+}st_ilpScaleDef;
+
+typedef struct{
 uint32_t id;
 em_posture pos;
 uint8_t maxValueForlevelBar;
@@ -8697,30 +8712,34 @@ int32_t V2;
 
 int32_t baseZero;
 
+
+st_2ndCalibDef _2ndPrDiffCalib[2];
+st_2ndCalibDef _2ndPrCalib[2];
+
 st_warnDef diffPressureWarnSet[4];
-st_warnDef pressureWarnSet;
+st_warnDef pressureWarnSet[2];
+
+
 uint16_t ployCoeffic[4];
 
-uint32_t TempZero;
-uint32_t TempLine;
+st_exCalibDef TmepCalib[2];
 
+st_exCalibDef exPr0Calib[2];
+st_exCalibDef exPr1Calib[2];
+st_exCalibDef exTempCalib[2];
 
-uint32_t ex_pressZero[2];
-uint32_t ex_pressLine[2];
-uint32_t ex_pressiLoopLow[2];
-uint32_t ex_pressiLoopUpper[2];
+st_ilpScaleDef diffPrilpScale0;
+st_ilpScaleDef PrilpScale0;
+st_ilpScaleDef exPrIpScaleCh0;
+st_ilpScaleDef exPrIpScaleCh1;
 
-uint32_t ex_TempZero;
-uint32_t ex_TempLine;
-
-uint32_t ex_TempCurrentLoopLow;
-uint32_t ex_TempCurrentLoopUpper;
 uint16_t barScale;
 
 uint16_t crc;
 }st_sysDataDef,sysDataDef_t;
 extern const st_sysDataDef defultSystemData;
 
+extern st_sysDataDef stSysData;
 extern uint8_t data_sys_init(void);
 extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
 
@@ -8751,20 +8770,20 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
-# 122
+# 142
 extern volatile int16_t adc_inPt100;
 
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-# 131
+# 151
 extern volatile int16_t adc_iPrEx[2];
 
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-# 144
+# 164
 extern st_prData x_prDiffData;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
@@ -8966,9 +8985,13 @@ lcd_show_dp(6,0);
 
 void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 {
+
 uint8_t buf[10];
-uint8_t t8;
+
 uint16_t x;
+uint8_t t8;
+
+# 218
 x=xpf->stru.significand;
 m_mem_cpy(buf,str);
 if(xpf->stru.sign==0){
@@ -9012,7 +9035,7 @@ lcd_show_dp(4+1+t8,0);
 lcd_show_string(buf);
 lcd_disp_refresh();
 
-# 280
+# 289
 }
 
 void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
@@ -9182,7 +9205,8 @@ void ui_disp_menu_h_adj(void)
 {
 lcd_disp_all(0x00);;
 lcd_disp_logo(1);
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 if(fps->pos==HOTIZONTAL){
 ui_disp_adj_xfloat_pt((uint8_t*)"   l",&m_floatAdj,adjLocation);
 }else{
@@ -9217,7 +9241,8 @@ void ui_disp_menu_calib_diff_adj(void)
 {
 uint8_t t8;
 uint8_t buf[10];
-
+lcd_disp_all(0x00);;
+lcd_disp_logo(1);
 buf[0]='d';
 if(calibRow==0)buf[1]='l';
 else if(calibRow==1)buf[1]='c';
@@ -9244,7 +9269,8 @@ void ui_disp_menu_calib_pr_adj(void)
 {
 uint8_t t8;
 uint8_t buf[10];
-
+lcd_disp_all(0x00);;
+lcd_disp_logo(1);
 buf[0]=' ';
 
 
@@ -9280,7 +9306,7 @@ if(t8>3)return;
 m_mem_cpy(buf,(uint8_t*)"    ");
 
 buf[3]='a'+t8;
-ui_disp_adj_xfixed_pt(buf,adjValue,adjLocation);
+ui_disp_adj_xfixed_pt_dp(buf,adjValue,adjLocation,0);
 }
 
 void ui_disp_menu_warn_t_adj(void)
@@ -9321,21 +9347,22 @@ lcd_disp_all(0x00);;
 lcd_disp_logo(1);
 t8=subMenu;
 if(t8>7)return;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
 
-if(t8<3){
+st_sysDataDef* fps= &stSysData;
 
+# 615
+t8=subMenu>>1;
+
+buf[3]='0'+t8;
 type=fps->diffPressureWarnSet[t8].type;
 m_mem_cpy(buf,(uint8_t*)" al0");
-}else{
-t8=t8-4;
-
-type=fps->diffPressureWarnSet[t8].type;
-m_mem_cpy(buf,(uint8_t*)" ah0");
-}
 buf[3]='0'+t8;
+if(subMenu & 0x01){
 
-if(type == HIGHT_HI || type== HIGHT_HI){
+buf[2]='H';
+}
+
+if(type == HIGHT_HI || type== HIGHT_LO){
 lcd_disp_unit_2nd_m(1);
 }else{
 lcd_disp_unit_mpa(1);
@@ -9343,45 +9370,40 @@ lcd_disp_unit_mpa(1);
 ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);
 }
 
-void ui_disp_menu_epr_param_adj(void)
+void ui_disp_menu_epr_calib_adj(void)
 {
 uint8_t buf[6];
+lcd_disp_all(0x00);;
+lcd_disp_logo(1);
 switch(subMenu){
-case 0x00:
-case 0x01:
-m_mem_cpy(buf,(uint8_t*)"epz0");
-buf[3]='0'+subMenu-0x00;
-break;
-case 0x02:
-case 0x03:
-m_mem_cpy(buf,(uint8_t*)"epl0");
-buf[3]='0'+subMenu-0x02;
-break;
+case 0x00:m_mem_cpy(buf,(uint8_t*)"ep00");break;
+case 0x01:m_mem_cpy(buf,(uint8_t*)"ep01");break;
+case 0x02:m_mem_cpy(buf,(uint8_t*)"ep10");break;
+case 0x03:m_mem_cpy(buf,(uint8_t*)"ep11");break;
 default: break;
 }
 ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);
 }
 
-void ui_disp_menu_epr_ilp_param_adj(void)
+void ui_disp_menu_epr_ilp_scale_adj(void)
 {
 uint8_t buf[6];
+lcd_disp_all(0x00);;
+lcd_disp_logo(1);
 switch(subMenu){
-case 0x00:
-case 0x01:
-m_mem_cpy(buf,(uint8_t*)"epl0");
-buf[3]='0'+subMenu-0x00;
-break;
-case 0x02:
-case 0x03:
-m_mem_cpy(buf,(uint8_t*)"eph0");
-buf[3]='0'+subMenu-0x02;
-break;
+case 0x00:m_mem_cpy(buf,(uint8_t*)"lp0l");break;
+case 0x01:m_mem_cpy(buf,(uint8_t*)"lp0H");break;
+case 0x02:m_mem_cpy(buf,(uint8_t*)"lp1l");break;
+case 0x03:m_mem_cpy(buf,(uint8_t*)"lp1H");break;
+default:return;
 }
 ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);
 }
 
 void ui_disp_menu_bar_full_adj(void)
 {
+lcd_disp_all(0x00);;
+lcd_disp_logo(1);
 ui_disp_adj_xfixed_pt_dp((uint8_t*)" scl",(int16_t)adjValue,adjLocation,0);
 }
 
@@ -9419,9 +9441,9 @@ case 0x80: ui_disp_menu_warn_t_adj(); break;
 case 0x90: ui_disp_menu_warn_v_adj(); break;
 
 case 0xa0:
-ui_disp_menu_epr_param_adj(); break;
+ui_disp_menu_epr_calib_adj(); break;
 case 0xb0:
-ui_disp_menu_epr_ilp_param_adj(); break;
+ui_disp_menu_epr_ilp_scale_adj(); break;
 case 0xc0: ui_disp_menu_bar_full_adj(); break;
 case 0xf0: ui_disp_menu_work_mode_adj(); break;
 default:break;

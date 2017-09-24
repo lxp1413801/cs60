@@ -8650,9 +8650,8 @@ extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
 extern void ui_disp_menu(void);
 
-# 16 "src/api/../includes/../api/data.h"
-extern uint8_t globleBuffer0[256];
-extern uint8_t globleBuffer1[256];
+# 17 "src/api/../includes/../api/data.h"
+extern uint8_t globleBuffer[256];
 typedef enum{
 HOTIZONTAL=0,
 VERTICAL,
@@ -8683,6 +8682,22 @@ uint8_t[3];
 
 
 typedef struct{
+int32_t value;
+uint16_t adcValue;
+uint16_t reverse;
+}st_exCalibDef,exClibDef_t;
+
+
+typedef struct{
+int32_t prOut;
+int32_t prIn;
+}st_2ndCalibDef;
+typedef struct{
+int32_t ilpLow;
+int32_t ilpHi;
+}st_ilpScaleDef;
+
+typedef struct{
 uint32_t id;
 em_posture pos;
 uint8_t maxValueForlevelBar;
@@ -8697,30 +8712,34 @@ int32_t V2;
 
 int32_t baseZero;
 
+
+st_2ndCalibDef _2ndPrDiffCalib[2];
+st_2ndCalibDef _2ndPrCalib[2];
+
 st_warnDef diffPressureWarnSet[4];
-st_warnDef pressureWarnSet;
+st_warnDef pressureWarnSet[2];
+
+
 uint16_t ployCoeffic[4];
 
-uint32_t TempZero;
-uint32_t TempLine;
+st_exCalibDef TmepCalib[2];
 
+st_exCalibDef exPr0Calib[2];
+st_exCalibDef exPr1Calib[2];
+st_exCalibDef exTempCalib[2];
 
-uint32_t ex_pressZero[2];
-uint32_t ex_pressLine[2];
-uint32_t ex_pressiLoopLow[2];
-uint32_t ex_pressiLoopUpper[2];
+st_ilpScaleDef diffPrilpScale0;
+st_ilpScaleDef PrilpScale0;
+st_ilpScaleDef exPrIpScaleCh0;
+st_ilpScaleDef exPrIpScaleCh1;
 
-uint32_t ex_TempZero;
-uint32_t ex_TempLine;
-
-uint32_t ex_TempCurrentLoopLow;
-uint32_t ex_TempCurrentLoopUpper;
 uint16_t barScale;
 
 uint16_t crc;
 }st_sysDataDef,sysDataDef_t;
 extern const st_sysDataDef defultSystemData;
 
+extern st_sysDataDef stSysData;
 extern uint8_t data_sys_init(void);
 extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
 
@@ -8751,20 +8770,20 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
-# 122
+# 142
 extern volatile int16_t adc_inPt100;
 
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-# 131
+# 151
 extern volatile int16_t adc_iPrEx[2];
 
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-# 144
+# 164
 extern st_prData x_prDiffData;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
@@ -8776,6 +8795,7 @@ volatile int32_t rtPressure;
 extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
 extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
 extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+
 
 
 extern uint8_t cal_diff_press(void);
@@ -8955,7 +8975,8 @@ void __enter_menu_set_density(void)
 int32_t t32;
 menu=0x20;
 subMenu=0x00;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 t32=fps->density;
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
@@ -8966,7 +8987,8 @@ void __enter_menu_set_pose_size(void)
 {
 menu=0x30;
 subMenu=0x00;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 adjValue=0x00ul;
 *((uint8_t*)(&adjValue))=(uint8_t)(fps->pos);
 adjLocation=0;
@@ -8975,7 +8997,8 @@ adjLocation=0;
 void __enter_menu_set_d(void){
 int32_t t32;
 subMenu=0x02;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 t32=fps->d;
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
@@ -8985,7 +9008,8 @@ adjLocation=0;
 void __enter_menu_set_h(void){
 int32_t t32;
 subMenu=0x01;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 t32=(fps->h);
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
@@ -8997,7 +9021,8 @@ void __enter_menu_set_base_zero(void)
 int32_t t32;
 menu=0x40;
 subMenu=0;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 t32=(fps->baseZero);
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
@@ -9008,26 +9033,8 @@ adjLocation=0;
 }
 }
 
-void __enter_menu_calib_press_diff(void)
-{
-
-int32_t t32;
-st_prCalibTabDef* stp;
-
-menu=0x50;
-subMenu=0;
-calibRow=0;
-calibCol=0;
-
-stp=(st_prCalibTabDef*)(&diff_prCalibTabDef);
-t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
-
-t32=__int32_2_mflot32(t32);
-m_floatAdj.t32=t32;
-adjLocation=0;
-}
-
-void __enter_menu_calib_press_diff_ex(uint8_t row,uint8_t col)
+# 195
+void __enter_menu_calib_press_diff(uint8_t row,uint8_t col)
 {
 
 int32_t t32;
@@ -9037,17 +9044,19 @@ menu=0x50;
 subMenu=0;
 calibRow=row;
 calibCol=col;
-
 stp=(st_prCalibTabDef*)(&diff_prCalibTabDef);
-t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
-
+if(col==0){
+*((uint8_t*)(&adjValue))=stp->prCalibRow[row].pCount;
+}else{
+t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
+}
 adjLocation=0;
 }
 
 
-void __enter_menu_calib_press_ex(uint8_t row,uint8_t col)
+void __enter_menu_calib_press(uint8_t row,uint8_t col)
 {
 
 int32_t t32;
@@ -9057,12 +9066,14 @@ menu=0x60;
 subMenu=0;
 calibRow=row;
 calibCol=col;
-
 stp=(st_prCalibTabDef*)(&prCalibTabDef);
-t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
-
+if(col==0){
+*((uint8_t*)(&adjValue))=stp->prCalibRow[row].pCount;
+}else{
+t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
+}
 adjLocation=0;
 }
 
@@ -9070,7 +9081,8 @@ void __enter_menu_poly_coeffic(uint8_t __subMenu)
 {
 menu=0x70;
 subMenu=__subMenu;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 
 adjValue=(int32_t)(fps->ployCoeffic[subMenu]);
 adjLocation=0;
@@ -9080,7 +9092,8 @@ void __enter_menu_warn_type(uint8_t __subMenu)
 {
 menu=0x80;
 subMenu=__subMenu;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 adjValue=0x00ul;
 *((uint8_t*)(&adjValue))=(uint8_t)(fps->diffPressureWarnSet[subMenu].type);
 adjLocation=0;
@@ -9088,32 +9101,43 @@ adjLocation=0;
 
 void __enter_menu_warn_value(uint8_t __subMenu)
 {
+uint8_t t8;
 int32_t t32;
 menu=0x90;
 subMenu=__subMenu;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
-if(subMenu>=4){
-t32=fps->diffPressureWarnSet[subMenu-4].warnValueHi;
+
+st_sysDataDef* fps= &stSysData;
+
+# 275
+t8=subMenu >>1;
+if(subMenu & 0x01){
+
+t32=fps->diffPressureWarnSet[t8].warnValueHi;
 }else{
-t32=fps->diffPressureWarnSet[subMenu].warnValueLo;
+t32=fps->diffPressureWarnSet[t8].warnValueLo;
 }
+
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
 adjLocation=0;
 }
 
-void __enter_menu_epr_zero_line(uint8_t __subMenu)
+void __enter_menu_epr_calib(uint8_t __subMenu)
 {
 int32_t t32;
 menu=0xa0;
 subMenu=__subMenu;
-if(subMenu>0x03)subMenu=0x03;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
-if(subMenu>=2){
-t32=fps->ex_pressLine[subMenu-2];
-}else{
-t32=fps->ex_pressZero[subMenu];
+
+
+st_sysDataDef* fps= &stSysData;
+switch(subMenu){
+case 0x00:t32=fps->exPr0Calib[0].value;break;
+case 0x01:t32=fps->exPr0Calib[1].value;break;
+case 0x02:t32=fps->exPr1Calib[0].value;break;
+case 0x03:t32=fps->exPr1Calib[1].value;break;
+default:return;
 }
+
 t32=__int32_2_mflot32(t32);
 m_floatAdj.t32=t32;
 adjLocation=0;
@@ -9121,15 +9145,23 @@ adjLocation=0;
 
 void __enter_menu_epr_ilp_scale(uint8_t __subMenu)
 {
-menu=139;
+menu=0xb0;
 subMenu=__subMenu;
-if(subMenu>0x03)subMenu=0x03;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
-if(subMenu>=2){
-adjValue=(int32_t)(fps->ex_pressiLoopUpper[subMenu-2]);
-}else{
-adjValue=(int32_t)(fps->ex_pressiLoopLow[subMenu]);
+int32_t t32=0;
+
+
+st_sysDataDef* fps= &stSysData;
+switch(subMenu)
+{
+case 0x00:t32=fps->exPrIpScaleCh0.ilpLow;break;
+case 0x01:t32=fps->exPrIpScaleCh0.ilpHi;break;
+case 0x02:t32=fps->exPrIpScaleCh1.ilpLow;break;
+case 0x03:t32=fps->exPrIpScaleCh1.ilpHi;break;
+default:return;
 }
+
+t32=__int32_2_mflot32(t32);
+m_floatAdj.t32=t32;
 adjLocation=0;
 }
 
@@ -9137,7 +9169,8 @@ void __enter_menu_bar_scale(void)
 {
 menu=0xc0;
 subMenu=0x00;
-st_sysDataDef* fps=(st_sysDataDef*)0xf400;
+
+st_sysDataDef* fps= &stSysData;
 adjValue=fps->barScale;
 adjLocation=0;
 }
@@ -9173,6 +9206,22 @@ key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
 default:break;
 }
 }
+
+void __down_dpr_calib(void)
+{
+if(calibCol){
+key_shift_loc((uint8_t*)(&adjLocation),0,4);
+}
+}
+
+void __down_pr_calib(void)
+{
+if(calibCol){
+key_shift_loc((uint8_t*)(&adjLocation),0,4);
+}
+}
+
+# 390
 void key_process_down(void)
 {
 switch(menu){
@@ -9181,6 +9230,13 @@ case 0x10:key_shift_loc((uint8_t*)(&adjLocation),0,3);break;
 case 0x20:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
 case 0x30:__down_pose_size();break;
 case 0x40:key_shift_loc((uint8_t*)(&adjLocation),0,5);break;
+case 0x50:__down_dpr_calib();break;
+case 0x60:__down_pr_calib();break;
+case 0x70:key_shift_loc((uint8_t*)(&adjLocation),0,2);break;
+case 0x80:break;
+case 0x90:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
+case 0xa0:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
+case 0xb0:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
 default:break;
 }
 }
@@ -9227,12 +9283,28 @@ key_adj_value_float(&m_floatAdj,adjLocation);
 
 void __up_diff_calib_adj(void)
 {
+uint8_t t8;
+if(calibCol==0){
+t8=*(uint8_t*)(&adjValue);
+t8++;
+if(t8>=6)t8=2;
+*(uint8_t*)(&adjValue)=t8;
+}else{
 key_adj_value_float(&m_floatAdj,adjLocation);
+}
 }
 
 void __up_pr_calib_adj(void)
 {
+uint8_t t8;
+if(calibCol==0){
+t8=*(uint8_t*)(&adjValue);
+t8++;
+if(t8>=6)t8=2;
+*(uint8_t*)(&adjValue)=t8;
+}else{
 key_adj_value_float(&m_floatAdj,adjLocation);
+}
 }
 
 void __up_poly_coefic_adj(void)
@@ -9253,16 +9325,17 @@ void __up_warn_value_adj(void)
 key_adj_value_float(&m_floatAdj,adjLocation);
 }
 
-void __up_epr_param_adj(void)
+void __up_epr_calib_adj(void)
 {
 switch(subMenu){
 case 0x00:
 case 0x01:
-key_adj_value_float(&m_floatAdj,adjLocation);
-break;
+
+
 case 0x02:
 case 0x03:
-key_adj_value_fixed((uint16_t*)(&adjValue),adjLocation);
+
+key_adj_value_float(&m_floatAdj,adjLocation);
 break;
 default:break;
 }
@@ -9303,7 +9376,7 @@ case 0x60: __up_pr_calib_adj(); break;
 case 0x70: __up_poly_coefic_adj(); break;
 case 0x80: __up_warn_type_adj(); break;
 case 0x90: __up_warn_value_adj(); break;
-case 0xa0: __up_epr_param_adj(); break;
+case 0xa0: __up_epr_calib_adj(); break;
 case 0xb0: __up_epr_ilp_scale_adj(); break;
 
 case 0xc0: __up_adj_bar_level_scale(); break;
@@ -9320,12 +9393,12 @@ switch(passWord){
 case 36: __enter_menu_set_density(); break;
 case 66: __enter_menu_set_pose_size(); break;
 case 56: __enter_menu_set_base_zero(); break;
-case 168: __enter_menu_calib_press_diff_ex(0,0); break;
-case 169: __enter_menu_calib_press_ex(0,0); break;
+case 168: __enter_menu_calib_press_diff(0,0); break;
+case 169: __enter_menu_calib_press(0,0); break;
 case 133: __enter_menu_poly_coeffic(0); break;
 case 6: __enter_menu_warn_type(0); break;
 case 16: __enter_menu_warn_value(0); break;
-case 138: __enter_menu_epr_zero_line(0); break;
+case 138: __enter_menu_epr_calib(0); break;
 case 139: __enter_menu_epr_ilp_scale(0); break;
 case 188: __enter_menu_bar_scale(); break;
 case 18: __enter_menu_work_mode(); break;
@@ -9334,17 +9407,20 @@ default:break;
 }
 }
 
-# 504
+# 583
 uint8_t __sys_data_save_write_flash(void)
 {
 uint8_t ret=0;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
+
+
+st_sysDataDef* stp=&stSysData;
+uint8_t* buf=(uint8_t*)(&stSysData);
 stp->V1=data_sys_cal_v1(stp);
 stp->V2=data_sys_cal_v2(stp);
-crc_append(globleBuffer1,sizeof(st_sysDataDef)-2);
-m_flash_write(0xf400,globleBuffer1,sizeof(st_sysDataDef));
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
-ret=crc_verify(globleBuffer1,sizeof(st_sysDataDef));
+crc_append(buf,sizeof(st_sysDataDef)-2);
+m_flash_write(0xf400,buf,sizeof(st_sysDataDef));
+m_flash_read(0xf400,buf,sizeof(st_sysDataDef));
+ret=crc_verify(buf,sizeof(st_sysDataDef));
 return ret;
 }
 
@@ -9353,8 +9429,9 @@ void __set_short_pose_size(bool gohome)
 {
 uint8_t* p;
 int32_t t32;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 switch(subMenu){
 case 0x00:
 p=(uint8_t*)(&adjValue);
@@ -9380,23 +9457,95 @@ case 0x02: __enter_menu_set_d(); break;
 default:break;
 }
 }
-
+extern st_iicDeviceObj* pdiff_prEepromObj;
+extern st_iicDeviceObj* p_prEepromObj;
 void __set_short_diff_calib(bool gohome)
 {
+bool saveFlg=0;
+uint8_t t8,adjv;
+uint16_t t16;
+uint32_t t32,pra;
+if(calibCol==0){
+t8=diff_prCalibTabDef.prCalibRow[calibRow].pCount;
+adjv=*(uint8_t*)(&adjValue);
+if(t8!=adjv){
+saveFlg=1;
+diff_prCalibTabDef.prCalibRow[calibRow].pCount=adjv;
+}
+}else{
+t32=__mflot32_2_int32(m_floatAdj.t32);
+pra=diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
+if(pra!=t32){
+diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue=t32;
+diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pAdcValue=x_prDiffData.pAdcValue;
+diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].tAdcValue=x_prDiffData.tAdcValue;
+saveFlg=1;
+}
+}
+
+if(saveFlg){
+t16=sizeof(diff_prCalibTabDef);
+crc_append((uint8_t*)&diff_prCalibTabDef,t16-2);
+at24c02_write_n_byte(pdiff_prEepromObj,0,(uint8_t*)&diff_prCalibTabDef,t16);
+}
 if(gohome){__exit_menu_to_home_unsave(); return;}
+calibCol++;
+if(calibCol>diff_prCalibTabDef.prCalibRow[calibRow].pCount){
+calibCol=0;
+calibRow++;
+if(calibRow>2)calibRow=0;
+}
+__enter_menu_calib_press_diff(calibRow,calibCol);
+
 }
 
 void __set_short_pr_calib(bool gohome)
 {
+bool saveFlg=0;
+uint8_t t8,adjv;
+uint16_t t16;
+uint32_t t32,pra;
+if(calibCol==0){
+t8=prCalibTabDef.prCalibRow[calibRow].pCount;
+adjv=*(uint8_t*)(&adjValue);
+if(t8!=adjv){
+saveFlg=1;
+prCalibTabDef.prCalibRow[calibRow].pCount=adjv;
+}
+}else{
+t32=__mflot32_2_int32(m_floatAdj.t32);
+pra=prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
+if(pra!=t32){
+prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue=t32;
+prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pAdcValue=x_prDiffData.pAdcValue;
+prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].tAdcValue=x_prDiffData.tAdcValue;
+saveFlg=1;
+}
+}
+
+if(saveFlg){
+t16=sizeof(prCalibTabDef);
+crc_append((uint8_t*)&prCalibTabDef,t16-2);
+at24c02_write_n_byte(pdiff_prEepromObj,0,(uint8_t*)&prCalibTabDef,t16);
+}
 if(gohome){__exit_menu_to_home_unsave(); return;}
+calibCol++;
+if(calibCol>prCalibTabDef.prCalibRow[calibRow].pCount){
+calibCol=0;
+
+
+}
+__enter_menu_calib_press(0,calibCol);
+
 }
 
 void __set_short_poly_coefic(bool gohome)
 {
 int16_t* p;
 
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 
 p=(int16_t*)(&adjValue);
 stp->ployCoeffic[subMenu]=*p;
@@ -9413,8 +9562,9 @@ void __set_short_warn_type(bool gohome)
 {
 uint8_t* p;
 
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 p=(uint8_t*)(&adjValue);
 stp->diffPressureWarnSet[subMenu].type=*p;
 __sys_data_save_write_flash();
@@ -9428,16 +9578,22 @@ __enter_menu_warn_type(subMenu);
 
 void __set_short_warn_value(bool gohome)
 {
-uint8_t* p;
+uint8_t t8;
+
 int32_t t32;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
-if(subMenu<0x04){
-stp->diffPressureWarnSet[subMenu].warnValueLo=t32;
+
+# 767
+t8=subMenu>>1;
+if(subMenu & 0x01){
+stp->diffPressureWarnSet[t8].warnValueHi=t32;
 }else{
-stp->diffPressureWarnSet[subMenu-0x04].warnValueHi=t32;
+stp->diffPressureWarnSet[t8].warnValueLo=t32;
 }
+
 __sys_data_save_write_flash();
 
 if(gohome){__exit_menu_to_home_unsave(); return;}
@@ -9451,18 +9607,15 @@ void __set_short_epr_param(bool gohome)
 {
 uint8_t* p;
 int32_t t32;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
 switch(subMenu){
-case 0x00:
-case 0x01:
-stp->ex_pressZero[subMenu]=t32;
-break;
-case 0x02:
-case 0x03:
-stp->ex_pressLine[subMenu-0x02]=t32;
-break;
+case 0x00:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx[0];break;
+case 0x01:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx[0];break;
+case 0x02:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx[1];break;
+case 0x03:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx[1];break;
 default:break;
 }
 __sys_data_save_write_flash();
@@ -9471,24 +9624,22 @@ if(gohome){__exit_menu_to_home_unsave(); return;}
 
 subMenu++;
 if(subMenu>0x03)subMenu=0x00;
-__enter_menu_warn_value(subMenu);
+__enter_menu_epr_calib(subMenu);
 }
 
 void __set_short_epr_ilp_scale(bool gohome)
 {
 uint8_t* p;
 int32_t t32;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
 switch(subMenu){
-case 0x00:
-case 0x01:
-stp->ex_pressiLoopLow[subMenu]=t32;
-break;
-case 0x02:
-case 0x03:
-stp->ex_pressiLoopUpper[subMenu-0x02]=t32;
+case 0x00:stp->exPrIpScaleCh0.ilpLow=t32;break;
+case 0x01:stp->exPrIpScaleCh0.ilpHi=t32;break;
+case 0x02:stp->exPrIpScaleCh1.ilpLow=t32;break;
+case 0x03:stp->exPrIpScaleCh1.ilpHi=t32;break;
 default:break;
 }
 __sys_data_save_write_flash();
@@ -9504,8 +9655,9 @@ void __set_long_density(void)
 {
 uint8_t* p;
 int32_t t32;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
 stp->density=t32;
 
@@ -9518,8 +9670,9 @@ void __set_long_base_zero(void)
 {
 uint8_t* p;
 int32_t t32;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
 stp->baseZero=t32;
 
@@ -9531,8 +9684,9 @@ void __set_long_bar_level_scale(void)
 {
 int16_t* p;
 int32_t t32;
-st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1;
-m_flash_read(0xf400,globleBuffer1,sizeof(st_sysDataDef));
+
+
+st_sysDataDef* stp=&stSysData;
 p=(uint16_t*)(&adjValue);
 stp->barScale=*p;
 
@@ -9547,7 +9701,7 @@ uint8_t* p;
 int32_t t32;
 
 
-p=(uint8_t**)(&adjValue);
+p=(uint8_t*)(&adjValue);
 
 dwm=*p;
 __exit_menu_to_home_unsave();

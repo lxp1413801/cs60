@@ -1,10 +1,11 @@
 #include "../includes/includes.h"
 #include "float.h"
 //uint8_t	globleBuffer0[]
-uint8_t globleBuffer0[globle_BUFFER_SIZE]={0};
-uint8_t globleBuffer1[globle_BUFFER_SIZE]={0};
+//uint8_t globleBuffer0[globle_BUFFER_SIZE]={0};
+st_sysDataDef stSysData;
+uint8_t globleBuffer[globle_BUFFER_SIZE]={0};
 
-const st_sysDataDef* fpSysData=(const st_sysDataDef*)SYSTEM_DATA_ADDR;
+//st_sysDataDef* fpSysData=( st_sysDataDef*)SYSTEM_DATA_ADDR;
 
 st_iicDeviceObj* pdiff_prEepromObj=(st_iicDeviceObj*)NULL;
 st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)NULL;
@@ -121,35 +122,44 @@ const float hKel[]={
 
 
 const st_sysDataDef defultSystemData={
-	0x00ul	,//uint32_t 	id;
-	0		,//em_posture	pos;							//立式或者卧式
-	95		,//uint8_t		maxValueForlevelBar;			//状态条显示满时对应的高度值,
-												//(95%或者100%)
-	1000	,//uint16_t	density;//密度
+		1234,//uint32_t 	id;
+		0,//em_posture	pos;							//立式或者卧式
+		0,//uint8_t		maxValueForlevelBar;			//状态条显示满时对应的高度值,
+													//(95%或者100%)
+		1000,//uint16_t	density;						//密度
+		
+		15000,//int32_t		h;								//高
+		3000,//uint32_t	d;								//直径
+		
+		0,//int32_t		V1;								//圆筒部分体积
+		0,//int32_t		V2;								//封头椭球体积
+		
+		-200,//int32_t		baseZero;						//基础零位
+		//
 
-	10000	,//int32_t		h;		//高
-	5000	,//uint32_t	d;		//直径
-	0		,
-	0		,
-	-200	,//int32_t		zero;	//零点
-	//
-	{0}		,//st_warnDef	diffPressureWarnSet[4];			//差压报警设置
-	{0}		,//st_warnDef	pressureWarnSet;				//压力报警设置
-	{40,30,20,10},	//uint8_t		simplePloyFactor[4];			//v0'=a0.v0+a1.v1+ ...+an.vn
-	1000,
-	1000,
-	//
-	{0}		,//uint32_t	ex_pressZero[2];				//外部差压零点
-	{1000,1000}		,//uint32_t	ex_pressLine[2];				//外部差压线性系数
-	{0}				,//uint32_t	ex_pressCurrentLoopLow[2];		//差压4-20ma下限
-	{1000,1000}		,//uint32_t	ex_pressCurrentLoopUpper[2];	//差压4-20ma上限	
-	//
-	0		,//uint32_t	ex_TempZero;					//外部温度零点
-	1000	,//uint32_t	ex_TempLine;					//外部温度线性系数
-	0		,//uint32_t	ex_TempCurrentLoopLow;			//温度4-20ma下限
-	1000	,//uint32_t	ex_TempCurrentLoopUpper;		//温度4-20ma上限	
-	//
-	0		,//uint16_t	crc;
+		{{0,0},{10000,10000}},//st_2ndCalibDef	_2ndPrDiffCalib[2];			//二次修正，差压
+		{{0,0},{10000,10000}},//st_2ndCalibDef	_2ndPrCalib[2];				//二次修正，压力
+		
+		{0},//st_warnDef		diffPressureWarnSet[4];		//差压报警设置
+		{0},//st_warnDef		pressureWarnSet[2];			//压力报警设置
+
+		
+		{400,300,200,100},//uint16_t		ployCoeffic[4];					//v0'=a0.v0+a1.v1+ ...+an.vn
+
+		{{0,0},{10000,10000}},//st_exClibDef	TmepCalib[2];				//温度标定，
+		
+		{{0,0},{10000,10000}},//st_exClibDef	exPr0Calib[2];				//外部压力传传感器标定
+		{{0,0},{10000,10000}},//st_exClibDef	exPr1Calib[2];
+		{{0,0},{10000,10000}},//st_exClibDef	exTempCalib[2];				//外部温度标定
+		
+		{1000,2000},//st_ilpScaleDef	exdiffPrilpScale0;			//外部压力4-20毫安范围
+		{1000,2000},//st_ilpScaleDef	exPrilpScale0;				//外部压力4-20毫安范围
+		{1000,2000},//st_ilpScaleDef	exPrIpScale0;
+		{1000,2000},//st_ilpScaleDef	exPrIpScale1;		
+		//st_ilpScaleDef	
+		{950},//uint16_t	barScale;
+		//
+		0,//uint16_t	crc;
 };
 uint32_t data_sys_cal_v1(st_sysDataDef* stp)
 {
@@ -176,9 +186,11 @@ uint32_t data_sys_cal_v2(st_sysDataDef* stp)
 uint8_t data_sys_init(void)
 {
 	uint8_t ret;
-	uint8_t* buf=globleBuffer1;
+    uint16_t t16;
+    t16=sizeof(st_sysDataDef);
+	uint8_t* buf=(uint8_t*)(&stSysData);
     st_sysDataDef* stp=(st_sysDataDef*)buf; 
-	if(sizeof(globleBuffer1)<sizeof(st_sysDataDef))return 0;
+	//if(sizeof(globleBuffer1)<t16)return 0;
 	m_flash_read(SYSTEM_DATA_ADDR,buf,sizeof(st_sysDataDef));
 	ret=crc_verify(buf,sizeof(st_sysDataDef));
 	if(!ret){
@@ -196,9 +208,9 @@ uint8_t data_sys_init(void)
 uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len)
 {
 	uint8_t ret;
-	uint8_t* buf=globleBuffer0;
+	uint8_t* buf=(uint8_t*)(&stSysData);
 	if(offset+len>sizeof(st_sysDataDef)-2)return 0;
-	if(sizeof(globleBuffer0)<sizeof(st_sysDataDef))return 0;
+	//if(sizeof(globleBuffer0)<sizeof(st_sysDataDef))return 0;
 	m_flash_read(SYSTEM_DATA_ADDR,buf,sizeof(st_sysDataDef));
 	m_mem_cpy_len(buf+offset,mbuf,len);
 	crc_append(buf,sizeof(st_sysDataDef)-2);
@@ -459,18 +471,18 @@ int32_t cal_diff_hight_to_vol_h(int32_t h)
 	float v1,v2;
 	float f1,f2;
     f1=(float)h;
-	f2=(float)(fpSysData->d);
+	f2=(float)(stSysData.d);
 	f1=f1/f2;//h/D
     if(f1>1.0)f1=1.0;
     
     f2=f1;
 	f1=m_interp1_float_fast((float*)hKcy,f1,sizeof(hKcy)/sizeof(hKcy[0]));
-	v1=(float)(fpSysData->V1);
+	v1=(float)(stSysData.V1);
     v1=v1*f1;
     
     f1=f2;
     f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
-	v2=(float)(fpSysData->V2);
+	v2=(float)(stSysData.V2);
     v2=v2*f1;
     
     v1=v1+v2;
@@ -480,13 +492,14 @@ int32_t cal_diff_hight_to_vol_h(int32_t h)
 uint8_t cal_diff_hight_level(void)
 {
     float f1,f2;
-	if(fpSysData->pos==HOTIZONTAL){
-        f1=(float)fpSysData->d;
+	if(stSysData.pos==HOTIZONTAL){
+        f1=(float)stSysData.d;
     }else{
-        f1=(float)fpSysData->h;
-        f1=(f1+fpSysData->d)+(f1+fpSysData->d);
+        f1=(float)stSysData.h;
+        f1=(f1+stSysData.d)+(f1+stSysData.d);
     }
-    f1=f1*(fpSysData->maxValueForlevelBar)/100;
+    f1=f1*(stSysData.maxValueForlevelBar)/100;
+    if(f1==0)f1=1;
     f2=(float)rtHight;
     f1=f2/f1;
     f1*=100;
@@ -499,25 +512,25 @@ int32_t cal_diff_hight_to_vol_v(int32_t h)
 {
 	float v1,v2;
 	float f1,D;
-	v1=(float)(fpSysData->V1);
-	v2=(float)(fpSysData->V2);
+	v1=(float)(stSysData.V1);
+	v2=(float)(stSysData.V2);
 	
     f1=(float)h;
-	D=(float)(fpSysData->d);
+	D=(float)(stSysData.d);
     if(f1<D/4){
         f1=2*f1/D;
         f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
-        v2=(float)(fpSysData->V2);
+        v2=(float)(stSysData.V2);
         return (int32_t)v2;
-    }else if(f1<D/4+fpSysData->h){
+    }else if(f1<D/4+stSysData.h){
         f1=f1-D/4;
-        v2=v2*(f1/fpSysData->h);
+        v2=v2*(f1/stSysData.h);
         v1=v1/2;
         return (int32_t)(v1+v2);
     }else{
-        if(f1>(float)(fpSysData->h)+D/2)f1=(float)(fpSysData->h)+D/2;
+        if(f1>(float)(stSysData.h)+D/2)f1=(float)(stSysData.h)+D/2;
         
-        f1=f1-(D/4)-(float)(fpSysData->h);
+        f1=f1-(D/4)-(float)(stSysData.h);
         f1=2*f1/D;
         f1=0.5-f1;
         v2=v2*(0.5+f1);
@@ -531,7 +544,7 @@ int32_t cal_diff_p_to_h(st_prData* xin)
 	float f1,f2;
 	//t32=xin->pValue;
 	f1=(float)(xin->pValue);
-	f2=(float)(fpSysData->density);
+	f2=(float)(stSysData.density);
     f1=f1/(f2*9.8f);
 	rtHight=(int32_t)f1;	
 	return rtHight;
@@ -555,7 +568,7 @@ uint8_t cal_diff_press()
 	rtDiffPressure=xin->pValue;
 	
 	cal_diff_p_to_h(xin);
-    if(fpSysData->pos==HOTIZONTAL){
+    if(stSysData.pos==HOTIZONTAL){
         rtVolume=cal_diff_hight_to_vol_h(rtHight);
     }else{
 		rtVolume=cal_diff_hight_to_vol_v(rtHight);
@@ -598,6 +611,7 @@ uint8_t cal_press(void)
 #define __kT (1.484e-4f)
 void cal_pt100_temperature_in(void)
 {
+	/*
     float f1,f2;
     f1=(float)(adc_inPt100);
 
@@ -615,10 +629,13 @@ void cal_pt100_temperature_in(void)
     
     f1=f1*1000;
     rtTemperatureIn= (int32_t)f1;
+	*/
+	rtTemperatureIn= 0;
 }
 
 void cal_pt100_temperature_ex(void)
 {
+	/*
     float f1,f2;
     f1=(float)(adc_exPt100);
 	
@@ -636,10 +653,13 @@ void cal_pt100_temperature_ex(void)
     
     f1=f1*1000;
     rtExTemperatureIn= (int32_t)f1;
+	*/
+	rtExTemperatureIn= 0;
 }
 
 void cal_additional_pressute(uint8_t index)
 {
+	/*
     if(index>1)return;
 	float f1,f2;
 	f1=(float)adc_iPrEx[index];
@@ -651,6 +671,8 @@ void cal_additional_pressute(uint8_t index)
     
     f1=f1*f2;
     rtExPressure[index]=(int32_t)f1;
+	*/
+	rtExPressure[index]=0;
 }
 
 

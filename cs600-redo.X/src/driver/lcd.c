@@ -14,7 +14,7 @@
 //uint8_t* pLcdReg=(uint8_t*)(&LCDDATA0); 
 uint8_t pLCD[LCD_PIXEL_REGISTER_SIZE];
 
-const uint8_t  LCDDigitalIndexTable[]="0123456789abcdefghijklmnopqrstuvwxyz.-: ";
+const uint8_t  LCDDigitalIndexTable[]="0123456789abcdefghijklmnopqrstuvwxyz.-: GH";
 const uint8_t LCDDigitalTable[]=
 {
     LCD_CODE_0,LCD_CODE_1,LCD_CODE_2,LCD_CODE_3,
@@ -27,6 +27,7 @@ const uint8_t LCDDigitalTable[]=
     LCD_CODE_S,LCD_CODE_T,LCD_CODE_U,LCD_CODE_V,
     LCD_CODE_W,LCD_CODE_X,LCD_CODE_Y,LCD_CODE_Z,
     LCD_CODE_DOT,LCD_CODE__,LCD_CODE_DDOT,0x00,
+	LCD_CODE_G_U,LCD_CODE_H_U,
 };
  
 void lcd_set_com_seg(uint8_t com,uint8_t seg,uint8_t show)

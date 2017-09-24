@@ -77,17 +77,17 @@ extern "C"{
 	//外部差压零点和线性,psd=138
 	#define MENU_SET_EPR_ZERO_LINE              0xa0
 	//#define MENU_SET_EX_D_PR_ZERO				0xa0
-	#define sub_MENU_SET_EPR_ZERO_0				0x00
-	#define sub_MENU_SET_EPR_ZERO_1				0x01
-	#define sub_MENU_SET_EPR_LINE_0				0x02
-	#define sub_MENU_SET_EPR_LINE_1				0x03
-	//外部差压输出范围,psd=139
+	#define sub_MENU_SET_EPR_CH0_P0				0x00
+	#define sub_MENU_SET_EPR_CH0_P1				0x01
+	#define sub_MENU_SET_EPR_CH1_P0				0x02
+	#define sub_MENU_SET_EPR_CH1_P1				0x03
+	//外部压输出范围,psd=139
 	#define MENU_SET_EPR_ILOOP_SCALE			0xb0
 	//#define MENU_SET_EX_D_PR_ILOOP_L			0xb0
-	#define sub_MENU_SET_EX_DPR_ILP_Lo0			0x00
-	#define sub_MENU_SET_EX_DPR_ILP_Lo1			0x01
-	#define sub_MENU_SET_EX_DPR_ILP_Hi0			0x02
-	#define sub_MENU_SET_EX_DPR_ILP_Hi1			0x03
+	#define sub_MENU_SET_EXPR_ILP_CH0_Lo		0x00
+	#define sub_MENU_SET_EXPR_ILP_CH0_Hi		0x01
+	#define sub_MENU_SET_EXPR_ILP_CH1_Lo		0x02
+	#define sub_MENU_SET_EXPR_ILP_CH1_Hi		0x03
 	
 	//高度条满刻度对应的值95%还是100%,psd=188	
 	#define MENU_SET_BAR_LEVEL_SCALE			0xc0

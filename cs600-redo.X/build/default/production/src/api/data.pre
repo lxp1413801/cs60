@@ -8650,9 +8650,8 @@ extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
 extern void ui_disp_menu(void);
 
-# 16 "src/api/../includes/../api/data.h"
-extern uint8_t globleBuffer0[256];
-extern uint8_t globleBuffer1[256];
+# 17 "src/api/../includes/../api/data.h"
+extern uint8_t globleBuffer[256];
 typedef enum{
 HOTIZONTAL=0,
 VERTICAL,
@@ -8683,6 +8682,22 @@ uint8_t[3];
 
 
 typedef struct{
+int32_t value;
+uint16_t adcValue;
+uint16_t reverse;
+}st_exCalibDef,exClibDef_t;
+
+
+typedef struct{
+int32_t prOut;
+int32_t prIn;
+}st_2ndCalibDef;
+typedef struct{
+int32_t ilpLow;
+int32_t ilpHi;
+}st_ilpScaleDef;
+
+typedef struct{
 uint32_t id;
 em_posture pos;
 uint8_t maxValueForlevelBar;
@@ -8697,30 +8712,34 @@ int32_t V2;
 
 int32_t baseZero;
 
+
+st_2ndCalibDef _2ndPrDiffCalib[2];
+st_2ndCalibDef _2ndPrCalib[2];
+
 st_warnDef diffPressureWarnSet[4];
-st_warnDef pressureWarnSet;
+st_warnDef pressureWarnSet[2];
+
+
 uint16_t ployCoeffic[4];
 
-uint32_t TempZero;
-uint32_t TempLine;
+st_exCalibDef TmepCalib[2];
 
+st_exCalibDef exPr0Calib[2];
+st_exCalibDef exPr1Calib[2];
+st_exCalibDef exTempCalib[2];
 
-uint32_t ex_pressZero[2];
-uint32_t ex_pressLine[2];
-uint32_t ex_pressiLoopLow[2];
-uint32_t ex_pressiLoopUpper[2];
+st_ilpScaleDef diffPrilpScale0;
+st_ilpScaleDef PrilpScale0;
+st_ilpScaleDef exPrIpScaleCh0;
+st_ilpScaleDef exPrIpScaleCh1;
 
-uint32_t ex_TempZero;
-uint32_t ex_TempLine;
-
-uint32_t ex_TempCurrentLoopLow;
-uint32_t ex_TempCurrentLoopUpper;
 uint16_t barScale;
 
 uint16_t crc;
 }st_sysDataDef,sysDataDef_t;
 extern const st_sysDataDef defultSystemData;
 
+extern st_sysDataDef stSysData;
 extern uint8_t data_sys_init(void);
 extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
 
@@ -8751,20 +8770,20 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
-# 122
+# 142
 extern volatile int16_t adc_inPt100;
 
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-# 131
+# 151
 extern volatile int16_t adc_iPrEx[2];
 
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-# 144
+# 164
 extern st_prData x_prDiffData;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
@@ -8846,11 +8865,11 @@ extern volatile uint8_t glNoEventTimeOut;
 
 extern int8_t event_process(void);
 
-# 4 "src/api/data.c"
-uint8_t globleBuffer0[256]={0};
-uint8_t globleBuffer1[256]={0};
+# 5 "src/api/data.c"
+st_sysDataDef stSysData;
+uint8_t globleBuffer[256]={0};
 
-const st_sysDataDef* fpSysData=(const st_sysDataDef*)0xf400;
+
 
 st_iicDeviceObj* pdiff_prEepromObj=(st_iicDeviceObj*)(0);
 st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)(0);
@@ -8858,21 +8877,21 @@ st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)(0);
 st_prCalibTabDef diff_prCalibTabDef={0};
 st_prCalibTabDef prCalibTabDef={0};
 
-# 20
+# 21
 st_prData x_prDiffData;
 volatile int16_t adc_inPt100;
 
 volatile int16_t adc_pressure;
 volatile int16_t adc_exPt100;
 
-# 30
+# 31
 volatile int16_t adc_iPrEx[2];
 
 
 volatile int16_t adc_ibat;
 volatile int16_t adc_iRef;
 
-# 40
+# 41
 volatile int32_t rtDiffPressure;
 volatile int32_t rtHight;
 volatile int32_t rtWeight;
@@ -8892,7 +8911,7 @@ volatile int32_t x_Pemperature;
 
 volatile st_deviceOpMode dwm=TEST_MODE;
 
-# 76
+# 77
 const float hKcy[]={
 0.0000,0.0017,0.0048,0.0087,0.0134,0.0187,0.0245,0.0308,0.0375,0.0446,
 0.0520,0.0598,0.0680,0.0764,0.0851,0.0941,0.1033,0.1127,0.1224,0.1323,
@@ -8907,7 +8926,7 @@ const float hKcy[]={
 1.0000,
 };
 
-# 108
+# 109
 const float hKel[]={
 0.0000,0.0003,0.0012,0.0026,0.0047,0.0073,0.0104,0.0140,0.0182,0.0228,
 0.0280,0.0336,0.0397,0.0463,0.0533,0.0607,0.0686,0.0769,0.0855,0.0946,
@@ -8924,35 +8943,44 @@ const float hKel[]={
 
 
 const st_sysDataDef defultSystemData={
-0x00ul ,
-0 ,
-95 ,
+1234,
+0,
+0,
 
-1000 ,
-
-10000 ,
-5000 ,
-0 ,
-0 ,
--200 ,
-
-{0} ,
-{0} ,
-{40,30,20,10},
-1000,
 1000,
 
-{0} ,
-{1000,1000} ,
-{0} ,
-{1000,1000} ,
+15000,
+3000,
 
-0 ,
-1000 ,
-0 ,
-1000 ,
+0,
+0,
 
-0 ,
+-200,
+
+
+{{0,0},{10000,10000}},
+{{0,0},{10000,10000}},
+
+{0},
+{0},
+
+
+{400,300,200,100},
+
+{{0,0},{10000,10000}},
+
+{{0,0},{10000,10000}},
+{{0,0},{10000,10000}},
+{{0,0},{10000,10000}},
+
+{1000,2000},
+{1000,2000},
+{1000,2000},
+{1000,2000},
+
+{950},
+
+0,
 };
 uint32_t data_sys_cal_v1(st_sysDataDef* stp)
 {
@@ -8979,9 +9007,11 @@ return (uint32_t)f;
 uint8_t data_sys_init(void)
 {
 uint8_t ret;
-uint8_t* buf=globleBuffer1;
+uint16_t t16;
+t16=sizeof(st_sysDataDef);
+uint8_t* buf=(uint8_t*)(&stSysData);
 st_sysDataDef* stp=(st_sysDataDef*)buf;
-if(sizeof(globleBuffer1)<sizeof(st_sysDataDef))return 0;
+
 m_flash_read(0xf400,buf,sizeof(st_sysDataDef));
 ret=crc_verify(buf,sizeof(st_sysDataDef));
 if(!ret){
@@ -8999,9 +9029,9 @@ return ret;
 uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len)
 {
 uint8_t ret;
-uint8_t* buf=globleBuffer0;
+uint8_t* buf=(uint8_t*)(&stSysData);
 if(offset+len>sizeof(st_sysDataDef)-2)return 0;
-if(sizeof(globleBuffer0)<sizeof(st_sysDataDef))return 0;
+
 m_flash_read(0xf400,buf,sizeof(st_sysDataDef));
 m_mem_cpy_len(buf+offset,mbuf,len);
 crc_append(buf,sizeof(st_sysDataDef)-2);
@@ -9024,7 +9054,7 @@ stp->pValue=pp->pValue;
 stp->pAdcValue=pp->pAdcValue;
 stp->tAdcValue=pp->tAdcValue;
 
-# 233
+# 245
 }
 
 
@@ -9111,7 +9141,7 @@ crc_append(buf,t16-2);
 return ret;
 }
 
-# 350
+# 362
 uint8_t m_interp1_cal_p_v(st_prCalibRowDef* tabrow,st_prData* xin,st_prData* xout)
 {
 uint8_t i;
@@ -9143,7 +9173,7 @@ xout->tAdcValue = tabrow->prCalibPoint[0].tAdcValue;
 return i;
 }
 
-# 404
+# 416
 uint8_t m_interp1_cal_p_t(st_prData* tmpx,st_prData* xin,uint8_t tmpxLen)
 {
 uint8_t i;
@@ -9202,18 +9232,18 @@ int32_t cal_diff_hight_to_vol_h(int32_t h)
 float v1,v2;
 float f1,f2;
 f1=(float)h;
-f2=(float)(fpSysData->d);
+f2=(float)(stSysData.d);
 f1=f1/f2;
 if(f1>1.0)f1=1.0;
 
 f2=f1;
 f1=m_interp1_float_fast((float*)hKcy,f1,sizeof(hKcy)/sizeof(hKcy[0]));
-v1=(float)(fpSysData->V1);
+v1=(float)(stSysData.V1);
 v1=v1*f1;
 
 f1=f2;
 f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
-v2=(float)(fpSysData->V2);
+v2=(float)(stSysData.V2);
 v2=v2*f1;
 
 v1=v1+v2;
@@ -9223,13 +9253,14 @@ return (int32_t)v1;
 uint8_t cal_diff_hight_level(void)
 {
 float f1,f2;
-if(fpSysData->pos==HOTIZONTAL){
-f1=(float)fpSysData->d;
+if(stSysData.pos==HOTIZONTAL){
+f1=(float)stSysData.d;
 }else{
-f1=(float)fpSysData->h;
-f1=(f1+fpSysData->d)+(f1+fpSysData->d);
+f1=(float)stSysData.h;
+f1=(f1+stSysData.d)+(f1+stSysData.d);
 }
-f1=f1*(fpSysData->maxValueForlevelBar)/100;
+f1=f1*(stSysData.maxValueForlevelBar)/100;
+if(f1==0)f1=1;
 f2=(float)rtHight;
 f1=f2/f1;
 f1*=100;
@@ -9242,25 +9273,25 @@ int32_t cal_diff_hight_to_vol_v(int32_t h)
 {
 float v1,v2;
 float f1,D;
-v1=(float)(fpSysData->V1);
-v2=(float)(fpSysData->V2);
+v1=(float)(stSysData.V1);
+v2=(float)(stSysData.V2);
 
 f1=(float)h;
-D=(float)(fpSysData->d);
+D=(float)(stSysData.d);
 if(f1<D/4){
 f1=2*f1/D;
 f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
-v2=(float)(fpSysData->V2);
+v2=(float)(stSysData.V2);
 return (int32_t)v2;
-}else if(f1<D/4+fpSysData->h){
+}else if(f1<D/4+stSysData.h){
 f1=f1-D/4;
-v2=v2*(f1/fpSysData->h);
+v2=v2*(f1/stSysData.h);
 v1=v1/2;
 return (int32_t)(v1+v2);
 }else{
-if(f1>(float)(fpSysData->h)+D/2)f1=(float)(fpSysData->h)+D/2;
+if(f1>(float)(stSysData.h)+D/2)f1=(float)(stSysData.h)+D/2;
 
-f1=f1-(D/4)-(float)(fpSysData->h);
+f1=f1-(D/4)-(float)(stSysData.h);
 f1=2*f1/D;
 f1=0.5-f1;
 v2=v2*(0.5+f1);
@@ -9274,7 +9305,7 @@ int32_t cal_diff_p_to_h(st_prData* xin)
 float f1,f2;
 
 f1=(float)(xin->pValue);
-f2=(float)(fpSysData->density);
+f2=(float)(stSysData.density);
 f1=f1/(f2*9.8f);
 rtHight=(int32_t)f1;
 return rtHight;
@@ -9298,7 +9329,7 @@ m_interp1_cal_p_t(&tmpx[0],xin,i);
 rtDiffPressure=xin->pValue;
 
 cal_diff_p_to_h(xin);
-if(fpSysData->pos==HOTIZONTAL){
+if(stSysData.pos==HOTIZONTAL){
 rtVolume=cal_diff_hight_to_vol_h(rtHight);
 }else{
 rtVolume=cal_diff_hight_to_vol_v(rtHight);
@@ -9306,7 +9337,7 @@ rtVolume=cal_diff_hight_to_vol_v(rtHight);
 return i;
 }
 
-# 577
+# 590
 uint8_t cal_press(void)
 {
 uint8_t ret;
@@ -9321,62 +9352,26 @@ rtPressure=xin.pValue;
 return ret;
 }
 
-# 599
+# 612
 void cal_pt100_temperature_in(void)
 {
-float f1,f2;
-f1=(float)(adc_inPt100);
 
-f2=(float)(fpSysData->TempZero);
-f1=f1-f2;
-
-f2=(float)(fpSysData->TempLine);
-f2/=1000;
-f1=f1*f2;
-
-f1/=1000;
-f2=(1.484e-4f);
-f2=f2*f1*f1;
-f1=f1+f2;
-
-f1=f1*1000;
-rtTemperatureIn= (int32_t)f1;
+# 633
+rtTemperatureIn= 0;
 }
 
 void cal_pt100_temperature_ex(void)
 {
-float f1,f2;
-f1=(float)(adc_exPt100);
 
-f2=(float)(fpSysData->ex_pressZero);
-f1=f1-f2;
-
-f2=(float)(fpSysData->ex_pressLine);
-f2/=1000;
-f1=f1*f2;
-
-f1/=1000;
-f2=(1.484e-4f);
-f2=f2*f1*f1;
-f1=f1+f2;
-
-f1=f1*1000;
-rtExTemperatureIn= (int32_t)f1;
+# 657
+rtExTemperatureIn= 0;
 }
 
 void cal_additional_pressute(uint8_t index)
 {
-if(index>1)return;
-float f1,f2;
-f1=(float)adc_iPrEx[index];
-f2=(float)(fpSysData->ex_pressZero[index]);
-f1=f1-f2;
 
-f2=(float)(fpSysData->ex_pressLine[index]);
-f2/=1000;
-
-f1=f1*f2;
-rtExPressure[index]=(int32_t)f1;
+# 675
+rtExPressure[index]=0;
 }
 
 

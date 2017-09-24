@@ -8650,9 +8650,8 @@ extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
 extern void ui_disp_menu(void);
 
-# 16 "src/api/../includes/../api/data.h"
-extern uint8_t globleBuffer0[256];
-extern uint8_t globleBuffer1[256];
+# 17 "src/api/../includes/../api/data.h"
+extern uint8_t globleBuffer[256];
 typedef enum{
 HOTIZONTAL=0,
 VERTICAL,
@@ -8683,6 +8682,22 @@ uint8_t[3];
 
 
 typedef struct{
+int32_t value;
+uint16_t adcValue;
+uint16_t reverse;
+}st_exCalibDef,exClibDef_t;
+
+
+typedef struct{
+int32_t prOut;
+int32_t prIn;
+}st_2ndCalibDef;
+typedef struct{
+int32_t ilpLow;
+int32_t ilpHi;
+}st_ilpScaleDef;
+
+typedef struct{
 uint32_t id;
 em_posture pos;
 uint8_t maxValueForlevelBar;
@@ -8697,30 +8712,34 @@ int32_t V2;
 
 int32_t baseZero;
 
+
+st_2ndCalibDef _2ndPrDiffCalib[2];
+st_2ndCalibDef _2ndPrCalib[2];
+
 st_warnDef diffPressureWarnSet[4];
-st_warnDef pressureWarnSet;
+st_warnDef pressureWarnSet[2];
+
+
 uint16_t ployCoeffic[4];
 
-uint32_t TempZero;
-uint32_t TempLine;
+st_exCalibDef TmepCalib[2];
 
+st_exCalibDef exPr0Calib[2];
+st_exCalibDef exPr1Calib[2];
+st_exCalibDef exTempCalib[2];
 
-uint32_t ex_pressZero[2];
-uint32_t ex_pressLine[2];
-uint32_t ex_pressiLoopLow[2];
-uint32_t ex_pressiLoopUpper[2];
+st_ilpScaleDef diffPrilpScale0;
+st_ilpScaleDef PrilpScale0;
+st_ilpScaleDef exPrIpScaleCh0;
+st_ilpScaleDef exPrIpScaleCh1;
 
-uint32_t ex_TempZero;
-uint32_t ex_TempLine;
-
-uint32_t ex_TempCurrentLoopLow;
-uint32_t ex_TempCurrentLoopUpper;
 uint16_t barScale;
 
 uint16_t crc;
 }st_sysDataDef,sysDataDef_t;
 extern const st_sysDataDef defultSystemData;
 
+extern st_sysDataDef stSysData;
 extern uint8_t data_sys_init(void);
 extern uint8_t data_sys_save(uint16_t offset,uint8_t* mbuf,uint16_t len);
 
@@ -8751,20 +8770,20 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
-# 122
+# 142
 extern volatile int16_t adc_inPt100;
 
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-# 131
+# 151
 extern volatile int16_t adc_iPrEx[2];
 
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-# 144
+# 164
 extern st_prData x_prDiffData;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
@@ -8776,6 +8795,7 @@ volatile int32_t rtPressure;
 extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
 extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
 extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+
 
 
 extern uint8_t cal_diff_press(void);

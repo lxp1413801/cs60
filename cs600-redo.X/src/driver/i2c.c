@@ -4,17 +4,18 @@
 #include "p18f86j93.h"
 #include "m_gpio.h"
 #include "i2c.h"
-// #define __nop_delay() do{ \
-	// __nop();__nop();__nop();__nop();__nop();__nop(); \
-// }while(0);
-//#ifndef delay_10us
-    #define delay_10us() do{ \
-        __nop();__nop();__nop();__nop();__nop();__nop(); \
-        __nop();__nop();__nop();__nop();__nop();__nop(); \
-    }while(0);
-//#endif
-#define __nop_delay() delay_10us()
-
+#include  "../soc/clock.h"
+#define __nop_delay() do{ \
+__nop();__nop();__nop();__nop();__nop(); \
+__nop();__nop();__nop();__nop();__nop(); \
+__nop();__nop();__nop();__nop();__nop(); \
+__nop();__nop();__nop();__nop();__nop(); \
+}while(0);
+#define __long_nop_delay() do{ \
+	__nop_delay(); \
+	__nop_delay(); \
+	__nop_delay(); \
+}while(0)
 void iic_start(void)
 {
 	iic_scl_mode_out();
@@ -22,11 +23,11 @@ void iic_start(void)
     
 	iic_sda_hight();
 	iic_scl_hight();
-	delay_10us();
+	delay_us(3);
 	iic_sda_low();
-	delay_10us();
+	delay_us(3);
 	iic_scl_low();
-	//delay_5ms();
+	delay_us(3);
 }
 
 void iic_stop(void)
@@ -34,11 +35,11 @@ void iic_stop(void)
 	iic_scl_mode_out();
 	iic_sda_mode_out();
 	iic_sda_low();
-	delay_10us();
+	delay_us(3);
 	iic_scl_hight();
-	delay_10us();
+	delay_us(3);
 	iic_sda_hight();
-	//delay_5ms();
+	delay_us(3);
 }
 
 void iic_send_ack(int8_t ack)
@@ -46,15 +47,17 @@ void iic_send_ack(int8_t ack)
 	iic_scl_mode_out();
 	iic_sda_mode_out();
 	iic_scl_low();
+	delay_us(3);
 	if(ack){
 		iic_sda_hight();
 	}else{
 		iic_sda_low();
 	}
-	__nop_delay();
+	delay_us(3);
 	iic_scl_hight();
-	__nop_delay();
+	delay_us(3);
 	iic_scl_low();
+	delay_us(3);
 }
 
 uint8_t iic_waite_ack(void)
@@ -63,9 +66,9 @@ uint8_t iic_waite_ack(void)
 	iic_scl_mode_out();
 	iic_sda_mode_in();
     iic_scl_low();
-	__nop_delay();
+    delay_us(3);
 	iic_scl_hight();
-    __nop_delay();
+    delay_us(3);
 	while(timeout--){
 		if(!iic_sda_get())break;
 	}
@@ -74,6 +77,7 @@ uint8_t iic_waite_ack(void)
 		return 0;
 	}
 	iic_scl_low();
+    delay_us(3);
 	return 1;	
 }
 
@@ -83,6 +87,7 @@ uint8_t iic_send_byte(uint8_t x)
     iic_scl_mode_out();
 	iic_sda_mode_out();
 	iic_scl_low();
+	delay_us(3);
 	for(i=0;i<8;i++){       
 		if(x&0x80){
 			iic_sda_hight();
@@ -90,10 +95,13 @@ uint8_t iic_send_byte(uint8_t x)
 		else{
 			iic_sda_low();
         }
+		delay_us(3);
 		iic_scl_hight();
-		__nop_delay();
+		//delay_us(3);
+        delay_us(3);
 		iic_scl_low();
-        __nop_delay();
+        //delay_us(3);
+        delay_us(3);
 		x<<=1;
 	}
 	return iic_waite_ack();
@@ -108,14 +116,15 @@ uint8_t iic_received_byte(void)
 	for(i=0;i<8;i++){
         ret<<=1;
 		iic_scl_low();
-		__nop_delay();
+        delay_us(3);
 		iic_scl_hight();
-        __nop_delay();
+        delay_us(3);
 		if(iic_sda_get()){
 			ret|=1;
 		}
 	}
 	iic_scl_low();
+    delay_us(3);
 	return ret;
 }
 uint8_t iic_received_byte_if_ack(uint8_t ack)

@@ -8887,6 +8887,6 @@ void lcd_init(void)
 lcd_config();
 
 LCDCON=0x8f;;
-lcd_bl_on();
+lcd_bl_off();
 }
 

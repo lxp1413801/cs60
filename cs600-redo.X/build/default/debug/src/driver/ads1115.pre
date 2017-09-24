@@ -8329,6 +8329,8 @@ extern void ads1115_init(st_ads1115ObjDef* pAds1115,uint8_t slvaddr);
 extern void ads1115_init_all_chip(void);
 extern void ads1115_start_conversion(st_ads1115ObjDef* pAds1115);
 extern uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115);
+extern void ads1115_set_data_rate(st_ads1115ObjDef* pAds1115,em_Ads1x1xDrDef_t dr);
+extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
 

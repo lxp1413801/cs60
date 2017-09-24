@@ -1,5 +1,6 @@
 
 #include "ex_eeprom.h"
+#include"../soc/clock.h"
 
 st_iicDeviceObj at24c02Ch0,at24c02Ch1;
 
@@ -75,6 +76,8 @@ void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,ui
 		pAt24c02->iic_send_byte(addr++);
 		
 		pAt24c02->iic_send_byte(*buf++);
-		pAt24c02->iic_stop();			
+		pAt24c02->iic_stop();
+        delay_ms(1);
+		//delay_us(20);
 	}
 }

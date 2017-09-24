@@ -666,6 +666,6 @@ void lcd_init(void)
 	lcd_config();
 	//lcd_bl_init();
 	lcd_on();
-	lcd_bl_on();
+	lcd_bl_off();
 }
 //file end

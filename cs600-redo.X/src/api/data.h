@@ -133,40 +133,24 @@ extern "C"{
 	extern st_prCalibTabDef diff_prCalibTabDef;
 	extern st_prCalibTabDef prCalibTabDef;
 	//
-	//declare variables for adc
-	// extern volatile int16_t 	adc_diffPr;			//
-	// extern volatile int16_t		adc_diffBrg;		//
-	// extern volatile int16_t		adc_diffVcc;		//
-	// extern volatile int16_t		adc_diffGnd;		//
-	
+
 	extern volatile int16_t 	adc_inPt100;
 	
 	extern volatile int16_t		adc_pressure;
 	extern volatile int16_t		adc_exPt100;
-
-	// extern volatile int16_t		adc_exPt100;		//
-	// extern volatile int16_t		adc_exPt100Line;	//
-	// extern volatile int16_t		adc_Pr;
 
 	extern volatile int16_t		adc_iPrEx[2];
 	//extern volatile int16_t		adc_iPrEx1;
 
 	extern volatile int16_t		adc_ibat;
 	extern volatile int16_t		adc_iRef;
-	// declare variables for 	diff pressure;
-	// extern volatile int32_t		x_DiffPressure;
-	// extern volatile int32_t		x_Hight;
-	// extern volatile int32_t		x_Weight;
 
-	// extern volatile int32_t		x_Pressure;
-	// extern volatile int32_t		x_Pemperature;
-	
 	extern st_prData	x_prDiffData;
     extern volatile int32_t	rtDiffPressure;
 	extern volatile int32_t	rtVolume;
     extern volatile int32_t	rtHight;
 	extern volatile int32_t	rtWeight;
-	
+	extern volatile uint8_t    rtLevel;
 	volatile int32_t    rtPressure;
 	//fk 
     extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);

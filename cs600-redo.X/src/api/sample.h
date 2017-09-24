@@ -15,9 +15,9 @@
     #define PRESSURE_CHIP_SAMPLE_FREQ 		20
     #define PRESSURE_CHIP_SAMPLE_TS 		100
 	
-	#define IN_SOC_ADC_SAMPLE_TS			100
+	#define IN_SOC_ADC_SAMPLE_TS			50
 	
-	#define SENSEOR_SLEEP_TIME_s			30
+	#define SENSEOR_SLEEP_TIME_s			100
 
 	extern int16_t sampBufDiffPr_S1[];	//内部pt100的值
 	//#define adcValueIn	sampBufDiffPr_S1

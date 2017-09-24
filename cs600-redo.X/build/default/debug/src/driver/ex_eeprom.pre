@@ -8223,7 +8223,33 @@ extern void at24c02_read_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* 
 extern void at24c02_write_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t x);
 extern void at24c02_write_n_byte(st_iicDeviceObj* pAt24c02,uint8_t addr,uint8_t* buf,uint16_t len);
 
-# 4 "src/driver/ex_eeprom.c"
+# 10 "src/driver/../soc/clock.h"
+typedef enum __OSC_MODE
+{
+
+OSC_PMODE_SLEEP = 0,
+
+OSC_PMODE_PRI_RUN,
+OSC_PMODE_SEC_RUN,
+OSC_PMODE_RC_RUN,
+
+
+
+OSC_PMODE_PRI_IDLE,
+OSC_PMODE_SEC_IDLE,
+OSC_PMODE_RC_IDLE,
+
+
+OSC_PMODE_MAX
+}em_oscMode;
+
+void osc_setup(void);
+void osc_set_power(em_oscMode oscMode);
+
+extern void delay_us(uint16_t dly);
+extern void delay_ms(uint16_t dly);
+
+# 5 "src/driver/ex_eeprom.c"
 st_iicDeviceObj at24c02Ch0,at24c02Ch1;
 
 void at24c02_set_slave_addr(st_iicDeviceObj* pAt24c02,uint8_t slv)
@@ -8299,5 +8325,7 @@ pAt24c02->iic_send_byte(addr++);
 
 pAt24c02->iic_send_byte(*buf++);
 pAt24c02->iic_stop();
+delay_ms(1);
+
 }
 }

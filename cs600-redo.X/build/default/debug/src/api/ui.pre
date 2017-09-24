@@ -8529,6 +8529,8 @@ extern void ads1115_init(st_ads1115ObjDef* pAds1115,uint8_t slvaddr);
 extern void ads1115_init_all_chip(void);
 extern void ads1115_start_conversion(st_ads1115ObjDef* pAds1115);
 extern uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115);
+extern void ads1115_set_data_rate(st_ads1115ObjDef* pAds1115,em_Ads1x1xDrDef_t dr);
+extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
 
@@ -8770,26 +8772,24 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
-# 142
+
 extern volatile int16_t adc_inPt100;
 
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-# 151
 extern volatile int16_t adc_iPrEx[2];
 
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-# 164
 extern st_prData x_prDiffData;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
 extern volatile int32_t rtHight;
 extern volatile int32_t rtWeight;
-
+extern volatile uint8_t rtLevel;
 volatile int32_t rtPressure;
 
 extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
@@ -8862,6 +8862,10 @@ extern volatile uint8_t glNoEventTimeOut;
 
 
 
+
+extern int8_t event_process_rtc(void);
+extern int8_t event_process_ticker(void);
+extern int8_t event_process_time_out(void);
 
 extern int8_t event_process(void);
 
@@ -9118,10 +9122,11 @@ mf.t32=__int32_2_mflot32(rtHight);
 ui_disp_xfloat_pt(&mf,0);
 lcd_disp_unit_1st_m(1);
 
-mf.t32=__int32_2_mflot32(rtDiffPressure);
+mf.t32=__int32_2_mflot32(rtPressure);
 ui_disp_xfloat_pt(&mf,1);
 lcd_disp_unit_mpa(1);
-t8=cal_diff_hight_level();
+
+t8=rtLevel;
 lcd_disp_level(t8);
 
 lcd_disp_refresh();
@@ -9138,10 +9143,11 @@ mf.t32=__int32_2_mflot32(rtVolume);
 ui_disp_xfloat_pt(&mf,0);
 lcd_disp_unit_1st_m3(1);
 
-mf.t32=__int32_2_mflot32(rtDiffPressure);
+mf.t32=__int32_2_mflot32(rtPressure);
 ui_disp_xfloat_pt(&mf,1);
 lcd_disp_unit_mpa(1);
-t8=cal_diff_hight_level();
+
+t8=rtLevel;
 lcd_disp_level(t8);
 
 lcd_disp_refresh();
@@ -9159,10 +9165,11 @@ ui_disp_xfloat_pt(&mf,0);
 
 lcd_disp_unit_t(1);
 
-mf.t32=__int32_2_mflot32(rtDiffPressure);
+mf.t32=__int32_2_mflot32(rtPressure);
 ui_disp_xfloat_pt(&mf,1);
 lcd_disp_unit_mpa(1);
-t8=cal_diff_hight_level();
+
+t8=rtLevel;
 lcd_disp_level(t8);
 
 lcd_disp_refresh();
@@ -9350,7 +9357,7 @@ if(t8>7)return;
 
 st_sysDataDef* fps= &stSysData;
 
-# 615
+# 618
 t8=subMenu>>1;
 
 buf[3]='0'+t8;
@@ -9392,9 +9399,9 @@ lcd_disp_all(0x00);;
 lcd_disp_logo(1);
 switch(subMenu){
 case 0x00:m_mem_cpy(buf,(uint8_t*)"lp0l");break;
-case 0x01:m_mem_cpy(buf,(uint8_t*)"lp0h");break;
+case 0x01:m_mem_cpy(buf,(uint8_t*)"lp0H");break;
 case 0x02:m_mem_cpy(buf,(uint8_t*)"lp1l");break;
-case 0x03:m_mem_cpy(buf,(uint8_t*)"lp1h");break;
+case 0x03:m_mem_cpy(buf,(uint8_t*)"lp1H");break;
 default:return;
 }
 ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);

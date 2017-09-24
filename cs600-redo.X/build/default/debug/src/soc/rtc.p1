@@ -6104,7 +6104,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;rtc.h: 41: extern void rtc_alrm_irq_hook(void);
 [; ;event.h: 10: extern volatile uint8_t glbEvent;
 [; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
-[; ;event.h: 16: extern int8_t event_process(void);
+[; ;event.h: 16: extern int8_t event_process_rtc(void);
+[; ;event.h: 17: extern int8_t event_process_ticker(void);
+[; ;event.h: 18: extern int8_t event_process_time_out(void);
+[; ;event.h: 20: extern int8_t event_process(void);
 "6 src/soc/rtc.c
 [v _glRtc `S645 ~T0 @X0 1 e ]
 [; ;rtc.c: 6: st_RtcDef glRtc;

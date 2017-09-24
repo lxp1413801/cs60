@@ -6157,8 +6157,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ads1115.h: 143: extern void ads1115_init_all_chip(void);
 [; ;ads1115.h: 144: extern void ads1115_start_conversion(st_ads1115ObjDef* pAds1115);
 [; ;ads1115.h: 145: extern uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115);
-[; ;ads1115.h: 146: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
-[; ;ads1115.h: 147: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
+[; ;ads1115.h: 146: extern void ads1115_set_data_rate(st_ads1115ObjDef* pAds1115,em_Ads1x1xDrDef_t dr);
+[; ;ads1115.h: 147: extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
+[; ;ads1115.h: 148: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
+[; ;ads1115.h: 149: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
 "2 src/driver/ads1115.c
 [v _ads1115Chip0 `S646 ~T0 @X0 1 e ]
 [v _ads1115Chip1 `S646 ~T0 @X0 1 e ]

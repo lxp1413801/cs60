@@ -6086,7 +6086,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
 [; ;event.h: 10: extern volatile uint8_t glbEvent;
 [; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
-[; ;event.h: 16: extern int8_t event_process(void);
+[; ;event.h: 16: extern int8_t event_process_rtc(void);
+[; ;event.h: 17: extern int8_t event_process_ticker(void);
+[; ;event.h: 18: extern int8_t event_process_time_out(void);
+[; ;event.h: 20: extern int8_t event_process(void);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {

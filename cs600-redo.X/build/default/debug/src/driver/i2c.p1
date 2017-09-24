@@ -3,9 +3,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
 "6378
 [v _LATC `Vuc ~T0 @X0 0 e@3979 ]
-"43 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18.h
-[v ___nop `(v ~T0 @X0 0 ef ]
-[p i ___nop ]
+"32 src/driver/../soc/clock.h
+[v _delay_us `(v ~T0 @X0 0 ef1`ui ]
 "4981 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
 [v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
 [; ;stdint.h: 13: typedef signed char int8_t;
@@ -6003,710 +6002,569 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.h: 56: uint8_t (*iic_waite_ack)(void);
 [; ;i2c.h: 58: uint8_t (*iic_received_byte_if_ack)(uint8_t ack);
 [; ;i2c.h: 62: }st_iicDeviceObj;
-"18 src/driver/i2c.c
+[; ;clock.h: 10: typedef enum __OSC_MODE
+[; ;clock.h: 11: {
+[; ;clock.h: 13: OSC_PMODE_SLEEP = 0,
+[; ;clock.h: 15: OSC_PMODE_PRI_RUN,
+[; ;clock.h: 16: OSC_PMODE_SEC_RUN,
+[; ;clock.h: 17: OSC_PMODE_RC_RUN,
+[; ;clock.h: 21: OSC_PMODE_PRI_IDLE,
+[; ;clock.h: 22: OSC_PMODE_SEC_IDLE,
+[; ;clock.h: 23: OSC_PMODE_RC_IDLE,
+[; ;clock.h: 26: OSC_PMODE_MAX
+[; ;clock.h: 27: }em_oscMode;
+[; ;clock.h: 29: void osc_setup(void);
+[; ;clock.h: 30: void osc_set_power(em_oscMode oscMode);
+[; ;clock.h: 32: extern void delay_us(uint16_t dly);
+[; ;clock.h: 33: extern void delay_ms(uint16_t dly);
+"19 src/driver/i2c.c
 [v _iic_start `(v ~T0 @X0 1 ef ]
-"19
+"20
 {
-[; ;i2c.c: 18: void iic_start(void)
-[; ;i2c.c: 19: {
+[; ;i2c.c: 19: void iic_start(void)
+[; ;i2c.c: 20: {
 [e :U _iic_start ]
 [f ]
-[; ;i2c.c: 20: do{TRISC &= ~(1<<3);}while(0);;;
-"20
+[; ;i2c.c: 21: do{TRISC &= ~(1<<3);}while(0);;;
+"21
 [e :U 647 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 646 ]
-[; ;i2c.c: 21: do{TRISC &= ~(1<<4);}while(0);;;
-"21
+[; ;i2c.c: 22: do{TRISC &= ~(1<<4);}while(0);;;
+"22
 [e :U 650 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 649 ]
-[; ;i2c.c: 23: do{LATC |= (1<<4);}while(0);;;
-"23
+[; ;i2c.c: 24: do{LATC |= (1<<4);}while(0);;;
+"24
 [e :U 653 ]
 {
 [e =| _LATC -> << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 652 ]
-[; ;i2c.c: 24: do{LATC |= (1<<3);}while(0);;;
-"24
+[; ;i2c.c: 25: do{LATC |= (1<<3);}while(0);;;
+"25
 [e :U 656 ]
 {
 [e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 655 ]
-[; ;i2c.c: 25: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"25
+[; ;i2c.c: 26: delay_us(3);
+"26
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 27: do{LATC &= ~(1<<4);}while(0);;;
+"27
 [e :U 659 ]
 {
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
+[e =& _LATC -> ~ << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 658 ]
-[; ;i2c.c: 26: do{LATC &= ~(1<<4);}while(0);;;
-"26
+[; ;i2c.c: 28: delay_us(3);
+"28
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 29: do{LATC &= ~(1<<3);}while(0);;;
+"29
 [e :U 662 ]
 {
-[e =& _LATC -> ~ << -> 1 `i -> 4 `i `uc ]
+[e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 661 ]
-[; ;i2c.c: 27: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"27
-[e :U 665 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 664 ]
-[; ;i2c.c: 28: do{LATC &= ~(1<<3);}while(0);;;
-"28
-[e :U 668 ]
-{
-[e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
-}
-[e :U 667 ]
-[; ;i2c.c: 30: }
+[; ;i2c.c: 30: delay_us(3);
 "30
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 31: }
+"31
 [e :UE 644 ]
 }
-"32
-[v _iic_stop `(v ~T0 @X0 1 ef ]
 "33
+[v _iic_stop `(v ~T0 @X0 1 ef ]
+"34
 {
-[; ;i2c.c: 32: void iic_stop(void)
-[; ;i2c.c: 33: {
+[; ;i2c.c: 33: void iic_stop(void)
+[; ;i2c.c: 34: {
 [e :U _iic_stop ]
 [f ]
-[; ;i2c.c: 34: do{TRISC &= ~(1<<3);}while(0);;;
-"34
+[; ;i2c.c: 35: do{TRISC &= ~(1<<3);}while(0);;;
+"35
+[e :U 666 ]
+{
+[e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
+}
+[e :U 665 ]
+[; ;i2c.c: 36: do{TRISC &= ~(1<<4);}while(0);;;
+"36
+[e :U 669 ]
+{
+[e =& _TRISC -> ~ << -> 1 `i -> 4 `i `uc ]
+}
+[e :U 668 ]
+[; ;i2c.c: 37: do{LATC &= ~(1<<4);}while(0);;;
+"37
 [e :U 672 ]
 {
-[e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
+[e =& _LATC -> ~ << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 671 ]
-[; ;i2c.c: 35: do{TRISC &= ~(1<<4);}while(0);;;
-"35
+[; ;i2c.c: 38: delay_us(3);
+"38
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 39: do{LATC |= (1<<3);}while(0);;;
+"39
 [e :U 675 ]
 {
-[e =& _TRISC -> ~ << -> 1 `i -> 4 `i `uc ]
+[e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 674 ]
-[; ;i2c.c: 36: do{LATC &= ~(1<<4);}while(0);;;
-"36
-[e :U 678 ]
-{
-[e =& _LATC -> ~ << -> 1 `i -> 4 `i `uc ]
-}
-[e :U 677 ]
-[; ;i2c.c: 37: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"37
-[e :U 681 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 680 ]
-[; ;i2c.c: 38: do{LATC |= (1<<3);}while(0);;;
-"38
-[e :U 684 ]
-{
-[e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
-}
-[e :U 683 ]
-[; ;i2c.c: 39: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"39
-[e :U 687 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 686 ]
-[; ;i2c.c: 40: do{LATC |= (1<<4);}while(0);;;
+[; ;i2c.c: 40: delay_us(3);
 "40
-[e :U 690 ]
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 41: do{LATC |= (1<<4);}while(0);;;
+"41
+[e :U 678 ]
 {
 [e =| _LATC -> << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 689 ]
-[; ;i2c.c: 42: }
+[e :U 677 ]
+[; ;i2c.c: 42: delay_us(3);
 "42
-[e :UE 669 ]
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 43: }
+"43
+[e :UE 663 ]
 }
-"44
+"45
 [v _iic_send_ack `(v ~T0 @X0 1 ef1`c ]
-"45
-{
-[; ;i2c.c: 44: void iic_send_ack(int8_t ack)
-[; ;i2c.c: 45: {
-[e :U _iic_send_ack ]
-"44
-[v _ack `c ~T0 @X0 1 r1 ]
-"45
-[f ]
-[; ;i2c.c: 46: do{TRISC &= ~(1<<3);}while(0);;;
 "46
-[e :U 694 ]
+{
+[; ;i2c.c: 45: void iic_send_ack(int8_t ack)
+[; ;i2c.c: 46: {
+[e :U _iic_send_ack ]
+"45
+[v _ack `c ~T0 @X0 1 r1 ]
+"46
+[f ]
+[; ;i2c.c: 47: do{TRISC &= ~(1<<3);}while(0);;;
+"47
+[e :U 682 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 693 ]
-[; ;i2c.c: 47: do{TRISC &= ~(1<<4);}while(0);;;
-"47
-[e :U 697 ]
+[e :U 681 ]
+[; ;i2c.c: 48: do{TRISC &= ~(1<<4);}while(0);;;
+"48
+[e :U 685 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 696 ]
-[; ;i2c.c: 48: do{LATC &= ~(1<<3);}while(0);;;
-"48
-[e :U 700 ]
+[e :U 684 ]
+[; ;i2c.c: 49: do{LATC &= ~(1<<3);}while(0);;;
+"49
+[e :U 688 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 699 ]
-[; ;i2c.c: 49: if(ack){
-"49
-[e $ ! != -> _ack `i -> -> -> 0 `i `c `i 701  ]
-{
-[; ;i2c.c: 50: do{LATC |= (1<<4);}while(0);;;
+[e :U 687 ]
+[; ;i2c.c: 50: delay_us(3);
 "50
-[e :U 704 ]
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 51: if(ack){
+"51
+[e $ ! != -> _ack `i -> -> -> 0 `i `c `i 689  ]
+{
+[; ;i2c.c: 52: do{LATC |= (1<<4);}while(0);;;
+"52
+[e :U 692 ]
 {
 [e =| _LATC -> << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 703 ]
-"51
+[e :U 691 ]
+"53
 }
-[; ;i2c.c: 51: }else{
-[e $U 705  ]
-[e :U 701 ]
+[; ;i2c.c: 53: }else{
+[e $U 693  ]
+[e :U 689 ]
 {
-[; ;i2c.c: 52: do{LATC &= ~(1<<4);}while(0);;;
-"52
-[e :U 708 ]
+[; ;i2c.c: 54: do{LATC &= ~(1<<4);}while(0);;;
+"54
+[e :U 696 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 707 ]
-"53
-}
-[e :U 705 ]
-[; ;i2c.c: 53: }
-[; ;i2c.c: 54: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"54
-[e :U 711 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 710 ]
-[; ;i2c.c: 55: do{LATC |= (1<<3);}while(0);;;
+[e :U 695 ]
 "55
-[e :U 714 ]
+}
+[e :U 693 ]
+[; ;i2c.c: 55: }
+[; ;i2c.c: 56: delay_us(3);
+"56
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 57: do{LATC |= (1<<3);}while(0);;;
+"57
+[e :U 699 ]
 {
 [e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 713 ]
-[; ;i2c.c: 56: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"56
-[e :U 717 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 716 ]
-[; ;i2c.c: 57: do{LATC &= ~(1<<3);}while(0);;;
-"57
-[e :U 720 ]
+[e :U 698 ]
+[; ;i2c.c: 58: delay_us(3);
+"58
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 59: do{LATC &= ~(1<<3);}while(0);;;
+"59
+[e :U 702 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 719 ]
-[; ;i2c.c: 58: }
-"58
-[e :UE 691 ]
-}
+[e :U 701 ]
+[; ;i2c.c: 60: delay_us(3);
 "60
-[v _iic_waite_ack `(uc ~T0 @X0 1 ef ]
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 61: }
 "61
+[e :UE 679 ]
+}
+"63
+[v _iic_waite_ack `(uc ~T0 @X0 1 ef ]
+"64
 {
-[; ;i2c.c: 60: uint8_t iic_waite_ack(void)
-[; ;i2c.c: 61: {
+[; ;i2c.c: 63: uint8_t iic_waite_ack(void)
+[; ;i2c.c: 64: {
 [e :U _iic_waite_ack ]
 [f ]
-"62
+"65
 [v _timeout `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 62: uint8_t timeout=200;
+[; ;i2c.c: 65: uint8_t timeout=200;
 [e = _timeout -> -> 200 `i `uc ]
-[; ;i2c.c: 63: do{TRISC &= ~(1<<3);}while(0);;;
-"63
-[e :U 724 ]
+[; ;i2c.c: 66: do{TRISC &= ~(1<<3);}while(0);;;
+"66
+[e :U 706 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 723 ]
-[; ;i2c.c: 64: do{TRISC |= (1<<4);}while(0);;;
-"64
-[e :U 727 ]
+[e :U 705 ]
+[; ;i2c.c: 67: do{TRISC |= (1<<4);}while(0);;;
+"67
+[e :U 709 ]
 {
 [e =| _TRISC -> << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 726 ]
-[; ;i2c.c: 65: do{LATC &= ~(1<<3);}while(0);;;
-"65
-[e :U 730 ]
+[e :U 708 ]
+[; ;i2c.c: 68: do{LATC &= ~(1<<3);}while(0);;;
+"68
+[e :U 712 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 729 ]
-[; ;i2c.c: 66: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"66
-[e :U 733 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 732 ]
-[; ;i2c.c: 67: do{LATC |= (1<<3);}while(0);;;
-"67
-[e :U 736 ]
+[e :U 711 ]
+[; ;i2c.c: 69: delay_us(3);
+"69
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 70: do{LATC |= (1<<3);}while(0);;;
+"70
+[e :U 715 ]
 {
 [e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 735 ]
-[; ;i2c.c: 68: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"68
-[e :U 739 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 738 ]
-[; ;i2c.c: 69: while(timeout--){
-"69
-[e $U 740  ]
-[e :U 741 ]
-{
-[; ;i2c.c: 70: if(!(PORTC & (1<<4)))break;
-"70
-[e $ ! ! != & -> _PORTC `i << -> 1 `i -> 4 `i -> 0 `i 743  ]
-[e $U 742  ]
-[e :U 743 ]
+[e :U 714 ]
+[; ;i2c.c: 71: delay_us(3);
 "71
-}
-[e :U 740 ]
-"69
-[e $ != -> -- _timeout -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 741  ]
-[e :U 742 ]
-[; ;i2c.c: 71: }
-[; ;i2c.c: 72: if(!timeout){
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 72: while(timeout--){
 "72
-[e $ ! ! != -> _timeout `i -> -> -> 0 `i `uc `i 744  ]
+[e $U 716  ]
+[e :U 717 ]
 {
-[; ;i2c.c: 73: iic_stop();
+[; ;i2c.c: 73: if(!(PORTC & (1<<4)))break;
 "73
-[e ( _iic_stop ..  ]
-[; ;i2c.c: 74: return 0;
+[e $ ! ! != & -> _PORTC `i << -> 1 `i -> 4 `i -> 0 `i 719  ]
+[e $U 718  ]
+[e :U 719 ]
 "74
-[e ) -> -> 0 `i `uc ]
-[e $UE 721  ]
-"75
 }
-[e :U 744 ]
-[; ;i2c.c: 75: }
-[; ;i2c.c: 76: do{LATC &= ~(1<<3);}while(0);;;
+[e :U 716 ]
+"72
+[e $ != -> -- _timeout -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i 717  ]
+[e :U 718 ]
+[; ;i2c.c: 74: }
+[; ;i2c.c: 75: if(!timeout){
+"75
+[e $ ! ! != -> _timeout `i -> -> -> 0 `i `uc `i 720  ]
+{
+[; ;i2c.c: 76: iic_stop();
 "76
-[e :U 747 ]
+[e ( _iic_stop ..  ]
+[; ;i2c.c: 77: return 0;
+"77
+[e ) -> -> 0 `i `uc ]
+[e $UE 703  ]
+"78
+}
+[e :U 720 ]
+[; ;i2c.c: 78: }
+[; ;i2c.c: 79: do{LATC &= ~(1<<3);}while(0);;;
+"79
+[e :U 723 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 746 ]
-[; ;i2c.c: 77: return 1;
-"77
+[e :U 722 ]
+[; ;i2c.c: 80: delay_us(3);
+"80
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 81: return 1;
+"81
 [e ) -> -> 1 `i `uc ]
-[e $UE 721  ]
-[; ;i2c.c: 78: }
-"78
-[e :UE 721 ]
-}
-"80
-[v _iic_send_byte `(uc ~T0 @X0 1 ef1`uc ]
-"81
-{
-[; ;i2c.c: 80: uint8_t iic_send_byte(uint8_t x)
-[; ;i2c.c: 81: {
-[e :U _iic_send_byte ]
-"80
-[v _x `uc ~T0 @X0 1 r1 ]
-"81
-[f ]
+[e $UE 703  ]
+[; ;i2c.c: 82: }
 "82
+[e :UE 703 ]
+}
+"84
+[v _iic_send_byte `(uc ~T0 @X0 1 ef1`uc ]
+"85
+{
+[; ;i2c.c: 84: uint8_t iic_send_byte(uint8_t x)
+[; ;i2c.c: 85: {
+[e :U _iic_send_byte ]
+"84
+[v _x `uc ~T0 @X0 1 r1 ]
+"85
+[f ]
+"86
 [v _i `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 82: uint8_t i;
-[; ;i2c.c: 83: do{TRISC &= ~(1<<3);}while(0);;;
-"83
-[e :U 751 ]
+[; ;i2c.c: 86: uint8_t i;
+[; ;i2c.c: 87: do{TRISC &= ~(1<<3);}while(0);;;
+"87
+[e :U 727 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 750 ]
-[; ;i2c.c: 84: do{TRISC &= ~(1<<4);}while(0);;;
-"84
-[e :U 754 ]
+[e :U 726 ]
+[; ;i2c.c: 88: do{TRISC &= ~(1<<4);}while(0);;;
+"88
+[e :U 730 ]
 {
 [e =& _TRISC -> ~ << -> 1 `i -> 4 `i `uc ]
 }
-[e :U 753 ]
-[; ;i2c.c: 85: do{LATC &= ~(1<<3);}while(0);;;
-"85
-[e :U 757 ]
+[e :U 729 ]
+[; ;i2c.c: 89: do{LATC &= ~(1<<3);}while(0);;;
+"89
+[e :U 733 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
+[e :U 732 ]
+[; ;i2c.c: 90: delay_us(3);
+"90
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 91: for(i=0;i<8;i++){
+"91
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 734  ]
+[e $U 735  ]
+[e :U 734 ]
+{
+[; ;i2c.c: 92: if(x&0x80){
+"92
+[e $ ! != & -> _x `i -> 128 `i -> 0 `i 737  ]
+{
+[; ;i2c.c: 93: do{LATC |= (1<<4);}while(0);;;
+"93
+[e :U 740 ]
+{
+[e =| _LATC -> << -> 1 `i -> 4 `i `uc ]
+}
+[e :U 739 ]
+"94
+}
+[; ;i2c.c: 94: }
+[e $U 741  ]
+"95
+[e :U 737 ]
+[; ;i2c.c: 95: else{
+{
+[; ;i2c.c: 96: do{LATC &= ~(1<<4);}while(0);;;
+"96
+[e :U 744 ]
+{
+[e =& _LATC -> ~ << -> 1 `i -> 4 `i `uc ]
+}
+[e :U 743 ]
+"97
+}
+[e :U 741 ]
+[; ;i2c.c: 97: }
+[; ;i2c.c: 98: delay_us(3);
+"98
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 99: do{LATC |= (1<<3);}while(0);;;
+"99
+[e :U 747 ]
+{
+[e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
+}
+[e :U 746 ]
+[; ;i2c.c: 101: delay_us(3);
+"101
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 102: do{LATC &= ~(1<<3);}while(0);;;
+"102
+[e :U 750 ]
+{
+[e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
+}
+[e :U 749 ]
+[; ;i2c.c: 104: delay_us(3);
+"104
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 105: x<<=1;
+"105
+[e =<< _x -> 1 `i ]
+"106
+}
+"91
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 734  ]
+[e :U 735 ]
+"106
+}
+[; ;i2c.c: 106: }
+[; ;i2c.c: 107: return iic_waite_ack();
+"107
+[e ) ( _iic_waite_ack ..  ]
+[e $UE 724  ]
+[; ;i2c.c: 108: }
+"108
+[e :UE 724 ]
+}
+"110
+[v _iic_received_byte `(uc ~T0 @X0 1 ef ]
+"111
+{
+[; ;i2c.c: 110: uint8_t iic_received_byte(void)
+[; ;i2c.c: 111: {
+[e :U _iic_received_byte ]
+[f ]
+"112
+[v _i `uc ~T0 @X0 1 a ]
+"113
+[v _ret `uc ~T0 @X0 1 a ]
+[; ;i2c.c: 112: uint8_t i;
+[; ;i2c.c: 113: uint8_t ret=0;
+[e = _ret -> -> 0 `i `uc ]
+[; ;i2c.c: 114: do{TRISC &= ~(1<<3);}while(0);;;
+"114
+[e :U 754 ]
+{
+[e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
+}
+[e :U 753 ]
+[; ;i2c.c: 115: do{TRISC |= (1<<4);}while(0);;;
+"115
+[e :U 757 ]
+{
+[e =| _TRISC -> << -> 1 `i -> 4 `i `uc ]
+}
 [e :U 756 ]
-[; ;i2c.c: 86: for(i=0;i<8;i++){
-"86
+[; ;i2c.c: 116: for(i=0;i<8;i++){
+"116
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 8 `i 758  ]
 [e $U 759  ]
 [e :U 758 ]
 {
-[; ;i2c.c: 87: if(x&0x80){
-"87
-[e $ ! != & -> _x `i -> 128 `i -> 0 `i 761  ]
-{
-[; ;i2c.c: 88: do{LATC |= (1<<4);}while(0);;;
-"88
-[e :U 764 ]
-{
-[e =| _LATC -> << -> 1 `i -> 4 `i `uc ]
-}
+[; ;i2c.c: 117: ret<<=1;
+"117
+[e =<< _ret -> 1 `i ]
+[; ;i2c.c: 118: do{LATC &= ~(1<<3);}while(0);;;
+"118
 [e :U 763 ]
-"89
-}
-[; ;i2c.c: 89: }
-[e $U 765  ]
-"90
-[e :U 761 ]
-[; ;i2c.c: 90: else{
-{
-[; ;i2c.c: 91: do{LATC &= ~(1<<4);}while(0);;;
-"91
-[e :U 768 ]
-{
-[e =& _LATC -> ~ << -> 1 `i -> 4 `i `uc ]
-}
-[e :U 767 ]
-"92
-}
-[e :U 765 ]
-[; ;i2c.c: 92: }
-[; ;i2c.c: 93: do{LATC |= (1<<3);}while(0);;;
-"93
-[e :U 771 ]
-{
-[e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
-}
-[e :U 770 ]
-[; ;i2c.c: 94: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"94
-[e :U 774 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 773 ]
-[; ;i2c.c: 95: do{LATC &= ~(1<<3);}while(0);;;
-"95
-[e :U 777 ]
 {
 [e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 776 ]
-[; ;i2c.c: 96: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"96
-[e :U 780 ]
+[e :U 762 ]
+[; ;i2c.c: 119: delay_us(3);
+"119
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 120: do{LATC |= (1<<3);}while(0);;;
+"120
+[e :U 766 ]
 {
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
+[e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
 }
-[e :U 779 ]
-[; ;i2c.c: 97: x<<=1;
-"97
-[e =<< _x -> 1 `i ]
-"98
+[e :U 765 ]
+[; ;i2c.c: 121: delay_us(3);
+"121
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 122: if((PORTC & (1<<4))){
+"122
+[e $ ! != & -> _PORTC `i << -> 1 `i -> 4 `i -> 0 `i 767  ]
+{
+[; ;i2c.c: 123: ret|=1;
+"123
+[e =| _ret -> -> 1 `i `uc ]
+"124
 }
-"86
+[e :U 767 ]
+"125
+}
+"116
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 8 `i 758  ]
 [e :U 759 ]
-"98
-}
-[; ;i2c.c: 98: }
-[; ;i2c.c: 99: return iic_waite_ack();
-"99
-[e ) ( _iic_waite_ack ..  ]
-[e $UE 748  ]
-[; ;i2c.c: 100: }
-"100
-[e :UE 748 ]
-}
-"102
-[v _iic_received_byte `(uc ~T0 @X0 1 ef ]
-"103
-{
-[; ;i2c.c: 102: uint8_t iic_received_byte(void)
-[; ;i2c.c: 103: {
-[e :U _iic_received_byte ]
-[f ]
-"104
-[v _i `uc ~T0 @X0 1 a ]
-"105
-[v _ret `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 104: uint8_t i;
-[; ;i2c.c: 105: uint8_t ret=0;
-[e = _ret -> -> 0 `i `uc ]
-[; ;i2c.c: 106: do{TRISC &= ~(1<<3);}while(0);;;
-"106
-[e :U 784 ]
-{
-[e =& _TRISC -> ~ << -> 1 `i -> 3 `i `uc ]
-}
-[e :U 783 ]
-[; ;i2c.c: 107: do{TRISC |= (1<<4);}while(0);;;
-"107
-[e :U 787 ]
-{
-[e =| _TRISC -> << -> 1 `i -> 4 `i `uc ]
-}
-[e :U 786 ]
-[; ;i2c.c: 108: for(i=0;i<8;i++){
-"108
-{
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 788  ]
-[e $U 789  ]
-[e :U 788 ]
-{
-[; ;i2c.c: 109: ret<<=1;
-"109
-[e =<< _ret -> 1 `i ]
-[; ;i2c.c: 110: do{LATC &= ~(1<<3);}while(0);;;
-"110
-[e :U 793 ]
-{
-[e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
-}
-[e :U 792 ]
-[; ;i2c.c: 111: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"111
-[e :U 796 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 795 ]
-[; ;i2c.c: 112: do{LATC |= (1<<3);}while(0);;;
-"112
-[e :U 799 ]
-{
-[e =| _LATC -> << -> 1 `i -> 3 `i `uc ]
-}
-[e :U 798 ]
-[; ;i2c.c: 113: do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
-"113
-[e :U 802 ]
-{
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-[e ( ___nop ..  ]
-}
-[e :U 801 ]
-[; ;i2c.c: 114: if((PORTC & (1<<4))){
-"114
-[e $ ! != & -> _PORTC `i << -> 1 `i -> 4 `i -> 0 `i 803  ]
-{
-[; ;i2c.c: 115: ret|=1;
-"115
-[e =| _ret -> -> 1 `i `uc ]
-"116
-}
-[e :U 803 ]
-"117
-}
-"108
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 788  ]
-[e :U 789 ]
-"117
-}
-[; ;i2c.c: 116: }
-[; ;i2c.c: 117: }
-[; ;i2c.c: 118: do{LATC &= ~(1<<3);}while(0);;;
-"118
-[e :U 806 ]
-{
-[e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
-}
-[e :U 805 ]
-[; ;i2c.c: 119: return ret;
-"119
-[e ) _ret ]
-[e $UE 781  ]
-[; ;i2c.c: 120: }
-"120
-[e :UE 781 ]
-}
-"121
-[v _iic_received_byte_if_ack `(uc ~T0 @X0 1 ef1`uc ]
-"122
-{
-[; ;i2c.c: 121: uint8_t iic_received_byte_if_ack(uint8_t ack)
-[; ;i2c.c: 122: {
-[e :U _iic_received_byte_if_ack ]
-"121
-[v _ack `uc ~T0 @X0 1 r1 ]
-"122
-[f ]
-"123
-[v _ret `uc ~T0 @X0 1 a ]
-[; ;i2c.c: 123: uint8_t ret=0;
-[e = _ret -> -> 0 `i `uc ]
-[; ;i2c.c: 124: ret=iic_received_byte();
-"124
-[e = _ret ( _iic_received_byte ..  ]
-[; ;i2c.c: 125: iic_send_ack(ack);
 "125
-[e ( _iic_send_ack (1 -> _ack `c ]
-[; ;i2c.c: 126: return ret;
+}
+[; ;i2c.c: 124: }
+[; ;i2c.c: 125: }
+[; ;i2c.c: 126: do{LATC &= ~(1<<3);}while(0);;;
 "126
-[e ) _ret ]
-[e $UE 807  ]
-[; ;i2c.c: 127: }
+[e :U 770 ]
+{
+[e =& _LATC -> ~ << -> 1 `i -> 3 `i `uc ]
+}
+[e :U 769 ]
+[; ;i2c.c: 127: delay_us(3);
 "127
-[e :UE 807 ]
+[e ( _delay_us (1 -> -> 3 `i `ui ]
+[; ;i2c.c: 128: return ret;
+"128
+[e ) _ret ]
+[e $UE 751  ]
+[; ;i2c.c: 129: }
+"129
+[e :UE 751 ]
+}
+"130
+[v _iic_received_byte_if_ack `(uc ~T0 @X0 1 ef1`uc ]
+"131
+{
+[; ;i2c.c: 130: uint8_t iic_received_byte_if_ack(uint8_t ack)
+[; ;i2c.c: 131: {
+[e :U _iic_received_byte_if_ack ]
+"130
+[v _ack `uc ~T0 @X0 1 r1 ]
+"131
+[f ]
+"132
+[v _ret `uc ~T0 @X0 1 a ]
+[; ;i2c.c: 132: uint8_t ret=0;
+[e = _ret -> -> 0 `i `uc ]
+[; ;i2c.c: 133: ret=iic_received_byte();
+"133
+[e = _ret ( _iic_received_byte ..  ]
+[; ;i2c.c: 134: iic_send_ack(ack);
+"134
+[e ( _iic_send_ack (1 -> _ack `c ]
+[; ;i2c.c: 135: return ret;
+"135
+[e ) _ret ]
+[e $UE 771  ]
+[; ;i2c.c: 136: }
+"136
+[e :UE 771 ]
 }

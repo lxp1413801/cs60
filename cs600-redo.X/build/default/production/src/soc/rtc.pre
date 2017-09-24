@@ -8215,6 +8215,10 @@ extern volatile uint8_t glNoEventTimeOut;
 
 
 
+extern int8_t event_process_rtc(void);
+extern int8_t event_process_ticker(void);
+extern int8_t event_process_time_out(void);
+
 extern int8_t event_process(void);
 
 # 6 "src/soc/rtc.c"

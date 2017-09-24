@@ -8529,6 +8529,8 @@ extern void ads1115_init(st_ads1115ObjDef* pAds1115,uint8_t slvaddr);
 extern void ads1115_init_all_chip(void);
 extern void ads1115_start_conversion(st_ads1115ObjDef* pAds1115);
 extern uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115);
+extern void ads1115_set_data_rate(st_ads1115ObjDef* pAds1115,em_Ads1x1xDrDef_t dr);
+extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
 
@@ -8770,26 +8772,24 @@ uint16_t crc;
 extern st_prCalibTabDef diff_prCalibTabDef;
 extern st_prCalibTabDef prCalibTabDef;
 
-# 142
+
 extern volatile int16_t adc_inPt100;
 
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-# 151
 extern volatile int16_t adc_iPrEx[2];
 
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
-# 164
 extern st_prData x_prDiffData;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
 extern volatile int32_t rtHight;
 extern volatile int32_t rtWeight;
-
+extern volatile uint8_t rtLevel;
 volatile int32_t rtPressure;
 
 extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
@@ -8863,6 +8863,10 @@ extern volatile uint8_t glNoEventTimeOut;
 
 
 
+extern int8_t event_process_rtc(void);
+extern int8_t event_process_ticker(void);
+extern int8_t event_process_time_out(void);
+
 extern int8_t event_process(void);
 
 # 4 "src/api/sample.c"
@@ -8918,7 +8922,9 @@ if(min>buf[i]){min=buf[i];minLoc=i;}
 if(max<buf[i]){max=buf[i];maxLoc=i;}
 t32+=buf[i];
 }
-t32-=(max+min);
+
+t32=t32-(int32_t)max;
+t32=t32-(int32_t)min;
 t32=t32/(len-2);
 buf[minLoc]=(int16_t)t32;
 buf[maxLoc]=(int16_t)t32;
@@ -9040,7 +9046,7 @@ if(diffPrChipSampleFinish || PrChipSampleFinish || inSocAdcSampleFinish){
 if(diffPrChipSampleFinish)ret=sample_call_cal_diff_pr();
 if(!ret && PrChipSampleFinish)ret=sample_call_cal_pr();
 if(!ret && inSocAdcSampleFinish)ret=sample_call_cal_in_soc();
-}else if(sensorSimpleTsLong>=30*2){
+}else if(sensorSimpleTsLong>=100*2){
 
 sensorSimpleEn=1;
 sample_all_power_on();
@@ -9064,8 +9070,11 @@ diffPrChipSampleTimer+=(1000/100);
 if(diffPrChipSampleTimer<100)return 0;
 diffPrChipSampleTimer=0;
 if(diffPrChipSampleCount==0){
+
 diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
+ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
 ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
+ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 ads1115_start_conversion(pAds1115DiffPrObj);
 diffPrChipSampleCount=1;
 return 1;
@@ -9074,16 +9083,21 @@ t16=ads1115_read_conversion(pAds1115DiffPrObj);
 if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_0_1){
 __x_sample_fifo(sampBufDiffPr_D01,t16,4);
 diffPrChipSampCh=ADS1X1X_MUX_DIFF_2_3;
+ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
 }else if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_2_3){
 __x_sample_fifo(sampBufDiffPr_D23,t16,4);
 diffPrChipSampCh=ADS1X1X_MUX_SINGLE_1;
+ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_512);
 }else if(diffPrChipSampCh==ADS1X1X_MUX_SINGLE_1){
 adc_inPt100=__x_sample_fifo(sampBufDiffPr_S1,t16,4);
 diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
+ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 diffPrChipSampleCount++;
 }else{
+ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 }
+ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
 ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 ads1115_start_conversion(pAds1115DiffPrObj);
 if(diffPrChipSampleCount>4){
@@ -9139,7 +9153,7 @@ uint8_t sample_in_soc_adc_ch(void)
 {
 uint16_t t16;
 inSocAdcSampleTimer+=(1000/100);
-if(inSocAdcSampleTimer<100)return 0;
+if(inSocAdcSampleTimer<50)return 0;
 inSocAdcSampleTimer=0;
 if(inSocAdcSampleCount==0){
 in_adc_init();

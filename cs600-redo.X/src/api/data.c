@@ -1,11 +1,8 @@
 #include "../includes/includes.h"
 #include "float.h"
-//uint8_t	globleBuffer0[]
-//uint8_t globleBuffer0[globle_BUFFER_SIZE]={0};
+
 st_sysDataDef stSysData;
 uint8_t globleBuffer[globle_BUFFER_SIZE]={0};
-
-//st_sysDataDef* fpSysData=( st_sysDataDef*)SYSTEM_DATA_ADDR;
 
 st_iicDeviceObj* pdiff_prEepromObj=(st_iicDeviceObj*)NULL;
 st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)NULL;
@@ -13,47 +10,27 @@ st_iicDeviceObj* p_prEepromObj=(st_iicDeviceObj*)NULL;
 st_prCalibTabDef diff_prCalibTabDef={0};
 st_prCalibTabDef prCalibTabDef={0};
 
-//declare variables for adc
-// volatile int16_t        adc_diffPr;			//
-// volatile int16_t		adc_diffBrg;		//
-// volatile int16_t		adc_diffVcc;		//
-// volatile int16_t		adc_diffGnd;		//
 st_prData	x_prDiffData;
 volatile int16_t 	adc_inPt100;
-
 volatile int16_t	adc_pressure;
 volatile int16_t	adc_exPt100;
-
-// volatile int16_t	adc_exPt100;		//
-// volatile int16_t	adc_exPt100Line;	//
-// volatile int16_t	adc_Pr;
-
 volatile int16_t	adc_iPrEx[2];
-//volatile int16_t	adc_iPrEx1;
-
 volatile int16_t	adc_ibat;
 volatile int16_t	adc_iRef;
-//declare variables for diff pressure;
-// volatile int32_t	x_DiffPressure;
-// volatile int32_t	x_Hight;
-// volatile int32_t	x_Weight;
 
+volatile int32_t    rtDiffPrBuf[4];
 volatile int32_t	rtDiffPressure;
 volatile int32_t	rtHight;
 volatile int32_t	rtWeight;
 volatile int32_t	rtVolume;
 
 volatile uint8_t    rtLevel;
-
 volatile int32_t    rtTemperatureIn=0;
-
 volatile int32_t    rtPressure=0;
-volatile int32_t    rtExTemperatureIn=0;
+volatile int32_t    rtTemperatureEx=0;
 
 volatile int32_t	rtExPressure[2];
-volatile int32_t	x_Pemperature;
 //
-
 
 volatile st_deviceOpMode dwm=TEST_MODE;
 
@@ -124,7 +101,7 @@ const float hKel[]={
 const st_sysDataDef defultSystemData={
 		1234,//uint32_t 	id;
 		0,//em_posture	pos;							//立式或者卧式
-		0,//uint8_t		maxValueForlevelBar;			//状态条显示满时对应的高度值,
+		95,//uint8_t		maxValueForlevelBar;			//状态条显示满时对应的高度值,
 													//(95%或者100%)
 		1000,//uint16_t	density;						//密度
 		
@@ -284,7 +261,7 @@ uint8_t  calib_data_init_diff_pr(void)
 	uint8_t* buf=(uint8_t*)(&diff_prCalibTabDef);
 	
 	pdiff_prEepromObj= &at24c02Ch1;
-	at24c02_init(pdiff_prEepromObj,0xac);
+	at24c02_init(pdiff_prEepromObj,0xaa);
 	t16=sizeof(diff_prCalibTabDef);
 	at24c02_read_n_byte(pdiff_prEepromObj,0,buf,t16);
 	ret=crc_verify(buf,t16);
@@ -471,6 +448,7 @@ int32_t cal_diff_hight_to_vol_h(int32_t h)
 	float v1,v2;
 	float f1,f2;
     f1=(float)h;
+    if(f1<0.0)f1=0.0;
 	f2=(float)(stSysData.d);
 	f1=f1/f2;//h/D
     if(f1>1.0)f1=1.0;
@@ -501,6 +479,7 @@ uint8_t cal_diff_hight_level(void)
     f1=f1*(stSysData.maxValueForlevelBar)/100;
     if(f1==0)f1=1;
     f2=(float)rtHight;
+    if(f2<0.0)f2=0.0;
     f1=f2/f1;
     f1*=100;
     if(f1>100)f1=100;
@@ -546,6 +525,7 @@ int32_t cal_diff_p_to_h(st_prData* xin)
 	f1=(float)(xin->pValue);
 	f2=(float)(stSysData.density);
     f1=f1/(f2*9.8f);
+    f1*=1000;
 	rtHight=(int32_t)f1;	
 	return rtHight;
 }
@@ -568,6 +548,7 @@ uint8_t cal_diff_press()
 	rtDiffPressure=xin->pValue;
 	
 	cal_diff_p_to_h(xin);
+    rtLevel=cal_diff_hight_level();
     if(stSysData.pos==HOTIZONTAL){
         rtVolume=cal_diff_hight_to_vol_h(rtHight);
     }else{
@@ -654,7 +635,7 @@ void cal_pt100_temperature_ex(void)
     f1=f1*1000;
     rtExTemperatureIn= (int32_t)f1;
 	*/
-	rtExTemperatureIn= 0;
+	rtTemperatureEx= 0;
 }
 
 void cal_additional_pressute(uint8_t index)
@@ -680,8 +661,6 @@ void cal_battery_voltage(void)
 {
 	
 }
-
-
 
 uint32_t cal_pt100_temperature(int16_t x,uint32_t l,uint32_t b)
 {

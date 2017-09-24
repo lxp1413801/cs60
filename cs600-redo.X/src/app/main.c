@@ -22,7 +22,23 @@ int main(void)
     //peripheral_power_enable();
     __nop();    
     while(1){
-        event_process();
+        if(glbEvent & flg_EVENT_RTC){
+            glbEvent &= ~flg_EVENT_RTC;
+            event_process_rtc();
+        }
+        if(glbEvent & flg_EVENT_TICKER){
+            glbEvent &= ~flg_EVENT_TICKER;
+            event_process_ticker();
+        }
+        if(glbEvent & flg_EVENT_TIME_OUT){
+            glbEvent &= ~flg_EVENT_TIME_OUT;
+            event_process_time_out();
+        }
+
+        keyValue=key_polling();
+        if(keyValue!=KEY_VALUE_NONE){
+            key_process();	
+        }
     }
 }
 //file end

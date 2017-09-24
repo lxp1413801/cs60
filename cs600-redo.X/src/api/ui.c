@@ -368,10 +368,11 @@ void ui_disp_menu_home_00(void)
 	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
 	lcd_disp_unit_1st_m(true);
 	
-	mf.t32=__int32_2_mflot32(rtDiffPressure);//rtPressure
+	mf.t32=__int32_2_mflot32(rtPressure);//rtPressure
 	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
 	lcd_disp_unit_mpa(true);
-	t8=cal_diff_hight_level();
+	//t8=cal_diff_hight_level();
+    t8=rtLevel;
 	lcd_disp_level(t8);
 
 	lcd_disp_refresh(); 
@@ -388,10 +389,11 @@ void ui_disp_menu_home_01(void)
 	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
 	lcd_disp_unit_1st_m3(true);
 	
-	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	mf.t32=__int32_2_mflot32(rtPressure);
 	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
 	lcd_disp_unit_mpa(true);
-	t8=cal_diff_hight_level();
+	//t8=cal_diff_hight_level();
+    t8=rtLevel;
 	lcd_disp_level(t8);
 
 	lcd_disp_refresh(); 
@@ -409,10 +411,11 @@ void ui_disp_menu_home_02(void)
 	//lcd_disp_unit_1st_m3(true);
 	lcd_disp_unit_t(true);
 	
-	mf.t32=__int32_2_mflot32(rtDiffPressure);
+	mf.t32=__int32_2_mflot32(rtPressure);
 	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
 	lcd_disp_unit_mpa(true);
-	t8=cal_diff_hight_level();
+	//t8=cal_diff_hight_level();
+    t8=rtLevel;
 	lcd_disp_level(t8);
 
 	lcd_disp_refresh(); 

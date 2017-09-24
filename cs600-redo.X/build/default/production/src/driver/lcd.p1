@@ -8600,9 +8600,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.c: 668: LCDCON=0x8f;;
 "668
 [e = _LCDCON -> -> 143 `i `uc ]
-[; ;lcd.c: 669: lcd_bl_on();
+[; ;lcd.c: 669: lcd_bl_off();
 "669
-[e ( _lcd_bl_on ..  ]
+[e ( _lcd_bl_off ..  ]
 [; ;lcd.c: 670: }
 "670
 [e :UE 886 ]

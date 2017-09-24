@@ -3,4 +3,5 @@
  src/driver/ex_eeprom.c  \
 src/driver/m_gpio.h  \
 src/driver/i2c.h  \
-src/driver/ex_eeprom.h 
+src/driver/ex_eeprom.h  \
+src/driver/../soc/clock.h 

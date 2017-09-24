@@ -53,7 +53,9 @@ int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
 			if(max<buf[i]){max=buf[i];maxLoc=i;}
 			t32+=buf[i];
 		}
-		t32-=(max+min);
+		//t32-=(max+min);
+        t32=t32-(int32_t)max;
+        t32=t32-(int32_t)min;
 		t32=t32/(len-2);
 		buf[minLoc]=(int16_t)t32;
 		buf[maxLoc]=(int16_t)t32;
@@ -199,8 +201,11 @@ uint8_t sample_diff_pr_chip_fast(void)
 	if(diffPrChipSampleTimer<DIFF_PRESSURE_CHIP_SAMPLE_TS)return 0;
 	diffPrChipSampleTimer=0;
 	if(diffPrChipSampleCount==0){
+		//diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 		diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
+		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
 		ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 		ads1115_start_conversion(pAds1115DiffPrObj);	
 		diffPrChipSampleCount=1;
 		return 1;
@@ -209,16 +214,21 @@ uint8_t sample_diff_pr_chip_fast(void)
 	if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_0_1){
 		__x_sample_fifo(sampBufDiffPr_D01,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
 		diffPrChipSampCh=ADS1X1X_MUX_DIFF_2_3;
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
 	}else if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_2_3){
 		__x_sample_fifo(sampBufDiffPr_D23,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
-		diffPrChipSampCh=ADS1X1X_MUX_SINGLE_1;		
+		diffPrChipSampCh=ADS1X1X_MUX_SINGLE_1;
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_512);
 	}else if(diffPrChipSampCh==ADS1X1X_MUX_SINGLE_1){
 		adc_inPt100=__x_sample_fifo(sampBufDiffPr_S1,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
-		diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;	
+		diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 		diffPrChipSampleCount++;
 	}else{
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 		diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 	}
+	ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
 	ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 	ads1115_start_conversion(pAds1115DiffPrObj);
 	if(diffPrChipSampleCount>pr_DIFF_CHIP_SAMPLE_BUF_LEN){

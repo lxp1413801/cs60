@@ -8214,7 +8214,33 @@ uint8_t (*iic_received_byte_if_ack)(uint8_t ack);
 
 }st_iicDeviceObj;
 
-# 18 "src/driver/i2c.c"
+# 10 "src/driver/../soc/clock.h"
+typedef enum __OSC_MODE
+{
+
+OSC_PMODE_SLEEP = 0,
+
+OSC_PMODE_PRI_RUN,
+OSC_PMODE_SEC_RUN,
+OSC_PMODE_RC_RUN,
+
+
+
+OSC_PMODE_PRI_IDLE,
+OSC_PMODE_SEC_IDLE,
+OSC_PMODE_RC_IDLE,
+
+
+OSC_PMODE_MAX
+}em_oscMode;
+
+void osc_setup(void);
+void osc_set_power(em_oscMode oscMode);
+
+extern void delay_us(uint16_t dly);
+extern void delay_ms(uint16_t dly);
+
+# 19 "src/driver/i2c.c"
 void iic_start(void)
 {
 do{TRISC &= ~(1<<3);}while(0);;;
@@ -8222,11 +8248,11 @@ do{TRISC &= ~(1<<4);}while(0);;;
 
 do{LATC |= (1<<4);}while(0);;;
 do{LATC |= (1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC &= ~(1<<4);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC &= ~(1<<3);}while(0);;;
-
+delay_us(3);
 }
 
 void iic_stop(void)
@@ -8234,11 +8260,11 @@ void iic_stop(void)
 do{TRISC &= ~(1<<3);}while(0);;;
 do{TRISC &= ~(1<<4);}while(0);;;
 do{LATC &= ~(1<<4);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC |= (1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC |= (1<<4);}while(0);;;
-
+delay_us(3);
 }
 
 void iic_send_ack(int8_t ack)
@@ -8246,15 +8272,17 @@ void iic_send_ack(int8_t ack)
 do{TRISC &= ~(1<<3);}while(0);;;
 do{TRISC &= ~(1<<4);}while(0);;;
 do{LATC &= ~(1<<3);}while(0);;;
+delay_us(3);
 if(ack){
 do{LATC |= (1<<4);}while(0);;;
 }else{
 do{LATC &= ~(1<<4);}while(0);;;
 }
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC |= (1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC &= ~(1<<3);}while(0);;;
+delay_us(3);
 }
 
 uint8_t iic_waite_ack(void)
@@ -8263,9 +8291,9 @@ uint8_t timeout=200;
 do{TRISC &= ~(1<<3);}while(0);;;
 do{TRISC |= (1<<4);}while(0);;;
 do{LATC &= ~(1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC |= (1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 while(timeout--){
 if(!(PORTC & (1<<4)))break;
 }
@@ -8274,6 +8302,7 @@ iic_stop();
 return 0;
 }
 do{LATC &= ~(1<<3);}while(0);;;
+delay_us(3);
 return 1;
 }
 
@@ -8283,6 +8312,7 @@ uint8_t i;
 do{TRISC &= ~(1<<3);}while(0);;;
 do{TRISC &= ~(1<<4);}while(0);;;
 do{LATC &= ~(1<<3);}while(0);;;
+delay_us(3);
 for(i=0;i<8;i++){
 if(x&0x80){
 do{LATC |= (1<<4);}while(0);;;
@@ -8290,10 +8320,13 @@ do{LATC |= (1<<4);}while(0);;;
 else{
 do{LATC &= ~(1<<4);}while(0);;;
 }
+delay_us(3);
 do{LATC |= (1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+
+delay_us(3);
 do{LATC &= ~(1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+
+delay_us(3);
 x<<=1;
 }
 return iic_waite_ack();
@@ -8308,14 +8341,15 @@ do{TRISC |= (1<<4);}while(0);;;
 for(i=0;i<8;i++){
 ret<<=1;
 do{LATC &= ~(1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 do{LATC |= (1<<3);}while(0);;;
-do{ __nop();__nop();__nop();__nop();__nop();__nop(); __nop();__nop();__nop();__nop();__nop();__nop(); }while(0);;
+delay_us(3);
 if((PORTC & (1<<4))){
 ret|=1;
 }
 }
 do{LATC &= ~(1<<3);}while(0);;;
+delay_us(3);
 return ret;
 }
 uint8_t iic_received_byte_if_ack(uint8_t ack)

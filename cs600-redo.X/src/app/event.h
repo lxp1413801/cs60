@@ -13,6 +13,10 @@ extern "C"{
 	#define flg_EVENT_RTC 		(1<<1)
 	#define flg_EVENT_TIME_OUT	(1<<2)
 
+    extern int8_t event_process_rtc(void);
+    extern int8_t event_process_ticker(void);
+    extern int8_t event_process_time_out(void);
+
 	extern int8_t event_process(void);
 
 #ifdef __cplusplus

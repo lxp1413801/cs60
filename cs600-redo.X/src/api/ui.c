@@ -208,7 +208,47 @@ void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 	uint16_t x;
 	x=xpf->stru.significand;
 	m_mem_cpy(buf,str);
-	
+	if(xpf->stru.sign==0){
+		if(x>9999)x=9999;
+		m_int16_2_str_4(buf+4,x);    
+        __x_arrange_str(buf,8);
+        t8=xpf->stru.exponent;
+        lcd_show_dp(4+t8,true);
+		if(loc<4){
+            loc=3-loc;
+			if(!fi_twinkle() && !fi_lcd_twinkle_lock())buf[4+loc]=' ';
+		}else if(loc==4){
+            if(!fi_twinkle() && !fi_lcd_twinkle_lock())lcd_show_dp(4+t8,false);
+		}else{
+			if(!fi_twinkle() && !fi_lcd_twinkle_lock()){
+				m_mem_cpy(buf+4,(uint8_t*)("    "));
+				lcd_show_dp(4+t8,false);
+			}			
+		}            
+    }else{
+		if(loc==0)return;
+		if(x>9999)x=9999;
+		//x-=(x%10);
+		m_int16_2_str_4(buf+5,x);
+		buf[4]='-';
+		__x_arrange_str(buf,8);
+        t8=xpf->stru.exponent;
+		lcd_show_dp(4+1+t8,true);
+		if(loc<4){
+            loc=3-loc+1;
+			if(!fi_twinkle() && !fi_lcd_twinkle_lock())buf[4+loc]=' ';
+		}else if(loc==4){
+			if(!fi_twinkle() && !fi_lcd_twinkle_lock())lcd_show_dp(4+1+t8,false);				
+		}else{
+			if(!fi_twinkle() && !fi_lcd_twinkle_lock()){
+				m_mem_cpy(buf+4,(uint8_t*)("    "));
+				lcd_show_dp(4+1+t8,false);
+			}
+		}
+	}
+	lcd_show_string(buf); 
+	lcd_disp_refresh(); 	
+	/*
 	if(xpf->stru.sign){
 		x/=10;
         if(x>999)x=999;
@@ -225,7 +265,7 @@ void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 	__x_arrange_str(buf,8);
 	t8=xpf->stru.exponent+xpf->stru.sign;
 	if(t8<3)lcd_show_dp(4+t8,true);
-	
+	loc=3-loc;
 	if(!fi_lcd_twinkle_lock()){
 		if(loc<4){
 			if(!fi_twinkle())buf[4+loc]=' ';
@@ -235,7 +275,8 @@ void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc)
 	}
 	
 	lcd_show_string(buf); 
-	lcd_disp_refresh();    
+	lcd_disp_refresh();  
+	*/	
 }
 
 void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc)
@@ -405,7 +446,12 @@ void ui_disp_menu_h_adj(void)
 {
 	lcd_clear_all();
 	lcd_disp_logo(true);
-	ui_disp_adj_xfloat_pt((uint8_t*)"   h",&m_floatAdj,adjLocation);	
+	st_sysDataDef* fps=(st_sysDataDef*)SYSTEM_DATA_ADDR;
+	if(fps->pos==HOTIZONTAL){
+        ui_disp_adj_xfloat_pt((uint8_t*)"   l",&m_floatAdj,adjLocation);	
+    }else{
+        ui_disp_adj_xfloat_pt((uint8_t*)"   h",&m_floatAdj,adjLocation);	
+    }
 }
 
 void ui_disp_menu_d_adj(void)
@@ -422,45 +468,67 @@ void ui_disp_menu_pose_size(void)
         case sub_MENU_SET_D:    ui_disp_menu_d_adj();   break;
         default:break;
     }
-
 }
 
 void ui_disp_menu_bzero_adj(void)
 {
 	lcd_clear_all();
 	lcd_disp_logo(true);
-	ui_disp_adj_xfloat_pt((uint8_t*)"  hd",&m_floatAdj,adjLocation);	
+	ui_disp_adj_xfloat_pt((uint8_t*)"  hb",&m_floatAdj,adjLocation);	
 }
 
 void ui_disp_menu_calib_diff_adj(void)
 {
 	uint8_t t8;
-	uint8_t buf[6];
-	buf[1]='d';
-	t8=calibRow;	//t8<3;
-	buf[0]='0'+t8;
-	t8=calibCol;	//t8<6
-	buf[3]='0'+(t8%10);
+	uint8_t buf[10];
+	
+	buf[0]='d';
+	if(calibRow==0)buf[1]='l';
+	else if(calibRow==1)buf[1]='c';
+	else if(calibRow==2)buf[1]='h';
+	
+	t8=calibCol;
+	buf[3]='0'+t8%10;
 	t8/=10;
-	buf[2]='0'+(t8%10);
-	buf[4]='\0';
-	ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);	
+	buf[2]='0'+t8%10;
+	buf[4]='\0';	
+	if(calibCol){
+		ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);	
+	}else{
+		m_mem_cpy(buf+4,(uint8_t*)"    ");
+		t8=*((uint8_t*)(&adjValue));
+		buf[7]='0'+ t8;;
+		buf[8]='\0';
+		lcd_show_string(buf);
+		lcd_disp_refresh(); 		
+	}
 }
 
 void ui_disp_menu_calib_pr_adj(void)
 {
 	uint8_t t8;
-	uint8_t buf[6];
-	buf[1]='p';
-	//t8=calibRow;	//t8<3;
-	//buf[0]='0'+t8;
+	uint8_t buf[10];
+	
 	buf[0]=' ';
-	t8=calibCol;	//t8<6
-	buf[3]='0'+(t8%10);
+	// if(calibRow==0)buf[1]='l';
+	// else if(calibRow==1)buf[1]='c';
+	// else if(calibRow==2)buf[1]='h';
+	buf[1]='p';
+	t8=calibCol;
+	buf[3]='0'+t8%10;
 	t8/=10;
-	buf[2]='0'+(t8%10);
-	buf[4]='\0';
-	ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);		
+	buf[2]='0'+t8%10;
+	buf[4]='\0';	
+	if(calibCol){
+		ui_disp_adj_xfloat_pt(buf,&m_floatAdj,adjLocation);	
+	}else{
+		m_mem_cpy(buf+4,"    ");
+		t8=*((uint8_t*)(&adjValue));
+		buf[7]='0'+ t8;
+		buf[8]='\0';
+		lcd_show_string(buf);
+		lcd_disp_refresh(); 		
+	}	
 }
 
 void ui_disp_menu_poly_c_adj(void)

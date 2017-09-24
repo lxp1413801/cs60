@@ -273,7 +273,7 @@ uint8_t  calib_data_init_diff_pr(void)
 	
 	pdiff_prEepromObj= &at24c02Ch1;
 	at24c02_init(pdiff_prEepromObj,0xac);
-	t16=sizeof(st_prCalibTabDef);
+	t16=sizeof(diff_prCalibTabDef);
 	at24c02_read_n_byte(pdiff_prEepromObj,0,buf,t16);
 	ret=crc_verify(buf,t16);
 	if(!ret){
@@ -299,7 +299,7 @@ uint8_t  calib_data_init_pr(void)
 	
 	p_prEepromObj=&at24c02Ch0;
 	at24c02_init(p_prEepromObj,0xaa);
-	t16=sizeof(st_prCalibTabDef);
+	t16=sizeof(prCalibTabDef);
 	at24c02_read_n_byte(p_prEepromObj,0,buf,t16);
 	ret=crc_verify(buf,t16);
 	if(!ret){

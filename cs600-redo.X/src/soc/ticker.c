@@ -42,7 +42,7 @@ void sys_ticker_irq_hook(void)
 	if(dlyTickerEn){
 		dlyTicker+=10;
 	}
-	userTicker_ms+=10;
+	userTicker_ms+=20;
 
 }
 

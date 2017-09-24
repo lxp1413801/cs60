@@ -37,6 +37,7 @@ uint16_t key_waite_release(uint16_t timeout,uint8_t* key)
 	while(userTicker_ms<timeout){
 		t8=key_polling();
 		if(t8==KEY_VALUE_NONE)break;
+		delay_ms(10);
 	}
 	*key=t8;
 	return userTicker_ms;
@@ -51,6 +52,9 @@ void key_shift_loc(uint8_t* loc,uint8_t min,uint8_t max)
 		t8++;
 		if(t8>max)t8=min;
 	}
+	if(m_floatAdj.stru.sign){
+        if(t8==0)t8=1;
+    }
 	*loc=t8;
 }
 
@@ -79,14 +83,16 @@ void key_adj_value_float(st_float32_m* mfp,uint8_t loc)
     }else if(loc==4){
         t8=mfp->stru.exponent;
         t8++;
-        if(t8>3)t8=0;
+        if(t8>3 )t8=0;
+		if(mfp->stru.sign){
+			if(t8>2)t8=0;
+		}
         mfp->stru.exponent=t8;
     }else{
         t8=mfp->stru.sign;
         t8++;
-        if(t8)t8=0;
-        else
-            t8=1;
+        if(t8>1)t8=0;
+
         mfp->stru.sign=t8;
     }
 }
@@ -154,9 +160,14 @@ void __enter_menu_set_base_zero(void)
 	t32=(fps->baseZero);
 	t32=__int32_2_mflot32(t32);
 	m_floatAdj.t32=t32;
-	adjLocation=0;
+	if(m_floatAdj.stru.sign){
+        adjLocation=1;
+    }else{
+        adjLocation=0;
+    }
 }
 //
+/*
 void __enter_menu_calib_press_diff(void)
 {
 	//git pressure calib data
@@ -175,8 +186,8 @@ void __enter_menu_calib_press_diff(void)
 	m_floatAdj.t32=t32;
 	adjLocation=0;
 }
-
-void __enter_menu_calib_press_diff_ex(uint8_t row,uint8_t col)
+*/
+void __enter_menu_calib_press_diff(uint8_t row,uint8_t col)
 {
 	//git pressure calib data
 	int32_t t32;
@@ -186,17 +197,19 @@ void __enter_menu_calib_press_diff_ex(uint8_t row,uint8_t col)
 	subMenu=0;
 	calibRow=row;
 	calibCol=col;
-
-	stp=(st_prCalibTabDef*)(&diff_prCalibTabDef);
-	t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
-    
-	t32=__int32_2_mflot32(t32);
-	m_floatAdj.t32=t32;
+    stp=(st_prCalibTabDef*)(&diff_prCalibTabDef);
+	if(col==0){
+		*((uint8_t*)(&adjValue))=stp->prCalibRow[row].pCount;
+	}else{
+        t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
+        t32=__int32_2_mflot32(t32);
+        m_floatAdj.t32=t32;        
+    }
 	adjLocation=0;
 }
 
 //
-void __enter_menu_calib_press_ex(uint8_t row,uint8_t col)
+void __enter_menu_calib_press(uint8_t row,uint8_t col)
 {
 	//git pressure calib data
 	int32_t t32;
@@ -206,12 +219,14 @@ void __enter_menu_calib_press_ex(uint8_t row,uint8_t col)
 	subMenu=0;
 	calibRow=row;
 	calibCol=col;
-
-	stp=(st_prCalibTabDef*)(&prCalibTabDef);
-	t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol].pValue;
-    
-	t32=__int32_2_mflot32(t32);
-	m_floatAdj.t32=t32;
+    stp=(st_prCalibTabDef*)(&prCalibTabDef);
+    if(col==0){
+        *((uint8_t*)(&adjValue))=stp->prCalibRow[row].pCount;
+    }else{
+        t32=stp->prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
+        t32=__int32_2_mflot32(t32);
+        m_floatAdj.t32=t32;        
+    }
 	adjLocation=0;
 }
 
@@ -312,11 +327,41 @@ void __exit_menu_to_home_unsave(void)
 	calibCol=0;
 	passWord=0x00;
 }
+
+void __down_pose_size(void)
+{
+	switch(subMenu){
+	case sub_MENU_SET_L:
+	case sub_MENU_SET_D:
+		key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
+	default:break;
+	}
+}
+
+void __down_dpr_calib(void)
+{
+	if(calibCol){
+		key_shift_loc((uint8_t*)(&adjLocation),0,4);
+	}
+}
+
+void __down_pr_calib(void)
+{
+	if(calibCol){
+		key_shift_loc((uint8_t*)(&adjLocation),0,4);
+	}
+}
+
 void key_process_down(void)
 {
 	switch(menu){
 		case MENU_HOME:break;
 		case MENU_PASSWORD:key_shift_loc((uint8_t*)(&adjLocation),0,3);break;
+		case MENU_SET_DENSITY:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
+		case MENU_SET_POSE_SIZE:__down_pose_size();break;
+		case MENU_SET_BASE_ZERO:key_shift_loc((uint8_t*)(&adjLocation),0,5);break;
+		case MENU_DIFF_CALIB:__down_dpr_calib();break;
+		case MENU_PRESSURE_CALIB:__down_pr_calib();break;
 		default:break;
 	}	
 }
@@ -363,12 +408,28 @@ void __up_base_zero_adj(void)
 
 void __up_diff_calib_adj(void)
 {
-	key_adj_value_float(&m_floatAdj,adjLocation);
+	uint8_t t8;
+	if(calibCol==0){
+		t8=*(uint8_t*)(&adjValue);
+		t8++;
+		if(t8>=6)t8=2;
+		*(uint8_t*)(&adjValue)=t8;
+	}else{
+		key_adj_value_float(&m_floatAdj,adjLocation);
+	}
 }
 
 void __up_pr_calib_adj(void)
 {
-	key_adj_value_float(&m_floatAdj,adjLocation);
+	uint8_t t8;
+	if(calibCol==0){
+		t8=*(uint8_t*)(&adjValue);
+		t8++;
+		if(t8>=6)t8=2;
+		*(uint8_t*)(&adjValue)=t8;
+	}else{	
+		key_adj_value_float(&m_floatAdj,adjLocation);
+	}
 }
 
 void __up_poly_coefic_adj(void)
@@ -456,8 +517,8 @@ void key_process_set_down_long(void)
 		case PSW_SET_DENSITY:           __enter_menu_set_density();             break;
 		case PSW_SET_POSE_SIZE:         __enter_menu_set_pose_size();           break;  
 		case PSW_SET_BASE_ZERO:         __enter_menu_set_base_zero();           break;
-		case PSW_CALIB_DIFF_PRESSURE:   __enter_menu_calib_press_diff_ex(0,0);  break;
-		case PSW_CALIB_PRESSURE:        __enter_menu_calib_press_ex(0,0);       break;   
+		case PSW_CALIB_DIFF_PRESSURE:   __enter_menu_calib_press_diff(0,0);     break;
+		case PSW_CALIB_PRESSURE:        __enter_menu_calib_press(0,0);          break;   
 		case PSW_SET_POLY_COEFFIC:		__enter_menu_poly_coeffic(0);			break;
 		case PSW_SET_WARN_TYPE:			__enter_menu_warn_type(0);				break;
 		case PSW_SET_WARN_VALUE:		__enter_menu_warn_value(0);				break;
@@ -523,15 +584,86 @@ void __set_short_pose_size(bool gohome)
         default:break;
     }
 }
-
+extern st_iicDeviceObj* pdiff_prEepromObj;
+extern st_iicDeviceObj* p_prEepromObj;
 void __set_short_diff_calib(bool gohome)
 {
+    bool saveFlg=false;
+    uint8_t t8,adjv;
+	uint16_t t16;
+    uint32_t t32,pra;
+    if(calibCol==0){
+        t8=diff_prCalibTabDef.prCalibRow[calibRow].pCount;
+        adjv=*(uint8_t*)(&adjValue);
+        if(t8!=adjv){
+            saveFlg=true;
+            diff_prCalibTabDef.prCalibRow[calibRow].pCount=adjv;
+        }
+    }else{
+        t32=__mflot32_2_int32(m_floatAdj.t32);
+        pra=diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
+        if(pra!=t32){
+            diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue=t32;
+            diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pAdcValue=x_prDiffData.pAdcValue;
+            diff_prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].tAdcValue=x_prDiffData.tAdcValue;
+            saveFlg=true;
+        }
+    }
+	
+	if(saveFlg){
+		t16=sizeof(diff_prCalibTabDef);
+		crc_append((uint8_t*)&diff_prCalibTabDef,t16-2);
+		at24c02_write_n_byte(pdiff_prEepromObj,0,(uint8_t*)&diff_prCalibTabDef,t16);        
+    }
 	if(gohome){__exit_menu_to_home_unsave(); return;}
+	calibCol++;
+	if(calibCol>diff_prCalibTabDef.prCalibRow[calibRow].pCount){
+        calibCol=0;
+        calibRow++;
+        if(calibRow>2)calibRow=0;
+    }
+    __enter_menu_calib_press_diff(calibRow,calibCol);
+	
 }
 
 void __set_short_pr_calib(bool gohome)
 {
+    bool saveFlg=false;
+    uint8_t t8,adjv;
+	uint16_t t16;
+    uint32_t t32,pra;
+    if(calibCol==0){
+        t8=prCalibTabDef.prCalibRow[calibRow].pCount;
+        adjv=*(uint8_t*)(&adjValue);
+        if(t8!=adjv){
+            saveFlg=true;
+            prCalibTabDef.prCalibRow[calibRow].pCount=adjv;
+        }
+    }else{
+        t32=__mflot32_2_int32(m_floatAdj.t32);
+        pra=prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue;
+        if(pra!=t32){
+            prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pValue=t32;
+            prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].pAdcValue=x_prDiffData.pAdcValue;
+            prCalibTabDef.prCalibRow[calibRow].prCalibPoint[calibCol-1].tAdcValue=x_prDiffData.tAdcValue;
+            saveFlg=true;
+        }
+    }
+	
+	if(saveFlg){
+		t16=sizeof(prCalibTabDef);
+		crc_append((uint8_t*)&prCalibTabDef,t16-2);
+		at24c02_write_n_byte(pdiff_prEepromObj,0,(uint8_t*)&prCalibTabDef,t16);        
+    }
 	if(gohome){__exit_menu_to_home_unsave(); return;}
+	calibCol++;
+	if(calibCol>prCalibTabDef.prCalibRow[calibRow].pCount){
+        calibCol=0;
+        //calibRow++;
+        //if(calibRow>2)calibRow=0;
+    }
+    __enter_menu_calib_press_diff(0,calibCol);
+	
 }
 
 void __set_short_poly_coefic(bool gohome)
@@ -690,7 +822,7 @@ void __set_long_work_mode(void)
 	int32_t t32;
 	//st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
 	//m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	
-    p=(uint8_t**)(&adjValue);	
+    p=(uint8_t*)(&adjValue);	
 	//stp->barScale=*p;
     dwm=*p;
     __exit_menu_to_home_unsave();  	
@@ -752,7 +884,7 @@ void key_process(void)
 		//长按
 		if(key==KEY_VALUE_SET){
 			key_process_set_long();
-		}else if(keyValue == (KEY_VALUE_SET+KEY_VALUE_DOWN)){
+		}else if(key == (KEY_VALUE_SET+KEY_VALUE_DOWN)){
 			key_process_set_down_long();
 		}
 	}else{

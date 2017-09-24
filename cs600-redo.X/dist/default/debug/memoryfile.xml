@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/debug\cs600-redo.X.debug.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>62464</length>
+      <used>37939</used>
+      <free>24525</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>3924</length>
+      <used>1392</used>
+      <free>2532</free>
+    </memory>
+  </executable>
+</project>

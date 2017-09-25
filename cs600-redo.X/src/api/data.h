@@ -151,7 +151,8 @@ extern "C"{
     extern volatile int32_t	rtHight;
 	extern volatile int32_t	rtWeight;
 	extern volatile uint8_t    rtLevel;
-	volatile int32_t    rtPressure;
+	extern volatile int32_t    rtPressure;
+    extern volatile int32_t    rtTemperatureEx;
 	//fk 
     extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
     extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);

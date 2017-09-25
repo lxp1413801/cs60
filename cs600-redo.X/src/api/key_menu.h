@@ -96,6 +96,14 @@ extern "C"{
 	#define MENU_SET_WORK_MODE					0xf0
 	#define sub_MENU_SET_WORK_MODE				0x00
 	
+	typedef union{
+		uint8_t t8;
+		struct{
+			uint8_t upLineMenu:4;
+			uint8_t downLineMenu:4;
+		}stru;
+	}st_homeSubMenu;
+    extern volatile bool blackEn;
 	//variable
 	extern volatile uint8_t menu;
     extern volatile uint8_t subMenu;

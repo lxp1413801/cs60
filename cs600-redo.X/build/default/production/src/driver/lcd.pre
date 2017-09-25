@@ -8209,7 +8209,9 @@ extern void lcd_disp_unit_1st_m(bool show);
 extern void lcd_disp_unit_1st_m3(bool show);
 extern void lcd_disp_unit_t(bool show);
 extern void lcd_disp_unit_2nd_m(bool show);
-
+extern void lcd_disp_unit_temperature(bool show);
+extern void lcd_disp_unit_2nd_m3(bool show);
+extern void lcd_disp_unit_2nd_m(bool show);
 
 extern void lcd_disp_unit_mpa(bool show);
 
@@ -8249,7 +8251,9 @@ extern uint16_t crc_sum(uint8_t *puchMsg, uint16_t usDataLen);
 extern uint8_t crc_verify(uint8_t* message, uint16_t n);
 extern void crc_append( uint8_t* message, uint16_t n);
 
-# 15 "src/driver/lcd.c"
+# 13 "src/driver/lcd.c"
+extern volatile bool blackEn;
+
 uint8_t pLCD[24];
 
 const uint8_t LCDDigitalIndexTable[]="0123456789abcdefghijklmnopqrstuvwxyz.-: GH";
@@ -8647,7 +8651,9 @@ lcd_set_com_seg(3,41,0);
 
 void lcd_disp_unit_temperature(bool show)
 {
-
+lcd_set_com_seg(3,13,0);
+lcd_set_com_seg(1,41,0);
+lcd_set_com_seg(0,41,0);
 if(show){
 lcd_set_com_seg(3,13,1);
 }else{
@@ -8671,6 +8677,7 @@ void lcd_disp_unit_2nd_m3(bool show)
 {
 
 lcd_set_com_seg(0,40,0);
+lcd_set_com_seg(1,41,0);
 lcd_set_com_seg(3,13,0);
 
 if(show){
@@ -8841,7 +8848,7 @@ void lcd_config(void)
 
 LCDREG=0x3f;
 
-# 624
+# 627
 LCDPSbits.WFT = 0;
 LCDPSbits.BIASMD = 0;
 LCDPSbits.LP3 = 0;
@@ -8887,6 +8894,11 @@ void lcd_init(void)
 lcd_config();
 
 LCDCON=0x8f;;
+if(blackEn){
+lcd_bl_on();
+}
+else{
 lcd_bl_off();
+}
 }
 

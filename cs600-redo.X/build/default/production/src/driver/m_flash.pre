@@ -8243,7 +8243,9 @@ extern void lcd_disp_unit_1st_m(bool show);
 extern void lcd_disp_unit_1st_m3(bool show);
 extern void lcd_disp_unit_t(bool show);
 extern void lcd_disp_unit_2nd_m(bool show);
-
+extern void lcd_disp_unit_temperature(bool show);
+extern void lcd_disp_unit_2nd_m3(bool show);
+extern void lcd_disp_unit_2nd_m(bool show);
 
 extern void lcd_disp_unit_mpa(bool show);
 
@@ -8385,7 +8387,8 @@ extern volatile int32_t rtVolume;
 extern volatile int32_t rtHight;
 extern volatile int32_t rtWeight;
 extern volatile uint8_t rtLevel;
-volatile int32_t rtPressure;
+extern volatile int32_t rtPressure;
+extern volatile int32_t rtTemperatureEx;
 
 extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
 extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);

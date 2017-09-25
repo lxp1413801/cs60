@@ -9,11 +9,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ui_disp_menu `(v ~T0 @X0 0 ef ]
 "49 src/app/../includes/../api/sample.h
 [v _sample_call_in_ticker `(v ~T0 @X0 0 ef ]
-"102 src/app/../includes/../api/key_menu.h
+"110 src/app/../includes/../api/key_menu.h
 [v _keyValue `Vuc ~T0 @X0 0 e ]
 "51 src/app/../includes/../driver/key.h
 [v _key_polling `(uc ~T0 @X0 0 ef ]
-"111 src/app/../includes/../api/key_menu.h
+"119 src/app/../includes/../api/key_menu.h
 [v _key_process `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -6278,7 +6278,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 35: extern void lcd_disp_unit_1st_m3(bool show);
 [; ;lcd.h: 36: extern void lcd_disp_unit_t(bool show);
 [; ;lcd.h: 37: extern void lcd_disp_unit_2nd_m(bool show);
-[; ;lcd.h: 40: extern void lcd_disp_unit_mpa(bool show);
+[; ;lcd.h: 38: extern void lcd_disp_unit_temperature(bool show);
+[; ;lcd.h: 39: extern void lcd_disp_unit_2nd_m3(bool show);
+[; ;lcd.h: 40: extern void lcd_disp_unit_2nd_m(bool show);
+[; ;lcd.h: 42: extern void lcd_disp_unit_mpa(bool show);
 [; ;iic_gpio.h: 13: extern st_iicDeviceObj pcf8574;
 [; ;iic_gpio.h: 15: typedef union{
 [; ;iic_gpio.h: 16: uint8_t data;
@@ -6423,29 +6426,36 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 151: extern volatile int32_t rtHight;
 [; ;data.h: 152: extern volatile int32_t rtWeight;
 [; ;data.h: 153: extern volatile uint8_t rtLevel;
-"154 src/app/../includes/../api/data.h
-[v _rtPressure `Vl ~T0 @X0 1 e ]
-[; ;data.h: 154: volatile int32_t rtPressure;
-[; ;data.h: 156: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
-[; ;data.h: 157: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
-[; ;data.h: 158: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
-[; ;data.h: 162: extern uint8_t cal_diff_press(void);
-[; ;data.h: 163: extern uint8_t cal_diff_hight_level(void);
-[; ;data.h: 164: extern void cal_pt100_temperature_in(void);
-[; ;data.h: 166: extern uint8_t cal_press(void);
-[; ;data.h: 167: extern void cal_pt100_temperature_ex(void);
-[; ;data.h: 169: extern void cal_additional_pressute(uint8_t index);
-[; ;data.h: 171: extern void data_init_all(void);
-[; ;key_menu.h: 100: extern volatile uint8_t menu;
-[; ;key_menu.h: 101: extern volatile uint8_t subMenu;
-[; ;key_menu.h: 102: extern volatile uint8_t keyValue;
-[; ;key_menu.h: 103: extern volatile uint16_t passWord;
-[; ;key_menu.h: 104: extern volatile uint8_t adjLocation;
-[; ;key_menu.h: 105: extern volatile int32_t adjValue;
-[; ;key_menu.h: 106: extern st_float32_m m_floatAdj;
-[; ;key_menu.h: 108: extern volatile uint8_t calibRow;
-[; ;key_menu.h: 109: extern volatile uint8_t calibCol;
-[; ;key_menu.h: 111: extern void key_process(void);
+[; ;data.h: 154: extern volatile int32_t rtPressure;
+[; ;data.h: 155: extern volatile int32_t rtTemperatureEx;
+[; ;data.h: 157: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
+[; ;data.h: 158: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
+[; ;data.h: 159: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 163: extern uint8_t cal_diff_press(void);
+[; ;data.h: 164: extern uint8_t cal_diff_hight_level(void);
+[; ;data.h: 165: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 167: extern uint8_t cal_press(void);
+[; ;data.h: 168: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 170: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 172: extern void data_init_all(void);
+[; ;key_menu.h: 99: typedef union{
+[; ;key_menu.h: 100: uint8_t t8;
+[; ;key_menu.h: 101: struct{
+[; ;key_menu.h: 102: uint8_t upLineMenu:4;
+[; ;key_menu.h: 103: uint8_t downLineMenu:4;
+[; ;key_menu.h: 104: }stru;
+[; ;key_menu.h: 105: }st_homeSubMenu;
+[; ;key_menu.h: 106: extern volatile bool blackEn;
+[; ;key_menu.h: 108: extern volatile uint8_t menu;
+[; ;key_menu.h: 109: extern volatile uint8_t subMenu;
+[; ;key_menu.h: 110: extern volatile uint8_t keyValue;
+[; ;key_menu.h: 111: extern volatile uint16_t passWord;
+[; ;key_menu.h: 112: extern volatile uint8_t adjLocation;
+[; ;key_menu.h: 113: extern volatile int32_t adjValue;
+[; ;key_menu.h: 114: extern st_float32_m m_floatAdj;
+[; ;key_menu.h: 116: extern volatile uint8_t calibRow;
+[; ;key_menu.h: 117: extern volatile uint8_t calibCol;
+[; ;key_menu.h: 119: extern void key_process(void);
 [; ;sample.h: 22: extern int16_t sampBufDiffPr_S1[];
 [; ;sample.h: 25: extern volatile bool diffPrChipFastSampleEn;
 [; ;sample.h: 26: extern volatile uint16_t commonSampTimer;
@@ -6494,41 +6504,41 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _sample_function_enable_fi_in_rtc ..  ]
 [; ;event.c: 11: if(glNoEventTimeOut){
 "11
-[e $ ! != -> _glNoEventTimeOut `i -> -> -> 0 `i `Vuc `i 666  ]
+[e $ ! != -> _glNoEventTimeOut `i -> -> -> 0 `i `Vuc `i 668  ]
 {
 [; ;event.c: 12: glNoEventTimeOut--;
 "12
 [e -- _glNoEventTimeOut -> -> 1 `i `uc ]
 [; ;event.c: 13: if(!glNoEventTimeOut){
 "13
-[e $ ! ! != -> _glNoEventTimeOut `i -> -> -> 0 `i `Vuc `i 667  ]
+[e $ ! ! != -> _glNoEventTimeOut `i -> -> -> 0 `i `Vuc `i 669  ]
 {
 [; ;event.c: 14: glbEvent |= (1<<2);
 "14
 [e =| _glbEvent -> << -> 1 `i -> 2 `i `uc ]
 "15
 }
-[e :U 667 ]
+[e :U 669 ]
 "16
 }
-[e :U 666 ]
+[e :U 668 ]
 [; ;event.c: 15: }
 [; ;event.c: 16: }
 [; ;event.c: 18: if(lcdTwinkle>0)lcdTwinkle--;
 "18
-[e $ ! > -> _lcdTwinkle `i -> 0 `i 668  ]
+[e $ ! > -> _lcdTwinkle `i -> 0 `i 670  ]
 [e -- _lcdTwinkle -> -> 1 `i `uc ]
-[e :U 668 ]
+[e :U 670 ]
 [; ;event.c: 19: ui_disp_menu();
 "19
 [e ( _ui_disp_menu ..  ]
 [; ;event.c: 20: return 1;
 "20
 [e ) -> -> 1 `i `c ]
-[e $UE 665  ]
+[e $UE 667  ]
 [; ;event.c: 21: }
 "21
-[e :UE 665 ]
+[e :UE 667 ]
 }
 "23
 [v _event_process_ticker `(c ~T0 @X0 1 ef ]
@@ -6548,10 +6558,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;event.c: 27: return ret;
 "27
 [e ) -> _ret `c ]
-[e $UE 669  ]
+[e $UE 671  ]
 [; ;event.c: 28: }
 "28
-[e :UE 669 ]
+[e :UE 671 ]
 }
 "30
 [v _event_process_time_out `(c ~T0 @X0 1 ef ]
@@ -6564,10 +6574,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;event.c: 33: return 1;
 "33
 [e ) -> -> 1 `i `c ]
-[e $UE 670  ]
+[e $UE 672  ]
 [; ;event.c: 34: }
 "34
-[e :UE 670 ]
+[e :UE 672 ]
 }
 "35
 [v _event_process `(c ~T0 @X0 1 ef ]
@@ -6579,7 +6589,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;event.c: 37: if(glbEvent & (1<<1)){
 "37
-[e $ ! != & -> _glbEvent `i << -> 1 `i -> 1 `i -> 0 `i 672  ]
+[e $ ! != & -> _glbEvent `i << -> 1 `i -> 1 `i -> 0 `i 674  ]
 {
 [; ;event.c: 38: glbEvent &= ~(1<<1);
 "38
@@ -6589,11 +6599,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _event_process_rtc ..  ]
 "41
 }
-[e :U 672 ]
+[e :U 674 ]
 [; ;event.c: 41: }
 [; ;event.c: 42: if(glbEvent & (1<<0)){
 "42
-[e $ ! != & -> _glbEvent `i << -> 1 `i -> 0 `i -> 0 `i 673  ]
+[e $ ! != & -> _glbEvent `i << -> 1 `i -> 0 `i -> 0 `i 675  ]
 {
 [; ;event.c: 43: glbEvent &= ~(1<<0);
 "43
@@ -6603,11 +6613,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _event_process_ticker ..  ]
 "45
 }
-[e :U 673 ]
+[e :U 675 ]
 [; ;event.c: 45: }
 [; ;event.c: 46: if(glbEvent & (1<<2)){
 "46
-[e $ ! != & -> _glbEvent `i << -> 1 `i -> 2 `i -> 0 `i 674  ]
+[e $ ! != & -> _glbEvent `i << -> 1 `i -> 2 `i -> 0 `i 676  ]
 {
 [; ;event.c: 47: glbEvent &= ~(1<<2);
 "47
@@ -6617,27 +6627,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _event_process_time_out ..  ]
 "49
 }
-[e :U 674 ]
+[e :U 676 ]
 [; ;event.c: 49: }
 [; ;event.c: 51: keyValue=key_polling();
 "51
 [e = _keyValue ( _key_polling ..  ]
 [; ;event.c: 52: if(keyValue!=(0x0)){
 "52
-[e $ ! != -> _keyValue `i -> 0 `i 675  ]
+[e $ ! != -> _keyValue `i -> 0 `i 677  ]
 {
 [; ;event.c: 53: key_process();
 "53
 [e ( _key_process ..  ]
 "54
 }
-[e :U 675 ]
+[e :U 677 ]
 [; ;event.c: 54: }
 [; ;event.c: 56: return 1;
 "56
 [e ) -> -> 1 `i `c ]
-[e $UE 671  ]
+[e $UE 673  ]
 [; ;event.c: 57: }
 "57
-[e :UE 671 ]
+[e :UE 673 ]
 }

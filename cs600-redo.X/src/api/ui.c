@@ -356,7 +356,7 @@ void ui_disp_menu_psw_adj(void)
 	lcd_disp_logo(true);
 	ui_disp_adj_xfixed_pt((uint8_t*)" psd",passWord,adjLocation);
 }
-
+/*
 // 第一个界面第一行显示高度,第二行压力MPA;
 void ui_disp_menu_home_00(void)
 {
@@ -420,14 +420,59 @@ void ui_disp_menu_home_02(void)
 
 	lcd_disp_refresh(); 
 }
+*/
 void ui_disp_menu_home(void)
 {
-	switch(subMenu){
-		case sub_MENU_HOME_00:ui_disp_menu_home_00();break;
-		case sub_MENU_HOME_01:ui_disp_menu_home_01();break;
-		case sub_MENU_HOME_02:ui_disp_menu_home_02();break;
-		default:break;
+	uint8_t t8;
+    st_float32 mf;
+	lcd_clear_all();
+	lcd_disp_logo(true);
+	t8=subMenu & 0xf0;
+	t8>>=4;
+	if(t8==0){
+		mf.t32=__int32_2_mflot32(rtHight);
+		//ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+		lcd_disp_unit_1st_m(true);		
+	}else if(t8==1){
+		mf.t32=__int32_2_mflot32(rtVolume);
+		//ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+		lcd_disp_unit_1st_m3(true);		
+	}else if(t8==2){
+		mf.t32=__int32_2_mflot32(rtWeight);
+		//ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+		lcd_disp_unit_t(true);		
 	}
+	ui_disp_xfloat_pt(&mf,LCD_LINE_0);
+	//
+	t8=subMenu & 0x0f;
+	if(t8==0){
+		mf.t32=__int32_2_mflot32(rtPressure);
+		//ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+		lcd_disp_unit_mpa(true);		
+	}else if(t8==1){
+		mf.t32=__int32_2_mflot32(rtTemperatureEx);
+		//ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+		lcd_disp_unit_temperature(true);		
+	}else if(t8==2){
+		mf.t32=__int32_2_mflot32(rtHight);
+		//ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+		lcd_disp_unit_2nd_m(true);			
+	}else if(t8==3){
+		mf.t32=__int32_2_mflot32(rtVolume);
+		//ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+		lcd_disp_unit_2nd_m3(true);			
+	}
+	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
+    //t8=rtLevel;
+    t8=60;
+	lcd_disp_level(t8);
+	lcd_disp_refresh(); 	
+	// switch(subMenu){
+		// case sub_MENU_HOME_00:ui_disp_menu_home_00();break;
+		// case sub_MENU_HOME_01:ui_disp_menu_home_01();break;
+		// case sub_MENU_HOME_02:ui_disp_menu_home_02();break;
+		// default:break;
+	// }
 }
 void ui_disp_menu_density_adj(void)
 {

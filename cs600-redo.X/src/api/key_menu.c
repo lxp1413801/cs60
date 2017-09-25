@@ -17,7 +17,7 @@ volatile uint8_t* pAdjValue;
 //
 volatile uint8_t  calibRow=0x00;
 volatile uint8_t  calibCol=0x00;
-
+volatile bool blackEn=false;
 uint16_t __exp_10(uint8_t n)
 {
 	switch(n){
@@ -383,6 +383,19 @@ void __down_pr_calib(void)
 		key_shift_loc((uint8_t*)(&adjLocation),0,4);
 	}
 }
+
+void __down_home_adj(void)
+{
+	uint8_t t8;
+    //t8=(subMenu & 0xf0);
+    //t8>>=4;
+	t8=subMenu & 0x0f;
+    t8++;
+    if(t8>3)t8=0;
+    //t8<<=4;
+    subMenu &= 0xf0;
+    subMenu |= t8;	
+}
 /*
 key_shift_loc(*loc,min,max)
 loc:up键修改的位置;0-3表示(个位到千位)数位级，4表示小数点，5表示符号
@@ -390,7 +403,7 @@ loc:up键修改的位置;0-3表示(个位到千位)数位级，4表示小数点�
 void key_process_down(void)
 {
 	switch(menu){
-		case MENU_HOME:break;
+		case MENU_HOME:__down_home_adj();break;
 		case MENU_PASSWORD:key_shift_loc((uint8_t*)(&adjLocation),0,3);break;
 		case MENU_SET_DENSITY:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
 		case MENU_SET_POSE_SIZE:__down_pose_size();break;
@@ -409,8 +422,19 @@ void key_process_down(void)
 
 void __up_home_adj(void)
 {
-	subMenu++;
-	if(subMenu>sub_MENU_HOME_02)subMenu=sub_MENU_HOME_00;
+    uint8_t t8;
+	//st_homeSubMenu sub;
+	//sub.t8=subMenu;
+    //t8=sub.stru.upLineMenu;
+    t8=(subMenu & 0xf0);
+    t8>>=4;
+    t8++;
+    if(t8>2)t8=0;
+    t8<<=4;
+    subMenu &= 0x0f;
+    subMenu |= t8;
+    
+	//if(subMenu>sub_MENU_HOME_02)subMenu=sub_MENU_HOME_00;
 }
 
 void __up_psw_adj(void)
@@ -944,7 +968,12 @@ void key_process(void)
 			key_process_set_long();
 		}else if(key == (KEY_VALUE_SET+KEY_VALUE_DOWN)){
 			key_process_set_down_long();
-		}
+		}else if(key == KEY_VALUE_DOWN + KEY_VALUE_UP){
+            blackEn= (!blackEn);
+            if(blackEn)lcd_bl_on();
+            else 
+                lcd_bl_off();
+        }
 	}else{
 		//短按
 		if(keyValue == KEY_VALUE_DOWN){

@@ -10,7 +10,7 @@
 #include "../depend/depend.h"
 #include "../driver/m_gpio.h"
 #include "../configs/configs.h"
-
+extern volatile bool blackEn;
 //uint8_t* pLcdReg=(uint8_t*)(&LCDDATA0); 
 uint8_t pLCD[LCD_PIXEL_REGISTER_SIZE];
 
@@ -421,7 +421,9 @@ void lcd_disp_unit_1st_m3(bool show)
 
 void lcd_disp_unit_temperature(bool show)
 {
-	//0C=t7
+	lcd_set_com_seg(3,13,0);
+	lcd_set_com_seg(1,41,0);
+	lcd_set_com_seg(0,41,0);
 	if(show){
 		lcd_set_com_seg(3,13,1);
 	}else{
@@ -445,6 +447,7 @@ void lcd_disp_unit_2nd_m3(bool show)
 {
 	//t4=3;t5=m
 	lcd_set_com_seg(0,40,0);
+	lcd_set_com_seg(1,41,0);
 	lcd_set_com_seg(3,13,0);
 	
 	if(show){
@@ -666,6 +669,11 @@ void lcd_init(void)
 	lcd_config();
 	//lcd_bl_init();
 	lcd_on();
-	lcd_bl_off();
+    if(blackEn){
+        lcd_bl_on();
+    }
+    else{
+        lcd_bl_off();
+    }
 }
 //file end

@@ -8209,7 +8209,9 @@ extern void lcd_disp_unit_1st_m(bool show);
 extern void lcd_disp_unit_1st_m3(bool show);
 extern void lcd_disp_unit_t(bool show);
 extern void lcd_disp_unit_2nd_m(bool show);
-
+extern void lcd_disp_unit_temperature(bool show);
+extern void lcd_disp_unit_2nd_m3(bool show);
+extern void lcd_disp_unit_2nd_m(bool show);
 
 extern void lcd_disp_unit_mpa(bool show);
 
@@ -8647,7 +8649,9 @@ lcd_set_com_seg(3,41,0);
 
 void lcd_disp_unit_temperature(bool show)
 {
-
+lcd_set_com_seg(3,13,0);
+lcd_set_com_seg(1,41,0);
+lcd_set_com_seg(0,41,0);
 if(show){
 lcd_set_com_seg(3,13,1);
 }else{
@@ -8671,6 +8675,7 @@ void lcd_disp_unit_2nd_m3(bool show)
 {
 
 lcd_set_com_seg(0,40,0);
+lcd_set_com_seg(1,41,0);
 lcd_set_com_seg(3,13,0);
 
 if(show){
@@ -8836,12 +8841,12 @@ pLCD[i]=x;
 void lcd_config(void)
 {
 
+# 622
+LCDREG=0;
+LCDREGbits.CPEN=1;
+LCDREGbits.BIAS=7;
+LCDREGbits.MODE13=1;
 
-
-
-LCDREG=0x3f;
-
-# 624
 LCDPSbits.WFT = 0;
 LCDPSbits.BIASMD = 0;
 LCDPSbits.LP3 = 0;
@@ -8887,6 +8892,7 @@ void lcd_init(void)
 lcd_config();
 
 LCDCON=0x8f;;
-lcd_bl_off();
+lcd_bl_on();
+
 }
 

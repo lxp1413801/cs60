@@ -8579,7 +8579,9 @@ extern void lcd_disp_unit_1st_m(bool show);
 extern void lcd_disp_unit_1st_m3(bool show);
 extern void lcd_disp_unit_t(bool show);
 extern void lcd_disp_unit_2nd_m(bool show);
-
+extern void lcd_disp_unit_temperature(bool show);
+extern void lcd_disp_unit_2nd_m3(bool show);
+extern void lcd_disp_unit_2nd_m(bool show);
 
 extern void lcd_disp_unit_mpa(bool show);
 
@@ -8790,7 +8792,8 @@ extern volatile int32_t rtVolume;
 extern volatile int32_t rtHight;
 extern volatile int32_t rtWeight;
 extern volatile uint8_t rtLevel;
-volatile int32_t rtPressure;
+extern volatile int32_t rtPressure;
+extern volatile int32_t rtTemperatureEx;
 
 extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
 extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
@@ -8809,7 +8812,15 @@ extern void cal_additional_pressute(uint8_t index);
 
 extern void data_init_all(void);
 
-# 100 "src/api/../includes/../api/key_menu.h"
+# 99 "src/api/../includes/../api/key_menu.h"
+typedef union{
+uint8_t t8;
+struct{
+uint8_t upLineMenu:4;
+uint8_t downLineMenu:4;
+}stru;
+}st_homeSubMenu;
+
 extern volatile uint8_t menu;
 extern volatile uint8_t subMenu;
 extern volatile uint8_t keyValue;

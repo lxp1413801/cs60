@@ -8579,7 +8579,9 @@ extern void lcd_disp_unit_1st_m(bool show);
 extern void lcd_disp_unit_1st_m3(bool show);
 extern void lcd_disp_unit_t(bool show);
 extern void lcd_disp_unit_2nd_m(bool show);
-
+extern void lcd_disp_unit_temperature(bool show);
+extern void lcd_disp_unit_2nd_m3(bool show);
+extern void lcd_disp_unit_2nd_m(bool show);
 
 extern void lcd_disp_unit_mpa(bool show);
 
@@ -8790,7 +8792,8 @@ extern volatile int32_t rtVolume;
 extern volatile int32_t rtHight;
 extern volatile int32_t rtWeight;
 extern volatile uint8_t rtLevel;
-volatile int32_t rtPressure;
+extern volatile int32_t rtPressure;
+extern volatile int32_t rtTemperatureEx;
 
 extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
 extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
@@ -8809,7 +8812,16 @@ extern void cal_additional_pressute(uint8_t index);
 
 extern void data_init_all(void);
 
-# 100 "src/api/../includes/../api/key_menu.h"
+# 99 "src/api/../includes/../api/key_menu.h"
+typedef union{
+uint8_t t8;
+struct{
+uint8_t upLineMenu:4;
+uint8_t downLineMenu:4;
+}stru;
+}st_homeSubMenu;
+extern volatile bool blackEn;
+
 extern volatile uint8_t menu;
 extern volatile uint8_t subMenu;
 extern volatile uint8_t keyValue;
@@ -8882,7 +8894,7 @@ volatile uint8_t* pAdjValue;
 
 volatile uint8_t calibRow=0x00;
 volatile uint8_t calibCol=0x00;
-
+volatile bool blackEn=0;
 uint16_t __exp_10(uint8_t n)
 {
 switch(n){
@@ -9225,11 +9237,24 @@ key_shift_loc((uint8_t*)(&adjLocation),0,4);
 }
 }
 
-# 390
+void __down_home_adj(void)
+{
+uint8_t t8;
+
+
+t8=subMenu & 0x0f;
+t8++;
+if(t8>3)t8=0;
+
+subMenu &= 0xf0;
+subMenu |= t8;
+}
+
+# 403
 void key_process_down(void)
 {
 switch(menu){
-case 0x00:break;
+case 0x00:__down_home_adj();break;
 case 0x10:key_shift_loc((uint8_t*)(&adjLocation),0,3);break;
 case 0x20:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
 case 0x30:__down_pose_size();break;
@@ -9248,8 +9273,19 @@ default:break;
 
 void __up_home_adj(void)
 {
-subMenu++;
-if(subMenu>0x02)subMenu=0x00;
+uint8_t t8;
+
+
+
+t8=(subMenu & 0xf0);
+t8>>=4;
+t8++;
+if(t8>2)t8=0;
+t8<<=4;
+subMenu &= 0x0f;
+subMenu |= t8;
+
+
 }
 
 void __up_psw_adj(void)
@@ -9413,7 +9449,7 @@ default:break;
 }
 }
 
-# 585
+# 609
 uint8_t __sys_data_save_write_flash(void)
 {
 uint8_t ret=0;
@@ -9592,7 +9628,7 @@ int32_t t32;
 st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
 
-# 769
+# 793
 t8=subMenu>>1;
 if(subMenu & 0x01){
 stp->diffPressureWarnSet[t8].warnValueHi=t32;
@@ -9771,6 +9807,11 @@ if(key==(0x01<<0x02)){
 key_process_set_long();
 }else if(key == ((0x01<<0x02)+(0x01<<0x0))){
 key_process_set_down_long();
+}else if(key == (0x01<<0x0) + (0x01<<0x01)){
+blackEn= (!blackEn);
+if(blackEn)lcd_bl_on();
+else
+lcd_bl_off();
 }
 }else{
 

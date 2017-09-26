@@ -8205,6 +8205,11 @@ extern void lcd_show_dp(uint8_t loc,bool show);
 extern void lcd_disp_logo(bool show);
 
 extern void lcd_disp_level(uint8_t level);
+
+extern void lcd_disp_battary(uint8_t level);
+extern void lcd_disp_rf(uint8_t rssi);
+extern void lcd_disp_light(uint8_t light);
+
 extern void lcd_disp_unit_1st_m(bool show);
 extern void lcd_disp_unit_1st_m3(bool show);
 extern void lcd_disp_unit_t(bool show);
@@ -8251,7 +8256,9 @@ extern uint16_t crc_sum(uint8_t *puchMsg, uint16_t usDataLen);
 extern uint8_t crc_verify(uint8_t* message, uint16_t n);
 extern void crc_append( uint8_t* message, uint16_t n);
 
-# 15 "src/driver/lcd.c"
+# 13 "src/driver/lcd.c"
+extern volatile bool blackEn;
+
 uint8_t pLCD[24];
 
 const uint8_t LCDDigitalIndexTable[]="0123456789abcdefghijklmnopqrstuvwxyz.-: GH";
@@ -8390,8 +8397,9 @@ case 3: lcd_set_com_seg(0,35,show); break;
 void lcd_disp_battary(uint8_t level)
 {
 uint8_t i;
-if(level>=99)level=99;
+if(level>=100)level=100;
 level/=25;
+if(level<1)level=1;
 for(i=0;i<level;i++){
 lcd_disp_battary_bar(i,1);
 }
@@ -8420,8 +8428,9 @@ case 3: lcd_set_com_seg(3,30,show); break;
 void lcd_disp_rf(uint8_t rssi)
 {
 uint8_t i;
-if(rssi>=99)rssi=99;
+if(rssi>=100)rssi=100;
 rssi/=25;
+if(rssi<1)rssi=1;
 for(i=0;i<rssi;i++){
 lcd_disp_rf_bar(i,1);
 }
@@ -8448,9 +8457,10 @@ case 1: lcd_set_com_seg(2,34,show); break;
 void lcd_disp_light(uint8_t light)
 {
 uint8_t i;
-if(light>=99)light=99;
+if(light>=100)light=100;
 light/=50;
-if(1==light){
+if(light<1)light=1;
+if(2==light){
 lcd_disp_light_bar(0,1);
 lcd_disp_light_bar(1,1);
 }else{
@@ -8603,7 +8613,7 @@ lcd_set_com_seg(2,40,code&0x40);
 lcd_set_com_seg(3,40,code&0x02);
 }
 
-# 379
+# 382
 void lcd_disp_logo(bool show)
 {
 if(show)
@@ -8841,12 +8851,12 @@ pLCD[i]=x;
 void lcd_config(void)
 {
 
-# 622
-LCDREG=0;
-LCDREGbits.CPEN=1;
-LCDREGbits.BIAS=7;
-LCDREGbits.MODE13=1;
 
+
+
+LCDREG=0x3f;
+
+# 630
 LCDPSbits.WFT = 0;
 LCDPSbits.BIASMD = 0;
 LCDPSbits.LP3 = 0;
@@ -8892,7 +8902,11 @@ void lcd_init(void)
 lcd_config();
 
 LCDCON=0x8f;;
+if(blackEn){
 lcd_bl_on();
-
+}
+else{
+lcd_bl_off();
+}
 }
 

@@ -142,16 +142,17 @@ void lcd_disp_battary_bar(uint8_t bar,uint8_t show)
 	if(bar>=4)bar=4;
 	switch(bar){
 		case 0:	lcd_set_com_seg(3,35,show);	break;
-		case 1:	lcd_set_com_seg(2,35,show);	break;
+		case 3:	lcd_set_com_seg(2,35,show);	break;
 		case 2:	lcd_set_com_seg(1,35,show);	break;
-		case 3:	lcd_set_com_seg(0,35,show);	break;
+		case 1:	lcd_set_com_seg(0,35,show);	break;
 	}
 }
 void lcd_disp_battary(uint8_t level)
 {
 	uint8_t i;
-	if(level>=99)level=99;
+	if(level>=100)level=100;
 	level/=25;
+	if(level<1)level=1;
 	for(i=0;i<level;i++){
 		lcd_disp_battary_bar(i,1);
 	}
@@ -180,8 +181,9 @@ void lcd_disp_rf_bar(uint8_t bar,uint8_t show)
 void lcd_disp_rf(uint8_t rssi)
 {
 	uint8_t i;
-	if(rssi>=99)rssi=99;
+	if(rssi>=100)rssi=100;
 	rssi/=25;
+	if(rssi<1)rssi=1;
 	for(i=0;i<rssi;i++){
 		lcd_disp_rf_bar(i,1);
 	}
@@ -201,16 +203,17 @@ void lcd_disp_light_bar(uint8_t bar,uint8_t show)
 {
 	if(bar>=1)bar=1;
 	switch(bar){
-		case 0:	lcd_set_com_seg(3,34,show);	break;
-		case 1:	lcd_set_com_seg(2,34,show);	break;
+		case 1:	lcd_set_com_seg(3,34,show);	break;
+		case 0:	lcd_set_com_seg(2,34,show);	break;
 	}	
 }
 void lcd_disp_light(uint8_t light)
 {
 	uint8_t i;
-	if(light>=99)light=99;
+	if(light>=100)light=100;
 	light/=50;
-	if(1==light){
+	if(light<1)light=1;
+	if(2==light){
 		lcd_disp_light_bar(0,1);
 		lcd_disp_light_bar(1,1);
 	}else{
@@ -564,7 +567,6 @@ void lcd_show_string(uint8_t* str)
 		str++;
 		t8++;
 	}
-	
 }
 
 

@@ -421,6 +421,28 @@ void ui_disp_menu_home_02(void)
 	lcd_disp_refresh(); 
 }
 */
+void ui_disp_menu_home_test(void)
+{
+	uint8_t t8;
+	lcd_clear_all();
+	t8=subMenu & 0x0f;
+	switch(t8)
+	{
+		case 0:lcd_disp_all(0xff);break;
+		case 1:lcd_disp_battary(100);break;
+		case 2:lcd_disp_battary(75);break;
+		case 3:lcd_disp_battary(50);break;
+		case 4:lcd_disp_battary(25);break;
+		case 5:lcd_disp_rf(100);break;
+		case 6:lcd_disp_rf(75);break;
+		case 7:lcd_disp_rf(50);break;
+		case 8:lcd_disp_rf(25);break;
+		case 9:lcd_disp_light(100);break;
+		case 10:lcd_disp_light(50);break;
+		default:break;
+	}
+    lcd_disp_refresh(); 
+}
 void ui_disp_menu_home(void)
 {
 	uint8_t t8;
@@ -532,7 +554,7 @@ void ui_disp_menu_bzero_adj(void)
 {
 	lcd_clear_all();
 	lcd_disp_logo(true);
-	ui_disp_adj_xfloat_pt((uint8_t*)"  hb",&m_floatAdj,adjLocation);	
+	ui_disp_adj_xfloat_pt((uint8_t*)"  Hb",&m_floatAdj,adjLocation);	
 }
 
 void ui_disp_menu_calib_diff_adj(void)
@@ -541,10 +563,10 @@ void ui_disp_menu_calib_diff_adj(void)
 	uint8_t buf[10];
 	lcd_clear_all();
 	lcd_disp_logo(true);
-	buf[0]='d';
-	if(calibRow==0)buf[1]='l';
+	buf[0]=' ';
+	if(calibRow==0)buf[1]='d';
 	else if(calibRow==1)buf[1]='c';
-	else if(calibRow==2)buf[1]='h';
+	else if(calibRow==2)buf[1]='G';
 	
 	t8=calibCol;
 	buf[3]='0'+t8%10;
@@ -616,8 +638,8 @@ void ui_disp_menu_warn_t_adj(void)
 	t8=subMenu;
 	if(t8>3)return;
 	//这个地方的显示字符需要确认用atx还是alx
-	m_mem_cpy(buf,(uint8_t*)"alt0");
-	buf[3]='0'+t8;
+	m_mem_cpy(buf,(uint8_t*)" al0");
+	buf[3]='1'+t8;
 	
 	lcd_show_string_l0(buf);
 	uint8_t* p=(uint8_t*)(&adjValue);
@@ -662,10 +684,10 @@ void ui_disp_menu_warn_v_adj(void)
 	*/
 	t8=subMenu>>1;
 	
-	buf[3]='0'+t8;
+	//buf[3]='1'+t8;
 	type=fps->diffPressureWarnSet[t8].type;
 	m_mem_cpy(buf,(uint8_t*)" al0");
-	buf[3]='0'+t8;
+	buf[3]='1'+t8;
 	if(subMenu & 0x01){
 		//m_mem_cpy(buf,(uint8_t*)" ah0");
 		buf[2]='H';
@@ -735,7 +757,11 @@ void ui_disp_menu_work_mode_adj(void)
 void ui_disp_menu(void)
 {
 	switch(menu){
+		#if LCD_TEST_EX_EN==1
+		case MENU_HOME:					ui_disp_menu_home_test();		break;
+		#else 
 		case MENU_HOME:					ui_disp_menu_home();			break;
+		#endif
 		case MENU_PASSWORD:				ui_disp_menu_psw_adj();			break;		
 		case MENU_SET_DENSITY:			ui_disp_menu_density_adj();		break;		
 		case MENU_SET_POSE_SIZE:		ui_disp_menu_pose_size();		break;

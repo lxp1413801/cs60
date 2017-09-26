@@ -8575,6 +8575,11 @@ extern void lcd_show_dp(uint8_t loc,bool show);
 extern void lcd_disp_logo(bool show);
 
 extern void lcd_disp_level(uint8_t level);
+
+extern void lcd_disp_battary(uint8_t level);
+extern void lcd_disp_rf(uint8_t rssi);
+extern void lcd_disp_light(uint8_t light);
+
 extern void lcd_disp_unit_1st_m(bool show);
 extern void lcd_disp_unit_1st_m3(bool show);
 extern void lcd_disp_unit_t(bool show);
@@ -8881,7 +8886,7 @@ extern int8_t event_process_time_out(void);
 
 extern int8_t event_process(void);
 
-# 8 "src/api/key_menu.c"
+# 9 "src/api/key_menu.c"
 volatile uint16_t passWord=0x00;
 volatile uint8_t menu=0x00;
 volatile uint8_t subMenu=0;
@@ -9049,7 +9054,7 @@ adjLocation=0;
 }
 }
 
-# 195
+# 196
 void __enter_menu_calib_press_diff(uint8_t row,uint8_t col)
 {
 
@@ -9124,7 +9129,7 @@ subMenu=__subMenu;
 
 st_sysDataDef* fps= &stSysData;
 
-# 275
+# 276
 t8=subMenu >>1;
 if(subMenu & 0x01){
 
@@ -9250,11 +9255,28 @@ subMenu &= 0xf0;
 subMenu |= t8;
 }
 
-# 403
+void __down_home_adj_test(void)
+{
+uint8_t t8;
+
+
+t8=subMenu & 0x0f;
+t8++;
+if(t8>10)t8=0;
+
+subMenu &= 0xf0;
+subMenu |= t8;
+}
+
+# 417
 void key_process_down(void)
 {
 switch(menu){
+
+
+
 case 0x00:__down_home_adj();break;
+
 case 0x10:key_shift_loc((uint8_t*)(&adjLocation),0,3);break;
 case 0x20:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
 case 0x30:__down_pose_size();break;
@@ -9427,8 +9449,7 @@ case 0xf0: __up_adj_work_mode(); break;
 default:break;
 }
 }
-
-void key_process_set_down_long(void)
+void key_process_set_up_long(void)
 {
 if(menu==0x10){
 switch(passWord){
@@ -9449,7 +9470,7 @@ default:break;
 }
 }
 
-# 609
+# 648
 uint8_t __sys_data_save_write_flash(void)
 {
 uint8_t ret=0;
@@ -9628,7 +9649,7 @@ int32_t t32;
 st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
 
-# 793
+# 832
 t8=subMenu>>1;
 if(subMenu & 0x01){
 stp->diffPressureWarnSet[t8].warnValueHi=t32;
@@ -9805,8 +9826,8 @@ if(tm>=2000){
 
 if(key==(0x01<<0x02)){
 key_process_set_long();
-}else if(key == ((0x01<<0x02)+(0x01<<0x0))){
-key_process_set_down_long();
+}else if(key == ((0x01<<0x02)+(0x01<<0x01))){
+key_process_set_up_long();
 }else if(key == (0x01<<0x0) + (0x01<<0x01)){
 blackEn= (!blackEn);
 if(blackEn)lcd_bl_on();

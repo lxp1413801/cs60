@@ -6274,14 +6274,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 30: extern void lcd_show_dp(uint8_t loc,bool show);
 [; ;lcd.h: 31: extern void lcd_disp_logo(bool show);
 [; ;lcd.h: 33: extern void lcd_disp_level(uint8_t level);
-[; ;lcd.h: 34: extern void lcd_disp_unit_1st_m(bool show);
-[; ;lcd.h: 35: extern void lcd_disp_unit_1st_m3(bool show);
-[; ;lcd.h: 36: extern void lcd_disp_unit_t(bool show);
-[; ;lcd.h: 37: extern void lcd_disp_unit_2nd_m(bool show);
-[; ;lcd.h: 38: extern void lcd_disp_unit_temperature(bool show);
-[; ;lcd.h: 39: extern void lcd_disp_unit_2nd_m3(bool show);
-[; ;lcd.h: 40: extern void lcd_disp_unit_2nd_m(bool show);
-[; ;lcd.h: 42: extern void lcd_disp_unit_mpa(bool show);
+[; ;lcd.h: 35: extern void lcd_disp_battary(uint8_t level);
+[; ;lcd.h: 36: extern void lcd_disp_rf(uint8_t rssi);
+[; ;lcd.h: 37: extern void lcd_disp_light(uint8_t light);
+[; ;lcd.h: 39: extern void lcd_disp_unit_1st_m(bool show);
+[; ;lcd.h: 40: extern void lcd_disp_unit_1st_m3(bool show);
+[; ;lcd.h: 41: extern void lcd_disp_unit_t(bool show);
+[; ;lcd.h: 42: extern void lcd_disp_unit_2nd_m(bool show);
+[; ;lcd.h: 43: extern void lcd_disp_unit_temperature(bool show);
+[; ;lcd.h: 44: extern void lcd_disp_unit_2nd_m3(bool show);
+[; ;lcd.h: 45: extern void lcd_disp_unit_2nd_m(bool show);
+[; ;lcd.h: 47: extern void lcd_disp_unit_mpa(bool show);
 [; ;iic_gpio.h: 13: extern st_iicDeviceObj pcf8574;
 [; ;iic_gpio.h: 15: typedef union{
 [; ;iic_gpio.h: 16: uint8_t data;

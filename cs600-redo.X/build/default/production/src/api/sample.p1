@@ -2,14 +2,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 "112 src/api/../includes/../api/data.h
 [s S662 `l 1 `i 1 `i 1 ]
 [n S662 . pValue pAdcValue tAdcValue ]
-"7173 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
+"7529 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f86j93.h
+[v _TRISH `Vuc ~T0 @X0 0 e@3993 ]
+"6890
+[v _LATH `Vuc ~T0 @X0 0 e@3984 ]
+"7173
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
 "6267
 [v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"7234
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"6378
-[v _LATC `Vuc ~T0 @X0 0 e@3979 ]
 "163 src/api/../includes/../api/data.h
 [v _cal_diff_press `(uc ~T0 @X0 0 ef ]
 "165
@@ -21,10 +21,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "170
 [v _cal_additional_pressute `(v ~T0 @X0 0 ef1`uc ]
 "152 src/api/sample.c
-[c E7515 0 1 .. ]
-[n E7515 . TEST_MODE WORK_MODE  ]
+[c E7521 0 1 .. ]
+[n E7521 . TEST_MODE WORK_MODE  ]
 "29 src/api/../includes/../api/data.h
-[v _dwm `VE7515 ~T0 @X0 0 e ]
+[v _dwm `VE7521 ~T0 @X0 0 e ]
 "45 src/api/../includes/../api/sample.h
 [v _sample_diff_pr_chip_fast `(uc ~T0 @X0 0 ef ]
 "46
@@ -6344,14 +6344,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 30: extern void lcd_show_dp(uint8_t loc,bool show);
 [; ;lcd.h: 31: extern void lcd_disp_logo(bool show);
 [; ;lcd.h: 33: extern void lcd_disp_level(uint8_t level);
-[; ;lcd.h: 34: extern void lcd_disp_unit_1st_m(bool show);
-[; ;lcd.h: 35: extern void lcd_disp_unit_1st_m3(bool show);
-[; ;lcd.h: 36: extern void lcd_disp_unit_t(bool show);
-[; ;lcd.h: 37: extern void lcd_disp_unit_2nd_m(bool show);
-[; ;lcd.h: 38: extern void lcd_disp_unit_temperature(bool show);
-[; ;lcd.h: 39: extern void lcd_disp_unit_2nd_m3(bool show);
-[; ;lcd.h: 40: extern void lcd_disp_unit_2nd_m(bool show);
-[; ;lcd.h: 42: extern void lcd_disp_unit_mpa(bool show);
+[; ;lcd.h: 35: extern void lcd_disp_battary(uint8_t level);
+[; ;lcd.h: 36: extern void lcd_disp_rf(uint8_t rssi);
+[; ;lcd.h: 37: extern void lcd_disp_light(uint8_t light);
+[; ;lcd.h: 39: extern void lcd_disp_unit_1st_m(bool show);
+[; ;lcd.h: 40: extern void lcd_disp_unit_1st_m3(bool show);
+[; ;lcd.h: 41: extern void lcd_disp_unit_t(bool show);
+[; ;lcd.h: 42: extern void lcd_disp_unit_2nd_m(bool show);
+[; ;lcd.h: 43: extern void lcd_disp_unit_temperature(bool show);
+[; ;lcd.h: 44: extern void lcd_disp_unit_2nd_m3(bool show);
+[; ;lcd.h: 45: extern void lcd_disp_unit_2nd_m(bool show);
+[; ;lcd.h: 47: extern void lcd_disp_unit_mpa(bool show);
 [; ;iic_gpio.h: 13: extern st_iicDeviceObj pcf8574;
 [; ;iic_gpio.h: 15: typedef union{
 [; ;iic_gpio.h: 16: uint8_t data;
@@ -6933,34 +6936,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 "90
 [e $ ! ! != -> _sensorPowerOn `i -> -> -> 0 `i `Vuc `i 684  ]
 {
-[; ;sample.c: 91: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
+[; ;sample.c: 91: do{ do{TRISH &= ~(1<<3);}while(0);; do{LATH |= (1<<3);}while(0);; }while(0);;
 "91
 [e :U 687 ]
 {
 [e :U 690 ]
 {
-[e =& _TRISB -> ~ << -> 1 `i -> 4 `i `uc ]
+[e =& _TRISH -> ~ << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 689 ]
 [e :U 693 ]
 {
-[e =| _LATB -> << -> 1 `i -> 4 `i `uc ]
+[e =| _LATH -> << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 692 ]
 }
 [e :U 686 ]
-[; ;sample.c: 92: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
+[; ;sample.c: 92: do{ do{TRISB &= ~(1<<5);}while(0);; do{LATB |= (1<<5);}while(0);; }while(0);;
 "92
 [e :U 696 ]
 {
 [e :U 699 ]
 {
-[e =& _TRISC -> ~ << -> 1 `i -> 5 `i `uc ]
+[e =& _TRISB -> ~ << -> 1 `i -> 5 `i `uc ]
 }
 [e :U 698 ]
 [e :U 702 ]
 {
-[e =| _LATC -> << -> 1 `i -> 5 `i `uc ]
+[e =| _LATB -> << -> 1 `i -> 5 `i `uc ]
 }
 [e :U 701 ]
 }
@@ -6984,34 +6987,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 98: {
 [e :U _sample_all_power_off ]
 [f ]
-[; ;sample.c: 99: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB &= ~(1<<4);}while(0);; }while(0);;
+[; ;sample.c: 99: do{ do{TRISH &= ~(1<<3);}while(0);; do{LATH &= ~(1<<3);}while(0);; }while(0);;
 "99
 [e :U 706 ]
 {
 [e :U 709 ]
 {
-[e =& _TRISB -> ~ << -> 1 `i -> 4 `i `uc ]
+[e =& _TRISH -> ~ << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 708 ]
 [e :U 712 ]
 {
-[e =& _LATB -> ~ << -> 1 `i -> 4 `i `uc ]
+[e =& _LATH -> ~ << -> 1 `i -> 3 `i `uc ]
 }
 [e :U 711 ]
 }
 [e :U 705 ]
-[; ;sample.c: 100: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
+[; ;sample.c: 100: do{ do{TRISB &= ~(1<<5);}while(0);; do{LATB &= ~(1<<5);}while(0);; }while(0);;
 "100
 [e :U 715 ]
 {
 [e :U 718 ]
 {
-[e =& _TRISC -> ~ << -> 1 `i -> 5 `i `uc ]
+[e =& _TRISB -> ~ << -> 1 `i -> 5 `i `uc ]
 }
 [e :U 717 ]
 [e :U 721 ]
 {
-[e =& _LATC -> ~ << -> 1 `i -> 5 `i `uc ]
+[e =& _LATB -> ~ << -> 1 `i -> 5 `i `uc ]
 }
 [e :U 720 ]
 }
@@ -7183,7 +7186,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 730 ]
 [; ;sample.c: 152: if(dwm!=WORK_MODE){
 "152
-[e $ ! != -> _dwm `i -> . `E7515 1 `i 731  ]
+[e $ ! != -> _dwm `i -> . `E7521 1 `i 731  ]
 {
 [; ;sample.c: 153: if(sample_call_cal_diff_pr())return;
 "153
@@ -7237,7 +7240,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 [; ;sample.c: 166: if(dwm==WORK_MODE){
 "166
-[e $ ! == -> _dwm `i -> . `E7515 1 `i 739  ]
+[e $ ! == -> _dwm `i -> . `E7521 1 `i 739  ]
 {
 [; ;sample.c: 167: if(sensorSimpleEn){
 "167

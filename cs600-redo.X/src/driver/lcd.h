@@ -31,6 +31,11 @@ extern "C"{
 	extern void lcd_disp_logo(bool show);
     
     extern void lcd_disp_level(uint8_t level);
+	
+	extern void lcd_disp_battary(uint8_t level);
+	extern void lcd_disp_rf(uint8_t rssi);
+	extern void lcd_disp_light(uint8_t light);
+	
 	extern void lcd_disp_unit_1st_m(bool show);
 	extern void lcd_disp_unit_1st_m3(bool show);
 	extern void lcd_disp_unit_t(bool show);

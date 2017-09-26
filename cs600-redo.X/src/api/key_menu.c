@@ -1,5 +1,6 @@
 #include "../includes/includes.h"
 
+
 #define goHOME  true
 #define unGoHome    false
 
@@ -396,6 +397,19 @@ void __down_home_adj(void)
     subMenu &= 0xf0;
     subMenu |= t8;	
 }
+
+void __down_home_adj_test(void)
+{
+	uint8_t t8;
+    //t8=(subMenu & 0xf0);
+    //t8>>=4;
+	t8=subMenu & 0x0f;
+    t8++;
+    if(t8>10)t8=0;
+    //t8<<=4;
+    subMenu &= 0xf0;
+    subMenu |= t8;		
+}
 /*
 key_shift_loc(*loc,min,max)
 loc:up键修改的位置;0-3表示(个位到千位)数位级，4表示小数点，5表示符号
@@ -403,7 +417,11 @@ loc:up键修改的位置;0-3表示(个位到千位)数位级，4表示小数点�
 void key_process_down(void)
 {
 	switch(menu){
+		#if LCD_TEST_EX_EN==1
+		case MENU_HOME:__down_home_adj_test();break;
+		#else 
 		case MENU_HOME:__down_home_adj();break;
+		#endif
 		case MENU_PASSWORD:key_shift_loc((uint8_t*)(&adjLocation),0,3);break;
 		case MENU_SET_DENSITY:key_shift_loc((uint8_t*)(&adjLocation),0,4);break;
 		case MENU_SET_POSE_SIZE:__down_pose_size();break;
@@ -576,7 +594,27 @@ void key_process_up(void)
 		default:break;
 	}		
 }
-
+void key_process_set_up_long(void)
+{
+	if(menu==MENU_PASSWORD){
+		switch(passWord){
+		case PSW_SET_DENSITY:           __enter_menu_set_density();             break;
+		case PSW_SET_POSE_SIZE:         __enter_menu_set_pose_size();           break;  
+		case PSW_SET_BASE_ZERO:         __enter_menu_set_base_zero();           break;
+		case PSW_CALIB_DIFF_PRESSURE:   __enter_menu_calib_press_diff(0,0);     break;
+		case PSW_CALIB_PRESSURE:        __enter_menu_calib_press(0,0);          break;   
+		case PSW_SET_POLY_COEFFIC:		__enter_menu_poly_coeffic(0);			break;
+		case PSW_SET_WARN_TYPE:			__enter_menu_warn_type(0);				break;
+		case PSW_SET_WARN_VALUE:		__enter_menu_warn_value(0);				break;
+		case PSW_SET_EPR_ZERO_LINE:		__enter_menu_epr_calib(0);			break;
+		case PSW_SET_EPR_ILOOP_SCALE:	__enter_menu_epr_ilp_scale(0);			break;
+		case PSW_SET_BAR_LEVEL_SCALE:	__enter_menu_bar_scale();				break;
+		case PSW_SET_WORK_MODE:			__enter_menu_work_mode();				break;
+		default:break;
+		}
+	}	
+}
+/*
 void key_process_set_down_long(void)
 {
 	if(menu==MENU_PASSWORD){
@@ -597,6 +635,7 @@ void key_process_set_down_long(void)
 		}
 	}
 }
+*/
 //============================================================================
 // uint8_t __sys_data_save_load_buf(void)
 // {
@@ -966,8 +1005,8 @@ void key_process(void)
 		//长按
 		if(key==KEY_VALUE_SET){
 			key_process_set_long();
-		}else if(key == (KEY_VALUE_SET+KEY_VALUE_DOWN)){
-			key_process_set_down_long();
+		}else if(key == (KEY_VALUE_SET+KEY_VALUE_UP)){
+			key_process_set_up_long();
 		}else if(key == KEY_VALUE_DOWN + KEY_VALUE_UP){
             blackEn= (!blackEn);
             if(blackEn)lcd_bl_on();

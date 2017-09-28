@@ -54,9 +54,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n E7520 . TEST_MODE WORK_MODE  ]
 "29 src/api/../includes/../api/data.h
 [v _dwm `VE7520 ~T0 @X0 0 e ]
-"157
+"159
 [v _data_sys_cal_v1 `(ul ~T0 @X0 0 ef1`*S661 ]
-"158
+"160
 [v _data_sys_cal_v2 `(ul ~T0 @X0 0 ef1`*S661 ]
 "12 src/api/../includes/../depend/crc16.h
 [v _crc_append `(v ~T0 @X0 0 ef2`*uc`ui ]
@@ -94,11 +94,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "698 src/api/key_menu.c
 [v _p_prEepromObj `*S647 ~T0 @X0 0 e ]
 "142 src/api/../includes/../api/data.h
-[v _adc_iPrEx `Vi ~T0 @X0 -> 0 `x e ]
-"22 src/api/../includes/../driver/lcd.h
-[v _lcd_bl_on `(v ~T0 @X0 0 ef ]
-"23
+[v _adc_iPrEx0 `Vi ~T0 @X0 0 e ]
+"143
+[v _adc_iPrEx1 `Vi ~T0 @X0 0 e ]
+"23 src/api/../includes/../driver/lcd.h
 [v _lcd_bl_off `(v ~T0 @X0 0 ef ]
+"22
+[v _lcd_bl_on `(v ~T0 @X0 0 ef ]
 "30 src/api/../includes/../api/ui.h
 [v _lcdTwinkle `uc ~T0 @X0 0 e ]
 "16 src/api/../includes/../soc/ticker.h
@@ -6175,9 +6177,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ticker.h: 14: extern void sys_ticker_init(void);
 [; ;ticker.h: 15: extern void sys_ticker_start(void);
 [; ;ticker.h: 16: extern void sys_ticker_stop(void);
-[; ;ticker.h: 17: extern volatile uint32_t glTicker;
-[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
+"18 src/api/../includes/../soc/ticker.h
+[v _glTicker `Vuc ~T0 @X0 1 e ]
+[; ;ticker.h: 18: volatile uint8_t glTicker;
+[; ;ticker.h: 19: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 21: void ticker_dly(uint16_t ms);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {
@@ -6509,27 +6513,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 137: extern volatile int16_t adc_inPt100;
 [; ;data.h: 139: extern volatile int16_t adc_pressure;
 [; ;data.h: 140: extern volatile int16_t adc_exPt100;
-[; ;data.h: 142: extern volatile int16_t adc_iPrEx[2];
+[; ;data.h: 142: extern volatile int16_t adc_iPrEx0;
+[; ;data.h: 143: extern volatile int16_t adc_iPrEx1;
 [; ;data.h: 145: extern volatile int16_t adc_ibat;
 [; ;data.h: 146: extern volatile int16_t adc_iRef;
 [; ;data.h: 148: extern st_prData x_prDiffData;
-[; ;data.h: 149: extern volatile int32_t rtDiffPressure;
-[; ;data.h: 150: extern volatile int32_t rtVolume;
-[; ;data.h: 151: extern volatile int32_t rtHight;
-[; ;data.h: 152: extern volatile int32_t rtWeight;
-[; ;data.h: 153: extern volatile uint8_t rtLevel;
-[; ;data.h: 154: extern volatile int32_t rtPressure;
-[; ;data.h: 155: extern volatile int32_t rtTemperatureEx;
-[; ;data.h: 157: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
-[; ;data.h: 158: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
-[; ;data.h: 159: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
-[; ;data.h: 163: extern uint8_t cal_diff_press(void);
-[; ;data.h: 164: extern uint8_t cal_diff_hight_level(void);
-[; ;data.h: 165: extern void cal_pt100_temperature_in(void);
-[; ;data.h: 167: extern uint8_t cal_press(void);
-[; ;data.h: 168: extern void cal_pt100_temperature_ex(void);
-[; ;data.h: 170: extern void cal_additional_pressute(uint8_t index);
-[; ;data.h: 172: extern void data_init_all(void);
+[; ;data.h: 149: extern volatile int16_t adc_diffPr;
+[; ;data.h: 150: extern volatile int16_t adc_bridgeTemp;
+[; ;data.h: 151: extern volatile int32_t rtDiffPressure;
+[; ;data.h: 152: extern volatile int32_t rtVolume;
+[; ;data.h: 153: extern volatile int32_t rtHight;
+[; ;data.h: 154: extern volatile int32_t rtWeight;
+[; ;data.h: 155: extern volatile uint8_t rtLevel;
+[; ;data.h: 156: extern volatile int32_t rtPressure;
+[; ;data.h: 157: extern volatile int32_t rtTemperatureEx;
+[; ;data.h: 159: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
+[; ;data.h: 160: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
+[; ;data.h: 161: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 165: extern uint8_t cal_diff_press(void);
+[; ;data.h: 166: extern uint8_t cal_diff_hight_level(void);
+[; ;data.h: 167: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 169: extern uint8_t cal_press(void);
+[; ;data.h: 170: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 172: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 174: extern void data_init_all(void);
 [; ;key_menu.h: 99: typedef union{
 [; ;key_menu.h: 100: uint8_t t8;
 [; ;key_menu.h: 101: struct{
@@ -9229,29 +9236,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 "860
 [e $U 886  ]
 {
-[; ;key_menu.c: 861: case 0x00:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx[0];break;
+[; ;key_menu.c: 861: case 0x00:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx0;break;
 "861
 [e :U 887 ]
 [e = . *U + &U . *U _stp 15 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _stp 15 `ui `ux 0 _t32 ]
-[e = . *U + &U . *U _stp 15 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _stp 15 `ui `ux 1 -> *U + &U _adc_iPrEx * -> -> -> 0 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux `ui ]
+[e = . *U + &U . *U _stp 15 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _stp 15 `ui `ux 1 -> _adc_iPrEx0 `ui ]
 [e $U 885  ]
-[; ;key_menu.c: 862: case 0x01:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx[0];break;
+[; ;key_menu.c: 862: case 0x01:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx0;break;
 "862
 [e :U 888 ]
 [e = . *U + &U . *U _stp 15 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _stp 15 `ui `ux 0 _t32 ]
-[e = . *U + &U . *U _stp 15 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _stp 15 `ui `ux 1 -> *U + &U _adc_iPrEx * -> -> -> 0 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux `ui ]
+[e = . *U + &U . *U _stp 15 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _stp 15 `ui `ux 1 -> _adc_iPrEx0 `ui ]
 [e $U 885  ]
-[; ;key_menu.c: 863: case 0x02:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx[1];break;
+[; ;key_menu.c: 863: case 0x02:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx1;break;
 "863
 [e :U 889 ]
 [e = . *U + &U . *U _stp 16 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _stp 16 `ui `ux 0 _t32 ]
-[e = . *U + &U . *U _stp 16 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _stp 16 `ui `ux 1 -> *U + &U _adc_iPrEx * -> -> -> 1 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux `ui ]
+[e = . *U + &U . *U _stp 16 * -> -> -> 0 `i `ui `ux -> -> # *U &U . *U _stp 16 `ui `ux 1 -> _adc_iPrEx1 `ui ]
 [e $U 885  ]
-[; ;key_menu.c: 864: case 0x03:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx[1];break;
+[; ;key_menu.c: 864: case 0x03:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx1;break;
 "864
 [e :U 890 ]
 [e = . *U + &U . *U _stp 16 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _stp 16 `ui `ux 0 _t32 ]
-[e = . *U + &U . *U _stp 16 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _stp 16 `ui `ux 1 -> *U + &U _adc_iPrEx * -> -> -> 1 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux `ui ]
+[e = . *U + &U . *U _stp 16 * -> -> -> 1 `i `ui `ux -> -> # *U &U . *U _stp 16 `ui `ux 1 -> _adc_iPrEx1 `ui ]
 [e $U 885  ]
 [; ;key_menu.c: 865: default:break;
 "865
@@ -9780,17 +9787,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 948 ]
 [e $ ! == -> _key `i + << -> 1 `i -> 0 `i << -> 1 `i -> 1 `i 950  ]
 {
-[; ;key_menu.c: 1016: if(blackEn)lcd_bl_on();
+[; ;key_menu.c: 1016: if(blackEn)lcd_bl_off();
 "1016
 [e $ ! != -> _blackEn `i -> -> -> 0 `i `Vuc `i 951  ]
-[e ( _lcd_bl_on ..  ]
+[e ( _lcd_bl_off ..  ]
 [e $U 952  ]
 "1017
 [e :U 951 ]
 [; ;key_menu.c: 1017: else
-[; ;key_menu.c: 1018: lcd_bl_off();
+[; ;key_menu.c: 1018: lcd_bl_on();
 "1018
-[e ( _lcd_bl_off ..  ]
+[e ( _lcd_bl_on ..  ]
 [e :U 952 ]
 "1019
 }

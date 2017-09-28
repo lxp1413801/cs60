@@ -6148,27 +6148,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 137: extern volatile int16_t adc_inPt100;
 [; ;data.h: 139: extern volatile int16_t adc_pressure;
 [; ;data.h: 140: extern volatile int16_t adc_exPt100;
-[; ;data.h: 142: extern volatile int16_t adc_iPrEx[2];
+[; ;data.h: 142: extern volatile int16_t adc_iPrEx0;
+[; ;data.h: 143: extern volatile int16_t adc_iPrEx1;
 [; ;data.h: 145: extern volatile int16_t adc_ibat;
 [; ;data.h: 146: extern volatile int16_t adc_iRef;
 [; ;data.h: 148: extern st_prData x_prDiffData;
-[; ;data.h: 149: extern volatile int32_t rtDiffPressure;
-[; ;data.h: 150: extern volatile int32_t rtVolume;
-[; ;data.h: 151: extern volatile int32_t rtHight;
-[; ;data.h: 152: extern volatile int32_t rtWeight;
-[; ;data.h: 153: extern volatile uint8_t rtLevel;
-[; ;data.h: 154: extern volatile int32_t rtPressure;
-[; ;data.h: 155: extern volatile int32_t rtTemperatureEx;
-[; ;data.h: 157: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
-[; ;data.h: 158: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
-[; ;data.h: 159: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
-[; ;data.h: 163: extern uint8_t cal_diff_press(void);
-[; ;data.h: 164: extern uint8_t cal_diff_hight_level(void);
-[; ;data.h: 165: extern void cal_pt100_temperature_in(void);
-[; ;data.h: 167: extern uint8_t cal_press(void);
-[; ;data.h: 168: extern void cal_pt100_temperature_ex(void);
-[; ;data.h: 170: extern void cal_additional_pressute(uint8_t index);
-[; ;data.h: 172: extern void data_init_all(void);
+[; ;data.h: 149: extern volatile int16_t adc_diffPr;
+[; ;data.h: 150: extern volatile int16_t adc_bridgeTemp;
+[; ;data.h: 151: extern volatile int32_t rtDiffPressure;
+[; ;data.h: 152: extern volatile int32_t rtVolume;
+[; ;data.h: 153: extern volatile int32_t rtHight;
+[; ;data.h: 154: extern volatile int32_t rtWeight;
+[; ;data.h: 155: extern volatile uint8_t rtLevel;
+[; ;data.h: 156: extern volatile int32_t rtPressure;
+[; ;data.h: 157: extern volatile int32_t rtTemperatureEx;
+[; ;data.h: 159: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
+[; ;data.h: 160: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
+[; ;data.h: 161: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 165: extern uint8_t cal_diff_press(void);
+[; ;data.h: 166: extern uint8_t cal_diff_hight_level(void);
+[; ;data.h: 167: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 169: extern uint8_t cal_press(void);
+[; ;data.h: 170: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 172: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 174: extern void data_init_all(void);
 "9 src/driver/m_flash.c
 [v _m_flash_unlock `(v ~T0 @X0 1 ef ]
 "10

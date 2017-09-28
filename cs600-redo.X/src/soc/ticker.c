@@ -8,7 +8,8 @@
 #include "ticker.h"
 //used timer2
 //#define OSC_FREQ 11059200 
-volatile uint32_t glTicker=0x00ul;
+//volatile uint32_t glTicker=0x00ul;
+volatile uint8_t glTicker=0x00ul;
 volatile uint16_t	userTicker_ms=0x00;
 
 extern uint8_t lcdTwinkle;
@@ -41,9 +42,9 @@ void sys_ticker_start(void)
 void sys_ticker_irq_hook(void)
 {
 	if(dlyTickerEn){
-		dlyTicker+=10;
+		dlyTicker+=(1000/TICKER_FREQUENCY_Hz);
 	}
-	userTicker_ms+=20;
+	userTicker_ms+=(1000/TICKER_FREQUENCY_Hz);
     //sys_ticker_stop();
 }
 

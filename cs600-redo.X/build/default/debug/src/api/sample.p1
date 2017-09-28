@@ -10,31 +10,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
 "6436
 [v _LATC `Vuc ~T0 @X0 0 e@3979 ]
-"163 src/api/../includes/../api/data.h
+"165 src/api/../includes/../api/data.h
 [v _cal_diff_press `(uc ~T0 @X0 0 ef ]
-"165
-[v _cal_pt100_temperature_in `(v ~T0 @X0 0 ef ]
 "167
+[v _cal_pt100_temperature_in `(v ~T0 @X0 0 ef ]
+"169
 [v _cal_press `(uc ~T0 @X0 0 ef ]
-"168
-[v _cal_pt100_temperature_ex `(v ~T0 @X0 0 ef ]
 "170
+[v _cal_pt100_temperature_ex `(v ~T0 @X0 0 ef ]
+"172
 [v _cal_additional_pressute `(v ~T0 @X0 0 ef1`uc ]
-"152 src/api/sample.c
-[c E7520 0 1 .. ]
-[n E7520 . TEST_MODE WORK_MODE  ]
-"29 src/api/../includes/../api/data.h
-[v _dwm `VE7520 ~T0 @X0 0 e ]
-"45 src/api/../includes/../api/sample.h
-[v _sample_diff_pr_chip_fast `(uc ~T0 @X0 0 ef ]
-"46
-[v _sample_pr_chip_fast `(uc ~T0 @X0 0 ef ]
-"47
-[v _sample_in_soc_adc_ch `(uc ~T0 @X0 0 ef ]
-"205 src/api/sample.c
-[c E7229 0 1 2 3 4 5 6 7 .. ]
-[n E7229 . ADS1X1X_MUX_DIFF_0_1 ADS1X1X_MUX_DIFF_0_3 ADS1X1X_MUX_DIFF_1_3 ADS1X1X_MUX_DIFF_2_3 ADS1X1X_MUX_SINGLE_0 ADS1X1X_MUX_SINGLE_1 ADS1X1X_MUX_SINGLE_2 ADS1X1X_MUX_SINGLE_3  ]
-"207
+"158 src/api/sample.c
 [c E7291 0 1 2 3 4 5 .. ]
 [n E7291 . ADS1013 ADS1014 ADS1015 ADS1113 ADS1114 ADS1115  ]
 "116 src/api/../includes/../driver/ads1115.h
@@ -51,23 +37,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 "128
 [s S650 `E7291 1 `uc 1 `S648 1 `*F7317 1 `*F7320 1 `*F7323 1 `*F7326 1 `*F7329 1 ]
 [n S650 . chip slaveAddr config iic_start iic_stop iic_send_byte iic_waite_ack iic_received_byte_if_ack ]
-"148
-[v _ads1115_set_mux `(v ~T0 @X0 0 ef2`*S650`E7229 ]
+"158 src/api/sample.c
+[c E7254 0 1 2 3 4 5 6 0 1 2 3 4 5 6 7 .. ]
+[n E7254 . ADS101X_DATA_RATE_128 ADS101X_DATA_RATE_250 ADS101X_DATA_RATE_490 ADS101X_DATA_RATE_920 ADS101X_DATA_RATE_1600 ADS101X_DATA_RATE_A2400 ADS101X_DATA_RATE_3300 ADS1X1X_DATA_RATE_8 ADS1X1X_DATA_RATE_16 ADS1X1X_DATA_RATE_32 ADS1X1X_DATA_RATE_64 ADS1X1X_DATA_RATE_128 ADS1X1X_DATA_RATE_250 ADS1X1X_DATA_RATE_475 ADS1X1X_DATA_RATE_860  ]
+"146 src/api/../includes/../driver/ads1115.h
+[v _ads1115_set_data_rate `(v ~T0 @X0 0 ef2`*S650`E7254 ]
 "140
 [v _pAds1115DiffPrObj `*S650 ~T0 @X0 0 e ]
-"208 src/api/sample.c
+"159 src/api/sample.c
+[c E7229 0 1 2 3 4 5 6 7 .. ]
+[n E7229 . ADS1X1X_MUX_DIFF_0_1 ADS1X1X_MUX_DIFF_0_3 ADS1X1X_MUX_DIFF_1_3 ADS1X1X_MUX_DIFF_2_3 ADS1X1X_MUX_SINGLE_0 ADS1X1X_MUX_SINGLE_1 ADS1X1X_MUX_SINGLE_2 ADS1X1X_MUX_SINGLE_3  ]
+"148 src/api/../includes/../driver/ads1115.h
+[v _ads1115_set_mux `(v ~T0 @X0 0 ef2`*S650`E7229 ]
+"160 src/api/sample.c
 [c E7240 0 1 2 3 4 5 .. ]
 [n E7240 . ADS1X1X_PGA_6144 ADS1X1X_PGA_4096 ADS1X1X_PGA_2048 ADS1X1X_PGA_1024 ADS1X1X_PGA_512 ADS1X1X_PGA_256  ]
 "147 src/api/../includes/../driver/ads1115.h
 [v _ads1115_set_pga `(v ~T0 @X0 0 ef2`*S650`E7240 ]
 "144
 [v _ads1115_start_conversion `(v ~T0 @X0 0 ef1`*S650 ]
-"145
+"33 src/api/../includes/../soc/clock.h
+[v _delay_ms `(v ~T0 @X0 0 ef1`ui ]
+"145 src/api/../includes/../driver/ads1115.h
 [v _ads1115_read_conversion `(ui ~T0 @X0 0 ef1`*S650 ]
-"137 src/api/../includes/../api/data.h
+"150 src/api/../includes/../api/data.h
+[v _adc_bridgeTemp `Vi ~T0 @X0 0 e ]
+"149
+[v _adc_diffPr `Vi ~T0 @X0 0 e ]
+"137
 [v _adc_inPt100 `Vi ~T0 @X0 0 e ]
-"148
-[v _x_prDiffData `S662 ~T0 @X0 0 e ]
 "141 src/api/../includes/../driver/ads1115.h
 [v _pAds1115PrObj `*S650 ~T0 @X0 0 e ]
 "140 src/api/../includes/../api/data.h
@@ -79,7 +77,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "19
 [v _in_adc_start_and_read `(ui ~T0 @X0 0 ef1`uc ]
 "142 src/api/../includes/../api/data.h
-[v _adc_iPrEx `Vi ~T0 @X0 -> 0 `x e ]
+[v _adc_iPrEx0 `Vi ~T0 @X0 0 e ]
+"143
+[v _adc_iPrEx1 `Vi ~T0 @X0 0 e ]
+"145
+[v _adc_ibat `Vi ~T0 @X0 0 e ]
+"146
+[v _adc_iRef `Vi ~T0 @X0 0 e ]
+"148
+[v _x_prDiffData `S662 ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -6147,9 +6153,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ticker.h: 14: extern void sys_ticker_init(void);
 [; ;ticker.h: 15: extern void sys_ticker_start(void);
 [; ;ticker.h: 16: extern void sys_ticker_stop(void);
-[; ;ticker.h: 17: extern volatile uint32_t glTicker;
-[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
+"18 src/api/../includes/../soc/ticker.h
+[v _glTicker `Vuc ~T0 @X0 1 e ]
+[; ;ticker.h: 18: volatile uint8_t glTicker;
+[; ;ticker.h: 19: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 21: void ticker_dly(uint16_t ms);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {
@@ -6481,27 +6489,30 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.h: 137: extern volatile int16_t adc_inPt100;
 [; ;data.h: 139: extern volatile int16_t adc_pressure;
 [; ;data.h: 140: extern volatile int16_t adc_exPt100;
-[; ;data.h: 142: extern volatile int16_t adc_iPrEx[2];
+[; ;data.h: 142: extern volatile int16_t adc_iPrEx0;
+[; ;data.h: 143: extern volatile int16_t adc_iPrEx1;
 [; ;data.h: 145: extern volatile int16_t adc_ibat;
 [; ;data.h: 146: extern volatile int16_t adc_iRef;
 [; ;data.h: 148: extern st_prData x_prDiffData;
-[; ;data.h: 149: extern volatile int32_t rtDiffPressure;
-[; ;data.h: 150: extern volatile int32_t rtVolume;
-[; ;data.h: 151: extern volatile int32_t rtHight;
-[; ;data.h: 152: extern volatile int32_t rtWeight;
-[; ;data.h: 153: extern volatile uint8_t rtLevel;
-[; ;data.h: 154: extern volatile int32_t rtPressure;
-[; ;data.h: 155: extern volatile int32_t rtTemperatureEx;
-[; ;data.h: 157: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
-[; ;data.h: 158: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
-[; ;data.h: 159: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
-[; ;data.h: 163: extern uint8_t cal_diff_press(void);
-[; ;data.h: 164: extern uint8_t cal_diff_hight_level(void);
-[; ;data.h: 165: extern void cal_pt100_temperature_in(void);
-[; ;data.h: 167: extern uint8_t cal_press(void);
-[; ;data.h: 168: extern void cal_pt100_temperature_ex(void);
-[; ;data.h: 170: extern void cal_additional_pressute(uint8_t index);
-[; ;data.h: 172: extern void data_init_all(void);
+[; ;data.h: 149: extern volatile int16_t adc_diffPr;
+[; ;data.h: 150: extern volatile int16_t adc_bridgeTemp;
+[; ;data.h: 151: extern volatile int32_t rtDiffPressure;
+[; ;data.h: 152: extern volatile int32_t rtVolume;
+[; ;data.h: 153: extern volatile int32_t rtHight;
+[; ;data.h: 154: extern volatile int32_t rtWeight;
+[; ;data.h: 155: extern volatile uint8_t rtLevel;
+[; ;data.h: 156: extern volatile int32_t rtPressure;
+[; ;data.h: 157: extern volatile int32_t rtTemperatureEx;
+[; ;data.h: 159: extern uint32_t data_sys_cal_v1(st_sysDataDef* stp);
+[; ;data.h: 160: extern uint32_t data_sys_cal_v2(st_sysDataDef* stp);
+[; ;data.h: 161: extern void calib_data_put_piont_tab(st_prCalibTabDef* ptab,st_prCalibPointDef* pp,uint8_t row,uint8_t col);
+[; ;data.h: 165: extern uint8_t cal_diff_press(void);
+[; ;data.h: 166: extern uint8_t cal_diff_hight_level(void);
+[; ;data.h: 167: extern void cal_pt100_temperature_in(void);
+[; ;data.h: 169: extern uint8_t cal_press(void);
+[; ;data.h: 170: extern void cal_pt100_temperature_ex(void);
+[; ;data.h: 172: extern void cal_additional_pressute(uint8_t index);
+[; ;data.h: 174: extern void data_init_all(void);
 [; ;key_menu.h: 99: typedef union{
 [; ;key_menu.h: 100: uint8_t t8;
 [; ;key_menu.h: 101: struct{
@@ -6716,219 +6727,231 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;sample.c: 40: volatile bool sensorPowerOn=0;
 "42
-[v ___x_sample_fliter `(i ~T0 @X0 1 ef3`*i`uc`uc ]
+[v _sampChIndex `uc ~T0 @X0 1 e ]
+[i _sampChIndex
+-> -> 0 `i `uc
+]
+[; ;sample.c: 42: uint8_t sampChIndex=0x00;
 "43
+[v _sampCount `uc ~T0 @X0 1 e ]
+[i _sampCount
+-> -> 0 `i `uc
+]
+[; ;sample.c: 43: uint8_t sampCount=0x00;
+"45
+[v ___x_sample_fliter `(i ~T0 @X0 1 ef3`*i`uc`uc ]
+"46
 {
-[; ;sample.c: 42: int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
-[; ;sample.c: 43: {
+[; ;sample.c: 45: int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
+[; ;sample.c: 46: {
 [e :U ___x_sample_fliter ]
-"42
+"45
 [v _buf `*i ~T0 @X0 1 r1 ]
 [v _len `uc ~T0 @X0 1 r2 ]
 [v _loop `uc ~T0 @X0 1 r3 ]
-"43
+"46
 [f ]
-"44
+"47
 [v _max `i ~T0 @X0 1 a ]
 [v _min `i ~T0 @X0 1 a ]
-"45
+"48
 [v _i `uc ~T0 @X0 1 a ]
 [v _maxLoc `uc ~T0 @X0 1 a ]
 [v _minLoc `uc ~T0 @X0 1 a ]
-"46
+"49
 [v _t32 `l ~T0 @X0 1 a ]
-[; ;sample.c: 44: int16_t max,min;
-[; ;sample.c: 45: uint8_t i,maxLoc,minLoc;
-[; ;sample.c: 46: int32_t t32=0;
+[; ;sample.c: 47: int16_t max,min;
+[; ;sample.c: 48: uint8_t i,maxLoc,minLoc;
+[; ;sample.c: 49: int32_t t32=0;
 [e = _t32 -> -> 0 `i `l ]
-[; ;sample.c: 47: if(len<3)return 0;
-"47
+[; ;sample.c: 50: if(len<3)return 0;
+"50
 [e $ ! < -> _len `i -> 3 `i 668  ]
 [e ) -> 0 `i ]
 [e $UE 667  ]
 [e :U 668 ]
-[; ;sample.c: 48: while(loop>0){
-"48
+[; ;sample.c: 51: while(loop>0){
+"51
 [e $U 669  ]
 [e :U 670 ]
 {
-[; ;sample.c: 49: min=max=buf[0];
-"49
+[; ;sample.c: 52: min=max=buf[0];
+"52
 [e = _min = _max *U + _buf * -> -> 0 `i `x -> -> # *U _buf `i `x ]
-[; ;sample.c: 50: t32=0;
-"50
+[; ;sample.c: 53: t32=0;
+"53
 [e = _t32 -> -> 0 `i `l ]
-[; ;sample.c: 51: for(i=0;i<len;i++){
-"51
+[; ;sample.c: 54: for(i=0;i<len;i++){
+"54
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 675  ]
 [e :U 672 ]
 {
-[; ;sample.c: 52: if(min>buf[i]){min=buf[i];minLoc=i;}
-"52
+[; ;sample.c: 55: if(min>buf[i]){min=buf[i];minLoc=i;}
+"55
 [e $ ! > _min *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 676  ]
 {
 [e = _min *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
 [e = _minLoc _i ]
 }
 [e :U 676 ]
-[; ;sample.c: 53: if(max<buf[i]){max=buf[i];maxLoc=i;}
-"53
+[; ;sample.c: 56: if(max<buf[i]){max=buf[i];maxLoc=i;}
+"56
 [e $ ! < _max *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux 677  ]
 {
 [e = _max *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
 [e = _maxLoc _i ]
 }
 [e :U 677 ]
-[; ;sample.c: 54: t32+=buf[i];
-"54
+[; ;sample.c: 57: t32+=buf[i];
+"57
 [e =+ _t32 -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `l ]
-"55
+"58
 }
-"51
+"54
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 675 ]
 [e $ < -> _i `i -> _len `i 672  ]
 [e :U 673 ]
-"55
-}
-[; ;sample.c: 55: }
-[; ;sample.c: 57: t32=t32-(int32_t)max;
-"57
-[e = _t32 - _t32 -> _max `l ]
-[; ;sample.c: 58: t32=t32-(int32_t)min;
 "58
-[e = _t32 - _t32 -> _min `l ]
-[; ;sample.c: 59: t32=t32/(len-2);
-"59
-[e = _t32 / _t32 -> - -> _len `i -> 2 `i `l ]
-[; ;sample.c: 60: buf[minLoc]=(int16_t)t32;
+}
+[; ;sample.c: 58: }
+[; ;sample.c: 60: t32=t32-(int32_t)max;
 "60
-[e = *U + _buf * -> _minLoc `ux -> -> # *U _buf `ui `ux -> _t32 `i ]
-[; ;sample.c: 61: buf[maxLoc]=(int16_t)t32;
+[e = _t32 - _t32 -> _max `l ]
+[; ;sample.c: 61: t32=t32-(int32_t)min;
 "61
-[e = *U + _buf * -> _maxLoc `ux -> -> # *U _buf `ui `ux -> _t32 `i ]
-[; ;sample.c: 62: loop--;
+[e = _t32 - _t32 -> _min `l ]
+[; ;sample.c: 62: t32=t32/(len-2);
 "62
-[e -- _loop -> -> 1 `i `uc ]
+[e = _t32 / _t32 -> - -> _len `i -> 2 `i `l ]
+[; ;sample.c: 63: buf[minLoc]=(int16_t)t32;
 "63
+[e = *U + _buf * -> _minLoc `ux -> -> # *U _buf `ui `ux -> _t32 `i ]
+[; ;sample.c: 64: buf[maxLoc]=(int16_t)t32;
+"64
+[e = *U + _buf * -> _maxLoc `ux -> -> # *U _buf `ui `ux -> _t32 `i ]
+[; ;sample.c: 65: loop--;
+"65
+[e -- _loop -> -> 1 `i `uc ]
+"66
 }
 [e :U 669 ]
-"48
+"51
 [e $ > -> _loop `i -> 0 `i 670  ]
 [e :U 671 ]
-[; ;sample.c: 63: }
-[; ;sample.c: 64: return (int16_t)t32;
-"64
+[; ;sample.c: 66: }
+[; ;sample.c: 67: return (int16_t)t32;
+"67
 [e ) -> _t32 `i ]
 [e $UE 667  ]
-[; ;sample.c: 65: }
-"65
+[; ;sample.c: 68: }
+"68
 [e :UE 667 ]
 }
-"67
+"70
 [v ___x_sample_fifo `(i ~T0 @X0 1 ef3`*i`i`uc ]
-"68
+"71
 {
-[; ;sample.c: 67: int16_t __x_sample_fifo(int16_t* buf,int16_t x,uint8_t len)
-[; ;sample.c: 68: {
+[; ;sample.c: 70: int16_t __x_sample_fifo(int16_t* buf,int16_t x,uint8_t len)
+[; ;sample.c: 71: {
 [e :U ___x_sample_fifo ]
-"67
+"70
 [v _buf `*i ~T0 @X0 1 r1 ]
 [v _x `i ~T0 @X0 1 r2 ]
 [v _len `uc ~T0 @X0 1 r3 ]
-"68
-[f ]
-"69
-[v _ret `l ~T0 @X0 1 a ]
-[; ;sample.c: 69: int32_t ret=0;
-[e = _ret -> -> 0 `i `l ]
-"70
-[v _i `uc ~T0 @X0 1 a ]
-[; ;sample.c: 70: uint8_t i;
-[; ;sample.c: 71: for(i=len-1;i>0;i--){
 "71
+[f ]
+"72
+[v _ret `l ~T0 @X0 1 a ]
+[; ;sample.c: 72: int32_t ret=0;
+[e = _ret -> -> 0 `i `l ]
+"73
+[v _i `uc ~T0 @X0 1 a ]
+[; ;sample.c: 73: uint8_t i;
+[; ;sample.c: 74: for(i=len-1;i>0;i--){
+"74
 {
 [e = _i -> - -> _len `i -> 1 `i `uc ]
 [e $ > -> _i `i -> 0 `i 679  ]
 [e $U 680  ]
 [e :U 679 ]
 {
-[; ;sample.c: 72: buf[i]=buf[i-1];
-"72
+[; ;sample.c: 75: buf[i]=buf[i-1];
+"75
 [e = *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux *U + _buf * -> - -> _i `i -> 1 `i `x -> -> # *U _buf `i `x ]
-[; ;sample.c: 73: ret+=buf[i];
-"73
+[; ;sample.c: 76: ret+=buf[i];
+"76
 [e =+ _ret -> *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux `l ]
-"74
+"77
 }
-"71
+"74
 [e -- _i -> -> 1 `i `uc ]
 [e $ > -> _i `i -> 0 `i 679  ]
 [e :U 680 ]
-"74
-}
-[; ;sample.c: 74: }
-[; ;sample.c: 75: buf[i]=x;
-"75
-[e = *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux _x ]
-[; ;sample.c: 76: ret+=x;
-"76
-[e =+ _ret -> _x `l ]
-[; ;sample.c: 77: ret/=len;
 "77
-[e =/ _ret -> _len `l ]
-[; ;sample.c: 78: return (int16_t)(ret);
+}
+[; ;sample.c: 77: }
+[; ;sample.c: 78: buf[i]=x;
 "78
+[e = *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux _x ]
+[; ;sample.c: 79: ret+=x;
+"79
+[e =+ _ret -> _x `l ]
+[; ;sample.c: 80: ret/=len;
+"80
+[e =/ _ret -> _len `l ]
+[; ;sample.c: 81: return (int16_t)(ret);
+"81
 [e ) -> _ret `i ]
 [e $UE 678  ]
-[; ;sample.c: 79: }
-"79
+[; ;sample.c: 82: }
+"82
 [e :UE 678 ]
 }
-"80
-[v _sample_diff_pr_fliter `(uc ~T0 @X0 1 ef1`*S662 ]
-"81
-{
-[; ;sample.c: 80: uint8_t sample_diff_pr_fliter(st_prData* xin)
-[; ;sample.c: 81: {
-[e :U _sample_diff_pr_fliter ]
-"80
-[v _xin `*S662 ~T0 @X0 1 r1 ]
-"81
-[f ]
-[; ;sample.c: 82: xin->tAdcValue=__x_sample_fliter(sampBufDiffPr_D01,4,4);
-"82
-[e = . *U _xin 2 ( ___x_sample_fliter (3 , , &U _sampBufDiffPr_D01 -> -> 4 `i `uc -> -> 4 `i `uc ]
-[; ;sample.c: 83: xin->pAdcValue=__x_sample_fliter(sampBufDiffPr_D23,4,4);
 "83
-[e = . *U _xin 1 ( ___x_sample_fliter (3 , , &U _sampBufDiffPr_D23 -> -> 4 `i `uc -> -> 4 `i `uc ]
-[; ;sample.c: 84: xin->pValue=0;
+[v _sample_diff_pr_fliter `(uc ~T0 @X0 1 ef1`*S662 ]
 "84
-[e = . *U _xin 0 -> -> 0 `i `l ]
-[; ;sample.c: 85: return 0;
+{
+[; ;sample.c: 83: uint8_t sample_diff_pr_fliter(st_prData* xin)
+[; ;sample.c: 84: {
+[e :U _sample_diff_pr_fliter ]
+"83
+[v _xin `*S662 ~T0 @X0 1 r1 ]
+"84
+[f ]
+[; ;sample.c: 85: xin->tAdcValue=__x_sample_fliter(sampBufDiffPr_D01,4,4);
 "85
+[e = . *U _xin 2 ( ___x_sample_fliter (3 , , &U _sampBufDiffPr_D01 -> -> 4 `i `uc -> -> 4 `i `uc ]
+[; ;sample.c: 86: xin->pAdcValue=__x_sample_fliter(sampBufDiffPr_D23,4,4);
+"86
+[e = . *U _xin 1 ( ___x_sample_fliter (3 , , &U _sampBufDiffPr_D23 -> -> 4 `i `uc -> -> 4 `i `uc ]
+[; ;sample.c: 87: xin->pValue=0;
+"87
+[e = . *U _xin 0 -> -> 0 `i `l ]
+[; ;sample.c: 88: return 0;
+"88
 [e ) -> -> 0 `i `uc ]
 [e $UE 682  ]
-[; ;sample.c: 86: }
-"86
+[; ;sample.c: 89: }
+"89
 [e :UE 682 ]
 }
-"88
+"91
 [v _sample_all_power_on `(v ~T0 @X0 1 ef ]
-"89
+"92
 {
-[; ;sample.c: 88: void sample_all_power_on(void)
-[; ;sample.c: 89: {
+[; ;sample.c: 91: void sample_all_power_on(void)
+[; ;sample.c: 92: {
 [e :U _sample_all_power_on ]
 [f ]
-[; ;sample.c: 90: if(!sensorPowerOn){
-"90
+[; ;sample.c: 93: if(!sensorPowerOn){
+"93
 [e $ ! ! != -> _sensorPowerOn `i -> -> -> 0 `i `Vuc `i 684  ]
 {
-[; ;sample.c: 91: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
-"91
+[; ;sample.c: 94: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB |= (1<<4);}while(0);; }while(0);;
+"94
 [e :U 687 ]
 {
 [e :U 690 ]
@@ -6943,8 +6966,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 692 ]
 }
 [e :U 686 ]
-[; ;sample.c: 92: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
-"92
+[; ;sample.c: 95: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC |= (1<<5);}while(0);; }while(0);;
+"95
 [e :U 696 ]
 {
 [e :U 699 ]
@@ -6959,27 +6982,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 701 ]
 }
 [e :U 695 ]
-[; ;sample.c: 93: sensorPowerOn=1;
-"93
+[; ;sample.c: 96: sensorPowerOn=1;
+"96
 [e = _sensorPowerOn -> -> 1 `i `uc ]
-"94
+"97
 }
 [e :U 684 ]
-[; ;sample.c: 94: }
-[; ;sample.c: 95: }
-"95
+[; ;sample.c: 97: }
+[; ;sample.c: 98: }
+"98
 [e :UE 683 ]
 }
-"97
+"100
 [v _sample_all_power_off `(v ~T0 @X0 1 ef ]
-"98
+"101
 {
-[; ;sample.c: 97: void sample_all_power_off(void)
-[; ;sample.c: 98: {
+[; ;sample.c: 100: void sample_all_power_off(void)
+[; ;sample.c: 101: {
 [e :U _sample_all_power_off ]
 [f ]
-[; ;sample.c: 99: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB &= ~(1<<4);}while(0);; }while(0);;
-"99
+[; ;sample.c: 102: do{ do{TRISB &= ~(1<<4);}while(0);; do{LATB &= ~(1<<4);}while(0);; }while(0);;
+"102
 [e :U 706 ]
 {
 [e :U 709 ]
@@ -6994,8 +7017,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 711 ]
 }
 [e :U 705 ]
-[; ;sample.c: 100: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
-"100
+[; ;sample.c: 103: do{ do{TRISC &= ~(1<<5);}while(0);; do{LATC &= ~(1<<5);}while(0);; }while(0);;
+"103
 [e :U 715 ]
 {
 [e :U 718 ]
@@ -7010,767 +7033,759 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 720 ]
 }
 [e :U 714 ]
-[; ;sample.c: 101: sensorPowerOn=0;
-"101
+[; ;sample.c: 104: sensorPowerOn=0;
+"104
 [e = _sensorPowerOn -> -> 0 `i `uc ]
-[; ;sample.c: 102: }
-"102
+[; ;sample.c: 105: }
+"105
 [e :UE 703 ]
 }
-"104
+"107
 [v _sample_variable_init `(v ~T0 @X0 1 ef ]
-"105
+"108
 {
-[; ;sample.c: 104: void sample_variable_init(void)
-[; ;sample.c: 105: {
+[; ;sample.c: 107: void sample_variable_init(void)
+[; ;sample.c: 108: {
 [e :U _sample_variable_init ]
 [f ]
-[; ;sample.c: 106: diffPrChipSampleTimer=0;
-"106
+[; ;sample.c: 109: diffPrChipSampleTimer=0;
+"109
 [e = _diffPrChipSampleTimer -> -> 0 `i `ui ]
-[; ;sample.c: 107: diffPrChipSampleCount=0;
-"107
-[e = _diffPrChipSampleCount -> -> 0 `i `uc ]
-[; ;sample.c: 108: diffPrChipSampCh=0;
-"108
-[e = _diffPrChipSampCh -> -> 0 `i `uc ]
-[; ;sample.c: 110: PrChipSampleTimer=0;
+[; ;sample.c: 110: diffPrChipSampleCount=0;
 "110
-[e = _PrChipSampleTimer -> -> 0 `i `ui ]
-[; ;sample.c: 111: prChipSampleCh=0;
+[e = _diffPrChipSampleCount -> -> 0 `i `uc ]
+[; ;sample.c: 111: diffPrChipSampCh=0;
 "111
-[e = _prChipSampleCh -> -> 0 `i `uc ]
-[; ;sample.c: 112: prChipSampleCount=0;
-"112
-[e = _prChipSampleCount -> -> 0 `i `uc ]
-[; ;sample.c: 114: inSocAdcSampleTimer=0;
+[e = _diffPrChipSampCh -> -> 0 `i `uc ]
+[; ;sample.c: 113: PrChipSampleTimer=0;
+"113
+[e = _PrChipSampleTimer -> -> 0 `i `ui ]
+[; ;sample.c: 114: prChipSampleCh=0;
 "114
-[e = _inSocAdcSampleTimer -> -> 0 `i `ui ]
-[; ;sample.c: 115: inSocAdcSampleCount=0;
+[e = _prChipSampleCh -> -> 0 `i `uc ]
+[; ;sample.c: 115: prChipSampleCount=0;
 "115
-[e = _inSocAdcSampleCount -> -> 0 `i `uc ]
-[; ;sample.c: 116: inSocAdcSampleCh=0;
-"116
-[e = _inSocAdcSampleCh -> -> 0 `i `uc ]
-[; ;sample.c: 118: diffPrChipSampleFinish=0;
+[e = _prChipSampleCount -> -> 0 `i `uc ]
+[; ;sample.c: 117: inSocAdcSampleTimer=0;
+"117
+[e = _inSocAdcSampleTimer -> -> 0 `i `ui ]
+[; ;sample.c: 118: inSocAdcSampleCount=0;
 "118
-[e = _diffPrChipSampleFinish -> -> 0 `i `uc ]
-[; ;sample.c: 119: PrChipSampleFinish=0;
+[e = _inSocAdcSampleCount -> -> 0 `i `uc ]
+[; ;sample.c: 119: inSocAdcSampleCh=0;
 "119
-[e = _PrChipSampleFinish -> -> 0 `i `uc ]
-[; ;sample.c: 120: inSocAdcSampleFinish=0;
-"120
-[e = _inSocAdcSampleFinish -> -> 0 `i `uc ]
-[; ;sample.c: 121: }
+[e = _inSocAdcSampleCh -> -> 0 `i `uc ]
+[; ;sample.c: 121: diffPrChipSampleFinish=0;
 "121
+[e = _diffPrChipSampleFinish -> -> 0 `i `uc ]
+[; ;sample.c: 122: PrChipSampleFinish=0;
+"122
+[e = _PrChipSampleFinish -> -> 0 `i `uc ]
+[; ;sample.c: 123: inSocAdcSampleFinish=0;
+"123
+[e = _inSocAdcSampleFinish -> -> 0 `i `uc ]
+[; ;sample.c: 124: }
+"124
 [e :UE 722 ]
 }
-"123
+"126
 [v _sample_call_cal_diff_pr `(uc ~T0 @X0 1 ef ]
-"124
+"127
 {
-[; ;sample.c: 123: uint8_t sample_call_cal_diff_pr(void)
-[; ;sample.c: 124: {
+[; ;sample.c: 126: uint8_t sample_call_cal_diff_pr(void)
+[; ;sample.c: 127: {
 [e :U _sample_call_cal_diff_pr ]
 [f ]
-[; ;sample.c: 125: if(!diffPrChipSampleFinish)return 0;
-"125
+[; ;sample.c: 128: if(!diffPrChipSampleFinish)return 0;
+"128
 [e $ ! ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 724  ]
 [e ) -> -> 0 `i `uc ]
 [e $UE 723  ]
 [e :U 724 ]
-[; ;sample.c: 126: cal_diff_press();
-"126
-[e ( _cal_diff_press ..  ]
-[; ;sample.c: 127: cal_pt100_temperature_in();
-"127
-[e ( _cal_pt100_temperature_in ..  ]
-[; ;sample.c: 128: diffPrChipSampleFinish=0;
-"128
-[e = _diffPrChipSampleFinish -> -> 0 `i `uc ]
-[; ;sample.c: 129: return 1;
+[; ;sample.c: 129: cal_diff_press();
 "129
+[e ( _cal_diff_press ..  ]
+[; ;sample.c: 130: cal_pt100_temperature_in();
+"130
+[e ( _cal_pt100_temperature_in ..  ]
+[; ;sample.c: 131: diffPrChipSampleFinish=0;
+"131
+[e = _diffPrChipSampleFinish -> -> 0 `i `uc ]
+[; ;sample.c: 132: return 1;
+"132
 [e ) -> -> 1 `i `uc ]
 [e $UE 723  ]
-[; ;sample.c: 130: }
-"130
+[; ;sample.c: 133: }
+"133
 [e :UE 723 ]
 }
-"131
+"134
 [v _sample_call_cal_pr `(uc ~T0 @X0 1 ef ]
-"132
+"135
 {
-[; ;sample.c: 131: uint8_t sample_call_cal_pr(void)
-[; ;sample.c: 132: {
+[; ;sample.c: 134: uint8_t sample_call_cal_pr(void)
+[; ;sample.c: 135: {
 [e :U _sample_call_cal_pr ]
 [f ]
-[; ;sample.c: 133: if(!PrChipSampleFinish)return 0;
-"133
+[; ;sample.c: 136: if(!PrChipSampleFinish)return 0;
+"136
 [e $ ! ! != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 726  ]
 [e ) -> -> 0 `i `uc ]
 [e $UE 725  ]
 [e :U 726 ]
-[; ;sample.c: 134: cal_press();
-"134
-[e ( _cal_press ..  ]
-[; ;sample.c: 135: cal_pt100_temperature_ex();
-"135
-[e ( _cal_pt100_temperature_ex ..  ]
-[; ;sample.c: 136: PrChipSampleFinish=0;
-"136
-[e = _PrChipSampleFinish -> -> 0 `i `uc ]
-[; ;sample.c: 137: return 1;
+[; ;sample.c: 137: cal_press();
 "137
+[e ( _cal_press ..  ]
+[; ;sample.c: 138: cal_pt100_temperature_ex();
+"138
+[e ( _cal_pt100_temperature_ex ..  ]
+[; ;sample.c: 139: PrChipSampleFinish=0;
+"139
+[e = _PrChipSampleFinish -> -> 0 `i `uc ]
+[; ;sample.c: 140: return 1;
+"140
 [e ) -> -> 1 `i `uc ]
 [e $UE 725  ]
-[; ;sample.c: 138: }
-"138
+[; ;sample.c: 141: }
+"141
 [e :UE 725 ]
 }
-"139
+"142
 [v _sample_call_cal_in_soc `(uc ~T0 @X0 1 ef ]
-"140
+"143
 {
-[; ;sample.c: 139: uint8_t sample_call_cal_in_soc(void)
-[; ;sample.c: 140: {
+[; ;sample.c: 142: uint8_t sample_call_cal_in_soc(void)
+[; ;sample.c: 143: {
 [e :U _sample_call_cal_in_soc ]
 [f ]
-[; ;sample.c: 141: if(!inSocAdcSampleFinish)return 0;
-"141
+[; ;sample.c: 144: if(!inSocAdcSampleFinish)return 0;
+"144
 [e $ ! ! != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 728  ]
 [e ) -> -> 0 `i `uc ]
 [e $UE 727  ]
 [e :U 728 ]
-[; ;sample.c: 142: cal_additional_pressute(0);
-"142
-[e ( _cal_additional_pressute (1 -> -> 0 `i `uc ]
-[; ;sample.c: 143: cal_additional_pressute(1);
-"143
-[e ( _cal_additional_pressute (1 -> -> 1 `i `uc ]
-[; ;sample.c: 144: inSocAdcSampleFinish=0;
-"144
-[e = _inSocAdcSampleFinish -> -> 0 `i `uc ]
-[; ;sample.c: 145: return 1;
+[; ;sample.c: 145: cal_additional_pressute(0);
 "145
+[e ( _cal_additional_pressute (1 -> -> 0 `i `uc ]
+[; ;sample.c: 146: cal_additional_pressute(1);
+"146
+[e ( _cal_additional_pressute (1 -> -> 1 `i `uc ]
+[; ;sample.c: 147: inSocAdcSampleFinish=0;
+"147
+[e = _inSocAdcSampleFinish -> -> 0 `i `uc ]
+[; ;sample.c: 148: return 1;
+"148
 [e ) -> -> 1 `i `uc ]
 [e $UE 727  ]
-[; ;sample.c: 146: }
-"146
+[; ;sample.c: 149: }
+"149
 [e :UE 727 ]
 }
-"148
+"152
 [v _sample_call_in_ticker `(v ~T0 @X0 1 ef ]
-"149
+"153
 {
-[; ;sample.c: 148: void sample_call_in_ticker(void)
-[; ;sample.c: 149: {
+[; ;sample.c: 152: void sample_call_in_ticker(void)
+[; ;sample.c: 153: {
 [e :U _sample_call_in_ticker ]
 [f ]
-"150
-[v _ret `uc ~T0 @X0 1 a ]
-[; ;sample.c: 150: uint8_t ret=0;
-[e = _ret -> -> 0 `i `uc ]
-[; ;sample.c: 151: if(!sensorSimpleEn)return;
-"151
-[e $ ! ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 730  ]
-[e $UE 729  ]
-[e :U 730 ]
-[; ;sample.c: 152: if(dwm!=WORK_MODE){
-"152
-[e $ ! != -> _dwm `i -> . `E7520 1 `i 731  ]
-{
-[; ;sample.c: 153: if(sample_call_cal_diff_pr())return;
-"153
-[e $ ! != -> ( _sample_call_cal_diff_pr ..  `i -> -> -> 0 `i `uc `i 732  ]
-[e $UE 729  ]
-[e :U 732 ]
-[; ;sample.c: 154: if(sample_call_cal_pr())return;
 "154
-[e $ ! != -> ( _sample_call_cal_pr ..  `i -> -> -> 0 `i `uc `i 733  ]
-[e $UE 729  ]
-[e :U 733 ]
-[; ;sample.c: 155: if(sample_call_cal_in_soc())return;
+[v _i `uc ~T0 @X0 1 a ]
 "155
-[e $ ! != -> ( _sample_call_cal_in_soc ..  `i -> -> -> 0 `i `uc `i 734  ]
-[e $UE 729  ]
-[e :U 734 ]
+[v _t16 `i ~T0 @X0 1 a ]
+[v _tmp16 `i ~T0 @X0 1 a ]
+[; ;sample.c: 154: uint8_t i;
+[; ;sample.c: 155: int16_t t16,tmp16;
+[; ;sample.c: 156: switch(sampChIndex){
 "156
-}
-[e :U 731 ]
-[; ;sample.c: 156: }
-[; ;sample.c: 157: if(sample_diff_pr_chip_fast())return;
+[e $U 731  ]
+{
+[; ;sample.c: 157: case 0:{
 "157
-[e $ ! != -> ( _sample_diff_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 735  ]
-[e $UE 729  ]
-[e :U 735 ]
-[; ;sample.c: 158: if(sample_pr_chip_fast())return;
+[e :U 732 ]
+{
+[; ;sample.c: 158: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
 "158
-[e $ ! != -> ( _sample_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 736  ]
-[e $UE 729  ]
-[e :U 736 ]
-[; ;sample.c: 159: if(sample_in_soc_adc_ch())return;
+[e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 14 ]
+[; ;sample.c: 159: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
 "159
-[e $ ! != -> ( _sample_in_soc_adc_ch ..  `i -> -> -> 0 `i `uc `i 737  ]
-[e $UE 729  ]
-[e :U 737 ]
-[; ;sample.c: 160: }
+[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7229 0 ]
+[; ;sample.c: 160: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 "160
-[e :UE 729 ]
-}
+[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 0 ]
+[; ;sample.c: 161: for(i=0;i<4+1;i++){
+"161
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 733  ]
+[e $U 734  ]
+[e :U 733 ]
+{
+[; ;sample.c: 162: ads1115_start_conversion(pAds1115DiffPrObj);
 "162
-[v _sample_function_enable_fi_in_rtc `(v ~T0 @X0 1 ef ]
+[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
+[; ;sample.c: 163: delay_ms(1);
 "163
-{
-[; ;sample.c: 162: void sample_function_enable_fi_in_rtc(void)
-[; ;sample.c: 163: {
-[e :U _sample_function_enable_fi_in_rtc ]
-[f ]
+[e ( _delay_ms (1 -> -> 1 `i `ui ]
+[; ;sample.c: 164: t16=ads1115_read_conversion(pAds1115DiffPrObj);
 "164
-[v _ret `uc ~T0 @X0 1 a ]
-[; ;sample.c: 164: uint8_t ret=0;
-[e = _ret -> -> 0 `i `uc ]
-[; ;sample.c: 166: if(dwm==WORK_MODE){
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
+[; ;sample.c: 165: if(i)t16=__x_sample_fifo(sampBufDiffPr_D01,t16,4);
+"165
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 736  ]
+[e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D01 _t16 -> -> 4 `i `uc ]
+[e :U 736 ]
 "166
-[e $ ! == -> _dwm `i -> . `E7520 1 `i 739  ]
-{
-[; ;sample.c: 167: if(sensorSimpleEn){
+}
+"161
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 733  ]
+[e :U 734 ]
+"166
+}
+[; ;sample.c: 166: }
+[; ;sample.c: 167: adc_bridgeTemp=t16;
 "167
-[e $ ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 740  ]
-{
-[; ;sample.c: 168: if(diffPrChipSampleFinish && PrChipSampleFinish && inSocAdcSampleFinish){
+[e = _adc_bridgeTemp _t16 ]
+[; ;sample.c: 168: sampChIndex=1;
 "168
-[e $ ! && && != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 741  ]
-{
-[; ;sample.c: 170: sensorSimpleEn=0;
+[e = _sampChIndex -> -> 1 `i `uc ]
+[; ;sample.c: 169: break;
+"169
+[e $U 730  ]
 "170
-[e = _sensorSimpleEn -> -> 0 `i `uc ]
-[; ;sample.c: 171: sample_all_power_off();
+}
+[; ;sample.c: 170: }
+[; ;sample.c: 171: case 1:{
 "171
-[e ( _sample_all_power_off ..  ]
-[; ;sample.c: 172: sensorSimpleTsLong=0;
+[e :U 737 ]
+{
+[; ;sample.c: 172: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
 "172
-[e = _sensorSimpleTsLong -> -> 0 `i `uc ]
+[e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 14 ]
+[; ;sample.c: 173: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
 "173
-}
-[e :U 741 ]
+[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7229 3 ]
+[; ;sample.c: 174: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
 "174
-}
-[; ;sample.c: 173: }
-[; ;sample.c: 174: }else{
-[e $U 742  ]
-[e :U 740 ]
-{
-[; ;sample.c: 175: if(diffPrChipSampleFinish || PrChipSampleFinish || inSocAdcSampleFinish){
+[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 5 ]
+[; ;sample.c: 175: for(i=0;i<4+1;i++){
 "175
-[e $ ! || || != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 743  ]
 {
-[; ;sample.c: 177: if(diffPrChipSampleFinish)ret=sample_call_cal_diff_pr();
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 738  ]
+[e $U 739  ]
+[e :U 738 ]
+{
+[; ;sample.c: 176: ads1115_start_conversion(pAds1115DiffPrObj);
+"176
+[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
+[; ;sample.c: 177: delay_ms(1);
 "177
-[e $ ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 744  ]
-[e = _ret ( _sample_call_cal_diff_pr ..  ]
-[e :U 744 ]
-[; ;sample.c: 178: if(!ret && PrChipSampleFinish)ret=sample_call_cal_pr();
+[e ( _delay_ms (1 -> -> 1 `i `ui ]
+[; ;sample.c: 178: t16=ads1115_read_conversion(pAds1115DiffPrObj);
 "178
-[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 745  ]
-[e = _ret ( _sample_call_cal_pr ..  ]
-[e :U 745 ]
-[; ;sample.c: 179: if(!ret && inSocAdcSampleFinish)ret=sample_call_cal_in_soc();
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
+[; ;sample.c: 179: if(i)t16=__x_sample_fifo(sampBufDiffPr_D23,t16,4);
 "179
-[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 746  ]
-[e = _ret ( _sample_call_cal_in_soc ..  ]
-[e :U 746 ]
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 741  ]
+[e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D23 _t16 -> -> 4 `i `uc ]
+[e :U 741 ]
 "180
 }
-[; ;sample.c: 180: }else if(sensorSimpleTsLong>=30*2){
-[e $U 747  ]
-[e :U 743 ]
-[e $ ! >= -> _sensorSimpleTsLong `i * -> 30 `i -> 2 `i 748  ]
-{
-[; ;sample.c: 182: sensorSimpleEn=1;
-"182
-[e = _sensorSimpleEn -> -> 1 `i `uc ]
-[; ;sample.c: 183: sample_all_power_on();
-"183
-[e ( _sample_all_power_on ..  ]
-[; ;sample.c: 184: sample_variable_init();
-"184
-[e ( _sample_variable_init ..  ]
-"185
+"175
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 738  ]
+[e :U 739 ]
+"180
 }
-[; ;sample.c: 185: }else{
+[; ;sample.c: 180: }
+[; ;sample.c: 181: adc_diffPr=t16;
+"181
+[e = _adc_diffPr _t16 ]
+[; ;sample.c: 182: sampChIndex=2;
+"182
+[e = _sampChIndex -> -> 2 `i `uc ]
+[; ;sample.c: 183: break;
+"183
+[e $U 730  ]
+"184
+}
+[; ;sample.c: 184: }
+[; ;sample.c: 185: case 2:{
+"185
+[e :U 742 ]
+{
+[; ;sample.c: 186: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+"186
+[e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 14 ]
+[; ;sample.c: 187: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
+"187
+[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7229 5 ]
+[; ;sample.c: 188: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
+"188
+[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 5 ]
+[; ;sample.c: 189: for(i=0;i<4+1;i++){
+"189
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 743  ]
+[e $U 744  ]
+[e :U 743 ]
+{
+[; ;sample.c: 190: ads1115_start_conversion(pAds1115DiffPrObj);
+"190
+[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
+[; ;sample.c: 191: delay_ms(1);
+"191
+[e ( _delay_ms (1 -> -> 1 `i `ui ]
+[; ;sample.c: 192: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+"192
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
+[; ;sample.c: 193: if(i)t16=__x_sample_fifo(sampBufDiffPr_S1,t16,4);
+"193
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 746  ]
+[e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_S1 _t16 -> -> 4 `i `uc ]
+[e :U 746 ]
+"194
+}
+"189
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 743  ]
+[e :U 744 ]
+"194
+}
+[; ;sample.c: 194: }
+[; ;sample.c: 195: adc_inPt100=t16;
+"195
+[e = _adc_inPt100 _t16 ]
+[; ;sample.c: 196: sampChIndex=3;
+"196
+[e = _sampChIndex -> -> 3 `i `uc ]
+[; ;sample.c: 197: break;
+"197
+[e $U 730  ]
+"198
+}
+[; ;sample.c: 198: }
+[; ;sample.c: 199: case 3:{
+"199
+[e :U 747 ]
+{
+[; ;sample.c: 200: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+"200
+[e ( _ads1115_set_data_rate (2 , _pAds1115PrObj . `E7254 14 ]
+[; ;sample.c: 201: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
+"201
+[e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7229 4 ]
+[; ;sample.c: 202: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
+"202
+[e ( _ads1115_set_pga (2 , _pAds1115PrObj . `E7240 2 ]
+[; ;sample.c: 203: for(i=0;i<4+1;i++){
+"203
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 748  ]
 [e $U 749  ]
 [e :U 748 ]
 {
-[; ;sample.c: 187: sensorSimpleTsLong++;
-"187
-[e ++ _sensorSimpleTsLong -> -> 1 `i `uc ]
-"188
-}
-[e :U 749 ]
-[e :U 747 ]
-"189
-}
-[e :U 742 ]
-"190
-}
-[; ;sample.c: 188: }
-[; ;sample.c: 189: }
-[; ;sample.c: 190: }else{
-[e $U 750  ]
-[e :U 739 ]
-{
-[; ;sample.c: 191: sensorSimpleEn=1;
-"191
-[e = _sensorSimpleEn -> -> 1 `i `uc ]
-[; ;sample.c: 192: sample_all_power_on();
-"192
-[e ( _sample_all_power_on ..  ]
-[; ;sample.c: 193: sensorSimpleTsLong=0;
-"193
-[e = _sensorSimpleTsLong -> -> 0 `i `uc ]
-"194
-}
-[e :U 750 ]
-[; ;sample.c: 194: }
-[; ;sample.c: 195: }
-"195
-[e :UE 738 ]
-}
-"197
-[v _sample_diff_pr_chip_fast `(uc ~T0 @X0 1 ef ]
-"198
-{
-[; ;sample.c: 197: uint8_t sample_diff_pr_chip_fast(void)
-[; ;sample.c: 198: {
-[e :U _sample_diff_pr_chip_fast ]
-[f ]
-"199
-[v _t16 `i ~T0 @X0 1 a ]
-[; ;sample.c: 199: int16_t t16;
-[; ;sample.c: 200: diffPrChipSampleTimer+=(1000/100);
-"200
-[e =+ _diffPrChipSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
-[; ;sample.c: 201: if(diffPrChipSampleTimer<10)return 0;
-"201
-[e $ ! < _diffPrChipSampleTimer -> -> 10 `i `ui 752  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 751  ]
-[e :U 752 ]
-[; ;sample.c: 202: diffPrChipSampleTimer=0;
-"202
-[e = _diffPrChipSampleTimer -> -> 0 `i `ui ]
-[; ;sample.c: 203: if(diffPrChipSampleCount==0){
-"203
-[e $ ! == -> _diffPrChipSampleCount `i -> 0 `i 753  ]
-{
-[; ;sample.c: 205: diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
+[; ;sample.c: 204: ads1115_start_conversion(pAds1115PrObj);
+"204
+[e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
+[; ;sample.c: 205: delay_ms(1);
 "205
-[e = _diffPrChipSampCh -> . `E7229 0 `uc ]
-[; ;sample.c: 207: ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
+[e ( _delay_ms (1 -> -> 1 `i `ui ]
+[; ;sample.c: 206: t16=ads1115_read_conversion(pAds1115PrObj);
+"206
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
+[; ;sample.c: 207: if(i)t16=__x_sample_fifo(sampBufPt100ExA,t16,4);
 "207
-[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj -> _diffPrChipSampCh `E7229 ]
-[; ;sample.c: 208: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 751  ]
+[e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufPt100ExA _t16 -> -> 4 `i `uc ]
+[e :U 751 ]
 "208
-[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 0 ]
-[; ;sample.c: 209: ads1115_start_conversion(pAds1115DiffPrObj);
+}
+"203
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 748  ]
+[e :U 749 ]
+"208
+}
+[; ;sample.c: 208: }
+[; ;sample.c: 209: tmp16=t16;
 "209
-[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 210: diffPrChipSampleCount=1;
+[e = _tmp16 _t16 ]
+[; ;sample.c: 210: sampChIndex=4;
 "210
-[e = _diffPrChipSampleCount -> -> 1 `i `uc ]
-[; ;sample.c: 211: return 1;
+[e = _sampChIndex -> -> 4 `i `uc ]
+[; ;sample.c: 211: break;
 "211
-[e ) -> -> 1 `i `uc ]
-[e $UE 751  ]
+[e $U 730  ]
 "212
 }
-[e :U 753 ]
 [; ;sample.c: 212: }
-[; ;sample.c: 213: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+[; ;sample.c: 213: case 4:{
 "213
-[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 214: if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_0_1){
+[e :U 752 ]
+{
+[; ;sample.c: 214: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
 "214
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 0 `i 754  ]
-{
-[; ;sample.c: 215: __x_sample_fifo(sampBufDiffPr_D01,t16,4);
+[e ( _ads1115_set_data_rate (2 , _pAds1115PrObj . `E7254 14 ]
+[; ;sample.c: 215: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_1);
 "215
-[e ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D01 _t16 -> -> 4 `i `uc ]
-[; ;sample.c: 216: diffPrChipSampCh=ADS1X1X_MUX_DIFF_2_3;
+[e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7229 5 ]
+[; ;sample.c: 216: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
 "216
-[e = _diffPrChipSampCh -> . `E7229 3 `uc ]
-[; ;sample.c: 217: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
+[e ( _ads1115_set_pga (2 , _pAds1115PrObj . `E7240 2 ]
+[; ;sample.c: 217: for(i=0;i<4+1;i++){
 "217
-[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 5 ]
-"218
-}
-[; ;sample.c: 218: }else if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_2_3){
-[e $U 755  ]
-[e :U 754 ]
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 3 `i 756  ]
 {
-[; ;sample.c: 219: __x_sample_fifo(sampBufDiffPr_D23,t16,4);
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 753  ]
+[e $U 754  ]
+[e :U 753 ]
+{
+[; ;sample.c: 218: ads1115_start_conversion(pAds1115PrObj);
+"218
+[e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
+[; ;sample.c: 219: delay_ms(1);
 "219
-[e ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D23 _t16 -> -> 4 `i `uc ]
-[; ;sample.c: 220: diffPrChipSampCh=ADS1X1X_MUX_SINGLE_1;
+[e ( _delay_ms (1 -> -> 1 `i `ui ]
+[; ;sample.c: 220: t16=ads1115_read_conversion(pAds1115PrObj);
 "220
-[e = _diffPrChipSampCh -> . `E7229 5 `uc ]
-[; ;sample.c: 221: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_512);
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
+[; ;sample.c: 221: if(i)t16=__x_sample_fifo(sampBufPt100ExB,t16,4);
 "221
-[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 4 ]
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 756  ]
+[e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufPt100ExB _t16 -> -> 4 `i `uc ]
+[e :U 756 ]
 "222
 }
-[; ;sample.c: 222: }else if(diffPrChipSampCh==ADS1X1X_MUX_SINGLE_1){
-[e $U 757  ]
-[e :U 756 ]
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 5 `i 758  ]
-{
-[; ;sample.c: 223: adc_inPt100=__x_sample_fifo(sampBufDiffPr_S1,t16,4);
-"223
-[e = _adc_inPt100 ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_S1 _t16 -> -> 4 `i `uc ]
-[; ;sample.c: 224: diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
-"224
-[e = _diffPrChipSampCh -> . `E7229 0 `uc ]
-[; ;sample.c: 225: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
-"225
-[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 0 ]
-[; ;sample.c: 226: diffPrChipSampleCount++;
-"226
-[e ++ _diffPrChipSampleCount -> -> 1 `i `uc ]
-"227
+"217
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 753  ]
+[e :U 754 ]
+"222
 }
-[; ;sample.c: 227: }else{
+[; ;sample.c: 222: }
+[; ;sample.c: 223: adc_exPt100=tmp16-t16-t16;
+"223
+[e = _adc_exPt100 - - _tmp16 _t16 _t16 ]
+[; ;sample.c: 224: sampChIndex=5;
+"224
+[e = _sampChIndex -> -> 5 `i `uc ]
+[; ;sample.c: 225: break;
+"225
+[e $U 730  ]
+"226
+}
+[; ;sample.c: 226: }
+[; ;sample.c: 227: case 5:{
+"227
+[e :U 757 ]
+{
+[; ;sample.c: 228: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+"228
+[e ( _ads1115_set_data_rate (2 , _pAds1115PrObj . `E7254 14 ]
+[; ;sample.c: 229: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
+"229
+[e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7229 3 ]
+[; ;sample.c: 230: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
+"230
+[e ( _ads1115_set_pga (2 , _pAds1115PrObj . `E7240 2 ]
+[; ;sample.c: 231: for(i=0;i<4+1;i++){
+"231
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 758  ]
 [e $U 759  ]
 [e :U 758 ]
 {
-[; ;sample.c: 228: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
-"228
-[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 0 ]
-[; ;sample.c: 229: diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
-"229
-[e = _diffPrChipSampCh -> . `E7229 0 `uc ]
-"230
-}
-[e :U 759 ]
-[e :U 757 ]
-[e :U 755 ]
-[; ;sample.c: 230: }
-[; ;sample.c: 232: ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
+[; ;sample.c: 232: ads1115_start_conversion(pAds1115PrObj);
 "232
-[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj -> _diffPrChipSampCh `E7229 ]
-[; ;sample.c: 233: ads1115_start_conversion(pAds1115DiffPrObj);
+[e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
+[; ;sample.c: 233: delay_ms(1);
 "233
-[e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 234: if(diffPrChipSampleCount>4){
+[e ( _delay_ms (1 -> -> 1 `i `ui ]
+[; ;sample.c: 234: t16=ads1115_read_conversion(pAds1115PrObj);
 "234
-[e $ ! > -> _diffPrChipSampleCount `i -> 4 `i 760  ]
-{
-[; ;sample.c: 235: sample_diff_pr_fliter(&x_prDiffData);
+[e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
+[; ;sample.c: 235: if(i)t16=__x_sample_fifo(sampBufPr,t16,4);
 "235
-[e ( _sample_diff_pr_fliter (1 &U _x_prDiffData ]
-[; ;sample.c: 236: diffPrChipSampleFinish=1;
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 761  ]
+[e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufPr _t16 -> -> 4 `i `uc ]
+[e :U 761 ]
 "236
-[e = _diffPrChipSampleFinish -> -> 1 `i `uc ]
-[; ;sample.c: 237: diffPrChipSampleCount=0;
+}
+"231
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 758  ]
+[e :U 759 ]
+"236
+}
+[; ;sample.c: 236: }
+[; ;sample.c: 237: adc_pressure=t16;
 "237
-[e = _diffPrChipSampleCount -> -> 0 `i `uc ]
+[e = _adc_pressure _t16 ]
+[; ;sample.c: 238: sampChIndex=6;
 "238
-}
-[e :U 760 ]
-[; ;sample.c: 238: }
-[; ;sample.c: 239: return 1;
+[e = _sampChIndex -> -> 6 `i `uc ]
+[; ;sample.c: 239: break;
 "239
-[e ) -> -> 1 `i `uc ]
-[e $UE 751  ]
-[; ;sample.c: 240: }
+[e $U 730  ]
 "240
-[e :UE 751 ]
 }
+[; ;sample.c: 240: }
+[; ;sample.c: 241: case 6:{
+"241
+[e :U 762 ]
+{
+[; ;sample.c: 242: in_adc_init();
 "242
-[v _sample_pr_chip_fast `(uc ~T0 @X0 1 ef ]
+[e ( _in_adc_init ..  ]
+[; ;sample.c: 243: for(i=0;i<4+1;i++){
 "243
 {
-[; ;sample.c: 242: uint8_t sample_pr_chip_fast(void)
-[; ;sample.c: 243: {
-[e :U _sample_pr_chip_fast ]
-[f ]
-"244
-[v _ret `uc ~T0 @X0 1 a ]
-[; ;sample.c: 244: uint8_t ret=0;
-[e = _ret -> -> 0 `i `uc ]
-"245
-[v _t16 `ui ~T0 @X0 1 a ]
-[; ;sample.c: 245: uint16_t t16;
-[; ;sample.c: 246: PrChipSampleTimer+=(1000/100);
-"246
-[e =+ _PrChipSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
-[; ;sample.c: 247: if(PrChipSampleTimer<10)return 0;
-"247
-[e $ ! < _PrChipSampleTimer -> -> 10 `i `ui 762  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 761  ]
-[e :U 762 ]
-[; ;sample.c: 248: PrChipSampleTimer=0;
-"248
-[e = _PrChipSampleTimer -> -> 0 `i `ui ]
-[; ;sample.c: 249: if(prChipSampleCount==0){
-"249
-[e $ ! == -> _prChipSampleCount `i -> 0 `i 763  ]
-{
-[; ;sample.c: 250: prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
-"250
-[e = _prChipSampleCh -> . `E7229 4 `uc ]
-[; ;sample.c: 251: ads1115_set_mux(pAds1115PrObj,prChipSampleCh);
-"251
-[e ( _ads1115_set_mux (2 , _pAds1115PrObj -> _prChipSampleCh `E7229 ]
-[; ;sample.c: 252: ads1115_start_conversion(pAds1115PrObj);
-"252
-[e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 253: prChipSampleCount++;
-"253
-[e ++ _prChipSampleCount -> -> 1 `i `uc ]
-[; ;sample.c: 254: return 1;
-"254
-[e ) -> -> 1 `i `uc ]
-[e $UE 761  ]
-"255
-}
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 763  ]
+[e $U 764  ]
 [e :U 763 ]
-[; ;sample.c: 255: }
-[; ;sample.c: 257: t16=ads1115_read_conversion(pAds1115PrObj);
-"257
-[e = _t16 ( _ads1115_read_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 258: if(prChipSampleCh==ADS1X1X_MUX_SINGLE_0){
-"258
-[e $ ! == -> _prChipSampleCh `i -> . `E7229 4 `i 764  ]
 {
-[; ;sample.c: 259: adc_exPt100=__x_sample_fifo(sampBufPt100ExA,t16,4);
-"259
-[e = _adc_exPt100 ( ___x_sample_fifo (3 , , &U _sampBufPt100ExA -> _t16 `i -> -> 4 `i `uc ]
-[; ;sample.c: 260: prChipSampleCh=ADS1X1X_MUX_SINGLE_1;
-"260
-[e = _prChipSampleCh -> . `E7229 5 `uc ]
-"261
+[; ;sample.c: 244: t16=in_adc_start_and_read(2);
+"244
+[e = _t16 -> ( _in_adc_start_and_read (1 -> -> 2 `i `uc `i ]
+[; ;sample.c: 245: t16=__x_sample_fifo(sampBufExPr0InSoc,t16,4);
+"245
+[e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufExPr0InSoc `*i _t16 -> -> 4 `i `uc ]
+"246
 }
-[; ;sample.c: 261: }else if(prChipSampleCh==ADS1X1X_MUX_SINGLE_1){
-[e $U 765  ]
+"243
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 763  ]
 [e :U 764 ]
-[e $ ! == -> _prChipSampleCh `i -> . `E7229 5 `i 766  ]
+"246
+}
+[; ;sample.c: 246: }
+[; ;sample.c: 247: adc_iPrEx0=t16;
+"247
+[e = _adc_iPrEx0 _t16 ]
+[; ;sample.c: 248: sampChIndex=7;
+"248
+[e = _sampChIndex -> -> 7 `i `uc ]
+[; ;sample.c: 249: break;
+"249
+[e $U 730  ]
+"250
+}
+[; ;sample.c: 250: }
+[; ;sample.c: 251: case 7:{
+"251
+[e :U 766 ]
 {
-[; ;sample.c: 262: t16=__x_sample_fifo(sampBufPt100ExB,t16,4);
+[; ;sample.c: 252: in_adc_init();
+"252
+[e ( _in_adc_init ..  ]
+[; ;sample.c: 253: for(i=0;i<4+1;i++){
+"253
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 767  ]
+[e $U 768  ]
+[e :U 767 ]
+{
+[; ;sample.c: 254: t16=in_adc_start_and_read(1);
+"254
+[e = _t16 -> ( _in_adc_start_and_read (1 -> -> 1 `i `uc `i ]
+[; ;sample.c: 255: t16=__x_sample_fifo(sampBufExPr1InSoc,t16,4);
+"255
+[e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufExPr1InSoc `*i _t16 -> -> 4 `i `uc ]
+"256
+}
+"253
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 767  ]
+[e :U 768 ]
+"256
+}
+[; ;sample.c: 256: }
+[; ;sample.c: 257: adc_iPrEx1=t16;
+"257
+[e = _adc_iPrEx1 _t16 ]
+[; ;sample.c: 258: sampChIndex=8;
+"258
+[e = _sampChIndex -> -> 8 `i `uc ]
+[; ;sample.c: 259: break;
+"259
+[e $U 730  ]
+"260
+}
+[; ;sample.c: 260: }
+[; ;sample.c: 261: case 8:{
+"261
+[e :U 770 ]
+{
+[; ;sample.c: 262: in_adc_init();
 "262
-[e = _t16 -> ( ___x_sample_fifo (3 , , &U _sampBufPt100ExB -> _t16 `i -> -> 4 `i `uc `ui ]
-[; ;sample.c: 263: t16*=2;
+[e ( _in_adc_init ..  ]
+[; ;sample.c: 263: for(i=0;i<4+1;i++){
 "263
-[e =* _t16 -> -> 2 `i `ui ]
-[; ;sample.c: 264: adc_exPt100-=t16;
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 771  ]
+[e $U 772  ]
+[e :U 771 ]
+{
+[; ;sample.c: 264: t16=in_adc_start_and_read(0);
 "264
-[e =- _adc_exPt100 -> _t16 `i ]
-[; ;sample.c: 265: prChipSampleCh=ADS1X1X_MUX_DIFF_2_3;
+[e = _t16 -> ( _in_adc_start_and_read (1 -> -> 0 `i `uc `i ]
+[; ;sample.c: 265: t16=__x_sample_fifo(sampBufBatInSoc,t16,4);
 "265
-[e = _prChipSampleCh -> . `E7229 3 `uc ]
+[e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufBatInSoc `*i _t16 -> -> 4 `i `uc ]
 "266
 }
-[; ;sample.c: 266: }else if(prChipSampleCh==ADS1X1X_MUX_DIFF_2_3){
-[e $U 767  ]
-[e :U 766 ]
-[e $ ! == -> _prChipSampleCh `i -> . `E7229 3 `i 768  ]
-{
-[; ;sample.c: 267: adc_pressure=__x_sample_fifo(sampBufPr,t16,4);
+"263
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 771  ]
+[e :U 772 ]
+"266
+}
+[; ;sample.c: 266: }
+[; ;sample.c: 267: adc_ibat=t16;
 "267
-[e = _adc_pressure ( ___x_sample_fifo (3 , , &U _sampBufPr -> _t16 `i -> -> 4 `i `uc ]
-[; ;sample.c: 268: prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
+[e = _adc_ibat _t16 ]
+[; ;sample.c: 268: sampChIndex=9;
 "268
-[e = _prChipSampleCh -> . `E7229 4 `uc ]
-[; ;sample.c: 269: prChipSampleCount++;
+[e = _sampChIndex -> -> 9 `i `uc ]
+[; ;sample.c: 269: break;
 "269
-[e ++ _prChipSampleCount -> -> 1 `i `uc ]
+[e $U 730  ]
 "270
 }
-[; ;sample.c: 270: }else{
-[e $U 769  ]
-[e :U 768 ]
-{
-[; ;sample.c: 271: prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
+[; ;sample.c: 270: }
+[; ;sample.c: 271: case 9:{
 "271
-[e = _prChipSampleCh -> . `E7229 4 `uc ]
-"272
-}
-[e :U 769 ]
-[e :U 767 ]
-[e :U 765 ]
-[; ;sample.c: 272: }
-[; ;sample.c: 274: ads1115_set_mux(pAds1115PrObj,prChipSampleCh);
-"274
-[e ( _ads1115_set_mux (2 , _pAds1115PrObj -> _prChipSampleCh `E7229 ]
-[; ;sample.c: 275: ads1115_start_conversion(pAds1115PrObj);
-"275
-[e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 276: if(prChipSampleCount>4){
-"276
-[e $ ! > -> _prChipSampleCount `i -> 4 `i 770  ]
-{
-[; ;sample.c: 277: PrChipSampleFinish=1;
-"277
-[e = _PrChipSampleFinish -> -> 1 `i `uc ]
-[; ;sample.c: 278: prChipSampleCount=0;
-"278
-[e = _prChipSampleCount -> -> 0 `i `uc ]
-"279
-}
-[e :U 770 ]
-[; ;sample.c: 279: }
-[; ;sample.c: 280: return 1;
-"280
-[e ) -> -> 1 `i `uc ]
-[e $UE 761  ]
-[; ;sample.c: 281: }
-"281
-[e :UE 761 ]
-}
-"283
-[v _sample_in_soc_adc_ch `(uc ~T0 @X0 1 ef ]
-"284
-{
-[; ;sample.c: 283: uint8_t sample_in_soc_adc_ch(void)
-[; ;sample.c: 284: {
-[e :U _sample_in_soc_adc_ch ]
-[f ]
-"285
-[v _t16 `ui ~T0 @X0 1 a ]
-[; ;sample.c: 285: uint16_t t16;
-[; ;sample.c: 286: inSocAdcSampleTimer+=(1000/100);
-"286
-[e =+ _inSocAdcSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
-[; ;sample.c: 287: if(inSocAdcSampleTimer<10)return 0;
-"287
-[e $ ! < _inSocAdcSampleTimer -> -> 10 `i `ui 772  ]
-[e ) -> -> 0 `i `uc ]
-[e $UE 771  ]
-[e :U 772 ]
-[; ;sample.c: 288: inSocAdcSampleTimer=0;
-"288
-[e = _inSocAdcSampleTimer -> -> 0 `i `ui ]
-[; ;sample.c: 289: if(inSocAdcSampleCount==0){
-"289
-[e $ ! == -> _inSocAdcSampleCount `i -> 0 `i 773  ]
-{
-[; ;sample.c: 290: in_adc_init();
-"290
-[e ( _in_adc_init ..  ]
-[; ;sample.c: 291: inSocAdcSampleCh=2;
-"291
-[e = _inSocAdcSampleCh -> -> 2 `i `uc ]
-[; ;sample.c: 292: inSocAdcSampleCount=1;
-"292
-[e = _inSocAdcSampleCount -> -> 1 `i `uc ]
-[; ;sample.c: 293: return 1;
-"293
-[e ) -> -> 1 `i `uc ]
-[e $UE 771  ]
-"294
-}
-[e :U 773 ]
-[; ;sample.c: 294: }
-[; ;sample.c: 295: if(inSocAdcSampleCh==2){
-"295
-[e $ ! == -> _inSocAdcSampleCh `i -> 2 `i 774  ]
-{
-[; ;sample.c: 296: t16=in_adc_start_and_read(inSocAdcSampleCh);
-"296
-[e = _t16 ( _in_adc_start_and_read (1 _inSocAdcSampleCh ]
-[; ;sample.c: 297: adc_iPrEx[0]=__x_sample_fifo((int16_t*)sampBufExPr0InSoc,t16,4);
-"297
-[e = *U + &U _adc_iPrEx * -> -> -> 0 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux ( ___x_sample_fifo (3 , , -> &U _sampBufExPr0InSoc `*i -> _t16 `i -> -> 4 `i `uc ]
-[; ;sample.c: 298: inSocAdcSampleCh=1;
-"298
-[e = _inSocAdcSampleCh -> -> 1 `i `uc ]
-"299
-}
-[; ;sample.c: 299: }else if(inSocAdcSampleCh==1){
-[e $U 775  ]
 [e :U 774 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 1 `i 776  ]
 {
-[; ;sample.c: 300: t16=in_adc_start_and_read(inSocAdcSampleCh);
-"300
-[e = _t16 ( _in_adc_start_and_read (1 _inSocAdcSampleCh ]
-[; ;sample.c: 301: adc_iPrEx[1]=__x_sample_fifo((int16_t*)sampBufExPr1InSoc,t16,4);
-"301
-[e = *U + &U _adc_iPrEx * -> -> -> 1 `i `ui `ux -> -> # *U &U _adc_iPrEx `ui `ux ( ___x_sample_fifo (3 , , -> &U _sampBufExPr1InSoc `*i -> _t16 `i -> -> 4 `i `uc ]
-[; ;sample.c: 302: inSocAdcSampleCh=0;
-"302
-[e = _inSocAdcSampleCh -> -> 0 `i `uc ]
-"303
-}
-[; ;sample.c: 303: }else if(inSocAdcSampleCh==0){
-[e $U 777  ]
-[e :U 776 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 0 `i 778  ]
+[; ;sample.c: 272: in_adc_init();
+"272
+[e ( _in_adc_init ..  ]
+[; ;sample.c: 273: for(i=0;i<4+1;i++){
+"273
 {
-[; ;sample.c: 304: t16=in_adc_start_and_read(inSocAdcSampleCh);
-"304
-[e = _t16 ( _in_adc_start_and_read (1 _inSocAdcSampleCh ]
-[; ;sample.c: 305: __x_sample_fifo((int16_t*)sampBufBatInSoc,t16,4);
-"305
-[e ( ___x_sample_fifo (3 , , -> &U _sampBufBatInSoc `*i -> _t16 `i -> -> 4 `i `uc ]
-[; ;sample.c: 306: inSocAdcSampleCh=3;
-"306
-[e = _inSocAdcSampleCh -> -> 3 `i `uc ]
-"307
-}
-[; ;sample.c: 307: }else if(inSocAdcSampleCh==3){
-[e $U 779  ]
-[e :U 778 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 3 `i 780  ]
-{
-[; ;sample.c: 308: t16=in_adc_start_and_read(inSocAdcSampleCh);
-"308
-[e = _t16 ( _in_adc_start_and_read (1 _inSocAdcSampleCh ]
-[; ;sample.c: 309: __x_sample_fifo((int16_t*)sampBufRefInSoc,t16,4);
-"309
-[e ( ___x_sample_fifo (3 , , -> &U _sampBufRefInSoc `*i -> _t16 `i -> -> 4 `i `uc ]
-[; ;sample.c: 310: inSocAdcSampleCh=2;
-"310
-[e = _inSocAdcSampleCh -> -> 2 `i `uc ]
-[; ;sample.c: 311: inSocAdcSampleCount++;
-"311
-[e ++ _inSocAdcSampleCount -> -> 1 `i `uc ]
-"312
-}
-[; ;sample.c: 312: }else{
-[e $U 781  ]
-[e :U 780 ]
-{
-[; ;sample.c: 313: inSocAdcSampleCh=2;
-"313
-[e = _inSocAdcSampleCh -> -> 2 `i `uc ]
-"314
-}
-[e :U 781 ]
-[e :U 779 ]
-[e :U 777 ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 775  ]
+[e $U 776  ]
 [e :U 775 ]
-[; ;sample.c: 314: }
-[; ;sample.c: 315: if(inSocAdcSampleCount>4){
-"315
-[e $ ! > -> _inSocAdcSampleCount `i -> 4 `i 782  ]
 {
-[; ;sample.c: 316: inSocAdcSampleFinish=1;
-"316
-[e = _inSocAdcSampleFinish -> -> 1 `i `uc ]
-[; ;sample.c: 317: inSocAdcSampleCount=0;
-"317
-[e = _inSocAdcSampleCount -> -> 0 `i `uc ]
-"318
+[; ;sample.c: 274: t16=in_adc_start_and_read(3);
+"274
+[e = _t16 -> ( _in_adc_start_and_read (1 -> -> 3 `i `uc `i ]
+[; ;sample.c: 275: t16=__x_sample_fifo(sampBufRefInSoc,t16,4);
+"275
+[e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufRefInSoc `*i _t16 -> -> 4 `i `uc ]
+"276
 }
-[e :U 782 ]
-[; ;sample.c: 318: }
-[; ;sample.c: 319: return 1;
-"319
-[e ) -> -> 1 `i `uc ]
-[e $UE 771  ]
-[; ;sample.c: 320: }
-"320
-[e :UE 771 ]
+"273
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i + -> 4 `i -> 1 `i 775  ]
+[e :U 776 ]
+"276
+}
+[; ;sample.c: 276: }
+[; ;sample.c: 277: adc_iRef=t16;
+"277
+[e = _adc_iRef _t16 ]
+[; ;sample.c: 278: sampChIndex=10;
+"278
+[e = _sampChIndex -> -> 10 `i `uc ]
+[; ;sample.c: 279: break;
+"279
+[e $U 730  ]
+"280
+}
+[; ;sample.c: 280: }
+[; ;sample.c: 281: case 10:
+"281
+[e :U 778 ]
+[; ;sample.c: 282: x_prDiffData.pValue=0;
+"282
+[e = . _x_prDiffData 0 -> -> 0 `i `l ]
+[; ;sample.c: 283: x_prDiffData.tAdcValue=adc_diffPr;
+"283
+[e = . _x_prDiffData 2 _adc_diffPr ]
+[; ;sample.c: 284: x_prDiffData.tAdcValue=adc_bridgeTemp;
+"284
+[e = . _x_prDiffData 2 _adc_bridgeTemp ]
+[; ;sample.c: 285: cal_diff_press();
+"285
+[e ( _cal_diff_press ..  ]
+[; ;sample.c: 286: cal_pt100_temperature_in();
+"286
+[e ( _cal_pt100_temperature_in ..  ]
+[; ;sample.c: 287: sampChIndex=11;
+"287
+[e = _sampChIndex -> -> 11 `i `uc ]
+[; ;sample.c: 288: break;
+"288
+[e $U 730  ]
+[; ;sample.c: 289: case 11:
+"289
+[e :U 779 ]
+[; ;sample.c: 290: cal_press();
+"290
+[e ( _cal_press ..  ]
+[; ;sample.c: 291: cal_pt100_temperature_ex();
+"291
+[e ( _cal_pt100_temperature_ex ..  ]
+[; ;sample.c: 292: sampChIndex=12;
+"292
+[e = _sampChIndex -> -> 12 `i `uc ]
+[; ;sample.c: 293: break;
+"293
+[e $U 730  ]
+[; ;sample.c: 294: case 12:
+"294
+[e :U 780 ]
+[; ;sample.c: 295: cal_additional_pressute(0);
+"295
+[e ( _cal_additional_pressute (1 -> -> 0 `i `uc ]
+[; ;sample.c: 296: cal_additional_pressute(1);
+"296
+[e ( _cal_additional_pressute (1 -> -> 1 `i `uc ]
+[; ;sample.c: 297: sampChIndex=13;
+"297
+[e = _sampChIndex -> -> 13 `i `uc ]
+[; ;sample.c: 298: break;
+"298
+[e $U 730  ]
+[; ;sample.c: 299: default:sampChIndex=0;break;
+"299
+[e :U 781 ]
+[e = _sampChIndex -> -> 0 `i `uc ]
+[e $U 730  ]
+"300
+}
+[; ;sample.c: 300: }
+[e $U 730  ]
+"156
+[e :U 731 ]
+[e [\ _sampChIndex , $ -> -> 0 `i `uc 732
+ , $ -> -> 1 `i `uc 737
+ , $ -> -> 2 `i `uc 742
+ , $ -> -> 3 `i `uc 747
+ , $ -> -> 4 `i `uc 752
+ , $ -> -> 5 `i `uc 757
+ , $ -> -> 6 `i `uc 762
+ , $ -> -> 7 `i `uc 766
+ , $ -> -> 8 `i `uc 770
+ , $ -> -> 9 `i `uc 774
+ , $ -> -> 10 `i `uc 778
+ , $ -> -> 11 `i `uc 779
+ , $ -> -> 12 `i `uc 780
+ 781 ]
+"300
+[e :U 730 ]
+[; ;sample.c: 301: }
+"301
+[e :UE 729 ]
 }

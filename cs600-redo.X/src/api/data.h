@@ -139,13 +139,15 @@ extern "C"{
 	extern volatile int16_t		adc_pressure;
 	extern volatile int16_t		adc_exPt100;
 
-	extern volatile int16_t		adc_iPrEx[2];
-	//extern volatile int16_t		adc_iPrEx1;
+	extern volatile int16_t		adc_iPrEx0;
+	extern volatile int16_t		adc_iPrEx1;
 
 	extern volatile int16_t		adc_ibat;
 	extern volatile int16_t		adc_iRef;
 
 	extern st_prData	x_prDiffData;
+	extern volatile int16_t	adc_diffPr;
+	extern volatile int16_t	adc_bridgeTemp;	
     extern volatile int32_t	rtDiffPressure;
 	extern volatile int32_t	rtVolume;
     extern volatile int32_t	rtHight;

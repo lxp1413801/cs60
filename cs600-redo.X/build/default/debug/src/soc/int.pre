@@ -8228,7 +8228,8 @@ extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);
-extern volatile uint32_t glTicker;
+
+volatile uint8_t glTicker;
 extern void sys_ticker_irq_hook(void);
 
 void ticker_dly(uint16_t ms);
@@ -8253,7 +8254,10 @@ if(INTCONbits.PEIE && PIE1bits.TMR1IE && PIR1bits.TMR1IF ){
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && IPR1bits.TMR2IP){
 PIR1bits.TMR2IF=0;
 glTicker++;
+if(glTicker >3){
 glbEvent |= (1<<0);
+glTicker=0;
+}
 sys_ticker_irq_hook();
 }
 if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && IPR3bits.RTCCIP){
@@ -8268,7 +8272,10 @@ void __interrupt(low_priority) handler_interrupt_low(void)
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && (!IPR1bits.TMR2IP)){
 PIR1bits.TMR2IF=0;
 glTicker++;
+if(glTicker >3){
 glbEvent |= (1<<0);
+glTicker=0;
+}
 sys_ticker_irq_hook();
 }
 if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && (!(IPR3bits.RTCCIP))){

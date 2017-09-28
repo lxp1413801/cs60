@@ -65,11 +65,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S295 . . . ]
 "7961
 [v _IPR1bits `VS295 ~T0 @X0 0 e@3999 ]
-"17 src/soc/ticker.h
-[v _glTicker `Vul ~T0 @X0 0 e ]
 "10 src/soc/../app/event.h
 [v _glbEvent `Vuc ~T0 @X0 0 e ]
-"18 src/soc/ticker.h
+"19 src/soc/ticker.h
 [v _sys_ticker_irq_hook `(v ~T0 @X0 0 ef ]
 "8182 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f86j93.h
 [s S308 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -6114,9 +6112,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ticker.h: 14: extern void sys_ticker_init(void);
 [; ;ticker.h: 15: extern void sys_ticker_start(void);
 [; ;ticker.h: 16: extern void sys_ticker_stop(void);
-[; ;ticker.h: 17: extern volatile uint32_t glTicker;
-[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
+"18 src/soc/ticker.h
+[v _glTicker `Vuc ~T0 @X0 1 e ]
+[; ;ticker.h: 18: volatile uint8_t glTicker;
+[; ;ticker.h: 19: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 21: void ticker_dly(uint16_t ms);
 [v $root$_handler_interrupt_hight `(v ~T0 @X0 0 e ]
 "9 src/soc/int.c
 [v _handler_interrupt_hight `(v ~T46 @X0 1 ef ]
@@ -6170,79 +6170,101 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
 [; ;int.c: 27: glTicker++;
 "27
-[e ++ _glTicker -> -> -> 1 `i `l `ul ]
-[; ;int.c: 28: glbEvent |= (1<<0);
+[e ++ _glTicker -> -> 1 `i `uc ]
+[; ;int.c: 28: if(glTicker >3){
 "28
-[e =| _glbEvent -> << -> 1 `i -> 0 `i `uc ]
-[; ;int.c: 29: sys_ticker_irq_hook();
-"29
-[e ( _sys_ticker_irq_hook ..  ]
-"30
-}
-[e :U 651 ]
-[; ;int.c: 30: }
-[; ;int.c: 31: if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && IPR3bits.RTCCIP){
-"31
-[e $ ! && && != -> . . _PIE3bits 0 0 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR3bits 0 0 `i -> -> -> 0 `i `Vuc `i != -> . . _IPR3bits 0 0 `i -> -> -> 0 `i `Vuc `i 652  ]
+[e $ ! > -> _glTicker `i -> 3 `i 652  ]
 {
-[; ;int.c: 32: PIR3bits.RTCCIF=0;
-"32
-[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;int.c: 33: glbEvent |= (1<<1);
-"33
-[e =| _glbEvent -> << -> 1 `i -> 1 `i `uc ]
-"35
+[; ;int.c: 29: glbEvent |= (1<<0);
+"29
+[e =| _glbEvent -> << -> 1 `i -> 0 `i `uc ]
+[; ;int.c: 30: glTicker=0;
+"30
+[e = _glTicker -> -> 0 `i `uc ]
+"31
 }
 [e :U 652 ]
-[; ;int.c: 35: }
-[; ;int.c: 36: }
+[; ;int.c: 31: }
+[; ;int.c: 32: sys_ticker_irq_hook();
+"32
+[e ( _sys_ticker_irq_hook ..  ]
+"33
+}
+[e :U 651 ]
+[; ;int.c: 33: }
+[; ;int.c: 34: if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && IPR3bits.RTCCIP){
+"34
+[e $ ! && && != -> . . _PIE3bits 0 0 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR3bits 0 0 `i -> -> -> 0 `i `Vuc `i != -> . . _IPR3bits 0 0 `i -> -> -> 0 `i `Vuc `i 653  ]
+{
+[; ;int.c: 35: PIR3bits.RTCCIF=0;
+"35
+[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
+[; ;int.c: 36: glbEvent |= (1<<1);
 "36
+[e =| _glbEvent -> << -> 1 `i -> 1 `i `uc ]
+"38
+}
+[e :U 653 ]
+[; ;int.c: 38: }
+[; ;int.c: 39: }
+"39
 [e :UE 646 ]
 }
 [v $root$_handler_interrupt_low `(v ~T0 @X0 0 e ]
-"38
+"41
 [v _handler_interrupt_low `(v ~T47 @X0 1 ef ]
-"39
+"42
 {
-[; ;int.c: 38: void __interrupt(low_priority) handler_interrupt_low(void)
-[; ;int.c: 39: {
+[; ;int.c: 41: void __interrupt(low_priority) handler_interrupt_low(void)
+[; ;int.c: 42: {
 [e :U _handler_interrupt_low ]
 [f ]
-[; ;int.c: 40: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && (!IPR1bits.TMR2IP)){
-"40
-[e $ ! && && != -> . . _PIE1bits 0 1 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR1bits 0 1 `i -> -> -> 0 `i `Vuc `i ! != -> . . _IPR1bits 0 1 `i -> -> -> 0 `i `Vuc `i 654  ]
-{
-[; ;int.c: 41: PIR1bits.TMR2IF=0;
-"41
-[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-[; ;int.c: 42: glTicker++;
-"42
-[e ++ _glTicker -> -> -> 1 `i `l `ul ]
-[; ;int.c: 43: glbEvent |= (1<<0);
+[; ;int.c: 43: if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && (!IPR1bits.TMR2IP)){
 "43
-[e =| _glbEvent -> << -> 1 `i -> 0 `i `uc ]
-[; ;int.c: 44: sys_ticker_irq_hook();
-"44
-[e ( _sys_ticker_irq_hook ..  ]
-"45
-}
-[e :U 654 ]
-[; ;int.c: 45: }
-[; ;int.c: 46: if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && (!(IPR3bits.RTCCIP))){
-"46
-[e $ ! && && != -> . . _PIE3bits 0 0 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR3bits 0 0 `i -> -> -> 0 `i `Vuc `i ! != -> . . _IPR3bits 0 0 `i -> -> -> 0 `i `Vuc `i 655  ]
+[e $ ! && && != -> . . _PIE1bits 0 1 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR1bits 0 1 `i -> -> -> 0 `i `Vuc `i ! != -> . . _IPR1bits 0 1 `i -> -> -> 0 `i `Vuc `i 655  ]
 {
-[; ;int.c: 47: PIR3bits.RTCCIF=0;
+[; ;int.c: 44: PIR1bits.TMR2IF=0;
+"44
+[e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
+[; ;int.c: 45: glTicker++;
+"45
+[e ++ _glTicker -> -> 1 `i `uc ]
+[; ;int.c: 46: if(glTicker >3){
+"46
+[e $ ! > -> _glTicker `i -> 3 `i 656  ]
+{
+[; ;int.c: 47: glbEvent |= (1<<0);
 "47
-[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
-[; ;int.c: 48: glbEvent |= (1<<1);
+[e =| _glbEvent -> << -> 1 `i -> 0 `i `uc ]
+[; ;int.c: 48: glTicker=0;
 "48
-[e =| _glbEvent -> << -> 1 `i -> 1 `i `uc ]
+[e = _glTicker -> -> 0 `i `uc ]
+"49
+}
+[e :U 656 ]
+[; ;int.c: 49: }
+[; ;int.c: 50: sys_ticker_irq_hook();
 "50
+[e ( _sys_ticker_irq_hook ..  ]
+"51
 }
 [e :U 655 ]
-[; ;int.c: 50: }
 [; ;int.c: 51: }
-"51
-[e :UE 653 ]
+[; ;int.c: 52: if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && (!(IPR3bits.RTCCIP))){
+"52
+[e $ ! && && != -> . . _PIE3bits 0 0 `i -> -> -> 0 `i `Vuc `i != -> . . _PIR3bits 0 0 `i -> -> -> 0 `i `Vuc `i ! != -> . . _IPR3bits 0 0 `i -> -> -> 0 `i `Vuc `i 657  ]
+{
+[; ;int.c: 53: PIR3bits.RTCCIF=0;
+"53
+[e = . . _PIR3bits 0 0 -> -> 0 `i `uc ]
+[; ;int.c: 54: glbEvent |= (1<<1);
+"54
+[e =| _glbEvent -> << -> 1 `i -> 1 `i `uc ]
+"56
+}
+[e :U 657 ]
+[; ;int.c: 56: }
+[; ;int.c: 57: }
+"57
+[e :UE 654 ]
 }

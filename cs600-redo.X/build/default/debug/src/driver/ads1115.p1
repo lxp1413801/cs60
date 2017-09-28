@@ -56,8 +56,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "106
 [c E7030 0 1 2 4 .. ]
 [n E7030 . COMP_QUEUE_1 COMP_QUEUE_2 COMP_QUEUE_4 COMP_QUEUE_DISABLE  ]
-"33 src/driver/../soc/clock.h
-[v _delay_ms `(v ~T0 @X0 0 ef1`ui ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 38: typedef signed long int int32_t;
@@ -6178,9 +6176,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ticker.h: 14: extern void sys_ticker_init(void);
 [; ;ticker.h: 15: extern void sys_ticker_start(void);
 [; ;ticker.h: 16: extern void sys_ticker_stop(void);
-[; ;ticker.h: 17: extern volatile uint32_t glTicker;
-[; ;ticker.h: 18: extern void sys_ticker_irq_hook(void);
-[; ;ticker.h: 20: void ticker_dly(uint16_t ms);
+"18 src/driver/../soc/ticker.h
+[v _glTicker `Vuc ~T0 @X0 1 e ]
+[; ;ticker.h: 18: volatile uint8_t glTicker;
+[; ;ticker.h: 19: extern void sys_ticker_irq_hook(void);
+[; ;ticker.h: 21: void ticker_dly(uint16_t ms);
 [; ;rtc.h: 13: typedef union {
 [; ;rtc.h: 14: uint8_t data;
 [; ;rtc.h: 15: struct {
@@ -6602,9 +6602,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ads1115.c: 125: ads1115_write_reg(pAds1115,(0x01),pAds1115->config.data);
 "125
 [e ( _ads1115_write_reg (3 , , _pAds1115 -> -> 1 `i `uc . . *U _pAds1115 2 0 ]
-[; ;ads1115.c: 126: delay_ms(1);
-"126
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
 [; ;ads1115.c: 127: }
 "127
 [e :UE 666 ]
@@ -6637,9 +6634,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 668 ]
 [; ;ads1115.c: 135: }
-[; ;ads1115.c: 136: delay_ms(1);
-"136
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
 [; ;ads1115.c: 137: return result;
 "137
 [e ) _result ]

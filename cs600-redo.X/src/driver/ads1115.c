@@ -123,7 +123,7 @@ void ads1115_init_all_chip(void)
 void ads1115_start_conversion(st_ads1115ObjDef* pAds1115)
 {
 	ads1115_write_reg(pAds1115,ADS1x1x_REG_POINTER_CONFIG,pAds1115->config.data);
-	delay_ms(1);
+	//delay_ms(1);
 }
 
 uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
@@ -133,7 +133,7 @@ uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
 	if(pAds1115->chip<ADS1113){
 		result >>= 4;
 	}
-	delay_ms(1);
+	//delay_ms(1);
 	return result;
 }
 

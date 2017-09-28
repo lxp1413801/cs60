@@ -8367,7 +8367,8 @@ extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);
-extern volatile uint32_t glTicker;
+
+volatile uint8_t glTicker;
 extern void sys_ticker_irq_hook(void);
 
 void ticker_dly(uint16_t ms);
@@ -8527,7 +8528,7 @@ ads1115_init(pAds1115DiffPrObj,(0x92));
 void ads1115_start_conversion(st_ads1115ObjDef* pAds1115)
 {
 ads1115_write_reg(pAds1115,(0x01),pAds1115->config.data);
-delay_ms(1);
+
 }
 
 uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
@@ -8537,7 +8538,7 @@ result=ads1115_read_reg(pAds1115,(0x00));
 if(pAds1115->chip<ADS1113){
 result >>= 4;
 }
-delay_ms(1);
+
 return result;
 }
 

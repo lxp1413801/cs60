@@ -1,7 +1,7 @@
 
 Memory Summary:
-    Program space        used  9716h ( 38678) of  F400h bytes   ( 61.9%)
-    Data space           used   656h (  1622) of   F54h bytes   ( 41.3%)
+    Program space        used  9368h ( 37736) of  F400h bytes   ( 60.4%)
+    Data space           used   65Ah (  1626) of   F54h bytes   ( 41.4%)
     Configuration bits   used     3h (     3) of     4h words   ( 75.0%)
     Data stack space     used   4B0h (  1200) of   854h bytes   ( 56.3%)
 

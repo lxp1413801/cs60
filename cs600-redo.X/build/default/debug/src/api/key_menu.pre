@@ -8337,7 +8337,8 @@ extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);
-extern volatile uint32_t glTicker;
+
+volatile uint8_t glTicker;
 extern void sys_ticker_irq_hook(void);
 
 void ticker_dly(uint16_t ms);
@@ -8787,13 +8788,15 @@ extern volatile int16_t adc_inPt100;
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-extern volatile int16_t adc_iPrEx[2];
-
+extern volatile int16_t adc_iPrEx0;
+extern volatile int16_t adc_iPrEx1;
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
 extern st_prData x_prDiffData;
+extern volatile int16_t adc_diffPr;
+extern volatile int16_t adc_bridgeTemp;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
 extern volatile int32_t rtHight;
@@ -9681,10 +9684,10 @@ int32_t t32;
 st_sysDataDef* stp=&stSysData;
 t32=__mflot32_2_int32(m_floatAdj.t32);
 switch(subMenu){
-case 0x00:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx[0];break;
-case 0x01:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx[0];break;
-case 0x02:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx[1];break;
-case 0x03:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx[1];break;
+case 0x00:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx0;break;
+case 0x01:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx0;break;
+case 0x02:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx1;break;
+case 0x03:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx1;break;
 default:break;
 }
 __sys_data_save_write_flash();
@@ -9836,9 +9839,9 @@ key_process_set_long();
 key_process_set_up_long();
 }else if(key == (0x01<<0x0) + (0x01<<0x01)){
 
-if(blackEn)lcd_bl_on();
+if(blackEn)lcd_bl_off();
 else
-lcd_bl_off();
+lcd_bl_on();
 }
 }else{
 

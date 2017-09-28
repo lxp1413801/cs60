@@ -14,7 +14,8 @@ extern "C"{
 	extern void sys_ticker_init(void);
 	extern void sys_ticker_start(void);
 	extern void sys_ticker_stop(void);
-	extern volatile uint32_t glTicker;
+	//extern volatile uint32_t glTicker;
+    volatile uint8_t glTicker;
 	extern void sys_ticker_irq_hook(void);
 	//
 	void ticker_dly(uint16_t ms);

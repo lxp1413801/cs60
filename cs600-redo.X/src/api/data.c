@@ -11,10 +11,14 @@ st_prCalibTabDef diff_prCalibTabDef={0};
 st_prCalibTabDef prCalibTabDef={0};
 
 st_prData	x_prDiffData;
+volatile int16_t	adc_diffPr;
+volatile int16_t	adc_bridgeTemp;	
 volatile int16_t 	adc_inPt100;
 volatile int16_t	adc_pressure;
 volatile int16_t	adc_exPt100;
-volatile int16_t	adc_iPrEx[2];
+//volatile int16_t	adc_iPrEx[2];
+volatile int16_t	adc_iPrEx0;
+volatile int16_t	adc_iPrEx1;
 volatile int16_t	adc_ibat;
 volatile int16_t	adc_iRef;
 
@@ -416,6 +420,7 @@ uint8_t m_interp1_cal_p_t(st_prData* tmpx,st_prData* xin,uint8_t tmpxLen)
 
 float m_interp1_float_fast(float* tab,float in,int16_t len)
 {
+	/*
 	uint16_t i;
 	float f,x,y;
 	for(i=0;i<len-1;i++){
@@ -429,6 +434,16 @@ float m_interp1_float_fast(float* tab,float in,int16_t len)
 	x=0.01f;
 	y=tab[i+1]-tab[i];
 	f=f+(in-0.01*i)*(y/x);
+	*/
+	uint16_t i;
+	float f,x,y;	
+	f=in*100;
+	if(f>100)f=100;
+	i=(uint16_t)f;
+	x=tab[i];
+	y=tab[i+1]-x;
+	f=y*(f-(float)i);
+	f=f+x;
 	return f;
 }
 
@@ -459,7 +474,7 @@ int32_t cal_diff_hight_to_vol_h(int32_t h)
     v1=v1*f1;
     
     f1=f2;
-    f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
+    f1=m_interp1_float_fast((float*)hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
 	v2=(float)(stSysData.V2);
     v2=v2*f1;
     
@@ -470,13 +485,24 @@ int32_t cal_diff_hight_to_vol_h(int32_t h)
 uint8_t cal_diff_hight_level(void)
 {
     float f1,f2;
+	f1=(float)stSysData.d;
+	f2=(float)stSysData.h;
+	if(stSysData.pos==HOTIZONTAL){
+	}else{
+		f1=f1+f2/2;
+	}
+	/*
 	if(stSysData.pos==HOTIZONTAL){
         f1=(float)stSysData.d;
     }else{
         f1=(float)stSysData.h;
         f1=(f1+stSysData.d)+(f1+stSysData.d);
     }
-    f1=f1*(stSysData.maxValueForlevelBar)/100;
+	*/
+	f2=(float)(stSysData.maxValueForlevelBar)/100.0;
+	f1=f1*f2;
+	
+    //f1=f1*(stSysData.maxValueForlevelBar)/100;
     if(f1==0)f1=1;
     f2=(float)rtHight;
     if(f2<0.0)f2=0.0;
@@ -490,28 +516,30 @@ uint8_t cal_diff_hight_level(void)
 int32_t cal_diff_hight_to_vol_v(int32_t h)
 {
 	float v1,v2;
-	float f1,D;
+	float f1,D,H;
 	v1=(float)(stSysData.V1);
 	v2=(float)(stSysData.V2);
 	
     f1=(float)h;
 	D=(float)(stSysData.d);
+	H==(float)(stSysData.h);
     if(f1<D/4){
         f1=2*f1/D;
         f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
-        v2=(float)(stSysData.V2);
+		v2=v2*f1;
         return (int32_t)v2;
-    }else if(f1<D/4+stSysData.h){
+    }else if(f1<D/4+H){
         f1=f1-D/4;
-        v2=v2*(f1/stSysData.h);
-        v1=v1/2;
+        v1=v1*(f1/H);
+        v2=v2/2;
         return (int32_t)(v1+v2);
     }else{
-        if(f1>(float)(stSysData.h)+D/2)f1=(float)(stSysData.h)+D/2;
-        
-        f1=f1-(D/4)-(float)(stSysData.h);
-        f1=2*f1/D;
-        f1=0.5-f1;
+        if(f1>H+D/2)f1=H+D/2;
+        f1=H+D/2-f1;
+		f1=0.5-f1;
+		if(f1<=0.0)f1=0.0;
+		f1=2*f1/D;
+        f1=m_interp1_float_fast(hKel,f1,sizeof(hKel)/sizeof(hKel[0]));
         v2=v2*(0.5+f1);
         return (int32_t)(v1+v2); 
     }
@@ -528,6 +556,15 @@ int32_t cal_diff_p_to_h(int32_t p)
     f1*=1000;
 	rtHight=(int32_t)f1;	
 	return rtHight;
+}
+int32_t cal_diff_vol_to_t(int32_t v)
+{
+	float f1,f2;
+	f1=(float)(v);
+	f2=(float)(stSysData.density);
+	f1=f1*f2/1000;
+	rtWeight=(int32_t)f1;
+	return rtWeight;
 }
 //计算差压
 //计算结果直接用xin返回
@@ -554,6 +591,8 @@ uint8_t cal_diff_press()
     }else{
 		rtVolume=cal_diff_hight_to_vol_v(rtHight);
 	}
+	//
+	cal_diff_vol_to_t(rtVolume);
 	return i;
 }
 

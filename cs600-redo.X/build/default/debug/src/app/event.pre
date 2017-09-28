@@ -8337,7 +8337,8 @@ extern volatile uint16_t userTicker_ms;
 extern void sys_ticker_init(void);
 extern void sys_ticker_start(void);
 extern void sys_ticker_stop(void);
-extern volatile uint32_t glTicker;
+
+volatile uint8_t glTicker;
 extern void sys_ticker_irq_hook(void);
 
 void ticker_dly(uint16_t ms);
@@ -8787,13 +8788,15 @@ extern volatile int16_t adc_inPt100;
 extern volatile int16_t adc_pressure;
 extern volatile int16_t adc_exPt100;
 
-extern volatile int16_t adc_iPrEx[2];
-
+extern volatile int16_t adc_iPrEx0;
+extern volatile int16_t adc_iPrEx1;
 
 extern volatile int16_t adc_ibat;
 extern volatile int16_t adc_iRef;
 
 extern st_prData x_prDiffData;
+extern volatile int16_t adc_diffPr;
+extern volatile int16_t adc_bridgeTemp;
 extern volatile int32_t rtDiffPressure;
 extern volatile int32_t rtVolume;
 extern volatile int32_t rtHight;

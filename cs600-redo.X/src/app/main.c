@@ -6,7 +6,7 @@ volatile uint8_t glNoEventTimeOut=MAX_NO_EVEN_TIME_OUT;
 int8_t event_process_rtc(void)
 {
 	uint8_t ret=0;
-    sample_function_enable_fi_in_rtc();
+    //sample_function_enable_fi_in_rtc();
 	
 	if(glNoEventTimeOut){
 		glNoEventTimeOut--;

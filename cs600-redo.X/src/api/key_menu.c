@@ -858,10 +858,10 @@ void __set_short_epr_param(bool gohome)
 	st_sysDataDef* stp=&stSysData;
     t32=__mflot32_2_int32(m_floatAdj.t32);
     switch(subMenu){
-		case sub_MENU_SET_EPR_CH0_P0:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx[0];break;
-		case sub_MENU_SET_EPR_CH0_P1:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx[0];break;
-		case sub_MENU_SET_EPR_CH1_P0:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx[1];break;
-		case sub_MENU_SET_EPR_CH1_P1:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx[1];break;
+		case sub_MENU_SET_EPR_CH0_P0:stp->exPr0Calib[0].value=t32;stp->exPr0Calib[0].adcValue=adc_iPrEx0;break;
+		case sub_MENU_SET_EPR_CH0_P1:stp->exPr0Calib[1].value=t32;stp->exPr0Calib[1].adcValue=adc_iPrEx0;break;
+		case sub_MENU_SET_EPR_CH1_P0:stp->exPr1Calib[0].value=t32;stp->exPr1Calib[0].adcValue=adc_iPrEx1;break;
+		case sub_MENU_SET_EPR_CH1_P1:stp->exPr1Calib[1].value=t32;stp->exPr1Calib[1].adcValue=adc_iPrEx1;break;
 		default:break;
     }
 	__sys_data_save_write_flash();
@@ -1013,9 +1013,9 @@ void key_process(void)
 			key_process_set_up_long();
 		}else if(key == KEY_VALUE_DOWN + KEY_VALUE_UP){
            // blackEn= (!blackEn);
-            if(blackEn)lcd_bl_on();
+            if(blackEn)lcd_bl_off();
             else 
-                lcd_bl_off();
+                lcd_bl_on();
         }
 	}else{
 		//短按

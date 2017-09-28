@@ -39,6 +39,9 @@ volatile bool sensorSimpleEn=false;
 volatile uint8_t sensorSimpleTsLong=0;
 volatile bool sensorPowerOn=false;
 
+uint8_t sampChIndex=0x00;
+uint8_t sampCount=0x00;
+
 int16_t __x_sample_fliter(int16_t* buf,uint8_t len,uint8_t loop)
 {
 	int16_t max,min;
@@ -144,6 +147,160 @@ uint8_t sample_call_cal_in_soc(void)
 	inSocAdcSampleFinish=false;
 	return 1;
 }
+// uint8_t sampChIndex=0x00;
+// uint8_t sampCount=0x00;
+void sample_call_in_ticker(void)
+{
+	uint8_t i;
+	int16_t t16,tmp16;
+	switch(sampChIndex){
+	case 0:{
+		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);		
+		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
+			ads1115_start_conversion(pAds1115DiffPrObj);
+			delay_ms(1);
+			t16=ads1115_read_conversion(pAds1115DiffPrObj);
+			if(i)t16=__x_sample_fifo(sampBufDiffPr_D01,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
+		}
+		adc_bridgeTemp=t16;
+		sampChIndex=1;
+		break;
+        }
+	case 1:{
+		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);		
+		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
+			ads1115_start_conversion(pAds1115DiffPrObj);
+			delay_ms(1);
+			t16=ads1115_read_conversion(pAds1115DiffPrObj);
+			if(i)t16=__x_sample_fifo(sampBufDiffPr_D23,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
+		}
+		adc_diffPr=t16;
+		sampChIndex=2;
+		break;
+       }
+	case 2:{
+		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);	
+		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
+			ads1115_start_conversion(pAds1115DiffPrObj);
+			delay_ms(1);
+			t16=ads1115_read_conversion(pAds1115DiffPrObj);
+			if(i)t16=__x_sample_fifo(sampBufDiffPr_S1,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
+		}	
+		adc_inPt100=t16;
+		sampChIndex=3;
+		break;
+	}
+	case 3:{
+		ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
+		ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
+		for(i=0;i<pr_CHIP_SAMPLE_BUF_LEN+1;i++){
+			ads1115_start_conversion(pAds1115PrObj);
+			delay_ms(1);
+			t16=ads1115_read_conversion(pAds1115PrObj);
+			if(i)t16=__x_sample_fifo(sampBufPt100ExA,t16,pr_CHIP_SAMPLE_BUF_LEN);
+		}
+		tmp16=t16;
+		sampChIndex=4;
+		break;
+	}
+	case 4:{
+		ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_1);
+		ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
+		for(i=0;i<pr_CHIP_SAMPLE_BUF_LEN+1;i++){
+			ads1115_start_conversion(pAds1115PrObj);
+			delay_ms(1);
+			t16=ads1115_read_conversion(pAds1115PrObj);
+			if(i)t16=__x_sample_fifo(sampBufPt100ExB,t16,pr_CHIP_SAMPLE_BUF_LEN);
+		}
+		adc_exPt100=tmp16-t16-t16;
+		sampChIndex=5;
+		break;	
+	}
+	case 5:{
+		ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
+		ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);	
+		for(i=0;i<pr_CHIP_SAMPLE_BUF_LEN+1;i++){
+			ads1115_start_conversion(pAds1115PrObj);
+			delay_ms(1);
+			t16=ads1115_read_conversion(pAds1115PrObj);
+			if(i)t16=__x_sample_fifo(sampBufPr,t16,pr_CHIP_SAMPLE_BUF_LEN);
+		}
+		adc_pressure=t16;
+		sampChIndex=6;
+		break;	
+	}
+	case 6:{
+		in_adc_init();
+		for(i=0;i<IN_SOC_ADC_SAMPLE_BUF_LEN+1;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_EXT_YALI_1);
+			t16=__x_sample_fifo(sampBufExPr0InSoc,t16,IN_SOC_ADC_SAMPLE_BUF_LEN);
+		}
+		adc_iPrEx0=t16;
+		sampChIndex=7;
+		break;	
+	}
+	case 7:{
+		in_adc_init();
+		for(i=0;i<IN_SOC_ADC_SAMPLE_BUF_LEN+1;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_EXT_YALI_2);
+			t16=__x_sample_fifo(sampBufExPr1InSoc,t16,IN_SOC_ADC_SAMPLE_BUF_LEN);
+		}
+		adc_iPrEx1=t16;
+		sampChIndex=8;
+		break;		
+	}
+	case 8:{
+		in_adc_init();
+		for(i=0;i<IN_SOC_ADC_SAMPLE_BUF_LEN+1;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_BAT);
+			t16=__x_sample_fifo(sampBufBatInSoc,t16,IN_SOC_ADC_SAMPLE_BUF_LEN);
+		}
+		adc_ibat=t16;
+		sampChIndex=9;
+		break;		
+	}
+	case 9:{
+		in_adc_init();
+		for(i=0;i<IN_SOC_ADC_SAMPLE_BUF_LEN+1;i++){
+			t16=in_adc_start_and_read(IN_ADC_CH_VREF_3V);
+			t16=__x_sample_fifo(sampBufRefInSoc,t16,IN_SOC_ADC_SAMPLE_BUF_LEN);
+		}
+		adc_iRef=t16;
+		sampChIndex=10;
+		break;		
+	}
+	case 10:
+		x_prDiffData.pValue=0;
+        x_prDiffData.tAdcValue=adc_diffPr;
+        x_prDiffData.tAdcValue=adc_bridgeTemp;
+		cal_diff_press();
+		cal_pt100_temperature_in(); 
+		sampChIndex=11;
+		break;
+	case 11:
+		cal_press();
+		cal_pt100_temperature_ex();	
+		sampChIndex=12;
+		break;
+	case 12:
+		cal_additional_pressute(0);
+		cal_additional_pressute(1);		
+		sampChIndex=13;
+		break;		
+	default:sampChIndex=0;break;
+    }
+}
+
+/*
 //采样调用函数在ticker事件中调用
 void sample_call_in_ticker(void)
 {
@@ -318,5 +475,5 @@ uint8_t sample_in_soc_adc_ch(void)
 	}
 	return 1;	
 }
-
+*/
 //file end

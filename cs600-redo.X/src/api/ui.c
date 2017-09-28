@@ -485,7 +485,7 @@ void ui_disp_menu_home(void)
 		lcd_disp_unit_2nd_m3(true);			
 	}
 	ui_disp_xfloat_pt(&mf,LCD_LINE_1);
-    //t8=rtLevel;
+    t8=rtLevel;
     //t8=60;
 	lcd_disp_level(t8);
 	lcd_disp_refresh(); 	

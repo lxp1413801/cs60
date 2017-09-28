@@ -723,7 +723,11 @@ void __set_short_diff_calib(bool gohome)
 	if(saveFlg){
 		t16=sizeof(diff_prCalibTabDef);
 		crc_append((uint8_t*)&diff_prCalibTabDef,t16-2);
-		at24c02_write_n_byte(pdiff_prEepromObj,0,(uint8_t*)&diff_prCalibTabDef,t16);        
+		at24c02_write_n_byte(pdiff_prEepromObj,0,(uint8_t*)&diff_prCalibTabDef,t16);     
+        at24c02_read_n_byte(pdiff_prEepromObj,0,globleBuffer,t16);
+        if(!m_str_cmp_len((uint8_t*)&diff_prCalibTabDef,globleBuffer,t16)){
+            __nop();
+        }
     }
 	if(gohome){__exit_menu_to_home_unsave(); return;}
 	calibCol++;
@@ -763,7 +767,7 @@ void __set_short_pr_calib(bool gohome)
 	if(saveFlg){
 		t16=sizeof(prCalibTabDef);
 		crc_append((uint8_t*)&prCalibTabDef,t16-2);
-		at24c02_write_n_byte(pdiff_prEepromObj,0,(uint8_t*)&prCalibTabDef,t16);        
+		at24c02_write_n_byte(p_prEepromObj,0,(uint8_t*)&prCalibTabDef,t16);        
     }
 	if(gohome){__exit_menu_to_home_unsave(); return;}
 	calibCol++;
@@ -924,7 +928,7 @@ void __set_long_base_zero(void)
 }
 void __set_long_bar_level_scale(void)
 {
-	int16_t* p;
+	uint16_t* p;
 	int32_t t32;
 	// st_sysDataDef* stp=(st_sysDataDef*)globleBuffer1; 
 	// m_flash_read(SYSTEM_DATA_ADDR,globleBuffer1,sizeof(st_sysDataDef));	

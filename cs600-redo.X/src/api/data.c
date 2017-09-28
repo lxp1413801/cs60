@@ -518,11 +518,11 @@ int32_t cal_diff_hight_to_vol_v(int32_t h)
 }
 //压力转高度
 //折算为，高度，P=ρgh<-->h=p/ρg;单位为P(KPa),ρ(N/m3),(g=9.8)
-int32_t cal_diff_p_to_h(st_prData* xin)
+int32_t cal_diff_p_to_h(int32_t p)
 {
 	float f1,f2;
 	//t32=xin->pValue;
-	f1=(float)(xin->pValue);
+	f1=(float)(p);
 	f2=(float)(stSysData.density);
     f1=f1/(f2*9.8f);
     f1*=1000;
@@ -543,11 +543,11 @@ uint8_t cal_diff_press()
         tabrow = &(diff_prCalibTabDef.prCalibRow[i]);
         m_interp1_cal_p_v(tabrow,xin,&tmpx[i]);
     }
-    m_interp1_cal_p_t(&tmpx[0],xin,i);
+    //m_interp1_cal_p_t(&tmpx[0],xin,i);
 	//
-	rtDiffPressure=xin->pValue;
-	
-	cal_diff_p_to_h(xin);
+	//rtDiffPressure=xin->pValue;
+	rtDiffPressure=tmpx[0].pValue;
+	cal_diff_p_to_h(rtDiffPressure);
     rtLevel=cal_diff_hight_level();
     if(stSysData.pos==HOTIZONTAL){
         rtVolume=cal_diff_hight_to_vol_h(rtHight);

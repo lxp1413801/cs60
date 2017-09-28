@@ -3,25 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="cs600_test">
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/sample.h</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/main.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/int.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/ads1115.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/key.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/lcd.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_pwr.h</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/configs/configs.h</file>
+            <file>file:/C:/Program%20Files%20(x86)/Microchip/xc8/v1.42/sources/common/fltol.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/ticker.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/depend/m_string.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/ui.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/event.h</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/soc.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/rtc.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/soc/clock.c</file>
+            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/data.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/i2c.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/ex_eeprom.h</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/sample.c</file>
             <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/app/event.c</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/api/key_menu.h</file>
-            <file>file:/F:/2017/cs60/cs60/cs600-redo.X/src/driver/m_gpio.h</file>
+            <file>file:/C:/Program%20Files%20(x86)/Microchip/xc8/v1.42/sources/common/awdiv.c</file>
         </group>
     </open-files>
 </project-private>

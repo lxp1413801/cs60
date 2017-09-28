@@ -28,7 +28,9 @@ int main(void)
         }
         if(glbEvent & flg_EVENT_TICKER){
             glbEvent &= ~flg_EVENT_TICKER;
+            sys_ticker_stop();
             event_process_ticker();
+            sys_ticker_start();
         }
         if(glbEvent & flg_EVENT_TIME_OUT){
             glbEvent &= ~flg_EVENT_TIME_OUT;

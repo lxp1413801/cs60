@@ -43,7 +43,7 @@ void sys_ticker_irq_hook(void)
 		dlyTicker+=10;
 	}
 	userTicker_ms+=20;
-
+    //sys_ticker_stop();
 }
 
 void ticker_dly(uint16_t ms)

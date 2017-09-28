@@ -124,23 +124,23 @@ uint8_t sample_call_cal_diff_pr(void)
 {
 	if(!diffPrChipSampleFinish)return 0;
 	cal_diff_press();
-	cal_pt100_temperature_in();
+	//cal_pt100_temperature_in();
 	diffPrChipSampleFinish=false;
 	return 1;
 }
 uint8_t sample_call_cal_pr(void)
 {
 	if(!PrChipSampleFinish)return 0;
-	cal_press();
-	cal_pt100_temperature_ex();
+	//cal_press();
+	//cal_pt100_temperature_ex();
 	PrChipSampleFinish=false;
 	return 1;
 }
 uint8_t sample_call_cal_in_soc(void)
 {
 	if(!inSocAdcSampleFinish)return 0;
-	cal_additional_pressute(0);
-	cal_additional_pressute(1);	
+	//cal_additional_pressute(0);
+	//cal_additional_pressute(1);	
 	inSocAdcSampleFinish=false;
 	return 1;
 }
@@ -151,8 +151,8 @@ void sample_call_in_ticker(void)
 	if(!sensorSimpleEn)return;
 	if(dwm!=WORK_MODE){
 		if(sample_call_cal_diff_pr())return;
-		if(sample_call_cal_pr())return;
-		if(sample_call_cal_in_soc())return;
+		//if(sample_call_cal_pr())return;
+		//if(sample_call_cal_in_soc())return;
 	}	
 	if(sample_diff_pr_chip_fast())return;
 	if(sample_pr_chip_fast())return;

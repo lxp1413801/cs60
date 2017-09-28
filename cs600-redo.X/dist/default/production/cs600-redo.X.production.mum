@@ -1,7 +1,7 @@
 
 Memory Summary:
-    Program space        used  AAFCh ( 43772) of  F400h bytes   ( 70.1%)
-    Data space           used   569h (  1385) of   F54h bytes   ( 35.3%)
+    Program space        used  9314h ( 37652) of  F400h bytes   ( 60.3%)
+    Data space           used   656h (  1622) of   F54h bytes   ( 41.3%)
     Configuration bits   used     3h (     3) of     4h words   ( 75.0%)
-    Data stack space     used     0h (     0) of   954h bytes   (  0.0%)
+    Data stack space     used   4B0h (  1200) of   854h bytes   ( 56.3%)
 

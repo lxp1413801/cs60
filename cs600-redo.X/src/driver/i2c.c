@@ -11,11 +11,8 @@ __nop();__nop();__nop();__nop();__nop(); \
 __nop();__nop();__nop();__nop();__nop(); \
 __nop();__nop();__nop();__nop();__nop(); \
 }while(0);
-#define __long_nop_delay() do{ \
-	__nop_delay(); \
-	__nop_delay(); \
-	__nop_delay(); \
-}while(0)
+
+
 void iic_start(void)
 {
 	iic_scl_mode_out();
@@ -23,11 +20,11 @@ void iic_start(void)
     
 	iic_sda_hight();
 	iic_scl_hight();
-	delay_us(3);
+	delay_us(10);
 	iic_sda_low();
-	delay_us(3);
+	delay_us(10);
 	iic_scl_low();
-	delay_us(3);
+	delay_us(10);
 }
 
 void iic_stop(void)
@@ -35,11 +32,11 @@ void iic_stop(void)
 	iic_scl_mode_out();
 	iic_sda_mode_out();
 	iic_sda_low();
-	delay_us(3);
+	delay_us(10);
 	iic_scl_hight();
-	delay_us(3);
+	delay_us(10);
 	iic_sda_hight();
-	delay_us(3);
+	delay_us(10);
 }
 
 void iic_send_ack(int8_t ack)
@@ -47,17 +44,17 @@ void iic_send_ack(int8_t ack)
 	iic_scl_mode_out();
 	iic_sda_mode_out();
 	iic_scl_low();
-	delay_us(3);
+	__nop_delay();
 	if(ack){
 		iic_sda_hight();
 	}else{
 		iic_sda_low();
 	}
-	delay_us(3);
+	__nop_delay();
 	iic_scl_hight();
-	delay_us(3);
+	__nop_delay();
 	iic_scl_low();
-	delay_us(3);
+	__nop_delay();
 }
 
 uint8_t iic_waite_ack(void)
@@ -66,9 +63,9 @@ uint8_t iic_waite_ack(void)
 	iic_scl_mode_out();
 	iic_sda_mode_in();
     iic_scl_low();
-    delay_us(3);
+    __nop_delay();
 	iic_scl_hight();
-    delay_us(3);
+    __nop_delay();
 	while(timeout--){
 		if(!iic_sda_get())break;
 	}
@@ -77,7 +74,7 @@ uint8_t iic_waite_ack(void)
 		return 0;
 	}
 	iic_scl_low();
-    delay_us(3);
+    __nop_delay();
 	return 1;	
 }
 
@@ -87,7 +84,7 @@ uint8_t iic_send_byte(uint8_t x)
     iic_scl_mode_out();
 	iic_sda_mode_out();
 	iic_scl_low();
-	delay_us(3);
+	__nop_delay();
 	for(i=0;i<8;i++){       
 		if(x&0x80){
 			iic_sda_hight();
@@ -95,13 +92,13 @@ uint8_t iic_send_byte(uint8_t x)
 		else{
 			iic_sda_low();
         }
-		delay_us(3);
+		__nop_delay();
 		iic_scl_hight();
-		//delay_us(3);
-        delay_us(3);
+		//__nop_delay();
+        __nop_delay();
 		iic_scl_low();
-        //delay_us(3);
-        delay_us(3);
+        //__nop_delay();
+        __nop_delay();
 		x<<=1;
 	}
 	return iic_waite_ack();
@@ -116,15 +113,15 @@ uint8_t iic_received_byte(void)
 	for(i=0;i<8;i++){
         ret<<=1;
 		iic_scl_low();
-        delay_us(3);
+        __nop_delay();
 		iic_scl_hight();
-        delay_us(3);
+        __nop_delay();
 		if(iic_sda_get()){
 			ret|=1;
 		}
 	}
 	iic_scl_low();
-    delay_us(3);
+    __nop_delay();
 	return ret;
 }
 uint8_t iic_received_byte_if_ack(uint8_t ack)

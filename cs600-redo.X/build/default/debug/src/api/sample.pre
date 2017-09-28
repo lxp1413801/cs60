@@ -8659,7 +8659,7 @@ extern void ui_disp_start_cs600(uint8_t dly);
 extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
-extern void ui_disp_menu(void);
+extern inline void ui_disp_menu(void);
 
 # 17 "src/api/../includes/../api/data.h"
 extern uint8_t globleBuffer[256];
@@ -9012,23 +9012,23 @@ uint8_t sample_call_cal_diff_pr(void)
 {
 if(!diffPrChipSampleFinish)return 0;
 cal_diff_press();
-
+cal_pt100_temperature_in();
 diffPrChipSampleFinish=0;
 return 1;
 }
 uint8_t sample_call_cal_pr(void)
 {
 if(!PrChipSampleFinish)return 0;
-
-
+cal_press();
+cal_pt100_temperature_ex();
 PrChipSampleFinish=0;
 return 1;
 }
 uint8_t sample_call_cal_in_soc(void)
 {
 if(!inSocAdcSampleFinish)return 0;
-
-
+cal_additional_pressute(0);
+cal_additional_pressute(1);
 inSocAdcSampleFinish=0;
 return 1;
 }
@@ -9039,8 +9039,8 @@ uint8_t ret=0;
 if(!sensorSimpleEn)return;
 if(dwm!=WORK_MODE){
 if(sample_call_cal_diff_pr())return;
-
-
+if(sample_call_cal_pr())return;
+if(sample_call_cal_in_soc())return;
 }
 if(sample_diff_pr_chip_fast())return;
 if(sample_pr_chip_fast())return;
@@ -9086,12 +9086,12 @@ uint8_t sample_diff_pr_chip_fast(void)
 {
 int16_t t16;
 diffPrChipSampleTimer+=(1000/100);
-if(diffPrChipSampleTimer<20)return 0;
+if(diffPrChipSampleTimer<10)return 0;
 diffPrChipSampleTimer=0;
 if(diffPrChipSampleCount==0){
 
 diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
-ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
+
 ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 ads1115_start_conversion(pAds1115DiffPrObj);
@@ -9116,7 +9116,7 @@ diffPrChipSampleCount++;
 ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 }
-ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
+
 ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 ads1115_start_conversion(pAds1115DiffPrObj);
 if(diffPrChipSampleCount>4){
@@ -9132,7 +9132,7 @@ uint8_t sample_pr_chip_fast(void)
 uint8_t ret=0;
 uint16_t t16;
 PrChipSampleTimer+=(1000/100);
-if(PrChipSampleTimer<20)return 0;
+if(PrChipSampleTimer<10)return 0;
 PrChipSampleTimer=0;
 if(prChipSampleCount==0){
 prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
@@ -9172,7 +9172,7 @@ uint8_t sample_in_soc_adc_ch(void)
 {
 uint16_t t16;
 inSocAdcSampleTimer+=(1000/100);
-if(inSocAdcSampleTimer<20)return 0;
+if(inSocAdcSampleTimer<10)return 0;
 inSocAdcSampleTimer=0;
 if(inSocAdcSampleCount==0){
 in_adc_init();

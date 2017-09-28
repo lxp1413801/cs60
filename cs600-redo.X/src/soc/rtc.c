@@ -99,10 +99,11 @@ void rtc_stop(void)
 {
     rtcc_disable();
 }
-
+/*
 void rtc_alrm_irq_hook(void)
 {
 
 }
+ * */
 
 //file end

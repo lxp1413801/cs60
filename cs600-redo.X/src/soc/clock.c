@@ -6,9 +6,8 @@
 // 'C' source line config statements
 
 // CONFIG1L
-
 #pragma config WDTEN = OFF      // Watchdog Timer (Disabled-Controlled by SWDTEN bit)
-#pragma config STVREN = OFF     // Stack Overflow Reset (Disabled)
+#pragma config STVREN = ON      // Stack Overflow Reset (Enabled)
 #pragma config XINST = OFF      // Extended Instruction Set Enable bit (Disabled)
 
 // CONFIG1H

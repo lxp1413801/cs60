@@ -1012,7 +1012,7 @@ void key_process(void)
 		}else if(key == (KEY_VALUE_SET+KEY_VALUE_UP)){
 			key_process_set_up_long();
 		}else if(key == KEY_VALUE_DOWN + KEY_VALUE_UP){
-            blackEn= (!blackEn);
+           // blackEn= (!blackEn);
             if(blackEn)lcd_bl_on();
             else 
                 lcd_bl_off();
@@ -1029,7 +1029,9 @@ void key_process(void)
 	}
 	//点亮闪烁的数位，禁止闪烁
 	lcd_twinkle_lock(TWINKLE_LOCK_TIME_s);
+	sys_ticker_stop();
 	ui_disp_menu();
+	sys_ticker_start();
 	key_waite_release(LONG_PRESS_TIME,&key);
 }
 

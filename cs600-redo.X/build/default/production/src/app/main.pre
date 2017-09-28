@@ -8659,7 +8659,7 @@ extern void ui_disp_start_cs600(uint8_t dly);
 extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
-extern void ui_disp_menu(void);
+extern inline void ui_disp_menu(void);
 
 # 17 "src/app/../includes/../api/data.h"
 extern uint8_t globleBuffer[256];
@@ -8890,7 +8890,39 @@ extern int8_t event_process(void);
 
 # 3 "src/app/main.c"
 volatile uint8_t glbEvent=0x00;
+volatile uint8_t glNoEventTimeOut=30;
 
+int8_t event_process_rtc(void)
+{
+uint8_t ret=0;
+sample_function_enable_fi_in_rtc();
+
+if(glNoEventTimeOut){
+glNoEventTimeOut--;
+if(!glNoEventTimeOut){
+glbEvent |= (1<<2);
+}
+}
+
+if(lcdTwinkle>0)lcdTwinkle--;
+sys_ticker_stop();
+ui_disp_menu();
+sys_ticker_start();
+return 1;
+}
+
+int8_t event_process_ticker(void)
+{
+uint8_t ret=0;
+sample_call_in_ticker();
+return ret;
+}
+
+int8_t event_process_time_out(void)
+{
+
+return 1;
+}
 int main(void)
 {
 uint16_t t16;
@@ -8905,7 +8937,7 @@ data_init_all();
 in_adc_init();
 
 ui_disp_start_cs600(4);
-
+lcd_bl_off();
 
 
 
@@ -8918,7 +8950,8 @@ event_process_rtc();
 if(glbEvent & (1<<0)){
 glbEvent &= ~(1<<0);
 sys_ticker_stop();
-event_process_ticker();
+
+sample_call_in_ticker();
 sys_ticker_start();
 }
 if(glbEvent & (1<<2)){

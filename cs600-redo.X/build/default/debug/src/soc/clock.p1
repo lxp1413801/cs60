@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"60 src/soc/clock.c
+"59 src/soc/clock.c
 [c E6934 0 1 2 3 4 5 6 7 .. ]
 [n E6934 __OSC_MODE OSC_PMODE_SLEEP OSC_PMODE_PRI_RUN OSC_PMODE_SEC_RUN OSC_PMODE_RC_RUN OSC_PMODE_PRI_IDLE OSC_PMODE_SEC_IDLE OSC_PMODE_RC_IDLE OSC_PMODE_MAX  ]
 "13623 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f86j93.h
@@ -5964,29 +5964,29 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 164: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 166: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 168: extern __nonreentrant void _delay3(unsigned char);
-"10 src/soc/clock.c
+"9 src/soc/clock.c
 [p x WDTEN=OFF ]
+"10
+[p x STVREN=ON ]
 "11
-[p x STVREN=OFF ]
-"12
 [p x XINST=OFF ]
-"15
+"14
 [p x CP0=OFF ]
-"18
+"17
 [p x OSC=HS ]
-"19
+"18
 [p x T1DIG=OFF ]
-"20
+"19
 [p x LPT1OSC=OFF ]
-"21
+"20
 [p x FCMEN=OFF ]
-"22
+"21
 [p x IESO=OFF ]
-"25
+"24
 [p x WDTPS=32768 ]
-"28
+"27
 [p x RTCSOSC=T1OSCREF ]
-"31
+"30
 [p x CCP2MX=DEFAULT ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
@@ -6059,83 +6059,83 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;rtc.h: 39: extern void rtc_stop(void);
 [; ;rtc.h: 41: extern void rtc_alrm_irq_hook(void);
 [; ;soc.h: 28: extern void soc_init(void);
-"38
+"37
 [v _osc_setup `(v ~T0 @X0 1 ef ]
-"39
+"38
 {
-[; ;clock.c: 38: void osc_setup(void)
-[; ;clock.c: 39: {
+[; ;clock.c: 37: void osc_setup(void)
+[; ;clock.c: 38: {
 [e :U _osc_setup ]
 [f ]
-[; ;clock.c: 57: }
-"57
+[; ;clock.c: 56: }
+"56
 [e :UE 646 ]
 }
-"59
+"58
 [v _osc_set_power `(v ~T0 @X0 1 ef1`E6934 ]
-"60
-{
-[; ;clock.c: 59: void osc_set_power(em_oscMode oscMode)
-[; ;clock.c: 60: {
-[e :U _osc_set_power ]
 "59
+{
+[; ;clock.c: 58: void osc_set_power(em_oscMode oscMode)
+[; ;clock.c: 59: {
+[e :U _osc_set_power ]
+"58
 [v _oscMode `E6934 ~T0 @X0 1 r1 ]
-"60
+"59
 [f ]
-[; ;clock.c: 61: switch (oscMode){
-"61
+[; ;clock.c: 60: switch (oscMode){
+"60
 [e $U 649  ]
 {
-[; ;clock.c: 62: case OSC_PMODE_SLEEP:
-"62
-[e :U 650 ]
-[; ;clock.c: 63: OSCCONbits.IDLEN = 0;
-"63
-[e = . . _OSCCONbits 0 4 -> -> 0 `i `uc ]
-[; ;clock.c: 65: asm(" sleep");
-"65
-[; <"  sleep ;# ">
-[; ;clock.c: 66: break;
-"66
-[e $U 648  ]
-[; ;clock.c: 67: case OSC_PMODE_PRI_IDLE:
-"67
-[e :U 651 ]
-"68
-[e :U 652 ]
-"69
-[e :U 653 ]
-[; ;clock.c: 68: case OSC_PMODE_SEC_IDLE:
-[; ;clock.c: 69: case OSC_PMODE_RC_IDLE:
-[; ;clock.c: 71: OSCCONbits.IDLEN = 1;
-"71
-[e = . . _OSCCONbits 0 4 -> -> 1 `i `uc ]
-[; ;clock.c: 73: asm(" sleep");
-"73
-[; <"  sleep ;# ">
-[; ;clock.c: 74: break;
-"74
-[e $U 648  ]
-[; ;clock.c: 75: case OSC_PMODE_PRI_RUN:
-"75
-[e :U 654 ]
-"76
-[e :U 655 ]
-"77
-[e :U 656 ]
-[; ;clock.c: 76: case OSC_PMODE_SEC_RUN:
-[; ;clock.c: 77: case OSC_PMODE_RC_RUN:
-[; ;clock.c: 78: default:
-"78
-[e :U 657 ]
-[; ;clock.c: 79: break;
-"79
-[e $U 648  ]
-"80
-}
-[; ;clock.c: 80: }
-[e $U 648  ]
+[; ;clock.c: 61: case OSC_PMODE_SLEEP:
 "61
+[e :U 650 ]
+[; ;clock.c: 62: OSCCONbits.IDLEN = 0;
+"62
+[e = . . _OSCCONbits 0 4 -> -> 0 `i `uc ]
+[; ;clock.c: 64: asm(" sleep");
+"64
+[; <"  sleep ;# ">
+[; ;clock.c: 65: break;
+"65
+[e $U 648  ]
+[; ;clock.c: 66: case OSC_PMODE_PRI_IDLE:
+"66
+[e :U 651 ]
+"67
+[e :U 652 ]
+"68
+[e :U 653 ]
+[; ;clock.c: 67: case OSC_PMODE_SEC_IDLE:
+[; ;clock.c: 68: case OSC_PMODE_RC_IDLE:
+[; ;clock.c: 70: OSCCONbits.IDLEN = 1;
+"70
+[e = . . _OSCCONbits 0 4 -> -> 1 `i `uc ]
+[; ;clock.c: 72: asm(" sleep");
+"72
+[; <"  sleep ;# ">
+[; ;clock.c: 73: break;
+"73
+[e $U 648  ]
+[; ;clock.c: 74: case OSC_PMODE_PRI_RUN:
+"74
+[e :U 654 ]
+"75
+[e :U 655 ]
+"76
+[e :U 656 ]
+[; ;clock.c: 75: case OSC_PMODE_SEC_RUN:
+[; ;clock.c: 76: case OSC_PMODE_RC_RUN:
+[; ;clock.c: 77: default:
+"77
+[e :U 657 ]
+[; ;clock.c: 78: break;
+"78
+[e $U 648  ]
+"79
+}
+[; ;clock.c: 79: }
+[e $U 648  ]
+"60
 [e :U 649 ]
 [e [\ _oscMode , $ . `E6934 0 650
  , $ . `E6934 4 651
@@ -6145,33 +6145,36 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ . `E6934 2 655
  , $ . `E6934 3 656
  657 ]
-"80
+"79
 [e :U 648 ]
-[; ;clock.c: 81: }
-"81
+[; ;clock.c: 80: }
+"80
 [e :UE 647 ]
 }
-"82
+"81
 [v _delay_us `(v ~T0 @X0 1 ef1`ui ]
-"83
-{
-[; ;clock.c: 82: void delay_us(uint16_t dly)
-[; ;clock.c: 83: {
-[e :U _delay_us ]
 "82
+{
+[; ;clock.c: 81: void delay_us(uint16_t dly)
+[; ;clock.c: 82: {
+[e :U _delay_us ]
+"81
 [v _dly `ui ~T0 @X0 1 r1 ]
-"83
+"82
 [f ]
-"84
+"83
 [v _i `ui ~T0 @X0 1 a ]
-[; ;clock.c: 84: uint16_t i;
-[; ;clock.c: 85: for(i=0;i<dly;i++){
-"85
+[; ;clock.c: 83: uint16_t i;
+[; ;clock.c: 84: for(i=0;i<dly;i++){
+"84
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 662  ]
 [e :U 659 ]
 {
+[; ;clock.c: 85: __nop();
+"85
+[e ( ___nop ..  ]
 [; ;clock.c: 86: __nop();
 "86
 [e ( ___nop ..  ]
@@ -6181,8 +6184,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.c: 88: __nop();
 "88
 [e ( ___nop ..  ]
-[; ;clock.c: 89: __nop();
-"89
+[; ;clock.c: 90: __nop();
+"90
 [e ( ___nop ..  ]
 [; ;clock.c: 91: __nop();
 "91
@@ -6193,53 +6196,50 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;clock.c: 93: __nop();
 "93
 [e ( ___nop ..  ]
-[; ;clock.c: 94: __nop();
 "94
-[e ( ___nop ..  ]
-"95
 }
-"85
+"84
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 662 ]
 [e $ < _i _dly 659  ]
 [e :U 660 ]
-"95
+"94
 }
+[; ;clock.c: 94: }
 [; ;clock.c: 95: }
-[; ;clock.c: 96: }
-"96
+"95
 [e :UE 658 ]
 }
-"97
+"96
 [v _delay_ms `(v ~T0 @X0 1 ef1`ui ]
-"98
-{
-[; ;clock.c: 97: void delay_ms(uint16_t dly)
-[; ;clock.c: 98: {
-[e :U _delay_ms ]
 "97
+{
+[; ;clock.c: 96: void delay_ms(uint16_t dly)
+[; ;clock.c: 97: {
+[e :U _delay_ms ]
+"96
 [v _dly `ui ~T0 @X0 1 r1 ]
-"98
+"97
 [f ]
-[; ;clock.c: 99: while(dly>0){
-"99
+[; ;clock.c: 98: while(dly>0){
+"98
 [e $U 664  ]
 [e :U 665 ]
 {
-[; ;clock.c: 100: delay_us(1000);
-"100
+[; ;clock.c: 99: delay_us(1000);
+"99
 [e ( _delay_us (1 -> -> 1000 `i `ui ]
-[; ;clock.c: 101: dly--;
-"101
+[; ;clock.c: 100: dly--;
+"100
 [e -- _dly -> -> 1 `i `ui ]
-"102
+"101
 }
 [e :U 664 ]
-"99
+"98
 [e $ > _dly -> -> 0 `i `ui 665  ]
 [e :U 666 ]
+[; ;clock.c: 101: }
 [; ;clock.c: 102: }
-[; ;clock.c: 103: }
-"103
+"102
 [e :UE 663 ]
 }

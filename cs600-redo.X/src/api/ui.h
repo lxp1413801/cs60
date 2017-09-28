@@ -43,7 +43,7 @@ extern "C"{
 	extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 	extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 	
-	extern void ui_disp_menu(void);
+	extern inline void ui_disp_menu(void);
 	
 #ifdef __cplusplus
 }

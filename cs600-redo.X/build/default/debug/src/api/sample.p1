@@ -12,11 +12,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _LATC `Vuc ~T0 @X0 0 e@3979 ]
 "163 src/api/../includes/../api/data.h
 [v _cal_diff_press `(uc ~T0 @X0 0 ef ]
+"165
+[v _cal_pt100_temperature_in `(v ~T0 @X0 0 ef ]
+"167
+[v _cal_press `(uc ~T0 @X0 0 ef ]
+"168
+[v _cal_pt100_temperature_ex `(v ~T0 @X0 0 ef ]
+"170
+[v _cal_additional_pressute `(v ~T0 @X0 0 ef1`uc ]
 "152 src/api/sample.c
-[c E7519 0 1 .. ]
-[n E7519 . TEST_MODE WORK_MODE  ]
+[c E7520 0 1 .. ]
+[n E7520 . TEST_MODE WORK_MODE  ]
 "29 src/api/../includes/../api/data.h
-[v _dwm `VE7519 ~T0 @X0 0 e ]
+[v _dwm `VE7520 ~T0 @X0 0 e ]
 "45 src/api/../includes/../api/sample.h
 [v _sample_diff_pr_chip_fast `(uc ~T0 @X0 0 ef ]
 "46
@@ -26,7 +34,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "205 src/api/sample.c
 [c E7229 0 1 2 3 4 5 6 7 .. ]
 [n E7229 . ADS1X1X_MUX_DIFF_0_1 ADS1X1X_MUX_DIFF_0_3 ADS1X1X_MUX_DIFF_1_3 ADS1X1X_MUX_DIFF_2_3 ADS1X1X_MUX_SINGLE_0 ADS1X1X_MUX_SINGLE_1 ADS1X1X_MUX_SINGLE_2 ADS1X1X_MUX_SINGLE_3  ]
-"206
+"207
 [c E7291 0 1 2 3 4 5 .. ]
 [n E7291 . ADS1013 ADS1014 ADS1015 ADS1113 ADS1114 ADS1115  ]
 "116 src/api/../includes/../driver/ads1115.h
@@ -43,15 +51,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "128
 [s S650 `E7291 1 `uc 1 `S648 1 `*F7317 1 `*F7320 1 `*F7323 1 `*F7326 1 `*F7329 1 ]
 [n S650 . chip slaveAddr config iic_start iic_stop iic_send_byte iic_waite_ack iic_received_byte_if_ack ]
-"206 src/api/sample.c
-[c E7254 0 1 2 3 4 5 6 0 1 2 3 4 5 6 7 .. ]
-[n E7254 . ADS101X_DATA_RATE_128 ADS101X_DATA_RATE_250 ADS101X_DATA_RATE_490 ADS101X_DATA_RATE_920 ADS101X_DATA_RATE_1600 ADS101X_DATA_RATE_A2400 ADS101X_DATA_RATE_3300 ADS1X1X_DATA_RATE_8 ADS1X1X_DATA_RATE_16 ADS1X1X_DATA_RATE_32 ADS1X1X_DATA_RATE_64 ADS1X1X_DATA_RATE_128 ADS1X1X_DATA_RATE_250 ADS1X1X_DATA_RATE_475 ADS1X1X_DATA_RATE_860  ]
-"146 src/api/../includes/../driver/ads1115.h
-[v _ads1115_set_data_rate `(v ~T0 @X0 0 ef2`*S650`E7254 ]
-"140
-[v _pAds1115DiffPrObj `*S650 ~T0 @X0 0 e ]
 "148
 [v _ads1115_set_mux `(v ~T0 @X0 0 ef2`*S650`E7229 ]
+"140
+[v _pAds1115DiffPrObj `*S650 ~T0 @X0 0 e ]
 "208 src/api/sample.c
 [c E7240 0 1 2 3 4 5 .. ]
 [n E7240 . ADS1X1X_PGA_6144 ADS1X1X_PGA_4096 ADS1X1X_PGA_2048 ADS1X1X_PGA_1024 ADS1X1X_PGA_512 ADS1X1X_PGA_256  ]
@@ -6391,7 +6394,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.h: 41: extern void ui_disp_start_cs600(uint8_t dly);
 [; ;ui.h: 43: extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 [; ;ui.h: 44: extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
-[; ;ui.h: 46: extern void ui_disp_menu(void);
+[; ;ui.h: 46: extern inline void ui_disp_menu(void);
 [; ;data.h: 17: extern uint8_t globleBuffer[256];
 [; ;data.h: 18: typedef enum{
 [; ;data.h: 19: HOTIZONTAL=0,
@@ -7079,6 +7082,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 126: cal_diff_press();
 "126
 [e ( _cal_diff_press ..  ]
+[; ;sample.c: 127: cal_pt100_temperature_in();
+"127
+[e ( _cal_pt100_temperature_in ..  ]
 [; ;sample.c: 128: diffPrChipSampleFinish=0;
 "128
 [e = _diffPrChipSampleFinish -> -> 0 `i `uc ]
@@ -7104,6 +7110,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ) -> -> 0 `i `uc ]
 [e $UE 725  ]
 [e :U 726 ]
+[; ;sample.c: 134: cal_press();
+"134
+[e ( _cal_press ..  ]
+[; ;sample.c: 135: cal_pt100_temperature_ex();
+"135
+[e ( _cal_pt100_temperature_ex ..  ]
 [; ;sample.c: 136: PrChipSampleFinish=0;
 "136
 [e = _PrChipSampleFinish -> -> 0 `i `uc ]
@@ -7129,6 +7141,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ) -> -> 0 `i `uc ]
 [e $UE 727  ]
 [e :U 728 ]
+[; ;sample.c: 142: cal_additional_pressute(0);
+"142
+[e ( _cal_additional_pressute (1 -> -> 0 `i `uc ]
+[; ;sample.c: 143: cal_additional_pressute(1);
+"143
+[e ( _cal_additional_pressute (1 -> -> 1 `i `uc ]
 [; ;sample.c: 144: inSocAdcSampleFinish=0;
 "144
 [e = _inSocAdcSampleFinish -> -> 0 `i `uc ]
@@ -7159,32 +7177,42 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 730 ]
 [; ;sample.c: 152: if(dwm!=WORK_MODE){
 "152
-[e $ ! != -> _dwm `i -> . `E7519 1 `i 731  ]
+[e $ ! != -> _dwm `i -> . `E7520 1 `i 731  ]
 {
 [; ;sample.c: 153: if(sample_call_cal_diff_pr())return;
 "153
 [e $ ! != -> ( _sample_call_cal_diff_pr ..  `i -> -> -> 0 `i `uc `i 732  ]
 [e $UE 729  ]
 [e :U 732 ]
+[; ;sample.c: 154: if(sample_call_cal_pr())return;
+"154
+[e $ ! != -> ( _sample_call_cal_pr ..  `i -> -> -> 0 `i `uc `i 733  ]
+[e $UE 729  ]
+[e :U 733 ]
+[; ;sample.c: 155: if(sample_call_cal_in_soc())return;
+"155
+[e $ ! != -> ( _sample_call_cal_in_soc ..  `i -> -> -> 0 `i `uc `i 734  ]
+[e $UE 729  ]
+[e :U 734 ]
 "156
 }
 [e :U 731 ]
 [; ;sample.c: 156: }
 [; ;sample.c: 157: if(sample_diff_pr_chip_fast())return;
 "157
-[e $ ! != -> ( _sample_diff_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 733  ]
-[e $UE 729  ]
-[e :U 733 ]
-[; ;sample.c: 158: if(sample_pr_chip_fast())return;
-"158
-[e $ ! != -> ( _sample_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 734  ]
-[e $UE 729  ]
-[e :U 734 ]
-[; ;sample.c: 159: if(sample_in_soc_adc_ch())return;
-"159
-[e $ ! != -> ( _sample_in_soc_adc_ch ..  `i -> -> -> 0 `i `uc `i 735  ]
+[e $ ! != -> ( _sample_diff_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 735  ]
 [e $UE 729  ]
 [e :U 735 ]
+[; ;sample.c: 158: if(sample_pr_chip_fast())return;
+"158
+[e $ ! != -> ( _sample_pr_chip_fast ..  `i -> -> -> 0 `i `uc `i 736  ]
+[e $UE 729  ]
+[e :U 736 ]
+[; ;sample.c: 159: if(sample_in_soc_adc_ch())return;
+"159
+[e $ ! != -> ( _sample_in_soc_adc_ch ..  `i -> -> -> 0 `i `uc `i 737  ]
+[e $UE 729  ]
+[e :U 737 ]
 [; ;sample.c: 160: }
 "160
 [e :UE 729 ]
@@ -7203,15 +7231,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ret -> -> 0 `i `uc ]
 [; ;sample.c: 166: if(dwm==WORK_MODE){
 "166
-[e $ ! == -> _dwm `i -> . `E7519 1 `i 737  ]
+[e $ ! == -> _dwm `i -> . `E7520 1 `i 739  ]
 {
 [; ;sample.c: 167: if(sensorSimpleEn){
 "167
-[e $ ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 738  ]
+[e $ ! != -> _sensorSimpleEn `i -> -> -> 0 `i `Vuc `i 740  ]
 {
 [; ;sample.c: 168: if(diffPrChipSampleFinish && PrChipSampleFinish && inSocAdcSampleFinish){
 "168
-[e $ ! && && != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 739  ]
+[e $ ! && && != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 741  ]
 {
 [; ;sample.c: 170: sensorSimpleEn=0;
 "170
@@ -7224,39 +7252,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _sensorSimpleTsLong -> -> 0 `i `uc ]
 "173
 }
-[e :U 739 ]
+[e :U 741 ]
 "174
 }
 [; ;sample.c: 173: }
 [; ;sample.c: 174: }else{
-[e $U 740  ]
-[e :U 738 ]
+[e $U 742  ]
+[e :U 740 ]
 {
 [; ;sample.c: 175: if(diffPrChipSampleFinish || PrChipSampleFinish || inSocAdcSampleFinish){
 "175
-[e $ ! || || != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 741  ]
+[e $ ! || || != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 743  ]
 {
 [; ;sample.c: 177: if(diffPrChipSampleFinish)ret=sample_call_cal_diff_pr();
 "177
-[e $ ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 742  ]
+[e $ ! != -> _diffPrChipSampleFinish `i -> -> -> 0 `i `uc `i 744  ]
 [e = _ret ( _sample_call_cal_diff_pr ..  ]
-[e :U 742 ]
+[e :U 744 ]
 [; ;sample.c: 178: if(!ret && PrChipSampleFinish)ret=sample_call_cal_pr();
 "178
-[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 743  ]
+[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _PrChipSampleFinish `i -> -> -> 0 `i `uc `i 745  ]
 [e = _ret ( _sample_call_cal_pr ..  ]
-[e :U 743 ]
+[e :U 745 ]
 [; ;sample.c: 179: if(!ret && inSocAdcSampleFinish)ret=sample_call_cal_in_soc();
 "179
-[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 744  ]
+[e $ ! && ! != -> _ret `i -> -> -> 0 `i `uc `i != -> _inSocAdcSampleFinish `i -> -> -> 0 `i `uc `i 746  ]
 [e = _ret ( _sample_call_cal_in_soc ..  ]
-[e :U 744 ]
+[e :U 746 ]
 "180
 }
 [; ;sample.c: 180: }else if(sensorSimpleTsLong>=30*2){
-[e $U 745  ]
-[e :U 741 ]
-[e $ ! >= -> _sensorSimpleTsLong `i * -> 30 `i -> 2 `i 746  ]
+[e $U 747  ]
+[e :U 743 ]
+[e $ ! >= -> _sensorSimpleTsLong `i * -> 30 `i -> 2 `i 748  ]
 {
 [; ;sample.c: 182: sensorSimpleEn=1;
 "182
@@ -7270,26 +7298,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 "185
 }
 [; ;sample.c: 185: }else{
-[e $U 747  ]
-[e :U 746 ]
+[e $U 749  ]
+[e :U 748 ]
 {
 [; ;sample.c: 187: sensorSimpleTsLong++;
 "187
 [e ++ _sensorSimpleTsLong -> -> 1 `i `uc ]
 "188
 }
+[e :U 749 ]
 [e :U 747 ]
-[e :U 745 ]
 "189
 }
-[e :U 740 ]
+[e :U 742 ]
 "190
 }
 [; ;sample.c: 188: }
 [; ;sample.c: 189: }
 [; ;sample.c: 190: }else{
-[e $U 748  ]
-[e :U 737 ]
+[e $U 750  ]
+[e :U 739 ]
 {
 [; ;sample.c: 191: sensorSimpleEn=1;
 "191
@@ -7302,11 +7330,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _sensorSimpleTsLong -> -> 0 `i `uc ]
 "194
 }
-[e :U 748 ]
+[e :U 750 ]
 [; ;sample.c: 194: }
 [; ;sample.c: 195: }
 "195
-[e :UE 736 ]
+[e :UE 738 ]
 }
 "197
 [v _sample_diff_pr_chip_fast `(uc ~T0 @X0 1 ef ]
@@ -7322,25 +7350,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 200: diffPrChipSampleTimer+=(1000/100);
 "200
 [e =+ _diffPrChipSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
-[; ;sample.c: 201: if(diffPrChipSampleTimer<20)return 0;
+[; ;sample.c: 201: if(diffPrChipSampleTimer<10)return 0;
 "201
-[e $ ! < _diffPrChipSampleTimer -> -> 20 `i `ui 750  ]
+[e $ ! < _diffPrChipSampleTimer -> -> 10 `i `ui 752  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 749  ]
-[e :U 750 ]
+[e $UE 751  ]
+[e :U 752 ]
 [; ;sample.c: 202: diffPrChipSampleTimer=0;
 "202
 [e = _diffPrChipSampleTimer -> -> 0 `i `ui ]
 [; ;sample.c: 203: if(diffPrChipSampleCount==0){
 "203
-[e $ ! == -> _diffPrChipSampleCount `i -> 0 `i 751  ]
+[e $ ! == -> _diffPrChipSampleCount `i -> 0 `i 753  ]
 {
 [; ;sample.c: 205: diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 "205
 [e = _diffPrChipSampCh -> . `E7229 0 `uc ]
-[; ;sample.c: 206: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
-"206
-[e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 9 ]
 [; ;sample.c: 207: ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 "207
 [e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj -> _diffPrChipSampCh `E7229 ]
@@ -7356,17 +7381,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 211: return 1;
 "211
 [e ) -> -> 1 `i `uc ]
-[e $UE 749  ]
+[e $UE 751  ]
 "212
 }
-[e :U 751 ]
+[e :U 753 ]
 [; ;sample.c: 212: }
 [; ;sample.c: 213: t16=ads1115_read_conversion(pAds1115DiffPrObj);
 "213
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
 [; ;sample.c: 214: if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_0_1){
 "214
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 0 `i 752  ]
+[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 0 `i 754  ]
 {
 [; ;sample.c: 215: __x_sample_fifo(sampBufDiffPr_D01,t16,4);
 "215
@@ -7380,9 +7405,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "218
 }
 [; ;sample.c: 218: }else if(diffPrChipSampCh==ADS1X1X_MUX_DIFF_2_3){
-[e $U 753  ]
-[e :U 752 ]
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 3 `i 754  ]
+[e $U 755  ]
+[e :U 754 ]
+[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 3 `i 756  ]
 {
 [; ;sample.c: 219: __x_sample_fifo(sampBufDiffPr_D23,t16,4);
 "219
@@ -7396,9 +7421,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "222
 }
 [; ;sample.c: 222: }else if(diffPrChipSampCh==ADS1X1X_MUX_SINGLE_1){
-[e $U 755  ]
-[e :U 754 ]
-[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 5 `i 756  ]
+[e $U 757  ]
+[e :U 756 ]
+[e $ ! == -> _diffPrChipSampCh `i -> . `E7229 5 `i 758  ]
 {
 [; ;sample.c: 223: adc_inPt100=__x_sample_fifo(sampBufDiffPr_S1,t16,4);
 "223
@@ -7415,8 +7440,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "227
 }
 [; ;sample.c: 227: }else{
-[e $U 757  ]
-[e :U 756 ]
+[e $U 759  ]
+[e :U 758 ]
 {
 [; ;sample.c: 228: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 "228
@@ -7426,13 +7451,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _diffPrChipSampCh -> . `E7229 0 `uc ]
 "230
 }
+[e :U 759 ]
 [e :U 757 ]
 [e :U 755 ]
-[e :U 753 ]
 [; ;sample.c: 230: }
-[; ;sample.c: 231: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
-"231
-[e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 9 ]
 [; ;sample.c: 232: ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 "232
 [e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj -> _diffPrChipSampCh `E7229 ]
@@ -7441,7 +7463,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
 [; ;sample.c: 234: if(diffPrChipSampleCount>4){
 "234
-[e $ ! > -> _diffPrChipSampleCount `i -> 4 `i 758  ]
+[e $ ! > -> _diffPrChipSampleCount `i -> 4 `i 760  ]
 {
 [; ;sample.c: 235: sample_diff_pr_fliter(&x_prDiffData);
 "235
@@ -7454,15 +7476,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _diffPrChipSampleCount -> -> 0 `i `uc ]
 "238
 }
-[e :U 758 ]
+[e :U 760 ]
 [; ;sample.c: 238: }
 [; ;sample.c: 239: return 1;
 "239
 [e ) -> -> 1 `i `uc ]
-[e $UE 749  ]
+[e $UE 751  ]
 [; ;sample.c: 240: }
 "240
-[e :UE 749 ]
+[e :UE 751 ]
 }
 "242
 [v _sample_pr_chip_fast `(uc ~T0 @X0 1 ef ]
@@ -7482,18 +7504,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 246: PrChipSampleTimer+=(1000/100);
 "246
 [e =+ _PrChipSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
-[; ;sample.c: 247: if(PrChipSampleTimer<20)return 0;
+[; ;sample.c: 247: if(PrChipSampleTimer<10)return 0;
 "247
-[e $ ! < _PrChipSampleTimer -> -> 20 `i `ui 760  ]
+[e $ ! < _PrChipSampleTimer -> -> 10 `i `ui 762  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 759  ]
-[e :U 760 ]
+[e $UE 761  ]
+[e :U 762 ]
 [; ;sample.c: 248: PrChipSampleTimer=0;
 "248
 [e = _PrChipSampleTimer -> -> 0 `i `ui ]
 [; ;sample.c: 249: if(prChipSampleCount==0){
 "249
-[e $ ! == -> _prChipSampleCount `i -> 0 `i 761  ]
+[e $ ! == -> _prChipSampleCount `i -> 0 `i 763  ]
 {
 [; ;sample.c: 250: prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
 "250
@@ -7510,17 +7532,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 254: return 1;
 "254
 [e ) -> -> 1 `i `uc ]
-[e $UE 759  ]
+[e $UE 761  ]
 "255
 }
-[e :U 761 ]
+[e :U 763 ]
 [; ;sample.c: 255: }
 [; ;sample.c: 257: t16=ads1115_read_conversion(pAds1115PrObj);
 "257
 [e = _t16 ( _ads1115_read_conversion (1 _pAds1115PrObj ]
 [; ;sample.c: 258: if(prChipSampleCh==ADS1X1X_MUX_SINGLE_0){
 "258
-[e $ ! == -> _prChipSampleCh `i -> . `E7229 4 `i 762  ]
+[e $ ! == -> _prChipSampleCh `i -> . `E7229 4 `i 764  ]
 {
 [; ;sample.c: 259: adc_exPt100=__x_sample_fifo(sampBufPt100ExA,t16,4);
 "259
@@ -7531,9 +7553,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "261
 }
 [; ;sample.c: 261: }else if(prChipSampleCh==ADS1X1X_MUX_SINGLE_1){
-[e $U 763  ]
-[e :U 762 ]
-[e $ ! == -> _prChipSampleCh `i -> . `E7229 5 `i 764  ]
+[e $U 765  ]
+[e :U 764 ]
+[e $ ! == -> _prChipSampleCh `i -> . `E7229 5 `i 766  ]
 {
 [; ;sample.c: 262: t16=__x_sample_fifo(sampBufPt100ExB,t16,4);
 "262
@@ -7550,9 +7572,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "266
 }
 [; ;sample.c: 266: }else if(prChipSampleCh==ADS1X1X_MUX_DIFF_2_3){
-[e $U 765  ]
-[e :U 764 ]
-[e $ ! == -> _prChipSampleCh `i -> . `E7229 3 `i 766  ]
+[e $U 767  ]
+[e :U 766 ]
+[e $ ! == -> _prChipSampleCh `i -> . `E7229 3 `i 768  ]
 {
 [; ;sample.c: 267: adc_pressure=__x_sample_fifo(sampBufPr,t16,4);
 "267
@@ -7566,17 +7588,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 "270
 }
 [; ;sample.c: 270: }else{
-[e $U 767  ]
-[e :U 766 ]
+[e $U 769  ]
+[e :U 768 ]
 {
 [; ;sample.c: 271: prChipSampleCh=ADS1X1X_MUX_SINGLE_0;
 "271
 [e = _prChipSampleCh -> . `E7229 4 `uc ]
 "272
 }
+[e :U 769 ]
 [e :U 767 ]
 [e :U 765 ]
-[e :U 763 ]
 [; ;sample.c: 272: }
 [; ;sample.c: 274: ads1115_set_mux(pAds1115PrObj,prChipSampleCh);
 "274
@@ -7586,7 +7608,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
 [; ;sample.c: 276: if(prChipSampleCount>4){
 "276
-[e $ ! > -> _prChipSampleCount `i -> 4 `i 768  ]
+[e $ ! > -> _prChipSampleCount `i -> 4 `i 770  ]
 {
 [; ;sample.c: 277: PrChipSampleFinish=1;
 "277
@@ -7596,15 +7618,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _prChipSampleCount -> -> 0 `i `uc ]
 "279
 }
-[e :U 768 ]
+[e :U 770 ]
 [; ;sample.c: 279: }
 [; ;sample.c: 280: return 1;
 "280
 [e ) -> -> 1 `i `uc ]
-[e $UE 759  ]
+[e $UE 761  ]
 [; ;sample.c: 281: }
 "281
-[e :UE 759 ]
+[e :UE 761 ]
 }
 "283
 [v _sample_in_soc_adc_ch `(uc ~T0 @X0 1 ef ]
@@ -7620,18 +7642,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 286: inSocAdcSampleTimer+=(1000/100);
 "286
 [e =+ _inSocAdcSampleTimer -> / -> 1000 `i -> 100 `i `ui ]
-[; ;sample.c: 287: if(inSocAdcSampleTimer<20)return 0;
+[; ;sample.c: 287: if(inSocAdcSampleTimer<10)return 0;
 "287
-[e $ ! < _inSocAdcSampleTimer -> -> 20 `i `ui 770  ]
+[e $ ! < _inSocAdcSampleTimer -> -> 10 `i `ui 772  ]
 [e ) -> -> 0 `i `uc ]
-[e $UE 769  ]
-[e :U 770 ]
+[e $UE 771  ]
+[e :U 772 ]
 [; ;sample.c: 288: inSocAdcSampleTimer=0;
 "288
 [e = _inSocAdcSampleTimer -> -> 0 `i `ui ]
 [; ;sample.c: 289: if(inSocAdcSampleCount==0){
 "289
-[e $ ! == -> _inSocAdcSampleCount `i -> 0 `i 771  ]
+[e $ ! == -> _inSocAdcSampleCount `i -> 0 `i 773  ]
 {
 [; ;sample.c: 290: in_adc_init();
 "290
@@ -7645,14 +7667,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.c: 293: return 1;
 "293
 [e ) -> -> 1 `i `uc ]
-[e $UE 769  ]
+[e $UE 771  ]
 "294
 }
-[e :U 771 ]
+[e :U 773 ]
 [; ;sample.c: 294: }
 [; ;sample.c: 295: if(inSocAdcSampleCh==2){
 "295
-[e $ ! == -> _inSocAdcSampleCh `i -> 2 `i 772  ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 2 `i 774  ]
 {
 [; ;sample.c: 296: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "296
@@ -7666,9 +7688,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "299
 }
 [; ;sample.c: 299: }else if(inSocAdcSampleCh==1){
-[e $U 773  ]
-[e :U 772 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 1 `i 774  ]
+[e $U 775  ]
+[e :U 774 ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 1 `i 776  ]
 {
 [; ;sample.c: 300: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "300
@@ -7682,9 +7704,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "303
 }
 [; ;sample.c: 303: }else if(inSocAdcSampleCh==0){
-[e $U 775  ]
-[e :U 774 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 0 `i 776  ]
+[e $U 777  ]
+[e :U 776 ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 0 `i 778  ]
 {
 [; ;sample.c: 304: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "304
@@ -7698,9 +7720,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "307
 }
 [; ;sample.c: 307: }else if(inSocAdcSampleCh==3){
-[e $U 777  ]
-[e :U 776 ]
-[e $ ! == -> _inSocAdcSampleCh `i -> 3 `i 778  ]
+[e $U 779  ]
+[e :U 778 ]
+[e $ ! == -> _inSocAdcSampleCh `i -> 3 `i 780  ]
 {
 [; ;sample.c: 308: t16=in_adc_start_and_read(inSocAdcSampleCh);
 "308
@@ -7717,22 +7739,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 "312
 }
 [; ;sample.c: 312: }else{
-[e $U 779  ]
-[e :U 778 ]
+[e $U 781  ]
+[e :U 780 ]
 {
 [; ;sample.c: 313: inSocAdcSampleCh=2;
 "313
 [e = _inSocAdcSampleCh -> -> 2 `i `uc ]
 "314
 }
+[e :U 781 ]
 [e :U 779 ]
 [e :U 777 ]
 [e :U 775 ]
-[e :U 773 ]
 [; ;sample.c: 314: }
 [; ;sample.c: 315: if(inSocAdcSampleCount>4){
 "315
-[e $ ! > -> _inSocAdcSampleCount `i -> 4 `i 780  ]
+[e $ ! > -> _inSocAdcSampleCount `i -> 4 `i 782  ]
 {
 [; ;sample.c: 316: inSocAdcSampleFinish=1;
 "316
@@ -7742,13 +7764,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _inSocAdcSampleCount -> -> 0 `i `uc ]
 "318
 }
-[e :U 780 ]
+[e :U 782 ]
 [; ;sample.c: 318: }
 [; ;sample.c: 319: return 1;
 "319
 [e ) -> -> 1 `i `uc ]
-[e $UE 769  ]
+[e $UE 771  ]
 [; ;sample.c: 320: }
 "320
-[e :UE 769 ]
+[e :UE 771 ]
 }

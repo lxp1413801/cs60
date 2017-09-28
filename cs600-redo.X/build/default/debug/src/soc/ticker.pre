@@ -8226,12 +8226,7 @@ extern uint8_t lcdTwinkle;
 uint16_t dlyTicker=0;
 bool dlyTickerEn=0;
 
-void sys_ticker_start(void)
-{
-T2CON=0x7f;
 
-
-}
 void sys_ticker_stop(void)
 {
 T2CON=0x00;
@@ -8247,7 +8242,13 @@ PIE1bits.TMR2IE=1;
 
 T2CON=0x7f;
 }
+void sys_ticker_start(void)
+{
+sys_ticker_init();
 
+
+
+}
 void sys_ticker_irq_hook(void)
 {
 if(dlyTickerEn){

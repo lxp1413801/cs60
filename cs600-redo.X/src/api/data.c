@@ -543,10 +543,10 @@ uint8_t cal_diff_press()
         tabrow = &(diff_prCalibTabDef.prCalibRow[i]);
         m_interp1_cal_p_v(tabrow,xin,&tmpx[i]);
     }
-    //m_interp1_cal_p_t(&tmpx[0],xin,i);
+    m_interp1_cal_p_t(&tmpx[0],xin,i);
 	//
-	//rtDiffPressure=xin->pValue;
-	rtDiffPressure=tmpx[0].pValue;
+	rtDiffPressure=xin->pValue;
+	//rtDiffPressure=tmpx[0].pValue;
 	cal_diff_p_to_h(rtDiffPressure);
     rtLevel=cal_diff_hight_level();
     if(stSysData.pos==HOTIZONTAL){

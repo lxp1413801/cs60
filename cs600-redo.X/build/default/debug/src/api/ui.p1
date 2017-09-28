@@ -85,16 +85,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "113
 [v _adjValue `Vl ~T0 @X0 0 e ]
 "515 src/api/ui.c
-[c E7514 0 1 .. ]
-[n E7514 . HOTIZONTAL VERTICAL  ]
+[c E7515 0 1 .. ]
+[n E7515 . HOTIZONTAL VERTICAL  ]
 "54 src/api/../includes/../api/data.h
 [s S659 `l 1 `l 1 ]
 [n S659 . prOut prIn ]
 "529 src/api/ui.c
-[c E7524 0 1 2 3 .. ]
-[n E7524 . HIGHT_HI HIGHT_LO PRESSURE_HI PRESSURE_LO  ]
+[c E7525 0 1 2 3 .. ]
+[n E7525 . HIGHT_HI HIGHT_LO PRESSURE_HI PRESSURE_LO  ]
 "38 src/api/../includes/../api/data.h
-[s S657 `ul 1 `ul 1 `E7524 1 `uc -> 3 `i ]
+[s S657 `ul 1 `ul 1 `E7525 1 `uc -> 3 `i ]
 [n S657 . warnValueLo warnValueHi type . ]
 "47
 [s S658 `l 1 `ui 1 `ui 1 ]
@@ -103,7 +103,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S660 `l 1 `l 1 ]
 [n S660 . ilpLow ilpHi ]
 "63
-[s S661 `ul 1 `E7514 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `l 1 `l 1 `S659 -> 2 `i `S659 -> 2 `i `S657 -> 4 `i `S657 -> 2 `i `ui -> 4 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S660 1 `S660 1 `S660 1 `S660 1 `ui 1 `ui 1 ]
+[s S661 `ul 1 `E7515 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `l 1 `l 1 `S659 -> 2 `i `S659 -> 2 `i `S657 -> 4 `i `S657 -> 2 `i `ui -> 4 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S660 1 `S660 1 `S660 1 `S660 1 `ui 1 `ui 1 ]
 [n S661 . id pos maxValueForlevelBar density h d V1 V2 baseZero _2ndPrDiffCalib _2ndPrCalib diffPressureWarnSet pressureWarnSet ployCoeffic TmepCalib exPr0Calib exPr1Calib exTempCalib diffPrilpScale0 PrilpScale0 exPrIpScaleCh0 exPrIpScaleCh1 barScale crc ]
 "105
 [v _stSysData `S661 ~T0 @X0 0 e ]
@@ -112,8 +112,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "117
 [v _calibCol `Vuc ~T0 @X0 0 e ]
 "749 src/api/ui.c
-[c E7519 0 1 .. ]
-[n E7519 . TEST_MODE WORK_MODE  ]
+[c E7520 0 1 .. ]
+[n E7520 . TEST_MODE WORK_MODE  ]
 "108 src/api/../includes/../api/key_menu.h
 [v _menu `Vuc ~T0 @X0 0 e ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -6430,7 +6430,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.h: 41: extern void ui_disp_start_cs600(uint8_t dly);
 [; ;ui.h: 43: extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 [; ;ui.h: 44: extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
-[; ;ui.h: 46: extern void ui_disp_menu(void);
+[; ;ui.h: 46: extern inline void ui_disp_menu(void);
 [; ;data.h: 17: extern uint8_t globleBuffer[256];
 [; ;data.h: 18: typedef enum{
 [; ;data.h: 19: HOTIZONTAL=0,
@@ -6645,8 +6645,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 "60
 [v _mf `S655 ~T0 @X0 1 a ]
-[v F7710 `S655 ~T0 @X0 1 s ]
-[i F7710
+[v F7711 `S655 ~T0 @X0 1 s ]
+[i F7711
 :U ..
 :U ..
 -> -> -> 0 `i `l `ul
@@ -6654,7 +6654,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ..
 ]
 [; ;ui.c: 60: st_float32 mf={0};
-[e = _mf F7710 ]
+[e = _mf F7711 ]
 "61
 [v _t32 `ul ~T0 @X0 1 a ]
 [; ;ui.c: 61: uint32_t t32;
@@ -6729,8 +6729,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _i `uc ~T0 @X0 1 a ]
 "80
 [v _mf `S655 ~T0 @X0 1 a ]
-[v F7715 `S655 ~T0 @X0 1 s ]
-[i F7715
+[v F7716 `S655 ~T0 @X0 1 s ]
+[i F7716
 :U ..
 :U ..
 -> -> -> 0 `i `l `ul
@@ -6739,7 +6739,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;ui.c: 79: uint8_t i;
 [; ;ui.c: 80: st_float32 mf={0};
-[e = _mf F7715 ]
+[e = _mf F7716 ]
 "81
 [v _ret `l ~T0 @X0 1 a ]
 [; ;ui.c: 81: int32_t ret;
@@ -6831,8 +6831,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 "149
 [v _t8 `uc ~T0 @X0 1 a ]
-[v F7724 `uc ~T0 @X0 -> 6 `i s ]
-[i F7724
+[v F7725 `uc ~T0 @X0 -> 6 `i s ]
+[i F7725
 :U ..
 -> 45 `c
 -> 48 `c
@@ -6845,7 +6845,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _buf `uc ~T0 @X0 -> 6 `i a ]
 [; ;ui.c: 149: uint8_t t8;
 [; ;ui.c: 150: uint8_t buf[6]="-00-";
-[e = _buf F7724 ]
+[e = _buf F7725 ]
 [; ;ui.c: 151: lcd_disp_all(0);;
 "151
 [e ( _lcd_disp_all (1 -> -> 0 `i `uc ]
@@ -7760,7 +7760,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _m_mem_cpy (2 , &U _buf -> :s 8C `*uc ]
 [; ;ui.c: 515: if(*p==HOTIZONTAL){
 "515
-[e $ ! == -> *U _p `i -> . `E7514 0 `i 767  ]
+[e $ ! == -> *U _p `i -> . `E7515 0 `i 767  ]
 {
 [; ;ui.c: 516: buf[3]='l';
 "516
@@ -7808,7 +7808,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _fps &U _stSysData ]
 [; ;ui.c: 530: if(fps->pos==HOTIZONTAL){
 "530
-[e $ ! == -> . *U _fps 1 `i -> . `E7514 0 `i 770  ]
+[e $ ! == -> . *U _fps 1 `i -> . `E7515 0 `i 770  ]
 {
 [; ;ui.c: 531: ui_disp_adj_xfloat_pt((uint8_t*)"   l",&m_floatAdj,adjLocation);
 "531
@@ -8182,7 +8182,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _m_mem_cpy (2 , &U _buf -> :s 17C `*uc ]
 [; ;ui.c: 647: if(*p==HIGHT_HI){
 "647
-[e $ ! == -> *U _p `i -> . `E7524 0 `i 796  ]
+[e $ ! == -> *U _p `i -> . `E7525 0 `i 796  ]
 {
 [; ;ui.c: 648: m_mem_cpy(buf,(uint8_t*)" h-u");
 "648
@@ -8192,7 +8192,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.c: 649: }else if(*p==HIGHT_LO){
 [e $U 797  ]
 [e :U 796 ]
-[e $ ! == -> *U _p `i -> . `E7524 1 `i 798  ]
+[e $ ! == -> *U _p `i -> . `E7525 1 `i 798  ]
 {
 [; ;ui.c: 650: m_mem_cpy(buf,(uint8_t*)" h-d");
 "650
@@ -8202,7 +8202,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.c: 651: }else if(*p==PRESSURE_HI){
 [e $U 799  ]
 [e :U 798 ]
-[e $ ! == -> *U _p `i -> . `E7524 2 `i 800  ]
+[e $ ! == -> *U _p `i -> . `E7525 2 `i 800  ]
 {
 [; ;ui.c: 652: m_mem_cpy(buf,(uint8_t*)" p-u");
 "652
@@ -8293,7 +8293,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.c: 694: }
 [; ;ui.c: 696: if(type == HIGHT_HI || type== HIGHT_LO){
 "696
-[e $ ! || == -> _type `i -> . `E7524 0 `i == -> _type `i -> . `E7524 1 `i 805  ]
+[e $ ! || == -> _type `i -> . `E7525 0 `i == -> _type `i -> . `E7525 1 `i 805  ]
 {
 [; ;ui.c: 697: lcd_disp_unit_2nd_m(1);
 "697
@@ -8494,7 +8494,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _p -> &U _adjValue `*uc ]
 [; ;ui.c: 749: if(*p==WORK_MODE){
 "749
-[e $ ! == -> *U _p `i -> . `E7519 1 `i 825  ]
+[e $ ! == -> *U _p `i -> . `E7520 1 `i 825  ]
 {
 [; ;ui.c: 750: m_mem_cpy(buf,(uint8_t*)" sta nor");
 "750
@@ -8522,11 +8522,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "756
 [e :UE 824 ]
 }
+[v F7513 `(v ~T0 @X0 1 tf ]
 "757
-[v _ui_disp_menu `(v ~T0 @X0 1 ef ]
+[v _ui_disp_menu `TF7513 ~T0 @X0 1 e ]
 "758
 {
-[; ;ui.c: 757: void ui_disp_menu(void)
+[; ;ui.c: 757: inline void ui_disp_menu(void)
 [; ;ui.c: 758: {
 [e :U _ui_disp_menu ]
 [f ]

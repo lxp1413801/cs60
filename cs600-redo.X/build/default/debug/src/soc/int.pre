@@ -8259,7 +8259,7 @@ sys_ticker_irq_hook();
 if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && IPR3bits.RTCCIP){
 PIR3bits.RTCCIF=0;
 glbEvent |= (1<<1);
-rtc_alrm_irq_hook();
+
 }
 }
 
@@ -8274,6 +8274,6 @@ sys_ticker_irq_hook();
 if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && (!(IPR3bits.RTCCIP))){
 PIR3bits.RTCCIF=0;
 glbEvent |= (1<<1);
-rtc_alrm_irq_hook();
+
 }
 }

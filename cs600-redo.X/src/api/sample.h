@@ -10,12 +10,12 @@
 	#include <float.h>
 
 	//#define DIFF_SAMPLE_FREQ				20
-    #define DIFF_PRESSURE_CHIP_SAMPLE_TS    20
+    #define DIFF_PRESSURE_CHIP_SAMPLE_TS    10
 	
     //#define PRESSURE_CHIP_SAMPLE_FREQ 	20
-    #define PRESSURE_CHIP_SAMPLE_TS 		20
+    #define PRESSURE_CHIP_SAMPLE_TS 		10
 	
-	#define IN_SOC_ADC_SAMPLE_TS			20
+	#define IN_SOC_ADC_SAMPLE_TS			10
 	
 	#define SENSEOR_SLEEP_TIME_s			30
 

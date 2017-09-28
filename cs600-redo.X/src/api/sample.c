@@ -124,23 +124,23 @@ uint8_t sample_call_cal_diff_pr(void)
 {
 	if(!diffPrChipSampleFinish)return 0;
 	cal_diff_press();
-	//cal_pt100_temperature_in();
+	cal_pt100_temperature_in();
 	diffPrChipSampleFinish=false;
 	return 1;
 }
 uint8_t sample_call_cal_pr(void)
 {
 	if(!PrChipSampleFinish)return 0;
-	//cal_press();
-	//cal_pt100_temperature_ex();
+	cal_press();
+	cal_pt100_temperature_ex();
 	PrChipSampleFinish=false;
 	return 1;
 }
 uint8_t sample_call_cal_in_soc(void)
 {
 	if(!inSocAdcSampleFinish)return 0;
-	//cal_additional_pressute(0);
-	//cal_additional_pressute(1);	
+	cal_additional_pressute(0);
+	cal_additional_pressute(1);	
 	inSocAdcSampleFinish=false;
 	return 1;
 }
@@ -151,8 +151,8 @@ void sample_call_in_ticker(void)
 	if(!sensorSimpleEn)return;
 	if(dwm!=WORK_MODE){
 		if(sample_call_cal_diff_pr())return;
-		//if(sample_call_cal_pr())return;
-		//if(sample_call_cal_in_soc())return;
+		if(sample_call_cal_pr())return;
+		if(sample_call_cal_in_soc())return;
 	}	
 	if(sample_diff_pr_chip_fast())return;
 	if(sample_pr_chip_fast())return;
@@ -203,7 +203,7 @@ uint8_t sample_diff_pr_chip_fast(void)
 	if(diffPrChipSampleCount==0){
 		//diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 		diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
-		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
+		//ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
 		ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 		ads1115_start_conversion(pAds1115DiffPrObj);	
@@ -228,7 +228,7 @@ uint8_t sample_diff_pr_chip_fast(void)
 		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
 		diffPrChipSampCh=ADS1X1X_MUX_DIFF_0_1;
 	}
-	ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
+	//ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_32);
 	ads1115_set_mux(pAds1115DiffPrObj,diffPrChipSampCh);
 	ads1115_start_conversion(pAds1115DiffPrObj);
 	if(diffPrChipSampleCount>pr_DIFF_CHIP_SAMPLE_BUF_LEN){

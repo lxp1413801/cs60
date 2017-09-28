@@ -15,12 +15,7 @@ extern uint8_t lcdTwinkle;
 uint16_t dlyTicker=0;
 bool dlyTickerEn=false;
 
-void sys_ticker_start(void)
-{
-	T2CON=0x7f;
-	//T2CONbits.T2OUTPS=0x0f;//16:1
-    //T2CONbits.T2CKPS=0x03;//16:1	
-}
+
 void sys_ticker_stop(void)
 {
     T2CON=0x00;
@@ -36,7 +31,13 @@ void sys_ticker_init(void)
 	//start timer2;
 	T2CON=0x7f;
 }
-
+void sys_ticker_start(void)
+{
+    sys_ticker_init();
+	//T2CON=0x7f;
+	//T2CONbits.T2OUTPS=0x0f;//16:1
+    //T2CONbits.T2CKPS=0x03;//16:1	
+}
 void sys_ticker_irq_hook(void)
 {
 	if(dlyTickerEn){

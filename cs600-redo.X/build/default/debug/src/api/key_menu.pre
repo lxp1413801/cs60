@@ -8659,7 +8659,7 @@ extern void ui_disp_start_cs600(uint8_t dly);
 extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
-extern void ui_disp_menu(void);
+extern inline void ui_disp_menu(void);
 
 # 17 "src/api/../includes/../api/data.h"
 extern uint8_t globleBuffer[256];
@@ -9835,7 +9835,7 @@ key_process_set_long();
 }else if(key == ((0x01<<0x02)+(0x01<<0x01))){
 key_process_set_up_long();
 }else if(key == (0x01<<0x0) + (0x01<<0x01)){
-blackEn= (!blackEn);
+
 if(blackEn)lcd_bl_on();
 else
 lcd_bl_off();
@@ -9852,7 +9852,9 @@ key_process_set();
 }
 
 do{lcdTwinkle=1;}while(0);;
+sys_ticker_stop();
 ui_disp_menu();
+sys_ticker_start();
 key_waite_release(2000,&key);
 }
 

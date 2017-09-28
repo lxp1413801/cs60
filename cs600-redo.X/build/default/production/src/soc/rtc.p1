@@ -6387,15 +6387,3 @@ Version 3.2 HI-TECH Software Intermediate Code
 "101
 [e :UE 655 ]
 }
-"103
-[v _rtc_alrm_irq_hook `(v ~T0 @X0 1 ef ]
-"104
-{
-[; ;rtc.c: 103: void rtc_alrm_irq_hook(void)
-[; ;rtc.c: 104: {
-[e :U _rtc_alrm_irq_hook ]
-[f ]
-[; ;rtc.c: 106: }
-"106
-[e :UE 659 ]
-}

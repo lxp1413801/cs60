@@ -8108,9 +8108,9 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 10 "src/soc/clock.c"
+# 9 "src/soc/clock.c"
 #pragma config WDTEN = OFF
-#pragma config STVREN = OFF
+#pragma config STVREN = ON
 #pragma config XINST = OFF
 
 
@@ -8274,11 +8274,11 @@ extern void rtc_alrm_irq_hook(void);
 # 28 "src/soc/soc.h"
 extern void soc_init(void);
 
-# 38 "src/soc/clock.c"
+# 37 "src/soc/clock.c"
 void osc_setup(void)
 {
 
-# 57
+# 56
 }
 
 void osc_set_power(em_oscMode oscMode)

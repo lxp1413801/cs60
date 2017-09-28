@@ -8321,8 +8321,3 @@ void rtc_stop(void)
 do{RTCCFGbits.RTCEN=0;}while(0);;
 }
 
-void rtc_alrm_irq_hook(void)
-{
-
-}
-

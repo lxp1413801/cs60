@@ -8659,7 +8659,7 @@ extern void ui_disp_start_cs600(uint8_t dly);
 extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
 
-extern void ui_disp_menu(void);
+extern inline void ui_disp_menu(void);
 
 # 17 "src/app/../includes/../api/data.h"
 extern uint8_t globleBuffer[256];
@@ -8887,60 +8887,4 @@ extern int8_t event_process_ticker(void);
 extern int8_t event_process_time_out(void);
 
 extern int8_t event_process(void);
-
-# 4 "src/app/event.c"
-volatile uint8_t glNoEventTimeOut=30;
-
-int8_t event_process_rtc(void)
-{
-uint8_t ret=0;
-sample_function_enable_fi_in_rtc();
-
-if(glNoEventTimeOut){
-glNoEventTimeOut--;
-if(!glNoEventTimeOut){
-glbEvent |= (1<<2);
-}
-}
-
-if(lcdTwinkle>0)lcdTwinkle--;
-ui_disp_menu();
-return 1;
-}
-
-int8_t event_process_ticker(void)
-{
-uint8_t ret=0;
-sample_call_in_ticker();
-return ret;
-}
-
-int8_t event_process_time_out(void)
-{
-
-return 1;
-}
-int8_t event_process(void)
-{
-if(glbEvent & (1<<1)){
-glbEvent &= ~(1<<1);
-
-event_process_rtc();
-}
-if(glbEvent & (1<<0)){
-glbEvent &= ~(1<<0);
-event_process_ticker();
-}
-if(glbEvent & (1<<2)){
-glbEvent &= ~(1<<2);
-event_process_time_out();
-}
-
-keyValue=key_polling();
-if(keyValue!=(0x0)){
-key_process();
-}
-
-return 1;
-}
 

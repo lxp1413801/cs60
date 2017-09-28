@@ -1,15 +1,15 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "4 src/api/data.c
-[c E7514 0 1 .. ]
-[n E7514 . HOTIZONTAL VERTICAL  ]
+[c E7515 0 1 .. ]
+[n E7515 . HOTIZONTAL VERTICAL  ]
 "54 src/api/../includes/../api/data.h
 [s S659 `l 1 `l 1 ]
 [n S659 . prOut prIn ]
 "4 src/api/data.c
-[c E7524 0 1 2 3 .. ]
-[n E7524 . HIGHT_HI HIGHT_LO PRESSURE_HI PRESSURE_LO  ]
+[c E7525 0 1 2 3 .. ]
+[n E7525 . HIGHT_HI HIGHT_LO PRESSURE_HI PRESSURE_LO  ]
 "38 src/api/../includes/../api/data.h
-[s S657 `ul 1 `ul 1 `E7524 1 `uc -> 3 `i ]
+[s S657 `ul 1 `ul 1 `E7525 1 `uc -> 3 `i ]
 [n S657 . warnValueLo warnValueHi type . ]
 "47
 [s S658 `l 1 `ui 1 `ui 1 ]
@@ -18,7 +18,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S660 `l 1 `l 1 ]
 [n S660 . ilpLow ilpHi ]
 "63
-[s S661 `ul 1 `E7514 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `l 1 `l 1 `S659 -> 2 `i `S659 -> 2 `i `S657 -> 4 `i `S657 -> 2 `i `ui -> 4 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S660 1 `S660 1 `S660 1 `S660 1 `ui 1 `ui 1 ]
+[s S661 `ul 1 `E7515 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `l 1 `l 1 `S659 -> 2 `i `S659 -> 2 `i `S657 -> 4 `i `S657 -> 2 `i `ui -> 4 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S660 1 `S660 1 `S660 1 `S660 1 `ui 1 `ui 1 ]
 [n S661 . id pos maxValueForlevelBar density h d V1 V2 baseZero _2ndPrDiffCalib _2ndPrCalib diffPressureWarnSet pressureWarnSet ployCoeffic TmepCalib exPr0Calib exPr1Calib exTempCalib diffPrilpScale0 PrilpScale0 exPrIpScaleCh0 exPrIpScaleCh1 barScale crc ]
 [v F7211 `(v ~T0 @X0 0 tf ]
 [v F7214 `(v ~T0 @X0 0 tf ]
@@ -38,8 +38,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S664 `uc 1 `uc -> 3 `i `S663 -> 3 `i `ui 1 ]
 [n S664 . rowCount reverse0 prCalibRow crc ]
 "35 src/api/data.c
-[c E7519 0 1 .. ]
-[n E7519 . TEST_MODE WORK_MODE  ]
+[c E7520 0 1 .. ]
+[n E7520 . TEST_MODE WORK_MODE  ]
 "22 src/api/../includes/../driver/m_flash.h
 [v _m_flash_read `(ui ~T0 @X0 0 ef3`ul`*uc`ui ]
 "11 src/api/../includes/../depend/crc16.h
@@ -6376,7 +6376,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ui.h: 41: extern void ui_disp_start_cs600(uint8_t dly);
 [; ;ui.h: 43: extern void ui_disp_adj_xfloat_pt(uint8_t* str,st_float32_m* xpf,uint8_t loc);
 [; ;ui.h: 44: extern void ui_disp_adj_xfixed_pt(uint8_t* str,uint16_t x,uint8_t loc);
-[; ;ui.h: 46: extern void ui_disp_menu(void);
+[; ;ui.h: 46: extern inline void ui_disp_menu(void);
 [; ;data.h: 17: extern uint8_t globleBuffer[256];
 [; ;data.h: 18: typedef enum{
 [; ;data.h: 19: HOTIZONTAL=0,
@@ -6631,9 +6631,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _rtExPressure `Vl ~T0 @X0 -> 2 `i e ]
 [; ;data.c: 32: volatile int32_t rtExPressure[2];
 "35
-[v _dwm `VE7519 ~T0 @X0 1 e ]
+[v _dwm `VE7520 ~T0 @X0 1 e ]
 [i _dwm
-. `E7519 0
+. `E7520 0
 ]
 [; ;data.c: 35: volatile st_deviceOpMode dwm=TEST_MODE;
 "54
@@ -6906,7 +6906,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "102
 -> -> -> 1234 `i `l `ul
 "103
--> -> 0 `i `E7514
+-> -> 0 `i `E7515
 "104
 -> -> 95 `i `uc
 "106
@@ -8006,7 +8006,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;data.c: 472: float f1,f2;
 [; ;data.c: 473: if(stSysData.pos==HOTIZONTAL){
 "473
-[e $ ! == -> . _stSysData 1 `i -> . `E7514 0 `i 731  ]
+[e $ ! == -> . _stSysData 1 `i -> . `E7515 0 `i 731  ]
 {
 [; ;data.c: 474: f1=(float)stSysData.d;
 "474
@@ -8255,9 +8255,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "545
 }
 [; ;data.c: 545: }
-[; ;data.c: 549: rtDiffPressure=tmpx[0].pValue;
-"549
-[e = _rtDiffPressure . *U + &U _tmpx * -> -> -> 0 `i `ui `ux -> -> # *U &U _tmpx `ui `ux 0 ]
+[; ;data.c: 546: m_interp1_cal_p_t(&tmpx[0],xin,i);
+"546
+[e ( _m_interp1_cal_p_t (3 , , &U *U + &U _tmpx * -> -> -> 0 `i `ui `ux -> -> # *U &U _tmpx `ui `ux _xin _i ]
+[; ;data.c: 548: rtDiffPressure=xin->pValue;
+"548
+[e = _rtDiffPressure . *U _xin 0 ]
 [; ;data.c: 550: cal_diff_p_to_h(rtDiffPressure);
 "550
 [e ( _cal_diff_p_to_h (1 _rtDiffPressure ]
@@ -8266,7 +8269,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _rtLevel ( _cal_diff_hight_level ..  ]
 [; ;data.c: 552: if(stSysData.pos==HOTIZONTAL){
 "552
-[e $ ! == -> . _stSysData 1 `i -> . `E7514 0 `i 748  ]
+[e $ ! == -> . _stSysData 1 `i -> . `E7515 0 `i 748  ]
 {
 [; ;data.c: 553: rtVolume=cal_diff_hight_to_vol_h(rtHight);
 "553
@@ -8304,8 +8307,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ret `uc ~T0 @X0 1 a ]
 "574
 [v _xin `S662 ~T0 @X0 1 a ]
-[v F7861 `S662 ~T0 @X0 1 s ]
-[i F7861
+[v F7862 `S662 ~T0 @X0 1 s ]
+[i F7862
 :U ..
 :U ..
 -> -> 0 `i `l
@@ -8314,7 +8317,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;data.c: 573: uint8_t ret;
 [; ;data.c: 574: st_prData xin={0};
-[e = _xin F7861 ]
+[e = _xin F7862 ]
 [; ;data.c: 575: xin.pValue=0;
 "575
 [e = . _xin 0 -> -> 0 `i `l ]

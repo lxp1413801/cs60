@@ -84,10 +84,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _RTCCFGbits `VS28 ~T0 @X0 0 e@3935 ]
 "6864
 [v _LATG `Vuc ~T0 @X0 0 e@3983 ]
-"8489
-[v _LCDCON `Vuc ~T0 @X0 0 e@4008 ]
 "13 src/driver/lcd.c
 [v _blackEn `Vuc ~T0 @X0 0 e ]
+"8489 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f86j93.h
+[v _LCDCON `Vuc ~T0 @X0 0 e@4008 ]
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 38: typedef signed long int int32_t;
@@ -8566,95 +8566,82 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e =| _LATG -> << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 876 ]
-[; ;lcd.c: 655: }
+[; ;lcd.c: 655: blackEn=1;
 "655
+[e = _blackEn -> -> 1 `i `uc ]
+[; ;lcd.c: 656: }
+"656
 [e :UE 871 ]
 }
-"657
-[v _lcd_bl_off `(v ~T0 @X0 1 ef ]
 "658
+[v _lcd_bl_off `(v ~T0 @X0 1 ef ]
+"659
 {
-[; ;lcd.c: 657: void lcd_bl_off(void)
-[; ;lcd.c: 658: {
+[; ;lcd.c: 658: void lcd_bl_off(void)
+[; ;lcd.c: 659: {
 [e :U _lcd_bl_off ]
 [f ]
-[; ;lcd.c: 659: do{TRISG |= (1<<4);}while(0);;
-"659
+[; ;lcd.c: 660: do{TRISG |= (1<<4);}while(0);;
+"660
 [e :U 881 ]
 {
 [e =| _TRISG -> << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 880 ]
-[; ;lcd.c: 660: RTCCFGbits.RTCOE=0;
-"660
+[; ;lcd.c: 661: RTCCFGbits.RTCOE=0;
+"661
 [e = . . _RTCCFGbits 0 2 -> -> 0 `i `uc ]
-[; ;lcd.c: 662: }
-"662
+[; ;lcd.c: 663: blackEn=0;
+"663
+[e = _blackEn -> -> 0 `i `uc ]
+[; ;lcd.c: 664: }
+"664
 [e :UE 878 ]
 }
-"664
+"666
 [v _lcd_bl_init `(v ~T0 @X0 1 ef ]
-"665
+"667
 {
-[; ;lcd.c: 664: void lcd_bl_init(void)
-[; ;lcd.c: 665: {
+[; ;lcd.c: 666: void lcd_bl_init(void)
+[; ;lcd.c: 667: {
 [e :U _lcd_bl_init ]
 [f ]
-[; ;lcd.c: 666: do{TRISG &= ~(1<<4);}while(0);;
-"666
+[; ;lcd.c: 668: do{TRISG &= ~(1<<4);}while(0);;
+"668
 [e :U 885 ]
 {
 [e =& _TRISG -> ~ << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 884 ]
-[; ;lcd.c: 667: do{LATG |= (1<<4);}while(0);;
-"667
+[; ;lcd.c: 669: do{LATG |= (1<<4);}while(0);;
+"669
 [e :U 888 ]
 {
 [e =| _LATG -> << -> 1 `i -> 4 `i `uc ]
 }
 [e :U 887 ]
-[; ;lcd.c: 668: }
-"668
+[; ;lcd.c: 670: }
+"670
 [e :UE 882 ]
 }
-"669
+"671
 [v _lcd_init `(v ~T0 @X0 1 ef ]
-"670
+"672
 {
-[; ;lcd.c: 669: void lcd_init(void)
-[; ;lcd.c: 670: {
+[; ;lcd.c: 671: void lcd_init(void)
+[; ;lcd.c: 672: {
 [e :U _lcd_init ]
 [f ]
-[; ;lcd.c: 671: lcd_config();
-"671
-[e ( _lcd_config ..  ]
-[; ;lcd.c: 673: LCDCON=0x8f;;
+[; ;lcd.c: 673: lcd_config();
 "673
-[e = _LCDCON -> -> 143 `i `uc ]
-[; ;lcd.c: 674: if(blackEn){
-"674
-[e $ ! != -> _blackEn `i -> -> -> 0 `i `Vuc `i 890  ]
-{
-[; ;lcd.c: 675: lcd_bl_on();
+[e ( _lcd_config ..  ]
+[; ;lcd.c: 675: LCDCON=0x8f;;
 "675
-[e ( _lcd_bl_on ..  ]
+[e = _LCDCON -> -> 143 `i `uc ]
+[; ;lcd.c: 676: lcd_bl_on();
 "676
-}
-[; ;lcd.c: 676: }
-[e $U 891  ]
-"677
-[e :U 890 ]
-[; ;lcd.c: 677: else{
-{
-[; ;lcd.c: 678: lcd_bl_off();
-"678
-[e ( _lcd_bl_off ..  ]
-"679
-}
-[e :U 891 ]
-[; ;lcd.c: 679: }
-[; ;lcd.c: 680: }
-"680
+[e ( _lcd_bl_on ..  ]
+[; ;lcd.c: 685: }
+"685
 [e :UE 889 ]
 }

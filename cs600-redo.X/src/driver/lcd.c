@@ -652,6 +652,7 @@ void lcd_bl_on(void)
     set_portg_mode_out(PIN4);
     RTCCFGbits.RTCOE=1;
     set_portg_value_hight(PIN4);
+    blackEn=true;
 }
 
 void lcd_bl_off(void)
@@ -659,6 +660,7 @@ void lcd_bl_off(void)
     set_portg_mode_in(PIN4);
      RTCCFGbits.RTCOE=0;
     // set_portg_value_hight(PIN4);
+     blackEn=false;
 }
 
 void lcd_bl_init(void)
@@ -671,11 +673,14 @@ void lcd_init(void)
 	lcd_config();
 	//lcd_bl_init();
 	lcd_on();
+	lcd_bl_on();
+	/*
     if(blackEn){
         lcd_bl_on();
     }
     else{
         lcd_bl_off();
     }
+	*/
 }
 //file end

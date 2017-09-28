@@ -1,7 +1,39 @@
 #include "../includes/includes.h"
 
 volatile uint8_t glbEvent=0x00;
+volatile uint8_t glNoEventTimeOut=MAX_NO_EVEN_TIME_OUT;
 
+int8_t event_process_rtc(void)
+{
+	uint8_t ret=0;
+    sample_function_enable_fi_in_rtc();
+	
+	if(glNoEventTimeOut){
+		glNoEventTimeOut--;
+		if(!glNoEventTimeOut){
+			glbEvent |= flg_EVENT_TIME_OUT;
+		}
+	}		
+	//重秒事件进入显示，运行需要闪烁的数位闪烁
+	if(lcdTwinkle>0)lcdTwinkle--;
+	sys_ticker_stop();
+	ui_disp_menu();
+	sys_ticker_start();
+	return 1;
+}
+
+int8_t event_process_ticker(void)
+{
+	uint8_t ret=0;
+	sample_call_in_ticker();
+	return ret;
+}
+
+int8_t event_process_time_out(void)
+{
+
+	return 1;
+}
 int main(void)
 {
     uint16_t t16;	
@@ -16,7 +48,7 @@ int main(void)
     in_adc_init();
 
 	ui_disp_start_cs600(4);
-    
+    lcd_bl_off();
     //lcd_disp_level(60);
   
     //peripheral_power_enable();
@@ -29,7 +61,8 @@ int main(void)
         if(glbEvent & flg_EVENT_TICKER){
             glbEvent &= ~flg_EVENT_TICKER;
             sys_ticker_stop();
-            event_process_ticker();
+            //event_process_ticker();
+            sample_call_in_ticker();
             sys_ticker_start();
         }
         if(glbEvent & flg_EVENT_TIME_OUT){

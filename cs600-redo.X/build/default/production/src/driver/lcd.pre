@@ -8884,6 +8884,7 @@ void lcd_bl_on(void)
 do{TRISG &= ~(1<<4);}while(0);;
 RTCCFGbits.RTCOE=1;
 do{LATG |= (1<<4);}while(0);;
+blackEn=1;
 }
 
 void lcd_bl_off(void)
@@ -8891,6 +8892,7 @@ void lcd_bl_off(void)
 do{TRISG |= (1<<4);}while(0);;
 RTCCFGbits.RTCOE=0;
 
+blackEn=0;
 }
 
 void lcd_bl_init(void)
@@ -8903,11 +8905,8 @@ void lcd_init(void)
 lcd_config();
 
 LCDCON=0x8f;;
-if(blackEn){
 lcd_bl_on();
-}
-else{
-lcd_bl_off();
-}
+
+# 685
 }
 

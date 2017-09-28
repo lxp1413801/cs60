@@ -31,7 +31,7 @@ void __interrupt(high_priority) handler_interrupt_hight(void)
 	if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && IPR3bits.RTCCIP){
         PIR3bits.RTCCIF=0;
         glbEvent |= flg_EVENT_RTC;   
-		rtc_alrm_irq_hook();
+		//rtc_alrm_irq_hook();
 	}    
 }
 
@@ -46,6 +46,6 @@ void __interrupt(low_priority) handler_interrupt_low(void)
 	if(PIE3bits.RTCCIE && PIR3bits.RTCCIF && (!(IPR3bits.RTCCIP))){
         PIR3bits.RTCCIF=0;
         glbEvent |= flg_EVENT_RTC;   
-		rtc_alrm_irq_hook();
+		//rtc_alrm_irq_hook();
 	}    
 }

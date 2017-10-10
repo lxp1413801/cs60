@@ -122,10 +122,17 @@ void ads1115_init_all_chip(void)
 
 void ads1115_start_conversion(st_ads1115ObjDef* pAds1115)
 {
+    ads1115_set_mod(pAds1115,ADS1X1X_MODE_SINGLE_SHOT);
 	ads1115_write_reg(pAds1115,ADS1x1x_REG_POINTER_CONFIG,pAds1115->config.data);
 	//delay_ms(1);
 }
-
+//ADS1X1X_MODE_CONTINUOUS
+void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115)
+{
+	ads1115_set_mod(pAds1115,ADS1X1X_MODE_CONTINUOUS);
+	ads1115_write_reg(pAds1115,ADS1x1x_REG_POINTER_CONFIG,pAds1115->config.data);
+	//delay_ms(1);
+}
 uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
 {
 	uint16_t result;
@@ -136,7 +143,19 @@ uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
 	//delay_ms(1);
 	return result;
 }
-
+uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115)
+{
+	uint16_t result;
+	do{
+		result=ads1115_read_reg(pAds1115,ADS1x1x_REG_POINTER_CONFIG);
+        
+	}while(result & 0x8000);
+	result=ads1115_read_reg(pAds1115,ADS1x1x_REG_POINTER_CONVERSION);
+	if(pAds1115->chip<ADS1113){
+		result >>= 4;
+	}
+	return result;
+}
 void ads1115_set_threshold_lo(st_ads1115ObjDef* pAds1115,uint16_t value)
 {
 	if(pAds1115->chip<ADS1113){

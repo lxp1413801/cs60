@@ -8254,7 +8254,7 @@ if(INTCONbits.PEIE && PIE1bits.TMR1IE && PIR1bits.TMR1IF ){
 if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && IPR1bits.TMR2IP){
 PIR1bits.TMR2IF=0;
 glTicker++;
-if(glTicker >3){
+if(glTicker >1){
 glbEvent |= (1<<0);
 glTicker=0;
 }

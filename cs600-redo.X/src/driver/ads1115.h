@@ -149,6 +149,9 @@ extern "C"{
     extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
 	
 	//extern void 
+	//add by lxp
+	extern void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115);
+	extern uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115);
 	
 	
 #ifdef __cplusplus

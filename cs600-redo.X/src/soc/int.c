@@ -25,7 +25,7 @@ void __interrupt(high_priority) handler_interrupt_hight(void)
 	if(PIE1bits.TMR2IE && PIR1bits.TMR2IF && IPR1bits.TMR2IP){
         PIR1bits.TMR2IF=0;
         glTicker++; 
-		if(glTicker >3){
+		if(glTicker >1){
 			glbEvent |= flg_EVENT_TICKER; 
 			glTicker=0;
 		}

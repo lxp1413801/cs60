@@ -12,16 +12,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "33 src/api/../includes/../soc/clock.h
 [v _delay_ms `(v ~T0 @X0 0 ef1`ui ]
 "119 src/api/key_menu.c
-[c E7515 0 1 .. ]
-[n E7515 . HOTIZONTAL VERTICAL  ]
+[c E7519 0 1 .. ]
+[n E7519 . HOTIZONTAL VERTICAL  ]
 "54 src/api/../includes/../api/data.h
 [s S659 `l 1 `l 1 ]
 [n S659 . prOut prIn ]
 "119 src/api/key_menu.c
-[c E7525 0 1 2 3 .. ]
-[n E7525 . HIGHT_HI HIGHT_LO PRESSURE_HI PRESSURE_LO  ]
+[c E7529 0 1 2 3 .. ]
+[n E7529 . HIGHT_HI HIGHT_LO PRESSURE_HI PRESSURE_LO  ]
 "38 src/api/../includes/../api/data.h
-[s S657 `ul 1 `ul 1 `E7525 1 `uc -> 3 `i ]
+[s S657 `ul 1 `ul 1 `E7529 1 `uc -> 3 `i ]
 [n S657 . warnValueLo warnValueHi type . ]
 "47
 [s S658 `l 1 `ui 1 `ui 1 ]
@@ -30,7 +30,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S660 `l 1 `l 1 ]
 [n S660 . ilpLow ilpHi ]
 "63
-[s S661 `ul 1 `E7515 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `l 1 `l 1 `S659 -> 2 `i `S659 -> 2 `i `S657 -> 4 `i `S657 -> 2 `i `ui -> 4 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S660 1 `S660 1 `S660 1 `S660 1 `ui 1 `ui 1 ]
+[s S661 `ul 1 `E7519 1 `uc 1 `ui 1 `l 1 `ul 1 `l 1 `l 1 `l 1 `S659 -> 2 `i `S659 -> 2 `i `S657 -> 4 `i `S657 -> 2 `i `ui -> 4 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S658 -> 2 `i `S660 1 `S660 1 `S660 1 `S660 1 `ui 1 `ui 1 ]
 [n S661 . id pos maxValueForlevelBar density h d V1 V2 baseZero _2ndPrDiffCalib _2ndPrCalib diffPressureWarnSet pressureWarnSet ployCoeffic TmepCalib exPr0Calib exPr1Calib exTempCalib diffPrilpScale0 PrilpScale0 exPrIpScaleCh0 exPrIpScaleCh1 barScale crc ]
 "105
 [v _stSysData `S661 ~T0 @X0 0 e ]
@@ -50,10 +50,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "134
 [v _prCalibTabDef `S664 ~T0 @X0 0 e ]
 "346 src/api/key_menu.c
-[c E7520 0 1 .. ]
-[n E7520 . TEST_MODE WORK_MODE  ]
+[c E7524 0 1 .. ]
+[n E7524 . TEST_MODE WORK_MODE  ]
 "29 src/api/../includes/../api/data.h
-[v _dwm `VE7520 ~T0 @X0 0 e ]
+[v _dwm `VE7524 ~T0 @X0 0 e ]
 "159
 [v _data_sys_cal_v1 `(ul ~T0 @X0 0 ef1`*S661 ]
 "160
@@ -105,9 +105,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _lcdTwinkle `uc ~T0 @X0 0 e ]
 "16 src/api/../includes/../soc/ticker.h
 [v _sys_ticker_stop `(v ~T0 @X0 0 ef ]
-[v F7513 `(v ~T0 @X0 1 tf ]
+[v F7517 `(v ~T0 @X0 1 tf ]
 "46 src/api/../includes/../api/ui.h
-[v _ui_disp_menu `TF7513 ~T0 @X0 0 e ]
+[v _ui_disp_menu `TF7517 ~T0 @X0 0 e ]
 "15 src/api/../includes/../soc/ticker.h
 [v _sys_ticker_start `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -6341,6 +6341,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ads1115.h: 147: extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 [; ;ads1115.h: 148: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 [; ;ads1115.h: 149: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
+[; ;ads1115.h: 153: extern void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115);
+[; ;ads1115.h: 154: extern uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115);
 [; ;ex_eeprom.h: 13: extern st_iicDeviceObj at24c02Ch0,at24c02Ch1;
 [; ;ex_eeprom.h: 14: extern void at24c02_init(st_iicDeviceObj* pAt24c02, uint8_t slv);
 [; ;ex_eeprom.h: 15: extern void at24c02_init_all_chip(void);
@@ -6568,12 +6570,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.h: 39: extern uint8_t sample_common(void);
 [; ;sample.h: 40: extern uint8_t sample_low(void);
 [; ;sample.h: 42: extern void hook_sample_fast_timer(void);
-[; ;sample.h: 45: extern uint8_t sample_diff_pr_chip_fast(void);
-[; ;sample.h: 46: extern uint8_t sample_pr_chip_fast(void);
-[; ;sample.h: 47: extern uint8_t sample_in_soc_adc_ch(void);
-[; ;sample.h: 49: extern void sample_call_in_ticker(void);
-[; ;sample.h: 50: extern void sample_function_enable_fi_in_rtc(void);
-[; ;sample.h: 52: extern void sample_variable_init(void);
+[; ;sample.h: 45: extern void sample_all_power_on(void);
+[; ;sample.h: 46: extern void sample_all_power_off(void);
+[; ;sample.h: 47: extern uint8_t sample_diff_pr_chip_fast(void);
+[; ;sample.h: 48: extern uint8_t sample_pr_chip_fast(void);
+[; ;sample.h: 49: extern uint8_t sample_in_soc_adc_ch(void);
+[; ;sample.h: 51: extern void sample_call_in_ticker(void);
+[; ;sample.h: 52: extern void sample_function_enable_fi_in_rtc(void);
+[; ;sample.h: 54: extern void sample_variable_init(void);
 [; ;event.h: 10: extern volatile uint8_t glbEvent;
 [; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
 [; ;event.h: 16: extern int8_t event_process_rtc(void);
@@ -8028,8 +8032,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U _p -> + -> *U _p `i -> 1 `i `uc ]
 [; ;key_menu.c: 475: if(*p>VERTICAL)*p=HOTIZONTAL;
 "475
-[e $ ! > -> *U _p `i -> . `E7515 1 `i 775  ]
-[e = *U _p -> . `E7515 0 `uc ]
+[e $ ! > -> *U _p `i -> . `E7519 1 `i 775  ]
+[e = *U _p -> . `E7519 0 `uc ]
 [e :U 775 ]
 [; ;key_menu.c: 476: break;
 "476
@@ -8207,8 +8211,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U _p -> + -> *U _p `i -> 1 `i `uc ]
 [; ;key_menu.c: 528: if(*p>PRESSURE_LO)*p=HIGHT_HI;
 "528
-[e $ ! > -> *U _p `i -> . `E7525 3 `i 790  ]
-[e = *U _p -> . `E7525 0 `uc ]
+[e $ ! > -> *U _p `i -> . `E7529 3 `i 790  ]
+[e = *U _p -> . `E7529 0 `uc ]
 [e :U 790 ]
 [; ;key_menu.c: 529: }
 "529
@@ -8326,11 +8330,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _p -> &U _adjValue `*uc ]
 [; ;key_menu.c: 568: if(*p==TEST_MODE){
 "568
-[e $ ! == -> *U _p `i -> . `E7520 0 `i 803  ]
+[e $ ! == -> *U _p `i -> . `E7524 0 `i 803  ]
 {
 [; ;key_menu.c: 569: *p=WORK_MODE;
 "569
-[e = *U _p -> . `E7520 1 `uc ]
+[e = *U _p -> . `E7524 1 `uc ]
 "570
 }
 [; ;key_menu.c: 570: }else{
@@ -8339,7 +8343,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;key_menu.c: 571: *p=TEST_MODE;
 "571
-[e = *U _p -> . `E7520 0 `uc ]
+[e = *U _p -> . `E7524 0 `uc ]
 "572
 }
 [e :U 804 ]
@@ -8649,7 +8653,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _p -> &U _adjValue `*uc ]
 [; ;key_menu.c: 675: stp->pos=(*p);
 "675
-[e = . *U _stp 1 -> *U _p `E7515 ]
+[e = . *U _stp 1 -> *U _p `E7519 ]
 [; ;key_menu.c: 676: break;
 "676
 [e $U 842  ]
@@ -9108,7 +9112,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _p -> &U _adjValue `*uc ]
 [; ;key_menu.c: 810: stp->diffPressureWarnSet[subMenu].type=*p;
 "810
-[e = . *U + &U . *U _stp 11 * -> _subMenu `ux -> -> # *U &U . *U _stp 11 `ui `ux 2 -> *U _p `E7525 ]
+[e = . *U + &U . *U _stp 11 * -> _subMenu `ux -> -> # *U &U . *U _stp 11 `ui `ux 2 -> *U _p `E7529 ]
 [; ;key_menu.c: 811: __sys_data_save_write_flash();
 "811
 [e ( ___sys_data_save_write_flash ..  ]
@@ -9515,7 +9519,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _p -> &U _adjValue `*uc ]
 [; ;key_menu.c: 952: dwm=*p;
 "952
-[e = _dwm -> *U _p `VE7520 ]
+[e = _dwm -> *U _p `VE7524 ]
 [; ;key_menu.c: 953: __exit_menu_to_home_unsave();
 "953
 [e ( ___exit_menu_to_home_unsave ..  ]

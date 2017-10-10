@@ -51,7 +51,16 @@ int main(void)
     lcd_bl_off();
     //lcd_disp_level(60);
   
-    //peripheral_power_enable();
+    //sensor_power_enable();
+	sample_all_power_on();
+    
+	// while(1)
+	// {
+		// extern st_iicDeviceObj* pdiff_prEepromObj;
+		// extern st_prCalibTabDef diff_prCalibTabDef;
+		// at24c02_read_n_byte(pdiff_prEepromObj,0,(uint8_t*)&diff_prCalibTabDef,sizeof(diff_prCalibTabDef));
+		// delay_ms(10);
+	// }
     __nop();    
     while(1){
         if(glbEvent & flg_EVENT_RTC){

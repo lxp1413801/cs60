@@ -6142,9 +6142,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _ADCON0bits 1 2 _ch ]
 }
 [e :U 652 ]
-[; ;in_adc.c: 26: delay_us(2);
+[; ;in_adc.c: 26: delay_us(10);
 "26
-[e ( _delay_us (1 -> -> 2 `i `ui ]
+[e ( _delay_us (1 -> -> 10 `i `ui ]
 [; ;in_adc.c: 27: do{ADCON0bits.GO=1;}while(0);;
 "27
 [e :U 656 ]
@@ -6171,9 +6171,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;in_adc.c: 32: ret |= ADRESL;
 "32
 [e =| _ret -> _ADRESL `ui ]
-[; ;in_adc.c: 33: delay_us(2);
+[; ;in_adc.c: 33: delay_us(10);
 "33
-[e ( _delay_us (1 -> -> 2 `i `ui ]
+[e ( _delay_us (1 -> -> 10 `i `ui ]
 [; ;in_adc.c: 34: do{ADCON0bits.ADON=0;}while(0);;
 "34
 [e :U 662 ]

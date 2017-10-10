@@ -8336,6 +8336,11 @@ extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
 
+
+
+extern void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115);
+extern uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115);
+
 # 10 "src/driver/../soc/clock.h"
 typedef enum __OSC_MODE
 {
@@ -8527,10 +8532,17 @@ ads1115_init(pAds1115DiffPrObj,(0x92));
 
 void ads1115_start_conversion(st_ads1115ObjDef* pAds1115)
 {
+ads1115_set_mod(pAds1115,ADS1X1X_MODE_SINGLE_SHOT);
 ads1115_write_reg(pAds1115,(0x01),pAds1115->config.data);
 
 }
 
+void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115)
+{
+ads1115_set_mod(pAds1115,ADS1X1X_MODE_CONTINUOUS);
+ads1115_write_reg(pAds1115,(0x01),pAds1115->config.data);
+
+}
 uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
 {
 uint16_t result;
@@ -8541,7 +8553,19 @@ result >>= 4;
 
 return result;
 }
+uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115)
+{
+uint16_t result;
+do{
+result=ads1115_read_reg(pAds1115,(0x01));
 
+}while(result & 0x8000);
+result=ads1115_read_reg(pAds1115,(0x00));
+if(pAds1115->chip<ADS1113){
+result >>= 4;
+}
+return result;
+}
 void ads1115_set_threshold_lo(st_ads1115ObjDef* pAds1115,uint16_t value)
 {
 if(pAds1115->chip<ADS1113){

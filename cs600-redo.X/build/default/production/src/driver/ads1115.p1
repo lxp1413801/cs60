@@ -6157,6 +6157,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ads1115.h: 147: extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 [; ;ads1115.h: 148: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 [; ;ads1115.h: 149: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
+[; ;ads1115.h: 153: extern void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115);
+[; ;ads1115.h: 154: extern uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115);
 [; ;clock.h: 10: typedef enum __OSC_MODE
 [; ;clock.h: 11: {
 [; ;clock.h: 13: OSC_PMODE_SLEEP = 0,
@@ -6599,106 +6601,178 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _pAds1115 `*S646 ~T0 @X0 1 r1 ]
 "124
 [f ]
-[; ;ads1115.c: 125: ads1115_write_reg(pAds1115,(0x01),pAds1115->config.data);
+[; ;ads1115.c: 125: ads1115_set_mod(pAds1115,ADS1X1X_MODE_SINGLE_SHOT);
 "125
+[e ( _ads1115_set_mod (2 , _pAds1115 . `E6994 1 ]
+[; ;ads1115.c: 126: ads1115_write_reg(pAds1115,(0x01),pAds1115->config.data);
+"126
 [e ( _ads1115_write_reg (3 , , _pAds1115 -> -> 1 `i `uc . . *U _pAds1115 2 0 ]
-[; ;ads1115.c: 127: }
-"127
+[; ;ads1115.c: 128: }
+"128
 [e :UE 666 ]
 }
-"129
-[v _ads1115_read_conversion `(ui ~T0 @X0 1 ef1`*S646 ]
 "130
-{
-[; ;ads1115.c: 129: uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
-[; ;ads1115.c: 130: {
-[e :U _ads1115_read_conversion ]
-"129
-[v _pAds1115 `*S646 ~T0 @X0 1 r1 ]
-"130
-[f ]
+[v _ads1115_start_conversion_cont `(v ~T0 @X0 1 ef1`*S646 ]
 "131
-[v _result `ui ~T0 @X0 1 a ]
-[; ;ads1115.c: 131: uint16_t result;
-[; ;ads1115.c: 132: result=ads1115_read_reg(pAds1115,(0x00));
-"132
-[e = _result ( _ads1115_read_reg (2 , _pAds1115 -> -> 0 `i `uc ]
-[; ;ads1115.c: 133: if(pAds1115->chip<ADS1113){
-"133
-[e $ ! < -> . *U _pAds1115 0 `i -> . `E7036 3 `i 668  ]
 {
-[; ;ads1115.c: 134: result >>= 4;
-"134
-[e =>> _result -> 4 `i ]
-"135
-}
-[e :U 668 ]
+[; ;ads1115.c: 130: void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115)
+[; ;ads1115.c: 131: {
+[e :U _ads1115_start_conversion_cont ]
+"130
+[v _pAds1115 `*S646 ~T0 @X0 1 r1 ]
+"131
+[f ]
+[; ;ads1115.c: 132: ads1115_set_mod(pAds1115,ADS1X1X_MODE_CONTINUOUS);
+"132
+[e ( _ads1115_set_mod (2 , _pAds1115 . `E6994 0 ]
+[; ;ads1115.c: 133: ads1115_write_reg(pAds1115,(0x01),pAds1115->config.data);
+"133
+[e ( _ads1115_write_reg (3 , , _pAds1115 -> -> 1 `i `uc . . *U _pAds1115 2 0 ]
 [; ;ads1115.c: 135: }
-[; ;ads1115.c: 137: return result;
-"137
-[e ) _result ]
-[e $UE 667  ]
-[; ;ads1115.c: 138: }
-"138
+"135
 [e :UE 667 ]
 }
-"140
-[v _ads1115_set_threshold_lo `(v ~T0 @X0 1 ef2`*S646`ui ]
-"141
+"136
+[v _ads1115_read_conversion `(ui ~T0 @X0 1 ef1`*S646 ]
+"137
 {
-[; ;ads1115.c: 140: void ads1115_set_threshold_lo(st_ads1115ObjDef* pAds1115,uint16_t value)
-[; ;ads1115.c: 141: {
-[e :U _ads1115_set_threshold_lo ]
-"140
+[; ;ads1115.c: 136: uint16_t ads1115_read_conversion(st_ads1115ObjDef* pAds1115)
+[; ;ads1115.c: 137: {
+[e :U _ads1115_read_conversion ]
+"136
 [v _pAds1115 `*S646 ~T0 @X0 1 r1 ]
-[v _value `ui ~T0 @X0 1 r2 ]
-"141
+"137
 [f ]
-[; ;ads1115.c: 142: if(pAds1115->chip<ADS1113){
+"138
+[v _result `ui ~T0 @X0 1 a ]
+[; ;ads1115.c: 138: uint16_t result;
+[; ;ads1115.c: 139: result=ads1115_read_reg(pAds1115,(0x00));
+"139
+[e = _result ( _ads1115_read_reg (2 , _pAds1115 -> -> 0 `i `uc ]
+[; ;ads1115.c: 140: if(pAds1115->chip<ADS1113){
+"140
+[e $ ! < -> . *U _pAds1115 0 `i -> . `E7036 3 `i 669  ]
+{
+[; ;ads1115.c: 141: result >>= 4;
+"141
+[e =>> _result -> 4 `i ]
 "142
-[e $ ! < -> . *U _pAds1115 0 `i -> . `E7036 3 `i 670  ]
-{
-[; ;ads1115.c: 143: value >>= 4;
-"143
-[e =>> _value -> 4 `i ]
+}
+[e :U 669 ]
+[; ;ads1115.c: 142: }
+[; ;ads1115.c: 144: return result;
 "144
-}
-[e :U 670 ]
-[; ;ads1115.c: 144: }
-[; ;ads1115.c: 145: ads1115_write_reg(pAds1115,(0x02),value);
+[e ) _result ]
+[e $UE 668  ]
+[; ;ads1115.c: 145: }
 "145
-[e ( _ads1115_write_reg (3 , , _pAds1115 -> -> 2 `i `uc _value ]
-[; ;ads1115.c: 146: }
-"146
-[e :UE 669 ]
+[e :UE 668 ]
 }
-"148
-[v _ads1115_set_threshold_hi `(v ~T0 @X0 1 ef2`*S646`ui ]
-"149
+"146
+[v _ads1115_read_conversion_cont `(ui ~T0 @X0 1 ef1`*S646 ]
+"147
 {
-[; ;ads1115.c: 148: void ads1115_set_threshold_hi(st_ads1115ObjDef* pAds1115,uint16_t value)
-[; ;ads1115.c: 149: {
-[e :U _ads1115_set_threshold_hi ]
-"148
+[; ;ads1115.c: 146: uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115)
+[; ;ads1115.c: 147: {
+[e :U _ads1115_read_conversion_cont ]
+"146
 [v _pAds1115 `*S646 ~T0 @X0 1 r1 ]
-[v _value `ui ~T0 @X0 1 r2 ]
-"149
+"147
 [f ]
-[; ;ads1115.c: 150: if(pAds1115->chip<ADS1113){
-"150
-[e $ ! < -> . *U _pAds1115 0 `i -> . `E7036 3 `i 672  ]
+"148
+[v _result `ui ~T0 @X0 1 a ]
+[; ;ads1115.c: 148: uint16_t result;
+[; ;ads1115.c: 149: do{
+"149
+[e :U 673 ]
 {
-[; ;ads1115.c: 151: value >>= 4;
-"151
-[e =>> _value -> 4 `i ]
+[; ;ads1115.c: 150: result=ads1115_read_reg(pAds1115,(0x01));
+"150
+[e = _result ( _ads1115_read_reg (2 , _pAds1115 -> -> 1 `i `uc ]
 "152
 }
+[; ;ads1115.c: 152: }while(result & 0x8000);
+[e $ != & _result -> 32768 `ui -> -> 0 `i `ui 673  ]
 [e :U 672 ]
-[; ;ads1115.c: 152: }
-[; ;ads1115.c: 153: ads1115_write_reg(pAds1115,(0x03),value);
+[; ;ads1115.c: 153: result=ads1115_read_reg(pAds1115,(0x00));
 "153
-[e ( _ads1115_write_reg (3 , , _pAds1115 -> -> 3 `i `uc _value ]
-[; ;ads1115.c: 154: }
+[e = _result ( _ads1115_read_reg (2 , _pAds1115 -> -> 0 `i `uc ]
+[; ;ads1115.c: 154: if(pAds1115->chip<ADS1113){
 "154
-[e :UE 671 ]
+[e $ ! < -> . *U _pAds1115 0 `i -> . `E7036 3 `i 674  ]
+{
+[; ;ads1115.c: 155: result >>= 4;
+"155
+[e =>> _result -> 4 `i ]
+"156
+}
+[e :U 674 ]
+[; ;ads1115.c: 156: }
+[; ;ads1115.c: 157: return result;
+"157
+[e ) _result ]
+[e $UE 670  ]
+[; ;ads1115.c: 158: }
+"158
+[e :UE 670 ]
+}
+"159
+[v _ads1115_set_threshold_lo `(v ~T0 @X0 1 ef2`*S646`ui ]
+"160
+{
+[; ;ads1115.c: 159: void ads1115_set_threshold_lo(st_ads1115ObjDef* pAds1115,uint16_t value)
+[; ;ads1115.c: 160: {
+[e :U _ads1115_set_threshold_lo ]
+"159
+[v _pAds1115 `*S646 ~T0 @X0 1 r1 ]
+[v _value `ui ~T0 @X0 1 r2 ]
+"160
+[f ]
+[; ;ads1115.c: 161: if(pAds1115->chip<ADS1113){
+"161
+[e $ ! < -> . *U _pAds1115 0 `i -> . `E7036 3 `i 676  ]
+{
+[; ;ads1115.c: 162: value >>= 4;
+"162
+[e =>> _value -> 4 `i ]
+"163
+}
+[e :U 676 ]
+[; ;ads1115.c: 163: }
+[; ;ads1115.c: 164: ads1115_write_reg(pAds1115,(0x02),value);
+"164
+[e ( _ads1115_write_reg (3 , , _pAds1115 -> -> 2 `i `uc _value ]
+[; ;ads1115.c: 165: }
+"165
+[e :UE 675 ]
+}
+"167
+[v _ads1115_set_threshold_hi `(v ~T0 @X0 1 ef2`*S646`ui ]
+"168
+{
+[; ;ads1115.c: 167: void ads1115_set_threshold_hi(st_ads1115ObjDef* pAds1115,uint16_t value)
+[; ;ads1115.c: 168: {
+[e :U _ads1115_set_threshold_hi ]
+"167
+[v _pAds1115 `*S646 ~T0 @X0 1 r1 ]
+[v _value `ui ~T0 @X0 1 r2 ]
+"168
+[f ]
+[; ;ads1115.c: 169: if(pAds1115->chip<ADS1113){
+"169
+[e $ ! < -> . *U _pAds1115 0 `i -> . `E7036 3 `i 678  ]
+{
+[; ;ads1115.c: 170: value >>= 4;
+"170
+[e =>> _value -> 4 `i ]
+"171
+}
+[e :U 678 ]
+[; ;ads1115.c: 171: }
+[; ;ads1115.c: 172: ads1115_write_reg(pAds1115,(0x03),value);
+"172
+[e ( _ads1115_write_reg (3 , , _pAds1115 -> -> 3 `i `uc _value ]
+[; ;ads1115.c: 173: }
+"173
+[e :UE 677 ]
 }

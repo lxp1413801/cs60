@@ -23,14 +23,14 @@ uint16_t in_adc_start_and_read(uint8_t ch)
     uint16_t ret=0;
     in_adc_enable();
     in_adc_set_ch(ch);
-    delay_us(2);
+    delay_us(10);
     in_adc_start();
 	in_adc_waite_convert_complete();
 	
     ret=ADRESH;
     ret<<=8;
     ret |= ADRESL;
-    delay_us(2);
+    delay_us(10);
     in_adc_disable();
     return ret;
 }

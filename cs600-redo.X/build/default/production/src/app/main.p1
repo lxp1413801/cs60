@@ -3,12 +3,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _lcdTwinkle `uc ~T0 @X0 0 e ]
 "16 src/app/../includes/../soc/ticker.h
 [v _sys_ticker_stop `(v ~T0 @X0 0 ef ]
-[v F7513 `(v ~T0 @X0 1 tf ]
+[v F7517 `(v ~T0 @X0 1 tf ]
 "46 src/app/../includes/../api/ui.h
-[v _ui_disp_menu `TF7513 ~T0 @X0 0 e ]
+[v _ui_disp_menu `TF7517 ~T0 @X0 0 e ]
 "15 src/app/../includes/../soc/ticker.h
 [v _sys_ticker_start `(v ~T0 @X0 0 ef ]
-"49 src/app/../includes/../api/sample.h
+"51 src/app/../includes/../api/sample.h
 [v _sample_call_in_ticker `(v ~T0 @X0 0 ef ]
 [p mainexit ]
 "43 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18.h
@@ -35,6 +35,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ui_disp_start_cs600 `(v ~T0 @X0 0 ef1`uc ]
 "23 src/app/../includes/../driver/lcd.h
 [v _lcd_bl_off `(v ~T0 @X0 0 ef ]
+"45 src/app/../includes/../api/sample.h
+[v _sample_all_power_on `(v ~T0 @X0 0 ef ]
 "110 src/app/../includes/../api/key_menu.h
 [v _keyValue `Vuc ~T0 @X0 0 e ]
 "51 src/app/../includes/../driver/key.h
@@ -6272,6 +6274,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ads1115.h: 147: extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 [; ;ads1115.h: 148: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 [; ;ads1115.h: 149: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
+[; ;ads1115.h: 153: extern void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115);
+[; ;ads1115.h: 154: extern uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115);
 [; ;ex_eeprom.h: 13: extern st_iicDeviceObj at24c02Ch0,at24c02Ch1;
 [; ;ex_eeprom.h: 14: extern void at24c02_init(st_iicDeviceObj* pAt24c02, uint8_t slv);
 [; ;ex_eeprom.h: 15: extern void at24c02_init_all_chip(void);
@@ -6499,12 +6503,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.h: 39: extern uint8_t sample_common(void);
 [; ;sample.h: 40: extern uint8_t sample_low(void);
 [; ;sample.h: 42: extern void hook_sample_fast_timer(void);
-[; ;sample.h: 45: extern uint8_t sample_diff_pr_chip_fast(void);
-[; ;sample.h: 46: extern uint8_t sample_pr_chip_fast(void);
-[; ;sample.h: 47: extern uint8_t sample_in_soc_adc_ch(void);
-[; ;sample.h: 49: extern void sample_call_in_ticker(void);
-[; ;sample.h: 50: extern void sample_function_enable_fi_in_rtc(void);
-[; ;sample.h: 52: extern void sample_variable_init(void);
+[; ;sample.h: 45: extern void sample_all_power_on(void);
+[; ;sample.h: 46: extern void sample_all_power_off(void);
+[; ;sample.h: 47: extern uint8_t sample_diff_pr_chip_fast(void);
+[; ;sample.h: 48: extern uint8_t sample_pr_chip_fast(void);
+[; ;sample.h: 49: extern uint8_t sample_in_soc_adc_ch(void);
+[; ;sample.h: 51: extern void sample_call_in_ticker(void);
+[; ;sample.h: 52: extern void sample_function_enable_fi_in_rtc(void);
+[; ;sample.h: 54: extern void sample_variable_init(void);
 [; ;event.h: 10: extern volatile uint8_t glbEvent;
 [; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
 [; ;event.h: 16: extern int8_t event_process_rtc(void);
@@ -6657,83 +6663,86 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 51: lcd_bl_off();
 "51
 [e ( _lcd_bl_off ..  ]
-[; ;main.c: 55: __nop();
+[; ;main.c: 55: sample_all_power_on();
 "55
+[e ( _sample_all_power_on ..  ]
+[; ;main.c: 64: __nop();
+"64
 [e ( ___nop ..  ]
-[; ;main.c: 56: while(1){
-"56
+[; ;main.c: 65: while(1){
+"65
 [e :U 675 ]
 {
-[; ;main.c: 57: if(glbEvent & (1<<1)){
-"57
+[; ;main.c: 66: if(glbEvent & (1<<1)){
+"66
 [e $ ! != & -> _glbEvent `i << -> 1 `i -> 1 `i -> 0 `i 677  ]
 {
-[; ;main.c: 58: glbEvent &= ~(1<<1);
-"58
+[; ;main.c: 67: glbEvent &= ~(1<<1);
+"67
 [e =& _glbEvent -> ~ << -> 1 `i -> 1 `i `uc ]
-[; ;main.c: 59: event_process_rtc();
-"59
+[; ;main.c: 68: event_process_rtc();
+"68
 [e ( _event_process_rtc ..  ]
-"60
+"69
 }
 [e :U 677 ]
-[; ;main.c: 60: }
-[; ;main.c: 61: if(glbEvent & (1<<0)){
-"61
+[; ;main.c: 69: }
+[; ;main.c: 70: if(glbEvent & (1<<0)){
+"70
 [e $ ! != & -> _glbEvent `i << -> 1 `i -> 0 `i -> 0 `i 678  ]
 {
-[; ;main.c: 62: glbEvent &= ~(1<<0);
-"62
-[e =& _glbEvent -> ~ << -> 1 `i -> 0 `i `uc ]
-[; ;main.c: 63: sys_ticker_stop();
-"63
-[e ( _sys_ticker_stop ..  ]
-[; ;main.c: 65: sample_call_in_ticker();
-"65
-[e ( _sample_call_in_ticker ..  ]
-[; ;main.c: 66: sys_ticker_start();
-"66
-[e ( _sys_ticker_start ..  ]
-"67
-}
-[e :U 678 ]
-[; ;main.c: 67: }
-[; ;main.c: 68: if(glbEvent & (1<<2)){
-"68
-[e $ ! != & -> _glbEvent `i << -> 1 `i -> 2 `i -> 0 `i 679  ]
-{
-[; ;main.c: 69: glbEvent &= ~(1<<2);
-"69
-[e =& _glbEvent -> ~ << -> 1 `i -> 2 `i `uc ]
-[; ;main.c: 70: event_process_time_out();
-"70
-[e ( _event_process_time_out ..  ]
+[; ;main.c: 71: glbEvent &= ~(1<<0);
 "71
-}
-[e :U 679 ]
-[; ;main.c: 71: }
-[; ;main.c: 73: keyValue=key_polling();
-"73
-[e = _keyValue ( _key_polling ..  ]
-[; ;main.c: 74: if(keyValue!=(0x0)){
+[e =& _glbEvent -> ~ << -> 1 `i -> 0 `i `uc ]
+[; ;main.c: 72: sys_ticker_stop();
+"72
+[e ( _sys_ticker_stop ..  ]
+[; ;main.c: 74: sample_call_in_ticker();
 "74
-[e $ ! != -> _keyValue `i -> 0 `i 680  ]
-{
-[; ;main.c: 75: key_process();
+[e ( _sample_call_in_ticker ..  ]
+[; ;main.c: 75: sys_ticker_start();
 "75
-[e ( _key_process ..  ]
+[e ( _sys_ticker_start ..  ]
 "76
 }
-[e :U 680 ]
+[e :U 678 ]
+[; ;main.c: 76: }
+[; ;main.c: 77: if(glbEvent & (1<<2)){
 "77
+[e $ ! != & -> _glbEvent `i << -> 1 `i -> 2 `i -> 0 `i 679  ]
+{
+[; ;main.c: 78: glbEvent &= ~(1<<2);
+"78
+[e =& _glbEvent -> ~ << -> 1 `i -> 2 `i `uc ]
+[; ;main.c: 79: event_process_time_out();
+"79
+[e ( _event_process_time_out ..  ]
+"80
+}
+[e :U 679 ]
+[; ;main.c: 80: }
+[; ;main.c: 82: keyValue=key_polling();
+"82
+[e = _keyValue ( _key_polling ..  ]
+[; ;main.c: 83: if(keyValue!=(0x0)){
+"83
+[e $ ! != -> _keyValue `i -> 0 `i 680  ]
+{
+[; ;main.c: 84: key_process();
+"84
+[e ( _key_process ..  ]
+"85
+}
+[e :U 680 ]
+"86
 }
 [e :U 674 ]
-"56
+"65
 [e $U 675  ]
 [e :U 676 ]
-[; ;main.c: 76: }
-[; ;main.c: 77: }
-[; ;main.c: 78: }
-"78
+[; ;main.c: 85: }
+[; ;main.c: 86: }
+[; ;main.c: 87: }
+"87
 [e :UE 673 ]
 }

@@ -42,6 +42,8 @@
 	extern void hook_sample_fast_timer(void);
 	//extern 
 	//
+	extern void sample_all_power_on(void);
+	extern void sample_all_power_off(void);
     extern uint8_t sample_diff_pr_chip_fast(void);
 	extern uint8_t sample_pr_chip_fast(void);
 	extern uint8_t sample_in_soc_adc_ch(void);

@@ -6171,9 +6171,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;int.c: 27: glTicker++;
 "27
 [e ++ _glTicker -> -> 1 `i `uc ]
-[; ;int.c: 28: if(glTicker >3){
+[; ;int.c: 28: if(glTicker >1){
 "28
-[e $ ! > -> _glTicker `i -> 3 `i 652  ]
+[e $ ! > -> _glTicker `i -> 1 `i 652  ]
 {
 [; ;int.c: 29: glbEvent |= (1<<0);
 "29

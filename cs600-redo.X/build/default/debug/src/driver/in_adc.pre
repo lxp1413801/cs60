@@ -8227,14 +8227,14 @@ uint16_t in_adc_start_and_read(uint8_t ch)
 uint16_t ret=0;
 do{ADCON0bits.ADON=1;}while(0);;
 do{ADCON0bits.CHS=ch;}while(0);;
-delay_us(2);
+delay_us(10);
 do{ADCON0bits.GO=1;}while(0);;
 while(ADCON0bits.DONE){__nop();};;
 
 ret=ADRESH;
 ret<<=8;
 ret |= ADRESL;
-delay_us(2);
+delay_us(10);
 do{ADCON0bits.ADON=0;}while(0);;
 return ret;
 }

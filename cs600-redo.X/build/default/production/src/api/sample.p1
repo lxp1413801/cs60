@@ -20,7 +20,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _cal_pt100_temperature_ex `(v ~T0 @X0 0 ef ]
 "172
 [v _cal_additional_pressute `(v ~T0 @X0 0 ef1`uc ]
-"158 src/api/sample.c
+"201 src/api/sample.c
 [c E7291 0 1 2 3 4 5 .. ]
 [n E7291 . ADS1013 ADS1014 ADS1015 ADS1113 ADS1114 ADS1115  ]
 "116 src/api/../includes/../driver/ads1115.h
@@ -37,19 +37,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "128
 [s S650 `E7291 1 `uc 1 `S648 1 `*F7317 1 `*F7320 1 `*F7323 1 `*F7326 1 `*F7329 1 ]
 [n S650 . chip slaveAddr config iic_start iic_stop iic_send_byte iic_waite_ack iic_received_byte_if_ack ]
-"158 src/api/sample.c
+"201 src/api/sample.c
 [c E7254 0 1 2 3 4 5 6 0 1 2 3 4 5 6 7 .. ]
 [n E7254 . ADS101X_DATA_RATE_128 ADS101X_DATA_RATE_250 ADS101X_DATA_RATE_490 ADS101X_DATA_RATE_920 ADS101X_DATA_RATE_1600 ADS101X_DATA_RATE_A2400 ADS101X_DATA_RATE_3300 ADS1X1X_DATA_RATE_8 ADS1X1X_DATA_RATE_16 ADS1X1X_DATA_RATE_32 ADS1X1X_DATA_RATE_64 ADS1X1X_DATA_RATE_128 ADS1X1X_DATA_RATE_250 ADS1X1X_DATA_RATE_475 ADS1X1X_DATA_RATE_860  ]
 "146 src/api/../includes/../driver/ads1115.h
 [v _ads1115_set_data_rate `(v ~T0 @X0 0 ef2`*S650`E7254 ]
 "140
 [v _pAds1115DiffPrObj `*S650 ~T0 @X0 0 e ]
-"159 src/api/sample.c
+"203 src/api/sample.c
 [c E7229 0 1 2 3 4 5 6 7 .. ]
 [n E7229 . ADS1X1X_MUX_DIFF_0_1 ADS1X1X_MUX_DIFF_0_3 ADS1X1X_MUX_DIFF_1_3 ADS1X1X_MUX_DIFF_2_3 ADS1X1X_MUX_SINGLE_0 ADS1X1X_MUX_SINGLE_1 ADS1X1X_MUX_SINGLE_2 ADS1X1X_MUX_SINGLE_3  ]
 "148 src/api/../includes/../driver/ads1115.h
 [v _ads1115_set_mux `(v ~T0 @X0 0 ef2`*S650`E7229 ]
-"160 src/api/sample.c
+"204 src/api/sample.c
 [c E7240 0 1 2 3 4 5 .. ]
 [n E7240 . ADS1X1X_PGA_6144 ADS1X1X_PGA_4096 ADS1X1X_PGA_2048 ADS1X1X_PGA_1024 ADS1X1X_PGA_512 ADS1X1X_PGA_256  ]
 "147 src/api/../includes/../driver/ads1115.h
@@ -6317,6 +6317,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;ads1115.h: 147: extern void ads1115_set_pga(st_ads1115ObjDef* pAds1115,em_Ads1x1xPgaDef_t pga);
 [; ;ads1115.h: 148: extern void ads1115_set_mux(st_ads1115ObjDef* pAds1115,em_Ads1x1xMuxDef_t mux);
 [; ;ads1115.h: 149: extern uint16_t ads1115_read_reg(st_ads1115ObjDef* pAds1115,uint8_t addr);
+[; ;ads1115.h: 153: extern void ads1115_start_conversion_cont(st_ads1115ObjDef* pAds1115);
+[; ;ads1115.h: 154: extern uint16_t ads1115_read_conversion_cont(st_ads1115ObjDef* pAds1115);
 [; ;ex_eeprom.h: 13: extern st_iicDeviceObj at24c02Ch0,at24c02Ch1;
 [; ;ex_eeprom.h: 14: extern void at24c02_init(st_iicDeviceObj* pAt24c02, uint8_t slv);
 [; ;ex_eeprom.h: 15: extern void at24c02_init_all_chip(void);
@@ -6544,12 +6546,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;sample.h: 39: extern uint8_t sample_common(void);
 [; ;sample.h: 40: extern uint8_t sample_low(void);
 [; ;sample.h: 42: extern void hook_sample_fast_timer(void);
-[; ;sample.h: 45: extern uint8_t sample_diff_pr_chip_fast(void);
-[; ;sample.h: 46: extern uint8_t sample_pr_chip_fast(void);
-[; ;sample.h: 47: extern uint8_t sample_in_soc_adc_ch(void);
-[; ;sample.h: 49: extern void sample_call_in_ticker(void);
-[; ;sample.h: 50: extern void sample_function_enable_fi_in_rtc(void);
-[; ;sample.h: 52: extern void sample_variable_init(void);
+[; ;sample.h: 45: extern void sample_all_power_on(void);
+[; ;sample.h: 46: extern void sample_all_power_off(void);
+[; ;sample.h: 47: extern uint8_t sample_diff_pr_chip_fast(void);
+[; ;sample.h: 48: extern uint8_t sample_pr_chip_fast(void);
+[; ;sample.h: 49: extern uint8_t sample_in_soc_adc_ch(void);
+[; ;sample.h: 51: extern void sample_call_in_ticker(void);
+[; ;sample.h: 52: extern void sample_function_enable_fi_in_rtc(void);
+[; ;sample.h: 54: extern void sample_variable_init(void);
 [; ;event.h: 10: extern volatile uint8_t glbEvent;
 [; ;event.h: 11: extern volatile uint8_t glNoEventTimeOut;
 [; ;event.h: 16: extern int8_t event_process_rtc(void);
@@ -7181,593 +7185,593 @@ Version 3.2 HI-TECH Software Intermediate Code
 "149
 [e :UE 727 ]
 }
-"152
+"195
 [v _sample_call_in_ticker `(v ~T0 @X0 1 ef ]
-"153
+"196
 {
-[; ;sample.c: 152: void sample_call_in_ticker(void)
-[; ;sample.c: 153: {
+[; ;sample.c: 195: void sample_call_in_ticker(void)
+[; ;sample.c: 196: {
 [e :U _sample_call_in_ticker ]
 [f ]
-"154
+"197
 [v _i `uc ~T0 @X0 1 a ]
-"155
+"198
 [v _t16 `i ~T0 @X0 1 a ]
 [v _tmp16 `i ~T0 @X0 1 a ]
-[; ;sample.c: 154: uint8_t i;
-[; ;sample.c: 155: int16_t t16,tmp16;
-[; ;sample.c: 156: switch(sampChIndex){
-"156
+[; ;sample.c: 197: uint8_t i;
+[; ;sample.c: 198: int16_t t16,tmp16;
+[; ;sample.c: 199: switch(sampChIndex){
+"199
 [e $U 731  ]
 {
-[; ;sample.c: 157: case 0:{
-"157
+[; ;sample.c: 200: case 0:{
+"200
 [e :U 732 ]
 {
-[; ;sample.c: 158: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
-"158
+[; ;sample.c: 201: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+"201
 [e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 14 ]
-[; ;sample.c: 159: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
-"159
-[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7229 0 ]
-[; ;sample.c: 160: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);
-"160
-[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 0 ]
-[; ;sample.c: 161: for(i=0;i<4+1;i++){
-"161
+[; ;sample.c: 203: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_0);
+"203
+[e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7229 4 ]
+[; ;sample.c: 204: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_2048);
+"204
+[e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 2 ]
+[; ;sample.c: 205: for(i=0;i<4+1;i++){
+"205
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 733  ]
 [e $U 734  ]
 [e :U 733 ]
 {
-[; ;sample.c: 162: ads1115_start_conversion(pAds1115DiffPrObj);
-"162
+[; ;sample.c: 206: ads1115_start_conversion(pAds1115DiffPrObj);
+"206
 [e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 163: delay_ms(1);
-"163
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
-[; ;sample.c: 164: t16=ads1115_read_conversion(pAds1115DiffPrObj);
-"164
+[; ;sample.c: 207: delay_ms(3);
+"207
+[e ( _delay_ms (1 -> -> 3 `i `ui ]
+[; ;sample.c: 208: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+"208
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 165: if(i)t16=__x_sample_fifo(sampBufDiffPr_D01,t16,4);
-"165
+[; ;sample.c: 209: if(i)t16=__x_sample_fifo(sampBufDiffPr_D01,t16,4);
+"209
 [e $ ! != -> _i `i -> -> -> 0 `i `uc `i 736  ]
 [e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D01 _t16 -> -> 4 `i `uc ]
 [e :U 736 ]
-"166
+"210
 }
-"161
+"205
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 733  ]
 [e :U 734 ]
-"166
+"210
 }
-[; ;sample.c: 166: }
-[; ;sample.c: 167: adc_bridgeTemp=t16;
-"167
+[; ;sample.c: 210: }
+[; ;sample.c: 211: adc_bridgeTemp=t16;
+"211
 [e = _adc_bridgeTemp _t16 ]
-[; ;sample.c: 168: sampChIndex=1;
-"168
+[; ;sample.c: 212: sampChIndex=1;
+"212
 [e = _sampChIndex -> -> 1 `i `uc ]
-[; ;sample.c: 169: break;
-"169
+[; ;sample.c: 213: break;
+"213
 [e $U 730  ]
-"170
+"214
 }
-[; ;sample.c: 170: }
-[; ;sample.c: 171: case 1:{
-"171
+[; ;sample.c: 214: }
+[; ;sample.c: 215: case 1:{
+"215
 [e :U 737 ]
 {
-[; ;sample.c: 172: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
-"172
+[; ;sample.c: 217: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+"217
 [e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 14 ]
-[; ;sample.c: 173: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
-"173
+[; ;sample.c: 218: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
+"218
 [e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7229 3 ]
-[; ;sample.c: 174: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
-"174
+[; ;sample.c: 219: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
+"219
 [e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 5 ]
-[; ;sample.c: 175: for(i=0;i<4+1;i++){
-"175
+[; ;sample.c: 220: for(i=0;i<4+1;i++){
+"220
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 738  ]
 [e $U 739  ]
 [e :U 738 ]
 {
-[; ;sample.c: 176: ads1115_start_conversion(pAds1115DiffPrObj);
-"176
+[; ;sample.c: 221: ads1115_start_conversion(pAds1115DiffPrObj);
+"221
 [e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 177: delay_ms(1);
-"177
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
-[; ;sample.c: 178: t16=ads1115_read_conversion(pAds1115DiffPrObj);
-"178
+[; ;sample.c: 222: delay_ms(3);
+"222
+[e ( _delay_ms (1 -> -> 3 `i `ui ]
+[; ;sample.c: 223: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+"223
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 179: if(i)t16=__x_sample_fifo(sampBufDiffPr_D23,t16,4);
-"179
+[; ;sample.c: 224: if(i)t16=__x_sample_fifo(sampBufDiffPr_D23,t16,4);
+"224
 [e $ ! != -> _i `i -> -> -> 0 `i `uc `i 741  ]
 [e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_D23 _t16 -> -> 4 `i `uc ]
 [e :U 741 ]
-"180
+"225
 }
-"175
+"220
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 738  ]
 [e :U 739 ]
-"180
+"225
 }
-[; ;sample.c: 180: }
-[; ;sample.c: 181: adc_diffPr=t16;
-"181
+[; ;sample.c: 225: }
+[; ;sample.c: 226: adc_diffPr=t16;
+"226
 [e = _adc_diffPr _t16 ]
-[; ;sample.c: 182: sampChIndex=2;
-"182
+[; ;sample.c: 227: sampChIndex=2;
+"227
 [e = _sampChIndex -> -> 2 `i `uc ]
-[; ;sample.c: 183: break;
-"183
+[; ;sample.c: 228: break;
+"228
 [e $U 730  ]
-"184
+"229
 }
-[; ;sample.c: 184: }
-[; ;sample.c: 185: case 2:{
-"185
+[; ;sample.c: 229: }
+[; ;sample.c: 230: case 2:{
+"230
 [e :U 742 ]
 {
-[; ;sample.c: 186: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
-"186
+[; ;sample.c: 231: ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+"231
 [e ( _ads1115_set_data_rate (2 , _pAds1115DiffPrObj . `E7254 14 ]
-[; ;sample.c: 187: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
-"187
+[; ;sample.c: 232: ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_1);
+"232
 [e ( _ads1115_set_mux (2 , _pAds1115DiffPrObj . `E7229 5 ]
-[; ;sample.c: 188: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
-"188
+[; ;sample.c: 233: ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);
+"233
 [e ( _ads1115_set_pga (2 , _pAds1115DiffPrObj . `E7240 5 ]
-[; ;sample.c: 189: for(i=0;i<4+1;i++){
-"189
+[; ;sample.c: 234: for(i=0;i<4+1;i++){
+"234
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 743  ]
 [e $U 744  ]
 [e :U 743 ]
 {
-[; ;sample.c: 190: ads1115_start_conversion(pAds1115DiffPrObj);
-"190
+[; ;sample.c: 235: ads1115_start_conversion(pAds1115DiffPrObj);
+"235
 [e ( _ads1115_start_conversion (1 _pAds1115DiffPrObj ]
-[; ;sample.c: 191: delay_ms(1);
-"191
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
-[; ;sample.c: 192: t16=ads1115_read_conversion(pAds1115DiffPrObj);
-"192
+[; ;sample.c: 236: delay_ms(3);
+"236
+[e ( _delay_ms (1 -> -> 3 `i `ui ]
+[; ;sample.c: 237: t16=ads1115_read_conversion(pAds1115DiffPrObj);
+"237
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115DiffPrObj `i ]
-[; ;sample.c: 193: if(i)t16=__x_sample_fifo(sampBufDiffPr_S1,t16,4);
-"193
+[; ;sample.c: 238: if(i)t16=__x_sample_fifo(sampBufDiffPr_S1,t16,4);
+"238
 [e $ ! != -> _i `i -> -> -> 0 `i `uc `i 746  ]
 [e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufDiffPr_S1 _t16 -> -> 4 `i `uc ]
 [e :U 746 ]
-"194
+"239
 }
-"189
+"234
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 743  ]
 [e :U 744 ]
-"194
+"239
 }
-[; ;sample.c: 194: }
-[; ;sample.c: 195: adc_inPt100=t16;
-"195
+[; ;sample.c: 239: }
+[; ;sample.c: 240: adc_inPt100=t16;
+"240
 [e = _adc_inPt100 _t16 ]
-[; ;sample.c: 196: sampChIndex=3;
-"196
+[; ;sample.c: 241: sampChIndex=3;
+"241
 [e = _sampChIndex -> -> 3 `i `uc ]
-[; ;sample.c: 197: break;
-"197
+[; ;sample.c: 242: break;
+"242
 [e $U 730  ]
-"198
+"243
 }
-[; ;sample.c: 198: }
-[; ;sample.c: 199: case 3:{
-"199
+[; ;sample.c: 243: }
+[; ;sample.c: 245: case 3:{
+"245
 [e :U 747 ]
 {
-[; ;sample.c: 200: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
-"200
+[; ;sample.c: 246: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+"246
 [e ( _ads1115_set_data_rate (2 , _pAds1115PrObj . `E7254 14 ]
-[; ;sample.c: 201: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
-"201
+[; ;sample.c: 247: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
+"247
 [e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7229 4 ]
-[; ;sample.c: 202: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
-"202
+[; ;sample.c: 248: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
+"248
 [e ( _ads1115_set_pga (2 , _pAds1115PrObj . `E7240 2 ]
-[; ;sample.c: 203: for(i=0;i<4+1;i++){
-"203
+[; ;sample.c: 249: for(i=0;i<4+1;i++){
+"249
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 748  ]
 [e $U 749  ]
 [e :U 748 ]
 {
-[; ;sample.c: 204: ads1115_start_conversion(pAds1115PrObj);
-"204
+[; ;sample.c: 250: ads1115_start_conversion(pAds1115PrObj);
+"250
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 205: delay_ms(1);
-"205
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
-[; ;sample.c: 206: t16=ads1115_read_conversion(pAds1115PrObj);
-"206
+[; ;sample.c: 251: delay_ms(3);
+"251
+[e ( _delay_ms (1 -> -> 3 `i `ui ]
+[; ;sample.c: 252: t16=ads1115_read_conversion(pAds1115PrObj);
+"252
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
-[; ;sample.c: 207: if(i)t16=__x_sample_fifo(sampBufPt100ExA,t16,4);
-"207
+[; ;sample.c: 253: if(i)t16=__x_sample_fifo(sampBufPt100ExA,t16,4);
+"253
 [e $ ! != -> _i `i -> -> -> 0 `i `uc `i 751  ]
 [e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufPt100ExA _t16 -> -> 4 `i `uc ]
 [e :U 751 ]
-"208
+"254
 }
-"203
+"249
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 748  ]
 [e :U 749 ]
-"208
+"254
 }
-[; ;sample.c: 208: }
-[; ;sample.c: 209: tmp16=t16;
-"209
+[; ;sample.c: 254: }
+[; ;sample.c: 255: tmp16=t16;
+"255
 [e = _tmp16 _t16 ]
-[; ;sample.c: 210: sampChIndex=4;
-"210
+[; ;sample.c: 256: sampChIndex=4;
+"256
 [e = _sampChIndex -> -> 4 `i `uc ]
-[; ;sample.c: 211: break;
-"211
+[; ;sample.c: 257: break;
+"257
 [e $U 730  ]
-"212
+"258
 }
-[; ;sample.c: 212: }
-[; ;sample.c: 213: case 4:{
-"213
+[; ;sample.c: 258: }
+[; ;sample.c: 259: case 4:{
+"259
 [e :U 752 ]
 {
-[; ;sample.c: 214: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
-"214
+[; ;sample.c: 260: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+"260
 [e ( _ads1115_set_data_rate (2 , _pAds1115PrObj . `E7254 14 ]
-[; ;sample.c: 215: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_1);
-"215
+[; ;sample.c: 261: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_1);
+"261
 [e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7229 5 ]
-[; ;sample.c: 216: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
-"216
+[; ;sample.c: 262: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
+"262
 [e ( _ads1115_set_pga (2 , _pAds1115PrObj . `E7240 2 ]
-[; ;sample.c: 217: for(i=0;i<4+1;i++){
-"217
+[; ;sample.c: 263: for(i=0;i<4+1;i++){
+"263
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 753  ]
 [e $U 754  ]
 [e :U 753 ]
 {
-[; ;sample.c: 218: ads1115_start_conversion(pAds1115PrObj);
-"218
+[; ;sample.c: 264: ads1115_start_conversion(pAds1115PrObj);
+"264
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 219: delay_ms(1);
-"219
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
-[; ;sample.c: 220: t16=ads1115_read_conversion(pAds1115PrObj);
-"220
+[; ;sample.c: 265: delay_ms(3);
+"265
+[e ( _delay_ms (1 -> -> 3 `i `ui ]
+[; ;sample.c: 266: t16=ads1115_read_conversion(pAds1115PrObj);
+"266
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
-[; ;sample.c: 221: if(i)t16=__x_sample_fifo(sampBufPt100ExB,t16,4);
-"221
+[; ;sample.c: 267: if(i)t16=__x_sample_fifo(sampBufPt100ExB,t16,4);
+"267
 [e $ ! != -> _i `i -> -> -> 0 `i `uc `i 756  ]
 [e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufPt100ExB _t16 -> -> 4 `i `uc ]
 [e :U 756 ]
-"222
+"268
 }
-"217
+"263
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 753  ]
 [e :U 754 ]
-"222
+"268
 }
-[; ;sample.c: 222: }
-[; ;sample.c: 223: adc_exPt100=tmp16-t16-t16;
-"223
+[; ;sample.c: 268: }
+[; ;sample.c: 269: adc_exPt100=tmp16-t16-t16;
+"269
 [e = _adc_exPt100 - - _tmp16 _t16 _t16 ]
-[; ;sample.c: 224: sampChIndex=5;
-"224
+[; ;sample.c: 270: sampChIndex=5;
+"270
 [e = _sampChIndex -> -> 5 `i `uc ]
-[; ;sample.c: 225: break;
-"225
+[; ;sample.c: 271: break;
+"271
 [e $U 730  ]
-"226
+"272
 }
-[; ;sample.c: 226: }
-[; ;sample.c: 227: case 5:{
-"227
+[; ;sample.c: 272: }
+[; ;sample.c: 273: case 5:{
+"273
 [e :U 757 ]
 {
-[; ;sample.c: 228: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
-"228
+[; ;sample.c: 274: ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
+"274
 [e ( _ads1115_set_data_rate (2 , _pAds1115PrObj . `E7254 14 ]
-[; ;sample.c: 229: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
-"229
+[; ;sample.c: 275: ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
+"275
 [e ( _ads1115_set_mux (2 , _pAds1115PrObj . `E7229 3 ]
-[; ;sample.c: 230: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
-"230
-[e ( _ads1115_set_pga (2 , _pAds1115PrObj . `E7240 2 ]
-[; ;sample.c: 231: for(i=0;i<4+1;i++){
-"231
+[; ;sample.c: 276: ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_256);
+"276
+[e ( _ads1115_set_pga (2 , _pAds1115PrObj . `E7240 5 ]
+[; ;sample.c: 277: for(i=0;i<4+1;i++){
+"277
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 758  ]
 [e $U 759  ]
 [e :U 758 ]
 {
-[; ;sample.c: 232: ads1115_start_conversion(pAds1115PrObj);
-"232
+[; ;sample.c: 278: ads1115_start_conversion(pAds1115PrObj);
+"278
 [e ( _ads1115_start_conversion (1 _pAds1115PrObj ]
-[; ;sample.c: 233: delay_ms(1);
-"233
-[e ( _delay_ms (1 -> -> 1 `i `ui ]
-[; ;sample.c: 234: t16=ads1115_read_conversion(pAds1115PrObj);
-"234
+[; ;sample.c: 279: delay_ms(3);
+"279
+[e ( _delay_ms (1 -> -> 3 `i `ui ]
+[; ;sample.c: 280: t16=ads1115_read_conversion(pAds1115PrObj);
+"280
 [e = _t16 -> ( _ads1115_read_conversion (1 _pAds1115PrObj `i ]
-[; ;sample.c: 235: if(i)t16=__x_sample_fifo(sampBufPr,t16,4);
-"235
+[; ;sample.c: 281: if(i)t16=__x_sample_fifo(sampBufPr,t16,4);
+"281
 [e $ ! != -> _i `i -> -> -> 0 `i `uc `i 761  ]
 [e = _t16 ( ___x_sample_fifo (3 , , &U _sampBufPr _t16 -> -> 4 `i `uc ]
 [e :U 761 ]
-"236
+"282
 }
-"231
+"277
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 758  ]
 [e :U 759 ]
-"236
+"282
 }
-[; ;sample.c: 236: }
-[; ;sample.c: 237: adc_pressure=t16;
-"237
+[; ;sample.c: 282: }
+[; ;sample.c: 283: adc_pressure=t16;
+"283
 [e = _adc_pressure _t16 ]
-[; ;sample.c: 238: sampChIndex=6;
-"238
+[; ;sample.c: 284: sampChIndex=6;
+"284
 [e = _sampChIndex -> -> 6 `i `uc ]
-[; ;sample.c: 239: break;
-"239
+[; ;sample.c: 285: break;
+"285
 [e $U 730  ]
-"240
+"286
 }
-[; ;sample.c: 240: }
-[; ;sample.c: 241: case 6:{
-"241
+[; ;sample.c: 286: }
+[; ;sample.c: 287: case 6:{
+"287
 [e :U 762 ]
 {
-[; ;sample.c: 242: in_adc_init();
-"242
+[; ;sample.c: 288: in_adc_init();
+"288
 [e ( _in_adc_init ..  ]
-[; ;sample.c: 243: for(i=0;i<4+1;i++){
-"243
+[; ;sample.c: 289: for(i=0;i<4+1;i++){
+"289
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 763  ]
 [e $U 764  ]
 [e :U 763 ]
 {
-[; ;sample.c: 244: t16=in_adc_start_and_read(2);
-"244
+[; ;sample.c: 290: t16=in_adc_start_and_read(2);
+"290
 [e = _t16 -> ( _in_adc_start_and_read (1 -> -> 2 `i `uc `i ]
-[; ;sample.c: 245: t16=__x_sample_fifo(sampBufExPr0InSoc,t16,4);
-"245
+[; ;sample.c: 291: t16=__x_sample_fifo(sampBufExPr0InSoc,t16,4);
+"291
 [e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufExPr0InSoc `*i _t16 -> -> 4 `i `uc ]
-"246
+"292
 }
-"243
+"289
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 763  ]
 [e :U 764 ]
-"246
+"292
 }
-[; ;sample.c: 246: }
-[; ;sample.c: 247: adc_iPrEx0=t16;
-"247
+[; ;sample.c: 292: }
+[; ;sample.c: 293: adc_iPrEx0=t16;
+"293
 [e = _adc_iPrEx0 _t16 ]
-[; ;sample.c: 248: sampChIndex=7;
-"248
+[; ;sample.c: 294: sampChIndex=7;
+"294
 [e = _sampChIndex -> -> 7 `i `uc ]
-[; ;sample.c: 249: break;
-"249
+[; ;sample.c: 295: break;
+"295
 [e $U 730  ]
-"250
+"296
 }
-[; ;sample.c: 250: }
-[; ;sample.c: 251: case 7:{
-"251
+[; ;sample.c: 296: }
+[; ;sample.c: 297: case 7:{
+"297
 [e :U 766 ]
 {
-[; ;sample.c: 252: in_adc_init();
-"252
+[; ;sample.c: 298: in_adc_init();
+"298
 [e ( _in_adc_init ..  ]
-[; ;sample.c: 253: for(i=0;i<4+1;i++){
-"253
+[; ;sample.c: 299: for(i=0;i<4+1;i++){
+"299
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 767  ]
 [e $U 768  ]
 [e :U 767 ]
 {
-[; ;sample.c: 254: t16=in_adc_start_and_read(1);
-"254
+[; ;sample.c: 300: t16=in_adc_start_and_read(1);
+"300
 [e = _t16 -> ( _in_adc_start_and_read (1 -> -> 1 `i `uc `i ]
-[; ;sample.c: 255: t16=__x_sample_fifo(sampBufExPr1InSoc,t16,4);
-"255
+[; ;sample.c: 301: t16=__x_sample_fifo(sampBufExPr1InSoc,t16,4);
+"301
 [e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufExPr1InSoc `*i _t16 -> -> 4 `i `uc ]
-"256
+"302
 }
-"253
+"299
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 767  ]
 [e :U 768 ]
-"256
+"302
 }
-[; ;sample.c: 256: }
-[; ;sample.c: 257: adc_iPrEx1=t16;
-"257
+[; ;sample.c: 302: }
+[; ;sample.c: 303: adc_iPrEx1=t16;
+"303
 [e = _adc_iPrEx1 _t16 ]
-[; ;sample.c: 258: sampChIndex=8;
-"258
+[; ;sample.c: 304: sampChIndex=8;
+"304
 [e = _sampChIndex -> -> 8 `i `uc ]
-[; ;sample.c: 259: break;
-"259
+[; ;sample.c: 305: break;
+"305
 [e $U 730  ]
-"260
+"306
 }
-[; ;sample.c: 260: }
-[; ;sample.c: 261: case 8:{
-"261
+[; ;sample.c: 306: }
+[; ;sample.c: 307: case 8:{
+"307
 [e :U 770 ]
 {
-[; ;sample.c: 262: in_adc_init();
-"262
+[; ;sample.c: 308: in_adc_init();
+"308
 [e ( _in_adc_init ..  ]
-[; ;sample.c: 263: for(i=0;i<4+1;i++){
-"263
+[; ;sample.c: 309: for(i=0;i<4+1;i++){
+"309
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 771  ]
 [e $U 772  ]
 [e :U 771 ]
 {
-[; ;sample.c: 264: t16=in_adc_start_and_read(0);
-"264
+[; ;sample.c: 310: t16=in_adc_start_and_read(0);
+"310
 [e = _t16 -> ( _in_adc_start_and_read (1 -> -> 0 `i `uc `i ]
-[; ;sample.c: 265: t16=__x_sample_fifo(sampBufBatInSoc,t16,4);
-"265
+[; ;sample.c: 311: t16=__x_sample_fifo(sampBufBatInSoc,t16,4);
+"311
 [e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufBatInSoc `*i _t16 -> -> 4 `i `uc ]
-"266
+"312
 }
-"263
+"309
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 771  ]
 [e :U 772 ]
-"266
+"312
 }
-[; ;sample.c: 266: }
-[; ;sample.c: 267: adc_ibat=t16;
-"267
+[; ;sample.c: 312: }
+[; ;sample.c: 313: adc_ibat=t16;
+"313
 [e = _adc_ibat _t16 ]
-[; ;sample.c: 268: sampChIndex=9;
-"268
+[; ;sample.c: 314: sampChIndex=9;
+"314
 [e = _sampChIndex -> -> 9 `i `uc ]
-[; ;sample.c: 269: break;
-"269
+[; ;sample.c: 315: break;
+"315
 [e $U 730  ]
-"270
+"316
 }
-[; ;sample.c: 270: }
-[; ;sample.c: 271: case 9:{
-"271
+[; ;sample.c: 316: }
+[; ;sample.c: 317: case 9:{
+"317
 [e :U 774 ]
 {
-[; ;sample.c: 272: in_adc_init();
-"272
+[; ;sample.c: 318: in_adc_init();
+"318
 [e ( _in_adc_init ..  ]
-[; ;sample.c: 273: for(i=0;i<4+1;i++){
-"273
+[; ;sample.c: 319: for(i=0;i<4+1;i++){
+"319
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 775  ]
 [e $U 776  ]
 [e :U 775 ]
 {
-[; ;sample.c: 274: t16=in_adc_start_and_read(3);
-"274
+[; ;sample.c: 320: t16=in_adc_start_and_read(3);
+"320
 [e = _t16 -> ( _in_adc_start_and_read (1 -> -> 3 `i `uc `i ]
-[; ;sample.c: 275: t16=__x_sample_fifo(sampBufRefInSoc,t16,4);
-"275
+[; ;sample.c: 321: t16=__x_sample_fifo(sampBufRefInSoc,t16,4);
+"321
 [e = _t16 ( ___x_sample_fifo (3 , , -> &U _sampBufRefInSoc `*i _t16 -> -> 4 `i `uc ]
-"276
+"322
 }
-"273
+"319
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i + -> 4 `i -> 1 `i 775  ]
 [e :U 776 ]
-"276
+"322
 }
-[; ;sample.c: 276: }
-[; ;sample.c: 277: adc_iRef=t16;
-"277
+[; ;sample.c: 322: }
+[; ;sample.c: 323: adc_iRef=t16;
+"323
 [e = _adc_iRef _t16 ]
-[; ;sample.c: 278: sampChIndex=10;
-"278
+[; ;sample.c: 324: sampChIndex=10;
+"324
 [e = _sampChIndex -> -> 10 `i `uc ]
-[; ;sample.c: 279: break;
-"279
+[; ;sample.c: 325: break;
+"325
 [e $U 730  ]
-"280
+"326
 }
-[; ;sample.c: 280: }
-[; ;sample.c: 281: case 10:
-"281
+[; ;sample.c: 326: }
+[; ;sample.c: 327: case 10:
+"327
 [e :U 778 ]
-[; ;sample.c: 282: x_prDiffData.pValue=0;
-"282
+[; ;sample.c: 328: x_prDiffData.pValue=0;
+"328
 [e = . _x_prDiffData 0 -> -> 0 `i `l ]
-[; ;sample.c: 283: x_prDiffData.tAdcValue=adc_diffPr;
-"283
-[e = . _x_prDiffData 2 _adc_diffPr ]
-[; ;sample.c: 284: x_prDiffData.tAdcValue=adc_bridgeTemp;
-"284
+[; ;sample.c: 329: x_prDiffData.pAdcValue=adc_diffPr;
+"329
+[e = . _x_prDiffData 1 _adc_diffPr ]
+[; ;sample.c: 330: x_prDiffData.tAdcValue=adc_bridgeTemp;
+"330
 [e = . _x_prDiffData 2 _adc_bridgeTemp ]
-[; ;sample.c: 285: cal_diff_press();
-"285
+[; ;sample.c: 331: cal_diff_press();
+"331
 [e ( _cal_diff_press ..  ]
-[; ;sample.c: 286: cal_pt100_temperature_in();
-"286
+[; ;sample.c: 332: cal_pt100_temperature_in();
+"332
 [e ( _cal_pt100_temperature_in ..  ]
-[; ;sample.c: 287: sampChIndex=11;
-"287
+[; ;sample.c: 333: sampChIndex=11;
+"333
 [e = _sampChIndex -> -> 11 `i `uc ]
-[; ;sample.c: 288: break;
-"288
+[; ;sample.c: 334: break;
+"334
 [e $U 730  ]
-[; ;sample.c: 289: case 11:
-"289
+[; ;sample.c: 335: case 11:
+"335
 [e :U 779 ]
-[; ;sample.c: 290: cal_press();
-"290
+[; ;sample.c: 336: cal_press();
+"336
 [e ( _cal_press ..  ]
-[; ;sample.c: 291: cal_pt100_temperature_ex();
-"291
+[; ;sample.c: 337: cal_pt100_temperature_ex();
+"337
 [e ( _cal_pt100_temperature_ex ..  ]
-[; ;sample.c: 292: sampChIndex=12;
-"292
+[; ;sample.c: 338: sampChIndex=12;
+"338
 [e = _sampChIndex -> -> 12 `i `uc ]
-[; ;sample.c: 293: break;
-"293
+[; ;sample.c: 339: break;
+"339
 [e $U 730  ]
-[; ;sample.c: 294: case 12:
-"294
+[; ;sample.c: 340: case 12:
+"340
 [e :U 780 ]
-[; ;sample.c: 295: cal_additional_pressute(0);
-"295
+[; ;sample.c: 341: cal_additional_pressute(0);
+"341
 [e ( _cal_additional_pressute (1 -> -> 0 `i `uc ]
-[; ;sample.c: 296: cal_additional_pressute(1);
-"296
+[; ;sample.c: 342: cal_additional_pressute(1);
+"342
 [e ( _cal_additional_pressute (1 -> -> 1 `i `uc ]
-[; ;sample.c: 297: sampChIndex=13;
-"297
+[; ;sample.c: 343: sampChIndex=13;
+"343
 [e = _sampChIndex -> -> 13 `i `uc ]
-[; ;sample.c: 298: break;
-"298
+[; ;sample.c: 344: break;
+"344
 [e $U 730  ]
-[; ;sample.c: 299: default:sampChIndex=0;break;
-"299
+[; ;sample.c: 345: default:sampChIndex=0;break;
+"345
 [e :U 781 ]
 [e = _sampChIndex -> -> 0 `i `uc ]
 [e $U 730  ]
-"300
+"346
 }
-[; ;sample.c: 300: }
+[; ;sample.c: 346: }
 [e $U 730  ]
-"156
+"199
 [e :U 731 ]
 [e [\ _sampChIndex , $ -> -> 0 `i `uc 732
  , $ -> -> 1 `i `uc 737
@@ -7783,9 +7787,9 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 11 `i `uc 779
  , $ -> -> 12 `i `uc 780
  781 ]
-"300
+"346
 [e :U 730 ]
-[; ;sample.c: 301: }
-"301
+[; ;sample.c: 347: }
+"347
 [e :UE 729 ]
 }

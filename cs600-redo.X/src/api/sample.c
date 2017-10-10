@@ -149,6 +149,49 @@ uint8_t sample_call_cal_in_soc(void)
 }
 // uint8_t sampChIndex=0x00;
 // uint8_t sampCount=0x00;
+/*
+void sample_call_in_ticker(void)
+{
+	uint8_t i;
+	int16_t t16,tmp16;    
+    switch(sampChIndex){
+	case 0:{
+		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
+		//ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_0);
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_4096);	
+		ads1115_start_conversion_cont(pAds1115DiffPrObj);
+		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
+			
+			//delay_ms(3);
+			t16=ads1115_read_conversion_cont(pAds1115DiffPrObj);
+			if(i)t16=__x_sample_fifo(sampBufDiffPr_D01,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
+		}
+		adc_bridgeTemp=t16;
+		sampChIndex=1;
+		break;
+        }
+	case 1:{
+		
+		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
+		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);		
+		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
+			ads1115_start_conversion(pAds1115DiffPrObj);
+			delay_ms(3);
+			t16=ads1115_read_conversion(pAds1115DiffPrObj);
+			if(i)t16=__x_sample_fifo(sampBufDiffPr_D23,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
+		}
+		adc_diffPr=t16;
+		sampChIndex=2;
+		break;		
+       }
+	default:
+		sampChIndex=0;break;
+    }
+}
+*/
+
 void sample_call_in_ticker(void)
 {
 	uint8_t i;
@@ -156,11 +199,12 @@ void sample_call_in_ticker(void)
 	switch(sampChIndex){
 	case 0:{
 		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
-		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
-		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_6144);		
+		//ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_0_1);
+		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_SINGLE_0);
+		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_2048);		
 		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
 			ads1115_start_conversion(pAds1115DiffPrObj);
-			delay_ms(1);
+			delay_ms(3);
 			t16=ads1115_read_conversion(pAds1115DiffPrObj);
 			if(i)t16=__x_sample_fifo(sampBufDiffPr_D01,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
 		}
@@ -169,18 +213,19 @@ void sample_call_in_ticker(void)
 		break;
         }
 	case 1:{
+		
 		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
 		ads1115_set_mux(pAds1115DiffPrObj,ADS1X1X_MUX_DIFF_2_3);
 		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);		
 		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
 			ads1115_start_conversion(pAds1115DiffPrObj);
-			delay_ms(1);
+			delay_ms(3);
 			t16=ads1115_read_conversion(pAds1115DiffPrObj);
 			if(i)t16=__x_sample_fifo(sampBufDiffPr_D23,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
 		}
 		adc_diffPr=t16;
 		sampChIndex=2;
-		break;
+		break;		
        }
 	case 2:{
 		ads1115_set_data_rate(pAds1115DiffPrObj,ADS1X1X_DATA_RATE_860);
@@ -188,7 +233,7 @@ void sample_call_in_ticker(void)
 		ads1115_set_pga(pAds1115DiffPrObj,ADS1X1X_PGA_256);	
 		for(i=0;i<pr_DIFF_CHIP_SAMPLE_BUF_LEN+1;i++){
 			ads1115_start_conversion(pAds1115DiffPrObj);
-			delay_ms(1);
+			delay_ms(3);
 			t16=ads1115_read_conversion(pAds1115DiffPrObj);
 			if(i)t16=__x_sample_fifo(sampBufDiffPr_S1,t16,pr_DIFF_CHIP_SAMPLE_BUF_LEN);
 		}	
@@ -196,13 +241,14 @@ void sample_call_in_ticker(void)
 		sampChIndex=3;
 		break;
 	}
+	
 	case 3:{
 		ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
 		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_SINGLE_0);
 		ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
 		for(i=0;i<pr_CHIP_SAMPLE_BUF_LEN+1;i++){
 			ads1115_start_conversion(pAds1115PrObj);
-			delay_ms(1);
+			delay_ms(3);
 			t16=ads1115_read_conversion(pAds1115PrObj);
 			if(i)t16=__x_sample_fifo(sampBufPt100ExA,t16,pr_CHIP_SAMPLE_BUF_LEN);
 		}
@@ -216,7 +262,7 @@ void sample_call_in_ticker(void)
 		ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);
 		for(i=0;i<pr_CHIP_SAMPLE_BUF_LEN+1;i++){
 			ads1115_start_conversion(pAds1115PrObj);
-			delay_ms(1);
+			delay_ms(3);
 			t16=ads1115_read_conversion(pAds1115PrObj);
 			if(i)t16=__x_sample_fifo(sampBufPt100ExB,t16,pr_CHIP_SAMPLE_BUF_LEN);
 		}
@@ -227,10 +273,10 @@ void sample_call_in_ticker(void)
 	case 5:{
 		ads1115_set_data_rate(pAds1115PrObj,ADS1X1X_DATA_RATE_860);
 		ads1115_set_mux(pAds1115PrObj,ADS1X1X_MUX_DIFF_2_3);
-		ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_2048);	
+		ads1115_set_pga(pAds1115PrObj,ADS1X1X_PGA_256);	
 		for(i=0;i<pr_CHIP_SAMPLE_BUF_LEN+1;i++){
 			ads1115_start_conversion(pAds1115PrObj);
-			delay_ms(1);
+			delay_ms(3);
 			t16=ads1115_read_conversion(pAds1115PrObj);
 			if(i)t16=__x_sample_fifo(sampBufPr,t16,pr_CHIP_SAMPLE_BUF_LEN);
 		}
@@ -280,7 +326,7 @@ void sample_call_in_ticker(void)
 	}
 	case 10:
 		x_prDiffData.pValue=0;
-        x_prDiffData.tAdcValue=adc_diffPr;
+        x_prDiffData.pAdcValue=adc_diffPr;
         x_prDiffData.tAdcValue=adc_bridgeTemp;
 		cal_diff_press();
 		cal_pt100_temperature_in(); 

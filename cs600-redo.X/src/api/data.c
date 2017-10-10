@@ -291,7 +291,7 @@ uint8_t  calib_data_init_pr(void)
 	uint8_t* buf=(uint8_t*)(&prCalibTabDef);
 	
 	p_prEepromObj=&at24c02Ch0;
-	at24c02_init(p_prEepromObj,0xaa);
+	at24c02_init(p_prEepromObj,0xa8);
 	t16=sizeof(prCalibTabDef);
 	at24c02_read_n_byte(p_prEepromObj,0,buf,t16);
 	ret=crc_verify(buf,t16);
